@@ -1,0 +1,2 @@
+if not exists (select * from sysobjects where name='eje_ges_trabajador_documentos' and xtype='U')
+CREATE TABLE eje_ges_trabajador_documentos (corr identity(1,1), rut int, fecha_generacion datetime, nombre_archivo varchar(100))

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mejoremos Nuestra Intranet</title>
+
+<meta name="keywords">
+<meta name="title">
+<meta name="description">
+
+<link type="text/css" rel="stylesheet" href="css/commen.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/screen.css">
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--script sitio nuevo-->
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+  $("#btn").click(function() {
+	 var nombre = document.getElementById("ContactName").value;
+        var email = document.getElementById("ContactEmail").value;
+        var fono = document.getElementById("ContactTel").value;
+        var fono2 = "";
+        var mensaje = document.getElementById("ContactMessage").value;
+	 var para  = "vvasquez@ejedigital.cl";
+
+        if($("#ContactName").val().length < 1) {  
+           alert("Por favor, ingrese su nombre");  
+           return false;  
+        } 
+        if($("#ContactTel").val().length < 1) {  
+           alert("Por favor, ingrese su fono o celular de contacto");  
+           return false;  
+        } 
+        if($("#ContactEmail").val().length < 1) {  
+           alert("Por favor, ingrese su correo");  
+           return false;  
+        } 
+        if($("#ContactEmail").val().indexOf('@', 0) == -1 || $("#ContactEmail").val().indexOf('.', 0) == -1) {  
+           alert("El correo parece ser incorrecto, por favor ingresar nuevamente");  
+           return false;  
+        }  
+        if($("#ContactMessage").val().length < 1) {  
+           alert("Por favor, ingrese un mensaje");  
+           return false;  
+        } 
+
+    	$.ajax({
+			  url: "../../../../servlet/EjeCore?claseweb=portal.com.eje.serhumano.mail.Mail&mail=" + email + "&nombre=" + nombre + "&fono=" + fono + "&texto=" + mensaje,
+			  data: {},
+			  type: "POST",
+			  success: function(data) {
+				  console.log("llego");
+				  //autoLoadEndSession();
+			  },
+			  dataType: "html"
+			});
+        mostrarDiv();
+	 document.getElementById("resultado_mensaje").innerHTML="Su mensaje ha sido recibido.<br>Muchas gracias.<a href='#' onclick='ocultarDiv();' style='color:blue'>[X] Cerrar</a>";
+        document.getElementById("ContactName").value="";
+	 document.getElementById("ContactEmail").value="";
+        document.getElementById("ContactTel").value="";
+	 document.getElementById("ContactMessage").value="";
+   });
+});
+
+function mostrarDiv() {
+	divC = document.getElementById("resultado_mensaje");
+	divC.style.display = "";
+}
+
+function ocultarDiv() {
+	divC = document.getElementById("resultado_mensaje");
+	divC.style.display="none";
+}
+</script>
+
+
+<link type="text/css" rel="stylesheet" href="css/widget.css">
+<style type="text/css">
+#twtr-widget-1 .twtr-avatar { 
+display: none; 
+} 
+#twtr-widget-1 .twtr-tweet-text { 
+margin-left: 0; 
+}
+</style>
+<style type="text/css">
+#twtr-widget-1 .twtr-doc, #twtr-widget-1 .twtr-hd a, #twtr-widget-1 h3, #twtr-widget-1 h4 {            
+background-color: none !important;            
+color: #000 !important;          
+}          
+#twtr-widget-1 .twtr-tweet a {            
+color: #3BBAEB !important;          
+}          
+#twtr-widget-1 .twtr-bd, #twtr-widget-1 .twtr-timeline i a, #twtr-widget-1 .twtr-bd p {            
+color: #686868 !important;          
+}          
+#twtr-widget-1 .twtr-new-results, #twtr-widget-1 .twtr-results-inner, #twtr-widget-1 .twtr-timeline {            
+background: none !important;          
+}
+
+.contacto_people{ margin-top:40px; margin-left:auto; margin-right:auto; width:900px; height:400px; border:none; text-decoration:none;
+background: #E8E8E8; border:1px dashed rgba(153, 153, 153, 0.5); box-shadow:4px 4px 8px #ccc inset, -4px -4px 8px #ccc inset; padding-top:50px; padding-left:40px; padding-right:20px; margin-bottom:60px;}
+
+body{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
+
+h1 { 
+	font-weight: bold; 
+	color: #2e2e2e;  
+	margin: 0; 
+	text-shadow: 0px 2px 1px #fff;
+	font-size: 28px;
+}
+.button {
+	font-size:16px;
+	font-family:Trebuchet MS;
+	font-weight:normal;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:1px solid #d83526;
+	padding:9px 18px;
+	text-decoration:none;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fe1a00), color-stop(100%, #ce0100) );
+	background:-moz-linear-gradient( center top, #fe1a00 5%, #ce0100 100% );
+	background:-ms-linear-gradient( top, #fe1a00 5%, #ce0100 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+	background-color:#fe1a00;
+	color:#ffffff;
+	display:inline-block;
+	text-shadow:1px 1px 0px #b23e35;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #f29c93;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #f29c93;
+ 	box-shadow:inset 1px 1px 0px 0px #f29c93;
+   }
+.button:hover {
+ background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ce0100), color-stop(100%, #fe1a00) );
+	background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
+	background:-ms-linear-gradient( top, #ce0100 5%, #fe1a00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+	background-color:#ce0100;
+   }
+.button:active {
+   position:relative;
+   top:1px;
+   }
+
+</style>
+</head>
+
+<body>
+<form name="uf">
+  <!-- Header Portion -->
+  </header>
+
+<div class="contacto_people" style="margin-top:60px;">
+            <div class="section-extended clearfix" style="width:600px; float:left;">
+            	<h1 style="color:#333; margin-left:10px;"><img src="img/logo_ebco.png" width="93" height="65" align="middle"> Mejoremos Nuestra Intranet</h1>
+	            <div id="contactgrid" class="grid_8" style="font-weight:bold; padding-top:30px;">		            
+                    <fieldset style="display:none;">
+                    </fieldset>		
+                    <div class="input text">
+                    <span id="rqContactName" style="color:Red;display:none;">Ingrese su nombre</span>
+                        <label for="ContactName"><span style="margin-left:5px;">Nombre:</span></label><input name="ContactName" maxlength="100" size="30" id="ContactName" type="text" style="margin-left:35px;">                      
+                    </div>		
+                    <div class="input text" style="margin-top:10px;">
+                        <label for="ContactTel"><span style="margin-left:5px;">Fono:</span></label><input name="ContactTel" id="ContactTel" type="text" size="30" style="margin-left:57px;">
+                    </div>		
+                    <div class="input text required" style="margin-top:10px;">
+                        <span id="rqEmail" style="color:Red;display:none;">Ingrese su correo</span>
+                        <label for="ContactEmail"><span style="margin-left:5px;">Correo:</span></label><input name="ContactEmail" maxlength="255" size="30" id="ContactEmail" type="text" style="margin-left:42px;">
+                    </div>		
+                    
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+                      <tr>
+                        <td width="105"><label for="ContactMessage">Mensaje:</label></td>
+                        <td><textarea name="ContactMessage" rows="6" cols="20" id="ContactMessage" style="float:left; width:400px;"></textarea></td>
+                        <td> </td>
+                      </tr>
+                    </table>
+                    <div class="submit">
+	  <div><!--<a href="#"><img src="img/btn_enviar.png"/></a>--></div>
+                              <div><input id="btn" type="button" value="Enviar"  class="button" style="margin-left:105px; margin-top:10px;"/></div>
+                              
+                  </div>	
+            </div>
+	           
+            </div>
+            <div id="resultado_mensaje" 
+            style="display:none; width:550px; height:200px; border:#ccc solid 1px; background-color:#FFF; font-size:16px; text-align:center; font-weight:bold; position:absolute; left: 230px; top: 260px; z-index:2; padding-top:60px; background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+ "></div>
+            <div style=" width:300px;margin-top:100px; float:right;">       	    
+			       <img src="img/correo.png">                  
+				</div>
+
+
+  </div>
+
+				
+</form>
+</body></html>

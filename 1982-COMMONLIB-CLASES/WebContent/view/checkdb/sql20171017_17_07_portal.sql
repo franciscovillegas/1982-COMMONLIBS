@@ -1,0 +1,2 @@
+IF NOT EXISTS (SELECT * FROM eje_ges_user_app_func WHERE APP_ID =  'participa_adm')
+INSERT INTO eje_ges_user_app_func (APP_ID, DESCRIPCION, ORDEN, IS_ADMINISTRABLE) VALUES ('participa_adm','Administrador de MOD de Participa', 1,1)

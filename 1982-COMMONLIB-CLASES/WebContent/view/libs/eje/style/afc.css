@@ -1,0 +1,30 @@
+/**
+* Ejedigital 2016-12-21
+  No se pueden aregar más clases si no se sigue el patrón.
+  
+  
+  Patrón:
+  	Solo clases. 
+
+*/
+
+.body, .font , .font_title, .font_stitle, .font_title_xl        { font-family: Roboto	; }
+
+.left 															{ text-align: left;}
+.font 															{ font-size: 13px;}
+.bold 															{ font-weight: bold;}
+.font_sssstitle 												{ font-size: 14px; 	font-weight: bold; color: #0f5baa}
+.font_ssstitle 													{ font-size: 16px; 	font-weight: bold; color: #0f5baa}
+.font_stitle 													{ font-size: 18px; 	font-weight: bold;  }
+.font_title 													{ font-size: 25px; 	font-weight: bold; color: #0f5baa}
+.font_title_xl 													{ font-size: 45px; 	font-weight: bold; color: #0f5baa}
+
+.lista {
+	list-style-image: url(../../../images/btns/tick_azul.ico);
+}
+
+
+ .body {
+ 	padding-top: 30px;
+ 	padding-left: 30px;
+ }

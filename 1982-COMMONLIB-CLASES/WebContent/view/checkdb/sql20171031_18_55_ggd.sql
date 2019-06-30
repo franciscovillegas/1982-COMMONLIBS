@@ -1,0 +1,2 @@
+IF (exists(select character_maximum_length from INFORMATION_SCHEMA.COLUMNS IC where TABLE_NAME = 'eje_ggd_procesos_persona_total' and COLUMN_NAME = 'estado_final_desc' and character_maximum_length = 50))
+ALTER TABLE eje_ggd_procesos_persona_total ALTER COLUMN estado_final_desc VARCHAR (500) NULL

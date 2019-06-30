@@ -1,0 +1,2 @@
+if not exists (select * from sysobjects where name='eje_ggd_procesos_persona_total' and xtype='U')
+CREATE TABLE eje_ggd_procesos_persona_total (corr int identity(1,1),id_proceso int,fecha datetime,rut int,estado_from_s	int,estado_from_s_desc	varchar(50),estado_from_p	int,estado_from_p_desc	varchar(50),estado_from_c	int,estado_from_c_desc	varchar(50),estado_from_a	int,estado_from_a_desc	varchar(50),estado_from_m	int,estado_from_m_desc	varchar(50),estado_proceso int,estado_proceso_desc varchar(50),estado_final int,estado_final_desc varchar(500))

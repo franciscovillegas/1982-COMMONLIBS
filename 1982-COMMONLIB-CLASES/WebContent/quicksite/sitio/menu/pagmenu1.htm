@@ -1,0 +1,494 @@
+
+	
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Menu Principal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<script language="JavaScript" type="text/JavaScript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+var menuSel = null;
+</script>
+ <script type="text/javascript">
+var localRut = "";
+var localDigito = "";
+var localClave = "";
+
+function loadWFFichanew() {
+	alert("Desactivado");
+	return; 
+	
+    $.ajax({
+          dataType: "json",
+          url: "../../../servlet/EjeCore?claseweb=portal.com.eje.usuario.UsuarioInfo",
+          data: {},
+          success: function(data) {
+              localRut    = data.rut;
+              localDigito = data.digito_ver;
+              localClave  = data.clave;
+
+              
+              
+                var forma = "<form action='../../../../wfdatos/servlet/ServletStartSession' method='post' name='formCargo' target='newWFWindowdatos'> ";
+                forma += "<input  name='param' type='hidden'   value='' /> ";
+                forma += "<input name='passline_enc' type='hidden' value='V0htc3lHK2ZJWW8wUVNLSkhhaVZNVkFJYXE5YjVPdnlHcWxEZmYvQXJUSlUveXFxQXZIRCt3PT0=' /> ";
+                forma += "<input name='rut' type='hidden'   value='"+localRut+"'> ";
+                forma += "<input name='dig' type='hidden'   value='"+localDigito+"'> ";
+                forma += "<input name='clave' type='hidden'   value='"+localClave+"'> ";
+                forma += "<input name='htm' type='hidden' value='../servlet/Tool?htm=macc/home_qsm.html&prods=82&wfname=Solicitud de Material Corporativo&wfimg=../images/macc/descanso/WFmaterial.png'> ";
+                forma += "<input name='passline' type='hidden'   value='hjne'> ";
+                forma += "</form>";
+
+                $("form[name=formCargo]").remove();
+                $("body").append(forma);
+                $("form[name=formCargo]").submit();
+
+
+              }
+          });
+
+}
+
+</script>
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+a:link {
+	color: #4C280F;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:visited {
+	text-decoration: none;
+	color: #4C280F;
+	font-weight: bold;
+}
+a:hover {
+	text-decoration: underline;
+	color: #CC0000;
+	font-weight: bold;
+}
+a:active {
+	text-decoration: none;
+	color: #4C280F;
+	font-weight: bold;
+}
+
+.boton1:hover {
+	content:url(../../images/intranet2016/btn_BonosYComisiones_on.jpg);
+}
+.boton2:hover {
+	content:url(../../images/intranet2016/btn_InvitaATusAmigos_on.jpg);
+}
+.boton3:hover {
+	content:url(../../images/intranet2016/btn_LaCompania_on.jpg);
+}
+.boton4:hover {
+	content:url(../../images/intranet2016/btn_NuestroEquipo_on.jpg);
+}
+.boton5:hover {
+	content:url(../../images/intranet2016/btn_PreguntasFrecuentes_on.jpg);
+}
+-->
+</style></head>
+<body bgcolor="" background="../../" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<strong></strong>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+<td width="100%" valign="top"> 
+      <table width="300"  border="0" cellpadding="0" cellspacing="0">
+	  	 
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	<a href="../../sitio/general/pagcomisiones.htm"  target="_parent" >
+		<img alt="" src="../../images/intranet2016/btn_BonosYComisiones_off.jpg" class="boton1">				
+	</a>
+
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	 <a href="../../sitio/general/paginvitaatusamigos.htm"  target="_parent" >
+		<img alt="" src="../../images/intranet2016/btn_InvitaATusAmigos_off.jpg" class="boton2">				
+	 </a>
+	
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+<tr>
+   <td align="center"> 
+
+	
+	 <a href="../../sitio/general/pagnosotros.htm"  target="_parent" >
+		<img alt="" src="../../images/intranet2016/btn_NuestroEquipo_off.jpg" class="boton4">				
+	 </a>
+	 
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	  <a href="../../sitio/general/pagfaq.htm"  target="_parent" >
+		<img alt="" src="../../images/intranet2016/btn_PreguntasFrecuentes_off.jpg" class="boton5">				
+	 </a>
+
+
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+<a href="../../sitio/documentos/pagfomr.htm"  target="_parent" > </a>
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+     <a href="../../sitio/documentos/pagact.htm"  target="_parent" ><img src="../../images/../images/galeria/botones/bann_activi.png" border="0"></a>
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+<a href="../../sitio/documentos/pagact.htm"  target="_parent" > </a>
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+     <a href="javascript:;loadWFFichanew();"  ><img src="../../images/../images/galeria/botones/WF_datos.png" border="0"></a>
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+<a href="javascript:;loadWFFichanew();"  ><script src="../../../servlet/Tool?scripts/jquery-1.8.3.min.js"     type="text/javascript"></script> <script src="../../../servlet/Tool?scripts/zonaUtil.js"              type="text/javascript"></script>  </a>
+</table></td>
+	  </tr>
+     
+	  <tr align="center">	
+      <td>
+
+
+ 
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Verdana, Arial, Helvetica, sans-serif;">
+  
+  <tr>
+ <td align="center"> 
+ 
+	
+
+     <a href="javascript:;loadWF();"  target="_parent" ><img src="../../images/../images/galeria/botones/WF_material.png" border="0"></a>
+    
+</tr>
+
+
+ 
+
+<tr>
+   <td align="center"> 
+
+	
+<a href="javascript:;loadWF();"  target="_parent" ><script src="../../../servlet/Tool?scripts/jquery-1.8.3.min.js"     type="text/javascript"></script> <script src="../../../servlet/Tool?scripts/zonaUtil.js"              type="text/javascript"></script>  <script type="text/javascript">
+var localRut = "";
+var localDigito = "";
+var localClave = "";
+
+function loadWF() {
+	alert("Desactivado");
+	return;
+	
+    $.ajax({
+          dataType: "json",
+          url: "../../../servlet/EjeCore?claseweb=portal.com.eje.usuario.UsuarioInfo",
+          data: {},
+          success: function(data) {
+              localRut    = data.rut;
+              localDigito = data.digito_ver;
+              localClave  = data.clave;
+
+                var forma = "<form action='../../../../wf/servlet/StartSession' method='post' name='formCargo' target='newWFWindowmaterial'> ";
+                forma += "<input  name='param' type='hidden'   value='' /> ";
+                forma += "<input name='passline_enc' type='hidden' value='V0htc3lHK2ZJWW8wUVNLSkhhaVZNVkFJYXE5YjVPdnlHcWxEZmYvQXJUSlUveXFxQXZIRCt3PT0=' /> ";
+                forma += "<input name='rut' type='hidden'   value='"+localRut+"'> ";
+                forma += "<input name='dig' type='hidden'   value='"+localDigito+"'> ";
+                forma += "<input name='clave' type='hidden'   value='"+localClave+"'> ";
+                forma += "<input name='htm' type='hidden' value='../servlet/Tool?htm=macc/home_qsm.html&prods=82'> ";
+                forma += "<input name='passline' type='hidden'   value='hjne'> ";
+                forma += "</form>";
+
+                $("body").append(forma);
+                $("form[name=formCargo]").submit();
+
+
+              }
+          });
+
+}
+</script> </a>
+</table></td>
+	  </tr>
+    </table>
+</td>
+</td>
+  </tr>
+</table>
+</body>
+</html>

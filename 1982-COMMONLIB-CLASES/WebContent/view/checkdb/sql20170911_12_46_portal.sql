@@ -1,0 +1,2 @@
+if not exists (select * from sysobjects where name='eje_generico_webmatico_ejegesuserapp' and xtype='U')
+CREATE TABLE eje_generico_webmatico_ejegesuserapp 	(id_corr int not null identity(1,1), 	 id_perfil int, 	 app_id varchar(100))

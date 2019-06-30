@@ -1,0 +1,25 @@
+.x-action-col-cell img.icon-pencil {
+	background-image: url("../../images/btns/pencil.png");
+}
+.x-action-col-cell img.icon-page_white_put {
+    background-image: url("../../images/btns/page_white_put.png");
+}
+
+.x-action-col-cell img.icon-page_null {
+    background-image: url("../../images/btns/null.png");
+}
+
+.x-action-col-cell img.icon-add {
+    background-image: url("../../images/btns/add.png");
+}
+
+.x-action-col-cell img.icon-delete {
+    background-image: url("../../images/btns/delete.png");
+}
+
+.x-action-col-cell img.icon-circle_green { background-image: url("../../images/btns/circle_green.png"); }
+.x-action-col-cell img.icon-circle_glossy { background-image: url("../../images/btns/circle_glossy.png"); }
+
+.filadestacada {
+    background-color: #ffe2e2;
+} 

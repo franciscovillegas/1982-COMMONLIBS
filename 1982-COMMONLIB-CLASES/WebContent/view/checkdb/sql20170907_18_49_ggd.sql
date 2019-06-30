@@ -1,0 +1,1 @@
+IF NOT EXISTS(SELECT * FROM   INFORMATION_SCHEMA.COLUMNS WHERE  TABLE_NAME = 'eje_ggd_evaluacion_competencias_resumen_conductas' AND COLUMN_NAME = 'nivel_desc_from_m') alter table eje_ggd_evaluacion_competencias_resumen_conductas add nivel_desc_from_m varchar(50)

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="http://www.highcharts.com/highslide/highslide.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.highcharts.com/templates/yoo_symphony/css/template.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.highcharts.com/templates/yoo_symphony/css/variations/brown.css" type="text/css" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
+	<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide.config.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://www.highcharts.com/demo/scripts.js"></script>
+	<script type="text/javascript" src="servlet/Tool?scripts/highcharts/highChart.js"></script>
+
+	<script type="text/javascript">
+		var example = 'line-basic',
+		theme = 'default';
+	</script>
+		
+	<link href="css/demo.css" rel="stylesheet" type="text/css" />
+	
+	<title>Encuesta de clima</title>
+</head>
+<body>
+	
+	<div id="demo-menu">
+		<h4>Lineales</h4>
+		<ul>
+			<li><a href="javascript:;return false;"     onclick="showGrafico('Serie','mis.highchart.graphs.CostosCursos','container');">Total de Costos por Cursos</a></li>
+		</ul>
+		<ul>
+			<li><a href="javascript:;return false;"     onclick="showGrafico('Serie','clima.highcharts.graphs.EstadoEncuestas','container');">Total de Ingresos</a></li>
+		</ul>
+		<h4>Barra</h4>
+		<ul>
+			<li><a href="javascript:;return false;"     onclick="showGrafico('NegativeBars','clima.highcharts.graphs.TendenciaPorDimension','container')">Intensidad de tendencia por dimensión</a></li>
+		</ul>
+		<ul>
+			<li><a href="javascript:;return false;"     onclick="showGrafico('StackedBar','clima.highcharts.graphs.ConteoPorDimension','container')">Conteo de tendencia por dimensión</a></li>
+		</ul>
+		<h4>Combinados</h4>
+		<ul>
+			<li><a href="javascript:;return false;"     onclick="showGrafico('DualAxesLineAndColumn','clima.highcharts.graphs.ResultadoVsPuntuacionConMapeoValores','container')">Resultado de la encuesta vs puntaje por dimensión (Con Transformación de valores)</a></li>
+		</ul>
+	</div>
+	<div id="demo-content">
+	<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+	</div>
+
+</body>
+</html>

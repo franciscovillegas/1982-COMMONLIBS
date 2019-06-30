@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+#simplegallery1{ 
+position: relative; /*keep this intact*/
+visibility: hidden; /*keep this intact*/
+border: 5px solid #CCC;
+-moz-box-shadow: 3px 3px 2px #888;
+-webkit-box-shadow: 3px 3px 2px #888;
+box-shadow: 3px 3px 2px #888;
+}
+
+#simplegallery1 .gallerydesctext{ 
+text-align: left;
+padding: 2px 5px;
+}

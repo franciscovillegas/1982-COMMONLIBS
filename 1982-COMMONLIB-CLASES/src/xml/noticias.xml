@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<noticias>
+	<noticia>
+		<titulo>Mayor Seguridad</titulo>
+		<titulo2>Mayor seguridad de sus datos</titulo2>
+		<texto>Eje Digital ha obtenido recientemente la certificación de Seguridad Perimetral y Hacking Ético.</texto>
+		<texto2>Eje Digital ha obtenido recientemente la certificación de Seguridad Perimetral y Hacking Ético. Tal certificación asegura que nuestro servicio resguarda su información con altos estándares internacionales.</texto2>
+		<icono>noticia_2.jpg</icono>
+		<icono2>not_1.jpg</icono2>
+		<enlace>inline_demo1</enlace>
+	</noticia>
+	<noticia>
+		<titulo>Mejor Uptime</titulo>
+		<titulo2>Mejor Uptime</titulo2>
+		<texto>Para asegurar altos estándares de uptime en el servicio de Portal hemos incorporado ...</texto>
+		<texto2>Para asegurar altos estándares de uptime en el servicio de Portal hemos incorporado recientemente nuevos y modernos equipos y software en nuestra infraestructura tecnológica.</texto2>
+		<icono>noticia_1.jpg</icono>
+		<icono2>not_2.jpg</icono2>
+		<enlace>inline_demo2</enlace>
+	</noticia>
+	<noticia>
+		<titulo>Velocidad de Acceso</titulo>
+		<titulo2>Velocidad de Acceso</titulo2>
+		<texto>Fieles al compromiso de otorgarle el mejor servicio, hemos ampliado el ...</texto>
+		<texto2>Fieles al compromiso de otorgarle el mejor servicio, hemos ampliado el ancho de banda en nuestra infraestructura tecnológica de Portal. Ahora, usted dispone de 100 MB de conexión desde nuestros servidores.</texto2>
+		<icono>noticia_3.jpg</icono>
+		<icono2>not_3.jpg</icono2>
+		<enlace>inline_demo3</enlace>
+	</noticia>
+</noticias>

@@ -1,0 +1,8 @@
+.x-texto-24 {
+	font: normal 24px !important;
+}
+.x-chrome .x-form-text {display:inherit !important;}
+
+.x-grid-cell-inner {
+	height: 20px;
+}

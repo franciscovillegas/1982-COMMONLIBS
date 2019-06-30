@@ -1,0 +1,1 @@
+IF NOT EXISTS(SELECT * FROM   INFORMATION_SCHEMA.COLUMNS WHERE  TABLE_NAME = 'eje_gp_ficha_postulacion' AND COLUMN_NAME = 'is_the_boss') alter table eje_gp_ficha_postulacion add  is_the_boss bit

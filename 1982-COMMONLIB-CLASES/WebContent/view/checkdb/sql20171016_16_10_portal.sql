@@ -1,0 +1,2 @@
+if not exists(select * from eje_ges_tracking_func where url = '/Tool?htm=participa/index.html' ) 
+insert into eje_ges_tracking_func (url, descripcion, orden, isbeforerequest) values ('/Tool?htm=participa/index.html','Inicio de Comunidad de Participación',40,1)

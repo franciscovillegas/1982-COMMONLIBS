@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cumple</title>
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script  src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script  src="../servlet/Tool?scripts/niceforms.js" type="text/javascript"></script>
+<script  src="../servlet/Tool?scripts/jquery-1.8.3.min.js" 				type="text/javascript"></script>
+<script  src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js" 	type="text/javascript"></script>
+<script  src="../servlet/Tool?scripts/jqueryalerts/jquery.alerts.js" 	type="text/javascript"></script>
+<script  src="../servlet/Tool?scripts/waitingUtil.js" 					type="text/javascript"></script>
+<script  src="../servlet/Tool?scripts/utilTrabajador.js" 				type="text/javascript"></script>
+<link 	 href="../servlet/Tool?omap=scripts/jquery-ui/1.9.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+<link 	 href="../servlet/Tool?style/jqueryalerts/jquery.alerts.css" 						 rel="stylesheet" type="text/css">
+
+
+
+<script  type="text/JavaScript">
+<!--
+
+function existeFoto(foto,reemplazo) {
+     //alert(reemplazo);
+     if (!reemplazo)
+        foto.src = "../servlet/Tool?images/sinfoto.jpg";
+     else
+       foto.src = reemplazo;    
+}
+
+function mostrar(rut,email) {
+   document.getElementById("container").style.visibility="visible";
+   document.getElementById("formRut").value=rut;
+   document.getElementById("formMail").value=email;
+}
+
+function enviar() {
+		
+		openWaiting();
+		
+	    var formData = $("form[name='formSaludoCumpl']").serialize() ;
+		
+	    $.ajax({
+	        url : '../servlet/EjeCore', //Server script to process data
+	        type : 'POST',
+	        datatype : "html",
+	        data : formData,
+	        success : function(data) {
+	        	jAlert("Msg Enviado","Msg Enviado");
+		    },
+		    complete: function() {
+		    	closeWaiting();
+		    	ocultar();
+		    }
+	    });
+}
+
+function ocultar() {
+   document.getElementById("container").style.visibility="hidden";
+   document.getElementById("resultado").style.visibility="hidden";
+   document.getElementById("formRut").value = null;
+   document.getElementById("formMail").value = null;
+   document.getElementById("formAsunto").value = null;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//--></script>
+<style>
+/*Defaults Styling*/
+
+/*Defaults Styling*/
+
+body {font-size:10px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; background:#ffffff; }
+
+fieldset {background:#f2f2e6; padding:10px; border:1px solid #fff; border-color:#fff #666661 #666661 #fff; margin-bottom:36px; width:200px;}
+
+input, textarea, select {font-size:10px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; padding:0;}
+
+fieldset.action {background:#9da2a6; border-color:#e5e5e5 #797c80 #797c80 #e5e5e5; margin-top:-20px;}
+
+legend {background:#bfbf30; color:#fff; font:17px/21px Calibri, Arial, Helvetica, sans-serif; padding:0 10px; margin:-26px 0 0 -11px; font-weight:bold; border:1px solid #fff; border-color:#e5e5c3 #505014 #505014 #e5e5c3;}
+
+label {font-size:11px; font-weight:bold; color:#666; width:200px;}
+
+label.opt {font-weight:normal;}
+
+dl {clear:both;}
+
+dt {float:left; text-align:right; width:90px; line-height:25px; margin:0 10px 10px 0;}
+
+dd {float:left; width:200px; line-height:25px; margin:0 0 10px 0;}
+
+#footer {font-size:11px;}
+
+ 
+
+#container {
+	width:200px;
+	margin:0 auto;
+	height: 150px;
+}
+
+ 
+
+/*##########################################
+
+Script: Niceforms 2.0
+
+Theme: StandardBlue
+
+Author: Lucian Slatineanu
+
+URL: http://www.emblematiq.com/
+
+##########################################*/
+
+ 
+
+/*Text inputs*/
+
+.NFText {border:none; vertical-align:middle; font:12px/15px Arial, Helvetica, sans-serif; background:none;}
+
+.NFTextCenter {height:15px; background:url(../servlet/Tool?images/efemerides/input.png) repeat-x 0 0; padding:3px 0; margin:0; float:left; line-height:15px;}
+
+.NFTextLeft, .NFTextRight {width:7px; height:21px; vertical-align:middle; float:left;}
+
+.NFTextLeft {background:url(../servlet/Tool?images/efemerides/input-left.png) no-repeat 0 0;}
+
+.NFTextRight {background:url(../servlet/Tool?images/efemerides/input-right.png) no-repeat 0 0;}
+
+/*Radio*/
+
+.NFRadio {cursor:pointer; position:absolute; display:block; width:13px; height:13px; border:1px solid transparent; background:url(../servlet/Tool?images/efemerides/radio.png) no-repeat 0 0; z-index:2;}
+
+/*Checkbox*/
+
+.NFCheck {cursor:pointer; position:absolute; width:12px; height:12px; border:1px solid transparent; background:url(../servlet/Tool?images/efemerides/checkbox.png) no-repeat 0 0; z-index:2;}
+
+/*Buttons*/
+
+.NFButton {width:auto; height:26px; color:#fff; padding:0 2px; background:url(../servlet/Tool?images/efemerides/button.png) repeat-x 0 0; cursor:pointer; border:none; font:10px/26px Tahoma, Arial, Helvetica, sans-serif; font-weight:bold; text-transform:uppercase; letter-spacing:1px; vertical-align:middle;}
+
+.NFButtonLeft, .NFButtonRight {width:6px; height:26px; vertical-align:middle;}
+
+.NFButtonLeft {background:url(../servlet/Tool?images/efemerides/button-left.png) no-repeat 0 0;}
+
+.NFButtonRight {background:url(../servlet/Tool?images/efemerides/button-right.png) no-repeat 0 0;}
+
+/*Textareas*/
+
+.NFTextarea {border:none; background:none; font:12px/12px Arial, Helvetica, sans-serif; margin:0;}
+
+.NFTextareaTop, .NFTextareaBottom {height:5px; clear:both; float:none; padding-right:5px;}
+
+.NFTextareaTop {background:url(../servlet/Tool?images/efemerides/textarea-tr.png) no-repeat 100% 0;}
+
+.NFTextareaBottom {background:url(../servlet/Tool?images/efemerides/textarea-br.png) no-repeat 100% 0; margin-bottom:5px;}
+
+.NFTextareaTopLeft, .NFTextareaBottomLeft {width:5px; height:5px;}
+
+.NFTextareaTopLeft {background:#f2f2e6 url(../servlet/Tool?images/efemerides/textarea-tl.png) no-repeat 0 0;}
+
+.NFTextareaBottomLeft {background:#f2f2e6 url(../servlet/Tool?images/efemerides/textarea-bl.png) no-repeat 0 0;}
+
+.NFTextareaLeft, .NFTextareaRight, .NFTextareaLeftH, .NFTextareaRightH {float:left; padding-bottom:5px;}
+
+.NFTextareaLeft, .NFTextareaLeftH {width:5px;}
+
+.NFTextareaLeft {background:url(../servlet/Tool?images/efemerides/textarea-l-off.png) repeat-y 0 0;}
+
+.NFTextareaLeftH {background:url(../servlet/Tool?images/efemerides/textarea-l-over.png) repeat-y 0 0;}
+
+.NFTextareaRight, .NFTextareaRightH {padding-bottom:0;}
+
+.NFTextareaRight {background:url(../servlet/Tool?images/efemerides/textarea-r-off.png) repeat-y 100% 0;}
+
+.NFTextareaRightH {background:url(../servlet/Tool?images/efemerides/textarea-r-over.png) repeat-y 100% 100%;}
+
+/*Files*/
+
+.NFFileButton {padding-bottom:0; vertical-align:bottom; cursor:pointer; background:url(../servlet/Tool?images/efemerides/file.png) no-repeat 0 0; width:60px; height:21px;}
+
+.NFFile {position:relative; margin-bottom:5px;}
+
+.NFFile input.NFhidden {position:relative; filter:alpha(opacity=0); opacity:0; z-index:2; cursor:pointer; text-align:left;}
+
+.NFFileNew {position:absolute; top:0px; left:0px; z-index:1;}
+
+/*Selects*/
+
+.NFSelect {height:21px; position:absolute; border:1px solid transparent;}
+
+.NFSelectLeft {float:left; width:3px; height:21px; background:url(../servlet/Tool?images/efemerides/select-left.png) no-repeat 0 0; vertical-align:middle;}
+
+.NFSelectRight {height:21px; width:auto; background:url(../servlet/Tool?images/efemerides/select-right.png) no-repeat 100% 0; cursor:pointer; font:12px/21px Arial, Helvetica, sans-serif; color:#fff; padding-left:3px; margin-left:3px;}
+
+.NFSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:18px; z-index:3; left:0; top:0; padding-bottom:13px;}
+
+.NFSelectOptions {position:relative; background:#707175; margin-left:16px; margin-top:0; list-style:none; padding:4px 0; color:#fff; font:11px/13px Arial, Helvetica, sans-serif; z-index:4; max-height:200px; overflow-y:auto; overflow-x:hidden; left:0; top:0;}
+
+.NFSelectOptions li {padding-bottom:1px;}
+
+.NFSelectOptions a {display:block; text-decoration:none; color:#fff; padding:2px 3px; background:none;}
+
+.NFSelectOptions a.NFOptionActive {background:#464646;}
+
+.NFSelectOptions a:hover {background:#333;}
+
+/*Multiple Selects*/
+
+.NFMultiSelect {border:0; background:none; margin:0;}
+
+.NFMultiSelectTop, .NFMultiSelectBottom {height:5px; clear:both; float:none; padding-right:10px;}
+
+.NFMultiSelectTop {background:url(../servlet/Tool?images/efemerides/textarea-tr.png) no-repeat 100% 0;}
+
+.NFMultiSelectBottom {background:url(../servlet/Tool?images/efemerides/textarea-br.png) no-repeat 100% 0; margin-bottom:5px;}
+
+.NFMultiSelectTopLeft, .NFMultiSelectBottomLeft {width:5px; height:5px;}
+
+.NFMultiSelectTopLeft {background:#f2f2e6 url(../servlet/Tool?images/efemerides/textarea-tl.png) no-repeat 0 0;}
+
+.NFMultiSelectBottomLeft {background:#f2f2e6 url(../servlet/Tool?images/efemerides/textarea-bl.png) no-repeat 0 0;}
+
+.NFMultiSelectLeft, .NFMultiSelectRight, .NFMultiSelectLeftH, .NFMultiSelectRightH {float:left; padding-bottom:5px;}
+
+.NFMultiSelectLeft, .NFMultiSelectLeftH {width:5px;}
+
+.NFMultiSelectLeft {background:url(../servlet/Tool?images/efemerides/textarea-l-off.png) repeat-y 0 0;}
+
+.NFMultiSelectLeftH {background:url(../servlet/Tool?images/efemerides/textarea-l-over.png) repeat-y 0 0;}
+
+.NFMultiSelectRight, .NFMultiSelectRightH {padding-right:5px; padding-bottom:0;}
+
+.NFMultiSelectRight {background:url(../servlet/Tool?images/efemerides/textarea-r-off.png) repeat-y 100% 0;}
+
+.NFMultiSelectRightH {background:url(../servlet/Tool?images/efemerides/textarea-r-over.png) repeat-y 100% 0;}
+
+ 
+
+/*Focused*/
+
+.NFfocused {border:1px dotted #666;}
+
+/*Hovered*/
+
+.NFh {background-position:0 100%;}
+
+.NFhr {background-position:100% 100%;}
+
+/*Hidden*/
+
+.NFhidden {opacity:0; z-index:-1; position:relative;}
+
+/*Safari*/
+
+select, input, textarea, button {outline:none; resize:none;}
+
+.circulo {
+border-radius: 50%;
+width: 10px;
+height: 10px;
+background-color:#0C0;
+}
+
+#similA {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	color: #0078B0;
+}
+
+img{border:none;}
+</style>
+ 
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#666666">
+
+
+
+<table cellpadding="0" cellspacing="0" width="245" height="60" style="margin:0; padding:0;" >
+        <tr>
+                    <td align="right"  style="background-image:url(../Tool?images/intranet/top_cumple.png); padding-right:10px;">            
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="44" height="43">
+                            <param name="movie" value="../flash/calendario.swf">
+                            <param name="quality" value="high">
+                            <param name="wmode" value="transparent">
+                            <param name="menu" value="false">
+                            <embed src="../flash/calendario.swf" width="44" height="43" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" menu="false"></embed>
+                        </object>            </td>
+        </tr>
+</table>
+<div style="height:470px;width:245px;overflow:scroll;">
+<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #999;">
+        
+        <assign conCumple = "false">
+        <list cumples as d>
+            <assign conCumple = "true">
+            <tr class="detalleTablaChico">
+            	<td colspan="4" align="left" style="padding:5px;"><b>${d.diff}</b></td>
+            </tr>
+            <tr class="detalleTablaChico">
+	            <td bgcolor="#F1F9FC" align="center" style="padding:5px;">
+	            		<div>           			
+	            			<if d.e_mail != "">
+		            			<a href="javascript:;" onClick="mostrar(${d.rut},'${d.e_mail}');" >
+		            				<img src="../Tool?images/intranet/consultas.png">
+		            			</a>
+	            			</if>
+	            		</div>
+	              </td>
+	              <td bgcolor="#F1F9FC" style="padding:5px; font-size:14px;" >
+	                    <if (d.diff == "hoy")>
+	                    	<a href="javascript:;"
+		                    	<if d.e_mail != "">
+		                        	 onClick="mostrar(${d.rut},'${d.e_mail}');" >
+		                        </if>	
+		                       	<div id="similA"><strong style="color:#333;">${d.nombres} ${d.ape_paterno} </strong><br>${d.unidad}</div>
+	                       	</a>
+	
+	                    <else>
+	                   		 <a href="javascript:;">
+	                   		 		<div id="similA"><strong style="color:#333;">${d.nombres} ${d.ape_paterno} </strong><br>${d.unidad}</div>
+	                   		 </a>
+	                    </if>
+	              </td>
+	              <td  bgcolor="#F1F9FC">
+	            </td>
+	              <td bgcolor="#F1F9FC" style="padding:5px;" align="center">
+	                  <img style="border:1px solid #999;" width="29" height="38" border="1" src="../${d.usuarioImagen}" title="${d.usuarioImagen}" onerror="existeFoto(this);" >
+	
+	              </td>
+            </tr>
+            <tr class="detalleTablaChico">
+            <td colspan="4" height="5"><hr style="border:solid 1px #CCC;"></td>
+            </tr>
+        </list>
+        
+        <if conCumple =="false" >
+            <tr bgcolor="#FFFFFF" class="detalleTablaChico">
+              <td width="100%" height="16" align="center" colspan="5">
+                <strong>Hoy no hay personas de cumplea&ntilde;os.</strong></td>
+            </tr>
+        </if>    
+    </table>
+   </div>   
+      <if conCumple =="true" >
+       <div id="container" style="visibility:hidden; position:absolute; z-index:4; left: 12px; top: 60px;">
+         
+         
+         
+         <form action="#" method="post" class="niceform" name="formSaludoCumpl"  id="formSaludoCumpl">
+			<input type="hidden"  name="claseweb"	id="claseweb" 		value="portal.com.eje.serhumano.efemerides.CWebEnviaCumple"/>
+			<input type="hidden"  name="rut"  	    id="formRut" 		/>
+			<input type="hidden"    name="email"  	id="formMail" 		/>
+			<input type="hidden"  name="asunto"  	id="formAsunto" 	value="Feliz Cumpleaños"/>
+
+           
+	           <fieldset>
+	             <legend>Cumplea&ntilde;os</legend>
+	             <dl>
+	               <dt><label for="comments">Dedicatoria:</label></dt>
+	               <dd><textarea name="comments" id="comments" rows="5" cols="30"></textarea></dd>
+	             </dl>
+	             <dl>
+	               <dt><label for="test"></label></dt>
+	               <dd>
+	                 <button type="button" name="test" id="test" onClick="enviar();">Enviar</button>
+	                 <button type="button" name="cerrar" id="cerrar" onClick="ocultar();">Cerrar</button>
+	               </dd>
+	             </dl>
+	           </fieldset>
+           
+         </form>
+       </div>
+       <div id="resultado" style="visibility:hidden;position:absolute; z-index:4; left: 400px; top: 230px"">
+       </div>
+</if>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.solicitudBien{
+    background:url(http://localhost:8090/progestionchilebi/wfs/servlet/Tool?images/bad.jpg) right no-repeat !important;
+}
+
+.solicitudMal{
+    background:url(img/trend-down.png) right no-repeat !important;
+}
+
+.solicitudAdvertencia{
+    background:url(img/trend-down.png) right no-repeat !important;
+}

@@ -1,0 +1,144 @@
+
+	
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>LOGOUT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Pragma" content="no-cache">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script language="javascript">
+<!--
+function createRequestObject() {
+
+ FORM_DATA = new Object();
+ separator = ',';
+ query = '' + this.location;
+ query = query.substring((query.indexOf('?')) + 1);
+ if (query.length < 1) { return false; }
+ keypairs = new Object();
+ numKP = 1;
+ while (query.indexOf('&') > -1) {
+   keypairs[numKP] = query.substring(0,query.indexOf('&'));
+   query = query.substring((query.indexOf('&')) + 1);
+   numKP++;
+ }
+
+ keypairs[numKP] = query;
+ for (i in keypairs) {
+   keyName = keypairs[i].substring(0,keypairs[i].indexOf('='));
+   keyValue = keypairs[i].substring((keypairs[i].indexOf('=')) + 1);
+   while (keyValue.indexOf('+') > -1) {
+     keyValue = keyValue.substring(0,keyValue.indexOf('+')) + ' ' + keyValue.substring(keyValue.indexOf('+') + 1);
+   }
+     keyValue = unescape(keyValue);
+       if (FORM_DATA[keyName]) {
+     FORM_DATA[keyName] = FORM_DATA[keyName] + separator + keyValue;
+   }
+   else {
+     FORM_DATA[keyName] = keyValue;
+   }
+ }
+
+ return FORM_DATA;
+}
+
+FORM_DATA = createRequestObject();
+// -->
+</script>
+<script language="javascript">
+<!--
+function validausuario() {
+document.fportal.urlportal.value=FORM_DATA["urlportal"];
+document.fportal.valido.value=FORM_DATA["valido"];
+
+if(FORM_DATA["valido"]!="true") {
+  alert("Usuario no validado");
+}
+}
+// -->
+</script> 
+<link href="../../style/templates.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body,td,th {
+	color: #000066;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.titulo {
+	font-size: 14px;
+	color: #003399;
+}
+a:link {
+	text-decoration: none;
+	color: #003399;
+}
+a:visited {
+	text-decoration: none;
+	color: #003399;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF6600;
+}
+a:active {
+	text-decoration: none;
+	color: #003399;
+}
+</style>
+</head>
+<body bgcolor="" background="../../images/galeria/imagenes/fondo_pag.jpg" onLoad="javascript:validausuario()" leftmargin="0"  topmargin="0" marginwidth="0" marginheight="0">
+<br>
+<br>
+<table width="41%" height="266" border="2" align="center" cellpadding="0" cellspacing="0" bordercolor="#F67001">
+  <tr>
+    <td height="108" align="center"><img src="../../portalrrhh/images/new/login/login_r1_c1.jpg" width="351" height="106"></td>
+  </tr>
+  <tr>
+    <td height="20" align="center" bgcolor="#F67001">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="180" align="center" bgcolor="#F67001"><p><strong><font color="#FFFFFF" size="4">Usted no se encuentra autorizado</font><font color="#FFFFFF"><br>
+            <font size="4">para visualizar esta p&aacute;gina.</font></font></strong></p>
+    <p><strong><font color="#FFFFFF" size="4">Debe proceder a identificarse</font></strong></p></td>
+  </tr>
+</table>
+</body>
+</html>

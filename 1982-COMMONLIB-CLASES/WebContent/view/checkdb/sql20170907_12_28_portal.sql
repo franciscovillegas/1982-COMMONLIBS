@@ -1,0 +1,1 @@
+IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'isbeforerequest' AND OBJECT_ID = OBJECT_ID(N'eje_ges_tracking_func')) ALTER TABLE eje_ges_tracking_func add isbeforerequest bit

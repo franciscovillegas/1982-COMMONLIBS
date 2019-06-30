@@ -1,0 +1,1 @@
+insert into eje_generico_bolsadegatos_type (id_type, nombre) values (1, 'Comisión')

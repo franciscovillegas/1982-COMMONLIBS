@@ -1,0 +1,2 @@
+IF NOT EXISTS(SELECT * FROM   INFORMATION_SCHEMA.COLUMNS WHERE  TABLE_NAME = 'eje_ggd_evaluacion_competencias_resumen_total' AND COLUMN_NAME = 'peso_from_m')
+alter table eje_ggd_evaluacion_competencias_resumen_total add peso_from_m int

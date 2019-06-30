@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Certificado Antiguedad y Cargo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.3.2.js"></script>
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+//-->
+</script>
+<script type="text/javascript">
+	
+	$(document).ready(
+		function() {
+    		$("#pdf").click(function(){
+       			formPdf.content.value=$('#genPdf').html();
+       			formPdf.submit();      		
+   			});
+		}
+	);
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Layer1" style="position:absolute; left:569px; top:22px; width:84px; height:39px; z-index:1"><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0"></a></div>
+<div id="Layer2" style="position:absolute; left:500px; top:35px; width:84px; height:39px; z-index:1">
+ 	<a href="#" id="pdf"><img src="../servlet/Tool?images/new/botones/pdf.jpg" alt="Exportar a PDF" name="Image2" width="76" height="20" border="0"></a>
+ </div>
+
+<div id="genPdf">
+<table width="100%" height="100%"  border="1" cellpadding="0" cellspacing="0" class="tablas_blanco">
+  <tr>
+    <td align="center" valign="top">
+      <table width="100%" border="0" align="center">
+  <tr>
+    <td>
+        <table width="100%" border="0" align="left" cellpadding="2" cellspacing="1">
+          <tr> 
+            <td width="17%"><img src="../servlet/Tool?images/new/logos/logo.gif" width="152" height="61"></td>
+            <td width="75%">&nbsp;</td>
+            <td width="8%">&nbsp;</td>
+          </tr>
+        </table>
+        <font face="Arial, Helvetica, sans-serif" size="2"><font face="Times New Roman, Times, serif"><b> </b></font></font></div></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif" class="textos"><strong><u>CERTIFICADO DE ANTIGUEDAD Y CARGO</u></strong></font>
+<hr width="100%" size="1" noshade>
+<table width="95%" border="0" align="center" class="textos">
+  <tr> 
+    <td height="69"><p align="justify" class="textos"><strong>${empresa}</strong>, certifica que el se&ntilde;or(a) <strong>${nombre},</strong> 
+        Rut <strong>${rut_trab}</strong>, es trabajador(a) de nuestra Instituci&oacute;n 
+        desde el <strong>${ingre_corp_s}</strong>, desempe&ntilde;&aacute;ndose actualmente 
+        en el cargo de <strong>${cargo}</strong> y con contrato de tipo <strong>${tipo_contrato}</strong>.</p></td>
+  </tr>
+  <tr> 
+    <td height="209"><table width="431"  border="0" align="center">
+      <tr>
+        <td width="425" height="125" align="center" valign="bottom"><img src="../servlet/Tool?images/new/certificados/firma.gif" width="279" height="104"></td>
+      </tr>
+      <tr>
+        <td align="center" class="textos"><strong>Francisco Hormazabal Riquelme</strong><br> 
+          Gerente de Operaciones</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr> 
+    <td height="18"> <p align="justify">Se extiende 
+        el presente certificado a petici&oacute;n del interesado, para los fines 
+        que estime pertinentes.</p></td>
+  </tr>
+  <tr align="left"> 
+    <td> 
+</td>
+  </tr>
+  <tr align="left"> 
+    <td height="36">${fecha}.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td align="center"><strong class="textos"><strong>${empresa}</strong></strong></td>
+  </tr>
+</table>
+</div>
+
+<form name="formPdf" method="post" action="../servlet/ServletTransformPdf">
+	<input name="content" type="hidden">  
+	<input type="hidden" name="prefijo" value="${prefijo}">
+	<input type="hidden" name="prefijoFirma" value="${prefijoFirma}">
+	<input type="hidden" name="md5" value="${md5}">
+	<input type="hidden" name="urlBase" value="${urlBase}">
+	<input type="hidden" name="rut_trab" value="${rut_trab}">
+	<input type="hidden" name="tipo" value="antiguedad">
+</form>
+</body>
+
+
+</html>

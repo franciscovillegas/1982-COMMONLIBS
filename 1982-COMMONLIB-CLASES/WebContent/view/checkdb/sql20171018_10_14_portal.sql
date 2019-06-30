@@ -1,0 +1,2 @@
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE Name = N'miestruc_estudios' AND OBJECT_ID = OBJECT_ID(N'eje_generico_perfiles_webmatico'))
+ALTER TABLE eje_generico_perfiles_webmatico add miestruc_estudios bit
