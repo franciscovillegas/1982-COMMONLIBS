@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Diccionario de Competencias</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer5 {
+	position:absolute;
+	left:13px;
+	top:9px;
+	width:347px;
+	height:15px;
+	z-index:2;
+}
+#Layer8 {
+	position:absolute;
+	left:12px;
+	top:72px;
+	width:350px;
+	height:15px;
+	z-index:3;
+}
+#Layer9 {
+	position:absolute;
+	left:70px;
+	top:142px;
+	width:290px;
+	height:32px;
+	z-index:4;
+}
+#boton {position:absolute;
+	left:545px;
+	top:462px;
+	width:445px;
+	height:21px;
+	z-index:5;
+}
+#Layer10 {
+	position:absolute;
+	left:15px;
+	top:184px;
+	width:50px;
+	height:5px;
+	z-index:6;
+}
+#Layer11 {position:absolute;
+	left:321px;
+	top:373px;
+	width:203px;
+	height:10px;
+	z-index:7;
+}
+-->
+</style>
+</head>
+<script>
+function fnRefresh(opcion){
+	if(opcion == 'conducta')
+		location.href = "../servlet/diccionarioCompetencias?id_proceso=${proceso}&id_competencia=${id_competencia}";
+	if(opcion == 'competencia')
+		location.href = "../servlet/diccionarioCompetencias?id_proceso=${id_proceso}";
+}
+function fnTraerCombo(f){
+    form.action="../servlet/diccionarioCompetencias?id_proceso="+f.procesos.value+"&id_competencia="+f.competencias.value;
+	form.submit();
+	form.submit();
+}
+function fnEnviar(opcion){
+	if(opcion == "CR_competencia"){
+		window.open('../servlet/crearCompetencia?id_proceso=${id_proceso}&txtAccion=CR','Crear','status=yes,width=350,height=280');
+	}
+	if(opcion == "AC_competencia"){
+		window.open('../servlet/crearCompetencia?id_proceso=${id_proceso}&id_competencia=${id_competencia}&txtAccion=AC','Actualizar','status=yes,width=350,height=414');
+	}
+<if glosa>
+	if(opcion == "CR_conducta"){
+		window.open('../servlet/crearConducta?id_proceso=${glosa.id_proceso}&id_competencia=${glosa.id_competencia}','Crear','status=yes,width=345,height=417');		
+	}
+	if(opcion == "AC_conducta"){
+		url = "../servlet/crearConducta?pHtm=ggd/agregarConductas.htm&id_proceso="+${glosa.id_proceso}+"&id_competencia="+${glosa.id_competencia};
+		window.open(url,'Agregar','status=yes,width=350,height=415');
+	}
+	if(opcion == "EL_conducta"){
+		url = "../servlet/crearConducta?pHtm=ggd/eliminarConductas.htm&id_proceso="+${glosa.id_proceso}+"&id_competencia="+${glosa.id_competencia};
+		window.open(url,'Eliminar','status=yes,width=350,height=415');
+	}
+	if(opcion == "EL_competencia"){
+		form.action="../servlet/diccionarioCompetencias?txtAccion=EL&id_competencia="+${glosa.id_competencia}+"&id_proceso="+${glosa.id_proceso};
+		form.submit();
+	}
+	if(opcion == "EC_conducta"){
+		url = "../servlet/crearConducta?pHtm=ggd/mantenerConductas.htm&id_proceso="+${glosa.id_proceso}+"&id_competencia="+${glosa.id_competencia};
+		window.open(url,'Agregar','status=yes,width=350,height=415');
+	}
+</if>	
+}
+function fnTraerDatos(opcion){
+		form.action="../servlet/diccionarioCompetencias?id_proceso=${proceso}&id_competencia="+opcion;
+		form.submit();
+}
+function fnInicio()
+{  <if proceso>
+    <if procesos>
+	 <list procesos as p>
+	   <if proceso == p.id_proceso>
+		document.form.procesos.value='${p.id_proceso}';
+	   </if>
+	 </list>
+    </if>
+   </if>
+   
+   <if id_competencia>
+    <if competencias>
+	 <list competencias as c>
+	   <if id_competencia == c.id_competencia>
+		document.form.competencias.value='${c.id_competencia}';
+	   </if>
+	 </list>
+    </if>
+   </if>
+   
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="fnInicio();MM_preloadImages('../servlet/Tool?images/images_ggd/dic_comp/dicc_com_r10_c17_f2.jpg')" background="../servlet/Tool?images/ggd/competencias/diccionario.jpg">
+  <form name="form" method="post">
+      <div id="Layer6" style="position:absolute; width:610px; height:165px; z-index:2; left: 378px; top: 30px; overflow: auto;"> 
+      <if glosa>${glosa.glosa}<br>
+</if></div>
+<span id="Layer2" style="position:absolute; width:344px; height:20px; z-index:2; left: 13px; top: 32px;"> 
+    <select name="procesos" class="campo_texto" onChange="fnTraerCombo(this.form)">
+				<option value="0">Seleccione Proceso</option>
+				<if procesos>
+					<list procesos as p>
+        			<option value="${p.id_proceso}">${p.proceso}</option>
+        			</list>
+				</if>
+  </select></span>
+    <div class="txt_gris_bold" id="Layer3" style="position:absolute; width:608px; height:15px; z-index:2; left: 379px; top: 9px; overflow: hidden;"> 
+    <if glosa><span class="Estilo1">${glosa.competencia} </span></if></div>
+
+    <span id="Layer4" style="position:absolute; width:351px; height:60px; z-index:2; left: 10px; top: 94px;"> 
+		<select name="competencias" class="campo_texto" style="width:98%;" onChange="fnTraerCombo(this.form)">
+		<option value="0">Seleccione una Competencia</option>
+        <list competencias as p>
+           <option value="${p.id_competencia}">${p.competencia}</option>
+        </list>   
+        </select>
+	</span>  
+
+
+
+<!-- NIVEL 1 -->
+<div id="Layer12" style="position:absolute; width:24px; height:10px; top: 244px; left: 15px;">
+<table>
+<tr>
+<if niveles_orden>
+<assign p_nivel=1>
+<list niveles_orden as p>
+	<td valign="top" width="130">
+	<span id="nivel1" style="position:absolute; width:170px; height:181px; overflow: auto; top: 16px; left: 8px;"> 
+	  <list niveles_orden as q>
+	    <assign q_nivel=q.nivel> 
+	    <if p_nivel==q_nivel> 
+	      <table width="98%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	        <tr>
+	          <td valign="top">${q.glosa}</td>
+			</tr>
+	        </table>
+	      </if>
+	    </list>
+	  </span>
+	</td>
+</list>
+</if>
+</tr>
+</table>
+</div>
+
+<!-- NIVEL 2 -->
+<div id="Layer14" style="position:absolute; width:24px; height:10px; top: 243px; left: 197px;">
+<table>
+<tr>
+<if niveles_orden>
+<assign p_nivel=2>
+<list niveles_orden as p>
+	<td valign="top" width="130">
+	<span id="nivel2" style="position:absolute; width:170px; height:179px; overflow: auto; top: 17px; left: 22px;"> 
+	  <list niveles_orden as q>
+	    <assign q_nivel=q.nivel> 
+	    <if p_nivel==q_nivel> 
+	      <table width="98%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	        <tr>
+	          <td valign="top">${q.glosa}</td>
+			</tr>
+	        </table>
+	      </if>
+	    </list>
+	  </span>
+	</td>
+</list>
+</if>
+</tr>
+</table>
+</div>
+
+<!-- NIVEL 3 -->
+<div id="Layer16" style="position:absolute; width:23px; height:15px; top: 240px; left: 398px;">
+<table>
+<tr>
+<if niveles_orden>
+<assign p_nivel=3>
+<list niveles_orden as p>
+	<td valign="top" width="130">
+	<span id="nivel3" style="position:absolute; width:170px; height:183px; overflow: auto; top: 19px; left: 17px;"> 
+	  <list niveles_orden as q>
+	    <assign q_nivel=q.nivel> 
+	    <if p_nivel==q_nivel> 
+	      <table width="98%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	        <tr>
+	          <td valign="top">${q.glosa}</td>
+			</tr>
+	        </table>
+	      </if>
+	    </list>
+	  </span>
+	</td>
+</list>
+</if>
+</tr>
+</table>
+</div>
+
+
+<!-- NIVEL 4 -->
+<div id="Layer18" style="position:absolute; width:18px; height:14px; top: 240px; left: 597px;">
+<table>
+<tr>
+<if niveles_orden>
+<assign p_nivel=4>
+<list niveles_orden as p>
+	<td valign="top" width="130">
+	<span id="nivel4" style="position:absolute; width:170px; height:182px; overflow: auto; top: 19px; left: 14px;"> 
+	  <list niveles_orden as q>
+	    <assign q_nivel=q.nivel> 
+	    <if p_nivel==q_nivel> 
+	      <table width="98%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	        <tr>
+	          <td valign="top">${q.glosa}</td>
+			</tr>
+	        </table>
+	      </if>
+	    </list>
+	  </span>
+	</td>
+</list>
+</if>
+</tr>
+</table>
+</div>
+
+<!-- NIVEL 5 -->
+<div id="Layer20" style="position:absolute; width:14px; height:20px; top: 235px; left: 794px;">
+<table>
+<tr>
+<if niveles_orden>
+<assign p_nivel=5>
+<list niveles_orden as p>
+	<td valign="top" width="130">
+	<span id="nivel5" style="position:absolute; width:170px; height:179px; overflow: auto; top: 25px; left: 14px;"> 
+	  <list niveles_orden as q>
+	    <assign q_nivel=q.nivel> 
+	    <if p_nivel==q_nivel> 
+	      <table width="98%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	        <tr>
+	          <td valign="top">${q.glosa}</td>
+			</tr>
+	        </table>
+	      </if>
+	    </list>
+	  </span>
+	</td>
+</list>
+</if>
+</tr>
+</table>
+</div>
+
+
+
+  <div class="txt_gris_bold" id="Layer5">Seleccione Proceso </div>
+  <div class="txt_gris_bold" id="Layer8">Diccionario de Competencias </div>
+  <div id="Layer9">
+    <table border="0" align="right" cellpadding="0">
+      <tr>
+        <td width="5%">&nbsp;</td>
+        <td width="53%"></td>
+        <td width="14%"><a href="#" onClick="fnEnviar('CR_competencia');return false;"><img src="../servlet/Tool?images/images_ggd/ggd/botones/crear.gif" title="Crear Competencia" alt="" name="dicc_com_r5_c51" width="30" height="30" border="0" id="dicc_com_r5_c51"></a></td>
+        <td width="14%"><a href="#" onClick="fnEnviar('AC_competencia');return false;"><img src="../servlet/Tool?images/images_ggd/ggd/botones/editar.gif" title="Modificar Competencia" alt="" name="dicc_com_r5_c51" width="30" height="30" border="0" id="dicc_com_r5_c51"></a></td>
+        <td width="14%"><a href="#" onClick="fnEnviar('EL_competencia');return false;"><img src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" title="Eliminar Competencia" alt="" name="dicc_com_r5_c71" width="30" height="30" border="0" id="dicc_com_r5_c71"></a></td>
+      </tr>
+    </table>
+  </div>
+  <div class="texto_titulo" id="Layer10">Niveles</div>
+    <div id="boton">
+    <table border="0" align="right" cellpadding="0">
+      <tr>
+        <td nowrap><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+        <td width="30"><a href="#" onClick="fnEnviar('EC_conducta');return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/editar.gif" title="Modificar Conductas" alt="" name="dicc_com_r10_c151" width="30" height="30" border="0" id="dicc_com_r10_c151"></a></td>
+        <td width="6">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td width="30"><a href="#" onClick="fnEnviar('CR_conducta');return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/crear.gif" title="Crear Conductas" alt="" name="dicc_com_r10_c151" width="30" height="30" border="0" id="dicc_com_r10_c151"></a></td>
+        <td width="30"><a href="#" onClick="fnEnviar('AC_conducta');return false"><img name="dicc_com_r10_c17" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" title="Asociar Conductas" width="30" height="30" border="0" alt=""></a><a href="#"></a></td>
+        <td width="30"><a href="#" onClick="fnEnviar('EL_conducta');return false"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" title="Eliminar Conductas" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+        <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="CERRAR"></a></td>
+      </tr>
+    </table>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+
+
+<link href="../../../view/bs/3.3.2/assets/vendors/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+.equal-panels, .equal-panels > div[class*='col-'] { display: flex; }
+.equal-panels .panel { display: flex; flex: 1; flex-flow: column nowrap;}
+.equal-panels .panel-body { flex-grow: 1; }
+.panel-heading {font-weight: bold; }
+</style>
+
+ 
+            <div class="panel ${GetHtmlLikeVariable("templates/eje/bootstrap/3x/modo1/panel/panelproperty/class.html")}">
+            
+            	<if title && title != "">
+	                <div class="panel-heading">
+	                    <span>${title}</span>
+	        	    </div>
+        	    </if>
+                <div class="panel-body">
+                   	${body}
+                </div>
+                
+                <if footer && footer != "">
+	                <div class="panel-footer ${GetHtmlLikeVariable("templates/eje/bootstrap/3x/modo1/panel/panelproperty/class.html")}">
+	                    <div class="pull-right">
+	                        ${footer}
+	                    </div>
+	                    <div class="clearfix"></div>
+	                </div>
+                </if>
+    		 </div>

@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>SOLICITUD DE FERIADO LEGAL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/WorkFlow/Script/RangoFechas.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="/WorkFlow/Script/imprimir.js"></script>
+
+<script language="JavaScript">
+<!--
+
+function ValidaForm(operacion) { //v2.0
+  document.form1.operacion.value=operacion;
+  document.form1.submit();
+ }
+
+function Imprimir() {
+	LayerPrint.style.visibility="hidden";
+    LayerSgte.style.visibility="hidden";
+    printPage();
+    LayerPrint.style.visibility="visible";
+LayerSgte.style.visibility="visible";
+    
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <form name="form1" action="/workflow/servlet/com.eje.workflow.vacaciones.gestion.MuestraSolicitud" method="POST">
+    <tr> 
+      <td valign="top" height="82" colspan="2"><img src="/images/WorkFlow/logos/logo.jpg" width="264" height="98"> 
+        <div id="LayerPrint" style="position:absolute; width:51px; height:39px; z-index:1; left: 623px; top: 30px; visibility: visible"><a href="javascript:;" onClick="Imprimir();return false;"><img src="/images/WorkFlow/imprimir_up.jpg" width="49" height="36" border="0"></a></div>
+        <div id="LayerSgte" style="position:absolute; width:62px; height:45px; z-index:2; left: 709px; top: 30px"> 
+          <if !fin><a href="javascript:document.form1.submit();"><img src="/images/WorkFlow/siguiente_up.jpg" width="49" height="36" border="0"></a></if> 
+        </div>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="32"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b><font size="3">SOLICITUD 
+          DE COMPENSACION DE DIAS DE FERIADO LEGAL PROGRESIVO </font><font face="Arial, Helvetica, sans-serif" size="2"><b><font size="3">N&ordm; 
+          ${id_solic}</font></b></font></b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="19%"><font face="Arial, Helvetica, sans-serif" size="2"><b>UNIDAD/SUCURSAL:</b></font></td>
+            <td width="81%"><font face="Arial, Helvetica, sans-serif" size="2">${unidad}</font></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2"> 
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="2">${fecha}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" height="66"> 
+        <div id="Layer1" style="position:absolute; width:50px; height:28px; z-index:3; overflow: auto; visibility: hidden"> 
+          <list detalle as d> 
+          <input type="checkbox" name="listado" value="${d.id}" checked>
+          </list> </div>
+        <font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">Por intermedio 
+        de la presente vengo en solicitar al Banco, negociar la compensaci&oacute;n 
+        en dinero de <b>${dias}</b> dias de vacaciones que exceden de los 15 d&iacute;as 
+        h&aacute;biles base que me corresponden de acuerdo al Art&iacute;culo 
+        67 del C&oacute;digo del Trabajo, para lo cual cuento desde ya, con la 
+        autorizaci&oacute;n de mi Jefe Directo.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">El trabajador 
+        que suscribe declara haber recibido por parte del Banco, a entera conformidad, 
+        el pago de los d&iacute;as que se acord&oacute; negociar.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2" height="88">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+          ${rut_trabajador},${fec_solic},${hora_solic} hrs 
+          <input type="hidden" name="sgte" value="${sgte}">
+          </font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center">________________________________</div>
+      </td>
+      <td width="53%"> 
+        <div align="center">________________________________</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Firma 
+          <input type="hidden" name="rut_dest" value="${rut_dest}">
+          <input type="hidden" name="tipo_sol" value="${tipo_sol}">
+          <input type="hidden" name="id_solic" value="${id_solic}">
+          <input type="hidden" name="operacion">
+          </font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Firma</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_jefe}</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_label}</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%" height="33"> 
+        <div align="center"></div>
+      </td>
+      <td width="53%" height="33">&nbsp;</td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="25"><font face="Arial, Helvetica, sans-serif" size="2">La 
+        presente solicitud s&oacute;lo ser&aacute; v&aacute;lida una vez autorizada 
+        por el <b>DEPTO PROCESOS DE RR.HH.</b> <if (pago_bono=="1")> 
+        <p><font face="Arial, Helvetica, sans-serif" size="2"> Trabajador Sidicalizado, 
+          que originalmente no tiene derecho a pago Bono, se cancela.</font></p>
+        </if> </font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="37"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="25"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif"><b>AUTORIZACION</b></font><font face="Arial, Helvetica, sans-serif" size="2"></font></div>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="25"><font face="Arial, Helvetica, sans-serif" size="2">Se 
+        autoriza al Trabajador antes individualizado para percibir la compensaci&oacute;n 
+        en dinero de <b>${dias}</b> d&iacute;as de feriado anual que exced&iacute;an 
+        de los 15 h&aacute;biles b&aacute;sicos que le corresponden de acuerdo 
+        con lo dispuesto en el Cap&iacute;tulo VII, T&iacute;tulo I del Libro 
+        I, del C&oacute;digo del Trabajo</font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="25"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif" size="2"></font></div>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="25"> <font face="Arial, Helvetica, sans-serif" size="2">En 
+        consecuencia, luego de pagada la compensaci&oacute;n convenida le quedar&aacute;n 
+        pendientes ${restodias} dias de feriado anual, correspondientes al per&iacute;odo 
+        ${restoperi1}/${restoperi2} </font> </td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <div align="center"> </div>
+      </td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

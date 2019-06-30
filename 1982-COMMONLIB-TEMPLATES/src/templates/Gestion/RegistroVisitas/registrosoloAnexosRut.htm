@@ -1,0 +1,240 @@
+  <html>
+<head>
+<title>registro visita</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function Mostrar(layer) { //v3.0
+      //alert(layer);
+      <list detalle as d> 
+      //  alert('Layer'+'${d.id}'+'.style.visibility="hidden"');  
+        eval('Layer'+'${d.id}'+'.style.visibility="hidden"');
+      </list>
+     //alert('Layer'+layer+'.style.visibility="visible"');
+     eval('Layer'+layer+'.style.visibility="visible"');
+}
+
+function Rescata(mot) { //v2.0
+   var grupo=document.form1.grupo.value;
+   document.form1.g.value=grupo;
+   document.form1.motivo.value=mot;
+  // alert("grupo: "+grupo+"\nmotivo: "+document.form1.motivo.value); 
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function Valida() { //v2.0
+   var grupo=document.form1.g.value;
+   var motivo=document.form1.motivo.value;
+   //alert("grupo: " +grupo+"\nmotivo: " +motivo);
+   if ((grupo!="-1")&&(motivo!="-1")&&(grupo!="0")&&(motivo!="0"))
+        document.form1.submit();
+   else
+      alert("Seleccione motivo de la visita.");
+}
+
+function AsignaRut(rut) { //v2.0
+  document.form1.responsable.value=rut;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.unnamed1 {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF}
+-->
+</Style>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('Tool?htm=Gestion/RegistroVisitas/img/aceptar_up.gif','../servlet/Tool?images/Gestion/botones/img/vol2.jpg','../servlet/Tool?images/Gestion/botones/img/aceptar_over.gif')">
+<font color="#FFFFFF"></font> <font color="#FFFFFF"><font color="#FFFFFF"> </font></font> 
+<font color="#FFFFFF"> </font> 
+<table width="706" border="0" cellspacing="0" cellpadding="0" background="../servlet/Tool?images/Gestion/botones/img/fondown.jpg" height="263">
+  <form name="form1" method="post" action="/servlet/RegistroVisita" target="_self">
+    <tr> 
+      <td valign="top" width="704" height="259"> <if !mensaje> 
+        <table width="684" border="0" cellspacing="0" cellpadding="0" align="center" height="104">
+          <tr> 
+            <td class="unnamed1" width="107">&nbsp;</td>
+            <td class="unnamed1" width="203">&nbsp;</td>
+            <td class="unnamed1" width="130">&nbsp;</td>
+            <td class="unnamed1" width="254">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td class="unnamed1" width="107">Rut visita</td>
+            <td width="203"><font color="#FFFFFF"><font color="#FFFFFF"><font color="#FFFFFF"><font color="#FFFFFF"> 
+              <input type="text" name="box1" size="12" value="${rut_v}" readonly="yes">
+              </font></font></font></font><span class="unnamed1"><font color="#FFFFFF"><font color="#FFFFFF"><font color="#FFFFFF"> 
+              <input type="hidden" name="g" value="0">
+              <input type="hidden" name="unidad" value="${unidad}">
+              </font></font></font></span></td>
+            <td class="unnamed1" width="130">Nombre Contacto</td>
+            <td class="unnamed1" width="254"><font color="#FFFFFF"><font color="#FFFFFF"> 
+              <input type="text" name="nom_c" readonly="true" value="${nom_c}" size="20" width="20">
+              <input type="hidden" name="motivo" value="0">
+              <input type="hidden" name="empresa" value="${empresa}">
+              <font color="#FFFFFF"> 
+              <input type="hidden" name="rut_c" value="${rut_c}">
+              </font></font></font></td>
+          </tr>
+          <tr> 
+            <td class="unnamed1" width="107" height="18">Nombre visita</td>
+            <td class="unnamed1" width="203" height="18"><font color="#FFFFFF"><font color="#FFFFFF"><font color="#FFFFFF"><font color="#FFFFFF"> 
+              <input type="text" name="box12" size="25" value="${nom_v}" readonly="yes">
+              </font></font> </font></font></td>
+            <td class="unnamed1" width="130" height="18">Anexo</td>
+            <td class="unnamed1" width="254" height="18"><font color="#FFFFFF"><font color="#FFFFFF"> 
+              <input type="text" name="box122" size="15" value="${anexo}" readonly="yes">
+              <input type="hidden" name="responsable" value="0">
+              <input type="hidden" name="rut_v" value="${rut_v}">
+              <font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+              <input type="hidden" name="nom_v" value="${nom_v}">
+              </font> </font></font></td>
+          </tr>
+          <tr> 
+            <td class="unnamed1" width="107" height="18">Empresa</td>
+            <td class="unnamed1" width="203" height="18"> 
+              <input type="text" name="empre_v" value="${emp_v}" size="25">
+            </td>
+            <td class="unnamed1" width="130" height="18">&nbsp;</td>
+            <td class="unnamed1" width="254" height="18">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td class="unnamed1" width="107" height="2">Observaci&oacute;n</td>
+            <td class="unnamed1" width="203" height="2"> 
+              <textarea name="obs" rows="2" cols="25"></textarea>
+            </td>
+            <td class="unnamed1" width="130" height="2">&nbsp;</td>
+            <td class="unnamed1" width="254" height="2">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="684" border="0" cellspacing="0" cellpadding="0" height="86" align="center">
+          <tr> 
+            <td class="unnamed1" width="140" valign="top" height="53">Anexos Relacionados 
+              <div id="botonaceptar" style="position:absolute; width:122px; height:39px; z-index:3; left: 486px; top: 229px; visibility: visible"><font color="#FFFFFF"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../servlet/Tool?images/Gestion/botones/img/aceptar_over.gif',1)"><img name="Image3" border="0" src="../servlet/Tool?images/Gestion/botones/img/aceptar_up.gif" width="102" height="32" onClick="Valida();return false;"></a></font> 
+              </div>
+              <font color="#FFFFFF"><font color="#FFFFFF"> </font></font> </td>
+            <td class="unnamed1" valign="top" height="53"> 
+              <div id="LayerAnexos" style="position:absolute; width:463px; height:85px; z-index:2; left: auto; top: auto; visibility: visible"> 
+                <table width="612" border="0" cellspacing="0" cellpadding="0" height="70">
+                  <tr> 
+                    <td valign="top" height="56" colspan="3"> <if anexos> 
+                      <table width="374" border="0" cellspacing="0" cellpadding="0">
+                        <tr bgcolor="#FFFFFF"> 
+                          <td class="texto" width="84"><font color="#000066" face="Verdana, Arial, Helvetica, sans-serif" size="2">Anexo</font></td>
+                        </tr>
+                      </table>
+                      <div id="detalleanexos" style="position:absolute; width:464px; height:55px; z-index:2; left: 0px; top: 24px; overflow: auto; visibility: visible"> 
+                        <table width="401" border="1" cellspacing="0" cellpadding="0" height="17">
+                          <list anexos as a> 
+                          <tr> 
+                            <td class="texto" width="80"><b><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2">${a.anexo}</font></b></td>
+                          </tr>
+                          </list> 
+                        </table>
+                      </div>
+                      <font color="#FFFFFF"><else> </font> 
+                      <table width="378" border="0" cellspacing="0" cellpadding="0">
+                        <tr> 
+                          <td class="unnamed1"> 
+                            <div align="left"> 
+                              <p>No se encontraron anexos relacionados</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      </if> </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+          <tr> 
+            <td class="unnamed1" width="140" height="4"> Motivo</td>
+            <td class="unnamed1" height="4"> 
+              <select name="grupo" onChange="Mostrar(this.value)" style="width=200">
+                <option value="-1">Seleccione Categor&#237;a</option>
+                <list detalle as d> 
+                <option value="${d.id}">${d.grupo}</option>
+                </list> 
+              </select>
+              <list detalle as d> 
+              <div id="Layer${d.id}" style="position:absolute; width:135px; height:32px; z-index:1; left: auto; top: auto; visibility: visible"> 
+                <select name="select${g.grup}" onChange="Rescata(this.value)" style="width=200">
+                  <option value="-1">Seleccione Motivo</option>
+                  <list d.datos as g> 
+                  <option value="${g.m_id}">${g.m_desc}</option>
+                  </list> 
+                </select>
+              </div>
+              </list> </td>
+          </tr>
+        </table>
+        <else> 
+        <div id="Layer1" style="position:absolute; width:479px; height:115px; z-index:5; left: 111px; top: 73px; visibility: visible"> 
+          <table width="462" border="1" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td height="20" colspan="3" class="blanco12B"><font color="#FFFFFF">Visita 
+                anterior no registra salida: </font></td>
+            </tr>
+            <tr> 
+              <td height="20" class="blanco12B" width="275"> 
+                <div align="center">Contacto</div>
+              </td>
+              <td height="20" class="blanco12B" width="110"> 
+                <div align="center">Fecha Ingreso</div>
+              </td>
+              <td height="20" class="blanco12B" width="69"> 
+                <div align="center">Hora</div>
+              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="blanco12B" width="275">${contacto}</td>
+              <td height="20" class="blanco12B" width="110">${fecha}</td>
+              <td height="20" class="blanco12B" width="69">${hora}</td>
+            </tr>
+          </table>
+        </div>
+        </if> </td>
+    </tr>
+  </form>
+</table>
+<div id="volver" style="position:absolute; width:62px; height:39px; z-index:4; left: 620px; top: 219px; visibility: visible"> 
+  <a href="Tool?htm=Gestion/RegistroVisitas/frameset.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','../servlet/Tool?images/Gestion/botones/img/vol2.jpg',1)" target="_parent"> 
+  <img name="Image31" border="0" src="../servlet/Tool?images/Gestion/botones/img/vol1.jpg" width="83" height="44"> 
+  </a></div>
+<script>
+      <list detalle as d>eval('Layer'+'${d.id}'+'.style.visibility="hidden"');</list>
+</script>
+</body>
+</html>

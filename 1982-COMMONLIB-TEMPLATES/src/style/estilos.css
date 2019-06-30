@@ -1,0 +1,89 @@
+.botones {
+	clip:  rect(   );
+	border : auto outset;
+; background-color: #FF6600; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333333
+}
+.pageEnd {  page-break-after: always}
+.titulo {  text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: small; font-weight: bold; font-style: italic}
+.menu {  font-family: Arial, Helvetica, sans-serif; color: #000000; background-color: #FFCF75; font-size: 12px; width: 290px; height: auto; font-weight: normal}
+.listas { font-family: Arial, Helvetica, sans-serif; color: #000000; background-color: #FFCF75; font-size: 12px; 40px; height: auto; font-weight: normal }
+
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: normal}
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.tabl {  font-family: Arial, Helvetica, sans-serif; font-size: 5px}
+
+
+
+.detal {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF}
+.detalN { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #FFFFFF }
+a.click {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; text-decoration: underline overline}
+a.click2 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFF00; text-decoration: underline overline }
+.blanco {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF}
+.carpeta {
+	background-color: #FFCF75;
+	position: absolute;
+	visibility: inherit;
+	clip: rect( );
+	float: right;
+	border: 2px inset;
+}
+.ventana {
+	background-color: #002E5B;
+	position: absolute;
+	visibility: inherit;
+	clip: rect( );
+	float: none;
+	border: 2px outset;
+}
+.detal2 {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #FFFFFF}
+.fondoUp {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #000066; background-color: #FFFFFF}
+.fondoUp:hover {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF; background-color: #000066}
+.fondoUp:active { font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF; background-color: #000066 }
+.negro10N { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000 }
+.negro10B { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000 }
+.negro10NLink { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000 }
+.azul10NLink { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000066; text-decoration: none}
+.azul10NLink:hover { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #FFFFFF; background-color: #000066; text-decoration: none}
+.negro11lista {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #000000; background-color: #FFCC66}
+.textoNodo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #000066;
+	background : #FFFFFF;
+}
+.textoNodo:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+	background : #000066;
+}
+.textoNodoSel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+	background : #000066;
+}
+.textoTipoNodo { font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-transform: uppercase; text-decoration: none ; font-weight: bold}
+
+.negro12B { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000 }
+.negro12N { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #000000 }
+.carpetaUn {
+	background-color: #E9E9E9;
+	position: absolute;
+	visibility: inherit;
+	clip: rect( );
+	border: 2px inset;
+}
+.textoInforme { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; color: #000000 }
+.blanco12B {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF}
+.blanco16B { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #FFFFFF }
+.blanco10B { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF }
+.negro8B { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold; color: #000000 }
+.carpeta2 { background-color: #FFA400; position: absolute; visibility: inherit; clip: rect( ); border: 3px #FF6600 solid; }
+.carpeta3D {  background-color: #FF9900; border-style: outset; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}

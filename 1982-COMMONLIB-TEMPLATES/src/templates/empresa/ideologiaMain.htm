@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script type="text/javascript" src="Tool?scripts/nicEdit/nicEdit.js"></script> 
+<script type="text/javascript">
+	var edit = null;
+	
+	bkLib.onDomLoaded(function() {
+		edit = new nicEditor( {
+			fullPanel : true
+		}).panelInstance('area2');
+	});
+
+	function grabar() {
+		if(edit == null) {
+			alert("No se puede grabar, intentelo nuevamente");
+			return;
+		}
+		document.form1.save.value = "true";
+		document.form1.texto.value = edit.instanceById('area2').getContent();
+		document.form1.submit();
+	}
+
+	function MM_swapImgRestore() { //v3.0
+		var i, x, a = document.MM_sr;
+		for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++)
+			x.src = x.oSrc;
+	}
+
+	function MM_preloadImages() { //v3.0
+		var d = document;
+		if (d.images) {
+			if (!d.MM_p)
+				d.MM_p = new Array();
+			var i, j = d.MM_p.length, a = MM_preloadImages.arguments;
+			for (i = 0; i < a.length; i++)
+				if (a[i].indexOf("#") != 0) {
+					d.MM_p[j] = new Image;
+					d.MM_p[j++].src = a[i];
+				}
+		}
+	}
+
+	function MM_swapImage() { //v3.0
+		var i, j = 0, x, a = MM_swapImage.arguments;
+		document.MM_sr = new Array;
+		for (i = 0; i < (a.length - 2); i += 3)
+			if ((x = MM_findObj(a[i])) != null) {
+				document.MM_sr[j++] = x;
+				if (!x.oSrc)
+					x.oSrc = x.src;
+				x.src = a[i + 2];
+			}
+	}
+
+	function MM_findObj(n, d) { //v4.01
+		var p, i, x;
+		if (!d)
+			d = document;
+		if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+			d = parent.frames[n.substring(p + 1)].document;
+			n = n.substring(0, p);
+		}
+		if (!(x = d[n]) && d.all)
+			x = d.all[n];
+		for (i = 0; !x && i < d.forms.length; i++)
+			x = d.forms[i][n];
+		for (i = 0; !x && d.layers && i < d.layers.length; i++)
+			x = MM_findObj(n, d.layers[i].document);
+		if (!x && d.getElementById)
+			x = d.getElementById(n);
+		return x;
+	}
+</script>
+<title></title>
+</head>
+<body>
+	
+		<table width="100%">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td>
+								<form name="form1" action="ServletIdeologiaEmpresa">
+									<select name="seccion" style="width: 300px" onchange="document.form1.submit();">
+										<option value="none" 		<if seccion=="none"> selected="selected" </if> >Seleccione una opcion</option>
+										<option value="Vision" 		<if seccion=="Vision"> selected="selected" </if> >vision</option>
+										<option value="Mision"		<if seccion=="Mision"> selected="selected" </if> >mision</option>
+										<option value="Valores"		<if seccion=="Valores"> selected="selected" </if> >valores</option>
+										<option value="Politicas"	<if seccion=="Politicas"> selected="selected" </if> >politicas</option>
+										<option value="Modelo"		<if seccion=="Modelo"> selected="selected" </if> >modelo</option>
+									</select>
+									<input type="hidden" name="texto"></input>
+									<input type="hidden" name="save"></input>
+									<input type="hidden" name="accion"  value="${accion}"></input>
+									<input type="hidden" name="seccion" value="${seccion}"></input>
+									
+								</form>
+							</td>
+							<td>
+								<a href="javascript:;" onClick="grabar();return false;" 
+									onMouseOut="MM_swapImgRestore()"
+									onMouseOver="MM_swapImage('desp_admin_r7_c11','','../servlet/Tool?images/new/botones/grabar_f2.gif',1)">
+										<img name="desp_admin_r7_c11" src="../servlet/Tool?images/new/botones/grabar.gif" width="91" height="21" border="0"></a></td>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style="height: 15px">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<if seccion != "none" >
+						<div id="sample" style="position: relative; max-height: 320px; overflow-y: auto  ">
+	
+								<textarea cols="75" rows="15" id="area2">
+									${texto}
+								</textarea>
+					    
+					    </div> 
+					</if>
+				</td>
+			</tr>
+		</table>
+</body>
+</html>

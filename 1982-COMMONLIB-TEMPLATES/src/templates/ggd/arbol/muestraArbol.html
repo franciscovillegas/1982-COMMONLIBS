@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Modificar Dependencias </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style>
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #ffffff;
+}-->
+</style>
+<script>
+function fnEnviar(opcion){
+	form.action="../servlet/cargaArbol?id_unidad="+opcion;
+	form.submit();
+}
+function fnMostrarHijos(opcion){
+
+}
+function Ejecuta(Em,Un,Nom, Tip){
+	form.target="resultado";
+	form.action="../servlet/Evaluadores?pHtm=ggd/evaluacion/personalOrganica.html&modo=${modo}&txt_TipoEval=${txt_modo}&txt_Rut=${txt_Rut}&Em="+Em+"&Un="+Un;	
+	form.submit();
+}
+</script>
+</head>
+<body class="ra1lista" background="../servlet/Tool?images/images_ggd/organica/organica.jpg" style="background-repeat:repeat-no">
+<form name="form" method="post">
+  <div id="Layer1" style="position:absolute; width:270px; height:485px; z-index:1; overflow: auto;top:40px"> 
+    ${TraeArbol()} </div>
+</form>
+<div id="Layer2" style="position:absolute; width:515px; height:590px; z-index:1; overflow: auto; left:290px; top: 0px;"> 
+  <iframe name=resultado width="510" height="585" id="resultado" scrolling="no" frameborder="0">
+</iframe></div>
+</body>
+</html>

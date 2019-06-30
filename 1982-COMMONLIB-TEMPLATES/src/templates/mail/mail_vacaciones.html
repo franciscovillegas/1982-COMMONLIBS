@@ -1,0 +1,161 @@
+<html>
+<head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Mon Jul 29 16:36:10 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+var emails=new Array();
+
+function Window_Para(theURL,winName,features) { //v2.0
+  document.inserta.modo.value="1";
+  window.open(theURL,winName,features);
+  ParaVacio.style.visibility="hidden";
+  ParaLleno.style.visibility="visible";
+  //winName.document.inicio(emails);
+}
+
+function Window_ModifPara(theURL,winName,features) { //v2.0
+  document.inserta.modo.value="1";
+  window.open(theURL,winName,features);
+ 
+}
+
+function AddEmail(objectemail){
+  var x=0;
+  var y=0;
+  emails=new Array();
+  var largo=objectemail.length;
+  //alert("largo objeto email: "+largo);
+  for (x=0;x<largo;x++){
+     if (objectemail[x].checked==true){
+         //if (!existeInArray(objectemail[x].value)){
+           emails[y]=objectemail[x].value;
+           y++;
+         //}
+     }
+  }
+MakeString();
+}
+
+function existeInArray(email){
+   var yy=0;
+   var valor=false;
+   for (yy=0;yy<emails.length;yy++){
+      if (emails[yy]==email)
+        valor=true;
+   }
+   return valor;
+}
+
+
+function Window_CC(theURL,winName,features) { //v2.0
+  document.inserta.modo.value="2";
+  window.open(theURL,winName,features);
+}
+function emailvacio()
+{	/*if(document.inserta.para.value == ""){
+	  alert("Para contactarse debe ingresar el E-Mail de Destino");
+	  document.inserta.para.focus();
+	}else{ 
+	  if (document.inserta.asunto.value!=""){
+	    MakeString();
+        //document.forms.inserta.submit();
+	  }else
+	     alert("Ingrese Asunto del Mensaje");	 
+	}*/
+  if (emails.length>0){
+      document.forms.inserta.submit(); 
+  }else
+    alert("Para contactarse debe ingresar el o los E-Mail de Destino");
+}
+
+
+function MakeString(){
+   var cadena="";
+   for (x=0;x<emails.length;x++){
+ 	    cadena=cadena+emails[x]+";";
+   }
+  //alert("cadena para: "+cadena);
+  document.inserta.para.value=cadena;
+  //document.inserta.para.focus();
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #003399;
+	font-size: 10;
+}
+-->
+</style>
+</head>
+<body background="../servlet/Tool?images/new/main/main_solo.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-repeat:no-repeat" onLoad="MM_preloadImages('../servlet/Tool?images/new/botones/enviar_f2.gif')">
+<form name="inserta" method="post" action="../servlet/EMail" onSubmit="return emailvacio(this)">
+<table width="505">
+  <tr>
+    <td width="497" height="40" align="center"><img src="../servlet/Tool?images/new/titulos/actua_vacaciones.jpg" width="436" height="29"></td>
+  </tr>
+  <tr>
+    <td align="center"><table width="100%" border="0" cellpadding="0" cellspacing="2">
+      <tr>
+        <td height="59" align="center" class="titulo">Asunto: Solicito actualizar datos de Cartola de Vacaciones </td>
+      </tr>
+      <tr>
+        <td height="19" align="center"><span class="titulo">Adjuntar archivo:</span>          <input name="imagen"  type="file" id="imagen"></td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" class="titulo">Comentarios:</td>
+      </tr>
+      <tr>
+        <td align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000066"><font size="1">
+          <textarea name="texto" cols="70" rows="7" class="inputText" id="textarea3"></textarea>
+        </font></font></td>
+      </tr>
+      <tr>
+        <td height="56" align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000066"><font size="1"><a href="Tool?htm=mail/mail_ok.html" onMouseOver="MM_swapImage('mail_r4_c7','','../servlet/Tool?images/new/botones/enviar_f2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/new/botones/enviar.gif" alt="Enviar" name="mail_r4_c7" width="91" height="21" border="0"></a></font></font></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

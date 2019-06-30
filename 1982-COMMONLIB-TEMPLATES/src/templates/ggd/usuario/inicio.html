@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="refresh" content="0;URL=../servlet/WithSession?pHtm=ggd/menu/menu.html">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+ var x= window.open(theURL,winName,features);
+ x.focus();
+}
+//-->
+</script>
+
+<script language="JavaScript" type="text/JavaScript">
+function fnInicio(){
+	MM_openBrWindow('../servlet/Bienvenido?txt_Rut=${User.Rut}','bienvenida','width=245,height=220');
+}
+</script>
+
+
+
+</head>
+
+<body onLoad="fnInicio();">
+<p onMouseOver="">Login.</p>
+<p>USUARIO : ${User.userName}</p>
+<p>RUT : ${User.Rut}<br>
+NOMBRE COMPLETO: ${User.Nombres} ${User.Apellidos}</p>
+<p><br>
+RUT SUPERVISOR : ${User.rut_sup}<br>
+</p>
+<p><a href="../servlet/EvaluacionesG?txt_Rut=${User.Rut}&txt_TipoEval=A" >EVALUACIONES</a> </p>
+<p><br>
+  <a href="../servlet/RegistroEventos?txt_Rut=${User.Rut}"    >REGISTRO EVENTOS</a></p>
+<p><br>
+  <a href="../servlet/ResultadoAnalisis?txt_Rut=${User.Rut}">RESULTADO Y ANALISIS </a></p>
+<p>&nbsp;</p>
+<p><br>
+  <a href="../servlet/PlanAccion?txt_Rut=${User.Rut}">Plan Accion </a></p>
+
+</body>
+</html>

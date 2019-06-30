@@ -1,0 +1,238 @@
+<assign p = txt_Perfil>
+<assign pr = txt_Proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut2>
+<if r == re >
+   <assign re = User.rut_sup>
+</if>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Registro de Eventos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function fnAgregar(){
+	MM_openBrWindow('../servlet/NuevoEvento?txt_Rut=${r}','evento','status=yes,width=350,height=415');
+
+}
+function fnAplicar(){
+	form1.submit();
+}
+function fnInicio(){
+<if MSG !=""> 	alert('${MSG}'); </if>
+<if REG == true && MSG !="">  </if>
+}
+
+function fnBuscar(){
+	MM_openBrWindow('../servlet/Evaluadores?txt_Rut=${r}&txt_Perfil=1&txt_Proceso=1','evaluadores','status=yes,width=780,height=250');
+}
+
+function fnObservacion(){
+	MM_openBrWindow('../servlet/RegEventObservacion?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}&txt_Perfil=p&txt_Proceso=pr','evaluadores','status=yes,width=400,height=407');
+}
+
+function fnCambioRut(r,p){
+	document.form1.txtAccion.value="";
+	document.form1.txt_Rut.value=r;
+	document.form1.txt_Perfil.value=p;
+	document.form1.submit();
+}
+function fnRefresh(){
+	location.href='../servlet/RegistroEventos?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}';
+}
+function fnEliminar(valor){
+	document.form1.action='../servlet/RegistroEventos?txtAccion=EL&txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}&registro='+valor;
+	document.form1.submit();
+}
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer9 {	position:absolute;
+	left:11px;
+	top:191px;
+	width:752px;
+	z-index:8;
+}
+#Layer8 {	position:absolute;
+	left:886px;
+	top:148px;
+	z-index:7;
+}
+#Layer7 {
+	position:absolute;
+	left:583px;
+	top:461px;
+	z-index:6;
+	width: 402px;
+}
+#Layer10 {	position:absolute;
+	left:703px;
+	top:159px;
+	width:181px;
+	height:13px;
+	z-index:9;
+}
+#Layer11 {	position:absolute;
+	left:321px;
+	top:372px;
+	width:196px;
+	height:14px;
+	z-index:10;
+}
+#Layer12 {	position:absolute;
+	left:324px;
+	top:10px;
+	width:286px;
+	height:13px;
+	z-index:9;
+}
+#Layer13 {	position:absolute;
+	left:718px;
+	top:10px;
+	width:40px;
+	height:13px;
+	z-index:9;
+}
+#instrucciones {position:absolute;
+	left:781px;
+	top:10px;
+	width:209px;
+	z-index:3;
+}
+#Layer14 {
+	position:absolute;
+	left:780px;
+	top:194px;
+	width:210px;
+	z-index:10;
+}
+-->
+</style>
+</head>
+
+<body background="../servlet/Tool?images/ggd/competencias/eventos.jpg" onLoad="fnInicio();">
+<form name="form1" method="post" action="../servlet/RegistroEventos">
+<div id="Layer14"><span class="boton_rojo">Instrucciones</span></div>
+
+<div class="boton_rojo" id="Layer5" style="position:absolute; width:211px; height:164px; z-index:5; left: 779px; top: 215px; overflow: auto; visibility: visible;">
+  <p>Para Registrar
+      un evento destacado (+ y -) debe describir en forma detallada lo siguiente:</p>
+  <p>-&iquest;Cu&aacute;l
+      fue la situaci&oacute;n? &iquest;C&oacute;mo se origin&oacute;?<br>
+    -&iquest;Qu&eacute; hizo/dijo la persona en la situci&oacute;n?<br>
+    -&iquest;Cu&aacute;l fu&eacute; el resultado? &iquest;Qu&eacute; pas&oacute;?<br>
+    -&iquest;C&oacute;mo usted obtuvo esta informaci&oacute;n (lo observ&oacute; directamente,
+    le entregaron un informe escrito, etc)?<br>
+    -&iquest;Qu&eacute; otro tipo de evidencia existe relacionada con la situaci&oacute;n
+    (datos de encuestas de calidad de servicio)?</p>
+</div>
+<div id="Layer7">
+  <table width="116" border="0" align="right" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td nowrap><span class="txt_gris">::::: Seleccione una opci&oacute;n:</span></td>
+      <td width="30">
+      <if isEncargado == "1" >
+      <a href="#" onClick="fnObservacion();return false;"><img name="registro_eventos_r11_c9" src="../servlet/Tool?images/images_ggd/ggd/botones/evaluacion.gif" width="30" height="30" border="0" alt="Registrar Observacion" title="Registrar Observacion"></a>
+      </if>
+      </td>
+      <td width="30"><!-- <a href="#" onClick="fnEliminar(this.value);return false;"><img name="registro_eventos_r11_c9" src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" width="30" height="30" border="0" title="Borrar Registros Eventos" alt="Borrar Registros Eventos"></a> --></td>
+      <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="registro_eventos_r11_c12" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer8">
+  <table width="100" border="0" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td width="8">&nbsp;</td>
+      <td width="12">&nbsp;</td>
+      <td width="30"><!-- <a href="#" onClick="fnBuscar();return false;"><img name="registro_eventos_r4_c12" src="../servlet/Tool?images/images_ggd/ggd/botones/buscar.gif" width="30" height="30" border="0" alt="Buscar"></a>  --></td>
+      <td width="30"><a href="#" onClick="fnBuscar();return false;"><img name="registro_eventos_r4_c7" src="../servlet/Tool?images/images_ggd/ggd/botones/colaboradores.gif" width="30" height="30" border="0" title="Seleccionar Colaborador" alt="Seleccionar Colaborador"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer9">
+  <table width="97%" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+      <td width="20%" class="txt_gris_bold">Fecha</td>
+      <td width="30%" class="txt_gris_bold">Competencia</td>
+      <td width="45%" class="txt_gris_bold">Observaci&oacute;n</td>
+      <td width="5%" align="center" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="boton_rojo" id="Layer6" style="position:absolute; width:210px; height:111px; z-index:5; left: 780px; top: 30px; overflow: auto; visibility: visible;">
+  <p>Registre en
+      forma detallada sus observaciones sobre hechos o situaciones destacadas
+      en el desempe&ntilde;o de su colaborador</p>
+</div>
+<div id="Layer2" style="position:absolute; width:295px; height:111px; z-index:1; left: 10px; top: 31px; visibility: visible;" >
+<assign h = "ggd/rut/ver_rut_eval.html">${TM_Rut(h,r)}</div>
+<div id="Layer1" style="position:absolute; width:441px; height:111px; z-index:2; left: 322px; top: 31px; overflow: auto; visibility: visible;">
+<assign h = "ggd/evaluacion/competenciasl.html"><assign h = "registro_eventos/lista_comp.html">${TM_RegEC(h,p,r)} </div>
+<span id="Layer3" style="position:absolute; width:752px; height:216px; z-index:3; left: 11px; top: 215px; overflow: auto; visibility: visible;">
+<assign h = "ggd/registro_eventos/lista.html">
+
+		<table width="97%" border="0" cellpadding="0" cellspacing="1">
+	  
+		<if getRegistroEventosTmp>
+		<list getRegistroEventosTmp as a>  
+		  <tr>
+			<td width="20%" class="fondo_tablaGris">&nbsp;</td>
+			<td width="30%" class="fondo_tablaGris">${a.competencia}&nbsp;</td>
+			<td width="45%" class="fondo_tablaGris">${a.descripcion}&nbsp;</td>
+			<td width="5%" align="center" class="fondo_tablaGris"><img src="../servlet/Tool?images/images_ggd/registro_eventos/carita${a.tipo}.gif" width="21" height="21"></td>
+		  </tr>
+		</list>
+		</if>   		  
+		<if getRegistroEventos>
+		<list getRegistroEventos as a>  
+		  <tr>
+			<td class="fondo_tablaGris">${a.fecha}&nbsp;</td>
+			<td class="fondo_tablaGris">${a.competencia}&nbsp;</td>
+			<td class="fondo_tablaGris">${a.descripcion}&nbsp;</td>
+			<td align="center" class="fondo_tablaGris"><img src="../servlet/Tool?images/images_ggd/registro_eventos/carita${a.tipo}.gif" width="21" height="21"></td>
+	  		<td align="center" class="fondo_tablaGris"><a href="#" onClick="fnEliminar(${a.corr_reg});return false" onMouseOver="MM_swapImage('Image54','','../servlet/Tool?images/images_ggd/plan_accion/eliminar_over.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" title="Eliminar Registro" alt="Eliminar Registro" name="Image54" width="30" height="30" border="0"></a></td>
+		  </tr>
+		</list>
+		<else>
+		  <tr>
+			<td colspan="4" align="center" class="fondo_tablaGris" >No registra informaci&#243;n anterior.</td>
+		  </tr>
+		</if>   
+</table>
+</span>
+
+
+
+<if User.rut_sup != re>
+<div id="Layer4" style="position:absolute; width:115px; height:15px; z-index:4; left: 632px; top: 564px; visibility: hidden;"><a href="#" onClick="fnAgregar();return false;"><img src="../servlet/Tool?images/images_ggd/registro_eventos/agre_eve.jpg" name="Image1" width="102" height="18" border="0" id="Image1" onMouseOver="MM_swapImage('Image1','','../servlet/Tool?images/images_ggd/registro_eventos/agre_eve_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></div>
+</if>
+
+<input name="txtAccion" type="hidden" id="txtAccion" value="GR">
+<input name="txt_Rut" type="hidden" id="txt_Rut" value="${r}">
+<input name="txt_Perfil" type="hidden" id="txt_Perfil" value="${p}">
+
+<div id="Layer10"><span class="txt_gris">::::: Busqueda de Colaboradores: </span></div>
+<div id="Layer12"><span class="txt_gris_bold">Sucesos para Competencias: </span></div>
+<div id="Layer13"><span class="txt_gris">+ / -</span></div>
+<div class="boton_rojo" id="instrucciones">Instrucciones</div>
+</form>
+</body>
+</html>

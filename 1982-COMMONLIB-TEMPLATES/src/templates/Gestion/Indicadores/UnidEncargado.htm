@@ -1,0 +1,47 @@
+
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<title>Encargado de Unidad</title> 
+<table width="180" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFCF75">
+  <tr> 
+    <td width="180" align="center"> 
+      <table border="0" background="/Gestion/imagenes_main/vent_foto1.gif" width="86" height="106" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td valign="middle" align="center"> 
+            <div align="center"><if (foto)><img src="/images/Gestion/Trabajadores/${foto}" width="79" height="100"> 
+              <else> <b><font face="Arial, Helvetica, sans-serif"><i><font size="2">Sin 
+              Foto</font></i></font></b></if></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="180" valign="top"> 
+      <table border="0" align="left" cellpadding="0" cellspacing="4" width="100%">
+        <tr> 
+          <td height="19"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b><font class="textB">${nombre}</font></b></font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td width="166" height="17" class="texto"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="1" class="texto"> 
+              ${cargo}</font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td width="166" height="17" class="texto"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>Anexo 
+              ${anexo}</b></font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td width="166" height="17" class="texto"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>E-Mail 
+              ${email}</b></font></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

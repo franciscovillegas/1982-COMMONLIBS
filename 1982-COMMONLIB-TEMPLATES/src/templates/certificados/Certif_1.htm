@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Certificado</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js">
+
+</script>
+<script language="JavaScript">
+<!--
+
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+//-->
+</script>
+
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" height="100%"  border="1" cellpadding="0" cellspacing="0" class="tablas_blanco">
+  <tr>
+    <td align="center" valign="top">
+<table width="100%" border="0" align="center">
+  <tr>
+    <td> 
+        <table width="100%" border="0" cellspacing="1" cellpadding="2" align="left">
+          <tr> 
+            <td width="17%"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61">
+            </td>
+            <td width="75%">&nbsp;</td>
+            <td width="8%"><div id="Layer1" style="position:absolute; left:569px; top:24px; width:84px; height:39px; z-index:1"><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0"></a></div></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+<font class="textos"><strong><u>CERTIFICADO DE REMUNERACIONES Y ANTIGUEDAD </u></strong></font>
+<hr width="100%" size="1" noshade>
+<table width="95%" height="579" border="0" align="center" class="textos">
+  <tr> 
+    <td height="100"><p align="justify"><strong>${empresa}</strong>, certifica que el se&ntilde;or(a) <strong>${nombre}</strong>, 
+        Rut <strong>${rut_trab}</strong> es trabajador(a) de nuestra Instituci&oacute;n 
+        desde el <strong>${ingreso}</strong>, recibiendo la siguiente remuneraci&oacute;n:</p>
+      <table width="470"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="textos">
+        <tr>
+          <td colspan="3"><font face="Arial, Helvetica, sans-serif"><strong>Haberes:</strong></font></td>
+          </tr>
+        <tr>
+          <td width="53%"><font face="Arial, Helvetica, sans-serif">Sueldo Base Mensual</font></td>
+          <td width="3%"><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td width="44%"></td>
+        </tr>
+        <tr>
+          <td><font face="Arial, Helvetica, sans-serif">Otros Bonos (promedio mensual) </font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><font face="Arial, Helvetica, sans-serif">Promedio Comisiones (3 ult. meses) </font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="3"><hr noshade></td>
+        </tr>
+        <tr>
+          <td align="right"><font face="Arial, Helvetica, sans-serif">Total Haberes: </font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="3">&nbsp;</td>
+          </tr>
+        <tr>
+          <td colspan="3"><font face="Arial, Helvetica, sans-serif"><strong>Descuentos:</strong></font></td>
+          </tr>
+        <tr>
+          <td><font face="Arial, Helvetica, sans-serif">Imposiciones</font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><font face="Arial, Helvetica, sans-serif">Impuestos (1&ordf; Cat.)</font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="3" align="right"><hr noshade></td>
+          </tr>
+        <tr>
+          <td align="right"><font face="Arial, Helvetica, sans-serif">Total Descuentos:</font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="3"><hr noshade></td>
+          </tr>
+        <tr>
+          <td align="right"><font face="Arial, Helvetica, sans-serif">L&iacute;quido a pago:</font></td>
+          <td><font face="Arial, Helvetica, sans-serif">$</font></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>      
+      <table width="431"  border="0" align="center">
+        <tr>
+          <td width="425" height="125" align="center" valign="bottom"><img src="../servlet/Tool?images/new/certificados/firma.gif" width="200" height="139"></td>
+        </tr>
+        <tr>
+          <td align="center" class="textos"><strong>Nombre</strong><br>Cargo</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td> <p align="justify">Se extiende 
+        el presente certificado a petici&oacute;n del interesado, para los fines 
+        que estime pertinentes.</p></td>
+  </tr>
+  <tr align="left"> 
+    <td height="18"><font face="Arial, Helvetica, sans-serif">${fecha}</font></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td align="center" class="textos"><strong class="textos"><font size="2" face="Arial, Helvetica, sans-serif"><strong>${empresa}</strong></font></strong></td>
+  </tr>
+</table>
+</body>
+</html>

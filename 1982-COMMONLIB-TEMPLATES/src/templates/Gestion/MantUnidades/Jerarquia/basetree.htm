@@ -1,0 +1,367 @@
+<HTML>
+<HEAD>
+<title>Arbol Mantener Unidades</title>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language='JavaScript'>
+<!--
+function selMenu(){
+    var menu = document.form1.menu;
+	if (menu.value!=""){
+		eval(menu.value);
+		if (menu.value == "-1") {
+			alert("Seleccione una opcion...");
+			menu.focus();
+		}
+	}
+}
+
+function VerMas(){
+//alert("${nameform}");  
+<if (nameform!="")>
+  document.${nameform}.submit();
+ </if>
+}
+
+function SeteaPos(formulario){
+  formulario.pos.value="1";
+
+}
+
+function Ejecuta(idEmp,idUni,nombre, tipo){
+	//alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else if (tipo == "E"){
+		document.form1.empresa.value=idUni;
+		document.form1.unidad.value="0";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		NoSeleccionarNodo();
+	}
+}
+
+function Envia(modo) {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	if (unid!=''){
+		var seguir = true;
+		if (unid == "0") {
+			if (modo == 2) {
+				seguir = false;
+				alert("No puede quitar la empresa '" + desc + "'.");
+			}
+			else if (modo == 3) {
+				seguir = false;
+				alert("No puede modificar la empresa '" + desc + "'.");
+			}
+		}
+		if (seguir) {
+			if(modo == 2) {
+				if(confirm("&#191;Realmente desea eliminar la unidad \""+desc+"\"?")) {
+					document.form1.modo.value=modo;
+					document.form1.submit();
+				}
+			}
+			else {
+				document.form1.modo.value=modo;
+				document.form1.submit();
+			}
+		}
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+
+function Mover(){
+	if (document.form1.unidad.value!=''){
+		var unidad = document.form1.unidad.value;  
+		var desc_uni = document.form1.descrip.value;
+		var empresa = document.form1.empresa.value; 
+		 
+		//var desc_emp = document.form1.descrip.value; 
+		//alert(unidad +desc_uni +empresa);   	
+		parent.folderFrame.location.href="../servlet/MoverUnidades?unidad="+unidad+"&desc_unidad="+desc_uni+"&empresa="+empresa;
+	}
+	else
+ 		alert ('Seleccione una Unidad.');
+}
+
+function Asociar() {
+	if (document.form1.unidad.value!=''){
+		var unidad = document.form1.unidad.value;  
+		var desc_uni = document.form1.descrip.value;
+		var empresa = document.form1.empresa.value;
+		parent.folderFrame.location.href="../servlet/AsociarUnidades?unidad="+unidad+"&desc_unidad="+desc_uni+"&empresa="+empresa;
+	}
+	else
+ 		alert ('Seleccione una Unidad.');
+}
+
+function UnidadesSinAsociar() {
+	var unidad = document.form1.unidad.value;  
+	var desc_uni = document.form1.descrip.value;
+	var empresa = document.form1.empresa.value;
+    parent.folderFrame.location.href="../servlet/UnidadesSinAsociar?unidad="+unidad+"&desc_unidad="+desc_uni+"&empresa="+empresa;
+}
+
+function FijarRaizOrganica() {
+	parent.folderFrame.location.href="../servlet/FijarRaizOrganica";
+}
+
+function UnidadRelativa() {
+	var unidad = document.form1.unidad.value;  
+	var desc_uni = document.form1.descrip.value;
+	var empresa = document.form1.empresa.value;
+    parent.folderFrame.location.href="../servlet/UnidadRelativa?unidad="+unidad+"&desc_unidad="+desc_uni+"&empresa="+empresa;
+}
+
+function MaestroOrganica() 
+{
+    var url2 = "../servlet/MaestroOrganica";
+	ventmsg2 = open(url2, "MaestroOrganica", "scrollbars=yes,resizable=no,status=yes,width=750,height=400,left=150,top=100");
+}
+
+function MaestroUnidades() {
+	   var url2 = "../servlet/MaestroUnidadesTotal";
+	   ventmsg2 = open(url2, "MaestroOrganicatTotal", "scrollbars=yes,resizable=no,status=yes,width=750,height=400,left=150,top=100");
+	}
+
+function Encargado() 
+{  
+   if (document.form1.unidad.value!='')
+   {
+      var unidad = document.form1.unidad.value;  
+	  var desc_uni = document.form1.descrip.value;
+	  var empresa = document.form1.empresa.value;
+	  parent.folderFrame.location.href="../servlet/AsignaEncargadoUnidad?unidad="+unidad+"&desc_unidad="+desc_uni+"&empresa="+empresa;
+   }
+   else
+     alert ('Seleccione una Unidad.');
+}
+
+function CargaMasiva() 
+{
+   parent.folderFrame.location.href="../servlet/UploadingOrganicaShowServlet";
+}
+
+function CargaGerentes() 
+{
+   parent.folderFrame.location.href="../servlet/UploadingGerentesShowServlet";
+}
+
+function SinOrganica() 
+{
+   parent.folderFrame.location.href="../servlet/SinOrganica";
+}
+
+function GestionarDimension() {
+    var unidad = document.form1.unidad.value;  
+	var empresa = document.form1.empresa.value;
+	parent.folderFrame.location.href="../servlet/GestionarDimension?unidad="+unidad+"&empresa="+empresa;
+}
+
+-->
+</script>
+<script>
+<!--
+
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function inicio() {
+	var rut=document.formBusRut.br.value;
+	inicioArbol();
+	if (window.unidadBuscada) {
+		if ((!window.unidadEncontrada)||(rut!="")) 
+		  LayerVerMas.style.visibility="hidden";
+	}
+	document.formBusCod.be.value = window.resulEmp;
+	document.formBusCod.bu.value = window.resulUni;
+	document.formBusGlosa.bu.value = window.resulUni;
+	document.formBusRut.br.value = "${br}";
+	if ( (document.formBusRut.br.value!="") && (!window.unidadEncontrada) ) 
+		alert("El trabajdor con rut '"+document.formBusRut.br.value+"' no se encuentra en la Organica.");
+}
+function limpiarBus() {
+	document.formBusCod.reset();
+	document.formBusGlosa.reset();
+	document.formBusRut.reset();
+	return false;
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#HijoOrgani {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:320px;
+	height:319px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer1 {
+	position:absolute;
+	left:0px;
+	top:320px;
+	width:320px;
+	height:30px;
+	z-index:12;
+	background-color: #FFFFFF;
+}
+-->
+</Style>
+</HEAD>
+<body>
+<form name="form1" method="post" action="../servlet/ManUnidades" target="folderFrame">
+<div id="Layer1">
+	<table width="300" border="0" cellpadding="0">
+	<tr> 
+    	<td>
+			<select name="menu" size="1" id="select2" style="width:200px" >
+				<option value="-1" selected>Seleccione una opci&oacute;n</option>
+				<option value="Envia(1)">Agregar Unidad</option>
+				<option value="Envia(3)">Modificar Unidad</option>
+				<option value="Mover()">Mover Unidad</option>
+				<option value="Envia(2)">Eliminar Unidad</option>
+				<option value="MaestroOrganica()">Maestro Org&#225;nica</option>
+				<option value="MaestroUnidades()">Maestro de Unidades</option>
+				<option value="Encargado()">Encargado de Unidad</option>
+				<option value="UnidadRelativa()">Unidad Relativa</option>
+                <option value="CargaMasiva()">Carga Masiva Org&#225;nica</option>   
+                <option value="SinOrganica()">Usuarios Sin Org&#225;nica</option>
+                <option value="CargaGerentes()">Cargar Gerentes</option>
+			</select>
+		</td>
+		<td width="33%" align="center">
+			<a href="javascript:;" onClick="javascript:selMenu();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_aceptar','','../servlet/Tool?images/new/botones/aceptar_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/aceptar.gif" name="img_aceptar" width="91" height="21" border="0" ></a>
+		</td>
+    </tr>
+	</table>
+</div>
+  <p>
+    <input type="hidden" name="unidad">
+    <input type="hidden" name="empresa">
+    <input type="hidden" name="descrip">
+    <input type="hidden" name="modo" value=>
+</form>
+<div id="LayBuscar" style="position:absolute; width:254px; height:200px; z-index:13; top: 48px; left: 21px; visibility: hidden;" class="layer_util"> 
+  <table width="100%" border="0" cellpadding="2" cellspacing="1" class="texto_negro">
+    <form name="formBusCod" onSubmit="SeteaPos(document.formBusCod)" method="post" action="../servlet/LoadTreeOrg?pag=Gestion/MantUnidades/Jerarquia/basetree.htm&tc=yes">
+      <tr> 
+        <td height="20" colspan="2" align="center" class="tabla_amarelo">Buscar Unidad</td>
+        <td width="32" height="20" align="center" class="tabla_amarelo"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayBuscar','','hide'); return false">[X]</a></td>
+      </tr>
+      <tr> 
+        <td height="20"  colspan="2"> Empresa: 
+          <input name="be" type="text" class="texto_negro_bold_chico" size="1"  >
+          Unidad: 
+          <input name="bu" type="text" class="texto_negro_bold_chico" size="5" >
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusCod">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b1" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+    </form>
+    <form name="formBusGlosa" onSubmit="SeteaPos(document.formBusGlosa)" method="post" action="../servlet/LoadTreeOrg?pag=Gestion/MantUnidades/Jerarquia/basetree.htm&tc=yes">
+      <tr> 
+        <td height="20"  colspan="2"> 
+          <select name="bu" class="texto_negro_bold_chico"  style="width=220">
+            <option selected value = "">Seleccione una Unidad</option>
+            <list unidades as u> 
+            <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+            </list> 
+          </select>
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusGlosa">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+    </form>
+    <form name="formBusRut" onSubmit="SeteaPos(document.formBusRut)" method="post" action="../servlet/LoadTreeOrg?pag=Gestion/MantUnidades/Jerarquia/basetree.htm&tc=yes">
+      <tr> 
+        <td height="20"  width="73"> Rut </td>
+        <td height="20"  width="133"> 
+          <input name="br" type="text" class="texto_negro_bold_chico"  value="${br}" size="15">
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusRut">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+      <tr> 
+        <td height="20"  width="73">Nombre</td>
+        <td height="20"  colspan="2"> 
+          <input name="bn" type="text" class="texto_negro_bold_chico"  value="${bn}" size="20">        </td>
+      </tr>
+      <tr> 
+        <td height="20"  width="73">Ap Paterno</td>
+        <td height="20"  colspan="2"> 
+          <input name="bp" type="text" class="texto_negro_bold_chico"  value="${bp}" size="20">        </td>
+      </tr>
+      <tr> 
+        <td height="20" >Ap Materno</td>
+        <td height="20"  colspan="2"> 
+          <input name="bm" type="text" class="texto_negro_bold_chico"  value="${bm}" size="20">        </td>
+      </tr>
+    </form>
+  </table>
+</div>
+  <div id="HijoOrgani">
+    <table width="100%" height="319" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, empresa)} </if></td>
+      </tr>
+    </table>
+</div>
+</body>
+</HTML>

@@ -1,0 +1,106 @@
+<assign p = User.id_perfil>
+<assign pr = User.id_proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut>
+<if txt_TipoEval>
+<assign te = txt_TipoEval>
+<else>
+<assign te = "C">
+</if>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Colaboradores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+var ancho = 790;
+var alto = 305;
+var porcentaje = 1;
+window.top.moveTo((screen.availWidth - ancho) / 2, (screen.availHeight - alto) / 2);
+if (document.all) {
+	top.window.resizeTo(ancho, alto);
+}
+
+var strRut="";
+var strPerfil ="";
+var strProceso ="";
+function setSeleccionar(){
+	if (strRut!=""){
+		opener.parent.bottomFrame.fnCambioRut(strRut,strPerfil,strProceso);
+		window.close();
+		}
+	else
+		alert('Debe Seleccionar un Colaborador.');
+}
+function setRut(rut,perfil,proceso){
+	strRut=rut;
+	strPerfil=perfil;
+	strProceso=proceso;
+}
+
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer8 {position:absolute;
+	left:673px;
+	top:187px;
+	width:81px;
+	height:21px;
+	z-index:5;
+}
+#Layer11 {position:absolute;
+	left:324px;
+	top:198px;
+	width:203px;
+	height:10px;
+	z-index:7;
+}
+-->
+</style>
+</head>
+
+<body background="../servlet/Tool?images/images_ggd/ggd/evaluacion/colaboradores.jpg">
+<table border="0" cellpadding="0" cellspacing="0" width="780">
+  <!-- fwtable fwsrc="busqueda.png" fwbase="busqueda.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+  <tr>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="17" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="576" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="9" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="18" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="6">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="1" height="25" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="6" rowspan="2">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  
+  <tr>
+    <td><img src="../servlet/Tool?images/images_ggd/busqueda/spacer.gif" width="1" height="149" border="0" alt=""></td>
+  </tr>
+</table>
+<div id="Layer8">
+  <table width="100" border="0" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td width="8">&nbsp;</td>
+      <td width="12">&nbsp;</td>
+      <td width="30"><a href="#" onClick="setSeleccionar();return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/selec_colaborador.gif" alt="Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0"></a></td>
+      <td width="30"><a href="#" onClick="javascript:window.close()"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer7" style="position:absolute; width:762px; height:150px; z-index:3; top: 34px; overflow: auto; left: 8px;">
+<assign h = "ggd/evaluacion/lista_colab_sel.html">${TM_Colab(h,re,"C")}</div>
+<div id="Layer11"><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></div>
+</body>
+</html>

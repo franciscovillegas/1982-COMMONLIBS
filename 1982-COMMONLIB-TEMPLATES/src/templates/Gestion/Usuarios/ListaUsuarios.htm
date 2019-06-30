@@ -1,0 +1,114 @@
+ <HTML>
+<HEAD>
+<TITLE>Lista Usuarios</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+
+</script>
+
+<script language="JavaScript">
+<!--
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MantenerUsuario(lista, accion) {
+	rut = lista.value;
+	if (rut!="-1" && rut!=""){
+		var url = "../servlet/MantenerUsuarioOrga?rut="+rut+"&accion="+accion+"&unidad=${unid_id}&empresa=${emp_id}";
+		if (accion == "E") //eliminar
+			document.location.href = url;
+		else
+			//parent.document.location.href = url;
+			open(url, "MantUsuario", "width=645,height=360,resizable=no,toolbar=no");
+	}
+	else {
+		if (accion == "C") 
+			alert("Seleccione un Trabajador...");
+		else if ((accion == "M") || (accion == "E"))
+			alert("Seleccione un Usuario...");
+		lista.focus();		
+	}
+	return false;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<table width="300" height="350" border=0 cellpadding=0 cellspacing=0 class="layer_util">
+ <tr> 
+      
+    <td width="248" height="343" align="center" valign="top" class="texto_negro_bold"> ${unid_desc} 
+      <form name="form1" method="post" action="">
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td colspan="2" align="center" valign="bottom">Usuarios definidos</td>
+          </tr>
+          <tr> 
+            <td height="89" colspan="2" align="center"> 
+              <select name="select" size="5" class="texto_negro_bold_chico"  style="width=220">
+                <if usuarios> <list usuarios as u>
+                <option value="${u.rut}" >${u.nombre}</option>
+                </list> <else>
+                <option value="-1">No hay trabajadores que sean usuarios</option>
+                </if>
+              </select></td>
+          </tr>
+          <tr> 
+            <td align="center"> <a href="javascript:;" onClick="return MantenerUsuario(document.form1.select, 'E')"><img src="../servlet/Tool?images/Gestion/botones/eliminar.gif" width="120" height="24" name="quitar" alt="Quitar Usuario" border="0"></a></td>
+            <td align="center"><a href="javascript:;" onClick="return MantenerUsuario(document.form1.u, 'M');"><img src="../servlet/Tool?images/Gestion/botones/grabar.gif" width="120" height="24" name="mantener" alt="Mantener Usuario" border="0"></a></td>
+          </tr>
+        </table>
+      </form>
+      <form name="form2" method="post" action="">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+          <tr> 
+            <td height="20" align="center" valign="bottom">Trabajadores</td>
+          </tr>
+          <tr> 
+            <td height="90" align="center"> 
+              <select name="usuarios" size="5" class="texto_negro_bold_chico"  style="width=220">
+                <if no_usuarios> <list no_usuarios as n> 
+                <option value="${n.rut}" >${n.nombre}</option>
+                </list> <else> 
+                <option value="-1">No hay trabajadores que no sean usuarios</option>
+                </if> 
+              </select>            </td>
+          </tr>
+          <tr> 
+            <td align="center"> <a href="javascript:;" onClick="return MantenerUsuario(document.form2.usuarios, 'C');"><img name="crear" border="0" src="../servlet/Tool?images/Gestion/botones/crear.gif" width="120" height="24" alt="Crear Usuario"></a>            </td>
+          </tr>
+        </table>
+      </form>    </td>
+    </tr>
+</table>
+</BODY>
+</HTML>

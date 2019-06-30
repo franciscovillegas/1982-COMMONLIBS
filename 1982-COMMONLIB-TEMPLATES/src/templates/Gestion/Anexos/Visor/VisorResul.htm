@@ -1,0 +1,119 @@
+  <html>
+<head>
+<title>Visor Resul</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/anexos.js">
+</script>
+<script language="JavaScript">
+function verAsignacion(accion, unidad, valor) {
+	url = "../servlet/VerAsignacion?accion="+accion;
+	url += "&unidad="+unidad+"&valor="+valor;
+	//alert(url);
+	parent.bottomFrame.location.href = url;
+	return false;
+}
+
+function inicio(){
+	parent.bottomFrame.location.href = "Tool?htm=Gestion/BusquedaPorFiltros/bottom.htm";
+}
+</script>
+</head>
+
+<body onLoad="inicio();"  background="../servlet/Tool?images/Gestion/news/left_axos.jpg" bgcolor="#000000" text="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+<table width="350" border="0" cellspacing="0" cellpadding="0" height="327">
+  <tr> 
+    <td valign="top" width="1019" align="center"> 
+ 	<if (ver_anexos)>
+      <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <table width="300" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="63" height="25" bordercolor="#FFFFFF"><b>ANEXO</b></td>
+          <td width="223" height="25">&nbsp;</td>
+        </tr>
+        <tr valign="top"> 
+          <td height="75" width="63"> 
+            <div id="LayerAnexo" style="position:absolute; width:300; height:75; z-index:1; left: auto; top: auto; overflow: auto; visibility: visible" class="carpetaUn"> 
+              <table border="0" cellspacing="2" cellpadding="1" width="100%">
+                <assign cant = ""> <list anexos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+                <tr> 
+                  <td class="negro12N" align="center"> ${f.anexo}</td>
+                  <td class="negro12N" width="30" align="center"><a href="javascript:;" class="azul10NLink"  onClick="return ventInfoAnexo('${empresa}', '${f.unidad}', '${f.anexo}', 'Visor/BuscaAnexos.htm')" title="Informaci&oacute;n del Anexo">[Info]</a></td>
+                  <td class="negro12N" align="center" width="90"><a href="javascript:;" onClick="return verAsignacion('AN', '${unidad}', '${f.anexo}')">[Asignaci&oacute;n]</a></td>
+                </tr>
+                </if> </list> <if (cant)  == ""> 
+                <tr align="center"> 
+                  <td class="negro12N" colspan="4" height="18">No registra</td>
+                </tr>
+                </if> 
+              </table>
+            </div>
+          </td>
+          <td height="75" width="223" align="left">&nbsp;</td>
+        </tr>
+      </table>
+	  </if>
+	  <if (ver_fonos)>
+      <table width="300" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="25"><b>TELEFONO</b></td>
+          <td height="25">&nbsp;</td>
+        </tr>
+        <tr valign="top"> 
+          <td height="75" width="63"> 
+            <div id="LayerFono" style="position:absolute; width:300; height:75; z-index:1; left: auto; top: auto; overflow: auto; visibility: visible" class="carpetaUn"> 
+              <table border="0" cellspacing="2" cellpadding="1" width="100%">
+                <assign cant = ""> <list fonos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+                <tr> 
+                  <td class="negro12N" align="center"> ${f.fono}</td>
+                  <td class="negro12N" align="center" width="90"><a href="javascript:;" onClick="return verAsignacion('FO', '${unidad}', '${f.fono}')">[Asignaci&oacute;n]</a></td>
+                </tr>
+                </if> </list> <if (cant) == ""> 
+                <tr> 
+                  <td class="negro12N" colspan="6" align="center">No registra 
+                  </td>
+                </tr>
+                </if> 
+              </table>
+            </div>
+          </td>
+          <td height="75" width="225" align="left">&nbsp;</td>
+        </tr>
+      </table>
+      </if>
+	  <if (ver_faxes)>
+      <table width="300" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="25"><b>FAX</b></td>
+          <td height="25">&nbsp;</td>
+        </tr>
+        <tr valign="top"> 
+          <td height="75" width="63"> 
+            <div id="LayerFax" style="position:absolute; width:300; height:75; z-index:1; left: auto; top: auto; overflow: auto; visibility: visible" class="carpetaUn"> 
+              <table border="0" cellspacing="2" cellpadding="1" width="100%">
+                <if faxes> <list faxes as f> 
+                <tr> 
+                  <td class="negro12N" align="center"> ${f.fax}</td>
+                  <td class="negro12N" align="center" width="90"><a href="javascript:;" onClick="return verAsignacion('FA', '${unidad}', '${f.fax}')">[Asignaci&oacute;n]</a></td>
+                </tr>
+                </list> <else> 
+                <tr> 
+                  <td class="negro12N" colspan="4" align="center">No registra 
+                  </td>
+                </tr>
+                </if> 
+              </table>
+            </div>
+          </td>
+          <td height="75" width="225" align="left">&nbsp;</td>
+        </tr>
+      </table>
+      </if>    </td>
+  </tr>
+</table>
+</body>
+</html>

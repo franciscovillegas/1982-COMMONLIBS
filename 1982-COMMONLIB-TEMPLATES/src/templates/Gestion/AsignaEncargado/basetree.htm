@@ -1,0 +1,170 @@
+ <HTML>
+<HEAD>
+<title>Arbol Asignar Encargado</title>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language='JavaScript'>
+function Ejecuta(idEmp,idUni,nombre, tipo){
+//	alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Envia() {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	if (unid!=''){
+		//VerContFormm(document.form1)
+		document.form1.submit();
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+</script>
+<script>
+<!--
+parent.parent.AbrirVentProcesando()
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</HEAD>
+
+<body bgcolor='#000000' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/ver_over.jpg')">
+<table border=0 cellpadding=0 cellspacing=0 >
+  <tr> 
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=10 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=48 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=4 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=55 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=6 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=52 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=8 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=55 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=4 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=15 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=48 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=7 height=1></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=1></td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td colspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_01.jpg' width=58 height=10></td>
+    <td colspan=3> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_02.jpg' width=65 height=10></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_03.jpg' width=52 height=10></td>
+    <td colspan=4> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_04.jpg' width=82 height=10></td>
+    <td colspan=3> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_05.jpg' width=56 height=10></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=10></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_06.jpg' width=10 height=39></td>
+    <td colspan=10 rowspan=11 bgcolor='#ffffff' valign="top"> 
+      <div id='Layer1' style='position:absolute; width:290px; height:274px; z-index:1;; left: auto; top: auto; overflow: auto'>
+	  <if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, empresa)} </if>
+	  </div>
+    </td>
+    <td colspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_08.jpg' width=8 height=4></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=4></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_09.jpg' width=7 height=59></td>
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_10.jpg' width=1 height=59></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=35></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_11.jpg' width=10 height=45></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=24></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_12.jpg' width=8 height=51></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=21></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_13.jpg' width=10 height=53></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=30></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_14.jpg' width=8 height=52></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_15.jpg' width=10 height=55></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=29></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_16.jpg' width=8 height=65></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=26></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_17.jpg' width=10 height=48></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=39></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=3> <img name='main_indicadores_18' src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18.jpg' width=8 height=57></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=9></td>
+  </tr>
+  <tr> 
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_19.jpg' width=10 height=40></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=40></td>
+  </tr>
+  <tr> 
+    <td colspan=3> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_20.jpg' width=62 height=8></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_21.jpg' width=55 height=8></td>
+    <td colspan=3> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_22.jpg' width=66 height=8></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_23.jpg' width=55 height=8></td>
+    <td colspan=3> <img name='main_indicadores_24' src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24.jpg' width=67 height=8></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=8></td>
+  </tr>
+  <tr> 
+    <td colspan=12 rowspan=2 bgcolor='#FFa400' valign="top" align="right"><br>
+      <a href="javascript:;" onClick="Envia()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ver','','../servlet/Tool?images/Gestion/botones/ver_over.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/ver_up.jpg" width="108" height="27" name="img_ver" border="0"></a></td>
+    <td rowspan=2> <img name='main_indicadores_27' src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27.jpg' width=1 height=60></td>
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>
+  </tr>
+  <tr> 
+    <td> <img src='Tool?htm=Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=37></td>
+  </tr>
+</table>
+ 
+<form name="form1" method="get" action="../servlet/AsignaEncargado" target='folderFrame'>
+  <input type='hidden' name='unidad'>
+  <input type='hidden' name='empresa'>
+  <input type='hidden' name='descrip'>
+  cual 
+</form>
+<script>
+	parent.parent.CerrarVentProcesando()
+</script>
+</body>
+</HTML>

@@ -1,0 +1,236 @@
+ <HTML>
+<HEAD>
+<TITLE>Resultado Encargado Unidad</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+
+</script>
+
+<script language="JavaScript">
+<!--
+
+
+
+var valor;
+var tsup;
+var tinf;
+
+
+
+function Muestra(layer){
+   var x=0;
+   var nomLayer;
+   //alert ("id layer: "+layer);
+   layers =new Array();
+   layers[0]="Accidentes";
+   layers[1]="capacita";
+   layers[2]="Dotacion";
+   layers[3]="Gastos";
+   layers[4]="Horas";
+   layers[5]="Licencias";
+   
+   for (x=0;x<=5;x++){//ocultar todos los layer
+      nomLayer=layers[x];
+      
+      eval(nomLayer +'.style.visibility="hidden"');
+   }
+   nomLayer=layers[layer];//mostrar el layer respectivo
+   //alert ("muestro layer: "+nomLayer);
+   eval(nomLayer +'.style.visibility="visible"');
+  
+   
+
+}
+
+
+function asignaValor(val,inf,sup){
+	//Entrega(val,inf,sup);
+	MM_showHideLayers('detIndicador','','show');
+	
+}
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function OcultarTodas(){
+	<list Lista as a>	
+		MM_showHideLayers('Layer${a.NumInd}','','hide') // Layer${a.NumInd}
+	</list>
+}
+
+function MuestraDetalle(tipo,padre,indicador) { 
+  var link='../servlet/DetalleRama?tipo='+tipo+'&padre='+padre+'&indi='+indicador;
+
+  if (tipo=='R'){
+  	 open('', 'DetalleRama', 'width=370, height=360')
+     document.form1.indic.value=indicador;
+	 document.form1.target = 'DetalleRama';
+     document.form1.submit();
+     //alert ("***link: "+link); 
+ }
+ else
+ 	 alert ("No es jerarquico..."); 
+     
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Cambia(rut,nombre) { //v2.0
+  if (rut!="-1"){
+	  document.form1.responsable.value=nombre;
+	  document.form1.rut_resp.value=rut; 
+  }
+  //alert(document.form1.rut_resp.value);
+  }
+
+function Mensaje() { //v2.0
+  var rut=document.form1.rut_resp.value;
+  var mision=document.form1.mision.value;
+  //alert("rut: "+rut);
+  if (rut!="-1"){
+     if (mision=="")    
+         alert("Debe ingresar misi&#243;n.");        
+     else{
+         alert("Los datos han sido registrados con &#233;xito.");
+         document.form1.submit();
+       }
+   }
+   else
+     alert("No hay responsable de Unidad.");     
+   	 
+}
+
+function Detalle(rut) { //v2.0
+  
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#0000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/mantener_over.jpg')">
+<form name="form1" method="post" action="../servlet/AsignaEncargado">
+  <table border=0 cellpadding=0 cellspacing=0 height="357">
+    <tr> 
+      <td valign="top" width="310" rowspan=8 bgcolor="#FFa400"> 
+        <table width="295" border="0" height="30">
+          <tr> 
+            <td><font face="Arial, Helvetica, sans-serif" size="2">Responsable</font> 
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" name="responsable" size="40" value="${nombre}" class="textB" disabled="true">
+              <input type="hidden" name="rut_resp" value="${rut_resp}">
+            </td>
+          </tr>
+        </table>
+        
+        <table width="91%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="24"><font face="Arial, Helvetica, sans-serif" size="2">Disponibles</font></td>
+          </tr>
+          <tr>
+            <td>
+              <select name="disponibles" size="5" onDblClick="VentCandidato('${unidad}',this.value)" onClick="Cambia(this.value,this.options[this.selectedIndex].text)" class="listas" style="width=245">
+                <if detalle> <list detalle as d> 
+                <option value="${d.rut}" ${d.valor}>${d.nombre}</option>
+                </list> <else> 
+                <option value="-1">No hay trabajadores disponibles</option>
+                </if> 
+              </select>
+            </td>
+          </tr>
+        </table>
+        
+        
+        <table width="282" border="0">
+          <tr> 
+            <td><font face="Arial, Helvetica, sans-serif" size="2">Misi&oacute;n</font></td>
+          </tr>
+          <tr> 
+            <td align="left"> <if (!mision)><assign mision = "En Estudio"></if>
+              <textarea name="mision" rows="5" cols="30" class="textB" style="width=245">${mision}</textarea>
+            </td>
+          </tr>
+          <tr>
+            <td height="36"> 
+              <div align="center"> 
+                <input type="hidden" name="empresa" value="${empresa}">
+                <input type="hidden" name="accion" value="${accion}">
+                <input type="hidden" name="unidad" value="${unidad}">
+                <a href="#"  onClick="Mensaje();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','../servlet/Tool?images/Gestion/botones/mantener_over.jpg',1)"><img name="Image9" border="0" src="../servlet/Tool?images/Gestion/botones/mantener_up.jpg" width="108" height="27"></a></div>
+            </td>
+          </tr>
+        </table>
+        <p>&nbsp; </p>
+      </td>
+      <td colspan=2 height="14"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_02.jpg" width=22 height=14></td>
+    </tr>
+    <tr> 
+      <td rowspan=7 width="10" bgcolor="#ffa400">&nbsp; </td>
+      <td height="40" width="15"> <img src="/templates/Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_04.jpg" width=13 height=40></td>
+    </tr>
+    <tr> 
+      <td height="42" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_05.jpg" width=13 height=42></td>
+    </tr>
+    <tr> 
+      <td height="51" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_06.jpg" width=13 height=51></td>
+    </tr>
+    <tr> 
+      <td height="55" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_07.jpg" width=13 height=55></td>
+    </tr>
+    <tr> 
+      <td height="54" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_08.jpg" width=13 height=54></td>
+    </tr>
+    <tr> 
+      <td height="57" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_09.jpg" width=13 height=57></td>
+    </tr>
+    <tr> 
+      <td height="44" width="15"> <img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_10.jpg" width=13 height=45></td>
+    </tr>
+  </table>
+</form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Informes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript"
+	src="../servlet/Tool?scripts/ventanas.js"
+	type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/ggd.css"
+	rel="stylesheet" type="text/css">
+</head>
+<script language="JavaScript" type="text/JavaScript">
+	function imprimir() {
+		window.print();
+	}
+</script>
+<body
+	background="../servlet/Tool?images/ggd/competencias/informe.jpg"
+	style="background-color: #666666; background-repeat: no-repeat">
+<table width="100%" height="580" border="0" align="center" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+			<td height="5" colspan="3"></td>
+		</tr>
+		<tr>
+			<td width="6">
+				<img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif"	width="6" height="22">
+			</td>
+			<td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif"
+				class="texto_texto"><strong class="txt_gris_bold">InformeN&ordm; 2 </strong>
+			</td>
+			<td width="6" align="right"><img
+				src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif"
+				width="6" height="22">
+			</td>
+		</tr>
+		<tr height="25px">
+			<td colspan="3" align="center" valign="top" class="fondo_tabla">
+				<table width="100%">
+					<tr>
+						<td align="left">
+						<form name="frm" method="post"
+							action="../servlet/cargaInforme6">
+						<table>
+							<tr>
+								<td class="texto_titulo_rojo">PERSONAS EN LA COMPETENCIA :</td>
+								<td class="texto_texto"><input type="radio" name="opcion"
+									value="0" ${opcion0} onClick="this.form.submit()"> Unidad
+								Actual</td>
+								<td class="texto_texto"><input type="radio" name="opcion"
+									value="1" ${opcion1} onClick="this.form.submit()"> Todas
+								las Unidades</td>
+							</tr>
+						</table>
+						</form> 
+						</td>
+						<td align="right"><input name="image" type="image"
+							title="Imprimir" onClick="imprimir()"
+							src="../servlet/Tool?images/images_ggd/ggd/botones/inf_imprimir.jpg"
+							alt="Imprimir"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="3" valign="top" align="center">
+					<table cellpadding="1" cellspacing="2" border="0" style="padding-left: 20px" width="100%" class="fondo_tabla" align="center">
+						<list unidades as u>
+							<tr>
+								<td valign="top" class="texto_titulo" >Unidad: ${u.nu}</td>
+								<td>
+								<table cellpadding="2" cellspacing="1" width="100%">
+									<list u.lp as p>
+									<tr>
+										<td colspan="6" class="fondo_tablaGris">${p.rp} - ${p.np} -
+										${p.cp}</td>
+									</tr>
+									<if p.tiene>
+									<tr>
+										<td colspan="4" class="texto_titulo" align="center">Este
+										usuario no presenta Competencias</td>
+									</tr>
+									<else>
+									<tr>
+										<td class="texto_titulo">Competencia</td>
+										<td class="texto_titulo">Niv.Esperado</td>
+										<td class="texto_titulo">Niv.Logrado</td>
+										<td class="texto_titulo">Diferencia</td>
+									</tr>
+									<list p.lc as c>
+									<tr>
+										<td class="texto_texto" valign="top">${c.nc}</td>
+										<td class="texto_texto" align="center" valign="top">${c.ne}</td>
+										<td class="texto_texto" align="center" valign="top">${c.nl}</td>
+										<td class="texto_texto" align="center" valign="top">${c.df}</td>
+									</tr>
+									</list>
+									<tr>
+										<td class="texto_titulo" valign="top" align="right">TOTALES</td>
+										<td class="texto_titulo" align="center" valign="top">${p.tne}</td>
+										<td class="texto_titulo" align="center" valign="top">${p.tnl}</td>
+										<td class="texto_titulo" align="center" valign="top">${p.tdf}</td>
+									</tr>
+									</if>
+									</list>
+								</table>
+								</td>
+							</tr>
+						</list>
+					</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+  <html>
+<head>
+<title>Detalle Deudas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#Ffa400" text="#000000" leftmargin="5" topmargin="5" onLoad="MM_preloadImages('/Gestion/botones/cerrar_down.jpg')">
+<table border="0" width="510" cellpadding="1" cellspacing="0">
+  <tr bgcolor="#FF6600"> 
+    <td valign="top" width="453" height="26"><font color="#FFFFFF"><b><font face="Arial, Helvetica, sans-serif" size="2">Detalle 
+      Deudas</font></b></font></td>
+    <td width="58" valign="top" height="26"> 
+      <div align="right"><a href="#" onClick = "window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('cerrar','','/Gestion/botones/cerrar_down.jpg',1)" ><b><i><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><img src="/Gestion/botones/cerrar_up.jpg" width="55" height="26" border="0" name="cerrar"></font></i></b></a> 
+      </div>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" colspan="2" height="70"> 
+      <table border="1" width="100%" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="500" align="center"> 
+            <table border="0" width="500">
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1">Nombre</font></b></td>
+                <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1">${nombre}</font></td>
+              </tr>
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1">R.U.T.</font></b></td>
+                <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1">${rut}</font></td>
+              </tr>
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1">Tipo 
+                  Deuda</font></b></td>
+                <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1">${deuda}</font></td>
+              </tr>
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1">Monto 
+                  ($)</font></b></td>
+                <td width="153"><font face="Arial, Helvetica, sans-serif" size="1">${monto}</font></td>
+                <td width="76"><b><font face="Arial, Helvetica, sans-serif" size="1">Fecha 
+                  Hoy</font></b></td>
+                <td width="179"><font face="Arial, Helvetica, sans-serif" size="1">${fecha_hoy}</font></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td height="139" colspan="2"> 
+      <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td valign="top" height="137">
+            <div id="Layer1" style="position:absolute; width:493px; height:126px; z-index:1; ; visibility: visible; overflow: scroll; left: 14px; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000"> 
+              <table border="1" cellpadding="0" cellspacing="0">
+                <tr bgcolor="#FF6600"> 
+                  <td width="209"> 
+                    <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Nº 
+                      movimiento</font></div>
+                  </td>
+                  <td width="77"> 
+                    <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">N&ordm; 
+                      Cta. </font></div>
+                  </td>
+                  <td width="91"> 
+                    <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Estado 
+                      Cta.</font></div>
+                  </td>
+                  <td width="87"> 
+                    <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Fecha</font></div>
+                  </td>
+                </tr>
+                <list deudas as d> 
+                <tr bgcolor="#FFFFFF"> 
+                  <td width="209"><font face="Arial, Helvetica, sans-serif" size="1">${d.movimiento}</font></td>
+                  <td width="77"><font face="Arial, Helvetica, sans-serif" size="1">${d.n_cta}</font></td>
+                  <td width="91"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.estado}</font></div>
+                  </td>
+                  <td width="87"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.fecha}</font></div>
+                  </td>
+                </tr>
+                </list> 
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

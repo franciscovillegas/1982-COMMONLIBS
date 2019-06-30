@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>Galeria Fotos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript">
+<!--
+
+function Asigna(ini,ter,actual){
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   document.form1.actual.value=actual;
+   document.form1.submit();
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Desvia(rut){
+//    if (parent.opener.document.form1.modo.value!="1")//grafica
+//        VerRut(rut, "Anexos/Visor/ver_rut.htm");
+//     else
+        Envia(rut);    
+}
+
+function Desvia2(rut){
+//    if (parent.opener.document.form1.modo.value!="1")//grafica
+        Envia(rut);    
+     
+}
+
+
+function Envia(rut){ //v2.0
+   //parent.frames.bottomFrame.location.href="/servlet/FichaBasicaOrga?rut="+rut;
+  //alert(parent.frames.bottomFrame.document.Muestra("Layer"+rut));
+ 
+ parent.frames.bottomFrame.Muestra("Layer"+rut);
+ 
+}
+function Anterior(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+    //alert("Anterior inicio: "+inicio+"\ntermino: "+termino);
+	start=inicio-grupo;
+	document.form1.grupini.value=start;
+	if (termino==paginas)
+      finish=inicio-1;  
+    else
+      finish=termino-grupo;
+	document.form1.grupter.value=finish;
+    //alert("Nuevos Valores : "+start+" - " +finish);
+    //alert("actual: "+start);
+    document.form1.actual.value=start; 
+    document.form1.inicio.value=ini;
+    document.form1.termino.value=ter;
+    document.form1.submit();
+}
+
+
+
+function Siguiente(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+	start=inicio+grupo;
+	document.form1.grupini.value=start;
+	finish=termino+grupo;
+    if (finish>paginas)
+	  document.form1.grupter.value=paginas;
+    else
+	  document.form1.grupter.value=finish;
+   
+   document.form1.actual.value=actual+1; 
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   //alert("sgte actual: "+document.form1.actual.value+"\nInicio: " +ini+"\ntermino: "+ter);
+   document.form1.submit();
+}
+
+
+
+function CambiaValor(){
+	if (parent.opener.document.form1){
+		if (parent.opener.document.form1.modo.value=="1")
+			document.form2.modo.value="1";
+		else 
+			document.form2.modo.value="3";  
+		document.form2.submit();
+		}
+	else {
+		document.form2.modo.value="3";  
+		document.form2.submit();
+	}
+}
+//-->
+</script>
+
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF" <if detalle>onload="CambiaValor()"</if>>
+<table width="350" border="0" cellspacing="0" cellpadding="0" height="327">
+  <tr>
+    <td valign="top" width="1019"> 
+      <div>
+<form name="form2" method="post" action="../servlet/FichaBasica" target="bottomFrame">
+        <list detalle as v>
+           <input type="hidden" name="rut" value="${v.rut}">
+         </list><input type="hidden" name="modo">
+        </form>
+
+        <form name="form1" method="post" action="../servlet/BuscaCriterios" target="_self">
+          <input type="hidden" name="sexo1" value="${sexo1}">
+          <input type="hidden" name="sexo2" value="${sexo2}">
+          <input type="hidden" name="rango1" value="${rango1}">
+          <input type="hidden" name="rango2" value="${rango2}">
+          <input type="hidden" name="inicio" value="${ini}">
+          <input type="hidden" name="termino" value="${ter}">
+          <input type="hidden" name="actual">
+          <input type="hidden" name="apellido1" value="${apellido1}">
+          <input type="hidden" name="apellido2" value="${apellido2}">
+          <font face="Arial, Helvetica, sans-serif" size="2"> 
+          <input type="hidden" name="grupini" value="${gini}">
+          <input type="hidden" name="grupter" value="${gter}">
+          <input type="hidden" name="grupo" value="${grupo}">
+          <input type="hidden" name="civil" value="${civil}">
+          <input type="hidden" name="nombre" value="${nombre}">
+          <input type="hidden" name="cargo" value="${cargo}">
+          </font> <if pag> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td colspan="3"> 
+                <div align="center"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">P&aacute;gina 
+                  ${pag} de ${paginas}. Se encontraron ${regs} personas.</font> 
+                </div>
+                <div id="Layer1" style="position:absolute; width:342px; height:115px; z-index:2; left: 6px; top: 300px; visibility: visible"><if urls> 
+                  <table width="96%" border="0" cellspacing="0" cellpadding="0" align="center" height="16">
+                    <tr> 
+                      <td align="left" valign="top" width="67%"> 
+                        <div align="left"></div>
+                        <div align="left"><list urls as u> <span class="unnamed1">${u.sentencia} 
+                          </span> </list><if sini> </if> </div>
+                      </td>
+                      <td width="33%"> 
+                        <div align="right"><if !fin> <if !atras> <a href="#" onClick="Anterior(${gini},${gter},${firstnum},${firstini},${firstter},${paginas},${grupo});return false;">&lt;</a> 
+                          </if> <font face="Arial, Helvetica, sans-serif" size="1"><b><font color="#CCCCCC">${gini}- 
+                          ${gter}</font></b></font> <if !sig> <a href="#" onClick="Siguiente(${gini},${gter},${ultnum},${ultini},${ultter},${paginas},${grupo});return false;">&gt;</a> 
+                          </if> </if> </div>
+                      </td>
+                    </tr>
+                  </table>
+                  </if> </div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="313" height="17">&nbsp;</td>
+              <if !fin> 
+				  <td width="91" height="17"><font color="#FFFFFF"></font></td>
+				  <td width="204" height="17"> 
+					<div align="center"> <font color="#FFFFFF"></font></div>
+				  </td>
+              </if>
+			</tr>
+          </table>
+         </if>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" height="381" align="center">
+            <tr>
+              <td height="353" valign="top" width="100%">
+                <if detalle>
+				 
+                <div id="LayerFotos" style="position:absolute; width:591px; height:118px; z-index:1; left: 6px; top: 51px; visibility: hidden"> 
+                  <table width="55%" border="0">
+                    <tr align="center"> <assign x="*"> <list detalle as v>
+    <if x=="*">
+                      <td height="75" width="10%" class="maticoN"> <a href="#" onClick="return false"><img src="../servlet/Tool?images/trabajadores/fotos/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')" onClick="Desvia('${v.rut}')" onMouseOver="Desvia2('${v.rut}');"></a> 
+                      </td>
+      <assign x="**">
+    <else>
+     <if x=="**"> 
+                      <td height="75" width="10%" class="maticoN"> <a href="#" onClick="return false"><img src="../servlet/Tool?images/trabajadores/fotos/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')" onClick="Desvia('${v.rut}')" onMouseOver="Desvia2('${v.rut}');"></a> 
+                      </td>
+       <assign x="***">
+     <else>
+       <if x=="***"> 
+                      <td height="75" width="10%" class="maticoN"> <a href="#" onClick="return false"><img src="../servlet/Tool?images/trabajadores/fotos/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')" onClick="Desvia('${v.rut}')" onMouseOver="Desvia2('${v.rut}');"></a> 
+                      </td>
+        <assign x="****">
+       <else>
+                      <td height="75" width="10%" class="maticoN"> <a href="#" onClick="return false"><img src="../servlet/Tool?images/trabajadores/fotos/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onError="existeFoto(this,'../servlet/Tool?images/Gestion/sinfoto.jpg')" onClick="Desvia('${v.rut}')" onMouseOver="Desvia2('${v.rut}');"></a> 
+                      </td>
+         </tr>
+                    <tr align="center"> <assign x="*"> </if>
+     </if>   
+   </if>
+  </list>
+        <tr align="center"> 
+        <td>
+     <td>
+  </table>
+		</div>
+           <else><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table width="98%" border="0" align="left">
+                  <tr align="center">
+                    <td height="75" width="10%" class="maticoN">
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b>No 
+                        se encontraron Empleados<br>
+                        que cumplan con este criterio</b></font></div>
+                    </td>
+                 </tr>
+               </table>
+            </if>
+              </td>
+            </tr>
+            <tr>
+              <td valign="middle" width="100%"> 
+              
+            </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+<script>
+<if (detalle)>LayerFotos.style.visibility="visible";</if>
+</script>
+</body>
+</html>

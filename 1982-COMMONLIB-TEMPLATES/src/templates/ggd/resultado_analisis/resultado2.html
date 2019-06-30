@@ -1,0 +1,174 @@
+<assign p = txt_Perfil>
+<assign pr = txt_Proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut2>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function fnBuscar(){
+	MM_openBrWindow('../servlet/Evaluadores?txt_Rut=${r}&txt_TipoEval=C','evaluadores','status=yes,width=780,height=250');
+}
+function fnMiEval(){
+	parent.frames.topFrame.pm_3();
+}
+function fnCambioRut(strRut,strPerfil,strProceso){
+  document.location.href='../servlet/ResultadoAnalisisII?txt_Rut='+strRut+'&txt_Perfil='+strPerfil+'&txt_Proceso='+strProceso;
+}
+function fnResultadoAnalisis(){
+    //alert("../servlet/ResultadoAnalisis?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}");
+	location.href="../servlet/ResultadoAnalisis?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}";
+}
+function fnAplicar(){
+	form1.submit();
+}
+function fnInicio(){
+<if MSG !=""> 	alert('${MSG}'); </if>
+<if REG == true && MSG !="">  </if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer7 {	position:absolute;
+	left:283px;
+	top:146px;
+	width:212px;
+	height:21px;
+	z-index:6;
+}
+#Layer6 {	position:absolute;
+	left:553px;
+	top:461px;
+	width:433px;
+	height:24px;
+	z-index:5;
+}
+#Layer13 {	position:absolute;
+	left:406px;
+	top:372px;
+	width:186px;
+	height:13px;
+	z-index:12;
+}
+#Layer8 {	position:absolute;
+	left:12px;
+	top:194px;
+	width:250px;
+	height:13px;
+	z-index:7;
+}
+#Layer10 {	position:absolute;
+	left:0px;
+	top:118px;
+	width:292px;
+	height:14px;
+	z-index:9;
+}
+#Layer11 {	position:absolute;
+	left:511px;
+	top:193px;
+	width:283px;
+	height:15px;
+	z-index:10;
+}
+#Layer12 {position:absolute;
+	left:0px;
+	top:2px;
+	width:292px;
+	height:14px;
+	z-index:9;
+}
+#Layer13 {position:absolute;
+	left:4px;
+	top:184px;
+	width:100px;
+	height:14px;
+	z-index:9;
+}
+#Layer5 {
+	position:absolute;
+	left:8px;
+	top:218px;
+	width:490px;
+	height:213px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer4 {
+	position:absolute;
+	left:12px;
+	top:11px;
+	width:205px;
+	z-index:12;
+}
+-->
+</style>
+</head>
+
+<body background="../servlet/Tool?images/ggd/competencias/resanalisis.jpg" onLoad="fnInicio();">
+<div class="boton_rojo" id="Layer4">Instrucciones</div>
+<form name="form1" method="post" action="../servlet/ResultadoAnalisisII">
+<div class="txt_gris_bold" id="Layer11">Observaciones</div>
+<div class="txt_gris_bold" id="Layer8">Reflexi&oacute;n</div>
+<div id="Layer6">
+  <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td nowrap><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+      <td width="30"><a href="#" onClick="fnAplicar();return false"><img name="resultados_analisis_r22_c19" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt="Grabar"></a></td>
+      <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="resultados_analisis_r22_c21" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer7">
+  <table width="211" border="0" cellpadding="0">
+    <tr>
+      <td width="143"><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+      <td width="30"><a href="#"  onClick="fnMiEval();return false;"><img name="resultados_analisis_r7_c2" src="../servlet/Tool?images/images_ggd/ggd/botones/mi_evaluacion.gif" width="30" height="30" border="0" alt="Mi Evaluaci&oacute;n"></a></td>
+      <td width="30"><a href="#" onClick="fnBuscar();return false"><img name="resultados_analisis_r7_c6" src="../servlet/Tool?images/images_ggd/ggd/botones/colaboradores.gif" width="30" height="30" border="0" alt="Colaboradores"></a></td>
+    </tr>
+  </table>
+</div>
+<div class="boton_rojo" id="layer" style="position:absolute; width:210px; height:151px; z-index:4; left: 11px; top: 33px; overflow: auto;"> Se presentan los resultados de su evaluaci&oacute;n de competencias para su an&aacute;lisis y reflexi&oacute;n. En el gr&aacute;fico de la derecha se muestra su perfil de competencias observado (que arroja la evaluaci&oacute;n) comparado con el requerido para su cargo.</div>
+<div id="Layer2" style="position:absolute; width:257px; height:106px; z-index:1; left: 238px; top: 30px;" >
+<assign h = "rut/ver_rut_ra.html">${TM_Rut(h,r)}</div>
+<div id="Layer1" style="position:absolute; width:418px; height:152px; z-index:2; left: 510px; top: 22px; overflow: auto;">
+<assign h = "resultado_analisis/indicador_ii.html">${TM_EvaObt(h,r,r,p,pr,"")}</div>
+<span id="Layer5">
+<div class="txt_gris" id="Layer10">Fortalezas</div>
+<div class="txt_gris" id="Layer12">Debilidades</div>
+<div id="Layer1" style="position:absolute; width:460px; height:78px; z-index:2; left: 0px; top: 10px; overflow: auto; background-image: url(../servlet/Tool?images/images_ggd/ggd/resultado_analisis/graficos.jpg); layer-background-image: url(../servlet/Tool?images/images_ggd/ggd/resultado_analisis/graficos.jpg); border: 1px none #000000;">
+<assign h = "resultado_analisis/indicador_ii_D.html">${TM_EvaObt(h,r,r,p,pr,"D")}</div>
+<div id="Layer1" style="position:absolute; width:460px; height:78px; z-index:2; left: 0px; top: 132px; overflow: auto; background-image: url(../servlet/Tool?images/images_ggd/ggd/resultado_analisis/graficos.jpg); layer-background-image: url(../servlet/Tool?images/images_ggd/ggd/resultado_analisis/graficos.jpg); border: 1px none #000000;">
+<assign h = "resultado_analisis/indicador_ii_F.html">${TM_EvaObt(h,r,r,p,pr,"F")}</div>
+</span>
+<div id="Layer3" style="position:absolute; width:477px; height:217px; z-index:3; left: 510px; top: 215px;">
+
+  <table width="100%" border="0">
+    <tr>
+<span class="txt_gris">Debilidades</span>
+      <td height="70">
+        <textarea name="txt_ObsD" cols="110" rows="5" class="fondo_tabla" id="txt_ObsD">${Data.observacion_d}</textarea>
+        <input name="txtAccion" type="hidden" id="txtAccion" value="GR">
+        <input name="txt_Rut" type="hidden" id="txt_Rut" value="${r}">
+		<input name="txt_Perfil" type="hidden" id="txt_Perfil" value="${p}">
+		<input name="txt_Proceso" type="hidden" id="txt_Proceso" value="${pr}">
+	</td>
+    </tr>
+    <tr>
+      <td height="21"><span class="txt_gris">Fortalezas</span></td>
+    </tr>
+    <tr>
+      <td><textarea name="txt_ObsF" cols="110" rows="5" class="fondo_tabla" id="txt_ObsF">${Data.observacion_f}</textarea></td>
+    </tr>
+  </table>
+  
+</div>
+</form>
+</body>
+</html>

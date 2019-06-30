@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>INFORME AUTOEVALUACI&Oacute;N</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript"
+	src="../servlet/Tool?scripts/ventanas.js"
+	type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/ggd.css"
+	rel="stylesheet" type="text/css">
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function imprimir(){
+	window.print();
+}
+function fnBuscar(perfil){
+	document.frm.action="../servlet/cargaInforme3?perfil="+perfil;
+	document.frm.submit();
+}
+</script>
+<body
+	background="../servlet/Tool?images/ggd/competencias/informe.jpg"
+	style="background-color: #666666; background-repeat: no-repeat">
+<form action="../servlet/EvaluacionG"
+	method="post" name="frm">
+<table width="100%" height="580" border="0" align="center"
+	cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="5" colspan="3"></td>
+	</tr>
+	<tr>
+		<td width="6"><img
+			src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif"
+			width="6" height="22"></td>
+		<td width="100%" valign="middle"
+			background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif"
+			class="texto_texto"><strong class="txt_gris_bold">Informe
+		N&ordm; 4</strong></td>
+		<td width="6" align="right"><img
+			src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif"
+			width="6" height="22"></td>
+	</tr>
+	<tr height="25px">
+		<td colspan="3" align="center" valign="top" class="fondo_tabla">
+		<table width="98%" border="0" align="center" cellpadding="1"
+			cellspacing="2">
+			<tr>
+				<td class="texto_titulo_rojo">COMPETENCIAS POR PERFIL : <select
+					name="perfiles" class="texto_texto"
+					onChange="fnBuscar(this.value);">
+					<option>Seleccionar Perfil</option>
+					<list getPerfiles as p>
+					<option value="${p.id_perfil}">${p.perfil}</option>
+					</list>
+				</select></td>
+				<td align="right"><img title="Imprimir"
+					src="../servlet/Tool?images/images_ggd/ggd/botones/inf_imprimir.jpg"
+					alt="Imprimir" onClick="imprimir();"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" valign="top" align="center">
+			<table width="100%" border="0" align="center" cellpadding="1" cellspacing="2"  class="fondo_tabla">
+				<tr>
+					<td class="fondo_tablaGris">
+					<table width="100%">
+						<tr>
+							<td align="center" nowrap class="texto_texto">Perfil</td>
+							<td class="texto_texto" align="center">:</td>
+							<td align="center" nowrap class="texto_texto">${descripcionPerfil}</td>
+							<td class="texto_texto" align="center" width="50"></td>
+							<td class="texto_texto" align="center">&nbsp;</td>
+							<td class="texto_texto" align="center">&nbsp;</td>
+							<td class="texto_texto" align="center">&nbsp;</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<table width="100%" align="center" cellpadding="2" cellspacing="1">
+						<tr>
+							<td class="fondo_tablaAmarillo" align="center">COMPETENCIAS</td>
+							<td class="fondo_tablaAmarillo" align="center">NIVEL ESPERADO</td>
+							<td class="fondo_tablaAmarillo" align="center">NIVEL DOMINIO
+							ACTUAL</td>
+						</tr>
+						<list datos as l>
+						<tr>
+							<td align="left" class="fondo_tablaGris"
+								style="FONT-WEIGHT: bold; COLOR: #ff0000;">${l.dc}</td>
+							<td class="fondo_tablaGris" align="center">${l.nc}</td>
+							<td align="center" class="fondo_tablaGris">__</td>
+						</tr>
+						<tr>
+							<td class="texto_texto" align="left" colspan="3">${l.glosa}</td>
+						</tr>
+						</list>
+					</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" valign="top" align="center">
+			<table width="100%" border="0" align="center" cellpadding="1" cellspacing="2"  class="fondo_tabla">
+				<tr>
+					<td class="fondo_tablaGris">
+						<table width="100%" border="0" align="center" cellpadding="0"
+							cellspacing="1">
+							<tr>
+								<td width="166" align="center" class="texto_texto">Comentarios</td>
+								<td width="21" align="center" class="texto_texto">:</td>
+								<td width="570" align="center" class="texto_texto">&nbsp;</td>
+								<td class="texto_texto" align="center" width="50">&nbsp;</td>
+								<td width="43" align="center" class="texto_texto">&nbsp;</td>
+								<td width="43" align="center" class="texto_texto">&nbsp;</td>
+								<td width="47" align="center" class="texto_texto">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="texto_texto" align="center">&nbsp;</td>
+								<td class="texto_texto" align="center">&nbsp;</td>
+								<td class="texto_texto" align="center">&nbsp;</td>
+								<td class="texto_texto" align="center" width="50">&nbsp;</td>
+								<td class="texto_texto" align="center">&nbsp;</td>
+								<td class="texto_texto" align="center">&nbsp;</td>
+								<td class="texto_texto" align="center">&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<!-- 
+<span id="Layer1" style="position:absolute; width:975px; height:495px; z-index:1; overflow:auto; left: 8px; top: 77px;">
+</span>
+ --></form>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<HTML>
+<HEAD>
+	<TITLE>M&#243;dulo Reportes MIS</TITLE>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js"></script>
+	<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+
+	<script language="JavaScript">
+	<!--
+	function Reportes(){
+		var idrep = document.frmr.tipo_reporte[document.frmr.tipo_reporte.selectedIndex].value ;
+		var periodo_rep	= document.frmr.periodo[document.frmr.periodo.selectedIndex].value + '01';
+		var esarea=0;
+		var rR = document.frmr.elements["tipo"];
+		if(rR[0].checked)
+		{  esarea = 0; }
+		else
+		{  esarea = 1; }
+		window.open("about:blank", "reportes","scrollbars=yes,toolbar=no,resizable=no,width=1030,height=650,left=100,top=150");
+		document.frmS1.periodo.value=periodo_rep;
+		document.frmS1.cliente.value=${Repo_cliente};
+		document.frmS1.idrep.value=idrep;
+		document.frmS1.unidad.value='${Repo_unidad}';
+		document.frmS1.esarea.value=esarea;
+		document.frmS1.rut.value=${Repo_rut};
+		document.frmS1.submit(); 
+	}
+	
+	function Graficos(){
+		var idgrafo = document.frmg.tipo_grafico[document.frmg.tipo_grafico.selectedIndex].value ;
+		var periodo_desde = document.frmg.periodo_desde[document.frmg.periodo_desde.selectedIndex].value ;
+		var periodo_hasta = document.frmg.periodo_desde[document.frmg.periodo_hasta.selectedIndex].value;
+		var esarea=0;
+		var rG = document.frmg.elements["tipo"];
+		if(rG[0].checked)
+		{  esarea = 0; }
+		else
+		{  esarea = 1; }
+		window.open("about:blank", "graficos","scrollbars=no,toolbar=no,resizable=no,width=1030,height=650,left=100,top=150");
+		document.frmS2.periodo.value=periodo_desde + "-" + periodo_hasta;
+		document.frmS2.cliente.value=${Grafo_cliente};
+		document.frmS2.idgrafo.value=idgrafo;
+		document.frmS2.unidad.value='${Grafo_unidad}';
+		document.frmS2.esarea.value=esarea;
+		document.frmS2.rut.value=${Grafo_rut};
+		document.frmS2.submit(); 
+	}
+	
+	function DatosMis(urlMis){
+		var url = "../servlet/ServletCallMis?url=" + urlMis;
+		var win = open(url, "Reportes", "scrollbars=yes,toolbar=no,resizable=no,width=850,height=560,left=100,top=150");
+		win.focus();
+		return false;
+	}
+	
+	function RptGastos(unidad,tipo){
+	   //alert(unidad + "_" + tipo);
+	   var href="../servlet/ServletSelectPeriodo?unidad="+unidad+"&tipo="+tipo;
+	   window.open(href, 'reporte', 'width=370,height=200');
+	}
+	
+	function CallReports(reporte,unidad,periodo) {
+	document.location.href="";
+	}
+	
+	function cantidad(num) {
+		var n = num
+		if (isNaN(n)) {
+		  return n;
+		}
+		if ( n == 0) {
+		  document.write('0');
+		} else {
+		  for (i = 0; i < n; i++) {
+			document.write('<img src=../servlet/Tool?images/Gestion/botones/pers.gif width=24 height=20 border=0>');
+		  }
+		}
+	}
+	
+	
+	
+	function onSelectChange(){
+		var selObj = document.getElementById('tipo_grafico');
+		var index = selObj.selectedIndex;
+	 	var ddVal = selObj.options[index].value;
+	 	var ddText = selObj.options[index].text;
+	 	
+	 	if(ddVal == 'evaluacionGgd'){
+	 		document.getElementById('grafMis').style.display = 'none'; 
+	 		document.getElementById('grafPortal').style.display = 'block'; 
+	 	}
+	 	else{
+	 		document.getElementById('grafPortal').style.display = 'none'; 
+	 		document.getElementById('grafMis').style.display = 'block'; 
+	 	}
+	 	
+	
+	}
+	
+	function GraficosGgd(){
+		
+		var selObj = document.getElementById('perfiles');
+		var index = selObj.selectedIndex;
+	 	var value = selObj.options[index].value;
+	 	var text = selObj.options[index].text;
+	 	var esarea=0;
+	 	var tipo = document.frmg.elements["type"];
+	 	if(tipo[0].checked)	{  
+	 		esarea = 0; 
+		}
+		else{  
+			esarea = 1; 
+		}
+	 	
+	 	var unidad = document.getElementById('unid').value; 	
+	 	var empresa = document.getElementById('empresa').value;
+	 	
+	 	var params ="&id_perfil="+value+"&esarea="+esarea+"&unidad="+unidad+"&empresa="+empresa;
+	 	
+		
+	 	window.open('../servlet/Tool?htm=ggd/graficosGgd.html'+params,'popup',width=850,height=580);
+		
+	}
+	//-->
+	</script>
+
+	<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+	<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+
+
+	<style type="text/css">
+	<!--
+	
+
+
+	
+	
+
+	-->
+	</style>
+	
+	<script type="text/javascript">
+		
+		function mostrar(divMostrar, divHide1, divHide2){
+			document.getElementById(divMostrar).style.display = 'block'; 
+			
+			document.getElementById(divHide1).style.display = 'none'; 
+			document.getElementById(divHide2).style.display = 'none'; 
+		}
+			
+	
+	</script>
+	
+</HEAD>
+<BODY >
+
+<form name="frmS1" method="post" action="../servlet/ServletCallMisRepo" target="reportes">
+<input type="hidden" name="periodo"/>
+<input type="hidden" name="cliente"/>
+<input type="hidden" name="idrep"/>
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="esarea"/>
+<input type="hidden" name="rut"/>
+</form>
+
+<form name="frmS2" method="post" action="../servlet/ServletCallMisGrafo" target="graficos">
+<input type="hidden" name="periodo"/>
+<input type="hidden" name="cliente"/>
+<input type="hidden" name="idgrafo"/>
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="esarea"/>
+<input type="hidden" name="rut"/>
+</form>
+
+<div id="menuReportes">
+	<table class="tableStyle" cellspacing="0" cellpading="0">
+		<th><header>Reportes MIS</header></th>
+		<tr>
+			<td>
+			<table id="tblContenidos" cellspacing="0" cellpading="0">
+	
+					<tr>
+						<td class="textoImportante">Unidad:&nbsp;${unid_desc}</td>
+					</tr>
+
+					<tr>
+						<td>
+							<div class=""> 
+								<span class="btnRpt" onclick="mostrar('Reportes', 'Graficos', 'Semaforos')">Reportes</span>
+								<span class="btnGraficos" onclick="mostrar('Graficos', 'Reportes', 'Semaforos')">Gr&aacute;ficos</span>
+<!--  								<span class="btnSemaforo" onclick="mostrar('Semaforos', 'Graficos', 'Reportes')">Status</span> -->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						
+							<div id="Graficos" class="divMenu">
+							<form name="frmg" method="post" action="../servlet/GestionDiariaInformeGestion">
+								<input type="hidden" value="${empActual}" name="empresa" id="empresa">
+								<input type="hidden" value="${uniActual}" name="unidad" id="unid">
+								<input type="hidden" value="Graficos" name="tema">
+			
+								<table align="center">
+									<tr>
+										<td ><strong>Seleccione el Tipo de Dato</strong></td>
+									</tr>
+									<tr>
+										<td>
+											<select class="inputText" id ="tipo_grafico" name="tipo_grafico" onChange="onSelectChange()" style="width: 100%;">
+												<list tipoGraficos as tg>
+													<option value="${tg.id}" <if ( tg.id == periodo ) >selected</if> >
+														${tg.desc}
+													</option>
+												</list>
+											<!--  	<option value="evaluacionGgd">Evaluaci&oacute;n del Dempe&ntilde;o</option> -->
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table  >
+												<tr>
+													<td width="85%" ><strong>Periodo del Muestreo</strong></td>
+												</tr>
+												<tr>
+													<td class="detalleTablaChico">
+														De
+														<select class="inputText" name="periodo_desde">
+															<list periodosMis_Desde as pmd><option value="${pmd.id}" <if ( pmd.id == periodo ) >selected</if> >${pmd.desc}</option></list>
+														</select>
+														Hasta
+														<select class="inputText" name="periodo_hasta">
+															<list periodosMis_Hasta as pma><option value="${pma.id}" <if ( pma.id == periodo ) >selected</if> >${pma.desc}</option></list>
+														</select>
+													</td>
+												</tr>
+												<tr>
+													<td width="82%" ><strong>Universo del Gr&aacute;fico</strong></td>
+												</tr>
+												<tr>
+													<td class="detalleTablaChico">
+														<center>
+															<table width="100%">
+																<tr>
+																	<td class="detalleTablaChico">
+																		<input  type="radio" name="tipo" value="0" <if ( esArea == "0" ) >checked</if> > Unidad
+																	</td>
+																	<td class="detalleTablaChico">
+																		<input  type="radio" name="tipo" value="1" <if ( esArea == "1" ) >checked</if> > Area
+																	</td>
+																</tr>
+															</table>
+														</center>
+													</td>
+												</tr>
+												<tr>
+													<td height="20" colspan="2"></td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<center><input class="btnMis" type="button" value="Genera Grafico" OnClick="Graficos();"/></center>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								
+								<div id="grafPortal" style="display:none">
+									<if existe == "1">
+										<table width="100%" border="1" cellpadding="0">
+											<tr>
+												<td>
+													Perfil
+												</td>
+											</tr>
+											<tr>
+												<td class="detalleTablaChico">
+													<select class="inputText" id="perfiles">
+														<list perfiles as p><option value="${p.idPerfil}">${p.perfil}</option></list>
+													</select>
+												</td>
+											</tr>
+											<tr><td height="10px"/></tr>
+											<tr>
+												<td>
+													Universo del Gr&aacute;fico
+												</td>
+											</tr>
+											<tr>
+												<td class="detalleTablaChico">
+													<center>
+														<table width="100%">
+															<tr>
+																<td class="detalleTablaChico">
+																	<input  type="radio" name="type" value="0" <if ( esArea == "0" ) >checked</if> > Unidad
+																</td>
+																<td class="detalleTablaChico">
+																	<input  type="radio" name="type" value="1" <if ( esArea == "1" ) >checked</if> > Area
+																</td>
+															</tr>
+														</table>
+													</center>
+												</td>
+											</tr>
+											<tr><td height="10px"/></tr>
+											<tr>
+												<td>
+													<center><input class="btnMis" type="button" value="Genera Grafico" OnClick="GraficosGgd();"/></center>
+												</td>
+											</tr>
+											</table>
+										<else>
+											<div style=" border: red 1px solid; margin-top:40px;">
+												<div class="inputText" style=" font-size:11px; padding: 10px;">
+													Usted no ha contratado los servicios que acaba de seleccionar. <br>				
+													Para mayor informaci&oacute;n cont&aacute;ctese con su administrador.
+												</div>
+											</div>
+										</if>
+									</div> 
+							</form>
+							</div>		
+							
+							<div id="Reportes" class="divMenu">
+								<form name="frmr" method="post" action="../servlet/GestionReportesInformeGestion">
+									<input type="hidden" value="${empActual}" name="empresa">
+									<input type="hidden" value="${uniActual}" name="unidad">
+									<input type="hidden" value="Reportes" name="tema">
+			  							<table align="center">
+			  								<tr>
+												<td ><strong>Seleccione el Tipo de Dato</strong></td>
+											</tr>
+											<tr>
+												<td class="detalleTablaChico" >
+													<select class="inputText" name="tipo_reporte">
+														<list tipoReporte as tr>
+															<option value="${tr.id}" <if ( tr.id == periodo ) >selected</if> >
+																${tr.desc}
+															</option>
+														</list>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td ><strong>Periodo del Muestreo </strong></td>
+											</tr>
+											<tr>
+												<td>
+													<select class="inputText" name="periodo">
+														<list periodosReporte as pr>
+															<option value="${pr.id}" <if ( pr.id == periodo ) >selected</if> >
+																${pr.desc}
+															</option>
+														</list>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td> <strong>Universo del Gr&aacute;fico</strong></td>
+											</tr>
+											<tr>
+												<td class="detalleTablaChico">
+													<table width="100%">
+														<tr>
+															<td class="detalleTablaChico"><input type="radio" name="tipo" value="0" <if ( esArea == "0" ) >checked</if> > Unidad</td>
+															<td class="detalleTablaChico"><input type="radio" name="tipo" value="1" <if ( esArea == "1" ) >checked</if> > Area</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td  >
+													<center><input class="btnMis" type="button" value="Genera Reporte" OnClick="Reportes();"/></center>
+												</td>
+											</tr>
+										</table>
+								</form>
+							</div>					
+			
+							<div id="Semaforos" class="divMenu">
+								<form name="frmf" method="post" action="../servlet/GestionReportes">
+								<input type="hidden" value="Semaforos" name="tema">
+									<table align="center" width="100%" border="0" cellpadding="0">
+										<tr><td align="center">En desarrollo</td></tr>
+									</table>
+								</form>
+							</div>
+			
+			
+						</td>
+					</tr>				
+				</table>			
+			</td>
+		</tr>
+	</table> <!-- macTableStyle1 -->
+</div>
+
+<!--  
+<div id="PadreDatosper">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="22"><img src="../servlet/Tool?images/Gestion/titulos/neutro.gif" width="22" height="22"></td>
+      
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <span class="tabla_gris" id="HijoDatosper">
+  <table width="100%" height="100%" align="center">
+    <tr>
+      <td align="center" valign="top"><br>
+      </td>
+    </tr>
+  </table>
+</span> </div>
+
+-->
+
+</BODY>
+</HTML>

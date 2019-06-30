@@ -1,0 +1,202 @@
+ <HTML>
+<HEAD>
+<TITLE>ListaIndicadores</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+var layerVistaAct ="";
+function OcultarLayer(){
+	if (layerVistaAct != "")
+		MM_showHideLayers('Layer'+layerVistaAct,'','hide');
+}
+
+function VerLayer(cual){
+	//alert(cual);
+	if ((cual != "-1") && (cual != "")) {
+		OcultarLayer();
+		MM_showHideLayers('Layer'+cual,'','show');
+		layerVistaAct = cual;
+	}
+}
+
+function editarIndicador(item, grupo, desde, hasta) {
+	var url = "/servlet/ManIndicadores?item="+item+"&grupo="+grupo+"&desde="+desde+"&hasta="+hasta;
+	alert(url);
+	document.location.href = url;
+}
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644">
+  <TR> 
+    <TD COLSPAN=2 height="4"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_01.jpg" WIDTH=614 HEIGHT=4></TD>
+    <TD COLSPAN=2 ROWSPAN=2> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_02.jpg" WIDTH=29 HEIGHT=22></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=4></TD>
+  </TR>
+  <TR> 
+    <TD ROWSPAN=8 width="4" bgcolor="#FFA400">&nbsp; </TD>
+    <TD valign="top" width="610" ROWSPAN=8 bgcolor="#FFA400">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="350">
+        <tr bgcolor="#FFCF75" align="center"> 
+          <td height="20" colspan="2"><font class="textB">Indicadores de Gesti&oacute;n</font></td>
+        </tr>
+        <tr> 
+          <td valign="middle" width="200" rowspan="2"> 
+            <select name="select" size="20" class="listas" style="width=190" onClick="VerLayer(this.value)" onChange="VerLayer(this.value)">
+              <if !(indicadores)> 
+              <option value="-1">No existen Indicadores</option>
+              <else> <list indicadores as i> 
+              <option value="${i.item}">${i.nombre}</option>
+              </list> </if> 
+            </select>
+            &nbsp; </td>
+          <td height="311" width="410" valign="top"> <list indicadores as i> 
+            <div id="Layer${i.item}" style="position:absolute; width:388px; height:200px; z-index:1; left: 215px; top: 94px; visibility: hidden" class="carpeta"> 
+              <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr> 
+                  <td width="23" height="22"><a href="#" onClick="editarIndicador('${i.item}', '${i.grupo}', '${i.periodo_desde}', '${i.periodo_hasta}'); return false;"><img src="/Gestion/botones/icono_editar.gif" width="25" height="25" border="0" alt="Editar Indicador"></a></td>
+                  <td valign="baseline" width="350" class="textB" height="22">${i.nombre}</td>
+                </tr>
+                <tr> 
+                  <td class="textB" height="22" colspan="2">Agrupaci&oacute;n: 
+                    <font class="texto">${i.grupo_desc}</font></td>
+                </tr>
+                <tr> 
+                  <td align="center" colspan="2"> 
+				  <form name="form${i.item}" method="post" action="/servlet/ListaIndicadores">
+                      <table border="1" cellspacing="0" cellpadding="0" bgcolor="#44406A">
+					
+                      <tr> 
+                        <td valign="middle" align="center" class="detal2" rowspan="2">Alertas</td>
+                        <td class="detal2" colspan="2" align="center"> Rangos 
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td class="detal2" width="120" align="center"> Desde</td>
+                        <td class="detal2" width="120" align="center"> Hasta</td>
+                      </tr>
+                      <tr> 
+                        <td class="textB" align="center" bgcolor="#FFA400" > <img src="/images/Gestion/semaforo/verde.gif" width="27" height="30" alt="Normal"> 
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rvd" value="${i.tramo_inf1}" size="10">
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rvh" value="${i.tramo_inf2}" size="10">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td class="textB" align="center" bgcolor="#FFA400"> <img src="/images/Gestion/semaforo/amarillo.gif" width="27" height="30" alt="Sensible"> 
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rad" value="${i.tramo_medio1}" size="10">
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rah" value="${i.tramo_medio2}" size="10">
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td class="textB" align="center" bgcolor="#FFA400"> <img src="/images/Gestion/semaforo/rojo.gif" width="27" height="30" alt="Cr&iacute;tico"> 
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rrd" value="${i.tramo_sup1}" size="10">
+                        </td>
+                        <td width="120" align="center"> 
+                          <input type="text" name="rrh" value="${i.tramo_sup2}" size="10">
+                        </td>
+                      </tr>
+                    </table>
+					  <input type="hidden" name="item" value="${i.item}">
+                      <input type="hidden" name="peri_desde" value="${i.periodo_desde}">
+                      <input type="hidden" name="peri_hasta" value="${i.periodo_hasta}">
+                      
+                      <input type="image" border="0" name="imageField" src="/Gestion/botones/afp_luz.jpg" width="64" height="31">
+                      
+                    </form>
+                  </td>
+                </tr>
+                <tr align="right"> 
+                  <td colspan="2"><a href="#" onClick="MM_callJS('document.form${i.item}.submit();'); return false"> 
+                    Mantener</a></td>
+                </tr>
+              </table>
+            </div>
+            </list> </td>
+        </tr>
+        <tr> 
+          <td height="19" align="right">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td height="4"></td>
+          <td></td>
+        </tr>
+      </table>
+    </TD>
+    <TD width="1" height="18"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD ROWSPAN=7 width="13"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_06.jpg" WIDTH=13 HEIGHT=336></TD>
+    <TD width="16" height="39"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_07.jpg" WIDTH=16 HEIGHT=39></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="50"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_08.jpg" WIDTH=16 HEIGHT=50></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="52"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_10.jpg" WIDTH=16 HEIGHT=52></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="45"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_11.jpg" WIDTH=16 HEIGHT=45></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="55"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_12.jpg" WIDTH=16 HEIGHT=55></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="51"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_13.jpg" WIDTH=16 HEIGHT=51></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="44"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_14.jpg" WIDTH=16 HEIGHT=44></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+  </TR>
+</TABLE>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+parent.CerrarVentProcesando();
+</script>
+</HTML>

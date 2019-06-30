@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Programación de Saludos</title>
+	<link rel="stylesheet" href="../servlet/Tool?style/jquery-ui/jquery-ui.css">
+	<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js"></script>
+	<script src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+	<script src="../servlet/Tool?scripts/nicEdit/nicEdit.js"></script> 
+	<script type="text/javascript">
+		var edit = null;
+		
+		$(document).ready(function() {
+			console.log("Iniciando Editor");
+			edit = new nicEditor( {
+				fullPanel : true,
+				onSave : function(content, id, instance) {
+				    alert('save button clicked for element '+id+' = ');
+				},
+				onOpen : function(content, id, instance) {
+					    alert('open button clicked for element '+id+' = '+content);
+				}
+			}).panelInstance('area2');
+		});
+
+		function grabar() {
+			if(edit == null) {
+				alert("No se puede grabar, intentelo nuevamente");
+				return;
+			}
+			document.form1.save.value = "true";
+			document.form1.texto.value = edit.instanceById('area2').getContent();
+			document.form1.submit();
+		}
+	</script>
+	
+<style type="text/css">
+	#tabs {
+		font-size: 70%;
+	}
+</style>
+</head>
+<body>
+	<div style="display: table;">
+		<div style="display: table-row;">
+			<div style="display: table-cell; vertical-align: top;">
+				<select size="25">
+					<option>Sin Plantillas</option>
+				</select>
+	
+			</div>
+			<div style="display: table-cell; vertical-align: top;">
+				
+						<textarea style="width: 100%; height: 100%;" id="area2">							
+						</textarea>
+
+	
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>

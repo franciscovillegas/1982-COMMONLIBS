@@ -1,0 +1,161 @@
+  <html>
+<head>
+<title>Historia Indicador</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../servlet/Tool?style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+ONLOAD="parent.frames.topFrame.location.href='../servlet/topIndicadores?unidad=${unid_desc}'"
+
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {
+	color: #000000;
+	font-weight: bold;
+}
+.Estilo2 {color: #000000}
+-->
+</Style>
+</head>
+
+<body background="../servlet/Tool?images/Gestion/news/fondo_descanso.jpg" leftmargin="0" topmargin="0" style="background-repeat:no-repeat"  onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/news/botones/volver_f2.gif')">
+<table border="0" cellspacing="0" cellpadding="0" width="566" height="395">
+  <tr>
+    <td height="57" class="textB">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="560" class="textB"> 
+      <div align="center">Historia del Indicador ${unid_desc}</div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <table width="100%" border="0" cellspacing="3" cellpadding="0">
+        <tr valign="top"> 
+          <td > <font class="textB">${grupo_desc}</font> </td>
+          <td colspan="2" ><span class="textB">Indicador:</span> <span class="texto"><if (existe_indic)> 
+            ${nombre}<else>No Existente.</if></span></td>
+        </tr>
+        <tr valign="top"> 
+          <td width="46%" ><span class="textB">Tipo Indicador:</span> <span class="texto"> 
+            <switch (tipo_indic)> <case "U">Para la Unidad<break> <case "R">Para 
+            la Jerarqu&iacute;a</switch></span></td>
+          <td width="44%" ><span class="textB">Periodo:</span> <span class="texto"> 
+            ${peri}</span></td>
+          <td width="10%" > <a href="javascript:window.history.back()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('volver','','../servlet/Tool?images/Gestion/news/botones/volver_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/news/botones/volver.gif" width="91" height="21" border="0" name="volver"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="250"> 
+      <div id="Layer1" style="position:absolute; z-index:1; overflow: auto; width: 558px; height: 350px; top: 139px; left: 4px;"> 
+        <table border="0" cellspacing="1" cellpadding="0" width="100%">
+          <tr bgcolor="#D8D8D8"> 
+            <td rowspan="2" colspan="2"> 
+              <div align="center" class="Estilo1"><font face="Arial, Helvetica, sans-serif" size="1">Periodo</font></div>
+            </td>
+            <td width="174" rowspan="2"> 
+              <div align="center" class="Estilo1"><font face="Arial, Helvetica, sans-serif" size="1">Glosa</font></div>
+            </td>
+            <td rowspan="2" width="174"> 
+              <div align="center" class="Estilo1"><font face="Arial, Helvetica, sans-serif" size="1">Pol&iacute;tica</font></div>
+            </td>
+            <td rowspan="2" colspan="2"> 
+              <div align="center" class="Estilo2"></div>
+              <div align="center" class="Estilo2"><b><font face="Arial, Helvetica, sans-serif" size="1">Valor</font></b></div>
+            </td>
+            <td width="142" rowspan="2"> 
+              <div align="center" class="Estilo2"><b><font face="Arial, Helvetica, sans-serif" size="1">Estado 
+                de Alerta</font></b></div>
+            </td>
+            <td colspan="3"> 
+              <div align="center" class="Estilo2"><b><font face="Arial, Helvetica, sans-serif" size="1">Tramos</font></b></div>
+            </td>
+          </tr>
+          <tr bgcolor="#FF6600"> 
+            <td width="82" bgcolor="#FFFF99"> 
+              <div align="center" class="Estilo2"><font size="1" face="Arial, Helvetica, sans-serif"><b>Inferior</b></font></div>
+            </td>
+            <td width="82" bgcolor="#FFFF99"> 
+              <div align="center" class="Estilo2"><font size="1" face="Arial, Helvetica, sans-serif"><b>Medio</b></font></div>
+            </td>
+            <td width="82" bgcolor="#FFFF99"> 
+              <div align="center" class="Estilo2"><b><font size="1" face="Arial, Helvetica, sans-serif">Superior</font></b></div>
+            </td>
+          </tr>
+          <if !(indicadores)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td colspan="10"><font face="Arial, Helvetica, sans-serif" size="1"><i>No 
+              existen valores para los ultimos 12 periodos...</i></font></td>
+          </tr>
+          <else> <list indicadores as i> <if (i.existe_indic) && (i.existe_valor)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="74"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${i.periodo}</font></div>
+            </td>
+            <td width="20" align="left"><a href="#" onClick="VentEncargado('${unid_id}', '${unid_desc}', '${i.periodo}'); return false"><img src="/images/Gestion/botones/encargado.gif" width="19" height="24" alt="Encargado de la unidad en el periodo" border="0"></a></td>
+            <td width="174"><font face="Arial, Helvetica, sans-serif" size="1">${i.glosa}</font></td>
+            <td width="174"><font face="Arial, Helvetica, sans-serif" size="1">${i.descrip}</font></td>
+            <td width="35" align="center"><font face="Arial, Helvetica, sans-serif" size="1"><img src="../servlet/Tool?images/Gestion/semaforo/${i.foto}" width="27" height="30" alt="${i.tramo}"> 
+              </font></td>
+            <td width="64"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${i.valor}</font></div>
+            </td>
+            <td width="142"><font face="Arial, Helvetica, sans-serif" size="1">${i.tramo_desc}</font></td>
+            <td width="82"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                <nobr>${i.tramo_inf1} - ${i.tramo_inf2}</nobr></font></div>
+            </td>
+            <td width="82"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                <nobr>${i.tramo_med1} - ${i.tramo_med2}</nobr></font></div>
+            </td>
+            <td width="82"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                <nobr>${i.tramo_sup1} - ${i.tramo_sup2}</nobr></font></div>
+            </td>
+          </tr>
+          </if> </list> </if> 
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

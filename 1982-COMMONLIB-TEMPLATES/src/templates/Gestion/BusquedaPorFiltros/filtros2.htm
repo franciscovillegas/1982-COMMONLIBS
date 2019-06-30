@@ -1,0 +1,277 @@
+ <HTML>
+<head>
+<title>Filtros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function Valida() { //v2.0
+  var s1=document.form1.sexo1.value;
+  var s2=document.form1.sexo2.value;
+  var ed1=document.form1.rango1.value;
+  var ed2=document.form1.rango2.value;
+  var apel1=document.form1.apellido1.value;
+  var apel2=document.form1.apellido2.value;
+  var civil=document.form1.civil.value;
+   //*********No ha seleccionado ning&#250;n criterio******
+  if ((s1!="M")&&(s2!="F")&&(ed1=="")&&(ed2=="")&&(apel1=="")&&(apel2=="")&&(civil=="0"))
+     alert("Seleccione un criterio.");
+  else  
+     document.form1.submit();     
+     
+}
+
+
+function Limpia(){
+	document.form1.sexo1.value="0";
+	document.form1.s1.checked=false;
+	document.form1.sexo2.value="0";
+	document.form1.s2.checked=false;
+	document.form1.rango1.value="";
+	document.form1.rango2.value="";  
+    document.form1.apellido1.value="";
+    document.form1.apellido2.value="";
+    document.form1.civil.value="0";
+ }
+
+function Valor1(valor) { //v2.0
+  if (document.form1.ap1.checked==true)
+       document.form1.paterno.value=valor;
+   else{
+      document.form1.paterno.value="0";
+      document.form1.ap1.checked=false;
+    }
+}
+
+function Valor2(valor) { //v2.0
+  if (document.form1.ap2.checked==true)
+         document.form1.materno.value=valor;
+   else{
+      document.form1.materno.value="0";
+      document.form1.ap2.checked=false;
+    }
+}
+
+function Cambia1(valor) { //v2.0
+  if (document.form1.s1.checked==true)
+     document.form1.sexo1.value=valor;
+  else{
+      document.form1.sexo1.value="0";
+      document.form1.s1.checked=false;
+    }
+}
+function Cambia2(valor) { //v2.0
+  if (document.form1.s2.checked==true)
+     document.form1.sexo2.value=valor;
+  else{
+      document.form1.sexo2.value="0";
+      document.form1.s2.checked=false;
+    }
+
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		busgraf_17_over = newImage("/images/Gestion/busgraf/busgraf_17-over.gif");
+		busgraf_17_down = newImage("/images/Gestion/busgraf/busgraf_17-down.gif");
+		busgraf_22_busgraf_17_over = newImage("/images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif");
+		busgraf_36_over = newImage("/images/Gestion/busgraf/busgraf_36-over.gif");
+		preloadFlag = true;
+	}
+}
+
+// -->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 ONLOAD="preloadImages();MM_preloadImages('/images/Gestion/busgraf/limpiar_down.gif','/images/Gestion/busgraf/buscar_down.gif')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Sectores de ImageReady (busqueda grafica sin.psd) -->
+<div align="center"> 
+  <TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 align="left">
+    <TR> 
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=97 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=11 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=73 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=48 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=37 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=84 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=114 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=83 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=28 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=41 HEIGHT=1></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=84 HEIGHT=1></TD>
+      <TD></TD>
+    </TR>
+    <TR> 
+      <TD COLSPAN=2> 
+        <div id="Layer1" style="position:absolute; width:649px; height:132px; z-index:1; left: 66px; top: 349px; visibility: hidden"> 
+          <form name="form1" method="post" action="/servlet/BuscaCriterios" target="mainF">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" height="193">
+              <tr> 
+                <td valign="top"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td colspan="7"> 
+                        <div align="center" class="textB"></div>
+                      </td>
+                    </tr>
+                    <tr valign="top"> 
+                      <td width="26"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                        <input type="checkbox" name="s2" value="F" onChange="Cambia2('F');">
+                        </font></td>
+                      <td width="32"><font face="Arial, Helvetica, sans-serif" size="2" class="texto"> 
+                        <input type="hidden" name="sexo2" value="0">
+                        </font></td>
+                      <td width="58">&nbsp;</td>
+                      <td width="50"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                        <input type="text" name="rango1" size="4" maxlength="2">
+                        </font></td>
+                      <td width="161"> 
+                        <div align="center"> 
+                          <select name="civil">
+                            <option value="0" selected>----------</option>
+                            <option value="Casad">Casado(a)</option>
+                            <option value="Solter">Soltero(a)</option>
+                            <option value="Separ">Separado(a)</option>
+                            <option value="Anul">Anulado(a)</option>
+                            <option value="Viu">Viudo(a)</option>
+                          </select>
+                        </div>
+                        <div align="right"></div>
+                      </td>
+                      <td width="224"> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                          <input type="text" name="apellido1" size="20" maxlength="30">
+                          </font></div>
+                      </td>
+                      <td width="98"><a href="#"  onClick="Valida();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image33','','/images/Gestion/busgraf/buscar_down.gif',1)"><img name="Image33" border="0" src="/images/Gestion/busgraf/buscar_up.gif" width="76" height="24"></a> 
+                      </td>
+                    </tr>
+                    <tr valign="top"> 
+                      <td width="26"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+                        <input type="checkbox" name="s1" value="M" onChange="Cambia1('M');">
+                        </font></td>
+                      <td width="32"><font face="Arial, Helvetica, sans-serif" size="2" class="texto"> 
+                        <input type="hidden" name="sexo1" value="0">
+                        </font></td>
+                      <td width="58">&nbsp;</td>
+                      <td width="50"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                        <input type="text" name="rango2" size="4" maxlength="2">
+                        </font></td>
+                      <td width="161"> 
+                        <div align="right"></div>
+                        <div align="right"></div>
+                      </td>
+                      <td width="224"> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                          <input type="text" name="apellido2" size="20" maxlength="30">
+                          <input type="hidden" name="grupini" value="1">
+                          <input type="hidden" name="grupter" value="10">
+                          <input type="hidden" name="grupo" value="10">
+                          </font></div>
+                      </td>
+                      <td width="98"> <a href="#"  onClick="Limpia();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image32','','/images/Gestion/busgraf/limpiar_down.gif',1)"><img name="Image32" border="0" src="/images/Gestion/busgraf/limpiar_up.gif" width="76" height="24"></a> 
+                        <input type="hidden" name="inicio" value="1">
+                        <input type="hidden" name="termino" value="12">
+                        <input type="hidden" name="actual" value="1">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <IMG SRC="/images/Gestion/busgraf/busgraf_01.gif" WIDTH=108 HEIGHT=43></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_02.gif" WIDTH=121 HEIGHT=43></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_03.gif" WIDTH=121 HEIGHT=43></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/busgraf_04.gif" WIDTH=114 HEIGHT=43></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/busgraf_05.gif" WIDTH=83 HEIGHT=43></TD>
+      <TD COLSPAN=3> <IMG SRC="/images/Gestion/busgraf/busgraf_06.gif" WIDTH=153 HEIGHT=43></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=1 HEIGHT=43></TD>
+    </TR>
+    <TR> 
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_07.gif" WIDTH=108 HEIGHT=29></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_08.gif" WIDTH=121 HEIGHT=29></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_09.gif" WIDTH=121 HEIGHT=29></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_10.gif" WIDTH=197 HEIGHT=29></TD>
+      <TD COLSPAN=3> <IMG SRC="/images/Gestion/busgraf/busgraf_11.gif" WIDTH=153 HEIGHT=29></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=1 HEIGHT=29></TD>
+    </TR>
+    <TR> 
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_12.gif" WIDTH=108 HEIGHT=33></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_13.gif" WIDTH=121 HEIGHT=33></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_14.gif" WIDTH=121 HEIGHT=33></TD>
+      <TD COLSPAN=2> <IMG SRC="/images/Gestion/busgraf/busgraf_15.gif" WIDTH=197 HEIGHT=33></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/busgraf_16.gif" WIDTH=28 HEIGHT=33></TD>
+      <TD COLSPAN=2> <A HREF="#"
+			   ONMOUSEOVER="changeImages('busgraf_17', '/images/Gestion/busgraf/busgraf_17-over.gif', 'busgraf_22', '/images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('busgraf_17', '/images/Gestion/busgraf/busgraf_17.gif', 'busgraf_22', '/images/Gestion/busgraf/busgraf_22.gif'); return true;"
+			   ONMOUSEDOWN="changeImages('busgraf_17', '/images/Gestion/busgraf/busgraf_17-down.gif', 'busgraf_22', '/images/Gestion/busgraf/busgraf_22.gif'); return true;"
+			   ONMOUSEUP="changeImages('busgraf_17', '/images/Gestion/busgraf/busgraf_17-over.gif', 'busgraf_22', '/images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif'); return true;"> 
+        <IMG NAME="busgraf_17" SRC="/images/Gestion/busgraf/busgraf_17.gif" WIDTH=125 HEIGHT=33 BORDER=0></A></TD>
+      <TD> <IMG SRC="/images/Gestion/busgraf/espacio.gif" WIDTH=1 HEIGHT=33></TD>
+    </TR>
+  </TABLE>
+  <!-- Fin de sectores de ImageReady -->
+  <p><br>
+  </p>
+</div>
+</BODY>
+</HTML>

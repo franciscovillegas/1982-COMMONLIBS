@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="CE">
+
+<table align="center" width="100%">
+<tr><td colspan="4"><br><br></td></tr>
+<tr>
+<td colspan="4" align="center" class="tabla_beige"><h3>INFORME TOTAL HABERES EMPRESAS :: ${nomUnidad}</h3></td>
+</tr>
+
+<list lempresas as e>
+<tr>
+<td class="tabla_beige" align="center"><b>Cod.Empresa</td><td class="tabla_beige" align="center">: ${e.idemp}</td>
+<td class="tabla_beige" align="center"><b>Nombre Empresa</td><td class="tabla_beige"> : ${e.descemp}</td>
+</tr>
+<tr><td colspan="4"><table width="100%">
+<tr>
+<td align="center" class="textoInforme">Rut</td><td align="center" class="textoInforme">Nombre</td>
+<td align="center" class="textoInforme">Cargo</td><td align="center" class="textoInforme">Fec.Ingreso</td>
+<td align="center" class="textoInforme">Termino Contrato</td><td align="center" class="textoInforme" colspan="2">Total Haberes</td>
+</tr>
+<list e.lpersonas as p>
+<tr>
+<td class="textoInforme" align="right">${p.rut}-${p.dg}</td><td class="textoInforme">${p.nombre}</td>
+<td class="textoInforme">${p.cargo}</td><td align="center" class="textoInforme">${p.fi}</td>
+<td class="textoInforme" align="center">${p.ft}</td><td class="textoInforme" align="center">$</td>
+<td class="textoInforme" align="right">${p.haberes}</td>
+</tr>
+</list>
+<tr><td colspan="7" align="right"><br>
+<table><tr><td class="tabla_nara">TOTAL HABERES EMPRESA : $ ${e.totalempresa}</td></tr></table>
+</td></tr>
+</table></td></tr>
+</list>
+
+<tr><td colspan="7" align="center"><br>
+<table><tr><td class="tabla_nara">TOTAL HABERES : $ ${total}</td></tr></table>
+</td></tr>
+</table></td></tr>
+
+</table>
+</form>
+</BODY>
+</HTML>

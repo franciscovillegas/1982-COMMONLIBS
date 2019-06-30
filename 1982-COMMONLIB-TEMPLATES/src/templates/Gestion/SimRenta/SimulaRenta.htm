@@ -1,0 +1,565 @@
+  <html>
+<head>
+<title>Simulaci&oacute;n de Renta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/SimRenta.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_listas.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+<assign empresa_ant ="">
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)><assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.unid_desc}','${a.unid_id}');
+</list>
+
+<assign empresa_ant ="">
+<list cargos as a>
+	<if (a.empresa) != (empresa_ant)><assign empresa_ant = (a.empresa)>
+		var cargo_${a.empresa} = new Array();
+	</if>
+	cargo_${a.empresa}[cargo_${a.empresa}.length] = new Option('${a.descrip}','${a.id}');
+</list>
+
+<assign cargo_ant ="">
+<list niveles as n>
+	<if (n.cargo) != (cargo_ant)><assign cargo_ant = (n.cargo)>
+		var nivel_${n.cargo} = new Array();
+	</if>
+	nivel_${n.cargo}[nivel_${n.cargo}.length] = new Option('${n.estamento}${n.nivel}','${n.nivel}');
+</list>
+
+
+function SeleccionaEmpresa(selec) {
+	var valor = selec.value;
+	//alert(valor);
+	listaLlenar(selec.form.unidad, eval("window.unidad_"+valor));
+	listaLlenar(selec.form.cargo, eval("window.cargo_"+valor));
+	selec.form.nivel.length=0;
+}
+
+function SeleccionaCargo(selec) {
+	var valor = selec.value;
+	//alert(valor);
+	listaLlenar(selec.form.nivel, eval("window.nivel_"+valor), new Option("Calcular", ""));
+	selec.form.nivel.value = "";
+	if (selec.form.nivel.length==1)
+		alert('Niveles no definidos');
+}
+
+function inicio() {
+	document.formDatos.empresa.value = "${empresa}";
+	SeleccionaEmpresa(document.formDatos.empresa);
+	document.formDatos.unidad.value = "${id_unidad}";
+	document.formDatos.cargo.value = "${id_cargo}";
+	SeleccionaCargo(document.formDatos.cargo);
+	window.focus();
+}
+
+function calcularEfecto(){
+	var nt1 = parseInt(document.formDatos.n_total.value);
+	var nt2 = parseInt(document.formDatos.n_total2.value);
+	var mes = parseInt(document.formDatos.mes_efecto.value);
+	tbl_resul.rows(19).cells(1).innerHTML = (12-mes+1)*(nt2-nt1);//efecto_ra";
+	tbl_resul.rows(20).cells(1).innerHTML = 12*(nt2-nt1);//efecto_12m";
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+</head>
+
+<body background="../servlet/Tool?images/Gestion/news/fondo_descanso.jpg" text="#000000" style="background-repeat:no-repeat" onload="inicio();MM_preloadImages('../servlet/Tool?images/Gestion/news/botones/cerrar_f2.gif')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="formDatos" method="get" action="">
+  <table width="651" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="651" height="69" align="center" valign="bottom" class="negro12B">Simulador de Renta</td>
+    </tr>
+    <tr> 
+      <td valign="top"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="bordeUn">
+          <tr> 
+            <td rowspan="5" height="91" width="87" align="center"> 
+              <div align="center" class="negro10B"></div>
+              <img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="74" height="89" class="bordeUn"></td>
+            <td class="negro12B" align="center">&nbsp;</td>
+            <td class="negro12B" width="250">&nbsp;&nbsp;${nombre}</td>
+            <td class="negro12B" width="250">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="46" class="negro10B" height="20">Empresa</td>
+            <td width="582" class="negro10N" height="20"> 
+              <input type="text" name="textfield" disabled value="${empresa_descrip}" class="negro10B" style="width=250">
+            </td>
+            <td width="582" class="negro10N" height="20"> 
+              <select name="empresa" class="negro10B" onChange = "SeleccionaEmpresa(this)" style="width=250">
+                <option value="-1">Seleccione una Empresa</option>
+                <list empresas as v> 
+                <option value="${v.id}">${v.empresa}</option>
+                </list> 
+              </select>
+            </td>
+          </tr>
+          <tr> 
+            <td width="46" class="negro10B" height="20"><b>Cargo </b></td>
+            <td width="582" class="negro10N" height="20"> 
+              <input type="text" name="textfield" disabled value="${cargo}" class="negro10B" style="width=250">
+              <!--: ${cargo}-->
+              <input type="hidden" name="cargo_ant" value="${id_cargo}">
+            </td>
+            <td width="582" class="negro10N" height="20"> 
+              <select name="cargo" onChange="SeleccionaCargo(this)" class="negro10B" style="width=250">
+              </select>
+              <!--: ${cargo}-->
+            </td>
+          </tr>
+          <tr> 
+            <td width="46" class="negro10B" height="20"><b> Unidad</b></td>
+            <td width="582" class="negro10N" height="20"> 
+              <input type="text" name="textfield" disabled value="${unidad_desc}" class="negro10B" style="width=250">
+              <!--: ${unidad_desc}-->
+            </td>
+            <td width="582" class="negro10N" height="20"> 
+              <select name="unidad" class="negro10B" style="width=250">
+              </select>
+              <!--: ${unidad_desc}-->
+            </td>
+          </tr>
+          <tr> 
+            <td width="46" class="negro10B" height="20"><b>e-mail</b></td>
+            <td width="582" class="negro10N" height="20">: ${email}</td>
+            <td width="582" class="negro10N" height="20"> 
+              <input type="hidden" name="rut" value="${rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr > 
+      <td class="negro12B" height="294" valign="top"> 
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" bordercolor="#000000" height="263">
+          <tr> 
+            <td class="negro12B" align="center" bgcolor="#DADADA" width="215">REAL</td>
+            <td class="negro12B" align="center" width="210">&nbsp;</td>
+            <td class="negro12B" align="center" bgcolor="#FFFF99" width="215">CALCULADA</td>
+          </tr>
+          <tr valign="top"> 
+            <td height="245" colspan="3"> 
+              <div id="Layer1" style="position:absolute; width:652px; height:272px; z-index:2; left: -1px; top: 186px; overflow: auto"> 
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td valign="top"> 
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr> 
+                          <td width="82" height="18" bgcolor="#D4DBD5" class="negro10B">Cod. Remun.</td>
+                          <td width="98" height="18" align="right" bgcolor="#E9E9E9" class="negro10N"> 
+                            <input type="hidden" name="cod_remu" value="${cod_remu}">
+                            ${cod_remu}</td>
+                          <td width="35" height="18" valign="middle" bgcolor="#D4DBD5"></td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">P.R.E.</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="pre" value="${pre}">
+                            ${FNum (pre)}</td>
+                          <td width="35" bgcolor="#D4DBD5" valign="middle" height="18"> 
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 0, '${pre}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Sueldo Base</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="sueldo" value="${sueldo}">
+                            ${FNum (sueldo)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 1, '${sueldo}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bono Gesti&oacute;n</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <!--<input type="hidden" name="gestion" value="${gestion}">-->
+                            ${FNum (gestion)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 2, '${gestion}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" bgcolor="#D4DBD5" width="82" height="18">Movilizaci&oacute;n</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="movi" value="${movi}">
+                            ${FNum (movi)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 3, '${movi}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bruto Regular</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_reg" value="${b_reg}">
+                            ${FNum (b_reg)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 4, '${b_reg}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Neto Regular</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="n_reg" value="${n_reg}">
+                            ${FNum (n_reg)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 5, '${n_reg}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="zona" value="${zona}">
+                            ${FNum (zona)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 6, '${zona}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bruto c/Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_zona" value="${b_zona}">
+                            ${FNum (b_zona)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 7, '${b_zona}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Neto c/Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="n_zona" value="${n_zona}">
+                            ${FNum (n_zona)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 8, '${n_zona}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bono Anual</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_anual" value="${b_anual}">
+                            ${FNum (b_anual)}</td>
+                          <td width="35" valign="middle" height="18">
+                            <input type="checkbox" name="check_b_anual" value="checkbox" title="Fijar a cero">
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 9, '${b_anual}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Asig. Caja</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="caja" value="${caja}">
+                            ${FNum (caja)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <input type="checkbox" name="check_caja" value="checkbox" title="Fijar a cero">
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 10, '${caja}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Antig&uuml;edad</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_antig" value="${b_antig}">
+                            ${FNum (b_antig)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <input type="checkbox" name="check_b_antig" value="checkbox" title="Fijar a cero">
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 11, '${b_antig}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Rta. Variable</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="rta_var" value="${rta_var}">
+                            ${FNum (rta_var)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <input type="checkbox" name="check_rta_var" value="checkbox" title="Fijar a cero">
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 12, '${rta_var}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bruto Promedio</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_prom" value="${b_prom}">
+                            ${FNum (b_prom)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 13, '${b_prom}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Neto Promedio</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="n_prom" value="${n_prom}">
+                            ${FNum (n_prom)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 14, '${n_prom}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Traslado</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <!--<input type="hidden" name="tras" value="${tras}">-->
+                            ${FNum (tras)}</td>
+                          <td width="35" valign="middle" height="18"> 
+                            <input type="checkbox" name="check_tras" value="checkbox" title="Fijar a cero">
+                            <!--<a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 15, '${tras}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> -->
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="18">Bruto Total</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18"> 
+                            <input type="hidden" name="b_total" value="${b_total}">
+                            ${FNum (b_total)}</td>
+                          <td width="35" valign="middle" height="18"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 16, '${b_total}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="82" height="2">Neto Total</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="2"> 
+                            <input type="hidden" name="n_total" value="${n_total}">
+                            ${FNum (n_total)}</td>
+                          <td width="35" valign="middle" height="2"> <a href="javascript:;" class="azul10NLink" onClick = "return calcular('${rut}', 17, '${n_total}');" title = "Calcular a partir de este Concepto">[&gt;&gt;]</a> 
+                          </td>
+                        </tr>
+                    </table>                    </td>
+                    <td valign="top" width="220">&nbsp; </td>
+                    <td valign="top"> 
+                      <table id = "tbl_resul" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Cod. Remun.</td>
+                          <td class="negro10N" bgcolor="#E9E9E9" height="18" width="103" align="right">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">P.R.E.</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Sueldo Base</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bono Gestion</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Movilizaci&oacute;n</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bruto Regular</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Neto Regular</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bruto c/Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Neto c/Zona</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bono Anual</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Asig. Caja</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Antig&uuml;edad</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Rta. Variable</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bruto Promedio</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Neto Promedio</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Traslado</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Bruto Total</td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="2">Neto Total
+                            <input type="hidden" name="n_total2">
+                          </td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="18">Efecto Resto 
+                            A&ntilde;o </td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                        <tr bgcolor="#D4DBD5"> 
+                          <td class="negro10B" width="99" height="2">Efecto 12 
+                            meses </td>
+                          <td class="negro10N" align="right" bgcolor="#E9E9E9" height="18" width="103">&nbsp;</td>
+                        </tr>
+                    </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr > 
+      <td class="negro12B" height="30" valign="middle" align="right"><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../servlet/Tool?images/Gestion/news/botones/cerrar_f2.gif',1)"><img name="Image4" border="0" src="../servlet/Tool?images/Gestion/news/botones/cerrar.gif" width="91" height="21"></a></td>
+    </tr>
+  </table>
+  <div id="LayerOpcion" style="position:absolute; width:192px; height:269px; z-index:2; left: 223px; top: 201px; visibility: visible" > 
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr bgcolor="#B5F2FD"> 
+        <td height="20" colspan="3" align="center" class="negro12B">Valor Esperado 
+          para<br>
+        <font id ="OpcionTitulo">concepto</font></td>
+      </tr>
+      <tr bordercolor="#D4DBD5"> 
+        <td valign="middle" class="negro10N" colspan="2"> Valor Actual 
+          <input type="hidden" name="que_iten">
+          <br>
+        </td>
+        <td align="center" height="25" valign="middle" width="61"> 
+          <input type="text" name="valor_real" size="8" readonly>
+        </td>
+      </tr>
+      <tr bordercolor="#D4DBD5"> 
+        <td width="79" valign="middle" bordercolor="#D4DBD5" class="negro10N"> Incremento</td>
+        <td width="20" align="right" valign="middle" nowrap bordercolor="#D4DBD5" class="negro10N"><a href="javascript:;" onClick ="return igualarValor()" class="azul10NLink">[=]</a></td>
+        <td align="center" height="25" valign="middle" width="61"> 
+          <input type="text" name="valor_esp" size="8" onBlur="validaNum(this)">
+        </td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="1">
+      <tr> 
+        <td height="3" valign="middle" class="negro10N" width="64%"></td>
+        <td align="center" height="3" valign="middle" width="35%"></td>
+      </tr>
+      <tr> 
+        <td height="25" valign="middle" class="negro10N" width="64%" bordercolor="#D4DBD5"> 
+          Nivel</td>
+        <td align="left" height="25" valign="middle" width="35%" bordercolor="#D4DBD5"> 
+          <select name="nivel" disabled="true">
+        </select>        </td>
+      </tr>
+      <tr> 
+        <td height="25" valign="middle" class="negro10N" width="64%" bordercolor="#D4DBD5"> 
+          Bono Gesti&oacute;n</td>
+        <td align="left" height="25" valign="middle" width="35%" bordercolor="#D4DBD5"> 
+          <input type="text" name="gestion" size="8" onBlur="validaNum(this)" value="${gestion}">        </td>
+      </tr>
+      <tr> 
+        <td height="25" valign="middle" class="negro10N" width="64%" bordercolor="#D4DBD5"> 
+          Traslado</td>
+        <td align="left" height="25" valign="middle" width="35%" bordercolor="#D4DBD5"> 
+          <input type="text" name="tras"  size="8" onBlur="validaNum(this)" value="${tras}">        </td>
+      </tr>
+      <tr> 
+        <td height="25" valign="middle" class="negro10N" width="64%" bordercolor="#D4DBD5"> 
+          Mes Efecto</td>
+        <td align="left" height="25" valign="middle" width="35%" bordercolor="#D4DBD5"> 
+          <select name="mes_efecto" disabled="true" onChange="calcularEfecto()">
+            <option value="1" selected>Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>        </td>
+      </tr>
+      <tr> 
+        <td height="20" colspan="2" align="center" bordercolor="#CCCCCC"> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" height="35">
+            <tr> 
+              <td width="39%" class="negro10N"> 
+                <input type="radio" name="radiobutton" value="P">
+                % Porcentaje</td>
+            </tr>
+            <tr> 
+              <td width="39%" class="negro10N"> 
+                <input type="radio" name="radiobutton" value="M">
+                Monto </td>
+            </tr>
+            <tr> 
+              <td width="39%" class="negro10N"> 
+                <input type="radio" name="radiobutton" value="D" checked>
+                Diferencia</td>
+            </tr>
+          </table>
+          <a href="javascript:;" onClick="return envia(document.formDatos)" class="azul10NLink"> 
+          [ Calcular ]</a> 
+        <!--<a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayerOpcion','','hide')">[ 
+          Cancelar ]</a> -->        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+</body>
+</html>

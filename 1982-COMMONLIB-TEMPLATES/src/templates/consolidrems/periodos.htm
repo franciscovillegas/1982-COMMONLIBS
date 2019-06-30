@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Nacimientos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function GeneraInformeRems(periodo){
+  if ((periodo.value != "") && (periodo.value != "0")){
+    document.location.href="../servlet/GeneraInformeRems?periodo="+periodo.value;
+  }else{
+    alert("Seleccione un periodo...");
+  }
+}
+
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<table width="666">
+  <tr>
+    <td height="40" align="center" class="TITULO_MODULOS"><b>Informes Consolidado Remuneraciones</b></td>
+  </tr>
+</table>
+<br/><br/>
+<form name="form1" action="../servlet/">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<div>
+  <table width="570" border="0" cellspacing="10" cellpadding="0" height="20" align="center">
+    <tr>
+      <td width="260" align="left">
+        <font size="1" class="titulo">Seleccione periodo: </font>
+      </td>
+    </tr>
+    <tr>
+      <td width="30" align="left">
+        <select name="periodos" size="10" style="width:180">
+            <option value="0">Seleccione un per&#237;odo</option>
+          <list per as p>
+            <option value="${p.valor}">${p.periodo}</option>
+          </list>
+        </select>
+      </td>
+      </td>
+    </tr>
+    <tr>
+       <td width="33%" align="center"><a href="javascript:;" onClick="GeneraInformeRems(document.form1.periodos); return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_aceptar','','../servlet/Tool?images/new/botones/crear_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/crear.gif" name="img_crear" width="91" height="21" border="0"></a></td>
+    </tr>
+  </table>
+</div>
+</table>
+</form>
+<br/><br/>
+</body>
+</html>

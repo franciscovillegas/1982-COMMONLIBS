@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>Visualización de Archivos</title>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/repository/styles.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/repository/autocomplete.css" rel="stylesheet" />
+<script src="../servlet/Tool?scripts/repository/jquery.min.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/repository/jquery.mockjax.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/repository/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/repository/autocomplete.js"></script>
+<script type="text/javascript">
+	$(function() {
+	    var menu_ul = $('.menu > li > ul'),menu_a  = $('.menu > li > a');
+	    menu_ul.hide();
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+	});
+	
+	function exportar(rut,accion,idfile) {
+	  	var v_accion = accion;
+	  	var v_trabajador = rut;
+	  	var v_idfile = idfile;
+		window.open ("../servlet/FileRepositoryServlet?accion=" + v_accion + "&trabajador=" + v_trabajador + "&idfile=" + idfile ,"_blank","menubar=0,resizable=0,width=1,height=1,scrollbars=0,location=0,status=0,titlebar=0");
+	}
+	
+	function verValor(f) {
+      	$('#trabajador').val( $('#selection-key').val());
+      	f.submit();
+   }
+</script>
+<style>
+  .borde { border:#CCC 1px solid; width:500px; height:300px; -webkit-box-shadow:  2px 2px 10px 2px #999999; box-shadow:  2px 2px 10px 2px #999999;}
+  .titulo_repositorio { text-align:center; width:850px; height:35px; padding-left:20px; padding-top:10px;
+    font-family:Verdana, Geneva, sans-serif; font-size: 14px; color: #999999; text-shadow: -1px -1px 0px #666, 1px 1px 0px #ffffff;
+  }
+</style>
+</head>
+<body topmargin="0" leftmargin="0">
+
+<table width="95%" align="center" cellpadding="5" cellspacing="1" border="0">
+<tr><td colspan="2" align="center" class="TITULO_MODULOS">Repositorio de Documentos</td></tr>
+<tr><td valign="top" width="190px">
+	<div id="wrapper">
+		<ul class="menu">
+		<li class="item1"><a href="#">Clasificaci&oacute;n</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/ConceptRepositoryServlet?accion=new">Nueva clasificaci&oacute;n</a></li>
+				<li class="subitem2"><a href="../servlet/ConceptRepositoryServlet?accion=mod">Modificar clasificaci&oacute;n</a></li>
+			</ul>
+		</li>
+		<li class="item2"><a href="#">Grupo de Visibilidad</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/VisibilityRepositoryServlet?accion=new">Crear Grupo</a></li>
+				<li class="subitem2"><a href="../servlet/VisibilityRepositoryServlet?accion=mod">Modificar Grupo</a></li>
+				<li class="subitem3"><a href="../servlet/VisibilityRepositoryServlet?accion=del">Eliminar Grupo</a></li>
+			</ul>
+		</li>
+		<li class="item3"><a href="#">Uploaders</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/UploaderRepositoryServlet?accion=new">Crear Grupo</a></li>
+				<li class="subitem2"><a href="../servlet/UploaderRepositoryServlet?accion=mod">Modificar Grupo</a></li>
+				<li class="subitem3"><a href="../servlet/UploaderRepositoryServlet?accion=del">Eliminar Grupo</a></li>
+			</ul>
+		</li>
+		<li class="item4"><a href="#">Repositorio de Archivos</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/FileRepositoryServlet?accion=new">Subir Archivos</a></li>
+				<li class="subitem2"><a href="../servlet/FileRepositoryServlet?accion=del">Eliminar Archivos</a></li>
+				<li class="subitem3"><a href="../servlet/FileRepositoryServlet?accion=dis">Listar Archivos</a></li>
+			</ul>
+		</li>
+		<li class="item5"><a href="#">Configuraci&oacute;n</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/ConfigRepositoryServlet">Par&aacute;metros</a></li>
+			</ul>
+		</li>		
+	</ul>
+</div>
+</td>
+<td class="borde" valign="top">
+	<form name="form1" action="../servlet/FileRepositoryServlet" method="post">
+	    <input type="hidden" name="accion" value="${accion}"/>
+		<table border="0" cellpadding="1" cellspacing="1" align="center" width="90%">
+			<tr>
+				<td colspan="4" align="center" class="titulo_repositorio"><b>VISUALIZACI&Oacute;N ARCHIVOS<br><br></b></td>
+			</tr>
+			<tr>
+				<td class="detalleTabla" valign="top">Trabajador</td>
+				<td align="center" valign="top" class="detalleTabla">:</td>
+				<td valign="top">
+					<input size="40" type="text" name="lista" id="autocomplete-ajax" value="${nombre}" style="background: transparent;"/>
+                    <input type="hidden" name="valor" id="selection-valor" style="background: transparent;"/>
+                    <input type="hidden" name="key" id="selection-key" value="${rut}" style="background: transparent;"/>
+                    <input type="hidden" name="trabajador" id="trabajador" value="${rut}" style="background: transparent;"/>
+				</td>
+				<td align="left" valign="middle" class="detalleTabla"><input onclick="verValor(this.form);" type="button" value="Buscar >>"></td>
+			</tr>
+			<tr>
+				<td colspan="4" class="detalleTabla" valign="top"><br>
+				<table width="98%" align="center" cellpadding="1" cellspacing="1" border="0">
+				<tr>
+					<td width="50%" align="center" class="detalleTabla"><b>Archivos Presentes</b></td>
+					<td width="50%" align="center" class="detalleTabla"><b>Archivos No Presentes</b></td>
+				</tr>
+				<tr>
+				<td valign="top">
+					<table width="99%" align="center" cellpadding="1" cellspacing="1" border="0">
+					<list existentes as e>
+					<tr>
+						<td class="detalleTabla" valign="top">${e.clasificacion}</td>
+						<td class="detalleTabla" valign="top">${e.archivo}</td>
+						<td class="detalleTabla" valign="top">
+						<a href="#" title="Obtener archivo" alt="Obtener archivo" onclick="exportar(${rut},'export',${e.id});">
+						<img src="../servlet/Tool?images/repository/visualizar.png" border="0">
+						</a>
+						</td>
+						<td class="detalleTabla" valign="top"></td>
+					</tr>
+					</list>
+					</table>
+                </td>
+				<td valign="top">
+					<table width="99%" align="center" cellpadding="1" cellspacing="1" border="0">
+					<list noexistentes as ne>
+					<tr>
+						<td width="35px" valign="top"><img src="../servlet/Tool?images/repository/upload.png" border="0"></td>
+						<td class="detalleTabla" valign="top">${ne.clasificacion}</td>
+					</tr>
+					</list>
+					</table>
+				</td>
+				</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+	</form>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="RR">
+
+<table width="90%" align="center">
+<tr><td colspan="9"><br><br></td></tr>
+<tr><td colspan="9" align="center" class="tabla_beige"><h3>INFORME DE RENTAS :: ${nomUnidad}</h3>Mes ${mes} de ${anho}</td></tr>
+<tr><td colspan="9"><br></td></tr>
+
+<if lunidades>
+<list lunidades as c>
+<tr><td class="tabla_beige" colspan="9" align="left">UNIDAD : ${c.uDesc}</td></tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center" width="10%">Rut</td>
+<td class="tabla_beige" valign="top" align="center" width="5%">DV</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2" width="45%">Nombre</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2" width="30%">Cargo</td>
+<td class="tabla_beige" valign="top" align="center" colspan="3" width="10%">L&iacute;quido</td>
+</tr>
+<list c.lpersona as l>
+<tr>
+<td class="textoInforme" align="right" valign="top">${l.rut}&nbsp;&nbsp;</td>
+<td class="textoInforme" align="center" valign="top">${l.digito_ver}</td>
+<td class="textoInforme" align="left" valign="top" colspan="2">${l.nombre}</td>
+<td class="textoInforme" align="left" valign="top" colspan="2">${l.descrip}</td>
+<td class="textoInforme" align="center" valign="top">$</td>
+<td class="textoInforme" align="right" valign="top">${l.totalHaber}</td>
+<td class="textoInforme" align="center" valign="top" >&nbsp;</td>
+</tr>
+</list>
+</td></tr>
+<tr>
+<td class="tabla_beige" align="right" colspan="6"><strong>TOTAL&nbsp;&nbsp;&nbsp;</strong></td>
+<td class="tabla_beige" align="center"><strong>$</strong></td>
+<td class="tabla_beige" align="center" colspan="2"><strong>${c.totalRentas}</strong></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+</list>
+</if>
+
+</table>
+</form>
+</BODY>
+</HTML>

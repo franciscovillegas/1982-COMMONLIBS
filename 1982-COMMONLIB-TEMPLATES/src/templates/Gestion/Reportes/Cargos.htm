@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="C">
+
+<table width="100%">
+<tr><td colspan="7"><br><br></td></tr>
+<tr><td colspan="7" align="center" class="tabla_beige"><h3>INFORME CARGOS :: DOTACION ${nomUnidad}</h3></td></tr>
+<if lcargos>
+<list lcargos as c>
+<tr><td align="center">
+<tr>
+<td class="tabla_beige">CARGO : ${c.cdesc}</td>
+<td class="tabla_beige" align="center">R.u.t</td>
+<td class="tabla_beige" align="center">Nombre</td>
+<td class="tabla_beige" align="center">Fec.Ingreso</td>
+<td class="tabla_beige" align="center">Fec.T&#233;rm.Contrato</td>
+<td class="tabla_beige" align="center">Cod.Unidad</td>
+<td class="tabla_beige" align="center">Desc.Unidad</td>
+</tr>
+<list c.lpersona as p>
+<tr>
+<td class="textoInforme"></td>
+<td class="textoInforme">${p.rut}-${p.digito}</td>
+<td class="textoInforme">${p.nombre}</td>
+<td class="textoInforme" align="center">${p.fecing}</td>
+<td class="textoInforme" align="center">${p.fecter}</td>
+<td class="textoInforme" align="center">${p.cunidad}</td>
+<td class="textoInforme">${p.dunidad}</td></tr>
+</list>
+</td></tr>
+<tr><td colspan="7" align="right">
+<table><tr><td class="tabla_nara"><b>NRO.TRABAJADORES : ${c.totalpersona}</b></td></tr></table>
+</td></tr>
+</list>
+</if>
+
+<tr><td colspan="7" align="center">
+<table><tr><td class="tabla_nara"><b>TOTAL NRO.TRABAJADORES : ${total}</b></td></tr></table>
+</td></tr>
+
+</table>
+</form>
+</BODY>
+</HTML>

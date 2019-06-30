@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<TITLE>Grupo Familiar</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js"></script>
+<script language="JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_showHideLayers('afp','','hide','isapre','','hide','detalle','','hide');MM_preloadImages('../../../DataFolder/botones/isa_up.jpg')">
+<table width="503" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td><include "menutop/menutop.html"></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div id="Layer1" style="position:absolute; width:200px; height:115px; z-index:4; visibility: visible"> 
+        <table width="492" border="0" height="131">
+          <tr valign="top"> 
+            <td width="486" height="74"> 
+              <table border="0" width="100%">
+                <tr> 
+                  <td valign="top" class="tituloTabla"><b>Nombre</b></td>
+                  <td valign="top" class="detalleTabla"><b><font class="textB">${nombre}</font></b></td>
+                  <td valign="top" width="16%" class="tituloTabla"><font class="textB">Fec. 
+                    Ingreso</font></td>
+                  <td valign="top" width="28%" class="detalleTabla"><font class="texto">:${fecha_ing}</font></td>
+                </tr>
+                <tr> 
+                  <td valign="top" width="17%" class="tituloTabla"><font class="textB">Centro 
+                    Costo</font></td>
+                  <td valign="top" width="39%" class="detalleTabla"><font class="texto">:(${id_unidad}) 
+                    ${unidad}</font></td>
+                  <td valign="top" width="16%" class="tituloTabla"><font class="textB">Dependencia</font></td>
+                  <td valign="top" width="28%" class="detalleTabla"><font class="texto">:${area}</font></td>
+                </tr>
+                <tr> 
+                  <td valign="top" width="17%" class="tituloTabla"> <font class="textB">Cargo</font> 
+                  </td>
+                  <td valign="top" width="39%" class="detalleTabla"><font class="texto">:${cargo}</font></td>
+                  <td valign="top" width="16%" class="tituloTabla"><font class="textB">Gerencia</font></td>
+                  <td valign="top" width="28%" class="detalleTabla"><font class="texto">:${division}</font></td>
+                </tr>
+                <tr> 
+                  <td valign="top" width="17%" class="tituloTabla" ><font class="textB">Estado 
+                    Civil </font></td>
+                  <td valign="top" width="39%" class="detalleTabla" ><font class="texto">:${estado}</font></td>
+                  <td valign="top" width="16%" class="tituloTabla" ></td>
+                  <td valign="top" width="28%" class="detalleTabla" ></td>
+                </tr>
+                <tr> 
+                  <td valign="top" width="17%" class="tituloTabla"><font class="textB">AFP</font></td>
+                  <td valign="top" width="39%" class="detalleTabla"><font class="texto">:${afp}</font></td>
+                  <td valign="top" width="16%" class="tituloTabla"><font class="textB">ISAPRE</font></td>
+                  <td valign="top" width="28%" class="detalleTabla"><font class="texto">:${isapre}</font></td>
+                </tr>
+              </table>
+              <font size="1"><b><font size="1"><b><font face="Arial, Helvetica, sans-serif"></font></b></font></b></font> 
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td height="21"> 
+                    <div align="center" class="titulo"><font class="texto"><b><font class="textB">Cargas 
+                      Familiares </font><font class="texto"></font></b></font></div>
+                  </td>
+                </tr>
+              </table>
+              <div align="left"></div>
+              <div id="LayerDetalle" style="position:absolute; width:483px; height:158px; z-index:1; ; overflow: scroll; visibility: visible;"> 
+                <table border="1" cellpadding="0" cellspacing="0" width="968">
+                  <tr class="tituloTabla"> 
+                    <td width="25"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">N&uacute;m.</font></div>
+                    </td>
+                    <td width="72"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Rut</font></div>
+                    </td>
+                    <td width="302"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Nombre</font></div>
+                    </td>
+                    <td width="202"> 
+                      <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Parentesco</font></div>
+                    </td>
+                    <td width="70"> 
+                      <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Fecha<br>
+                        Nac. o Matri.</font></div>
+                    </td>
+                    <td width="47"> 
+                      <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Edad</font></div>
+                    </td>
+                    <td width="47"> 
+                      <div align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Sexo</font></div>
+                    </td>
+                    <td width="59"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Carga 
+                        Familiar </font></div>
+                    </td>
+                    <td width="62"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Fecha 
+                        Inicio </font></div>
+                    </td>
+                    <td width="71"> 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Fecha 
+                        Termino </font></div>
+                    </td>
+                  </tr>
+                  <if (cargas)> <list cargas as c> 
+                  <tr class="detalleTabla"> 
+                    <td width="25"> ${c.num}</td>
+                    <td width="72"> ${c.rut_carga}-${c.dv_carga}</td>
+                    <td width="302"> ${c.nombre}</td>
+                    <td width="202"> ${c.parentesco}</td>
+                    <td width="70"> ${c.fec_nac}</td>
+                    <td width="47"> <if c.parentesco=="CONYUGE">&nbsp;<else>${c.edad}</if></td>
+                    <td width="47"> ${c.sexo}</td>
+                    <td width="59"> ${c.es_carga}</td>
+                    <td width="62"> ${c.fec_inicio}</td>
+                    <td width="71"> ${c.fec_termino}</td>
+                  </tr>
+                  </list> <else> 
+                  <tr> 
+                    <td colspan="10" class="titulo"><b>No registra cargas familiares...</b></td>
+                  </tr>
+                  </if> 
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

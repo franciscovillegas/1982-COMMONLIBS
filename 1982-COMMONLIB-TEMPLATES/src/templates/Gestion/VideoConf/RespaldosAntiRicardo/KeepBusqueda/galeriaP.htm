@@ -1,0 +1,369 @@
+  <html>
+<head>
+<title>Video Conferencia</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Tue Dec 18 18:12:19 GMT-0300 (Hr. de ver. del Pac&#237;fico SA) 2001-->
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function Validar(){
+   var x=0;
+   var valor=false;
+   for (x=0;x<document.form1.rut.length;x++){
+		 if (document.form1.rut[x].checked==true)
+            valor=true;
+   }
+   if (valor){
+      if (document.form1.conf.value!="-1"){
+        //alert("Submit...");
+        document.form1.submit(); 
+      }else
+         alert("Seleccione una de las Conferencias Existentes.");   
+   }else
+     alert("Seleccione un Participante.");   
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/video.css" type="text/css">
+</head>
+<body bgcolor="#000000" onLoad="MM_preloadImages('/images/Gestion/videoconf/selec_over_r9_c2.jpg','/images/Gestion/videoconf/selec_over_r9_c4.jpg','/images/Gestion/videoconf/selec_over_r6_c8.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" width="765">
+ <form name="form1" action="/servlet/datafolder.videoconf.SeleccionP" method="post">
+<!-- fwtable fwsrc="/images/Gestion/videoconf/Untitled" fwbase="selec.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="20" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="99" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="328" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="106" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="22" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="32" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="55" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="66" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="9" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="28" height="1" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+
+  <tr>
+   <td colspan="10"><img name="selec_r1_c1" src="/images/Gestion/videoconf/selec_r1_c1.jpg" width="765" height="40" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="40" border="0"></td>
+  </tr>
+  <tr>
+    <td colspan="10" background="/images/Gestion/videoconf/selec_r2_c1.jpg" valign="top">
+      <div id="combo" style="position:absolute; width:426px; height:26px; z-index:4; left: 23px; top: 86px"> 
+        <table width="100%" border="0" cellspacing="2" cellpadding="0">
+          <tr>
+            <td width="92%"> 
+                <select name="conf" class="combo">
+                  <option value="-1" selected>Seleccione una Conferencia</option>
+                <list conferencias as c> 
+                <option value="${c.id}">${c.asunto}</option>
+                </list> 
+              </select>
+            </td>
+            <td width="8%">&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+      <div id="titulos" style="position:absolute; width:183px; height:26px; z-index:5; left: 74px; top: 53px" class="unnamed1">COLABORADORES 
+        VIRTUALES </div>
+    </td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="40" border="0"></td>
+  </tr>
+  <tr>
+   <td rowspan="8"><img name="selec_r3_c1" src="/images/Gestion/videoconf/selec_r3_c1.jpg" width="20" height="315" border="0"></td>
+    <td colspan="8" background="/images/Gestion/videoconf/selec_r3_c2.jpg">&nbsp;</td>
+   <td rowspan="8"><img name="selec_r3_c10" src="/images/Gestion/videoconf/selec_r3_c10.jpg" width="28" height="315" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="35" border="0"></td>
+  </tr>
+  <tr>
+    <td rowspan="4" colspan="4" background="/images/Gestion/videoconf/selec_r4_c2.jpg" valign="top">
+      <div id="galeria" style="position:absolute; width:409px; height:231px; z-index:1; visibility: hidden"> 
+        <table width="100%" border="0" cellspacing="2" cellpadding="0" height="228">
+          <tr>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox3" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox32" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox33" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox34" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox39" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox310" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox311" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox312" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox35" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox36" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox37" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><img src="/images/Gestion/videoconf/elegida.jpg" width="40" height="45" border="1"> 
+                  </td>
+                  <td width="55%"> 
+                    <input type="checkbox" name="checkbox38" value="checkbox">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+        <div id="LayerFotos" style="position:absolute; width:391px; height:118px; z-index:1; visibility: visible"> 
+          <table width="55%" border="0">
+          <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                  <tr valign="bottom"> 
+                    <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                    <td width="55%"> 
+                      <input type="checkbox" name="rut" value="${v.rut}">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            <assign x="**"> <else> <if x=="**">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                  <tr valign="bottom"> 
+                    <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                    <td width="55%"> 
+                      <input type="checkbox" name="rut" value="${v.rut}">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            <assign x="***"> <else> <if x=="***">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                  <tr valign="bottom"> 
+                    <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                    <td width="55%"> 
+                      <input type="checkbox" name="rut" value="${v.rut}">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            <assign x="****"> <else> 
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                  <tr valign="bottom"> 
+                    <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                    <td width="55%"> 
+                      <input type="checkbox" name="rut" value="${v.rut}">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+          </tr>
+          <tr align="center"> <assign x="*"> </if></if></if></list>
+          <tr align="center"> 
+            <td>&nbsp; 
+            <td> 
+        </table>
+      </div>
+    </td>
+    <td rowspan="3" background="/images/Gestion/videoconf/selec_r4_c6.jpg" valign="top">
+      <div id="radios" style="position:absolute; width:22px; height:63px; z-index:2; left: 581px; top: 120px"> 
+        <table width="100%" border="0" cellspacing="2" cellpadding="0">
+          <tr>
+            <td> 
+              <input type="radio" name="radiobutton" value="radiobutton">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" name="radiobutton" value="radiobutton">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" name="radiobutton" value="radiobutton">
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td> 
+    <td rowspan="2" colspan="3" background="/images/Gestion/videoconf/selec_r4_c7.jpg" valign="bottom">
+      <div id="consulta" style="position:absolute; width:125px; height:22px; z-index:3; left: 611px; top: 182px"> 
+        <input type="text" name="textfield" size="14" maxlength="14">
+      </div>
+    </td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="89" border="0"></td>
+  </tr>
+  <tr>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="4" border="0"></td>
+  </tr>
+  <tr>
+   <td><img name="selec_r6_c7" src="/images/Gestion/videoconf/selec_r6_c7.jpg" width="55" height="23" border="0"></td>
+    <td><a href="javascript:;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('selec_r6_c8','','/images/Gestion/videoconf/selec_over_r6_c8.jpg',1)"><img name="selec_r6_c8" src="/images/Gestion/videoconf/selec_r6_c8.jpg" width="66" height="23" border="0"></a></td>
+   <td><img name="selec_r6_c9" src="/images/Gestion/videoconf/selec_r6_c9.jpg" width="9" height="23" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="23" border="0"></td>
+  </tr>
+  <tr>
+    <td rowspan="2" colspan="4" background="/images/Gestion/videoconf/selec_r7_c6.jpg" valign="top">&nbsp;</td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="120" border="0"></td>
+  </tr>
+  <tr>
+   <td colspan="4"><img name="selec_r8_c2" src="/images/Gestion/videoconf/selec_r8_c2.jpg" width="555" height="7" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="7" border="0"></td>
+  </tr>
+  <tr>
+    <td><a href="javascript:;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('selec_r9_c2','','/images/Gestion/videoconf/selec_over_r9_c2.jpg',1)"><img name="selec_r9_c2" src="/images/Gestion/videoconf/selec_r9_c2.jpg" width="99" height="27" border="0"></a></td>
+    <td rowspan="2" background="/images/Gestion/videoconf/selec_r9_c3.jpg">&nbsp;</td> 
+    <td><a href="javascript:;" onClick="Validar();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('selec_r9_c4','','/images/Gestion/videoconf/selec_over_r9_c4.jpg',1)"><img name="selec_r9_c4" src="/images/Gestion/videoconf/selec_r9_c4.jpg" width="106" height="27" border="0"></a></td>
+   <td rowspan="2"><img name="selec_r9_c5" src="/images/Gestion/videoconf/selec_r9_c5.jpg" width="22" height="37" border="0"></td>
+   <td rowspan="2" colspan="4"><img name="selec_r9_c6" src="/images/Gestion/videoconf/selec_r9_c6.jpg" width="162" height="37" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="27" border="0"></td>
+  </tr>
+  <tr>
+   <td><img name="selec_r10_c2" src="/images/Gestion/videoconf/selec_r10_c2.jpg" width="99" height="10" border="0"></td>
+   <td><img name="selec_r10_c4" src="/images/Gestion/videoconf/selec_r10_c4.jpg" width="106" height="10" border="0"></td>
+   <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="10" border="0"></td>
+  </tr></form>
+</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="http://www.highcharts.com/highslide/highslide.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.highcharts.com/templates/yoo_symphony/css/template.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.highcharts.com/templates/yoo_symphony/css/variations/brown.css" type="text/css" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
+	<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide.config.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://www.highcharts.com/demo/scripts.js"></script>
+	<script type="text/javascript" src="../servlet/Tool?scripts/highcharts/highChart.js"></script>
+
+	<script type="text/javascript">
+		var example = 'line-basic',
+		theme = 'default';
+		function show(){
+			var unidad = ${GetParam("unidad")};
+			var empresa = ${GetParam("empresa")};
+			var id_perfil = ${GetParam("id_perfil")};
+			var esarea = ${GetParam("esarea")};
+			var params ='&id_perfil='+id_perfil+'&unidad='+unidad+'&empresa='+empresa;
+			var html= "";
+			if(esarea==0){
+				html = 'ggd.graficos.GraficoPerfilCompetenciasUnidad';
+			}
+			else{
+				html = 'ggd.graficos.GraficoPerfilCompetenciasArea';
+			}
+			showGrafico('Serie',html+params,'container');
+		}
+		
+		$(document).ready(function(){
+			show();			
+		});
+		
+	</script>
+		
+	
+	
+	<title>Gesti&oacute;n del desempe&ntilde;o</title>
+</head>
+<body>
+	
+	<div id="demo-content">
+	<div id="container" style="min-width: 400px; height: 500px; margin: 0 auto"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tallaje Empleado</title>
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/trabajador/zonaTallaje.js"></script>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/Tallaje/styleTallaje.css"/>
+</head>
+
+<body topmargin="0">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%">
+<tr><td align="center">
+<table width="80%" align="center" cellpadding="0" cellspacing="0" class="tableround">
+<tr><td><h3>Tallaje Colaborador</h3></td></tr>
+</table>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+
+	<form name="frm" method="post" action="../servlet/EjeCore">
+	<input type="hidden" name="claseweb" value="portal.com.eje.tallaje.ManagerTallaje">
+	<input type="hidden" name="accion" value="save">
+	<table width="80%" align="center" cellpadding="1" cellspacing="1" class="tableround" border="0">
+	<if (tallajes) >
+	    <if (mensaje) > <tr><td colspan="3" align="center" class="texto">${mensaje}</td></tr> </if>
+		<list tallajes as t>
+		<input type="hidden" name="conceptos" value="${t.id}">
+		<tr>
+		<td align="right" class="texto" width="35%">${t.etiqueta}</td><td width="2%" class="texto" align="center">:</td>
+		<td align="left"><input type="text" size="50" maxlenght="50" name="${t.concepto}" value="${t.talla_valor}"></td>
+		</tr>
+		</list>
+		<tr><td colspan="3" align="center"><br><input class="myButton" type="submit" name="grabar" value="Actualizar Datos"></td></tr>
+	<else>
+		<tr><td colspan="3" align="center" class="texto">Este cargo no tiene asociado conceptos de tallaje.</td></tr>
+	</if>
+	</table>
+	</form>	
+	
+</td></tr>
+</table>			
+
+</body>
+</html>

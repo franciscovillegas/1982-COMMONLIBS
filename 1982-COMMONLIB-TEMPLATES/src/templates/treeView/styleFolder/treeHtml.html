@@ -1,0 +1,10 @@
+
+  <ul id="${id}" class="${classHtml}">
+
+	  		<list hijos as h>
+	  			<li class="${h.nodoAbierto}">
+					<span class="${h.classHtml}" onclick="click('${h.id}','${h.nombre}');">${h.nombre}</span>
+					${h.LoadArbol("close")}
+				</li>
+	  		</list>
+  </ul>

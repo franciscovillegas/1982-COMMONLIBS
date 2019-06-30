@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Formulario de Beneficios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center"> <br>
+    
+  <table width="680" border="0" align="left">
+    <tr>
+        <td width="38">&nbsp;</td>
+        
+      <td width="652" align="center"> 
+        <p><img src="http://${Servidor}../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></p>
+        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Formulario 
+          de Beneficios</b></font><br>
+          <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> N&ordm; Solicitud ${sol_num}<br>
+         ( ${fecha})</font></p>
+      </td>
+      </tr>
+      <tr> 
+        <td width="38">&nbsp;</td>
+      <td width="652"> 
+        <table width="100%" border="0" align="center">
+          <tr valign="top"> 
+            <td width="69" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>De</b></font></td>
+            <td width="270" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${nombre}<br>
+              ${rut2} </font></td>
+            <td width="57" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>Unidad<br>
+              Cargo </b></font></td>
+            <td width="286" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${unidad}<br>
+              ${cargo} </font></td>
+          </tr>
+          <tr valign="top"> 
+            <td width="69" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="270" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="57" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="286" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+          </tr>
+          <tr valign="top"> 
+            <td width="69" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <b>A</b></font></td>
+            <td colspan="3" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Recursos 
+              Humanos</font></td>
+          </tr>
+        </table>
+        <br>
+        <table width="100%" border="0">
+          <tr>
+            <td> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Solicito 
+              tenga a bien, otorgarme el siguiente beneficio:</font></td>
+          </tr>
+          <tr> 
+            <td  height="23" align="right" bgcolor="EFEEF4"> 
+              <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${beneficios}</font></b></div>
+            </td>
+          </tr>
+		  <if (observ)>
+		  <tr>
+            <td> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Observaciones:</font></td>
+          </tr>
+          <tr>
+            <td  height="23" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${observ}</font></td>
+          </tr>
+		  </if>
+        </table>        <br>
+          <br>
+        <br>
+        <br>
+      </td>
+      </tr>
+
+    </table>
+    <p><br>
+    </p>
+</div>
+  <br>
+  <br>
+<br>
+  <br>
+<br>
+
+  <div align="center"> </div>
+
+</body>
+</html>

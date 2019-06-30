@@ -1,0 +1,9 @@
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[eje_ges_trabajador_imagen]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[eje_ges_trabajador_imagen](
+	[corr] [int] IDENTITY(1,1) NOT NULL,
+	[rut] [int] NULL,
+	[id_file] [int] NULL,
+	[fecha_save] [datetime] NULL
+) ON [PRIMARY]
+END

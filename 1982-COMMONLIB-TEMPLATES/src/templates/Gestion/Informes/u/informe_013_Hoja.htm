@@ -1,0 +1,43 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tr> 
+    <td colspan="4" height="28" class="negro12B" bgcolor="#CCCCCC"><u>HOJA DE VIDA</u></td>
+  </tr>
+  <tr> 
+    <td width="16%" height="28" class="negro12B" bgcolor="#CCCCCC"> 
+      <div align="center"><b>TIPO </b></div>
+    </td>
+    <td width="52%" height="28" class="negro12B" bgcolor="#CCCCCC"> 
+      <div align="center"><b>DESCRIPCION</b></div>
+    </td>
+    <td width="10%" height="28" class="negro12B" bgcolor="#CCCCCC"> 
+      <div align="center"><b>FECHA</b></div>
+    </td>
+    <td width="22%" height="28" class="negro12B" bgcolor="#CCCCCC"> 
+      <div align="center"><b>RESPONSABLE</b></div>
+    </td>
+  </tr>
+  <if !(datos)> 
+  <tr> 
+    <td height="2" colspan="4" class="negro10N"> No registra Informacion</td>
+  </tr>
+  </if> <list datos as l> 
+  <tr> 
+    <td height="20" width="16%" class="negro10N"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+      <if (l.tipo=="30")> <u><b>FELICITACION</b></u> <else> <if (l.tipo=="40")> 
+      <u>PLAN DE MEJORAMIENTO</u> <else> <u>AMONESTACION</u> </if> </if> <br>
+      ${l.titulo}
+	  
+	  </font>
+	</td>
+	
+    <td height="20" width="52%" class="negro10N"> <font face="Arial, Helvetica, sans-serif" size="1">${l.comment}</font></td>
+    <td height="20" width="10%" class="negro10N"> 
+      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">${FFecha("dd/MM/yyyy", 
+        l.fecha)}</font></div>
+    </td>
+    <td height="20" width="22%" class="negro10N"> <font face="Arial, Helvetica, sans-serif" size="1">${l.resp}</font></td>
+  </tr>
+  </list> 
+</table>

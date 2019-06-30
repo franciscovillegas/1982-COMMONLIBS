@@ -1,0 +1,171 @@
+ <HTML>
+<HEAD>
+<title>Arbol Asociar Unidades</title>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language="JavaScript">
+<!--
+function AsignarCentro(){
+	var centros = document.form1.centro_costonosel.value;
+	alert("1");
+	if (centros != '') {
+		document.form1.submit();
+		alert("2");
+	}
+	else { 
+		alert("Debe seleccionar al menos un Centro de Costo");
+	}
+}
+
+<if alerta>
+	alert("Ya existe un cambio de unidad, Debe ser Procesada");
+</if>
+
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#HijoEdita {position:absolute;
+	left:-1px;
+	top:22px;
+	width:300px;
+	height:300px;
+	z-index:11;
+}
+#PadEdita {position:absolute;
+	left:5px;
+	top:5px;
+	width:300px;
+	height:20px;
+	z-index:10;
+	visibility: visible;
+}
+-->
+</Style>
+</HEAD>
+<body>
+<table width="300" height="350" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top">
+		<!--inicia tabla-->
+		<form name="form1" action="../servlet/AsociarUnidades" method="post">
+  <input type="hidden" name="loadf" value="1"/>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="300">
+    <tr> 
+      <td valign="top" align="center"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td align="center" class="tabla_amarelo">Unidad Seleccionada</td>
+          </tr>
+          <tr> 
+            <td  align="center">Unidad</td>
+          </tr>
+          <tr> 
+            <td> 
+				<input type="text" name="unidad" readonly="readonly" value="${unidad}" size="50" class="texto_negro_bold_chico">
+			</td>
+          </tr>
+          <tr> 
+            <td  align="center">Descripcion</td>
+          </tr>
+          <tr> 
+            <td> 
+              <input type="text" name="desc_unidad" readonly="readonly" value="${desc_unidad}" size="50" class="texto_negro_bold_chico">
+              <input type="hidden" name="empresa" value="${empresa}">
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table width="100%" height="100" border="0" cellpadding="0" cellspacing="1">
+          <tr> 
+            <td  align="center" class="tabla_amarelo">Asignar Centro de Costo</td>
+          </tr>
+          <tr> 
+            <td>
+            	<div id="centros_de_costo" style="height:140px;overflow:auto">
+				<table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+				<if (ccostosel || ccostonosel)>
+					<list ccostosel as c>
+						<tr>
+							<td width="11%">
+								<input type="checkbox" name="centro_costosel" value="${c.uni_rama}" checked>
+	<!-- 							<input type="hidden" name="sel_${c.uni_rama}_${c.empresa}" value="${c.empresa}"/>   -->
+							</td>
+							<td width="42%"><font class="texto">${c.uni_rama}</font></td>
+							<td width="47%"><font class="texto">${c.unid_desc}</font></td>
+						</tr>
+					</list>
+					<list ccostonosel as c>
+						<tr>
+							<td width="11%">
+								<input type="checkbox" name="centro_costonosel" value="${c.uni_rama}">
+  <!-- 								<input type="hidden" name="nosel_${c.uni_rama}_${c.empresa}" value="${c.empresa}"/>   -->
+							</td>
+							<td width="42%"><font class="texto">${c.uni_rama}</font></td>
+							<td width="47%"><font class="texto">${c.unid_desc}</font></td>
+							<input type="hidden" name="listed" value="1" />
+						</tr>
+					</list>
+				<else> 
+						<if actualiz=="1">
+							<tr> 
+								<td height="14" colspan="3" align="center">Actualizaciones Realizadas</td>
+							</tr>
+						<else>
+							<tr> 
+								<td colspan="3" align="center">No existen Centros de Costos disponibles</td>
+							</tr>
+						</if>
+				</if> 
+				</table>
+				</div>
+                <if linkto=="1"><table width="100%" border="0" cellspacing="1" cellpadding="0">
+                    <tr> 
+                      <td align="center" class="texto_negro_bold" ><a href="#" onClick="AsignarCentro();return false;">ACTUALIZAR CENTRO DE COSTO</a></td>
+            </tr>
+                    </table></if>
+			</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+		</td>
+      </tr>
+</table>
+</body>
+</HTML>

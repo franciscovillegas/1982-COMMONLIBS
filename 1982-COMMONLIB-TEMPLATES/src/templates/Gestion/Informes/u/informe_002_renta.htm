@@ -1,0 +1,21 @@
+<if (datos)> 
+<table width="41%" border="0" cellpadding=" " cellspacing=" ">
+  <list datos as d> 
+  <tr> 
+    <td class="negro10N" width="73%">&nbsp;${d.haber}:</td>
+    <td class="negro10N" width="27%" align="right">&nbsp; $ ${FNum(d.monto)}</td>
+  </tr>
+  
+  </list> 
+  <tr> 
+    <td class="negro12B" colspan="2" valign="bottom"> 
+      <hr width="100%">
+    </td>
+  </tr>
+  <tr> 
+    <td class="negro12B" width="73%">Total:</td>
+    <td class="negro12B" width="27%" align="right">$ ${FNum(SumColumna("1"))}</td>
+  </tr>
+</table>
+<else> <i><font face="Arial, Helvetica, sans-serif" size="2">Informaci&#243;n no disponible...</font></i> 
+</if> 

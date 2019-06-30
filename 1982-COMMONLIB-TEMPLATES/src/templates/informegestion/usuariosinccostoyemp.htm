@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Nacimientos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function GeneraInforme2(periodo){
+  if ((periodo.value != "") && (periodo.value != "0")){
+    alert("Esta operaci&#243;n puede tardar algunos segundos...espere la p&#225;gina de resultados que le entregar&#225; el sistema.")
+    document.location.href="../servlet/GeneraInformeGestion2?periodo="+periodo.value;
+  }else{
+    alert("Seleccione un periodo...");
+  }
+}
+
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+
+<br/><br/>
+<form name="form1" action="../servlet/">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<div>
+  <table width="570" border="0" cellspacing="10" cellpadding="0" height="20" align="center">
+    <tr>
+      <td width="260" align="left">
+      </td>
+    </tr>
+    <tr>
+      <td width="570" align="center"><font size="1" class="titulo">Usted no posee los datos b&#225;sicos para generar el informe.</font></td>
+    </tr>
+  </table>
+</div>
+</table>
+</form>
+<br/><br/>
+</body>
+</html>

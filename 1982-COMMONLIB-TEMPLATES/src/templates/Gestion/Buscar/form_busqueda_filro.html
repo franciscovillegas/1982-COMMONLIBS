@@ -1,0 +1,198 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+function UCasea(s){
+	// Devuelve la cadena convertida a may&#250;sculas
+	s.value=s.toUpperCase();
+}
+function LCase(s){
+	// Devuelve la cadena convertida en min&#250;sculas
+	return s.toLowerCase();
+
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<scritp>
+
+</scritp>
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="../servlet/Buscar_por_Nombre?Operacion=2">
+  <table width="644" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top"> 
+        <table width="100%" border="0" bgcolor="#FFA400">
+          <tr> 
+            <td height="9" width="25%"><font face="Arial, Helvetica, sans-serif" size="1">Conceptos</font></td>
+            <td height="9" width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Operador</font></td>
+            <td height="9" width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Valor</font></td>
+            <td height="9" width="14%"><font face="Arial, Helvetica, sans-serif" size="1">Conector</font></td>
+            <td height="9" width="26%">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td height="18" width="25%"> 
+              <select name="concepto">
+                <option>Isapre</option>
+                <option>Afp</option>
+                <option>Cargo</option>
+                <option>Unidad</option>
+              </select>
+            </td>
+            <td height="18" width="15%"> 
+              <select name="select">
+                <option value="=">Igual a</option>
+                <option value="LIKE">Parecido a</option>
+              </select>
+            </td>
+            <td height="18" width="20%"> 
+              <input type="text" name="valor">
+            </td>
+            <td height="18" width="14%"> 
+              <select name="conector">
+                <option>y</option>
+                <option>o</option>
+              </select>
+            </td>
+            <td height="18" width="26%"><a href="#"
+			   onMouseOver="changeImages('main_buscar_filtros_06', 'imagenes_main_buscar_filtros/main_buscar_filtros_06-main.jpg', 'main_buscar_filtros_07', 'imagenes_main_buscar_filtros/main_buscar_filtros_07-over.jpg', 'main_buscar_filtros_15', 'imagenes_main_buscar_filtros/main_buscar_filtros_15-m-20.jpg'); return true;"
+			   onMouseOut="changeImages('main_buscar_filtros_06', 'imagenes_main_buscar_filtros/main_buscar_filtros_06.jpg', 'main_buscar_filtros_07', 'imagenes_main_buscar_filtros/main_buscar_filtros_07.jpg', 'main_buscar_filtros_15', 'imagenes_main_buscar_filtros/main_buscar_filtros_15.jpg'); return true;"
+			   onMouseDown="changeImages('main_buscar_filtros_06', 'imagenes_main_buscar_filtros/main_buscar_filtros_06.jpg', 'main_buscar_filtros_07', 'imagenes_main_buscar_filtros/main_buscar_filtros_07.jpg', 'main_buscar_filtros_15', 'imagenes_main_buscar_filtros/main_buscar_filtros_15.jpg'); return true;"
+			   onMouseUp="changeImages('main_buscar_filtros_06', 'imagenes_main_buscar_filtros/main_buscar_filtros_06-main.jpg', 'main_buscar_filtros_07', 'imagenes_main_buscar_filtros/main_buscar_filtros_07-over.jpg', 'main_buscar_filtros_15', 'imagenes_main_buscar_filtros/main_buscar_filtros_15-m-20.jpg'); return true;"><img name="main_buscar_filtros_07" src="/imagenes_main_buscar_filtros/main_buscar_filtros_07.jpg" width=108 height=24 border=0></a></td>
+          </tr>
+          <tr> 
+            <td height="14" width="25%"><font face="Arial, Helvetica, sans-serif" size="1">Orden 
+              de Busqueda</font></td>
+            <td height="14" width="15%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+            <td height="14" width="20%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+            <td height="14" width="14%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+            <td height="14" width="26%">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="25%"><font face="Arial, Helvetica, sans-serif" size="1">1 
+              <select name="sel1">
+                <option selected>Rut</option>
+                <option>Nombre</option>
+                <option>A. Paterno</option>
+                <option>A. Materno</option>
+              </select>
+              </font></td>
+            <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">2 
+              <select name="sel2">
+                <option selected></option>
+                <option >Rut</option>
+                <option>Nombre</option>
+                <option>A. Paterno</option>
+                <option>A. Materno</option>
+              </select>
+              </font></td>
+            <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1"> 
+              3 
+              <select name="sel3">
+                <option selected></option>
+                <option >Rut</option>
+                <option>Nombre</option>
+                <option>A. Paterno</option>
+                <option>A. Materno</option>
+              </select>
+              </font></td>
+            <td width="14%"><font face="Arial, Helvetica, sans-serif" size="1">4 
+              <select name="sel4">
+                <option selected></option>
+                <option >Rut</option>
+                <option>Nombre</option>
+                <option>A. Paterno</option>
+                <option>A. Materno</option>
+              </select>
+              </font></td>
+            <td width="26%">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" bgcolor="#FFA400">
+          <tr>
+            <td valign="top" width="81%"> 
+              <table width="514" border="0"  cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td colspan="3" height="12"><img src="/images/DataFolder/imagenes_main_buscar_alfabetica/main_buscar_alfabetica_10.jpg" width=514 height=12></td>
+                </tr>
+                <tr> 
+                  <td rowspan="2" width="13" valign="top"><img src="/images/DataFolder/imagenes_main_buscar_alfabetica/main_buscar_alfabetica_12.jpg" width=13 height=249></td>
+                  <td width="486" height="232" bgcolor="#FFA400" valign="top"> 
+                    <div id="Layer1" style="position:absolute; left:21px; top:113px; width:476px; height:217px; z-index:1; visibility: visible; overflow: auto; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000"> 
+                      <table width="100%" border="1">
+                        <tr> 
+                          <td bgcolor="#FF6600"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif" size="1">Rut</font></b></td>
+                          <td bgcolor="#FF6600"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif" size="1">Nombres</font></b></td>
+                          <td bgcolor="#FF6600"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif" size="1">Apellido 
+                            Paterno</font></b></td>
+                          <td bgcolor="#FF6600"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif" size="1">Apellido 
+                            Materno</font></b></td>
+                        </tr>
+                        <list varios as v> 
+                        <tr bgcolor="#FFFFFF"> 
+                          <td height="24"><font color="#000000" face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="MM_openBrWindow('../servlet/TopExpediente?rut=${v.rut}','topFrame','')">${v.rut}</a></font></td>
+                          <td height="24"><font color="#000000" face="Arial, Helvetica, sans-serif" size="1">${v.nombres}</font></td>
+                          <td height="24"><font color="#000000" face="Arial, Helvetica, sans-serif" size="1">${v.ape_paterno}</font></td>
+                          <td height="24"><font color="#000000" face="Arial, Helvetica, sans-serif" size="1">${v.ape_materno}</font></td>
+                        </tr>
+                        </list> 
+                      </table>
+                    </div>
+                  </td>
+                  <td rowspan="2" width="15" valign="top"><img src="/images/DataFolder/imagenes_main_buscar_alfabetica/main_buscar_alfabetica_14.jpg" width=15 height=249></td>
+                </tr>
+                <tr> 
+                  <td width="194" height="18" valign="top"><img src="/images/DataFolder/imagenes_main_buscar_alfabetica/main_buscar_alfabetica_19.jpg" width=486 height=18></td>
+                </tr>
+              </table>
+            </td>
+            <td width="19%" valign="top"> 
+              <table width="109" border="0">
+                <tr>
+                  <td>
+                    <input type="image" src="/images/DataFolder/imagenes_main_buscar_alfabetica/main_buscar_alfabetica_11.jpg" width=109 height=30 border=0 name="image">
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p> 
+    <input type="hidden" name="hiddenField">
+  </p>
+  <p>&nbsp;</p>
+  </form>
+<br>
+</body>
+</html>

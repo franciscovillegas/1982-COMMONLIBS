@@ -1,0 +1,36 @@
+<style type="text/css">
+<!--
+.seleccion {
+	border: 2px solid #FFCC00;
+}
+-->
+</style>
+
+
+<style type="text/css">
+<!--
+.textosel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #FFFFFF;
+}
+-->
+</style>
+<table width="100%" border="0">
+  <tr>
+  <if getEvaluados><list getEvaluados as a>
+    <td  align="center" class="textosel"><div align="center">
+      <table width="50" height="68" border="0">
+        <tr>
+          <td width="44" height="46" align="center" valign="top" class="textosel"><img src="../servlet/Tool?images/trabajadores/fotos/${a.foto}" alt="${a.nombre_completo}" width="37" height="42" border="1"  ></td>
+        </tr>
+        <tr>
+          <td height="16" align="center" valign="top" class="textosel"><input type="radio" name="radiobutton" value="${a.rut}" onClick="setRut('${a.rut}','${a.id_perfil}','${a.foto}')">
+          </td>
+        </tr>
+      </table>
+        </div></td>
+  </list></if>
+  </tr>
+</table>
+

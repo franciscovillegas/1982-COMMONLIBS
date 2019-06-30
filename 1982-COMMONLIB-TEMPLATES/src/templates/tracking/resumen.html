@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Totalizador Tracking Portales</title><style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:7px;
+	top:130px;
+	width:730px;
+	height:405px;
+	z-index:1;
+	overflow: auto;
+}
+-->
+</style>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/calendar.js"></script>
+<script language="Javascript">
+function openCal(field, field2){
+	setDateField(field, field2);
+	top.newWin = window.open('Tool?htm=html/calendar.html', 'cal', 'dependent=yes,width=210, height=230, screenX=200, screenY=300, titlebar=yes')
+}
+
+function validaForm(f) {
+  if (f.Portal.value == -1) {
+    alert("Por favor seleccione una Organizaciï&#191;½n.");
+    f.Portal.focus(); return false; }
+  else if (f.Finicio.value.length == 0 || f.Ftermino.value.length == 0) {
+    alert("Por favor ingrese el dato de la Fecha.");
+    f.Portal.selectedIndex=0; return false; }
+  else { return true; }
+}
+function Genera(f) {
+  if( validaForm(f) ) 
+  { f.action="../servlet/ReporteTracking"; f.submit(); }  
+}
+function Imprime() {
+if (window.print) window.print()
+else alert("Disculpe, su navegador no soporta esta opciï&#191;½n.");
+}
+
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css" />
+</head>
+<body leftmargin="0" topmargin="0">
+<form name="frm1" methos="post" action="../servlet/ReporteTracking">
+  
+  <table width="740" height="530" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top">
+	  <table width="100%">
+
+<tr>
+  <td width="152" class="TITULO_MODULOS"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61" /></td>
+  <td width="436" align="center" class="TITULO_MODULOS">Resumen de Tracking</td>
+  <td width="152" align="right" class="TITULO_MODULOS"><a href="javascript:;" onclick="Imprime()"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" width="76" height="43" border="0" /></a></td>
+</tr>
+
+<tr>
+  <td colspan="2" class="tituloTabla">Intervalo de Medici&oacute;n:</td>
+  <td class="tituloTabla">Portal:</td>
+  </tr>
+
+<tr>
+  <td colspan="2">
+  <table width="390" cellpadding="0">
+<tr>
+<td width="69">
+Fecha Inicio:</td>
+<td width="16"><a href="javascript:doNothing()" onclick="openCal(document.frm1.Finicio, document.frm1.Finicio)"><img src="../servlet/Tool?images/calendar.gif" width=16 height=16 border=0 title="Calendario" /></a></td>
+<td width="94"><input name="Finicio" type="text" class="inputText" size="18" value="${fecha.inicio}" readonly /></td>
+<td width="12">&nbsp;</td>
+<td width="78">Fecha T&eacute;rmino:  </td>
+<td width="16"><a href="javascript:doNothing()" onclick="openCal(document.frm1.Ftermino, document.frm1.Ftermino)"><img src="../servlet/Tool?images/calendar.gif" width=16 height=16 border=0 title="Calendario" /></a></td>
+<td width="87"><input name="Ftermino" type="text" class="inputText" size="18" value="${fecha.termino}" readonly /></td>
+</tr>
+</table>  </td>
+  <td><select name="Portal" class="inputText" onchange="Genera(this.form);">
+    <list lportales as l>
+      <option value="${l.cod}" ${l.sel} >${l.nombre}</option>
+    </list>
+  </select></td>
+  </tr>
+
+<tr><td colspan="3">
+
+</td></tr>
+</table>
+	  </td>
+    </tr>
+  </table>
+<span id="Layer1">
+  <table width="99%" border="0" cellpadding="0">
+<list lportales2 as l2>
+<tr><td colspan="4" class="titulo">PORTAL: ${l2.n}</td>
+</tr>
+<tr>
+<td><b>Descripci&oacute;n</b></td>
+<td colspan="2" align="left"> <b>Total Accesos</b></td>
+<td colspan="2" align="right"><b>Total Accesos (%)</b> </td>
+</tr>
+<list l2.servicios as s>
+<tr>
+<td>${s.servicio}</td>
+<td align="right">${s.visita}</td>
+<td align="left"><img src="../servlet/Tool?images/barra.gif" width=${s.ancho} height=15 border=0></td>
+<td align="right">${s.porcentaje}%</td></tr>
+</list>
+<tr><td colspan="4"><hr></td></tr>
+<tr>
+<td>Total de Peticiones</td>
+<td align="right">${l2.total}</td>
+<td colspan="2" align="right">100%</td>
+</tr>
+<tr><td colspan="4"><br></td>
+</tr>
+</list>
+</table>
+  </span>
+</form>
+</body>
+</html>

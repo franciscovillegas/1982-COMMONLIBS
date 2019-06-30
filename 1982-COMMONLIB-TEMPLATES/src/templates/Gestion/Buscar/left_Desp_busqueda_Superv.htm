@@ -1,0 +1,301 @@
+<html>
+<head>
+<title>buscar supervisor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+
+<script language="JavaScript">
+<assign empresa_ant ="">
+<list uni as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.unid_desc}','${a.unid_id}');
+</list>
+
+<list car as c>
+	<if (c.empresa) != (empresa_ant)>
+		<assign empresa_ant = (c.empresa)>
+		var cargo_${c.empresa} = new Array();
+	</if>
+	cargo_${c.empresa}[cargo_${c.empresa}.length] = new Option('${c.descrip}','${c.cargo}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	lista.options[lista.length] = new Option("Todas","");
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[lista.length] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.form1.unidad, eval("window.unidad_"+valor));
+	llena_lista(document.form1.cargo, eval("window.cargo_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+parent.parent.AbrirVentProcesando();
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_listas.js"></script>
+<script language="JavaScript">
+<!--
+
+
+function AsignaEmpleados(form) {
+	var ruts = eval('form.rut_emp');
+	if (ruts) {
+	//	var lista = form.lista;
+		var lista = eval('parent.frames.folderFrame.document.empleados.listas');
+		var largo = ruts.length;
+		if (largo) { //si tiene largo es un arreglo
+			for (x=0; x<ruts.length; x++) {
+				if (ruts[x].checked) {
+					traspasaEmp(form, lista, ruts[x]);
+				}
+			}
+		}
+		else {
+			traspasaEmp(form, lista, ruts);	
+		}
+	}
+	else
+		alert("No existen Ruts");
+}
+
+function traspasaEmp(form, lista, ruts) {
+	var rut = ruts.value;
+	var nombre = eval("form.nom"+ruts.value+".value");
+	if (!parent.frames.folderFrame.listaExisteValor(lista, rut))
+		parent.frames.folderFrame.listaAddElemento(lista, rut, nombre);
+	else
+		alert(" El empleado '"+ nombre + "' ya existe en la lista");			
+	ruts.checked = false;
+}
+
+function AsignaSupervisor(form) {
+	var ruts = eval('form.rut_emp');
+	var rut_check = null;
+	if (ruts) {
+		var largo = ruts.length;
+		if (largo) { //si tiene largo es un arreglo
+			for (x=0; x<ruts.length; x++) {
+				if (ruts[x].checked) {
+					rut_check = ruts[x].value;
+					ruts[x].checked = false;
+				}
+			}
+		}
+		else {
+			rut_check = ruts.value;
+			ruts.checked = false;
+		}
+		if (rut_check != null) {
+			//verificar q' el supervisor no exista en la lista de empleados
+			var lista = eval('parent.frames.folderFrame.document.empleados.listas');
+			if (parent.frames.folderFrame.listaExisteValor(lista, rut_check))
+				alert(" El empleado '"+ eval("form.nom"+rut_check+".value") + "' ya existe en la lista,\n no puede ser el Supervisor.");			
+			else {
+				var form_des = eval('parent.frames.folderFrame.document.empleados');
+				form_des.rut_super.value = rut_check;
+				form_des.nombre_sup.value = eval("form.nom"+rut_check+".value");
+				form_des.cargo_sup.value = eval("form.cargo"+rut_check+".value");
+				form_des.rut_dig.value = eval("form.dv"+rut_check+".value");
+				form_des.rut_sup.value = form_des.rut_super.value + "-" +  form_des.rut_dig.value;
+                var nom_foto="../servlet/Tool?images/trabajadores/fotos/"+eval("form.foto"+rut_check+".value");
+				//parent.frames.folderFrame.CambiaFoto(nom_foto);
+				parent.frames.folderFrame.document.foto_trab.src = nom_foto;
+				//alert("foto: "+parent.frames.folderFrame.document.foto_trab.src);
+				
+			}
+		}
+	}
+	else
+		alert("No existen Ruts");
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+//-->
+</script>
+</head>
+
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="window.focus();">
+<table border=0 cellpadding=0 cellspacing=0 width="302" height="358">
+  <form name="form1" method="post" action="../servlet/Buscar_por_Nombre2?Operacion=2&pagina=Gestion/Buscar/left_Desp_busqueda_Superv.htm" onSubmit="return Procesando()">
+    <tr>
+      <td width="302" height="72" valign="top">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td valign="top"> 
+        <table width="100%" height="374" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td valign="top" align="left"> 
+              <table width="100%" border="0">
+                <tr> 
+                  <td height="9" bgcolor="#FFCF75" class="negro10B" colspan="4"> 
+                    <div align="center" class="negro12B">Busque Empleadodddd</div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="9" width="19%" class="negro10B">Rut</td>
+                  <td height="9" width="27%" class="negro10B">Ap. Paterno</td>
+                  <td height="9" width="30%" class="negro10B">Ap. Materno</td>
+                  <td height="9" width="24%" class="negro10B">Nombre</td>
+                </tr>
+                <tr align="left"> 
+                  <td width="19%" height="29" align="left" class="negro10N"> 
+                    <input name="rut" type="text" class="negro8B" size="8">
+                  </td>
+                  <td height="29" width="27%" class="negro10N"> 
+                    <input name="apaterno" type="text" class="negro8B" size="10">
+                  </td>
+                  <td width="30%" height="29" align="left" class="negro10N"> 
+                    <input name="amaterno" type="text" class="negro8B" size="10">
+                  </td>
+                  <td width="24%" height="29" align="left" class="negro10N"> 
+                    <input name="nombre" type="text" class="negro8B"  size="9">
+                  </td>
+                </tr>
+                <tr align="right"> 
+                  <td height="14" colspan="4"><span class="negro10B"> </span> 
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr> 
+                        <td width="17%" height="25"><span class="negro10B">Empresa</span></td>
+                        <td width="83%"><span class="negro10B"> 
+                          <select name="empresa" class="negro8B" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                            <option value="">Seleccione una Empresa</option>
+                            <list emp as v> 
+                            <option value="${v.id}">${v.empresa}</option>
+                            </list> 
+                          </select>
+                          </span></td>
+                      </tr>
+                      <tr> 
+                        <td height="31" width="17%"><span class="negro10B">Unidad</span></td>
+                        <td height="31" width="83%"> 
+                          <select name="unidad" class="negro8B" style="width=250" >
+                            <option value="Todas">Todas</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr> 
+                        <td width="17%" height="28" class="negro10B">Cargo </td>
+                        <td width="83%">
+                          <select name="cargo" class="negro8B" style="width=250" >
+                           <option value="Todas">Todas</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" border="0" cellpadding="0" cellspacing="1">
+                <tr bgcolor="#FFCF75"> 
+                  <td width="26" class="negro10B">Sel.</td>
+                  <td class="negro10B" width="102"> 
+                    <div align="center">Nombres</div>
+                  </td>
+                  <td class="negro10B" width="83"> 
+                    <div align="center">Unidad</div>
+                  </td>
+                  <td class="negro10B" width="109"> 
+                    <div align="center">Cargo</div>
+                  </td>
+                </tr>
+              </table>
+              <div id="Layer1" style="position:absolute; left:1px; top:242px; width:310px; height:170px; z-index:1; overflow: auto;"> 
+                <table width="100%" border="0" cellpadding="0" cellspacing="1">
+                  <list varios as v> 
+                  <tr bgcolor="#FFFFFF"> 
+                    <td width="8%" nowrap> 
+                      <input type="checkbox" name="rut_emp" value="${v.rut}">
+                    </td>
+                    <td width="34%" class="negro10N">${v.ape_paterno} ${v.ape_materno} 
+                      ${v.nombres} 
+                      <input type="hidden" name="cargo${v.rut}" value = "${v.cargo}">
+                      <input type="hidden" name="dv${v.rut}" value = "${v.digito}">
+                      <input type="hidden" name="nom${v.rut}" value = "${v.nombres} ${v.ape_paterno} ${v.ape_materno} ">
+                      <input type="hidden" name="foto${v.rut}" value = "${v.foto}">
+                    </td>
+                    <td class="negro10N" width="26%">${v.unid_desc}</td>
+                    <td class="negro10N" width="32%">${v.cargo}</td>
+                  </tr>
+                  </list> 
+                </table>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td height="116" valign="bottom">
+<input name="image" type="image" src="../servlet/Tool?images/Gestion/news/botones/buscar.gif" width="91" height="21" border=0>
+<a href="javascript:;" onClick = "AsignaEmpleados(document.form1); return false;" class="azul10NLink">
+              
+              <img src="../servlet/Tool?images/Gestion/news/botones/agemp.gif" alt="Agregar empleados a la lista" name="imf_age" width="91" height="21" border="0"></a><a href="javascript:;" onClick = "AsignaSupervisor(document.form1); return false;" class="azul10NLink" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/Gestion/news/botones/agsup.gif" width="91" height="21" border="0" name="img_sup"></a></td>
+          </tr>
+        </table>      </td>
+    </tr>
+</form>
+  </table>
+ 
+
+<p> 
+  <script language="JavaScript">
+/*<if varios>
+	MM_goToURL('parent.folderFrame','/servlet/datafolder.Unidad.AsignaSupervisor'); 
+<else>
+	MM_goToURL('parent.folderFrame','/Gestion/arbol/blanco.htm');
+</if>*/
+</script>
+  <br>
+  <script language="JavaScript">
+parent.parent.CerrarVentProcesando();
+</script>
+  <script language="">
+	document.form1.empresa.value="${empresa}";
+	SeleccionaEmpresa("${empresa}");
+	document.form1.unidad.value="${unidad}";
+	document.form1.cargo.value="${cargo}";
+</script>
+</p>
+</body>
+</html>
+

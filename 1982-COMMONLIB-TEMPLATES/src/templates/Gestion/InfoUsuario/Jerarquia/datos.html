@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Informe de Tracking</title>
+		<link href="../servlet/Tool?style/jquerydatatable/demo_page.css" rel="stylesheet" type="text/css"></link>
+		<link href="../servlet/Tool?style/jquerydatatable/demo_table.css" rel="stylesheet" type="text/css"></link>
+		<link href="../servlet/Tool?style/jquerydatatable/header.ccss.css" rel="stylesheet" type="text/css"></link>
+		<script type="text/javascript" src="../servlet/Tool?scripts/imagesFuncs.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.3.2.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/jquerydatatable/jquery.dataTables.js"></script>
+		
+		<script type="text/javascript">
+				$(document).ready(function(){
+					loadTableTracking();
+				});
+		
+				function loadTableTracking() {
+					$("#contenedorTable").html("<table cellpadding='0' cellspacing='0' border='0' class='display' id='example' ></table>");
+					
+					"rut", "nombres", "ape_paterno", "ape_materno", "Cargo",
+					$('#example').dataTable({
+						"sScrollY": "480px",
+					    "bPaginate": true,
+						"aaData": ${dataTracking},
+						"aoColumns": [
+							{ "sTitle": "Rut" 			,  "bVisible": false, 	"sClass" : "textoGrande" },
+							{ "sTitle": "Nombres" 		,  "bVisible": true, 	"sClass" : "textoGrande",
+																				"fnRender": 
+																					function(obj) {
+																						var sReturn = "<a href='#' onClick='FichaPersonal("+obj.aData[0]+");'>"+obj.aData[1]+"</a>";
+																						return sReturn;
+																					}},
+							{ "sTitle": "Ape. Paterno"	,  "bVisible": true, 	"sClass" : "textoGrande" },
+							{ "sTitle": "Ape. Materno"	,  "bVisible": true, 	"sClass" : "textoGrande" },
+							{ "sTitle": "Cargo        "	,  "bVisible": true, 	"sClass" : "textoGrande" }
+							
+									]
+							});	
+				}
+		
+				
+
+				function FichaPersonal(rut)
+				{
+					window.open("about:blank", "ficha","toolbar=no,width=700,height=400,left=5,top=0,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+					document.frm1.rut.value=rut;
+					document.frm1.submit(); 
+				}
+			
+		
+		</script>
+		
+		<style type="text/css">
+			.textoGrande {
+				font-size: 10px;
+				font-family: arial; 
+				
+				
+			}
+			
+			#contenedorTable{
+				width: 495px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body style="background-color: #F3F3F3;">
+		<form name="frm1" method="post" action="../servlet/TopExpedienteWeb" target="ficha">
+			<input type="hidden" name="rut" value="0"/>
+			<div id="contenedorTable" style="margin-left:10px; margin-top:10px"></div>
+		</form>
+	</body>
+</html>

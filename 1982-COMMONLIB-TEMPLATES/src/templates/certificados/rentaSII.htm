@@ -1,0 +1,426 @@
+<HTML>
+<HEAD>
+<TITLE>Certificado Anual de Rentas e Impuestos Retenidos</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!-- Gui&#243;n de carga previa de ImageReady (main_solo.psd) -->
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+
+function preloadImages() {
+	if (document.images) {
+		main_solo_16_over = newImage("/images/Matico/imagenes_main_solo/main_solo_16-over.jpg");
+		preloadFlag = true;
+	}
+}
+
+// -->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<link rel="stylesheet" href="///Matico/Style/estilos.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#FFFFFF leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="left">
+  <table width="100%">
+    <tr> 
+      <td width="18%"><img src="../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></td>
+      <td width="61%"> 
+        <div align="center"></div>
+      </td>
+      <td width="21%"> 
+        <a href="#"><img src="../servlet/Tool?images/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></td>
+    </tr>
+  </table>
+  
+</div>
+<div align="left"></div>
+<if contable> 
+<table width="72%" border="0" align="center">
+  <tr> 
+    <td> 
+      <div align="right"> <font face="Arial, Helvetica, sans-serif" size="2">${fecha}.</font></div>
+    </td>
+  </tr>
+</table>
+<table width="58%" height="8" align="center" cellpadding="0" cellspacing="0" border="0">
+  <tr> 
+    <td bgcolor="#CCCCCC" height="5" valign="top"> 
+      <table width="100%" align="center" height="8" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td bgcolor="#FFFFFF" height="2"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+              <font face="Arial, Helvetica, sans-serif" size="2"><b>A&uacute;n 
+                no se ha cerrado el per&iacute;odo contable ${contable}.</b></font>
+              </font></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<else>
+   <if numero>
+		<table width="58%" height="8" align="center" cellpadding="0" cellspacing="0" border="0">
+		  <tr> 
+			<td bgcolor="#CCCCCC" height="5" valign="top"> 
+			  
+      <table width="100%" align="center" height="8" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+				  <td bgcolor="#FFFFFF" height="2"> 
+					<div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+					  <font face="Arial, Helvetica, sans-serif" size="2"><b>No se encontr&#243; un N° de Certificado para el per&#237;odo ${numero}</b></font>
+					  </font></div>
+				  </td>
+				</tr>
+			  </table>
+			</td>
+		  </tr>
+		</table>
+    <else>
+		 
+			<table width="72%" border="0" align="center">
+			  <tr> 
+				<td> 
+				  <div align="right"> </div>
+				</td>
+			  </tr>
+			</table>
+   <if !detalle>
+				 <table width="72%" border="0" align="center">
+				  <tr> 
+					<td> 
+					  
+				  <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><font face="Arial, Helvetica, sans-serif" size="2"><font size="3" class="maticoN">${nombre} 
+					R.U.T ${rut}, no registra informaci&oacute;n de Sueldos y otras Rentas 
+					similares en el periodo </font><font face="Arial, Helvetica, sans-serif" size="3"><font size="2" class="maticoN">${periodo} 
+					</font></font></font></font></div>
+					</td>
+				  </tr>
+				</table>
+           <else>
+						
+<table width="100%" align="center" height="506">
+<tr> 
+							<td colspan="2" height="30"> 
+							  <table width="92%" border="0" cellpadding="0" cellspacing="0">
+								<tr> 
+								  <td width="30%"> 
+									<div align="right"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">NOMBRE/RAZ&Oacute;N 
+									  SOCIAL </font></div>
+								  </td>
+								  <td width="70%"><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${empresa}</span></font></td>
+								</tr>
+								<tr> 
+								  <td width="30%"> 
+									<div align="right"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">RUT 
+									  N&deg;</font></div>
+								  </td>
+								  <td width="70%"><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${rutempresa}</span></font></td>
+								</tr>
+								<tr> 
+								  <td width="30%"> 
+									<div align="right"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">DIRECCI&Oacute;N</font></div>
+								  </td>
+								  <td width="70%"><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${direccion}</span></font></td>
+								</tr>
+								<tr> 
+								  <td width="30%"> 
+									<div align="right"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">GIRO</font></div>
+								  </td>
+								  <td width="70%"><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${giro}</span></font></td>
+								</tr>
+							  </table>
+							</td>
+  </tr>
+						  <tr> 
+							<td width="93%" height="30"> 
+							  <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3"><u><br>
+								<br>
+								<br>
+								${titulo}</u></font></b></font></div>
+							</td>
+							<td width="7%" bordercolor="#CCCCCC" height="30">&nbsp; </td>
+						  </tr>
+						  <tr valign="top"> 
+							<td height="80" colspan="2" > 
+							  <div align="right"> 
+								
+        <table width="58%" border="0">
+          <tr> 
+									
+            <td width="35%" height="10">&nbsp;</td>
+									
+            <td width="65%" height="10">&nbsp;</td>
+		  </tr>
+								  <tr> 
+									
+            <td width="35%" height="10"><font face="Arial, Helvetica, sans-serif" size="2">Certificado 
+              N&deg;</font></td>
+									
+            <td width="65%" height="10"><font face="Arial, Helvetica, sans-serif" size="3"> 
+              <font size="2">${num}</font></font></td>
+								  </tr>
+								  <tr> 
+									<td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">${fecha}</font></td>
+								  </tr>
+								</table>
+							  </div>
+							</td>
+						  </tr>
+						  <tr valign="top"> 
+							<td height="70" colspan="2" > 
+							  <p align="justify"><font face="Arial, Helvetica, sans-serif" size="3"> <font size="2">El 
+								Empleador, </font><font face="Arial, Helvetica, sans-serif" size="3"><font size="2">${empresa}, 
+								</font></font><font size="2">certifica que a ${nombre}, R.U.T ${rut}, 
+								en su calidad de empleado, se le han pagado durante el a&ntilde;o ${periodo} 
+								las rentas que se indican y sobre las cuales se les practicaron las retenciones 
+								de impuestos que se se&ntilde;alan:</font></font></p>
+							</td>
+						  </tr>
+						  <tr valign="top"> 
+							<td height="67" colspan="2"> 
+							  <div align="center"> <if detalle> 
+								
+        <table border="1" cellpadding="0" cellspacing="0" height="17" width="100%">
+          <tr> 
+            <td width="6%" height="23"><font face="Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td height="23" colspan="4" bgcolor="#FFCC99"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Rentas 
+                del a&ntilde;o</font></div>
+            </td>
+            <td height="23" colspan="3" bgcolor="#FFCC99"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Rentas 
+                Accesorias</font></div>
+            </td>
+            <td height="23" colspan="7" bgcolor="#FFCC99"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Total</font></div>
+            </td>
+          </tr>
+          <tr> 
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Mes</font></div>
+            </td>
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta 
+                </font></div>
+            </td>
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Leyes 
+                Sociales </font></div>
+            </td>
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta 
+                Af. Neta</font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto 
+                Retenido</font></div>
+            </td>
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta 
+                </font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Leyes 
+                Sociales</font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto 
+                Retenido</font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta</font></div>
+            </td>
+            <td width="6%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Leyes 
+                Sociales</font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta 
+                Af. Neta</font></div>
+            </td>
+            <td width="7%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto 
+                Retenido</font></div>
+            </td>
+            <td width="5%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Factor. 
+                Actua. </font></div>
+            </td>
+            <td width="8%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta 
+                Afecta Actualiz.</font></div>
+            </td>
+            <td width="9%" height="23"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto 
+                Actualiz.</font></div>
+            </td>
+          </tr>
+          <list detalle as d> 
+          <tr> 
+            <td width="6%" height="18"><font size="1" face="Arial, Helvetica, sans-serif">${d.mes}</font></td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.ry}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.ly}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.ay}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.iy}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.ra}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.la}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.ia}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.rt}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.lt}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.at}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.it}</font></div>
+            </td>
+            <td width="5%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.f}</font></div>
+            </td>
+            <td width="8%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.raf}</font></div>
+            </td>
+            <td width="9%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.iact}</font></div>
+            </td>
+          </tr>
+          </list> 
+          <tr> 
+            <td width="6%" height="18"><font face="Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t1}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t2}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t3}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t4}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t5}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t6}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t7}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t8}</font></div>
+            </td>
+            <td width="6%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t9}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t10}</font></div>
+            </td>
+            <td width="7%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t11}</font></div>
+            </td>
+            <td width="5%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                </font></div>
+            </td>
+            <td width="8%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t12}</font></div>
+            </td>
+            <td width="9%" height="18"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${t13}</font></div>
+            </td>
+          </tr>
+        </table>
+								<else> 
+								<table width="58%" border="1" cellpadding="0" cellspacing="0">
+								  <tr> 
+									<td> 
+									  <div align="center"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">No 
+										registra Informaci&oacute;n. </font></div>
+									</td>
+								  </tr>
+								</table>
+								</if></div>
+							</td>
+						  </tr>
+						  <tr> 
+							<td height="84" colspan="2"> 
+							  <p align="center"><font size="3" face="Arial, Helvetica, sans-serif"> 
+        <font size="2">Se extiende el presente certificado en cumplimiento de 
+        lo dispuesto en la Resoluci&oacute;n Ex. N&deg; 6509 del Servicio de Impuestos 
+        Internos, publicada en el Diario Oficial de fecha 20 de Diciembre de 1993.</font></font></p>
+							</td>
+						  </tr>
+			</table>
+   </if>
+				</if> 
+  </if>
+</BODY>
+</HTML>

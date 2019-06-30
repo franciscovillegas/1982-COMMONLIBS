@@ -1,0 +1,159 @@
+<switch (accion)>
+	<case "CAN">
+		<assign que_hacer="Crear">
+		<assign que_crear="Anexo">
+		<assign ver_publico="S">
+	<break>
+	<case "CFO">
+		<assign que_hacer="Crear">
+		<assign que_crear="Tel&#233;fono">
+		<assign ver_publico="S">
+	<break>
+	<case "CFA">
+		<assign que_hacer="Crear">
+		<assign que_crear="Fax">
+		<assign ver_publico="N">
+	<break>
+	<case "MAN">
+		<assign que_hacer="Modificar">
+		<assign que_crear="Anexo">
+		<assign ver_publico="S">
+	<break>
+	<case "MFO">
+		<assign que_hacer="Modificar">
+		<assign que_crear="Tel&#233;fono">
+		<assign ver_publico="S">
+	<break>
+</switch>
+ <HTML>
+<HEAD>
+<TITLE>${que_hacer} ${que_crear}</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+var existente = new Array();
+<list existentes as ae>existente[existente.length] = '${ae.id}';</list>
+
+function inicio(){
+	<if (refrescar)>
+	//opener.location.reload(true);
+	opener.location.href = "/servlet/datafolder.anexos.MantAnexoUnidad?unidad=${unidad}";
+	window.close();
+	<else>
+	window.focus();
+	<if (!refrescar)>document.form1.nuevo.focus();
+	<if (ver_publico=="S")><if (valor)>document.form1.publico.value = "${publico}";
+	<else>document.form1.publico.value = "S";</if></if>
+	</if>
+	</if>
+}
+
+function existe(anexo) {
+	var exis = false;
+	for(x=0; x< existente.length; x++) {
+		if (existente[x] == anexo) {
+			exis = true;
+			break;
+		}
+	}
+	return exis;
+}
+
+function validaNuevo(form) {
+	var seguir = false;
+	if (form.nuevo.value == "") {
+		alert("Debe indicar un ${que_crear}");
+		form.nuevo.focus();
+	}
+	else if (existe(form.nuevo.value))	{
+		alert("El ${que_crear} '"+form.nuevo.value+"' existe...");
+		form.nuevo.focus();
+	}
+	else	{
+		seguir = true;
+	}
+	return seguir;
+} 
+
+function crearAnexo(form) {
+	if (validaNuevo(form)) {
+		form.submit();
+	}
+	return false;
+} 
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+<link rel="stylesheet" href="/Anexos/stile/FondoCombo.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad= "inicio();MM_preloadImages('/images/Gestion/botones/cancelar_over.jpg','/images/Gestion/botones/aplicar_over.jpg','/images/Gestion/anexos/botones/aceptar_over.jpg','/images/Gestion/anexos/botones/cerrar_over.jpg')" link="006600" vlink="006600" alink="006600">
+<form name="form1" method="post" action="/servlet/datafolder.anexos.CreaAnexoUnidad">
+  <table width="366" border="0" align="center" background="/images/Gestion/anexos/fondvent.jpg" class="unnamed1">
+    <tr> 
+      <td class="unnamed1" align="center" bgcolor="#000033" height="20"><b>${que_hacer} 
+        ${que_crear}</b></td>
+    </tr>
+    <tr align="left"> 
+      <td class="unnamed1" bgcolor="#000033" height="20" align="left">${unidad_desc}</td>
+    </tr>
+	<if (refrescar)>
+	
+    <tr> 
+      <td class="unnamed1" height="45" align="center">${que_crear} creado con 
+        exito...</td>
+    </tr>
+	<else>
+	
+    <tr> 
+      <td class="unnamed1" height="45" align="center"><if (que_hacer) == "Crear">Nuevo</if> ${que_crear} &nbsp;&nbsp;: 
+        <if (valor)>
+        <input type="text" name="nuevo" size="15" class="ComboAzul" value="${valor}" readonly="true">
+		<else>
+        <input type="text" name="nuevo" size="15" class="ComboAzul" value="">
+        </if>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <if (ver_publico == "S")> 
+        <select name="publico" class="ComboAzul">
+          <option value="S">P&uacute;blico</option>
+          <option value="N">Privado</option>
+        </select>
+		</if>
+        <input type="hidden" name="accion" value="${accion}">
+        <input type="hidden" name="unidad" value="${unidad}">
+        <input type="hidden" name="unidad_desc" value="${unidad_desc}">
+      </td>
+    </tr>
+	</if>
+    <tr align="center"> 
+      <td class="texto" align="center"><if (!refrescar)><a href="javascript:;" onClick = "return crearAnexo(document.form1)"><img src="/images/Gestion/anexos/botones/aceptar_up.jpg" border="0" name="crear" onMouseOver="MM_swapImage('crear','','/images/Gestion/anexos/botones/aceptar_over.jpg',1)" width="99" height="23"></a> 
+        </if> <a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','/images/Gestion/anexos/botones/cerrar_over.jpg',1)"><img name="Image4" border="0" src="/images/Gestion/anexos/botones/cerrar_up.jpg" width="99" height="23"></a></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

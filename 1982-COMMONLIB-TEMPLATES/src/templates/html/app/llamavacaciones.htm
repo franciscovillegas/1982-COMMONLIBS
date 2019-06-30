@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Menu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+
+var ancho = 10;
+var alto = 10;
+var porcentaje = 0.9;
+window.top.moveTo((screen.availWidth - ancho) / 2, (screen.availHeight - alto) / 2);
+if (document.all) {
+	top.window.resizeTo(ancho, alto);
+}
+
+
+<!--
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+	var servidorDF = '${GetProp("server.datafolder")}'; //"http://srv-desa-010:8010";
+	var servidorWF = '${GetProp("server.workflow")}'; //"http://srv-desa-010:8092";
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function inicio(){
+	openBienvenida();
+}
+
+function volver(){
+//alert("ccc");
+	document.location.href="../servlet/Tool?htm=user/menu_derecho.htm"
+}
+
+//-->
+</script>
+</head>
+
+<body bgcolor="#9999CC" background="../servlet/Tool?images/top/menubck.JPG" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<table width="79" border="0" cellpadding="0" cellspacing="0" height="424">
+  <tr> 
+    <td width="142" valign="top"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="304">
+      <param name=movie value="../flash/botones/openvacaciones.swf">
+      <param name=quality value=high>
+      <embed src="../flash/botones/openvacaciones.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="304"> </embed>
+    </object>  
+    </td>
+  </tr>
+	<tr>
+    <td height="73" valign="top" width="142">&nbsp;  </tr>
+</table>
+</body>
+</html>

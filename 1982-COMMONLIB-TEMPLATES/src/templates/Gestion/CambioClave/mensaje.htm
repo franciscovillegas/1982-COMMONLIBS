@@ -1,0 +1,49 @@
+ <HTML>
+<HEAD>
+<TITLE>Data Folder</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="560">
+  <TR> 
+    <TD width="560" height="113">&nbsp; </TD>
+  </TR>
+  <TR> 
+    <TD valign="top" align="center"> <br>
+      <br>
+      <br>
+      <table width="43%" border="2" height="69" cellpadding="0" cellspacing="0" bordercolor="#D7D7D7">
+        <tr align="center"> 
+          <td height="20" class="negro12B" bgcolor="#DDDDDD"> Datos Registrados</td>
+        </tr>
+        <tr> 
+          <td height="40" class="negro12N" align="center">Clave cambiada con &eacute;xito.</td>
+        </tr>
+      </table>
+      <br>
+      <if !ok>
+	  <a href="javascript:;" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/Gestion/botones/aceptar_up.jpg" width="108" height="27" border="0" name="Image1" onMouseDown="MM_goToURL('parent.frames[\'topFrame\']','Tool?htm=Gestion/top_bci.html','parent.frames[\'mainFrame\']','Tool?htm=Gestion/main_bienvenida.html');return document.MM_returnValue"></a> 
+      <else>
+	  <a href="javascript:window.close();"><img src="../servlet/Tool?images/Gestion/botones/cerrar_up.jpg" border="0" name="Image2"></a>	  </if>  
+    </TD>
+  </TR>
+</TABLE>
+<p align="left">&nbsp;</p>
+</BODY>
+</HTML>

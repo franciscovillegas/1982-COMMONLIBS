@@ -1,0 +1,244 @@
+body {
+	background-color: #F3F3F3;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;	
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.titulos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	font-style:normal;
+	color: #336699;
+	font-weight: bold;
+}
+.texto_azul_bold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color:#336699
+}
+.texto_azul {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #336699;
+}
+.texto_negro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+.texto_negro_bold_chico {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-weight: bold;
+}
+.texto_negro_bold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color:#000000
+}
+.tabla_layer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #336699;
+	background-image: url(/organica/images/Gestion/LayersAzul/fondo.jpg);
+	background-repeat: repeat-x;
+}
+.tabla_layer_orga {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #CECE9D;
+	background-image: url(/organica/images/Gestion/LayersBeige/fondo.jpg);
+	background-repeat: no-repeat;
+}
+.layer_busqueda {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #C9AA8C;
+	background-image: url(/organica/images/Gestion/LayersCafe/fondo.jpg);
+	background-repeat: no-repeat;
+}
+.tabla_layer_Indi {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #FFB997;
+	background-image: url(/organica/images/Gestion/LayersNara/fondo.jpg);
+	background-repeat: no-repeat;
+}
+.tabla_Informe {
+	font-family: arial;
+	background-color: #DCEFF9;
+	border: 1px solid #88C8ED;
+	font-size: 11px;
+	padding: 0px;
+}
+.layer_util {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #F2D375;
+	background-image: url(/organica/images/Gestion/LayersAmar/fondo.jpg);
+	background-repeat: repeat-x;
+}
+.layer_celeste {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #88C8ED;
+	background-image: url(/organica/images/Gestion/LayersCeleste/fondo.jpg);
+	background-repeat: repeat-x;
+}
+.tabla_azul {
+	font-family: arial;
+	background-color: #e1e1e1;
+	border: 1px solid #336699;
+	font-size: 11px;
+	padding: 0px;
+}
+.tabla_negro {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+}
+.tabla_beige {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #CECE9D;
+	border: 1px solid #74743A;
+	padding: 0px;
+}
+.tabla_amarelo {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #F9EABE;
+	border: 1px solid #F2D375;
+	padding: 0px;
+}
+.tabla_gris {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #F4F4F4;
+	border: 1px solid #999999;
+	padding: 0px;
+}
+.tabla_nara {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #F8E2D1;
+	border: 1px solid #FFB997;
+	padding: 0px;
+}
+.ScrollBeige {
+	SCROLLBAR-FACE-COLOR: #CECE9D; 
+	SCROLLBAR-HIGHLIGHT-COLOR: #CECE9D;
+	SCROLLBAR-SHADOW-COLOR: #74743A;
+	SCROLLBAR-3DLIGHT-COLOR: #74743A;
+	SCROLLBAR-ARROW-COLOR: #74743A;
+	SCROLLBAR-TRACK-COLOR: #ffffff;
+	SCROLLBAR-DARKSHADOW-COLOR: #74743A
+}
+.fondoUp {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #000066; background-color: #FFFFFF}
+.fondoUp:hover {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF; background-color: #000066}
+.fondoUp:active { font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF; background-color: #000066 }
+.negro10N { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000 }
+.negro10B { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000 }
+.negro10NLink { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000 }
+.azul10NLink { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000066; text-decoration: none}
+.azul10NLink:hover { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #FFFFFF; background-color: #000066; text-decoration: none}
+.negro11lista {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #000000; background-color: #FFCC66}
+.textoNodo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #000066;
+}
+.textoNodo:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+	background : #000066;
+}
+.textoNodoSel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+	background : #000066;
+}
+.textoTipoNodo { font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-transform: uppercase; text-decoration: none ; font-weight: bold}
+
+.negro12B { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000 }
+.negro12N { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #000000 }
+.textoInforme { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; color: #000000 }
+.blanco12B {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF}
+.blanco16B { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #FFFFFF }
+.blanco10B { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF }
+.negro8B { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold; color: #000000 }
+
+
+/* tables Sorter */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}

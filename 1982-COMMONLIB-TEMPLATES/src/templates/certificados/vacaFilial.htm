@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Certificado</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js">
+
+</script>
+<script language="JavaScript">
+<!--
+
+
+
+
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<table width="80%" border="0" align="center">
+  <tr>
+    <td> 
+      <div align="left">
+        <table width="83%" border="0" cellspacing="1" cellpadding="2" align="left">
+          <tr> 
+            <td> 
+              <div><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><img src="../servlet/Tool?images/new/logos/armada.gif" width="152" height="61"></font></i></font></i></font><font face="Times New Roman, Times, serif"></font></i></font></div>
+            </td>
+          </tr>
+        </table>
+        <div id="Layer1" style="position:absolute; width:90px; height:50px; z-index:1; visibility: visible"><a href="#"><img src="../servlet/Tool?images/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></div>
+      </div>    </td>
+  </tr>
+</table>
+<if (!denegado)> 
+<table width="80%" border="0" align="center" height="350">
+  <tr> 
+    <td height="37">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><strong><u>CERTIFICADO 
+        N&deg; ${num}/${anio}</u></strong></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td height="116"> <p align="justify"><font size="2" face="Arial, Helvetica, sans-serif"><strong>JUAN P&Eacute;REZ GONZ&Aacute;LEZ</strong>, JEFE PROCESOS RRHH de EMPRESA PRUEBA, certifica que el se&ntilde;or(a) <strong>${nombre}</strong>, 
+        Rut <strong>${rut_trab}</strong>, es colaborador(a) de nuestra Filial 
+        ${empresa} desde el <strong>${ingreso}</strong>, desempe&ntilde;&aacute;ndose actualmente 
+    en el cargo de <strong>${cargo}</strong>.</font></p></td>
+  </tr>
+  <tr> 
+    <td height="18"><font face="Arial, Helvetica, sans-serif" size="2">El 
+      Sr(a) ${paterno} har&aacute; uso de su feriado legal desde el ${inicio} 
+      hasta el ${termino} inclusive, durante los cuales visitar&aacute; la ciudad 
+      de ${ciudad}, reintegr&aacute;ndose a sus labores el ${reintegro}.</font></td>
+  </tr>
+  <tr> 
+    <td> <p align="justify"><font size="2" face="Arial, Helvetica, sans-serif">Se 
+        extiende el presente certificado a petici&oacute;n del interesado para 
+        ser presentado en la <strong>Embajada de ${destino}</strong>.</font></p></td>
+  </tr>
+  <tr align="left"> 
+    <td> 
+<div align="right"> 
+        <div align="left"></div>
+      </div></td>
+  </tr>
+  <tr align="left"> 
+    <td height="36"><font face="Arial, Helvetica, sans-serif" size="2">${fecha}</font></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<else>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td><div align="center"> </div></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><hr size="2"></td>
+  </tr>
+  <tr> 
+    <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">Ud 
+        no Pertenece a la Filial FACTORING</font></div></td>
+  </tr>
+  <tr> 
+    <td><hr size="2"></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</if> 
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!-- buscarTrabajador.htm -->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+	<title>Carpetas Electr&#243;nicas</title>
+
+	<!-- tool FUNCTION -->
+	<script type="text/javascript" src="../servlet/Tool?omap=scripts/scriptFuncs.js"></script>
+
+	<!-- JQUERY  -->
+	<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+
+<!-- ############################### -->
+	<!-- PAGINA -->
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/demo.css"/>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/style.css"/>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleOrganica.css"/>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css"/>
+<!-- ############################### -->
+
+	<!-- UPLOADIFY -->
+	<link rel="stylesheet" type="text/css"  href="../servlet/Tool?omap=style/jqueryuploadify/uploadify.css"></link>
+	<script type="text/javascript" 			src="../servlet/Tool?omap=scripts/jqueryuploadify/jquery.uploadify.js"></script>
+
+
+<!-- ############################### -->
+<!--  TREE  -->
+<script type="text/javascript" src="../servlet/Tool?scripts/jqtree/tree.jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?style/jqtree/jqtree1.css"/>
+<!-- ############################### -->
+
+<!-- ############################### -->
+<!-- MODAL -->
+<script type="text/javascript" src="../servlet/Tool?scripts/jqueryalerts/jquery.alerts.js"></script>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?style/jqueryalerts/jquery.alerts.css"/>
+<!-- ############################### -->
+
+<!-- ############################### -->
+<!-- SHADOWBOX -->
+<link href="../servlet/Tool?omap=scripts/shadowbox-3.0.3/shadowbox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/shadowbox-3.0.3/shadowbox.js"></script>
+<!-- ############################### -->
+
+
+	<script type="text/javascript" src="../servlet/Tool?scripts/zonaUtil.js"></script>
+	<script type="text/javascript" src="../servlet/Tool?scripts/directorio/zonaDirectorio.js"></script>
+
+
+<!-- JTABLE -->
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquerydatatable/jquery.jeditable.js"></script>
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquerydatatable/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquerydatatable/ZeroClipboard.js"></script>
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquerydatatable/TableTools.js"></script>
+
+<link href="../servlet/Tool?omap=style/jquerydatatable/skin02/demo_page.css" rel="stylesheet" type="text/css"></link>
+<link href="../servlet/Tool?omap=style/jquerydatatable/skin02/demo_table.css" rel="stylesheet" type="text/css"></link>
+<link href="../servlet/Tool?omap=style/jquerydatatable/skin02/TableTools.css" rel="stylesheet" type="text/css"></link>
+<link href="../servlet/Tool?omap=style/jquerydatatable/skin02/header.ccss.css" rel="stylesheet" type="text/css"></link>
+
+
+
+
+
+
+<style type="text/css">
+
+	.overlay{
+	     display: none;
+	     position: absolute;
+	     top: 0;
+	     left: 0;
+	     width: 100%;
+	     height: 100%;
+	     background: #000;
+	     z-index:1001;
+	     opacity:.75;
+	     -moz-opacity: 0.75;
+	     filter: alpha(opacity=75);
+	}
+
+	.divFicha{
+	     display: none;
+	     position: absolute;
+	     top: 10%;
+	     left: 25%;
+	     width: 50%;
+	     height: 50%;
+	     padding: 16px;
+	     background: #fff;
+	     color: #333;
+	     z-index:1002;
+	     overflow: auto;
+		border-radius: 10px;
+		-ms-border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-khtml-border-radius: 10px;
+	}
+	
+</style>
+	
+</head>
+
+<body onload="loadDirectorio()">
+<div id="conteiner">
+
+	<div id="cabecera">
+
+        <div class="tituloCarpetaElectronica">
+        	Directorio de la Empresa 
+        </div>
+   	    
+    </div>
+	
+	<div id="main">     
+		<div id="contenido"></div>
+
+		<div id="fade" class="overlay" onclick="cerrarModal()"></div>
+		<div id="divFicha" class="divFicha"></div>
+
+	</div><!--main-->
+
+</div><!--conteiner-->
+</body>
+</html>

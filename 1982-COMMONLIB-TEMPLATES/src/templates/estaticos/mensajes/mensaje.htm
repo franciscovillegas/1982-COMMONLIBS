@@ -1,0 +1,64 @@
+<script language="JavaScript" src="${context}/servlet/Tool?scripts/funciones.js" type="text/JavaScript"></script>
+<script>
+function emailvacio()
+{
+if(inserta.Mail.value == "")
+{
+  alert("Para contactarse debe ingresar su E-Mail");
+  inserta.Mail.focus();
+
+}
+else
+	 if (inserta.Mail.value.indexOf("@") == -1 || inserta.Mail.value.indexOf(".") == -1 || inserta.Mail.value.indexOf(";") > -1 || inserta.Mail.value.indexOf(",") > -1 || inserta.Mail.value.indexOf(":") > -1)
+	 {
+ 	 
+	 alert( "Por favor ingresa una direcci&#243;n de email v&#225;lida!")
+ 	 inserta.Mail.focus(); 
+	 } 
+ 	 else
+	 {
+	   	     document.forms.inserta.submit();
+
+	 }
+
+}
+
+</script>
+<title>Mensaje</title>
+
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+MM_reloadPage(true);
+// -->//-->
+</script>
+<link href="${context}/servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body bgcolor="#9999CC" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="392" border="0" align="center" cellpadding="0" cellspacing="0">
+  <!-- fwtable fwsrc="Untitled" fwbase="mensaje.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+ 
+  <tr> 
+    <td colspan="2" valign="top" bgcolor="EFEEF4"><table width="100%" height="93" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="23" class="titulo">
+          <div align="center" ><font size="2" face="Arial, Helvetica, sans-serif">${titulo}</font></div>
+        </td>
+      </tr>
+      <tr>
+        <td height="70">
+          <div align="center"><font size="2" face="Arial, Helvetica, sans-serif">${mensaje}</font></div>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<p align="center">&nbsp;</p>
+</body>
+</html>

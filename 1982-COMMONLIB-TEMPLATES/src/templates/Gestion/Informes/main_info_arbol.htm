@@ -1,0 +1,885 @@
+ <HTML>
+<HEAD>
+<TITLE></TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function VerMas(){
+//alert("${nameform}");  
+<if (nameform!="")>
+   CargaValores(document.${nameform});
+   document.${nameform}.submit();
+ </if>
+}
+
+function SeteaPos(formulario){
+  formulario.pos.value="1";
+  CargaValores(formulario);
+ }
+
+function CargaValores(formu){
+ var valmes=document.formOp.peri_mes.value;
+  switch (document.formOp.peri_mes.value){
+   case "01":valmes="1";break;
+   case "02":valmes="2";break;
+   case "03":valmes="3";break;
+   case "04":valmes="4";break;
+   case "05":valmes="5";break;
+   case "06":valmes="6";break;
+   case "07":valmes="7";break;
+   case "08":valmes="8";break;
+   case "09":valmes="9";break;
+ }
+  formu.peri_ano.value=document.formOp.peri_ano.value;
+  formu.peri_mes.value=valmes;
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_listas.js">
+</script>
+<script language="JavaScript">
+<!--
+
+<!--
+function CargaLista(ARREGLO){
+	//alert(ARREGLO);
+	listaLlenar(document.formOp.rutcomp,ARREGLO);
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/selecciona_informe_arbol.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/msgprocesando.js">
+</script>
+<script language="JavaScript">
+<!--
+
+function Ejecuta(idEmp,idUni,nombre, tipo){
+//	alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Buscar(){
+	var nombre="";
+	var rut="";
+	var paterno="";
+	var materno="";
+	var emp="";
+	var uni="";
+	//alert(eval("document.formOp.b_rut"));
+	emp=document.form1.empresa.value;
+	uni=document.form1.unidad.value;
+	rut=document.formOp.brut.value;
+	nombre=document.formOp.bnombre.value;
+	paterno=document.formOp.bapate.value;
+	materno=document.formOp.bamate.value;
+	
+	if(emp=="")
+		alert("Seleccione la unidad");
+	else {
+		if ((nombre=="") && (rut=="") && (paterno=="") && (materno==""))
+			alert("Ingrese par&#225;metros de busqueda.");
+		else
+			//alert(emp+"-"+uni+"-"+rut+"-"+nombre+"-"+paterno+"-"+materno)
+			AbrirVentProcesandoBuscar(emp,uni,rut,nombre,paterno,materno)
+		}		
+	}
+
+function VerRango(valor) { //v1.0
+	MM_showHideLayers('LayerRangoNeto','','hide');
+	MM_showHideLayers('LayerColabCargo','','hide');
+	MM_showHideLayers('LayerColabNivel','','hide');
+	
+	if (valor.value == "_6")
+		LayerRangoNeto.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerRangoNeto','','inherit');
+
+	if ((valor.value == "_2") || (valor.value == "_4") || (valor.value == "_7"))
+		LayerColabCargo.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerColabCargo','','inherit');
+	
+	if ((valor.value == "_3") || (valor.value == "_5"))
+		LayerColabNivel.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerColabNivel','','inherit');	
+		
+}
+
+function validaNum(texto) {
+	window.valido = false;
+	if (texto.value == "") {
+		texto.value = "0";
+		window.valido = true;
+	}
+	else if (!isNaN(texto.value)) {
+		n = parseInt(texto.value);
+		if (n>=0) window.valido = true;
+	}
+	if (!window.valido) {
+		alert('Valor incorrecto');
+		texto.select();
+		texto.focus();
+	}
+}
+function inicio() {
+	var rut=document.formBusRut.br.value;
+	inicioArbol();
+	if (window.unidadBuscada) {
+		if (!window.unidadEncontrada)//||(rut!="")) 
+		  LayerVerMas.style.visibility="hidden";
+	}
+	document.formBusCod.be.value = window.resulEmp;
+	document.formBusCod.bu.value = window.resulUni;
+	document.formBusGlosa.bu.value = window.resulUni;
+	document.formBusRut.br.value = "${br}";
+	if ( (document.formBusRut.br.value!="") && (!window.unidadEncontrada) ) 
+		alert("El trabajdor con rut '"+document.formBusRut.br.value+"' no se encuentra en la Organica.");
+	document.formOp.peri_ano.value="${ano}";
+   var mesnum=0;
+  mesnum=${mes};
+  if ((mesnum>=1)&&(mesnum<=9))	
+	document.formOp.peri_mes.value="0${mes}";
+  else
+   document.formOp.peri_mes.value="${mes}";
+if (parent.topFrame.document.form1.informe.value!="-1")
+  parent.topFrame.Muestra(parent.topFrame.document.form1.informe.value);	
+}
+function limpiarBus() {
+	document.formBusCod.reset();
+	document.formBusGlosa.reset();
+	document.formBusRut.reset();
+	return false;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+parent.frames.topFrame.document.form1.informe.disabled = "";
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer2 {
+	position:absolute;
+	left:377px;
+	top:325px;
+	width:119px;
+	height:13px;
+	z-index:6;
+	visibility: visible;
+}
+-->
+</Style>
+</HEAD>
+<BODY  background="../servlet/Tool?images/Gestion/LayersCeleste/fondo.jpg" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="inicio()">
+<div id="Layer2"><a href="javascript:;" onClick="Valida(document.form1, document.formOp); return false;"><img name="img_generar" border="0" src="../servlet/Tool?images/Gestion/botones/informe.gif" width="120" height="24" alt="Ver Informe Generado"></a></div>
+<table border=0 cellpadding=0 cellspacing=0 width="501" height="376">
+  <tr> 
+    <td height="4">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td height="357"> 
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="209" rowspan="2" valign="top" align="left">
+            <table width="100%" height="328">
+              <tr>
+                <td height="267">                </td>
+              </tr>
+              <tr><form name="form1" method="post" action="">
+                <td height="61" valign="bottom"> 
+                  
+                    <input type="hidden" name="empresa">
+                    <input type="hidden" name="unidad">
+                    <input type="hidden" name="descrip">
+                    <input type="hidden" name="cual">
+                    <input type="hidden" name="criterio">
+                    <input type="hidden" name="peri_ano">
+                    <input type="hidden" name="peri_mes">
+                    <input type="hidden" name="fecha_desde">
+                    <input type="hidden" name="fecha_hasta">
+                    <input type="hidden" name="renta_desde">
+                    <input type="hidden" name="renta_hasta">
+                    <input type="hidden" name="tipo_renta">
+                    
+					<input type="hidden" name="peri_remu" value="${peri_remu}">
+                    <div class="texto_negro" id = "opcionUR" >Informe para<br>
+                    <input type="radio" name="tipo" value="U" checked>
+                    Unidad 
+                    <input type="radio" name="tipo" value="R">
+                  Rama</div></td>
+                </form>
+              </tr>
+            </table>
+          </td>
+          <td colspan="2" align="center" valign="middle"> 
+            <form name="formOp" method="post" action="">
+              <input type="hidden" name="acceso3" value="df_exp_dat_pers">
+              <input type="hidden" name="acceso2" value="df_exp_adm_tiempo">
+              <input type="hidden" name="acceso1" value="df_exp_remu">
+              <input type="hidden" name="puede_ver_pers" value="${puede_ver_pers}">
+              <input type="hidden" name="puede_ver_adm" value="${puede_ver_adm}">
+              <input type="hidden" name="puede_ver_remu" value="${puede_ver_remu}">
+              <input type="hidden" name="rut_user" value="${rut_user}">
+              <input type="hidden" name="filtro_adic" value = "${filtro_adic}">
+              <div class="layer_celeste" id="LayerRut" style="position:absolute; width:467px; height:247px; z-index:15; left: 18px; top: 45px; visibility: hidden;"> 
+                <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td valign="top"> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr> 
+                          <td height="9" colspan="5" class="texto_negro_bold">Busque Empleado</td>
+                        </tr>
+                        <tr> 
+                          <td height="9" width="34%" class="negro10B">Apellido 
+                            Paterno</td>
+                          <td height="9" width="37%" class="negro10B">Apellido 
+                            Materno</td>
+                          <td height="9" width="29%" class="negro10B">Nombre</td>
+                          <td height="9" width="29%" class="negro10B">Rut</td>
+                        </tr>
+                        <tr align="left"> 
+                          <td height="29" width="34%" class="negro10N"> 
+                            <input name="bapate" type="text" class="texto_negro_bold_chico" size="12">                          </td>
+                          <td height="29" width="37%" class="negro10N"> 
+                            <input name="bamate" type="text" class="texto_negro_bold_chico" size="12">                          </td>
+                          <td height="29" width="29%" class="negro10N"> 
+                            <input name="bnombre" type="text" class="texto_negro_bold_chico" size="12">                          </td>
+                          <td height="29" width="29%" class="negro10N">
+                            <input name="brut" type="text" class="texto_negro_bold_chico" size="10">                          </td>
+                        </tr>
+                        <tr align="right"> 
+                          <td height="14" colspan="5"><span class="negro10B"> 
+                            </span> 
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                              <tr> 
+                                <td class="negro10B" width="62%" align="right">&nbsp;                                </td>
+                                <td align="right" width="38%"> <a href="#" onClick="Buscar();return false;"><img src="../servlet/Tool?images/Gestion/botones/buscar.gif" name="Image1" width="120" height="24" border="0"></a></td>
+                              </tr>
+                            </table>                          </td>
+                        </tr>
+                      </table>
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro_bold">
+                        <tr> 
+                          <td class="negro10B" width="159">Nombres</td>
+                        </tr>
+                      </table>
+                      <select name="rutcomp" size="10" class="texto_negro_bold_chico" style="width=300">
+                      </select></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerPeri" style="position:absolute; width:242px; height:47px; z-index:14; left: 255px; top: 68px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td> 
+                      <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr align="center"> 
+                          <td colspan="4" class="texto_negro_bold">Periodo</td>
+                        </tr>
+                        <tr> 
+                          <td width="19">A&ntilde;o</td>
+                          <td width="85"> 
+                            <select name="peri_ano" class="texto_negro_bold_chico">
+                              <option value="1990">1990</option>
+                              <option value="1991">1991</option>
+                              <option value="1992">1992</option>
+                              <option value="1993">1993</option>
+                              <option value="1994">1994</option>
+                              <option value="1995">1995</option>
+                              <option value="1996">1996</option>
+                              <option value="1997">1997</option>
+                              <option value="1998">1998</option>
+                              <option value="1999">1999</option>
+                              <option value="2000">2000</option>
+                              <option value="2001" selected>2001</option>
+                              <option value="2002">2002</option>
+                              <option value="2003">2003</option>
+                              <option value="2004">2004</option>
+                              <option value="2005">2005</option>
+                              <option value="2006">2006</option>
+                              <option value="2007">2007</option>
+                              <option value="2008">2008</option>
+                              <option value="2009">2009</option>
+                              <option value="2010">2010</option>
+                            </select>                          </td>
+                          <td width="38">Mes</td>
+                          <td width="89"> 
+                            <select name=peri_mes size=1 class="texto_negro_bold_chico">
+                              <option value="01" selected>Enero</option>
+                              <option value="02">Febrero</option>
+                              <option value="03">Marzo</option>
+                              <option value="04">Abril</option>
+                              <option value="05">Mayo</option>
+                              <option value="06">Junio</option>
+                              <option value="07">Julio</option>
+                              <option value="08">Agosto</option>
+                              <option value="09">Septiembre</option>
+                              <option value="10">Octubre</option>
+                              <option value="11">Noviembre</option>
+                              <option value="12">Diciembre</option>
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerRango" style="position:absolute; width:235px; height:54px; z-index:13; left: 257px; top: 233px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr align="center"> 
+                          <td colspan="2" class="texto_negro_bold">Rangos de Fechas</td>
+                        </tr>
+                        <tr> 
+                          <td width="34">Desde</td>
+                          <td width="199"> 
+                            <select name=d_dia size=1 class="texto_negro_bold_chico">
+                              <option 
+              selected value=1>1</option>
+                              <option value=2>2</option>
+                              <option 
+              value=3>3</option>
+                              <option value=4>4</option>
+                              <option 
+              value=5>5</option>
+                              <option value=6>6</option>
+                              <option 
+              value=7>7</option>
+                              <option value=8>8</option>
+                              <option 
+              value=9>9</option>
+                              <option value=10>10</option>
+                              <option 
+              value=11>11</option>
+                              <option value=12>12</option>
+                              <option 
+              value=13>13</option>
+                              <option value=14>14</option>
+                              <option 
+              value=15>15</option>
+                              <option value=16>16</option>
+                              <option 
+              value=17>17</option>
+                              <option value=18>18</option>
+                              <option 
+              value=19>19</option>
+                              <option value=20>20</option>
+                              <option 
+              value=21>21</option>
+                              <option value=22>22</option>
+                              <option 
+              value=23>23</option>
+                              <option value=24>24</option>
+                              <option 
+              value=25>25</option>
+                              <option value=26>26</option>
+                              <option 
+              value=27>27</option>
+                              <option value=28>28</option>
+                              <option 
+              value=29>29</option>
+                              <option value=30>30</option>
+                              <option 
+              value=31>31</option>
+                            </select>
+                            <select name=d_mes size=1 class="texto_negro_bold_chico">
+                              <option 
+              selected value=1>Enero</option>
+                              <option value=2>Febrero</option>
+                              <option value=3>Marzo</option>
+                              <option value=4>Abril</option>
+                              <option value=5>Mayo</option>
+                              <option value=6>Junio</option>
+                              <option value=7>Julio</option>
+                              <option value=8>Agosto</option>
+                              <option value=9>Septiembre</option>
+                              <option 
+              value=10>Octubre</option>
+                              <option value=11>Noviembre</option>
+                              <option value=12>Diciembre</option>
+                            </select>
+                            <select name="d_ano" class="texto_negro_bold_chico">
+                              <option value="1990">1990</option>
+                              <option value="1991">1991</option>
+                              <option value="1992">1992</option>
+                              <option value="1993">1993</option>
+                              <option value="1994">1994</option>
+                              <option value="1995">1995</option>
+                              <option value="1996">1996</option>
+                              <option value="1997">1997</option>
+                              <option value="1998">1998</option>
+                              <option value="1999">1999</option>
+                              <option value="2000">2000</option>
+                              <option value="2001" selected>2001</option>
+                              <option value="2002">2002</option>
+                              <option value="2003">2003</option>
+                              <option value="2004">2004</option>
+                              <option value="2005">2005</option>
+                              <option value="2006">2006</option>
+                              <option value="2007">2007</option>
+                              <option value="2008">2008</option>
+                              <option value="2009">2009</option>
+                              <option value="2010">2010</option>
+                            </select>                          </td>
+                        </tr>
+                        <tr> 
+                          <td width="34"><font size="1" face="Arial, Helvetica, sans-serif">Hasta</font></td>
+                          <td width="199"> 
+                            <select name=h_dia size=1 class="texto_negro_bold_chico">
+                              <option 
+              selected value=1>1</option>
+                              <option value=2>2</option>
+                              <option 
+              value=3>3</option>
+                              <option value=4>4</option>
+                              <option 
+              value=5>5</option>
+                              <option value=6>6</option>
+                              <option 
+              value=7>7</option>
+                              <option value=8>8</option>
+                              <option 
+              value=9>9</option>
+                              <option value=10>10</option>
+                              <option 
+              value=11>11</option>
+                              <option value=12>12</option>
+                              <option 
+              value=13>13</option>
+                              <option value=14>14</option>
+                              <option 
+              value=15>15</option>
+                              <option value=16>16</option>
+                              <option 
+              value=17>17</option>
+                              <option value=18>18</option>
+                              <option 
+              value=19>19</option>
+                              <option value=20>20</option>
+                              <option 
+              value=21>21</option>
+                              <option value=22>22</option>
+                              <option 
+              value=23>23</option>
+                              <option value=24>24</option>
+                              <option 
+              value=25>25</option>
+                              <option value=26>26</option>
+                              <option 
+              value=27>27</option>
+                              <option value=28>28</option>
+                              <option 
+              value=29>29</option>
+                              <option value=30>30</option>
+                              <option 
+              value=31>31</option>
+                            </select>
+                            <select name=h_mes size=1 class="texto_negro_bold_chico">
+                              <option 
+              selected value=1>Enero</option>
+                              <option value=2>Febrero</option>
+                              <option value=3>Marzo</option>
+                              <option value=4>Abril</option>
+                              <option value=5>Mayo</option>
+                              <option value=6>Junio</option>
+                              <option value=7>Julio</option>
+                              <option value=8>Agosto</option>
+                              <option value=9>Septiembre</option>
+                              <option 
+              value=10>Octubre</option>
+                              <option value=11>Noviembre</option>
+                              <option value=12>Diciembre</option>
+                            </select>
+                            <select name="h_ano" class="texto_negro_bold_chico">
+                              <option value="1990">1990</option>
+                              <option value="1991">1991</option>
+                              <option value="1992">1992</option>
+                              <option value="1993">1993</option>
+                              <option value="1994">1994</option>
+                              <option value="1995">1995</option>
+                              <option value="1996">1996</option>
+                              <option value="1997">1997</option>
+                              <option value="1998">1998</option>
+                              <option value="1999">1999</option>
+                              <option value="2000">2000</option>
+                              <option value="2001" selected>2001</option>
+                              <option value="2002">2002</option>
+                              <option value="2003">2003</option>
+                              <option value="2004">2004</option>
+                              <option value="2005">2005</option>
+                              <option value="2006">2006</option>
+                              <option value="2007">2007</option>
+                              <option value="2008">2008</option>
+                              <option value="2009">2009</option>
+                              <option value="2010">2010</option>
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerINFU009" style="position:absolute; width:236px; height:44px; z-index:12; left: 257px; top: 20px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td> 
+                      <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr align="center"> 
+                          <td align="center" class="texto_negro_bold">Opciones de Selecci&oacute;n</td>
+                        </tr>
+                        <tr> 
+                          <td align="center"> 
+                            <select name=opcionINFU009 size=1 class="texto_negro_bold_chico">
+                              <option value="_1">Todos los Traslados</option>
+                              <option value="_2">Cambios de Unidad</option>
+                              <option value="_3">Cambios de Cargo</option>
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerINFU007" style="position:absolute; width:241px; height:54px; z-index:11; left: 255px; top: 71px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td>
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr align="center"> 
+                          <td height="18" colspan="2" class="texto_negro_bold">Opciones de Selecci&oacute;n</td>
+                        </tr>
+                        <tr> 
+                          <td colspan="2" height="22"><input type="radio" name="opcion" value="T" checked>
+                            Todos los retirados</td>
+                        </tr>
+                        <tr> 
+                          <td width="58" valign="top"><input type="radio" name="opcion" value="sexo">Sexo</td>
+                          <td width="178" valign="top"> 
+                            <select name="sexo" class="texto_negro_bold_chico">
+                              <option value="-1" selected>Seleccione Sexo...</option>
+                              <option value="M">Masculino</option>
+                              <option value="F">Femenino</option>
+                            </select>                          </td>
+                        </tr>
+                        <tr> 
+                          <td colspan="2" height="22"><input type="radio" name="opcion" value="motivo_id">Motivo de Retiro</td>
+                        </tr>
+                        <tr align="center"> 
+                          <td height="21" colspan="2"> 
+                            <select name="motivo_id" class="texto_negro_bold_chico" style="width: 200px" >
+                              <if (motivos)> 
+                              <option value="-1" selected>Seleccione Moltivo...</option>
+                              <list motivos as m> 
+                              <option value="${m.id}">${m.des}</option>
+                              </list> <else> 
+                              <option value="-1" selected>No registra Moltivos...</option>
+                              </if> 
+                            </select>                          </td>
+                        </tr>
+                        <tr> 
+                          <td colspan="2" height="22"><input type="radio" name="opcion" value="carg_id">
+                            Cargo</td>
+                        </tr>
+                        <tr align="center"> 
+                          <td height="21" colspan="2"> 
+                            <select name="carg_id" class="texto_negro_bold_chico" style="width: 200px">
+                              <if (cargos)> 
+                              <option value="-1" selected>Seleccione Cargo...</option>
+                              <list cargos as c> 
+                              <option value="${c.id}">(${c.id}) ${c.des}</option>
+                              </list> <else> 
+                              <option value="-1" selected>No registra Cargos...</option>
+                              </if> 
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerINFU001" style="position:absolute; width:239px; height:35px; z-index:10; left: 256px; top: 21px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr align="center"> 
+                          <td align="center" class="texto_negro_bold">Opciones de Selecci&oacute;n</td>
+                        </tr>
+                        <tr> 
+                          <td align="center"> 
+                            <select name=opcionINFU001 size=1 class="texto_negro_bold_chico">
+                              <option value="_1">Unidad Sobredotaci&oacute;n/Vacantes</option>
+                              <option value="_2">Unidad Sobredotaci&oacute;n</option>
+                              <option value="_3">Unidad Vacantes</option>
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="layer_celeste" id="LayerINFU012" style="position:absolute; width:236px; height:208px; z-index:2; left: 257px; top: 19px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+                  <tr> 
+                    <td valign="top"> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1">
+                        <tr align="center"> 
+                          <td class="texto_negro_bold">Opciones de Selecci&oacute;n</td>
+                        </tr>
+                        <tr> 
+                          <td align="center"> 
+                            <select name=opcionINFU012 size=1 class="texto_negro_bold_chico" onChange="VerRango(this)">
+                              <option value="_1" selected>Informe por Unidad</option>
+                              <option value="_2">Informe por Cargo - Detalle Personal</option>
+                              <option value="_7">Informe por Cargo - Rentas Promedio</option>
+                              <option value="_3">Informe por Nivel</option>
+                              <option value="_4">Informe por Unidad/Cargo</option>
+                              <option value="_5">Informe por Unidad/Nivel</option>
+                              <option value="_6">Informe por Tipo de Renta</option>
+                          </select>                          </td>
+                        </tr>
+                        <tr>
+                          <td width="48"> 
+                            <div id="LayerRangoNeto" style="position:absolute; left:6px; top:92px; width:225px; height:45px; z-index:4; visibility: hidden;"> 
+                              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+                                <tr align="center"> 
+                                  <td colspan="2"> 
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+                                      <tr align="center"> 
+                                        <td colspan="4" class="texto_negro_bold">Seleccione 
+                                          Tipo de Renta</td>
+                                      </tr>
+                                      <tr> 
+                                        <td width="31" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="nr">                                        </td>
+                                        <td width="126" class="negro12B">Neto 
+                                          Regular</td>
+                                        <td width="27" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="br">                                        </td>
+                                        <td width="216" class="negro12B">Bruto 
+                                          Regular</td>
+                                      </tr>
+                                      <tr> 
+                                        <td width="31" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="nz">                                        </td>
+                                        <td width="126" class="negro12B">Neto 
+                                          Zona</td>
+                                        <td width="27" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="bz">                                        </td>
+                                        <td width="216" class="negro12B">Bruto 
+                                          Zona</td>
+                                      </tr>
+                                      <tr> 
+                                        <td width="31" height="2" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="nt" checked>                                        </td>
+                                        <td width="126" height="2" class="negro12B">Neto 
+                                          Total</td>
+                                        <td width="27" height="2" class="negro12B"> 
+                                        <input type="radio" name="radiobutton" value="bt">                                        </td>
+                                        <td width="216" height="2" class="negro12B">Bruto 
+                                          Total</td>
+                                      </tr>
+                                    </table>                                  </td>
+                                </tr>
+                                <tr> 
+                                  <td width="166" align="right" class="negro12B">Neto 
+                                    Desde</td>
+                                  <td width="153"> 
+                                    <input type="text" onBlur="validaNum(this)" name="netodesde" size="15" class="texto_negro_bold_chico" value="0" align="right">                                  </td>
+                                </tr>
+                                <tr> 
+                                  <td width="166" align="right" class="negro12B">Neto 
+                                    Hasta</td>
+                                  <td width="153"> 
+                                    <input type="text" onBlur="validaNum(this)"  name="netohasta" size="15" class="texto_negro_bold_chico" value="1000000" align="right">                                  </td>
+                                </tr>
+                              </table>
+                              <br>
+                            </div>
+                            <div id="LayerColabCargo" style="position:absolute; width:218px; height:15px; z-index:5; left: 12px; top: 65px; visibility: hidden;"> 
+                              <select name="colab_cargo" class="texto_negro_bold_chico" style="width: 200px">
+                                <if (cargos)> 
+                                <option value="T" selected>Todos los Cargos</option>
+                                <list cargos as c> 
+                                <option value="${c.id}">${c.des} - (${c.id})</option>
+                                </list> <else> 
+                                <option value="-1" selected>No registra Cargos...</option>
+                                </if> 
+                              </select>
+                            </div>
+							<div id="LayerColabNivel" style="position:absolute; width:216px; height:21px; z-index:3; left: 12px; top: 39px; visibility: hidden;">
+							  <select name="colab_nivel" class="texto_negro_bold_chico" style="width: 200px">
+                                <if (niveles)> 
+                                <option value="T" selected>Todos los Niveles</option>
+								<option value="" >Sin Nivel</option>
+                                <list niveles as c> 
+                                <option value="${c.nivel}">${c.nivel}</option>
+                                </list> <else> 
+                                <option value="-1" selected>No registra Niveles...</option>
+                                </if> 
+                              </select>
+                            </div>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>          </td>
+        </tr>
+        <tr> 
+          <td height="316">          </td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div class="layer_celeste" id="Layer1" style="position:absolute; width:240px; height:27px; z-index:3; left: 256px; top: 19px; visibility: hidden"> 
+  <form name="form2" method="post" action="">
+    <table width="100%" border="0" class="texto_negro">
+      <tr> 
+        <td><input type="checkbox" name="check${rut}" value="checkbox">${rut}${dv}</td>
+        <td>${nombre}</td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div class="layer_celeste" id="LayerSexo" style="position:absolute; width:229px; height:15px; z-index:9; left: 265px; top: 5px; visibility: hidden;"> 
+                <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                  <tr>
+                    <td>
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+                        <tr> 
+                          <td width="29%">Sexo</td>
+                          <td width="71%"> 
+                            <select name="sexo_lic" class="texto_negro_bold_chico">
+                              <option value="-1" >Todos</option>
+                              <option value="M" >Masculino</option>
+                              <option value="F" selected>Femenino</option>
+                            </select>                          </td>
+                        </tr>
+                      </table>                    </td>
+                  </tr>
+                </table>
+</div>
+<div id="LayBuscar" style="position:absolute; width:208px; height:217px; z-index:16; top: 58px; left: 2px; visibility: hidden;" class="layer_celeste"> 
+  <table width="100%" border="0" cellpadding="2" cellspacing="1" class="texto_negro">
+    <form name="formBusCod" onSubmit="SeteaPos(document.formBusCod)" method="post" action="../servlet/MainInfo">
+      <tr> 
+        <td height="20" colspan="2" class="tabla_Informe">Buscar Unidad</td>
+        <td width="32" height="20" align="center" class="tabla_Informe"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayBuscar','','hide'); return false">[X]</a></td>
+      </tr>
+      <tr> 
+        <td height="20"  colspan="2"> Empresa: 
+          <input type="text" name="be" size="1"  class="texto_negro_bold_chico">
+          Unidad: 
+          <input type="text" name="bu" size="5" class="texto_negro_bold_chico">
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusCod">
+          <input type="hidden" name="peri_mes" value="${mes}">
+          <input type="hidden" name="peri_ano" value="${ano}">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b1" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+    </form>
+    <form name="formBusGlosa" onSubmit="SeteaPos(document.formBusGlosa)" method="post" action="../servlet/MainInfo">
+      <tr> 
+        <td height="20"  colspan="2"> 
+          <select name="bu" class="texto_negro_bold_chico" style="width=220">
+            <option selected value = "">Seleccione una Unidad</option>
+            <list unidades as u> 
+            <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+            </list> 
+          </select>
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusGlosa">
+          <input type="hidden" name="peri_mes" value="${mes}">
+          <input type="hidden" name="peri_ano" value="${ano}">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+    </form>
+    <form name="formBusRut" onSubmit="SeteaPos(document.formBusRut)" method="post" action="../servlet/MainInfo">
+      <tr> 
+        <td height="20"  width="73"> Rut </td>
+        <td height="20"  width="133"> 
+          <input type="text" name="br" size="15" class="texto_negro_bold_chico" value="${br}">
+          <input type="hidden" name="nameform" value="formBusRut">
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="peri_mes" value="${mes}">
+          <input type="hidden" name="peri_ano" value="${ano}">        </td>
+        <td height="20"  width="32" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar">        </td>
+      </tr>
+      <tr> 
+        <td height="20"  width="73">Nombre</td>
+        <td height="20"  colspan="2"> 
+          <input type="text" name="bn" size="20" class="texto_negro_bold_chico" value="${bn}">        </td>
+      </tr>
+      <tr> 
+        <td height="20"  width="73">Ap Paterno</td>
+        <td height="20"  colspan="2"> 
+          <input type="text" name="bp" size="20" class="texto_negro_bold_chico" value="${bp}">        </td>
+      </tr>
+      <tr> 
+        <td height="20" >Ap Materno</td>
+        <td height="20"  colspan="2"> 
+          <input type="text" name="bm" size="20" class="texto_negro_bold_chico" value="${bm}">        </td>
+      </tr>
+    </form>
+  </table>
+</div>
+<div id="BotonBuscar" style="position:absolute; width:13px; height:15px; z-index:7; left: 183px; top: 322px; visibility: visible"><a href="javascript:;" onClick="MM_showHideLayers('LayBuscar','','show'); return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','../servlet/Tool?images/Gestion/botones/buscar_icon_over.jpg',1)"><img name="Image41" border="0" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22" alt="Buscar"></a></div>
+<div id='LayerArbol' style='position:absolute; width:250px; height:310px; z-index:8;; left: 0px; top: 0px; overflow: auto; ; visibility: visible' class="carpetaUn"> 
+<if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, empresa)} </if> </div>
+</BODY>
+</HTML>

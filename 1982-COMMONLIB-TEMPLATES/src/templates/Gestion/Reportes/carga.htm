@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>Reporte</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<SCRIPT type="text/javascript" LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script type="text/javascript" LANGUAGE="JavaScript" src="../servlet/Tool?scripts/jquery-1.3.1.js"></script>
+    <script type="text/javascript" language="JavaScript">
+	<!--
+	var StrPagina = null; 
+
+	function NuevoAjax() {
+		var xmlhttp=false;
+	    try {
+	            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	    }
+	    catch(e) {
+		    try {
+			    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	        }
+	        catch(E) {
+		        xmlhttp = false;
+	        }
+	    }
+	    if(!xmlhttp && typeof XMLHttpRequest!='undefined') {
+		    xmlhttp = new XMLHttpRequest();
+	    }
+	    return xmlhttp;
+	}
+
+	function loadContent(fragment_url, element_id, qs) {
+		var aleatorio= Math.random();
+		var element = document.getElementById(element_id);
+		element.innerHTML = "<p><center><img src=\"../servlet/Tool?images/mis/gif/loading.gif\" align=\"absmiddle\" border=\"0\" /></center></p>";
+		peticion = NuevoAjax(); 
+		alert(fragment_url);
+		peticion.open("GET", fragment_url +'?id=455454554&'+qs );
+        peticion.onreadystatechange = function() {
+			if (peticion.readyState == 4) {
+				element.innerHTML = peticion.responseText;
+			}
+		}
+		peticion.send(null);
+	}
+
+	function Cargar(url,param,tipoloader) {
+		var contenido, preloader, Layer1, Layerb;
+
+		contenido = document.getElementById('contenido');
+		Layer1 = document.getElementById('Layer1');
+		preloader = document.getElementById(tipoloader);
+        var aleatorio= Math.random();
+        ajax=NuevoAjax();
+		ajax.open("GET", url + "?" + param + "&ale="+aleatorio,true);
+		ajax.setRequestHeader("Content-Type","application/vnd.ms-excel");
+		ajax.onreadystatechange=function() {
+			if(ajax.readyState==1) {
+				if(tipoloader=='preloader') {
+					var str = "<table align=\"center\" height=\"400\"><tr><td align=\"center\" valign=\"middle\"><p><center><img src=\"../servlet/Tool?images/loading2.gif\" align=\"absmiddle\" border=\"0\" /></center></p></td><td>Generando informe...</td></tr></table>";
+				}
+				else {
+					var str = "<img src=\"../servlet/Tool?images/loading2.gif\" align=\"absmiddle\" border=\"0\" width=\"20\" height=\"20\" />Generando excel...";
+				}
+				preloader.innerHTML = str
+                preloader.style.visibility = 'visible';
+				Layer1.style.visibility = 'hidden';
+            }
+            else if(ajax.readyState==4) {
+                if(ajax.status==200) {
+                    StrPagina = ajax.responseText;
+                    contenido.innerHTML = StrPagina; 
+                    preloader.innerHTML = "";
+					contenido.visibility = 'visible';
+					Layer1.style.visibility = 'visible';
+					preloader.visibility = 'hidden';
+                }
+                else if(ajax.status==404) {
+                    preloader.innerHTML = "La p&#225;gina no existe";
+                }
+                else {
+                    preloader.innerHTML = "Error:".ajax.status; 
+                }
+            }
+        }
+        ajax.send(null);
+    }
+    
+	function Excel() {
+		var obj = document.getElementById('trampa');
+		obj.src = "${url}?${param1}";
+	}
+
+
+	function Imprimir() {
+		Layer1.style.visibility="hidden";
+		Layer2.style.visibility="hidden";
+	    printPage();
+	    Layer1.style.visibility="visible";
+	    Layer2.style.visibility="visible";
+	}
+
+	function ReportesAjax(unidad,recursivo,tipo,empresa,periodo,page)
+	{
+		window.open("about:blank", "reportes","scrollbars=yes,toolbar=no,resizable=no,width=850,height=560,left=100,top=150");
+		document.frm1b.unidad.value=unidad;
+		document.frm1b.recursivo.value=recursivo;
+		document.frm1b.tipo.value=tipo;
+		document.frm1b.empresa.value=empresa;
+		document.frm1b.periodo.value=periodo;
+		document.frm1b.page.value=page;
+		document.frm1b.submit(); 
+	}
+
+	$(document).ready(
+		function() {
+			$("#pdf").click(
+				function(){
+					generatePdf( {trigger: $(this),content : $('#contenido').html()} );      		
+    			}
+			);
+
+			function generatePdf(options) {
+				document.formPdf.content.value=options.content;
+    			document.formPdf.submit();
+	    	}
+		}
+	);
+	
+	
+	-->
+   </script>
+    <style type="text/css">
+	#preloader {
+	width: 700px;
+	height: 400px;
+	align: center;
+	valign: middle;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin-top:0px;
+	margin-left: 0px;
+	overflow: hidden;
+	z-index:2;
+	visibility: hidden;
+	}
+			
+	#preloader_excel {
+	font-family: arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000000;
+	border: 1px solid #F2D375;
+	padding: 0px;
+	align:center;
+	z-index:4;
+	position: absolute;
+	top: 10;
+	left: 10;
+	width:180px;
+	height:20px;
+	visibility: hidden;
+	}
+	#contenido{
+	width:690px;
+	height:100px;
+	z-index:101;
+	visibility: visible;
+	}
+	</style> 
+</head>
+<body onLoad="Cargar('${url}','${param}','preloader');">
+	<div id="preloader_excel"></div>
+	<div id="contenido"></div>
+	<div id="preloader"></div>
+     
+    <div id="Layer1" style="position:absolute; left:500px; top:15px; width:51px; height:39px; z-index:100">
+    <table>
+    <tr>
+    <td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/printnew.jpg" alt="IMPRIMIR" name="Image1" border="0"></a></td>
+    <td><a href="#" id="pdf"><img src="../servlet/Tool?images/new/botones/pdf.jpg" alt="PDF" name="Image2" border="0"></a></td>
+    </tr>
+    </table>
+	</div>
+	
+	<form name="form1" id="form1" method="POST" action="/" target="trampa">
+		<iframe width="0px" src ="about:blank" id="trampa" width="98%" height="300px" frameborder="0">
+		  <p>Tu browser no soporta iframes.</p>
+		</iframe>
+	</form>
+	<form name="formPdf" id="formPdf" method="post" action="../servlet/ServletTransformPdf">
+	    <input name="content" value="" type="hidden"/>  
+    </form>
+</body>
+</html>

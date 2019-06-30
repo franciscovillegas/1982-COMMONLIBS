@@ -1,0 +1,109 @@
+<title>Bienvenido</title>
+
+
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+
+<style type="text/css">
+<!--
+.Estilo2 {font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.Estilo3 {color: #FF0000;
+	font-weight: bold;
+	font-size: 14px;
+}
+.Estilo4 {
+	font-size: 11px;
+	color: #000000;
+}
+-->
+</style>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/new/top/menutop_b_r3_c6_f2.jpg','../servlet/Tool?images/new/top/menutop_b_r3_c8_f2.jpg')">
+<table border="0" cellpadding="0" cellspacing="0" width="780">
+  <!-- fwtable fwsrc="top.png" fwbase="menutop_b.jpg" fwstyle="Dreamweaver" fwdocid = "772834287" fwnested="0" -->
+  <tr>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="19" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="62" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="33" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="75" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="398" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="91" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="5" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="91" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="6" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="9"><img name="menutop_b_r1_c1" src="../servlet/Tool?images/new/top/menutop_b_r1_c1.jpg" width="780" height="16" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="4"><img name="menutop_b_r2_c1" src="../servlet/Tool?images/new/top/menutop_b_r2_c1.jpg" width="19" height="93" border="0" alt=""></td>
+    <td rowspan="3"><span class="titulo"><font size="2" face="Arial, Helvetica, sans-serif"><img onError="existeFoto(this)" src='${GetProp("server.datafolder")}/images/DataFolder/Trabajadores/${foto}' width="62" height="81"></font></span></td>
+    <td height="81" colspan="2" rowspan="3" valign="top" background="../servlet/Tool?images/new/top/menutop_b_r2_c3.jpg"><table width="100%" height="100%">
+        <tr>
+          <td height="40" valign="top"><span class="Estilo4"><font face="Arial, Helvetica, sans-serif"><font face="Verdana, Arial, Helvetica, sans-serif">${nombre}</font></font></span></td>
+        </tr>
+        <tr>
+          <td><span class="Estilo2">Esta es su visita n&ordm; <span class="Estilo3">${usuario.cant_ingresos}</span></span></td>
+        </tr>
+    </table></td>
+    <td colspan="5"><img name="menutop_b_r2_c5" src="../servlet/Tool?images/new/top/menutop_b_r2_c5.jpg" width="591" height="48" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="48" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="3"><img name="menutop_b_r3_c5" src="../servlet/Tool?images/new/top/menutop_b_r3_c5.jpg" width="398" height="45" border="0" alt=""></td>
+    <td><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('menutop_b_r3_c6','','../servlet/Tool?images/new/top/menutop_b_r3_c6_f2.jpg',1);"><img name="menutop_b_r3_c6" src="../servlet/Tool?images/new/top/menutop_b_r3_c6.jpg" width="91" height="21" border="0" alt=""></a></td>
+    <td rowspan="3"><img name="menutop_b_r3_c7" src="../servlet/Tool?images/new/top/menutop_b_r3_c7.jpg" width="5" height="45" border="0" alt=""></td>
+    <td><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('menutop_b_r3_c8','','../servlet/Tool?images/new/top/menutop_b_r3_c8_f2.jpg',1);"><img name="menutop_b_r3_c8" src="../servlet/Tool?images/new/top/menutop_b_r3_c8.jpg" width="91" height="21" border="0" alt=""></a></td>
+    <td rowspan="3"><img name="menutop_b_r3_c9" src="../servlet/Tool?images/new/top/menutop_b_r3_c9.jpg" width="6" height="45" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="21" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><img name="menutop_b_r4_c6" src="../servlet/Tool?images/new/top/menutop_b_r4_c6.jpg" width="91" height="24" border="0" alt=""></td>
+    <td rowspan="2"><img name="menutop_b_r4_c8" src="../servlet/Tool?images/new/top/menutop_b_r4_c8.jpg" width="91" height="24" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="12" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="3"><img name="menutop_b_r5_c2" src="../servlet/Tool?images/new/top/menutop_b_r5_c2.jpg" width="170" height="12" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/new/top/spacer.gif" width="1" height="12" border="0" alt=""></td>
+  </tr>
+</table>
+</body>
+</html>

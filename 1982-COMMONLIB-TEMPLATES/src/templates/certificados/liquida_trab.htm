@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Liquidaci&oacute;n de Remuneraciones</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.3.2.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function Imprimir() {
+	document.getElementById('Layer1').style.visibility="hidden";
+	document.getElementById('Layer2').style.visibility="hidden";
+    printPage();
+    document.getElementById('Layer1').style.visibility="visible";
+    document.getElementById('Layer2').style.visibility="visible";
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script type="text/javascript">
+	$(function(){
+		$("#pdf").click(function(){
+   			formPdf.content.value=$('#genPdf').html();
+   			formPdf.submit();      		
+		});
+	});
+</script>
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+</head>
+<body topmargin="0" leftmargin="0" oncontextmenu="return false" onkeydown="return false">
+<div id="genPdf">
+<list liquidaciones as lp>
+<table width="90%" height="100%"  border="0" cellpadding="1" cellspacing="1" align="center">
+<tr>
+<td valign="top">
+<if (!lp.error)>
+	<table width="100%" border="0" cellpadding="1" cellspacing="1" style="font-family: Arial, Helvetica, sans-serif; color: #000000;">
+	  <tr>
+	    <td valign="top" width="14%"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"></td>
+	    <td width="67%" height="66" align="center" style="font-size:16px;"><strong>LIQUIDACION DE REMUNERACIONES</strong></td>
+	    <td width="19%" height="66" valign="top"><div id="Layer1" style="position:width:51px; height:39px; z-index:1">
+ 	<a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/printnew.jpg" alt="IMPRIMIR" name="Image1" border="0"></a>
+ </div></td>
+	  </tr>
+	</table>
+	<table width="100%">
+	  <tr valign="top">
+	    <td height="19" align="center">
+        <table width="100%" border="0" cellspacing="1" cellpadding="1" style="font-size:12px;">
+	      <tr>
+	        <td height="27" colspan="2" nowrap>&nbsp;</td>
+	        <td width="75" nowrap>&nbsp;</td>
+	        <td width="72" style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align: left;"><strong>Fecha pago:</strong></td>
+	        <td width="145" style="font-family: Arial, Helvetica, sans-serif; color: #000000; border: 1px solid #666666; "><strong>${lp.fecha_periodo}</strong></td>
+	      </tr>
+	      <tr>
+	        <td width="70">&nbsp;</td>
+	        <td width="228">&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Nombre:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.nombre}</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">RUT:</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.rut_trab}</td>
+	      </tr>
+	      <tr>
+	        <td nowrap style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Estado civil:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif; color: #000000; border: 1px solid #666666; text-align : left;">${lp.ecivil}</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">G&eacute;nero:</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.sexo}</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Cargo:</td>
+	        <td colspan="4" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.cargo}</td>
+	        </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Empresa:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.nom_empresa}</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">F. Ingreso:</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.ingreso}</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Unidad:</td>
+	        <td colspan="4" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.nom_unidad}</td>
+	        </tr>
+	      <tr>
+	        <td nowrap style="font-family: Arial, Helvetica, sans-serif; background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Centro Costo:</td>
+	        <td colspan="4" style="font-family: Arial, Helvetica, sans-serif; color: #000000; border: 1px solid #666666; text-align : left;">${lp.centro_costo}</td>
+	        </tr>
+	      <tr>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td colspan="2">&nbsp;</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Banco:</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif; color: #000000; border: 1px solid #666666; text-align : left;">${lp.banco}</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">N&ordm; Cuenta:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.cta}</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">AFP:</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.afp}</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Fondo salud:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.isapre}</td>
+	      </tr>
+	      <tr>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td colspan="2">&nbsp;</td>
+	      </tr>
+	      <tr>
+	        <td style="font-family: Arial, Helvetica, sans-serif; background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Dias trab.</td>
+	        <td style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.dias}</td>
+	        <td nowrap style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666; text-align : left;">Fecha emisi&oacute;n:</td>
+	        <td colspan="2" style="font-family: Arial, Helvetica, sans-serif;  color: #000000; border: 1px solid #666666; text-align : left;">${lp.fecha}</td>
+	      </tr>
+	    </table></td>
+	  </tr>
+	  <tr valign="top">
+	    <td align="center">&nbsp;</td>
+	  </tr>
+	  <tr valign="top">
+	    <td align="center"><table width="100%"  border="0" cellpadding="0" cellspacing="1">
+	      <tr>
+	        <td width="50%" valign="top">${lp.SubQuery("certificados/haberes.htm",lp.haberes)}</td>
+	        <td width="50%" valign="top">${lp.SubQuery("certificados/descuentos.htm",lp.descuentos)}</td>
+	      </tr>
+	    </table></td>
+	  </tr>
+	  
+	  <tr valign="top">
+	    <td><table width="100%"  border="0" cellpadding="0" cellspacing="1">
+	      <tr>
+	        <td width="50%" valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+	            <tr>
+	              <td width="75%" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; background-color: #E4E4E4; border: 1px solid #666666;">TOTAL HABERES </td>
+	              <td width="25%" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; color: #000000; border: 1px solid #666666;">${lp.tot_haberes}</td>
+	            </tr>
+	        </table></td>
+	        <td width="50%"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+	            <tr>
+	              <td width="75%" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;  background-color: #E4E4E4; border: 1px solid #666666;">TOTAL DESCUENTOS </td>
+	              <td width="25%" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; color: #000000; border: 1px solid #666666;">${lp.tot_destos}</td>
+	            </tr>
+	            <tr>
+	              <td width="75%" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; background-color: #E4E4E4; border: 1px solid #666666;"><strong>LIQUIDO $ </strong></td>
+	              <td width="25%" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; color: #000000; border: 1px solid #666666;"><strong>${lp.liquido}</strong></td>
+	            </tr>
+	        </table></td>
+	      </tr>
+	    </table></td>
+	  </tr>
+	  <tr valign="bottom">
+	    <td valign="top"><table width="100%">
+	      <tr>
+	        <td width="50%" valign="top"></td>
+	      </tr>
+	    </table></td>
+	  </tr>
+	  
+	  <tr>
+	    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1">
+	      <tr>
+	        <td colspan="3" align="center" style="font-family: Arial, Helvetica, sans-serif;  background-color: #E4E4E4; border: 1px solid #666666;">VALORES DEL MES</td>
+	      </tr>
+	      <tr>
+	        <td width="33%" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size:11px; color: #000000; border: 1px solid #666666;">RENTA IMPON. <br>
+	          $ ${lp.renta_impon}</td>
+	        <td width="33%" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size:11px; color: #000000; border: 1px solid #666666;">TOPE IMPONIBLE<br>
+	          $ ${lp.tope_renta}</td>
+	        <td width="33%" align="center" style="font-family: Arial, Helvetica, sans-serif;  font-size:11px; color: #000000; border: 1px solid #666666;">VALOR UF<br>
+	            <if lp.val_uf>$ ${lp.val_uf}
+	                <else>
+	              NR</if></td>
+	      </tr>
+	    </table></td>
+	  </tr>
+	</table>
+<else>
+	<table width="100%" border="0" cellpadding="0" cellspacing="1">
+	  <tr>
+	    <td width="100"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"></td>
+	    <td align="center"><strong>Informaci&oacute;n no disponible</strong></td>
+	  </tr>
+	</table>
+</if></td>
+</tr>
+          <tr>
+            <td height="13" align="center" style="font-family: Arial, Helvetica, sans-serif;  color: #000000;"><strong>${lp.nom_empresa}</strong></td>
+          </tr>
+</table>
+
+<if ( lp.salto == "S" ) >
+
+<p style="page-break-before: always"> 
+<br style="height:0; line-height:0"/>
+</p>
+
+</if>
+
+</list>
+ </div>
+ 
+<div id="Layer2" style="position:absolute; left:475px; top:15px; width:51px; height:39px; z-index:1">
+	
+</div>
+ <form name="formPdf" method="post" action="http://pdf.ejedigital.cl/pdf/servlet/ServletTransformPdf">
+  	<input name="content" type="hidden">  
+	<input type="hidden" name="prefijo" value="${prefijo}">
+	<input type="hidden" name="md5" value="${md5}">
+ </form>
+</body>
+</html>

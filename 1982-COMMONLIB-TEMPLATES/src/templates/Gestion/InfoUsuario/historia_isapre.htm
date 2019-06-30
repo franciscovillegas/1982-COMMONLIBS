@@ -1,0 +1,115 @@
+  <html>
+<head>
+<title>Detalle Hist&oacute;rico de Isapre</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer2 {
+	position:absolute;
+	left:374px;
+	top:170px;
+	width:109px;
+	height:28px;
+	z-index:3;
+}
+-->
+</Style>
+</head>
+
+<body background="../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-repeat:no-repeat" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/cerrar_over.jpg')">
+<span id="isapre" style="position:absolute; width:500px; height:200px; z-index:1; overflow: auto; left: 0px; top: 0px; visibility: visible;"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr> 
+      <td width="394" height="10" colspan="2"></td>
+    </tr>
+    
+    <tr> 
+      <td width="394" align="center" class="tabla_azul">Movimiento</td>
+      <td width="394" align="center" class="tabla_azul">Fecha</td>
+    </tr>
+    <list ISAPRE as a> 
+    <tr> 
+      <td width="394" height="10" align="center" class="tabla_negro"> 
+        ${a.NOMBRE}      </td>
+      <td width="394" height="10" align="center" class="tabla_negro"> 
+       ${a.FECHA_ING}      </td>
+    </tr>
+    </list> 
+</table>
+<div id="Layer1" style="position:absolute; left:375px; top:170px; width:93px; height:17px; z-index:2"> 
+  <a href="javascript:;" Onclick="MM_showHideLayers('isapre','','show','detalle','','show')"><img src="../servlet/Tool?images/Gestion/botones/det_cargas.gif" border="0" name="detalle_up" width="120" height="24"></a></div>
+</span>
+<span id="detalle" style="position:absolute; width:500px; height:201px; z-index:4; left: 0px; top: 0px; overflow: auto; background-image: url(../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg; background-repeat:no-repeat); layer-background-image: url(../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg); border: 1px none #000000; visibility: hidden;"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td height="20" align="center" class="texto_negro_bold">Detalle de Cargas</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td width="219" align="center" class="tabla_azul">Nombre</td>
+      <td width="175" align="center" class="tabla_azul">Parentesco</td>
+    </tr>
+    <list cargas as car> 
+    <tr> 
+      <td width="219" height="10" align="center" class="tabla_negro">${car.nombre}</td>
+      <td width="175" height="10" align="center" class="tabla_negro">${car.parentesco}</td>
+    </tr>
+    </list> 
+</table><input type="hidden" name="rut" value="${rut}">
+<div id="Layer2"><a href="javascript:;" onClick="MM_showHideLayers('isapre','','show','detalle','','hide')"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" width="120" height="24" border="0" name="Image2"></a></div>
+</span>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<html>
+<head>
+<title>${titulo}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/fechas.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/paises_ciudades.js"></script>
+<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js"></script>
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language="JavaScript">
+<!--
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function inicio(){
+    var fecha = new Date();
+	CargaDias(document.form1.desdedia);
+	CargaDias(document.form1.hastadia);
+	CargaDias(document.form1.dr);
+	
+	CargaMeses(document.form1.desdemes);
+	CargaMeses(document.form1.hastames);
+	CargaMeses(document.form1.mr);
+	
+	CargaAnos(document.form1.desdeyear,fecha.getFullYear()-1,fecha.getFullYear()+20);
+	CargaAnos(document.form1.hastayear,fecha.getFullYear()-1,fecha.getFullYear()+20);
+	CargaAnos(document.form1.yr,fecha.getFullYear()-1,fecha.getFullYear()+20);
+    
+
+}
+
+function en_construccion() {
+//	window.open("Tool?htm=html/miscelaneos/construccion.htm");
+window.open("Tool?htm=html/miscelaneos/construccion.htm","Certificado","toolbar=no,width=700,height=450,left=5,top=5,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+}
+
+function manda(opcion) {
+	document.form1.certificado.value=opcion;
+	Envia();
+
+}
+
+
+function Envia() {
+    var certif=document.form1.certificado.value;
+    var periodo=document.form1.periodo.value;
+    var destino=document.form1.destino.value;
+    var rutP=document.form1.practicante.value;
+    var url="";
+   // alert("certif: "+certif +" periodo: "+periodo);
+	 
+			if ((certif!=2)&&(certif!=16)&&(certif!=17)){    
+					if (certif!=8)
+					{   if (certif!=9){  
+						  Layer1.style.visibility="hidden"; 
+						  window.open("../servlet/Certificado?certificado="+certif+"&practica="+rutP,"Certificado","toolbar=no,width=700,height=500,left=5,top=5,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+						}else 
+						  window.open("/Templates/Matico/Certificados/Renuncia.htm","Certificado","toolbar=no,width=700,height=590,left=5,top=5,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+						   
+					}
+					else{ 
+					   if (periodo==-1)
+						  alert ("Seleccione un per&#237;odo.");
+					   else{
+						 Layer1.style.visibility="hidden"; 
+						 document.form1.certificado.value="1";
+						 window.open("../servlet/Certificado?certificado="+certif+"&periodo="+periodo,"Certificado","toolbar=no,width=700,height=590,left=5,top=5,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+					   }
+					}
+				}else {//validar ingreso de fechas//viajes
+					Layer1.style.visibility="hidden"; 
+					if (Revisa()){
+						 if (document.form1.destino.value!="0"){
+							  if (document.form1.ciudad.value!="0"){
+								 url="../servlet/Certificado?certificado="+certif+
+									  "&desdedia="+document.form1.desdedia.value+
+									 "&desdemes="+document.form1.desdemes.value+
+									"&desdeyear="+document.form1.desdeyear.value+
+									  "&hastadia="+document.form1.hastadia.value+
+									 "&hastames="+document.form1.hastames.value+
+									"&hastayear="+document.form1.hastayear.value+
+									  "&dr="+document.form1.dr.value+
+									  "&mr="+document.form1.mr.value+
+									 "&yr="+document.form1.yr.value+
+									  "&ciudad="+document.form1.ciudad.value+
+									  "&destino="+document.form1.destino.value;
+								 window.open(url,"Certificado","toolbar=no,width=700,height=590,left=5,top=5,location=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+							   }else
+								   alert("Seleccione Ciudad.");
+						}else alert("Seleccione Pa&#237;s.");
+					 }
+					else
+						 alert("Fecha No V&#225;lida");
+				   }
+	   
+}
+
+
+
+function Consulta(opcion) {
+    if (opcion=="8")
+       Layer1.style.visibility="visible"; 
+    else
+       Layer1.style.visibility="hidden"; 
+    if ((opcion=="2")||(opcion=="16")||(opcion=="17"))
+       Layer2.style.visibility="visible"; 
+    else
+       Layer2.style.visibility="hidden"; 
+    /*if (opcion=="1")
+       Layer3.style.visibility="visible"; 
+    else
+       Layer3.style.visibility="hidden"; */
+       
+}
+
+function Cambia(rutP) {
+    //alert("rut= "+rutP);
+	document.form1.practicante.value=rutP;
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		left_principal_13_over = newImage("/images/Matico/imagenes_left_principal/left_principal_13-over.gif");
+		preloadFlag = true;
+	}
+}
+
+
+function loginIntranet2009(functionExecute) {
+	var winName ="loginIntranet"   +  Math.random().toString().substring(3, 10);
+	var winName2 ="iframe"   +  Math.random().toString().substring(3, 10);
+	
+	$("body").append("<iframe src='' name='"+winName2+"' id='"+winName2+"' style='width: 0px;height: 0px; display:none;' onload='"+functionExecute+";delTempIframe(\""+winName2+"\");' ></iframe> ");
+	
+	var strCadena= " <form name='"+winName+"' action='http://localhost:8070/demo/portalrrhh/servlet/StartSession' method='POST' target='"+winName2+"' >";
+	strCadena += "	 <input type='hidden' name='param' 		 	 value='false' /> ";
+	strCadena += "	 <input type='hidden' name='rut'			 value='4183944' /> ";
+	strCadena += "	 <input type='hidden' name='clave' 	 	 	 value='4183944' /> "	;
+	strCadena += "	 <input type='hidden' name='dig'		 	 value='9' /> ";
+	strCadena += "	 <input type='hidden' name='passline_enc'    value='YVh0N2d0ZWZmUXlLK2xvTW1qMVF0Y2hWUTV6Q1g1aTlKNm5ML2pIVFVadTdnNVJNMVFXN3d3PT0='  > ";
+	strCadena += "   <input type='hidden' name='htm' 			 value='/intranet/sitio/general/paghome.htm' > ";
+	strCadena += " 	 <input type='hidden' name='passline'        value='vtlw' > ";
+	strCadena += " </form> ";
+
+	
+	$("body").append(strCadena);
+	$("form[name='"+winName+"']").submit();
+}
+
+function showGGD() {
+	loginIntranet2009("openGGD();");
+}
+
+function openGGD() {
+	try {
+		var winName ="manager"+  Math.random().toString().substring(3, 10);
+		window.open('http://localhost:8070/demo/portalrrhh/servlet/cargaInformeResultadoEvalDes?usuarioEncargado=1&mificha=1','GGD','location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,top=0,left=0,width=760,height=500');
+	} catch (e){
+		
+	}
+}
+
+function showCapacitacion() {
+	loginIntranet2009("openCapacitacion();");
+}
+
+function openCapacitacion() {
+	try {
+		var winName ="manager"+  Math.random().toString().substring(3, 10);
+		window.open('http://localhost:8070/demo/portalrrhh/servlet/ServletFichaEscuelas','FICHA','scrollbars=no,width=780,height=500');
+	} catch (e){
+		
+	}
+}
+
+// -->
+
+//-->//-->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ${body}>
+<form name="form1" method="post" action="../servlet/Certificado" target="mainFrame">
+<table width="800" align="center">
+	  <tr>
+	    	<td height="40" align="center" class="TITULO_MODULOS">${titulo}</td>
+	  </tr>
+	  <tr>
+		    <td height="272" align="center">
+		    	<table cellspacing="7">
+		      		<tr>
+		      			<list lista as l>
+							<td align="center" valign="top">
+								${l.value}
+							</td>
+						</list>
+		        	</tr>
+		        </table>
+		   </td>
+	  </tr>
+</table>
+</form>
+</body>
+</html>

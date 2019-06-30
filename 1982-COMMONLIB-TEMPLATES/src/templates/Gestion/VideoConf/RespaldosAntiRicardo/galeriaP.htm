@@ -1,0 +1,137 @@
+  <html>
+<head>
+<title>Galeria Participantes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js"></script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+function Validar(){
+   var x=0;
+   var valor=false;
+   for (x=0;x<document.form1.rut.length;x++){
+		 if (document.form1.rut[x].checked==true)
+            valor=true;
+   }
+   if (valor){
+      if (document.form1.conf.value!="-1"){
+        //alert("Submit...");
+        document.form1.submit(); 
+      }else
+         alert("Seleccione una de las Conferencias Existentes.");   
+   }else
+     alert("Seleccione un Participante.");   
+}
+
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="70%" border="0" cellpadding="0" cellspacing="0">
+
+  <!--<form name="form1" action="/servlet/datafolder.videoconf.SeleccionP" method="post" target="mainFrame"> -->
+  <form name="form1" action="/servlet/datafolder.videoconf.SeleccionP" method="post">
+ <tr>
+      <td><font face="Arial, Helvetica, sans-serif" size="2"><b>Seleccione&nbsp; 
+        los &nbsp;participantes&nbsp; a &nbsp;la &nbsp;Video&nbsp; Conferencia.</b></font></td>
+  </tr>
+  <tr>
+    <td>
+        <div id="LayerFotos" style="position:absolute; width:591px; height:118px; z-index:1; left: 6px; top: 51px; visibility: visible"> 
+          <table width="55%" border="0">
+            <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr>
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="**"> <else> <if x=="**">
+              <td height="75" width="10%" class="maticoN">
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="***"> <else> <if x=="***">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="****"> <else> 
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false">
+ <img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr align="center"> <assign x="*"> </if></if></if></list>
+            <tr align="center"> 
+              <td>&nbsp; 
+              <td> 
+          </table>
+        </div>
+        <div id="Layer1" style="position:absolute; width:337px; height:24px; z-index:1; left: 0px; top: 362px; visibility: visible"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td width="77%"> 
+                <select name="conf">
+                  <option value="-1" selected>Seleccione una Conferencia</option>
+                  <list conferencias as c> 
+                  <option value="${c.id}">${c.asunto}</option>
+                  </list> 
+                </select>
+              </td>
+              <td width="23%"><a href="javascript:;" onClick="Validar();return false;">Seleccionar</a></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+  </tr></form>
+</table>
+
+</body>
+</html>

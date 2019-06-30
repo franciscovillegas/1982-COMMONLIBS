@@ -1,0 +1,208 @@
+<assign c = rb_competencia>
+<assign c2 = id_competencia>
+
+<assign p = id_perfil>
+<assign pr = id_proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut2>
+<if r == re && modo!="Auto">
+<assign re = User.rut_sup>
+</if>
+<assign rs = User.Rut>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Plan Acci&oacute;n </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer6 {
+	position:absolute;
+	left:11px;
+	top:154px;
+	width:263px;
+	z-index:5;
+}
+#Layer7 {
+	position:absolute;
+	left:14px;
+	top:10px;
+	width:233px;
+	z-index:6;
+}
+#Layer8 {position:absolute;
+	left:615px;
+	top:459px;
+	width:375px;
+	height:21px;
+	z-index:5;
+}
+#Layer11 {position:absolute;
+	left:13px;
+	top:316px;
+	width:203px;
+	height:10px;
+	z-index:7;
+}
+#Layer9 {
+	position:absolute;
+	left:228px;
+	top:104px;
+	width:86px;
+	height:32px;
+	z-index:8;
+}
+-->
+</style>
+</head>
+<script>
+
+function Parametros()
+{ 
+  //alert("P " + ${p} + " / PR " + ${pr} + " / R " + ${r} + " / RE " + ${re} ); 
+}
+
+function fnAccion(opcion){
+	if(opcion == 'guardar'){
+	    //alert("../servlet/PlanAccion?txtAccion=GR&rb_competencia=${rb_competencia}&modo=${modo}");
+		document.form.action="../servlet/PlanAccion?txtAccion=GR&rb_competencia=${rb_competencia}&modo=${modo}";
+		document.form.submit();
+	}
+}
+function fnAgregar(){
+	var opcion = "<if dataCompetencia>${dataCompetencia.id_competencia}</if>";
+	if (opcion != "")
+	{  var opcion = "<if dataCompetencia>${dataCompetencia.id_competencia}</if>";
+       <if dataCompetencia>
+   	   window.open('../servlet/agregaAnotacion?txt_Rut=${r}&txt_RutEval=${r}&id_perfil=${p}&id_competencia=${dataCompetencia.id_competencia}&id_proceso=${pr}&modo=${modo}','Anotaciones','status=yes,width=470,height=265');
+       </if>
+	}
+    else alert('Elija una Competencia a Mejorar');
+}
+
+function fnBuscar(){ window.open('../servlet/Evaluadores?txt_Rut=${r}&txt_TipoEval=C','evaluadores','status=yes,width=780,height=250'); }
+
+function fnCambioRut(r,p){
+	document.form.txt_Rut.value=r;
+	document.form.id_perfil.value=p;
+	document.form.action="../servlet/PlanAccion?modo=Sup";
+	document.form.submit();
+}
+function fnRefresh(){
+	location.href = "../servlet/PlanAccion?txt_Rut=${r}&txt_RutEval=${re}&id_perfil=${p}&id_proceso=${pr}&rb_competencia=${rb_competencia}&modo=${modo}";
+}
+function fnInicio(){
+<if REG == true && MSG !="">
+	alert('${MSG}');
+</if>
+<if REG == false && MSG !="">
+	alert('${MSG}');
+</if>
+
+<if dataCompetencia>
+ if (document.form1.rb_competencia){
+	MarcarRadio(document.form1.rb_competencia,'${dataCompetencia.id_competencia}')
+	}
+</if>
+}
+function MarcarRadio(objeto,valor) { 
+   var x=0;
+    if (objeto.length){
+	   for (x=0;x<objeto.length;x++){
+		 if (objeto[x].value==valor)
+			objeto[x].checked=true;
+	   }
+   }else{
+
+     if (objeto.value==valor)
+			objeto.checked=true;
+    }  
+}
+function fnEliminar(id_competencia,linea){
+	form.action="../servlet/PlanAccion?txtAccion=EL&txt_Rut=${r}&modo=${modo}&txt_RutEval=${re}&id_perfil=${p}&id_proceso=${pr}&rb_competencia="+id_competencia+"&linea="+linea+"";
+//	alert("../servlet/PlanAccion?txtAccion=EL&txt_Rut=${r}&modo=${modo}&txt_RutEval=${re}&id_perfil=${p}&id_proceso=${pr}&rb_competencia="+id_competencia+"&linea="+linea+"");
+	form.submit();
+}
+</script>
+
+<body onLoad="Parametros();fnInicio();MM_preloadImages('../servlet/Tool?images/images_ggd/plan_accion/eliminar_over.jpg')" background="../servlet/Tool?images/ggd/competencias/apreciacion.jpg">
+<div class="boton_rojo" id="Layer5" style="position:absolute; width:300px; height:126px; z-index:4; left: 13px; top: 337px; overflow: auto;">Resumen de porcentaje de ajuste por competencias y porcentaje de Ajuste para Cargos y Perfiles.</div>
+<div class="txt_gris_bold" id="Layer3" style="position:absolute; left:335px; top:11px; width:652px; z-index:3;">
+<if dataCompetencia>${dataCompetencia.competencia}</if> &nbsp;</div>
+<div class="txt_gris_bold" id="Layer6">Competencias a Mejorar </div>
+<div class="txt_gris_bold" id="Layer7">Datos Personales </div>
+<div id="Layer9">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td align="center"><a href="../servlet/PlanAccion?txt_Rut=${rs}&txt_RutEval=${rs}&id_perfil=1&id_proceso=1&modo=Auto"><img name="plan_accion_r3_c4" src="../servlet/Tool?images/images_ggd/ggd/botones/mi_evaluacion.gif" width="30" height="30" border="0" title="Mi Evaluaci&#243;n" alt=""></a></td>
+      <td align="center"><a href="#" onClick="fnBuscar();return false"><img name="plan_accion_r3_c4" src="../servlet/Tool?images/images_ggd/ggd/botones/colaboradores.gif" title="Seleccionar Colaborador" width="30" height="30" border="0" alt=""></a></td>
+    </tr>
+  </table>
+</div>
+<div class="boton_rojo" id="Layer11">Instrucciones</div>
+<div id="Layer8">
+  <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td nowrap><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+      <td width="12"><a href="javascript:;" onClick="fnAgregar();return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/anotaciones.gif" alt="AGREGAR ANOTACIONES" width="30" height="30" border="0"></a></td>
+      <!--<td width="30"><a href="#" onClick="fnAccion('guardar');return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" alt="Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0"></a></td> -->
+      <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+    </tr>
+  </table>
+</div>
+<form name="form" method="post">
+  <div id="Layer2" style="position:absolute; width:304px; height:58px; z-index:1; left: 10px; top: 30px;" >
+  <assign h = "ggd/rut/ver_rut_eval.html"><span class="Estilo1">${TM_Rut(h,r)}</span></div>
+<if dataCompetencia></if>
+<span id="Layer4" style="position:absolute; width:654px; height:460px; z-index:1; left: 334px; top: 33px; overflow: auto;"> 
+  <table width="97%" border="0" cellpadding="0" cellspacing="1">
+      <!--DWLayoutTable-->
+    <tr> 
+        <td width="110" height="16" align="center" valign="middle" class="fondo_tablaAmarillo">Acci&oacute;n</td>
+      <td width="59" align="center" valign="middle" class="fondo_tablaAmarillo">Plazo</td>
+      <td width="99" align="center" valign="middle" class="fondo_tablaAmarillo">Red de Apoyo</td>
+      <td width="118" align="center" valign="middle" class="fondo_tablaAmarillo">Ver Avances</td>
+    	<td width="28" class="fondo_tablaAmarillo">&nbsp;&nbsp;</td>
+	</tr>
+<if getDatosPlanAccion>
+	<list getDatosPlanAccion as a>
+    	<tr> 
+   		  <td class="fondo_tablaGris"><textarea name="accion" cols="35" rows="3" class="txt_gris">${a.accion}</textarea></td>
+   		  <td class="fondo_tablaGris"><input name="plazo" type="text" class="txt_gris" value="${a.plazo}" size="15"></td>
+      		<td class="fondo_tablaGris"><textarea name="red_apoyo" cols="35" rows="3" class="txt_gris">${a.red_apoyo}</textarea></td>
+      		<td class="fondo_tablaGris"><textarea name="ver_avances" cols="35" rows="3" class="txt_gris">${a.ver_avances}</textarea></td>
+	  		<td class="fondo_tablaGris"><a href="#" onClick="fnEliminar(${a.id_competencia},${a.linea});return false" onMouseOver="MM_swapImage('Image54','','../servlet/Tool?images/images_ggd/plan_accion/eliminar_over.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" alt="Eliminar" name="Image54" width="30" height="30" border="0"></a></td>
+    	</tr>
+	</list>
+</if>
+</table>
+</span>
+<input name="txt_Rut" type="hidden" value="${r}">
+<input name="txt_RutEval" type="hidden" value="${re}">
+<input name="id_perfil" type="hidden" value="${id_perfil}">
+<input name="id_proceso" type="hidden" value="${txt_Proceso}">
+<input name="modo" type="hidden" value="${modo}">
+
+<input name="rb_competencia" type="hidden" value="${c}">
+<input name="id_competencia" type="hidden" value="${c2}">
+
+</form>
+<div id="Layer1" style="position:absolute; width:302px; height:112px; z-index:2; left: 11px; top: 179px; overflow: auto;">
+<assign h = "ggd/resultado_analisis/indicador_plan2.html"><span class="Estilo2">${TM_NivObt(h,r,r,p,pr,"D")}</span></div>
+</body>
+</html>

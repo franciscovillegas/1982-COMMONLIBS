@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>RRHH MIS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript">
+var servidorDF = "http://srv-desa-dom:8010";
+
+function Tx(){
+	//document.location.href="Tool?htm=html/mis/index.htm";
+	//document.form1.action="Tool?htm=html/mis/index.htm";
+		document.location.href="Tool?htm=html/mis/index.htm";
+	//document.form1.submit();	
+}
+</script>
+
+<body bgcolor="#000066" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="770" height="480">
+  <param name=movie value="../flash/preview/bien_mis.swf">
+    <param name=menu value=false>
+    <embed src="../flash/preview/bien_mis.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="770" height="480">
+    </embed> 
+  </object>
+  <form name="form1" method="post" action="">
+  <input type="hidden" name="password" value="${usuario.pPassword}" >
+  <input type="hidden" name="rut" value="${usuario.pRut}" >
+  </form> 
+</body>
+</html>

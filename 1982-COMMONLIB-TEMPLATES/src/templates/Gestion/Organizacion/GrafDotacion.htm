@@ -1,0 +1,144 @@
+  <html>
+<head>
+<title>GR&Aacute;FICO DOTACION</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="/Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.Negrita {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000}
+.Text { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000 }
+-->
+</Style>
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/images/Gestion/botones/cerrar_down.jpg','/images/Gestion/botones/cerrar_over.jpg')">
+<table width="429" border="0" cellspacing="0" cellpadding="0" height="317" bgcolor="#FFa400" align="left">
+  <tr> 
+    <td valign="top" align="center" height="7" colspan="2"> 
+      <table width="100%" border="1" cellspacing="0" cellpadding="0" height="18" align="center">
+        <tr> 
+          <td height="20" bgcolor="#FFBB3C"> 
+            <div align="center"><b class="Negrita">GR&Aacute;FICO DOTACI&Oacute;N 
+              &quot;${unid_desc}&quot;</b></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="middle" align="center" width="50%"> 
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td> <applet codebase="/Applet/" code="graficos.GraficoBarras.class" width=153 height=176 alt="Gr&aacute;fico">
+              <param name=c1_label value="DA">
+              <param name=c1_color value="0,0,255">
+              <param name=c1 value="${dda}">
+              <param name=c1_style value="striped">
+			  <param name=c1_barWidth value="35">
+			  
+              <param name=c2_color value="0,255,0">
+              <param name=c2_label value="DR">
+              <param name=c2 value="${ddr}">
+              <param name=c2_style value="solid">
+			  <param name=c2_barWidth value="20">
+			  
+              <param name=title value="Dotaci&#243;n Directa">
+              <param name=columns value="2">
+              <param name=scaleEjeX value="50">
+              <param name="backgroundColor" value="255,255,255">
+            </applet></td>
+        </tr>
+      </table>
+      
+    </td>
+    <td valign="middle" align="center" width="50%"> 
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td> <applet codebase="/Applet/" code="graficos.GraficoBarras.class" width=153 height=176 alt="Gr&aacute;fico">
+              <param name=c1_label value="DA">
+              <param name=c1_color value="0,0,255">
+              <param name=c1 value="${dia}">
+              <param name=c1_style value="striped">
+
+              <param name=c2_color value="0,255,0">
+              <param name=c2_label value="DR">
+              <param name=c2 value="${dir}">
+              <param name=c2_style value="solid">
+
+              <param name=title value="Dotaci&oacute;n Indirecta">
+              <param name=columns value="2">
+              <param name=scaleEjeX value="40">
+			  <param name=barWidth value="35">
+              <param name="backgroundColor" value="255,255,255">
+              <param name="sombra" value="1">
+            </applet></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; left:295px; top:283px; width:129px; height:15px; z-index:2"> 
+  <div align="right"><a href="javascript:;" onClick="MM_nbGroup('down','group1','cerrar_up','/images/Gestion/botones/cerrar_down.jpg',1);window.close();" onMouseOver="MM_nbGroup('over','cerrar_up','/images/Gestion/botones/cerrar_over.jpg','',1)" onMouseOut="MM_nbGroup('out')"><img src="/images/Gestion/botones/cerrar_up.jpg" width="108" height="27" name="cerrar_up" border="0" onLoad=""></a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>WorkFlow</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<script language="JavaScript" src="/WorkFlow/Script/workflow.js"></script>
+<script language="JavaScript" src="/WorkFlow/Script/ManejaCheck.js"></script>
+
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri Feb 15 13:02:55 GMT-0300 (Hr. de ver. del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function ValidaForm() { //v2.0
+  var nombre=document.form1.nombre.value;
+  var paterno=document.form1.paterno.value;
+  var materno=document.form1.materno.value;
+  if ((nombre=="")&&(paterno=="")&&(materno==""))
+    alert("Ingrese alg&#250;n criterio de b&#250;squeda.");
+  else
+   document.form1.submit();
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<link rel="stylesheet" href="/workflow/Style/EstiloWorkflow.css" type="text/css">
+<body bgcolor="525876" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF" onLoad="MM_preloadImages('/images/WorkFlow/busc_over.jpg','/images/WorkFlow/bots_over_r1_c3.jpg')">
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img name="wf_r1_c1" src="/images/WorkFlow/WKJefe/wf_r1_c1.jpg" width="758" height="28" border="0"></td>
+  </tr>
+  <tr>
+    <td valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="758" align="right">
+        <!-- fwtable fwsrc="/images/WorkFlow/Untitled" fwbase="tch.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+        <form name="form1" action="/workflow/servlet/com.eje.workflow.vacaciones.gestion.BuscaJefe" method="POST">
+          <tr> 
+            <td rowspan="2" valign="top"><img name="tch_r1_c1" src="/images/WorkFlow/tch_r1_c1.jpg" width="24" height="470" border="0"></td>
+            <td background="/images/WorkFlow/tch_r1_c2.jpg" height="416" valign="top"> 
+              <div id="Layer1" style="position:absolute; width:84px; height:27px; z-index:2; left: 64px; top: 457px"><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('bots_r1_c31','','/images/WorkFlow/bots_over_r1_c3.jpg',1)"><img name="bots_r1_c31" src="/images/WorkFlow/bots_r1_c3.jpg" width="71" height="22" border="0"></a></div>
+              <div id="LayerDetalle" style="position:absolute; width:696px; height:170px; z-index:1; left: 40px; top: 69px; visibility: visible"> 
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td valign="middle"> 
+                      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr valign="top"> 
+                          <td colspan="5" class="tituloTabChico" height="53">Su 
+                            Jefe Directo ${nom_jefe } no se encuentra disponible 
+                            para aprobar su solicitud, ingrese los criterios de 
+                            b&uacute;squeda de qui&eacute;n pudiera realizar dicha 
+                            aprobaci&oacute;n.</td>
+                        </tr>
+                        <tr> 
+                          <td width="14%" class="detalle">Nombre</td>
+                          <td colspan="4" class="detalle"> 
+                            <input type="text" name="nombre" class="cajaTextoDetalle">
+                            <input type="hidden" name="tipo" value="${tipo_sol}">
+                          </td>
+                        </tr>
+                        <tr> 
+                          <td width="14%" class="detalle">Apellido Paterno</td>
+                          <td width="22%" class="detalle"> 
+                            <input type="text" name="paterno" class="cajaTextoDetalle">
+                          </td>
+                          <td width="20%" class="detalle"> 
+                            <div align="right">Apellido Paterno</div>
+                          </td>
+                          <td width="30%" class="detalle"> 
+                            <input type="text" name="materno" class="cajaTextoDetalle">
+                          </td>
+                          <td width="14%" class="detalle"><a href="javascript:;" onClick="ValidaForm();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image12','','/images/WorkFlow/busc_over.jpg',1)"><img name="Image12" border="0" src="/images/WorkFlow/busc_up.jpg" width="68" height="18"></a></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+            <td rowspan="2" valign="top"><img name="tch_r1_c3" src="/images/WorkFlow/tch_r1_c3.jpg" width="23" height="470" border="0"></td>
+          </tr>
+          <tr> 
+            <td valign="bottom"><img name="tch_r2_c2" src="/images/WorkFlow/tch_r2_c2.jpg" width="713" height="54" border="0"></td>
+          </tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

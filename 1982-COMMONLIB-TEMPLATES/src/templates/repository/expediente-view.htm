@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<title>Visualizaci&#243;n de Archivos</title>
+<script src="Tool?scripts/jquery-1.8.3.min.js"></script>
+<script src="../servlet/Tool?scripts/repository/jquery.carouFredSel-6.1.0-packed.js" type="text/javascript"></script>
+<script src="../servlet/Tool?scripts/repository/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(function() {
+		
+		if($("#carousel").length != 0) {
+	    	$('#carousel').carouFredSel({
+				width: 800,
+				items: 4,
+				scroll: 1,
+				auto: { duration: 1250,timeoutDuration: 2500 },
+				prev: '#prev',
+				next: '#next',
+				pagination: '#pager'
+	    	});
+	    	
+	    	$('#carousel img[alt]').each(function() {
+	            $(this).qtip({
+	            	content: $(this).attr('alt'), 
+	            	style: 'dark' 
+	        	});
+			});
+		}
+   });
+	    	
+	
+	function exportar(rut,accion,idfile) {
+	  	var v_accion = accion;
+	  	var v_trabajador = rut;
+	  	var v_idfile = idfile;
+		window.open ("../servlet/ViewFileRepositoryServlet?accion=" + v_accion + "&rut=" + v_trabajador + "&idfile=" + idfile ,"_blank","menubar=0,resizable=0,width=1,height=1,scrollbars=0,location=0,status=0,titlebar=0");
+	}
+	
+	function exportar2(rut,accion,idfile) {
+	    document.getElementById("loadingSpinnner").style.visibility="visible";
+	  	var v_accion = accion;
+	  	var v_trabajador = rut;
+	  	var v_idfile = idfile;
+		var myUrl = "../servlet/ViewFileRepositoryServlet?accion=" + v_accion + "&rut=" + v_trabajador + "&idfile=" + idfile;
+		window.location = myUrl;
+		var myVar=setInterval(function(){myTimer()},6000);
+	}
+	
+	function myTimer() {
+		document.getElementById("loadingSpinnner").style.visibility="hidden";
+	}
+	
+	function set_mouse_pointer(obj) {
+        obj.style.cursor='pointer';
+    }
+	
+	function abreCertificado13() {
+		document.formCertificado.submit();
+	}
+	
+</script>
+
+<style type="text/css">
+  #wrapper { background-color: #fff; border: 1px solid #ccc; border-radius: 20px; width: 800px; height: 127px;
+	     padding: 10px; margin: -0px 0 0 -0px; }
+  .caroufredsel_wrapper { border-radius: 10px; }
+  #carousel img { width: 201px; height: 127px; margin: 0 5px; float: left; }
+  #carousel img:HOVER { cursor: pointer;}
+  #prev, #next { background: transparent url('../servlet/Tool?images/repository/carousel_control.png') no-repeat 0 0; text-indent: -999px;
+		 overflow: hidden; width: 15px; height: 21px;  top: 65px; }
+  #prev { background-position: 0 0; left: 30px; }
+  #prev:hover { left: 29px; }			
+  #next { background-position: -18px 0; right: 30px; }
+  #next:hover { right: 29px; }				
+  #pager { text-align: center; margin: 0 auto; padding-top: 20px; }
+  #pager a { background: transparent url('../servlet/Tool?images/repository/carousel_control.png') no-repeat -2px -32px; text-decoration: none;
+	     text-indent: -999px; display: inline-block; overflow: hidden; width: 8px; height: 8px; margin: 0 5px 0 0; }
+  #pager a.selected { background: transparent url('../servlet/Tool?images/repository/carousel_control.png') no-repeat -12px -32px; text-decoration: underline; }
+  
+  #titulo_repositorio{
+    text-align:center;
+    width:850px;
+    height:35px;
+    padding-left:20px;
+    padding-top:10px;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    color: #999999;
+    text-shadow: -1px -1px 0px #666, 1px 1px 0px #ffffff;
+  }
+
+	.tdChico {
+		font-size: 11px;
+		font-family:  Arial, Helvetica, sans-serif;
+	
+	}
+</style>
+</head>
+<body topmargin="0" leftmargin="0"  >
+
+  <div id="loadingSpinnner" style="visibility: hidden;">
+	<table border="0" cellpadding="0" cellpadding="0">
+    <tr><td><img width="36" height="36" src="../servlet/Tool?images/repository/loading.gif"></td><td valign="middle">Recuperando archivo espere por favor...</td></tr>
+    </table>
+  </div>
+
+<if archivos && archivosSize != "0">
+	<div id="titulo_repositorio">Otros</div>
+	
+
+	<div id="wrapper">
+
+		<div id="carousel" style="display: block;">
+			<list archivos as e>
+			<img onClick="exportar2(${rut},'export',${e.id});" src="../servlet/Tool?images/repository/iconos/${e.icono}" alt="${e.clasificacion}"/>
+			</list>
+	    </div>
+	</div>
+
+	<div style="display:inline;">
+	    <div style="float: left;">
+	    	<a id="prev" href="javascript:;"></a>
+	    </div>
+		<div id="pager" ></div>
+		<div style="float: left;" >
+	    	<a id="next" href="javascript:;"></a>
+	    </div>
+	 </div>
+</if>
+
+<form name="formCertificado" method="post" action="../servlet/Certificado" >
+                                    <input type="hidden" name="claseweb" id="claseweb" value="portal.com.eje.serhumano.certificados.SCertificadosLiquidacion" />
+                                    <input type="hidden" name="periodo"  id="periodo" />
+                                    <input type="hidden" name="rut_org"  id="rut_org"  value="${rut}" />
+                                    <input type="hidden" name="certificado"  id="certificado"  value="13" />
+                                </form>
+                                
+                             	
+</body>
+</html>
+

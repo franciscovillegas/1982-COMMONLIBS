@@ -1,0 +1,61 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border=0 cellpadding=0 cellspacing=0 width="648" height="225">
+  <tr valign="top"> 
+    <td width="628" height="3" bgcolor="#ffa400"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_01.jpg" width=1 height=4></td>
+    <td rowspan=2><img src="Tool?htm=Gestion/InfoUsuario/Indicadores/imagenes_main_resultado/main_resultado_04.jpg" width=13 align="top" height=100%></td>
+  </tr>
+  <tr valign="top"> 
+    <td bgcolor="#FFA400" width="631" height="196"> 
+     <if !detalle> 
+      <table width="523" border="1" cellspacing="0" cellpadding="0" align="center">
+        <tr bgcolor="#FF6600"> 
+          <td class="texto" height="7"> 
+            <div align="center"><font color="#FFFFFF">No se encontraron empleados 
+              que cumplan con este criterio.</font></div>
+          </td>
+        </tr>
+      </table><else>
+      <table width="523" border="1" cellspacing="0" cellpadding="0" align="center">
+        <tr bgcolor="#FF6600"> 
+          <td class="texto" width="70"><font color="#FFFFFF">Rut</font></td>
+          <td class="texto" width="161"><font color="#FFFFFF">Nombre</font></td>
+          <td class="texto" width="140" bgcolor="#FF6600"><font color="#FFFFFF">Unidad</font></td>
+          <td class="texto" width="95"><font color="#FFFFFF">Anexo</font></td>
+          <td class="texto" width="45"><font color="#FFFFFF"></font></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <div id="Layer1" style="position:absolute; width:568px; height:186px; z-index:1; left: 54px; top: 23px; overflow: auto; visibility: visible"> 
+        <table width="523" border="1" cellspacing="0" cellpadding="0">
+          <list detalle as d> 
+          <tr bgcolor="#FFFFFF"> 
+            <td class="texto" width="70"> <a href="../servlet/RegistroVisita?rut=${d.xrut}&unidad=${d.unid_id}&empresa=${d.empresa}&anexo=${d.anexo}&rutv=${d.rut_v}&nomv=${d.nom_v}&nom=${d.nombre}" target="_self">${d.rut}</a></td>
+            <td class="texto" width="161">${d.nombre}</td>
+            <td class="texto" width="140">${d.unidad}</td>
+            <td class="texto" width="95">${d.anexo}</td>
+            <td class="texto" width="45">&nbsp;</td>
+          </tr></list>
+        </table>
+      </div></if>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,222 @@
+  <html>
+<head>
+<title>Informe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/imprimir.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function botones_estado(estado) {
+	<list paginas as pag>
+	LayerBotonera${pag.p_act}.style.visibility = estado;
+	</list>
+}
+
+function Imprimir(){
+	botones_estado("hidden");
+	//window.print();
+	printPage();
+	botones_estado("visible");
+}
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<script language="JavaScript">
+window.scroll(0,0);
+</script>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagesDataFolder/botones/botones_informe/imprimir_up.jpg','../imagesDataFolder/botones/botones_informe/inicio_up.jpg','../imagesDataFolder/botones/botones_informe/anterior_up.jpg','../imagesDataFolder/botones/botones_informe/siguiente_up.jpg','../imagesDataFolder/botones/botones_informe/ultimo_up.jpg')">
+<script language="JavaScript">
+opener.parent.AbrirVentProcesando();
+</script>
+<list paginas as pag> 
+<table width="670" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr valign="top"> 
+    <td width="250" valign="top" rowspan="2">&nbsp; </td>
+    <td valign="top" rowspan="2" > 
+      <div align="center"><a name="pag_${pag.p_act}"></a></div>
+    </td>
+    <td width="250" valign="top" height="66" align="right"> 
+	  <include "templates/Datafolder/Informes/botonera_imprimir.htm">
+      <!--<div id="LayerBotonera${pag.p_act}" style=" visibility:hidden; z-index:1; border: 1px none #000000; top: auto" > 
+        <table border="0" cellspacing="0" cellpadding="0" width="248" bgcolor="#CCCCCC" height="36">
+          <tr valign="middle">
+		  <compress> 
+            <td width="50"> <a href="javascript:;" onClick="Imprimir()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_imp${pag.p_act}','','/Gestion/botones/botones_informe/imprimir_up.jpg',1)"><img src="/Gestion/botones/botones_informe/imprimir_down.jpg" width="49" height="36" border="0" name="img_imp${pag.p_act}"></a></td>
+            <td width="49"> <if (pag.p_act) != "1"><a href="#pag_1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ini${pag.p_act}','','/Gestion/botones/botones_informe/inicio_up.jpg',1)"><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></if></td>
+            <td width="50"> <if (pag.p_act) != "1"><a href="#pag_${pag.p_ant}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ant${pag.p_act}','','/Gestion/botones/botones_informe/anterior_up.jpg',1)"><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></if></td>
+            <td width="50"> <if (pag.p_act) != (p_tot)><a href="#pag_${pag.p_sig}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_sig${pag.p_act}','','/Gestion/botones/botones_informe/siguiente_up.jpg',1)"><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></if></td>
+            <td width="49"> <if (pag.p_act) != (p_tot)><a href="#pag_${p_tot}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ult${pag.p_act}','','/Gestion/botones/botones_informe/ultimo_up.jpg',1)"><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></if></td>
+		  </compress>  
+          </tr>
+        </table>
+      </div>-->
+    </td>
+  </tr>
+  <tr valign="top">
+    <td width="250" valign="top">
+      <div align="right"><span class="negro12N">P&aacute;g. ${pag.p_act} de ${p_tot}</span></div>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" height="20"> 
+      <div align="center"><u><span class="negro12B">Estad&iacute;stica Dotacion 
+        Personal Real/Autorizada </span><br>
+        </u><b><font face="Arial, Helvetica, sans-serif" size="2">(Periodo ${GetParam("peri_ano")}-${GetParam("peri_mes")})</font></b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2">&nbsp;</td>
+    <td align="right"> 
+      
+    </td>
+  </tr>
+  <tr> 
+    <td height="1" width="181"></td>
+    <td width="174"></td>
+    <td width="133"></td>
+  </tr>
+</table>
+<table width="670" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr align="center"> 
+    <td valign="top" height="463" colspan="2"> 
+      <table border="1" cellspacing="0" cellpadding="0" width="100%">
+        <tr bgcolor="#CCCCCC"> 
+          <td width="11%" class="negro10B"> 
+            <div align="center"> Unidad</div>
+          </td>
+          <td width="28%" class="negro10B"> 
+            <div align="center"> Cargo</div>
+          </td>
+          <td width="15%" class="negro10B"> 
+            <div align="center"> Planta</div>
+          </td>
+          <td width="13%" class="negro10B"> 
+            <div align="center"> Dotaci&oacute;n</div>
+          </td>
+          <td width="13%" class="negro10B"> 
+            <div align="center"> Vacantes</div>
+          </td>
+          <td width="20%" class="negro10B"> 
+            <div align="center"> Sobredotaci&oacute;n</div>
+          </td>
+        </tr>
+        <if !(pag.datos)> 
+        <tr> 
+          <td colspan="6"> 
+            <div align="center"><i> Informaci&oacute;n no Disponible...</i></div>
+          </td>
+        </tr>
+        </if> <list pag.datos as d> <if (d.FILATIPO) == "ENC"> 
+        <tr> 
+          <td colspan="6" class="negro12B"> 
+            <div align="left"><i > ${d.unid_desc} </i><i class="negro12B"> (${d.unid_id})</i></div>
+          </td>
+        </tr>
+        </if> 
+        <tr> 
+          <td width="11%" class="negro10N"> 
+            <div align="left"></div>
+          </td>
+          <td width="28%" class="negro10N"> 
+            <div align="left">${d.cargo_desc}</div>
+          </td>
+          <td width="15%" class="negro10N"> 
+            <div align="center">${d.aut}</div>
+          </td>
+          <td width="13%" class="negro10N"> 
+            <div align="center">${d.ind}</div>
+          </td>
+          <td width="13%" class="negro10N"> 
+            <div align="center">${d.vac}</div>
+          </td>
+          <td width="20%" class="negro10N"> 
+            <div align="center">${d.sob}</div>
+          </td>
+        </tr>
+        </list> <if (pag.p_act) == (p_tot)> 
+        <tr> 
+          <td colspan="2" class="negro12B"> 
+            <div align="right">Totales&nbsp;:&nbsp;</div>
+          </td>
+          <td width="15%" class="negro12B"> 
+            <div align="center">${T_aut}</div>
+          </td>
+          <td width="13%" class="negro12B"> 
+            <div align="center">${T_ind}</div>
+          </td>
+          <td width="13%" class="negro12B"> 
+            <div align="center">${T_vac}</div>
+          </td>
+          <td width="20%" class="negro12B"> 
+            <div align="center">${T_sob}</div>
+          </td>
+        </tr>
+        </if> 
+      </table>
+      </td>
+  </tr>
+  <tr> 
+    <td height="20" valign="top" width="561">&nbsp; </td>
+    <td width="139" valign="top"> 
+      <div align="right"></div>
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<if (pag.p_act) != (p_tot)> 
+<p class="pageEnd" align="center">&nbsp;</p>
+</if> </list> 
+<script language="JavaScript">
+	opener.parent.CerrarVentProcesando();
+	botones_estado("visible");
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+ <HTML>
+<HEAD>
+<TITLE>Licencias M&eacute;dicas</TITLE>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<style type="text/css">
+caption{
+	font-style:italic;
+	font-weight: bold;
+	text-decoration: underline;
+}
+</style>
+</HEAD>
+<link href="../servlet/Tool?omap=style/estilosPersonalizado.css" rel="stylesheet" type="text/css">
+<body>
+
+	<div id="divCarpetaElectronica">
+		<table width="800" align="center" style="margin-top:20px;" >
+			<th colspan="2" class="macTableStyle1" ><div class="titulo">Licencias M&eacute;dicas</div></th>
+			<tr>
+			<td colspan="3" align="center">
+				<div id="divDatosPersonales">
+
+					<table id="tblContenidos" width="100%" style=" margin-top:20px; font-size:10px;" class="cuadro_contenido">
+							<tr>
+				        		<td rowspan="9">
+
+								</td>
+				             	<td colspan="4" style="padding:10px;"> <strong>${nombre}</strong></td>
+							</tr>
+				            <tr>
+								<td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" >Cargo:</td>
+								<td style="padding:3px; border:#D7D7D7 1px solid;">${cargo}</td>
+								<td>&nbsp;</td>
+								<td > </td>
+							</tr>
+							<tr>
+								<td  height="13"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Previsi&oacute;n:</td>
+							    <td  height="13" style="padding:3px; border:#D7D7D7 1px solid;">${isapre}</td>
+							    <td  height="13" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Fec. Ingreso:</td>
+							    <td  height="13" style="padding:3px; border:#D7D7D7 1px solid;" >${fecha_ing}</td>
+							</tr>
+							<tr>
+								<td  height="13"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Centro Costo:</td>
+							    <td  height="13" style="padding:3px; border:#D7D7D7 1px solid;">(${dc.id_cco}) ${dc.cco}</td>
+							    <td  height="13" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Unidad org&aacute;nica:</td>
+							    <td  height="13" style="padding:3px; border:#D7D7D7 1px solid;" >(${dc.id_unidad}) ${dc.unidad}</td>
+							</tr>
+							<tr>
+<td colspan="4">
+									<br><br>
+									<table cellpadding="1" cellspacing="1" width="100%" style="font-size:10px;">
+                                    <tr>
+										<td colspan="6" align="center" class=" macTableStyle1"><div class="titulo">Detalle de Licencias M&eacute;dicas </div></td>
+                                      </tr>
+									    <tr style="margin-top:20px;">
+									      <td width="48" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Inicio</td>
+									      <td width="48" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Termino</td>
+									      <td width="169" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Grupo Enfermedad</td>
+									      <td width="33" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">D&iacute;as</td>
+									      <td width="124" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Tipo de Licencia</td>
+									      <td width="87" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Rut Profesional</td>
+
+									    </tr>
+									    <if !(licencias)>
+									    <tr>
+									      <td height="2" colspan="6" align="center" style="padding:3px; border:#D7D7D7 1px solid;">No registra detalle de Licencias M&eacute;dicas</td>
+									    </tr>
+									    </if>
+									    <list licencias as l>
+									    	<if (l.id_tipo_licencia == "1" || l.id_tipo_licencia == "2") >
+									    		<tr>
+											      <td width="48" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.inicio}</td>
+											      <td width="48" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.termino}</td>
+											      <td width="169" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.grupo}</td>
+											      <td width="33" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.dias}</td>
+											      <td width="124" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.tipo_licencia}</td>
+											      <td width="87" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.rut_profesional}</td>
+		
+											    </tr>
+									    	</if>
+									    </list>
+									</table>
+<br><br>
+									<table cellpadding="0" cellspacing="1" width="100%" style="margin-top:20px;">
+										<tr>
+										<td colspan="6" align="center" class=" macTableStyle1"><div class="titulo">Otros Ausentismos </div></td>
+                                      </tr>
+										<tr>
+											<td colspan="4">
+												<table cellpadding="1" cellspacing="1" width="100%" style="font-size:10px;">
+													<tr>
+														<td width="48" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" >Inicio</td>
+														<td width="48" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Termino</td>
+														<td width="169" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Ausentismo</td>
+														<td width="33" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">D&iacute;as</td>
+														<td width="124" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Tipo de Ausentismo</td>
+														<td width="87" align="center"  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Observación</td>
+													</tr>
+												<if !(licencias)>
+													<tr>
+														<td height="2" colspan="6" align="center" style="padding:3px; border:#D7D7D7 1px solid;">No registra otros ausentismos</td>
+													</tr>
+												</if>
+													<list licencias	as l>
+												    	<if (l.id_tipo_licencia != "1" && l.id_tipo_licencia != "2") >
+												    		<tr>
+														      <td width="48" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.inicio}</td>
+														      <td width="48" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.termino}</td>
+														      <td width="169" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.grupo}</td>
+														      <td width="33" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.dias}</td>
+														      <td width="124" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.tipo_licencia}</td>
+														      <td width="87" height="2" align="center" style="padding:3px; border:#D7D7D7 1px solid;">${l.diagnostico}</td>
+					
+														    </tr>
+												    	</if>												
+													</list>
+												</table>
+											</td>
+										</tr>
+									</table><!-- macTableStyle1 -->										  
+								</td>
+							</tr>
+				</table><!-- macTableStyle1 -->	
+				<br><br>
+				
+			</div>		
+</table>
+</div
+></BODY>
+</HTML>

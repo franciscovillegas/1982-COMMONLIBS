@@ -1,0 +1,19 @@
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <if getEvaluados><list getEvaluados as a> <td align="center">
+      <table height="140" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+         
+        <tr>
+          <td height="13" align="center" valign="top"><img src="../servlet/Tool?images/trabajadores/fotos/${a.foto}" alt="${a.nombre_completo}" width="51" height="66" border="1" onError="existeFoto(this);"/></td>
+        </tr>
+        <tr>
+          <td height="60" align="center">${a.nombre_completo}</td>
+        </tr>
+        <tr>
+          <td align="center" valign="bottom" ><input type="radio" name="radiobutton" value="radiobutton" onClick="setRut('${a.rut}','${a.id_perfil}','${a.id_proceso}')"></td>
+        </tr>
+      	  
+	  </table></td>
+        </list></if></tr>
+      </table>

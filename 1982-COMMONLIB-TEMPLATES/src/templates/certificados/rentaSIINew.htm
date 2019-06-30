@@ -1,0 +1,300 @@
+<HTML>
+<HEAD>
+<TITLE>${titulo}</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!-- Guión de carga previa de ImageReady (main_solo.psd) -->
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		preloadFlag = true;
+	}
+}
+
+// -->
+</SCRIPT>
+<!-- Finalizar guión de carga previa -->
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="left">
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="79%" colspan="2"></td>
+      <td width="21%"><div id="Layer1"><a href="#"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></div></td>
+    </tr>
+  </table>
+</div>
+<div align="left"></div>
+	<table width="72%" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr><td><div align="right"> </div></td></tr></table>
+<if !detalle>
+	  <table width="72%" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr><td><div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><font face="Arial, Helvetica, sans-serif" size="2"><font size="3" class="maticoN">
+	  ${nombre} R.U.T ${rut}, no registra informaci&oacute;n de ${titulo} en el periodo ${periodo}
+	  </font></font></div></td></tr></table>
+<else>
+	  <table width="100%" align="center" height="450" cellpadding="0" cellspacing="0" border="0">
+      <tr><td colspan="2" height="30"> 
+	    <table border="0" cellpadding="0" cellspacing="0" align="left">
+		<tr>
+		  <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">NOMBRE/RAZ&Oacute;N SOCIAL </font></div></td>
+		  <td><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${empresa}</span></font></td>
+		  <td style="padding-left:70"><font face="Arial, Helvetica, sans-serif" size="2"><span class="maticoN">Certificado N&deg; ${num}</span></font></td>
+		</tr>
+		<tr> 
+		  <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">RUT N&deg;</font></div></td>
+		  <td><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${rutempresa2}</span></font></td>
+		  <td style="padding-left:70"><font face="Arial, Helvetica, sans-serif" size="2"><span class="maticoN">Fecha Emisi&oacute;n: Santiago ${fecha}</span></font></td>
+		</tr>
+		<tr> 
+		  <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">DIRECCI&Oacute;N</font></div></td>
+		  <td><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${direccion}</span></font></td>
+		</tr>
+		<tr> 
+		  <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2" class="maticoN">GIRO</font></div></td>
+		  <td><font face="Arial, Helvetica, sans-serif" size="2">:<span class="maticoN">${giro}</span></font></td>
+		</tr>
+	  </table>
+	  </td>
+      </tr>
+	  <tr> 
+	    <td width="93%" height="15"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3"><u><br>${titulo}</u></font></b></font></div></td>
+		<td width="7%" bordercolor="#CCCCCC" height="15"><br></td>
+	  </tr>
+	  <tr valign="top"><td height="15" colspan="2" ></td></tr>	  
+<if opcion1>	  
+	  <tr valign="top"> 
+	  <td height="60" colspan="2" width="95%"> 
+		<p align="justify">
+		<font face="Arial, Helvetica, sans-serif" size="2"><font size="2">
+		${empresa} certifica que el Sr(a) ${nombre} R.U.T ${rut} en calidad de 
+		empleado dependiente, durante el a&ntilde;o ${periodo}, se le han pagado 
+		las rentas que se indican y sobre las cuales se les practicaron las 
+		retenciones  de impuestos que se se&ntilde;alan:</font></font></p>
+	  </td>
+	  </tr>
+</if>	  
+<if opcion2>	  
+	  <tr valign="top"> 
+	  <td height="60" colspan="2" width="95%"> 
+		<p align="justify"><font face="Arial, Helvetica, sans-serif" size="2"><font size="2">
+		La empresa o institucion ${empresa} certifica que al Sr(a) ${nombre} R.U.T Nº ${rut}  
+		durante el a&ntilde;o ${periodo}, se le han pagado las siguientes rentas y 
+		sobre las cuales se les practicaron las retenciones  de impuestos que se se&ntilde;alan:</font></font></p>
+	  </td>
+	  </tr>
+</if>
+<if opcion3>
+	  <tr valign="top"> 
+	  <td height="60" colspan="2" width="95%"> 
+		<p align="justify"><font face="Arial, Helvetica, sans-serif" size="2"> <font size="2">
+		La Sociedad Anonima, ${empresa} certifica que al Sr(a) ${nombre} R.U.T Nº ${rut}  
+		durante el a&ntilde;o ${periodo}, se le han pagado las siguientes rentas y 
+       sobre las cuales se les practicaron las retenciones  de impuestos que se se&ntilde;alan:</font></font></p>
+	  </td>
+	  </tr>
+</if>
+	  <tr valign="top"><td height="67" colspan="2"><div align="center"> 
+<if opcion1> 
+      <table border="1" cellpadding="0" cellspacing="0" height="17" width="95%">
+      <tr> 
+        <td rowspan="2" width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Mes</font></div></td>
+        <td rowspan="2" width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Sueldo Jubilacion o Pension Bruta</font></div></td>
+        <td rowspan="2" width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Cotizacion Previsional de cargo del Trabajador o Pensionado</font></div></td>
+        <td rowspan="2" width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta Imponible Afecta a Impuesto 2a. Categoria</font></div></td>
+        <td rowspan="2" width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto Unico Retenido</font></div></td>
+        <td rowspan="2" width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Mayor Retencion de Impto. Solicitada Art.88 L.I.R.</font></div></td>
+        <td rowspan="2" width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta Total Exenta y/o no Gravada</font></div></td>
+        <td rowspan="2" width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Rebajas por Zonas Extremas D.L.889</font></div></td>
+        <td rowspan="2" width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Factor de Actualizacion</font></div></td>
+        <td colspan="5" height="23" colspan="7" bgcolor="#FFCC99" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Montos Actualizados</font></div></td>
+      </tr>
+      <tr>  
+        <td width="6%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta Afecta Impto.Unico de 2a.Categoria</font></div></td>
+        <td width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto Unico Retenido</font></div></td>
+        <td width="7%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Mayor Ret.de Impto. Solicitada</font></div></td>
+        <td width="5%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta Total Exenta y/o no gravada</font></div></td>
+        <td width="8%" height="23" valign="top"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Rebajas por Zonas Extremas</font></div></td>
+      </tr>
+      <list detalle as d> 
+      <tr> 
+        <td width="6%" height="18"><font size="1" face="Arial, Helvetica, sans-serif">${d.col1}</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col3}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col4}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col5}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col6}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col7}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col8}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col9}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col10}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col11}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col12}</font></div></td>
+        <td width="5%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col13}</font></div></td>
+        <td width="8%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col14}</font></div></td>
+      </tr>
+      </list> 
+      <tr> 
+        <td width="6%" height="18"><font face="Arial, Helvetica, sans-serif" size="1">Total</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot3}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot4}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot5}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot6}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot7}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot8}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot9}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot10}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot11}</font></div></td>
+        <td width="5%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot12}</font></div></td>
+        <td width="8%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot13}</font></div></td>
+        <td width="8%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot14}</font></div></td>        
+      </tr>
+      </table>
+</if>      
+<if opcion2> 
+      <table border="1" cellpadding="0" cellspacing="0" height="17" width="95%">
+      <tr> 
+        <td rowspan="2" width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Periodo</font></div></td>
+        <td rowspan="2" width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario Bruto</font></div></td>
+        <td rowspan="2" width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Retencion de Impuesto</font></div></td>
+        <td rowspan="2" width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Factor de Actualizacion</font></div></td>
+        <td colspan="2" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Montos Actualizados</font></div></td>
+      </tr>
+      <tr>  
+        <td width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario Bruto</font></div></td>
+        <td width="7%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Retencion de Impuestos</font></div></td>
+      </tr>
+      <list detalle as d> 
+      <tr> 
+        <td width="6%" height="18"><font size="1" face="Arial, Helvetica, sans-serif">${d.col1}</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col3}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col4}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col5}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col6}</font></div></td>
+      </tr>
+      </list> 
+      <tr> 
+        <td width="6%" height="18"><font face="Arial, Helvetica, sans-serif" size="1">Totales</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot3}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot4}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot5}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot6}</font></div></td>        
+      </tr>
+      </table>
+</if>      
+<if opcion3> 
+      <table border="1" cellpadding="0" cellspacing="0" height="17" width="95%">
+      <tr> 
+        <td rowspan="3" width="6%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Periodo</font></div></td>
+        <td colspan="2" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta Bruta</font></div></td>
+        <td colspan="2" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto Retenido</font></div></td>        
+        <td rowspan="3" width="7%" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Factor de Actualizacion</font></div></td>
+        <td colspan="4" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Montos Actualizados</font></div></td>
+      </tr>
+      <tr> 
+        <td rowspan="2" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario</font></div></td>
+        <td rowspan="2" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Participacion o Asignac.</font></div></td>
+        <td rowspan="2" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario</font></div></td>
+        <td rowspan="2" height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Participacion o Asignac.</font></div></td>
+        <td colspan="2" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Renta</font></div></td>        
+        <td colspan="2" width="7%" height="23" bgcolor="#FFCC99"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Impuesto Retenido</font></div></td>
+      </tr>
+      <tr> 
+        <td height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario Bruto</font></div></td>
+        <td height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Partic. o Asig.</font></div></td>
+        <td height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Honorario</font></div></td>
+        <td height="23"><div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Partic. o Asig.</font></div></td>
+      </tr>      
+      <list detalle as d> 
+      <tr> 
+        <td width="6%" height="18"><font size="1" face="Arial, Helvetica, sans-serif">${d.col1}</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col3}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col4}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col5}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col6}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col7}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col8}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col9}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${d.col10}</font></div></td>
+      </tr>
+      </list> 
+      <tr> 
+        <td width="6%" height="18"><font face="Arial, Helvetica, sans-serif" size="1">Totales</font></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot2}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot3}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot4}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot5}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot6}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot7}</font></div></td>
+        <td width="7%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot8}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot9}</font></div></td>
+        <td width="6%" height="18"><div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${tot10}</font></div></td>        
+      </tr>
+      </table>
+</if>
+</div>
+</td>
+</tr>
+<tr> 
+  <td height="40" colspan="2" width="95%"> 
+  <p><font size="1" face="Arial, Helvetica, sans-serif"> 
+  <font size="1">Se extiende el presente certificado en cumplimiento de 
+  lo dispuesto en la Resoluci&oacute;n Ex. N&deg; 6509 del Servicio de Impuestos 
+  Internos, publicada en el Diario Oficial de fecha 20 de Diciembre de 1993, y sus modificaciones posteriores.</font></font></p>
+  </td>
+</tr>
+<tr><td height="60" colspan="2"> 
+  <p align="center"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2">
+  <table align="right" cellpadding="0" cellspacing="0">
+  <tr><td align="center" valign="bottom"><img src="../servlet/Tool?images/new/certificados/firma.gif" width="279" height="104"></td></tr>
+  <tr><td align="center"><hr></td></tr>
+  <tr><td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre Encargado RRHH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td align="center">Cargo Encargado RRHH</td></tr>
+  </table>
+  </font></font></p>
+</td></tr>
+</table>
+</if>
+</BODY>
+</HTML>

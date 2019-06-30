@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="INFTRAB">
+
+<table width="100%">
+<tr><td colspan="18"><br><br></td></tr>
+<tr><td colspan="18" align="center" class="tabla_beige"><h3>INFORME DE TRABAJADORES :: ${nomUnidad}</h3>Mes ${mes} de ${anho}</td></tr>
+<tr><td colspan="18"><br></td></tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center" colspan="2" rowspan="2">Global</td>
+<td class="tabla_beige" valign="top" align="center" colspan="4">Edad</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2">Genero</td>
+<td class="tabla_beige" valign="top" align="center" colspan="3">Nivel Educacional</td>
+<td class="tabla_beige" valign="top" align="center" colspan="5">Nivel Organizacional</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2">Ubicacion</td>
+</tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center">18-30</td>
+<td class="tabla_beige" valign="top" align="center">30-50</td>
+<td class="tabla_beige" valign="top" align="center">50-60</td>
+<td class="tabla_beige" valign="top" align="center">60-+</td>
+<td class="tabla_beige" valign="top" align="center">Fem.</td>
+<td class="tabla_beige" valign="top" align="center">Masc.</td>
+<td class="tabla_beige" valign="top" align="center">Adm.</td>
+<td class="tabla_beige" valign="top" align="center">T&eacute;c.</td>
+<td class="tabla_beige" valign="top" align="center">Prof.</td>
+<td class="tabla_beige" valign="top" align="center">Adm.</td>
+<td class="tabla_beige" valign="top" align="center">T&eacute;c.</td>
+<td class="tabla_beige" valign="top" align="center">Prof.</td>
+<td class="tabla_beige" valign="top" align="center">Jef.</td>
+<td class="tabla_beige" valign="top" align="center">Ej.</td>
+<td class="tabla_beige" valign="top" align="center">Front</td>
+<td class="tabla_beige" valign="top" align="center">Back</td>
+</tr>
+<tr>
+<td class="textoInforme" colspan="2"><strong>TOTALES</strong></td>
+<td class="textoInforme" align="center"><strong>${teA_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${teB_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${teC_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${teD_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${tgF_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${tgM_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${neA_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${neT_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${neP_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${noA_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${noT_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${noP_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${noJ_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${noE_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${ubicF_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${ubicB_total}</strong></td>
+
+</tr>
+<tr><td colspan="11"><br></td></tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center" colspan="2" rowspan="2">Unidad</td>
+<td class="tabla_beige" valign="top" align="center" colspan="4">Edad</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2">Genero</td>
+<td class="tabla_beige" valign="top" align="center" colspan="3">Nivel Educacional</td>
+<td class="tabla_beige" valign="top" align="center" colspan="5">Nivel Organizacional</td>
+<td class="tabla_beige" valign="top" align="center" colspan="2">Ubicacion</td>
+</tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center">18-30</td>
+<td class="tabla_beige" valign="top" align="center">30-50</td>
+<td class="tabla_beige" valign="top" align="center">50-60</td>
+<td class="tabla_beige" valign="top" align="center">60-+</td>
+<td class="tabla_beige" valign="top" align="center">Fem.</td>
+<td class="tabla_beige" valign="top" align="center">Masc.</td>
+<td class="tabla_beige" valign="top" align="center">Adm.</td>
+<td class="tabla_beige" valign="top" align="center">T&eacute;c.</td>
+<td class="tabla_beige" valign="top" align="center">Prof.</td>
+<td class="tabla_beige" valign="top" align="center">Adm.</td>
+<td class="tabla_beige" valign="top" align="center">T&eacute;c.</td>
+<td class="tabla_beige" valign="top" align="center">Prof.</td>
+<td class="tabla_beige" valign="top" align="center">Jef.</td>
+<td class="tabla_beige" valign="top" align="center">Ej.</td>
+<td class="tabla_beige" valign="top" align="center">Front</td>
+<td class="tabla_beige" valign="top" align="center">Back</td>
+</tr>
+<list lunidades as u>
+<tr>
+<td class="textoInforme" valign="top">${u.uid}</td>
+<td class="textoInforme" valign="top">${u.udesc}</td>
+<td class="textoInforme" align="center" valign="top">${u.te_A}</td>
+<td class="textoInforme" align="center" valign="top">${u.te_B}</td>
+<td class="textoInforme" align="center" valign="top">${u.te_C}</td>
+<td class="textoInforme" align="center" valign="top">${u.te_D}</td>
+<td class="textoInforme" align="center" valign="top">${u.tg_F}</td>
+<td class="textoInforme" align="center" valign="top">${u.tg_M}</td>
+<td class="textoInforme" align="center" valign="top">${u.ne_A}</td>
+<td class="textoInforme" align="center" valign="top">${u.ne_T}</td>
+<td class="textoInforme" align="center" valign="top">${u.ne_P}</td>
+<td class="textoInforme" align="center" valign="top">${u.no_A}</td>
+<td class="textoInforme" align="center" valign="top">${u.no_T}</td>
+<td class="textoInforme" align="center" valign="top">${u.no_P}</td>
+<td class="textoInforme" align="center" valign="top">${u.no_J}</td>
+<td class="textoInforme" align="center" valign="top">${u.no_E}</td>
+<td class="textoInforme" align="center" valign="top">${u.ubic_F}</td>
+<td class="textoInforme" align="center" valign="top">${u.ubic_B}</td>
+</tr>
+</list>
+<tr>
+<td class="tabla_beige" align="right" colspan="2"><strong>TOTALES</strong></td>
+<td class="tabla_beige" align="center"><strong>${teA_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${teB_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${teC_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${teD_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${tgF_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${tgM_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${neA_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${neT_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${neP_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${noA_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${noT_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${noP_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${noJ_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${noE_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${ubicF_total}</strong></td>
+<td class="tabla_beige" align="center"><strong>${ubicB_total}</strong></td>
+</tr>
+</table>
+</form>
+</BODY>
+</HTML>

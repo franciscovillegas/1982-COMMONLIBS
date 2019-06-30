@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Dependencias</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="500" height="317" border="0" cellpadding="0" cellspacing="0" class="tabla_layer_orga">
+  <tr>
+    <td align="center" valign="top"><p class="texto_negro_bold">UNIDAD Y DEPENDENCIAS DIRECTAS</p>
+      <table width="97%" border="0" cellspacing="1" cellpadding="0" align="center" height="22">
+        <tr> 
+          <td width="171" rowspan="2" align="center" class="tabla_beige">Unidad</td>
+          <td width="87" rowspan="2" align="center" class="tabla_beige">Responsable</td>
+          <td colspan="3" align="center" class="tabla_beige">Dotaci&oacute;n</td>
+        </tr>
+        <tr> 
+          <td width="60" align="center" class="tabla_beige">Planta Aut.</td>
+          <td width="63" align="center" class="tabla_beige">Dot. Real</td>
+          <td width="69" align="center" class="tabla_beige">Diferencia</td>
+        </tr>
+      </table>
+      <span id="Layer1" style="position:absolute; width:500px; height:205px; z-index:1; left: 0px; overflow: auto; visibility: visible; top: 69px"> 
+      <table width="97%" height="22" border="0" align="center" cellpadding="0" cellspacing="1">
+          <list detalle as d> 
+          <tr> 
+            <td width="171" height="20" align="center" class="tabla_negro"><a href="#" onClick="VentEmpleados('${d.id}','${d.desc}', '${empresa}');return false;">${d.desc}</a></td>
+            <td width="87" height="20" align="center" class="tabla_negro"><a href="#" onClick="VentEncargado('${d.id}','${d.desc}','${d.periodo}','${empresa}');return false;"><img src="../servlet/Tool?images/Gestion/botones/pers.gif" width="24" height="20" border="0"></a></td>
+            <td width="60" height="20" align="center" class="tabla_negro"> ${d.auto}</td>
+            <td width="63" height="20" align="center" class="tabla_negro"> ${d.real}</td>
+            <td width="69" height="20" align="center" class="tabla_negro"> ${d.dif}</td>
+          </tr>
+          </list> 
+      </table>
+      </span>    </td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; left:368px; top:273px; width:129px; height:15px; z-index:2"> 
+  <div align="right"><a href="#" onClick="window.close()"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" name="cerrar_up" width="120" height="24" border="0" onLoad=""></a></div>
+</div>
+</body>
+</html>

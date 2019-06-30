@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Modificar Conductas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+#Layer4 {
+	position:absolute;
+	left:201px;
+	top:374px;
+	width:139px;
+	height:29px;
+	z-index:2;
+}
+#Layer5 {
+	position:absolute;
+	left:14px;
+	top:92px;
+	width:306px;
+	height:15px;
+	z-index:3;
+}
+-->
+</style>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer6 {
+	position:absolute;
+	left:12px;
+	top:10px;
+	width:329px;
+	height:16px;
+	z-index:4;
+}
+-->
+</style>
+</head>
+<script>
+function fnAplicar(opcion){
+	if(opcion == "grabar"){
+		form.action="../servlet/crearConducta?txtAccion=EC&pHtm=ggd/mantenerConductas.htm";
+		form.submit();
+	}
+}
+</script>
+<body onLoad="MM_preloadImages('../servlet/Tool?images/images_ggd/ag_cond/agregar_cond_r6_c3_f2.jpg')" background="../servlet/Tool?images/images_ggd/ggd/conductas/fondo_con.jpg">
+  <form name="form" method="post">
+
+
+<input name="txtAccion" type="hidden" value="AC">
+<input name="pHtm" type="hidden" value="agregarConductas.htm">
+<if data_Competencia>
+<input name="id_proceso" type="hidden" value="${data_Competencia.id_proceso}">
+<input name="id_competencia" type="hidden" value="${data_Competencia.id_competencia}">
+    <div class="texto_titulo_rojo" id="Layer2" style="position:absolute; width:307px; height:20px; z-index:2; left: 22px; top: 38px;">
+    <if data_Competencia>${data_Competencia.competencia}</if></div>
+</if>
+<span id="Layer3" style="position:absolute; width:333px; height:247px; z-index:2; left: 9px; top: 112px; overflow: auto;"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <if conductas><list conductas as c> 
+    <tr> 
+      <td width="6%" valign="top"><input type="checkbox" name="conductas" value="${c.id_conducta}"></td>
+	  <td width="94%" valign="top"><textarea name="txt_Glosa" id="txt_Glosa" cols="29" rows="3" class="fondo_tablaGris" style="width:97%">${c.glosa}</textarea></td>
+	  <input type="hidden" name="${c.id_conducta}" value="${c.fila}">
+      </tr>
+    </list></if> 
+  </table></span>
+</form>
+
+  <div id="Layer4">
+    <table width="100%">
+      <tr>
+        <td width="10%">&nbsp;</td>
+        <td width="39%">&nbsp;</td>
+        <td width="25%"><a href="#" onClick="fnAplicar('grabar');return false;"><img name="agregar_cond_r6_c3" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt=""></a></td>
+        <td width="26%"><a href="javascript:window.close()"><img name="agregar_cond_r6_c5" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt=""></a></td>
+      </tr>
+    </table>
+  </div>
+  <div class="texto_titulo" id="Layer5">CONDUCTAS</div>
+  <div class="texto_titulo" id="Layer6">MODIFICAR CONDUCTAS </div>
+  <table border="0" cellpadding="0" cellspacing="0" width="350">
+  <!-- fwtable fwsrc="agregar_conducta.png" fwbase="agregar_cond.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+  <tr>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="16" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="154" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="5" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="77" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="3" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="15" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="49" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="20" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="18" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="4">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="285" border="0" alt=""></td>
+  </tr>
+</table>
+</body>
+</html>

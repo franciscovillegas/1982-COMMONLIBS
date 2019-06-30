@@ -1,0 +1,31 @@
+<html>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" background="../servlet/Tool?images/Gestion/Fondo/fondo_datos.jpg">
+<div style="position:absolute; left:124px; top:2px; width:248px; height:24px; z-index:4">
+<a href="../servlet/DimensionesUnidad?unidad=${unid_id}&empresa=${empresa}"><img src="../servlet/Tool?images/Gestion/dimensiones/dimesiones_uni.gif" width="101" height="26" border="0"></a>
+<a href="../servlet/GestionarDimension?unidad=${unid_id}&empresa=${empresa}"><img src="../servlet/Tool?images/Gestion/dimensiones/dimesiones_ges.gif" width="101" height="26" border="0"></a></div>
+<table width="320" border="0" align="center" cellpadding="0" cellspacing="1">
+<tr><td height="27" class="TITULO_MODULOS"><font size="3">DIMENSIONES:</font></td></tr>
+<tr><td align="center"><strong><font size="-1"><i>ID.Unidad : ${unid_id}</i></font></strong></td>
+</tr>
+<tr><td height="32" align="center" valign="top"><strong><font size="-1"><i>Descripcion.Unidad : ${descunidad}</i></font></strong></td>
+</tr>
+<list ldimensiones as d>
+<tr>
+  <td height="21" align="center" class="inputText">${d.desc}:</td>
+</tr>
+<tr><td align="center" class="campo_texto">
+  <table class="detalleTablaChico">
+  <list d.items as i>
+  <tr><td align="center">${i.desc}</td>
+  </tr>
+  </list>
+  </table>
+</td>
+</tr>
+</list>
+
+
+</table>
+</body>
+</html>

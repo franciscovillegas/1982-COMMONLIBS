@@ -1,0 +1,143 @@
+ <HTML>
+<HEAD>
+<TITLE>Mantener Anexos de la Unidad </TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script src="/DataFolder/script/anexos.js"></script>
+<script src="/DataFolder/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+</HEAD>
+<script language="JavaScript">
+//parent.AbrirVentProcesando();
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#006600" vlink="#006600" alink="#006600" onLoad="window.focus();">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644">
+  <TR> 
+    <TD ROWSPAN=8 width="4">&nbsp; </TD>
+    <TD valign="top" width="610" ROWSPAN=8> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="354" background="/images/DataFolder/anexos/fondvent.jpg">
+        <tr bgcolor="#000033"> 
+          <td height="20" align="center" colspan="2" class="textB"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" class="unnamed1"><b>Mantener 
+            Anexos de la Unidad</b></font> </td>
+        </tr>
+        <tr align="center"> 
+          <td valign="top" colspan="2" height="266" class="texto"> 
+            <table width="95%" border="0" cellspacing="0" cellpadding="2">
+              <tr> 
+                <td colspan="4" class="unnamed1">Unidad 
+                  <select name="unidad" class="listas" style="width=500">
+                    <option selected>Seleccione una Unidad</option>
+                  </select>
+                </td>
+              </tr>
+              <tr> 
+                <td colspan="4" class="unnamed1">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td width="100" class="unnamed1"><a href="javascript:;" class="unnamed1" onClick="MM_showHideLayers('LayerFono','','show','LayerFax','','hide','LayerAnexos','','hide')">[Telefono]</a></td>
+                <td width="100" class="unnamed1"><a href="javascript:;" class="unnamed1" onClick="MM_showHideLayers('LayerFono','','hide','LayerFax','','show','LayerAnexos','','hide')">[Fax]</a></td>
+                <td width="100" class="unnamed1"><a href="javascript:;" class="unnamed1" onClick="MM_showHideLayers('LayerFono','','hide','LayerFax','','hide','LayerAnexos','','show')">[Anexo]</a></td>
+                <td class="unnamed1">&nbsp;</td>
+              </tr>
+              <tr valign="top"> 
+                <td height="200" colspan="4"> 
+                  <div id="LayerFono" style="position:absolute; width:290px; height:190px; z-index:1; left: auto; top: auto; overflow: auto; visibility: hidden" class="carpetaUn"> 
+                    <table width="250" border="1" cellspacing="0" cellpadding="0">
+                      <form name="formFono" method="post" action="">
+                        <list fonos as f> 
+                        <tr> 
+                          <td bgcolor="#000033" class="unnamed1">${f.fono}</td>
+                          <td bgcolor="#000033" class="unnamed1">&nbsp;</td>
+                        </tr>
+                        </list> 
+                      </form>
+                    </table>
+                  </div>
+                  <div id="LayerFax" style="position:absolute; width:290px; height:190px; z-index:1; left: auto; top: auto; overflow: auto; visibility: hidden" class="carpetaUn"> 
+                    <table width="250" border="1" cellspacing="0" cellpadding="0">
+                      <form name="formFax" method="post" action="">
+                        <list faxes as f> 
+                        <tr> 
+                          <td bgcolor="#000033" class="unnamed1">${f.fax}</td>
+                          <td bgcolor="#000033" class="unnamed1">&nbsp;</td>
+                        </tr>
+                        </list> 
+                      </form>
+                    </table>
+                  </div>
+                  <div id="LayerAnexos" style="position:absolute; width:290px; height:190px; z-index:1; left: auto; top: auto; overflow: auto; visibility: hidden" class="carpetaUn"> 
+                    <table width="250" border="1" cellspacing="0" cellpadding="0">
+                      <form name="formAnexo" method="post" action="">
+                        <list anexos as f> 
+                        <tr> 
+                          <td bgcolor="#000033" class="unnamed1">${f.anexo}</td>
+                          <td bgcolor="#000033" class="unnamed1">&nbsp;</td>
+                        </tr>
+                        </list> 
+                      </form>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr align="center" valign="top"> 
+          <td width="50%">&nbsp; </td>
+          <td width="50%">&nbsp; </td>
+        </tr>
+        <tr> 
+          <td valign="top" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"></font></td>
+        </tr>
+      </table>
+    </TD>
+    <TD width="1" height="18"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/DataFolder/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+  </TR>
+</TABLE>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+//parent.CerrarVentProcesando();
+</script>
+</HTML>

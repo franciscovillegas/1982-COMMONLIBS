@@ -1,0 +1,18 @@
+<table width="350" border="0" cellpadding="0" cellspacing="0">
+  <if getEvalObtenida><list getEvalObtenida as a>
+
+  <tr>
+    <td width="180" class="ra1lista2">${a.competencia}&nbsp;</td>
+    <td width="170" class="ra1lista">
+
+	<assign ponderacion_int = a.ponderacion_int>
+	<assign ponderacion= a.ponderacion_obt>
+	<assign porcentaje_ponderacion= a.porcentaje_ponderacion>
+	
+	<assign colorfondo="#E1B500">
+    <table border="0" width="${porcentaje_ponderacion}%" align="left">
+    <tr><td bgcolor="${colorfondo}" class="ra1lista">&nbsp;</td></tr>
+    </table><font color="#003366">${ponderacion}%</font></td>
+  </tr>
+  </list></if>
+</table>

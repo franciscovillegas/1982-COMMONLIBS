@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="ISO-8859-1">
+	
+    <script src="../servlet/Tool?scripts/jquery-1.8.3.min.js" 	type="text/javascript"></script>
+    <script src="../servlet/Tool?scripts/zonaUtil.js" 			type="text/javascript"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			var semiUrl = "${GetParam("urlPdf")}";
+			var callingURL = document.URL;
+			var iniUrl = callingURL.substring(0,callingURL.indexOf('servlet/')+8);
+			var fullUrl = iniUrl + semiUrl;
+
+			loadJSONforMain(fullUrl , 'GET',{"rut" : ""},'html',
+					function(data){
+						$("#content").val(data);
+						$("form[name=formPdf]").submit();
+					});
+
+		}) ;
+
+		
+	</script>
+
+</head>
+<body>
+
+<form name="formPdf" method="post" action="../servlet/ServletTransformPdf?tipo=antiguedad" >
+	<input name="content" id="content" type="hidden">  
+	<input type="hidden" name="prefijo" value="${prefijo}">
+	<input type="hidden" name="prefijoFirma" value="${prefijoFirma}">
+	<input type="hidden" name="md5" value="${md5}">
+</form>
+
+</body>
+</html>

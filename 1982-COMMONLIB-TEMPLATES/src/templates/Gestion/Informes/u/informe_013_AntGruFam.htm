@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="6" class="negro12B" height="25"><u>ANTECEDENTES GRUPO FAMILIAR</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td class="negro12B" width="30%" align="center">NOMBRE</td>
+    <td class="negro12B" width="15%" align="center">SEXO</td>
+    <td class="negro12B" width="15%" align="center">PARENTESCO</td>
+    <td class="negro12B" width="15%" align="center">CARGA</td>
+    <td class="negro12B" width="15%" align="center">FEC. NACIM. O MATRIM.</td>
+    <td class="negro12B" width="10%" align="center"> EDAD</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="30%" class="negro10N" height="20">${d.nombre}</td>
+    <td width="15%" class="negro10N" height="20" align="center"><if (d.sexo) == "M">Masculino<else>Femenino</if></td>
+    <td width="15%" class="negro10N" height="20" align="center">${d.parentesco}</td>
+    <td width="15%" class="negro10N" align="center" height="20">${d.es_carga}</td>
+    <td width="15%" class="negro10N" align="center" height="20">${FFecha("dd/MM/yyyy", 
+      d.fecha_nacim)}</td>
+    <td width="10%" class="negro10N" align="center" height="20"><if d.parentesco!="CONYUGE">${MTYM(d.edad,1)}<else>&nbsp;</if></td>
+  </tr>
+  </list> <else> 
+  <tr> 
+    <td colspan="6" class="negro12N" align="center">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

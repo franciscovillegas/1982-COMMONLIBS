@@ -1,0 +1,74 @@
+<html>
+	<head>
+	<style type="text/css">
+		.celda {	
+			font-size: 8px:
+		}
+	</style>
+	
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>
+				<!--
+					<form  enctype="multipart/form-data" action="EjeI" method="post">
+						<input type="hidden" name="modulo" 	value="eje_webmatico_autoservicio"/>
+						<input type="hidden" name="thing" 	value="TestCorreo"/>
+						<input type="hidden" name="accion" 	value="add"/>
+ 
+						<input type="submit" value="Enviar Correo de Prueba">
+					</form>
+				-->
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form  enctype="multipart/form-data" action="EjeI" method="post">
+						<input type="hidden" name="modulo" 	value="eje_webmatico_autoservicio"/>
+						<input type="hidden" name="thing" 	value="FileUploadedViewer"/>
+						<input type="hidden" name="accion" 	value="add"/>
+						
+						<input type="file" name="file" >
+						<input type="submit" value="Enviar">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<hr/>
+		<table border="1" style="font-family:'Courier New', Courier, monospace; font-size:70%">
+				<tr>
+					<td width="50px">id_file</td>
+					<td width="100px">fecha_subida</td>
+					<td width="100px">rut_subida</td>
+					<td width="100px">name_original</td>
+					<td width="100px">name_unic</td>
+					<td width="50px">bytes</td>
+					<td width="100px">machine_name</td>
+					<td width="*">text</td>
+					<td width="25px">id_tipo</td>
+					<td width="25px">full_hdd_Path</td>
+					<td width="25px">relative_path_to_webcontent</td>
+					<td width="25px">isweb</td>
+				</tr>
+					
+				<list data as d>
+					<tr>
+						<td ><a href="SLoadFile?idfile=${d.id_file}" >${d.id_file}</a></td>
+						<td nowrap="nowrap">${d.fecha_subida}</td>
+						<td >${d.rut_subida}</td>
+						<td nowrap="nowrap">${d.name_original}</td>
+						<td nowrap="nowrap">${d.name_unic}</td>
+						<td >${d.bytes}</td>
+						<td nowrap="nowrap">${d.machine_name}</td>
+						<td  nowrap="nowrap">${d.text}</td>
+						<td >${d.id_tipo}</td>
+						<td >${d.full_hdd_path}</td>
+						<td >${d.relative_path_to_webcontent}</td>
+						<td >${d.isweb}</td>
+					</tr>
+				</list>
+			
+		</table>
+	</body>
+</html>

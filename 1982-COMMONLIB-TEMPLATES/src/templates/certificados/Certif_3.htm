@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Certificado</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js">
+
+</script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";  
+}
+//-->
+</script>
+
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:580px;
+	top:29px;
+	width:46px;
+	height:45px;
+	z-index:1;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="Layer1"><a href="#"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></div>
+<table width="100%" height="100%"  border="1" cellpadding="0" cellspacing="0" class="tablas_blanco">
+  <tr>
+    <td align="center" valign="top">
+<table width="100%" border="0" align="center">
+  <tr>
+    <td valign="top">
+        <table width="100%" border="0" cellspacing="1" cellpadding="2" align="left">
+          <tr> 
+            <td width="17%"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"></td>
+            <td width="75%">&nbsp;</td>
+            <td width="8%">&nbsp;</td>
+          </tr>
+        </table></td>
+  </tr>
+</table>
+<if (!denegado)> 
+        <span class="textos"><strong><u>CERTIFICADO N&deg; ${num}/${anio}</u></strong>
+        </span>      
+        <hr width="100%" size="1" noshade>
+<table width="95%" height="90%" border="0" align="center" class="textos">
+  <tr> 
+    <td height="116"> <p align="justify"><strong>NOMBRE </strong>, JEFE PROCESOS RRHH de EMPRESA PRUEBA, certifica que el se&ntilde;or(a) <strong>${nombre}</strong>, 
+        Rut <strong>${rut_trab}</strong>, es colaborador(a) de nuestra Filial 
+    ${empresa} desde el <strong>${ingreso}</strong>.</p></td>
+  </tr>
+  <tr> 
+    <td height="18">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td> <p align="justify">Se extiende 
+        el presente certificado a petici&oacute;n del interesado, para los fines 
+        que estime pertinentes.</p></td>
+  </tr>
+  <tr align="left"> 
+    <td> 
+        <div align="left"></div></td>
+  </tr>
+  <tr align="left"> 
+    <td height="36">${fecha}</td>
+  </tr>
+</table>
+</if></td>
+  </tr>
+  <tr>
+    <td align="center" class="textos"><strong>${empresa}</strong></td>
+  </tr>
+</table>
+</body>
+</html>

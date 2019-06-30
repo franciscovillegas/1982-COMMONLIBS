@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">	
+		<title>Administrador de Saludos</title>
+		
+		<link href="../servlet/Tool?omap=style/saludos/jquery-ui.css" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript" src="../servlet/Tool?omap=scripts/saludos/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?omap=scripts/saludos/jquery-ui.js"></script>
+		<script src="../servlet/Tool?scripts/zonaUtil.js"></script>
+	
+		<script type="text/javascript" src="../servlet/Tool?omap=scripts/saludos/nicEdit.js"></script>
+
+
+
+		<script>
+			$(function() {
+				$( "#tabs" ).tabs();
+				admin('tabs-1', 'admPlantillas');
+			});
+			
+			function admin(div, thing) {
+				if($("#"+div).html() == "") {
+					$("#"+div).html("Cargando...")
+					
+					loadJSONforMain('../servlet/EjeCore?claseweb=portal.com.eje.serhumano.saludos.admin.Saludos',
+							'GET',
+							{"thing":thing},
+							'html',
+								function(data){
+									$("#"+div).html(data);
+								});					
+				} 
+			}
+			
+		</script>
+
+		<style>
+			body {
+				font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+				font-size: 11px;
+				
+			}
+			
+		#mainTopAdmin{
+			padding: auto;
+			margin:auto;
+			width: 90%; 
+			max-width: 1000px;
+			height: 60px;
+	
+			border: 1px #888888 solid;
+	
+			-moz-box-shadow: 0px 2px 9px 2px #888888;
+			-webkit-box-shadow: 0px 2px 9px 2px #888888;
+			box-shadow: 0px 2px 9px 2px #888888;
+		}
+			
+		.btnGuardar {
+			-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+			-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+			box-shadow:inset 0px 1px 0px 0px #ffffff;
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+			background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+			background-color:#ededed;
+			-webkit-border-top-left-radius:6px;
+			-moz-border-radius-topleft:6px;
+			border-top-left-radius:6px;
+			-webkit-border-top-right-radius:6px;
+			-moz-border-radius-topright:6px;
+			border-top-right-radius:6px;
+			-webkit-border-bottom-right-radius:6px;
+			-moz-border-radius-bottomright:6px;
+			border-bottom-right-radius:6px;
+			-webkit-border-bottom-left-radius:6px;
+			-moz-border-radius-bottomleft:6px;
+			border-bottom-left-radius:6px;
+			text-indent:0;
+			border:1px solid #dcdcdc;
+			display:inline-block;
+			color:#777777;
+			font-family:arial;
+			font-size:15px;
+			font-weight:bold;
+			font-style:normal;
+			height:30px;
+			line-height:50px;
+			width:120px;
+			text-decoration:none;
+			text-align:center;
+			text-shadow:1px 1px 0px #ffffff;
+		}
+		.btnGuardar:hover {
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+			background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+			background-color:#dfdfdf;
+		}.btnGuardar:active {
+			position:relative;
+			top:1px;
+		}			
+		</style>
+
+
+	</head>
+
+	<body>
+
+		<div id="mainTopAdmin" align="center">
+			<h1>Administración de Saludos</h1> 
+		</div>
+
+		<div id="tabs" style="width: 90%; max-width: 1000px; padding: auto; margin: 20px auto auto auto;">
+		  <ul>
+		    <li><a href="#tabs-1" onclick="admin('tabs-1', 'admPlantillas');">Plantillas</a></li>
+		    <li><a href="#tabs-2" onclick="admin('tabs-2', 'progSaludos');">Programar Saludos</a></li>
+		    <li><a href="#tabs-3" onclick="admin('tabs-3', 'programaciones');">Saludos Vigentes</a></li>
+		  </ul>
+
+		  <div id="tabs-1"></div>
+		  <div id="tabs-2"></div>
+		  <div id="tabs-3"></div>
+		</div>
+
+	</body>
+	
+</html>

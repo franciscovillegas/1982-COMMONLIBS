@@ -1,0 +1,140 @@
+body {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+}
+a:link {
+   color: #333333;
+   text-decoration: none;
+}
+a:visited {
+   text-decoration: none;
+   color: #333333;
+}
+a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+a:active {
+   text-decoration: none;
+   color: #333333;
+} 
+.campo_texto {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	height: 15px;
+	border: 1px solid #333333;
+}
+.texto_texto {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	height: 15px;
+}
+.texto_titulo {
+	font-family: arial;
+	font-size: 11px;
+	color: #333333;
+	font-weight: bold;
+}
+.titulo_ficha {
+	font-family: arial;
+	font-size: 14px;
+	color: #333333;
+}
+.texto_titulo_rojo {
+	font-family: arial;
+	font-size: 11px;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.fondo_tabla {
+	font-family: arial;
+	font-size: 10px;
+	color: #333333;
+	background-color: #FFFFFF;
+	border: 1px solid #666666;
+}
+.cmp_txt {
+	font-family: arial;
+	font-size: 9px;
+	color: #333333;
+	height: 9px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.txt_gris {
+	font-family: arial;
+	font-size: 10px;
+	color: #333333;
+}
+.txt_gris_bold {
+	font-family: Tahoma;
+	font-size: 10px;
+	color: #333333;
+	font-weight: bold;
+}
+.boton_gris {
+	font-family: arial;
+	font-size: 9px;
+	color: #333333;
+}
+.boton_rojo {
+	font-family: Tahoma;
+	font-size: 10px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#Efecto_Hover a {
+	color: #FFFFFF;
+	display: block;
+	text-decoration: none;
+	font-family: Tahoma;
+	font-size: 10px;
+	font-weight: bold;
+}
+#Efecto_Hover a .btn_gris {
+	color: #333;
+	display: block;
+	line-height: normal;
+	font-family: arial;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+}
+#Efecto_Hover a .categoria {
+  color: #409209;
+  font: normal 9px Verdana, Helvetica, sans-serif;
+  line-height: 150%;
+}
+.ocultaTabla {
+	display: none;
+}
+.verTabla {
+	display:;
+}.fondo_tablaGris {
+
+	font-family: arial;
+	font-size: 9px;
+	color: #333333;
+	background-color: #F6F6F6;
+	border: 1px solid #666666;
+}
+.fondo_tablaAmarillo {
+
+
+	font-family: arial;
+	font-size: 10px;
+	color: #333333;
+	background-color: #FFCC00;
+	border: 1px solid #666666;
+}

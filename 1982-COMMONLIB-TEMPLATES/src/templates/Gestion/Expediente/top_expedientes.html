@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<TITLE>Ficha Personal ${nombre}</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!-- Gui&#243;n de carga previa de ImageReady (top_bienvenida.psd) -->
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+function Datos() {
+	document.getElementById("datos").src="../servlet/MuestraInfoRut?rut=${brut}"	   
+}
+function Remu() {
+	document.getElementById("datos").src="../servlet/InitCertif?rut_org=${brut}"	   
+}
+function Prev() {
+	document.getElementById("datos").src="../servlet/DatosPrev?rut=${brut}"	   
+}
+function Perf() {
+	document.getElementById("datos").src="../servlet/S_PerfilLaboral?rut_org=${brut}"
+}
+function Grupo() {
+	document.getElementById("datos").src="../servlet/GrupoFamiliarOrga?rut=${brut}"	   
+}
+function Contra() {
+	document.getElementById("datos").src="../servlet/DatosContrato?rut=${brut}"	   
+}
+function Expe() {
+	document.getElementById("datos").src="../servlet/ExperienciaLaboral?rut=${brut}"	   
+}
+function Vaca() {
+	document.getElementById("datos").src="../servlet/CartolaVaca?rut=${brut}"	   
+}
+function Lice() {
+	document.getElementById("datos").src="../servlet/LicenciasMedicas?rut=${brut}"	   
+}
+function Forma() {
+	document.getElementById("datos").src="../servlet/Formacion2?rut=${brut}"	   
+}
+function Capa() {
+	document.getElementById("datos").src="Tool?htm=Gestion/Expediente/Mallas/Frame_Capacita.html?rut=${brut}"
+}
+function Descargables() {
+	document.getElementById("datos").src="../servlet/ViewFileRepositoryServlet?rut=${brut}"	   
+}
+
+function AbrirBGaleria() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "Tool?htm=Gestion/BusquedaPorFiltros/Busqueda.htm";
+	ventmsg2 = open(url2, "Galeria", "width=720,height=428,left=50,top=110");
+	//ventmsg2.focus();
+}
+
+function inicio() {
+	document.getElementById("datos").src="../servlet/S_PerfilLaboral?rut_org=${brut}";
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+<style type="text/css">
+<!--
+#HijoTool {position:absolute;
+	left:22px;
+	top:0px;
+	width:222px;
+	height:22px;
+	z-index:10;
+}
+#PadTool {position:absolute;
+	left:6px;
+	top:310px;
+	width:3px;
+	height:22px;
+	z-index:9;
+}
+-->
+</Style>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="inicio(); MM_preloadImages('../servlet/Tool?images/Gestion/Herramientas/asig_sup_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mision_un_f2.gif','../servlet/Tool?images/Gestion/Herramientas/indicadores_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mant_usuarios_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mant_organ_f2.gif','../servlet/Tool?images/Gestion/Herramientas/reg_visita_f2.gif','../servlet/Tool?images/Gestion/Expediente/datos_per_f2.gif','../servlet/Tool?images/Gestion/Expediente/remuneraciones_f2.gif','../servlet/Tool?images/Gestion/Expediente/previsional_f2.gif','../servlet/Tool?images/Gestion/Expediente/familiar_f2.gif','../servlet/Tool?images/Gestion/Expediente/contract_f2.gif','../servlet/Tool?images/Gestion/Expediente/licencias_f2.gif','../servlet/Tool?images/Gestion/Expediente/vacaciones_f2.gif','../servlet/Tool?images/Gestion/Expediente/experiencia_f2.gif','../servlet/Tool?images/Gestion/Expediente/formacion_f2.gif','../servlet/Tool?images/Gestion/Expediente/capacitacion_f2.gif')">
+<div id="PadTool">
+  <img src="../servlet/Tool?images/Gestion/Herramientas/tool.gif" width="22" height="36">
+  <span id="HijoTool">
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class="tabla_gris">
+    <tr>
+      <td valign="top"><table width="31%" cellpadding="0">
+        <tr>
+          <td width="45%"><a href="javascript:Datos();"><img src="../servlet/Tool?images/Gestion/Expediente/datos_per.gif" alt="Datos Personales" name="Image511" width="30" height="30" border="0" id="Image511" onMouseOver="MM_swapImage('Image511','','../servlet/Tool?images/Gestion/Expediente/datos_per_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <td width="55%"><a href="javascript:Remu();"><img src="../servlet/Tool?images/Gestion/Expediente/remuneraciones.gif" alt="Remuneraciones" name="Image311" width="30" height="30" border="0" id="Image311" onMouseOver="MM_swapImage('Image311','','../servlet/Tool?images/Gestion/Expediente/remuneraciones_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <td width="55%"><a href="javascript:Prev();"><img src="../servlet/Tool?images/Gestion/Expediente/previsional.gif" alt="Datos Previsionales" name="Image61" width="30" height="30" border="0" id="Image61" onMouseOver="MM_swapImage('Image61','','../servlet/Tool?images/Gestion/Expediente/previsional_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <!-- <td width="55%"><img src="../servlet/Tool?images/Gestion/Expediente/familiar.gif" alt="Grupo Familiar" name="Image41" width="30" height="30" border="0" id="Image41" onMouseOver="MM_swapImage('Image41','','../servlet/Tool?images/Gestion/Expediente/familiar_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></td>   -->
+          <td width="55%"><a href="javascript:Perf();"><img src="../servlet/Tool?images/Gestion/Expediente/contract.gif" alt="Datos Contractuales" name="Image81" width="30" height="30" border="0" id="Image81" onMouseOver="MM_swapImage('Image81','','../servlet/Tool?images/Gestion/Expediente/contract_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+		  <!-- <td width="55%"><img src="../servlet/Tool?images/Gestion/Expediente/contract.gif" alt="Datos Contractuales" name="Image81" width="30" height="30" border="0" id="Image81" onMouseOver="MM_swapImage('Image81','','../servlet/Tool?images/Gestion/Expediente/contract_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></td>  -->
+          <!-- <td width="55%"></td>  -->
+          <td width="55%"><a href="javascript:Vaca();"><img src="../servlet/Tool?images/Gestion/Expediente/vacaciones.gif" alt="Vacaciones" name="Image21" width="30" height="30" border="0" id="Image21" onMouseOver="MM_swapImage('Image21','','../servlet/Tool?images/Gestion/Expediente/vacaciones_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <td width="55%"><a href="javascript:Lice();"><img src="../servlet/Tool?images/Gestion/Expediente/licencias.gif" alt="Licencias M&eacute;dicas" name="Image11" width="30" height="30" border="0" id="Image11" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/Gestion/Expediente/licencias_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <td width="55%"><a href="javascript:Descargables();"><img src="../servlet/Tool?images/Gestion/Expediente/download.gif" alt="Descargables" name="Image11" width="30" height="30" border="0" id="Image11" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/Gestion/Expediente/download_f2.gif',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+          <!-- <td width="55%"></td>  -->
+          <!-- <td width="55%"></td>  -->
+        </tr>
+ 
+      </table></td>
+    </tr>
+  </table>
+</span></div>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp<iframe id="datos" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe></td>
+  </tr>
+</table>
+</BODY>
+</HTML>

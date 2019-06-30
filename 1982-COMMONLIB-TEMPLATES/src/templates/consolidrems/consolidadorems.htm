@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Nacimientos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function GeneraInformeRems(periodo){
+  if ((periodo.value != "") && (periodo.value != "0")){
+    document.location.href="../servlet/GeneraInformeRems?periodo="+periodo.value;
+  }else{
+    alert("Seleccione un periodo...");
+  }
+}
+
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<table width="666">
+  <tr>
+    <td height="40" align="center" class="TITULO_MODULOS"><b>Informe Consolidado de Remumeraciones</b></td>
+  </tr>
+</table>
+<br/>
+<form name="form1" action="../servlet/">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<div>
+  <table width="570" border="0" cellspacing="1" cellpadding="0" height="20" align="center">
+    <tr bgcolor="#DEE3ED">
+      <td width="260" align="center" class="titulo"> Nombre Empresa  </td>
+      <td width="100" align="center" class="titulo"> Nº Trabajadores  </td>
+      <td width="100" align="center" class="titulo"> Haberes ($) </td>
+      <td width="100" align="center" class="titulo"> L&#237;quido ($)</td>
+    </tr>
+    <list informe as i>
+      <tr>
+         <td width="260" align="left" class="campo_texto">${i.emp}</td>
+         <td width="100" align="center" class="campo_texto">${i.trabs}</td>
+         <td width="100" align="center" class="campo_texto">$${i.habs}</td>
+         <td width="100" align="center" class="campo_texto">$${i.liqu}</td>
+      </tr>
+    </list>
+    <list totales as t>
+      <tr>
+         <td width="260" align="center" class="titulo">TOTALES POR SEGMENTO</td>
+         <td width="100" align="center" class="campo_texto" >${t.totTrabs}</td>
+         <td width="100" align="center" class="campo_texto">$${t.totHabs}</td>
+         <td width="100" align="center" class="campo_texto">$${t.totLiqu}</td>
+      </tr>
+    </list>
+  </table>
+</div>
+</table>
+</form>
+<br/><br/>
+</body>
+</html>

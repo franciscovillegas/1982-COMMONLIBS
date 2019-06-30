@@ -1,0 +1,22 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" height="50">
+  <if datos> 
+  <tr bgcolor="#CCCCCC"> <list datos as d> 
+    <td class="negro12B" align="center"> 
+      <div align="center" class="negro10N">${d.periodo}</div>
+    </td>
+    </list> </tr>
+  <tr> <list datos as d> 
+    <td class="negro10N" height="20"> 
+      <div align="center">${d.pen_acumulado}</div>
+    </td>
+    </list> </tr>
+  <else> 
+  <tr> 
+    <td class="negro12N" align="center" height="12">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

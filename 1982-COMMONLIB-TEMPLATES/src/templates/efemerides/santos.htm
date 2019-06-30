@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Santos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script  src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script   src="../servlet/Tool?scripts/niceforms.js" type="text/javascript"></script>
+<script   src="../servlet/Tool?scripts/repository/jquery.min.js" type="text/javascript"></script>
+<script   type="text/JavaScript">
+<!--
+
+function mostrar(rut,email) {
+   document.getElementById("container").style.visibility="visible";
+   document.getElementById("rut").value=rut;
+   document.getElementById("email").value=email;
+}
+
+function enviar() {
+   var mRut = document.getElementById("rut").value;
+   var mEmail = document.getElementById("email").value;
+   var mComments = document.getElementById("comments").value;
+   var mAsunto = document.getElementById("asunto").value;
+   
+   document.getElementById("resultado").style.visibility="visible";
+   $("#resultado").html("Enviando dedicatoria...");
+   $.getJSON("../servlet/EnviaCumple?rut=" + mRut + "&email=" + mEmail + "&comments=" + mComments + "&asunto="+mAsunto,
+        function(data){
+          $("#resultado").html(data.mensaje);
+   });
+}
+
+function ocultar() {
+   document.getElementById("container").style.visibility="hidden";
+   document.getElementById("resultado").style.visibility="hidden";
+   document.getElementById("rut").value = null;
+   document.getElementById("email").value = null;
+   document.getElementById("comments").value = null;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+
+
+
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/niceforms-default.css" rel="stylesheet" type="text/css"/>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="668" cellspacing="0" >
+  <tr valign="top">
+    <td width="664" height="40" align="center"><p class="TITULO_MODULOS">Santoral</p></td>
+  </tr>
+  <tr>
+    <td height="359" align="center"><img src="../servlet/Tool?images/new/main/fondo_santoral.jpg" width="664" height="352"></td>
+  </tr>
+</table>
+<div id="Layer1" style="position:absolute; left:578px; top:16px; width:79px; height:69px; z-index:3">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="70" height="73">
+    <param name="movie" value="../flash/calendario.swf">
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <param name="menu" value="false">
+    <embed src="../flash/calendario.swf" width="70" height="73" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" menu="false"></embed>
+  </object>
+</div>
+<div id="Layer1" style="position:absolute; width:338px; height:8px; z-index:3; visibility: visible; left: 324px; top: 134px">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="EFEEF4" align="center">
+    <tr>
+      <td width="60%" align="center" class="layer1">Nombre</td>
+      <td width="40%" align="center" class="layer1">Unidad</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer2" style="position:absolute; width:175px; height:8px; z-index:3; visibility: visible; left: 338px; top: 87px">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td width="100%" class="titulo">
+      ${santos}</td>
+    </tr>
+  </table>
+</div>
+<div id="LayerDetalle" style="position:absolute; width:328px; height:261px; z-index:2; overflow: auto;; top: 151px; left: 329px; visibility: visible">
+  <table width="100%" border="0">
+	  	<if detalle>
+		    <list detalle as d>
+		    <tr bgcolor="#FFFFFF" class="detalleTablaChico">
+		      <td width="60%" height="16">
+		         <a href="#" onclick="mostrar(${d.rut},'${d.mail}');"> ${d.nombre} </a>
+		      </td>
+		      <td width="40%"> <a href="#" onclick="mostrar(${d.rut},'${d.mail}');">${d.uni}</a></td>
+		    </tr>
+		    </list>
+		<else>
+		    <tr bgcolor="#FFFFFF" class="detalleTablaChico">
+		      <td width="100%" height="16" align="center">
+				Hoy no hay personas de santo.
+		      </td>
+		    </tr>
+		</if>
+  </table>
+</div>
+
+ 	   <div id="container" style="visibility:hidden;   position:absolute; z-index:4; left: 104px; top: 114px;">
+         <form action="#" method="post" class="niceform">
+           <input type="hidden" id="rut" name="rut" value="">
+           <input type="hidden" id="email" name="email" value="">
+           <input type="hidden" id="asunto" name="asunto" value="Feliz santoral!!!!">
+           
+           <fieldset>
+    	     <legend>Cumplea&ntilde;os</legend>
+             <dl>
+        	   <dt><label for="comments">Dedicatoria:</label></dt>
+               <dd><textarea name="comments" id="comments" rows="5" cols="60"></textarea></dd>
+             </dl>
+             <dl>
+        	   <dt><label for="test"></label></dt>
+               <dd>
+                 <button type="button" name="test" id="test" onclick="enviar();">Enviar</button>
+                 <button type="button" name="cerrar" id="cerrar" onclick="ocultar();">Cerrar</button>
+               </dd>
+             </dl>
+           </fieldset>
+         </form>
+       </div>
+       <div id="resultado" style="visibility:hidden;position:absolute; z-index:4; left: 400px; top: 230px"">
+       </div>
+       
+       
+</body>
+</html>

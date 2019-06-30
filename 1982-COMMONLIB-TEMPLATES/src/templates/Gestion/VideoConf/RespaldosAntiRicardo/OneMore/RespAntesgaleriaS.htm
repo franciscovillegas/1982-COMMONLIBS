@@ -1,0 +1,404 @@
+  <html>
+<head>
+<title>Galeria Participantes Seleccionados</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js"></script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+function Invitar(){
+   var x=0;
+   var valor=false;
+   //alert("Largo: "+document.form1.rut.length);
+   for (x=0;x<document.form1.rut.length;x++){
+		 if (document.form1.rut[x].checked==true)
+            valor=true;
+   }
+   if (valor){
+    //  alert("Submit...");
+     document.form1.submit();
+   }else
+     alert("Seleccione un Participante.");   
+}
+
+MM_reloadPage(true);
+// -->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="293" border="0" cellpadding="0" cellspacing="0" align="center">
+  <compress> 
+  <form name="form1" action="/servlet/datafolder.videoconf.Conferencia" method="post"> 
+ <tr>
+      <td width="1003"><font face="Arial, Helvetica, sans-serif" size="2"><b>Participantes 
+        &nbsp;&nbsp;Seleccionados. </b></font></td>
+  </tr>
+  <tr>
+      <td width="1003"> 
+        <div id="LayerFotos" style="position:absolute; width:391px; height:118px; z-index:1; left: 6px; top: 30px; visibility: visible"> 
+          <compress> 
+          <table width="55%" border="0" align="center">
+            <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr>
+                    <td> 
+                      <div align="center">
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="**"> <else> <if x=="**">
+              <td height="75" width="10%" class="maticoN">
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="***"> <else> <if x=="***">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="****"> <else> 
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"> 
+                      <img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr align="center"> <assign x="*"> </if></if></if></list>
+            <tr align="center"> 
+              <td>&nbsp; 
+              <td> 
+          </table></compress>
+        </div>
+        <div id="LayerInvita" style="position:absolute; width:371px; height:109px; z-index:2; top: 256px; left: 25px"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td colspan="4">
+                <input type="hidden" name="id" value="${conf_id}">
+              </td>
+            </tr>
+            <tr> 
+              <td width="18%">Asunto</td>
+              <td colspan="3">&nbsp; </td>
+            </tr>
+            <tr> 
+              <td width="18%">Comienzo</td>
+              <td width="45%"> 
+                <select name="diai">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                <select name="mesi">
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+                <select name="yeari">
+                  <option value="2001">2001</option>
+                  <option value="2002">2002</option>
+                  <option value="2003">2003</option>
+                  <option value="2004">2004</option>
+                  <option value="2005">2005</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2005">2009</option>
+                  <option value="2010">2010</option>
+                </select>
+              </td>
+              <td colspan="2"> 
+                <select name="hini">
+                  <option value="0:00">0:00</option>
+                  <option value="0:30">0:30</option>
+                  <option value="1:00">1:00</option>
+                  <option value="1:30">1:30</option>
+                  <option value="2:00">2:00</option>
+                  <option value="2:30">2:30</option>
+                  <option value="3:00">3:00</option>
+                  <option value="3:30">3:30</option>
+                  <option value="4:00">4:00</option>
+                  <option value="4:30">4:30</option>
+                  <option value="5:00">5:00</option>
+                  <option value="5:30">5:30</option>
+                  <option value="6:00">6:00</option>
+                  <option value="6:30">6:30</option>
+                  <option value="7:00">7:00</option>
+                  <option value="7:30">7:30</option>
+                  <option value="8:00">8:00</option>
+                  <option value="8:30">8:30</option>
+                  <option value="9:00">9:00</option>
+                  <option value="9:30">9:30</option>
+                  <option value="10:00">10:00</option>
+                  <option value="10:30">10:30</option>
+                  <option value="11:00">11:00</option>
+                  <option value="11:30">11:30</option>
+                  <option value="12:00">12:00</option>
+                  <option value="12:30">12:30</option>
+                  <option value="13:00">13:00</option>
+                  <option value="13:30">13:30</option>
+                  <option value="14:00">14:00</option>
+                  <option value="14:30">14:30</option>
+                  <option value="15:00">15:00</option>
+                  <option value="15:30">15:30</option>
+                  <option value="16:00">16:00</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:00">17:00</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:00">18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:00">20:00</option>
+                  <option value="20:30">20:30</option>
+                  <option value="21:00">21:00</option>
+                  <option value="21:30">21:30</option>
+                  <option value="22:00">22:00</option>
+                  <option value="22:30">22:30</option>
+                  <option value="23:00">23:00</option>
+                  <option value="23:30">23:30</option>
+                </select>
+              </td>
+            </tr>
+            <tr> 
+              <td width="18%">Finalizaci&oacute;n</td>
+              <td width="45%"> 
+                <select name="diat">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                <select name="mest">
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+                <select name="yeart">
+                  <option value="2001">2001</option>
+                  <option value="2002">2002</option>
+                  <option value="2003">2003</option>
+                  <option value="2004">2004</option>
+                  <option value="2005">2005</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2005">2009</option>
+                  <option value="2010">2010</option>
+                </select>
+              </td>
+              <td colspan="2"> 
+                <select name="hter">
+                  <option value="0:00">0:00</option>
+                  <option value="0:30">0:30</option>
+                  <option value="1:00">1:00</option>
+                  <option value="1:30">1:30</option>
+                  <option value="2:00">2:00</option>
+                  <option value="2:30">2:30</option>
+                  <option value="3:00">3:00</option>
+                  <option value="3:30">3:30</option>
+                  <option value="4:00">4:00</option>
+                  <option value="4:30">4:30</option>
+                  <option value="5:00">5:00</option>
+                  <option value="5:30">5:30</option>
+                  <option value="6:00">6:00</option>
+                  <option value="6:30">6:30</option>
+                  <option value="7:00">7:00</option>
+                  <option value="7:30">7:30</option>
+                  <option value="8:00">8:00</option>
+                  <option value="8:30">8:30</option>
+                  <option value="9:00">9:00</option>
+                  <option value="9:30">9:30</option>
+                  <option value="10:00">10:00</option>
+                  <option value="10:30">10:30</option>
+                  <option value="11:00">11:00</option>
+                  <option value="11:30">11:30</option>
+                  <option value="12:00">12:00</option>
+                  <option value="12:30">12:30</option>
+                  <option value="13:00">13:00</option>
+                  <option value="13:30">13:30</option>
+                  <option value="14:00">14:00</option>
+                  <option value="14:30">14:30</option>
+                  <option value="15:00">15:00</option>
+                  <option value="15:30">15:30</option>
+                  <option value="16:00">16:00</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:00">17:00</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:00">18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:00">20:00</option>
+                  <option value="20:30">20:30</option>
+                  <option value="21:00">21:00</option>
+                  <option value="21:30">21:30</option>
+                  <option value="22:00">22:00</option>
+                  <option value="22:30">22:30</option>
+                  <option value="23:00">23:00</option>
+                  <option value="23:30">23:30</option>
+                </select>
+              </td>
+            </tr>
+            <tr> 
+              <td width="18%">Aviso</td>
+              <td width="45%"> 
+                <select name="aviso">
+                  <option value="5#M">5 Minutos</option>
+                  <option value="10#M">10 Minutos</option>
+                  <option value="15#M" selected>15 Minutos</option>
+                  <option value="20#M">20 Minutos</option>
+                  <option value="25#M">5 Minutos</option>
+                  <option value="1#H">1 Hora</option>
+                  <option value="2#H">2 Horas</option>
+                  <option value="3#H">3 Horas</option>
+                  <option value="4#H">4 Horas</option>
+                  <option value="1#D">1 D&#237;a</option>
+                  <option value="2#D">2 D&#237;as</option>
+                </select>
+              </td>
+              <td width="6%">&nbsp;</td>
+              <td width="31%">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="18%">&nbsp;</td>
+              <td width="45%"><a href="javascript:;" onClick="Invitar();return false;">Aceptar</a></td>
+              <td width="6%">&nbsp;</td>
+              <td width="31%">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+  </tr></form></compress>
+</table>
+<script>
+<if (dia)&&(mes)&&(year)>
+  document.form1.diai.value="${dia}";
+  document.form1.mesi.value="${mes}";
+  document.form1.yeari.value="${year}";
+  document.form1.diat.value="${dia}";
+  document.form1.mest.value="${mes}";
+  document.form1.yeart.value="${year}";
+
+</if>
+
+</script>
+
+</body>
+</html>

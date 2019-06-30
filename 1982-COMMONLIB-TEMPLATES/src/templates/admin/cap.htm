@@ -1,0 +1,411 @@
+<html>
+<head>
+<title>Administrar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+
+<script language="JavaScript">
+<!--
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+
+function grabarUser(){
+var i=0;
+//validar password
+ if (document.formulario.user){
+   if (document.formulario.user.value!=""){
+		if (validar()){
+			//alert("si");
+			document.formulario.grabar.value="si";
+			document.formulario.submit();
+		}else
+			<if nuevo=="no">
+				if (confirm("Debe Seleccionar la(s) Aplicacion(es) para el usuario.\n &#191;Desea elminar el usuario?")){
+					document.formulario.grabar.value="del"; //elimina el usuario del modelo
+                    //alert("bien aca");
+					document.formulario.submit();			
+				}
+           <else><if pass!="">
+			   	     alert("Debe Seleccionar la(s) Aplicacion(es) para el usuario.");
+                 <else>i=1;
+                 </if>   
+           </if>
+    }
+  }else alert("Antes de grabar, debe buscar un usuario.");
+}
+
+
+function validar(){
+	var valor=false;
+	if (!document.formulario.checkbox_1.checked)
+		document.formulario.checkbox_1.checked=true;
+     
+	if(document.formulario.pass1.value!=""){
+		if (document.formulario.pass1.value==document.formulario.pass2.value){
+			for (x=1;x<=9 ; x++){
+				//alert(eval('document.formulario.checkbox_'+x+'.checked'));
+				if (eval('document.formulario.checkbox_'+x)) {
+					if (eval('document.formulario.checkbox_'+x+'.checked')==true)
+						valor=true;
+				}
+			}
+		}
+		else
+			alert("Error, Confirme su password.")
+	}
+	else
+		alert("Error, Ingrese su password.")
+	//alert("validar: "+valor);
+	return valor;
+}
+function Inicio(){
+	<if nuevo=="no">document.formulario.grabar.value="no";</if>
+	<if pass!="">document.formulario.pass1.value="${pass}";document.formulario.pass2.value="${pass}";
+                   LayerApp.style.visibility="visible";
+   </if>
+	<if app>
+		<list app as p>if (eval('document.formulario.checkbox_${p.orden}')) document.formulario.checkbox_${p.orden}.checked=true;</list>
+	</if>	
+	<if GetParam("pRut")>document.fichaPersonal.location.href="../servlet/InfoRut?rut=${GetParam("pRut")}"</if>
+	<if passok || addok || delok >MM_showHideLayers('LayerMensaje','','show')</if>
+	
+}
+
+function confportalrrhh(rut){
+<if nuevo=="no">
+	if (rut!=""  && document.formulario.checkbox_1.checked==true){
+	var url = "../servlet/PerfilUser?pRut="+rut+"&app_id=sh";
+	var win = open(url, "portalrrhh", "toolbar=no,status=yes,resizable=no,width=790,height=510,left=5,top=5");
+	win.focus();
+	}
+</if>
+}
+function confDataFolder(rut){
+<if nuevo=="no">
+	var url=""; 
+	var accion = "M";
+	//alert(rut);	
+	if (rut!="" && document.formulario.checkbox_2.checked==true){
+		url = "../servlet/MantenerUsuario?rut="+rut+"&accion="+accion+"&unidad=${unid_id}&empresa=${emp_id}";
+		//alert(url);
+		var win = open(url, "MantUsuario", "width=645,height=360,resizable=no,toolbar=no");
+		win.focus();
+	}
+</if>	
+}
+function confWorkFlow(rut){
+<if nuevo=="no">
+if (rut!=""  && document.formulario.checkbox_6.checked==true){
+	var url = "../servlet/PerfilUser?pRut="+rut+"&app_id=wfv";
+	var win = open(url, "workflow", "toolbar=no,status=no,resizable=no,width=385,height=200");
+	win.focus();
+	}
+</if>
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="Inicio();MM_preloadImages('../servlet/Tool?images/new/botones/cerrar_f2.gif','../servlet/Tool?images/new/botones/grabar_f2.gif','../servlet/Tool?images/new/botones/graf_f2.gif','../servlet/Tool?images/new/botones/orga_f2.gif','../servlet/Tool?images/new/botones/alfa_f2.gif')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" width="812">
+  <form name="formulario" method="post" action="../servlet/CapUser">
+    <!-- fwtable fwsrc="bck_main.jpg" fwbase="desp_admin.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+    <tr> 
+      <td width="26">&nbsp;</td>
+      <td width="261" class="TITULO_MODULOS">Administrar Usuarios </td>
+      <td width="490" colspan="8">&nbsp;        </td>
+      <td width="8" colspan="2">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="35" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="10">&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="5" border="0"></td>
+    </tr>
+    <tr> 
+      <td rowspan="10" width="26">&nbsp;</td>
+      <td colspan="5">&nbsp;</td>
+      <td width="9">&nbsp;</td>
+      <td rowspan="2" colspan="4" valign="top"> 
+        <div id="LayerApp" style="position:absolute; width:302px; height:245px; z-index:5; left: 484px; top: 171px; visibility: hidden;" class="inputText">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr align="center" valign="top" class="layer1">
+              <td colspan="3"><input type="hidden" name="cant_app" value="14">
+        Aplicaciones de Usuario</td>
+            </tr>
+            <tr valign="top" class="detalleTablaChico">
+              <td width="13%">
+                <div align="center"><strong>
+                  <input type="checkbox" name="checkbox_1" value="sh" checked>
+                </strong></div>              </td>
+              <td width="77%" valign="middle"><strong><font color="000033">Portal RRHH </font></strong></td>
+              <td width="10%" align="center">&nbsp;</td>
+            </tr>
+            <tr valign="top" class="detalleTablaChico">
+              <td width="13%">
+                <div align="center"> </div>              </td>
+              <td width="77%" valign="top">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="detalleTablaChico">
+                  <tr>
+                    <td><strong>
+                      <input type="checkbox" name="checkbox_7" value="adm">
+                    </strong></td>
+                    <td><font color="000033">Administrador</font></td>
+                  </tr>
+                  <!--
+                  <tr>
+                    <td>                      <input type="checkbox" name="checkbox_8" value="pub">
+                    </td>
+                    <td align="left"><b><font size="1" color="000033" face="Verdana, Arial, Helvetica, sans-serif">Publicador</font></b></td>
+                  </tr>
+				  -->
+                  <tr>
+                    <td><input type="checkbox" name="checkbox_11" value="pub_dia">
+                    </td>
+                    <td><font color="#000033">Publicador
+                          Diario Mural</font></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="checkbox_12" value="pub_not">
+                    </td>
+                    <td><font color="#000033">Publicador
+                          Noticias</font></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="checkbox_13" value="pub_rev">
+                    </td>
+                    <td><font color="#000033">Publicador
+                          Revista Institucional</font></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="checkbox_14" value="adm_benef">
+                    </td>
+                    <td><font color="#000033">Administrador
+                          de Beneficios</font></td>
+                  </tr>
+              </table>              </td>
+              <td width="10%" align="center">&nbsp;</td>
+            </tr>
+            <tr valign="top" class="detalleTablaChico">
+              <td width="13%">
+                <div align="center"><strong>
+                  <input type="checkbox" name="checkbox_4" value="anex">
+                </strong></div>              </td>
+              <td width="77%" valign="middle"><strong><font color="000033">Anexos </font></strong></td>
+              <td width="10%" align="center">&nbsp;</td>
+            </tr>
+            <tr valign="top" class="detalleTablaChico">
+              <td width="13%">
+                <div align="center"><strong>
+                  <input type="checkbox" name="checkbox_9" value="mis">
+                </strong></div>              </td>
+              <td width="77%" valign="middle"><strong><font color="000033">RRHH.
+                    MIS </font></strong></td>
+              <td width="10%" align="center">&nbsp;</td>
+            </tr>
+          </table>
+</div>      </td>
+      <td rowspan="2" width="22">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="24" border="0"></td>
+    </tr>
+    <tr> 
+      <td rowspan="9" colspan="4" valign="bottom">&nbsp; </td>
+      <td rowspan="10" colspan="2">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="154" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="4">&nbsp;</td>
+      <td width="22">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="10" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" rowspan="7" valign="top"> 
+        <div id="Layer3" style="position:absolute; width:302px; height:93px; z-index:6; left: 483px; top: 26px" class="inputText"> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr valign="top" class="layer1"> 
+              <td colspan="2"> 
+                <div align="center"> 
+                  <input type="hidden" name="pass_ant" value="${pass}">
+                  <input type="hidden" name="nuevo" value="${nuevo}">
+                  <input type="hidden" name="grabar">
+                  <input type="hidden" name="pRut" value="${GetParam("pRut")}">
+				  <input type="hidden" name="dig" value="${dig}">
+				  <input type="hidden" name="nombre" value="${nombre}">
+                  Usuario y Clave<div id="LayerModo" style="position:absolute; width:23px; height:19px; z-index:5; visibility: hidden; color: #FFFFFF;"> 
+                    <input type="hidden" name="modo" value="1">
+                  </div>
+              </div>              </td>
+            </tr>
+            <tr valign="middle" class="campo_texto"> 
+              <td width="44%"> 
+                <div align="left"><strong>Usuario:</strong></div>              </td>
+              <td width="56%" height="15" align="left"> <strong><if user > 
+                <input type="text" name="user" value="${user}-${dig}" readonly="true" class="campo_texto">
+              </if> </strong></td>
+            </tr>
+            <tr valign="middle" class="campo_texto"> 
+              <td width="44%"> 
+                <div align="left"><strong>Clave:</strong></div>
+              </td>
+              <td width="56%" height="15" align="left"> 
+              <input name="pass1" type="text" class="campo_texto"  value="${pass}" maxlength="8"></td>
+            </tr>
+            <tr valign="middle" class="campo_texto"> 
+              <td width="44%"><strong>Validar 
+                Clave:</strong></td>
+              <td width="56%" height="15" align="left"> 
+              <input name="pass2" type="text" class="campo_texto"  value="${pass}" maxlength="8"></td>
+            </tr>
+            <tr valign="middle" class="fondo_tablas"> 
+              <td width="44%" height="12">Ultima Act.de Clave:</td>
+              <td width="56%" align="left">${FF("dd/MM/yyyy",fecha)}</td>
+            </tr>
+            <tr valign="top" class="campo_texto"> 
+              <td colspan="2"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td height="36"> 
+                      <div align="center"><a href="javascript:;" onClick="grabarUser();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('desp_admin_r7_c11','','../servlet/Tool?images/new/botones/grabar_f2.gif',1)"><img name="desp_admin_r7_c11" src="../servlet/Tool?images/new/botones/grabar.gif" width="91" height="21" border="0"></a></div>                    </td>
+                    <td> 
+                      <div align="center"><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/new/botones/cerrar_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/cerrar.gif" name="Image11" width="91" height="21" border="0" id="Image11"></a></div>
+                    </td>
+                  </tr>
+              </table>              </td>
+            </tr>
+          </table>
+        </div>      </td>
+      <td rowspan="7" width="22">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="50" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="23" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="14" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="25" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="6" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="22" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="59" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="26">&nbsp;</td>
+      <td colspan="4">&nbsp;</td>
+      <td colspan="4">&nbsp;</td>
+      <td width="22">&nbsp;</td>
+      <td width="1"><img src="../servlet/Tool?images/admin/spacer.gif" width="1" height="25" border="0"></td>
+    </tr>
+  </form>
+</table>
+
+  
+<div id="LayerMensaje" style="position:absolute; width:410px; height:340px; z-index:6; left: 38px; top: 77px; visibility: hidden;" class="inputText"> 
+  <table width="100%" border="0">
+    <tr> 
+      <td class="layer1">Resultado 
+        de la Operaci&oacute;n</td>
+    </tr>
+  </table>
+    
+  <table width="100%" border="0" class="titulo" height="312">
+    <if passok> 
+    <tr align="left" valign="top"> 
+        
+      <td colspan="2" height="23">${passok}</td>
+    </tr>
+    </if> <if addok> 
+      <tr align="left" valign="top"> 
+        
+      <td colspan="2" height="5">${addok}</td>
+      </tr>
+      </if> <if delok> 
+      <tr align="left" valign="top"> 
+        
+      <td colspan="2" height="9">${delok}</td>
+      </tr>
+      </if> 
+      <tr align="left" valign="top"> 
+        
+      <td colspan="2" height="177"></td>
+      </tr>
+      <tr align="left" valign="top" height="54"> 
+        
+      <td colspan="2" height="37" align="center"><a href="javascript:;" onClick="MM_showHideLayers('LayerMensaje','','hide');" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image1','','../servlet/Tool?images/new/botones/cerrar_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/cerrar.gif" width="91" height="21" border="0" name="Image1"></a></td>
+      </tr>	  	  
+  </table>
+</div>
+  
+<iframe  name="fichaPersonal" style="position:absolute; left:39px; top:83px; width:390px; height:320px; z-index:2; visibility: visible" class="detalleTabla" scrolling="no" width="320" frameborder="0" height="370"></iframe> 
+<div id="Layer1" style="position:absolute; width:310px; height:24px; z-index:1; left: 87px; top: 46px"> 
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!-- fwtable fwsrc="bck_main.jpg" fwbase="desp_admin.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+    <tr> 
+      <td> 
+        <div align="left"><a href="javascript:;" onClick="AbrirBGaleria();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('desp_admin_r3_c2','','../servlet/Tool?images/new/botones/graf_f2.gif',1)"><img name="desp_admin_r3_c2" src="../servlet/Tool?images/new/botones/graf.gif" width="91" height="21" border="0"></a></div>
+      </td>
+        
+      <td> 
+        <div align="center"></div>
+      </td>
+        
+      <td colspan="2"> 
+        <div align="center"><a href="javascript:;" onClick="AbrirBOrganica();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('desp_admin_r3_c4','','../servlet/Tool?images/new/botones/orga_f2.gif',1)"><img name="desp_admin_r3_c4" src="../servlet/Tool?images/new/botones/orga.gif" width="91" height="21" border="0"></a></div>
+      </td>
+        
+      <td> 
+        <div align="center"></div>
+      </td>
+        
+      <td colspan="2"> 
+        <div align="right"><a href="javascript:;" onClick="AbrirAlfabetic();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('desp_admin_r3_c7','','../servlet/Tool?images/new/botones/alfa_f2.gif',1)"><img name="desp_admin_r3_c7" src="../servlet/Tool?images/new/botones/alfa.gif" width="91" height="21" border="0"></a></div>      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

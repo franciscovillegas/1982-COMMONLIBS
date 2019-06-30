@@ -1,0 +1,254 @@
+<html>
+<head>
+<title>Galeria Fotos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript">
+<!--
+function MarcaFoto(foto,rut){
+ var i=0;
+ for (i=0;i<document.images.length;i++)
+     document.images[i].border="0";
+
+  eval("document."+foto+".border='2'");
+  //alert("rut; "+rut);
+  document.form1.rutmarca.value=rut;
+}
+
+function Asigna(ini,ter,actual){
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   document.form1.actual.value=actual;
+   document.form1.submit();
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+
+function Desvia(rut){
+    if (parent.opener.document.formulario.modo.value!="1")//grafica
+        VerRut(rut, "Anexos/Visor/ver_rut.htm");
+     else
+        Envia(rut);    
+}
+
+function Desvia2(rut){
+    //alert(rut);
+    //if (parent.opener.document.formulario.modo.value!="1")//grafica
+        Envia(rut);    
+     
+}
+
+
+function Envia(rut){ //v2.0
+//alert("rut: "+rut);
+  //if (parent.frames.bottomFrame.document.form1.rut)
+  var obj = eval("parent.frames.bottomFrame.Muestra('Layer'+rut)");
+  	
+ }
+ 
+function Anterior(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+    //alert("Anterior inicio: "+inicio+"\ntermino: "+termino);
+	start=inicio-grupo;
+	document.form1.grupini.value=start;
+	if (termino==paginas)
+      finish=inicio-1;  
+    else
+      finish=termino-grupo;
+	document.form1.grupter.value=finish;
+    //alert("Nuevos Valores : "+start+" - " +finish);
+    //alert("actual: "+start);
+    document.form1.actual.value=start; 
+    document.form1.inicio.value=ini;
+    document.form1.termino.value=ter;
+    document.form1.submit();
+}
+
+function Siguiente(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+	start=inicio+grupo;
+	document.form1.grupini.value=start;
+	finish=termino+grupo;
+    if (finish>paginas)
+	  document.form1.grupter.value=paginas;
+    else
+	  document.form1.grupter.value=finish;
+   document.form1.actual.value=actual+1; 
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   //alert("sgte actual: "+document.form1.actual.value+"\nInicio: " +ini+"\ntermino: "+ter);
+   document.form1.submit();
+}
+
+
+function CambiaValor(){
+	
+	if (parent.opener.document.formulario) {
+		if (parent.opener.document.formulario.modo.value=="1")
+  	{
+    	document.form2.modo.value="1";
+//      alert("CambiaValor : "+document.form2.modo.value);   
+   	}
+ 	else 
+  	{
+    	document.form2.modo.value="3";  
+//      alert("CambiaValor : "+document.form2.modo.value);   
+   	}
+   	}
+else 
+  	{
+    	document.form2.modo.value="3";  
+//      alert("CambiaValor : "+document.form2.modo.value);   
+	}
+	   document.form2.submit();
+}
+
+
+
+
+
+// -->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" vlink="" alink="" background="../servlet/Tool?images/busgraf/main_1.jpg" <if detalle> onload="CambiaValor()"</if>>
+<table width="350" border="0" cellspacing="0" cellpadding="0" height="327">
+  <tr> 
+    <td valign="top" width="1019"> 
+      <div> 
+        <form name="form2" method="post" action="../servlet/FichaBasicaPortal" target="bottomFrame">
+          <list detalle as v> 
+          <input type="hidden" name="rut" value="${v.rut}">
+          </list> 
+          <div align="center"> 
+            <input type="hidden" name="modo">
+            <br>
+            <font face="Arial, Helvetica, sans-serif" size="2" color="#000066">P&aacute;gina 
+            ${pag} de ${paginas}. Se encontraron ${regs} personas.</font> </div>
+        </form>
+
+        <form name="form1" method="post" action="../servlet/BuscaGrafica" target="_self">
+          <input type="hidden" name="sexo1" value="${sexo1}">
+          <input type="hidden" name="sexo2" value="${sexo2}">
+          <input type="hidden" name="rango1" value="${rango1}">
+          <input type="hidden" name="rango2" value="${rango2}">
+          <input type="hidden" name="inicio" value="${ini}">
+          <input type="hidden" name="termino" value="${ter}">
+          <input type="hidden" name="actual">
+          <input type="hidden" name="apellido1" value="${apellido1}">
+          <input type="hidden" name="apellido2" value="${apellido2}">
+          <font face="Arial, Helvetica, sans-serif" size="2"> 
+          <input type="hidden" name="grupini" value="${gini}">
+          <input type="hidden" name="grupter" value="${gter}">
+          <input type="hidden" name="grupo" value="${grupo}">
+          <input type="hidden" name="civil" value="${civil}">
+          <input type="hidden" name="nombre" value="${nombre}">
+          <input type="hidden" name="cargo" value="${cargo}">
+          </font> <if pag> 
+          <input type="hidden" name="rutmarca" value="-1">
+
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td colspan="3" valign="middle" height="52"> 
+                <div align="center"></div>
+                <div id="Layer1" style="position:absolute; width:342px; height:34px; z-index:2; left: 4px; top: 312px; visibility: visible"><if urls> 
+                  <table width="96%" border="0" cellspacing="0" cellpadding="0" align="center" height="16">
+                    <tr> 
+                      <td align="left" valign="top" width="67%"> 
+                        <div align="left"></div>
+                        <div align="left"><list urls as u> <span class="campo_texto">${u.sentencia} 
+                          </span> </list><if sini> </if> </div>
+                      </td>
+                      <td width="33%"> 
+                        <div align="right"><if !fin> <if !atras> <a href="javascript:;" onClick="Anterior(${gini},${gter},${firstnum},${firstini},${firstter},${paginas},${grupo});return false;">&lt;</a> 
+                          </if> <span class="Estilo1"><font face="Arial, Helvetica, sans-serif" size="1">${gini}- 
+                          ${gter}</font></span> <if !sig> <a href="javascript:;" onClick="Siguiente(${gini},${gter},${ultnum},${ultini},${ultter},${paginas},${grupo});return false;">&gt;</a> 
+                          </if> </if> </div>
+                      </td>
+                    </tr>
+                  </table>
+                </if> </div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="313" height="17">&nbsp;</td>
+              <if !fin> 
+              <td width="91" height="17"><font >&nbsp;</font></td>
+              <td width="204" height="17"> 
+                <div align="center"> <font ></font></div>
+              </td>
+              </if> </tr>
+          </table>
+          </if> 
+          
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" height="255" align="center">
+            <tr> 
+              <td valign="top" width="100%"> <if detalle> 
+                <div id="LayerFotos" style="position:absolute; width:591px; height:118px; z-index:10; left: 6px; top: 57px; visibility: visible"> 
+                  <table width="55%" border="0">
+                    <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+                      <td height="75" width="10%" > <a href="javascript:;" onClick="MarcaFoto('img${v.rut}','${v.rut}');Desvia2('${v.rut}');return false;"><img name="img${v.rut}" src='${GetProp("server.portal.trabajadores.fotos")}/${v.foto}' width="67" height="74" alt="${v.nombre}" border="1"  onError="existeFoto(this)" ></a> 
+                      </td>
+                      <assign x="**"> <else> <if x=="**">
+                      <td height="75" width="10%" > <a href="javascript:;" onClick="MarcaFoto('img${v.rut}','${v.rut}');Desvia2('${v.rut}');return false;"><img name="img${v.rut}" src='${GetProp("server.portal.trabajadores.fotos")}/${v.foto}' width="67" height="74" alt="${v.nombre}" border="1"  onError="existeFoto(this)" ></a> 
+                      </td>
+                      <assign x="***"> <else> <if x=="***">
+                      <td height="75" width="10%" > <a href="javascript:;" onClick="MarcaFoto('img${v.rut}','${v.rut}');Desvia2('${v.rut}');return false;"><img name="img${v.rut}" src='${GetProp("server.portal.trabajadores.fotos")}/${v.foto}' width="67" height="74" alt="${v.nombre}" border="1"  onError="existeFoto(this)" ></a> 
+                      </td>
+                      <assign x="****"> <else> 
+                      <td height="75" width="10%" > <a href="javascript:;" onClick="MarcaFoto('img${v.rut}','${v.rut}');Desvia2('${v.rut}');return false;"><img name="img${v.rut}" src='${GetProp("server.portal.trabajadores.fotos")}/${v.foto}' width="67" height="74" alt="${v.nombre}" border="1"  onError="existeFoto(this)" ></a> 
+                      </td>
+                    </tr>
+                    <tr align="center"> <assign x="*"> </if></if></if></list>
+                    <tr align="center"> 
+                      <td> 
+                      <td> 
+                  </table>
+
+                </div>
+                <else><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table width="98%" border="0" align="left">
+                  <tr align="center"> 
+                    <td height="75" width="10%" > 
+                      <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="" size="2"><b><font color="#000066">No 
+                        se encontraron Empleados<br>
+                        que cumplan con este criterio</font></b></font></div>
+                    </td>
+                  </tr>
+                </table>
+                
+                </if> </td>
+            </tr>
+            <tr> 
+              <td valign="middle" width="100%" > </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,175 @@
+ 
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<table width="498" border="0" cellspacing="2" cellpadding="0" height="370">
+  <tr>
+    <td valign="top" height="35" colspan="2">
+		<form name="form1" method="post" action="/servlet/Indicador.DetalleIndicador">
+              <span class="textB">Estado del Indicador</span> <if (semV)> 
+              <input type="checkbox" name="semaforov" value="V" checked>
+			  	<else> <input type="checkbox" name="semaforov" value="V">
+              </if> <span class="texto">Verde</span>
+			  <if (semA)> <input type="checkbox" name="semaforoa" value="A" checked>
+			  	<else> <input type="checkbox" name="semaforoa" value="A">
+              </if> <span class="texto">Amarillo</span>
+			  <if (semR)> <input type="checkbox" name="semaforor" value="R" checked>
+			  	<else> <input type="checkbox" name="semaforor" value="R">
+              </if> <span class="texto">Rojo</span> 
+              <input type="hidden" name="item" value="${indic}">
+              <input type="hidden" name="peri" value="${peri}">
+              <input type="hidden" name="unidad" value="${unid_id}">
+              <a href="javascript:document.form1.submit();"><font face="Arial, Helvetica, sans-serif" size="2">Actualizar</font></a></form>
+	</td>
+  </tr>
+  <tr> 
+    <td valign="top" height="35" colspan="2"><span class="textB">${unid_desc}</span><br>
+      <u><span class="textB">Unidades Dependientes</span></u> <span class="texto"> (Indicador
+      <switch (tipo_indic)> <case "U">para la Unidad<break> <case "R">para la Rama<break> 
+      </switch>)</span></td>
+  </tr>
+  <tr> 
+    <td valign="top" width="324"> 
+      <div id="Layer1" style="position:absolute; z-index:1; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000; overflow: auto; width: 320px; height: 273px"> 
+        <table border="1" cellspacing="0" cellpadding="0">
+          <tr bgcolor="#FF6600"> 
+            <td colspan="3"> 
+              <div align="center"><font size="1"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif">Unidad</font></b></font></div>
+            </td>
+            <td width="80"> 
+              <div align="center"><font size="1"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif">Estado</font></b></font></div>
+            </td>
+            <td width="50"> 
+              <div align="center"><font size="1"><b><font color="#FFFFFF" face="Arial, Helvetica, sans-serif">Valor</font></b></font></div>
+            </td>
+          </tr>
+          <if !(unidades)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td colspan="5"><font face="Arial, Helvetica, sans-serif" size="1"><i><font size="2">No 
+              existen unidades en este estado...</font></i></font></td>
+          </tr>
+          <else> <list unidades as u> <if (u.unid_id) == (unid_id)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="30"><font face="Arial, Helvetica, sans-serif" size="1"><a href="javascript:;" onClick="encargado_ver('${u.unid_id}')"><img src="/images/Gestion/semaforo/${u.foto}" width="27" height="30" border="0" alt="Encargado de la unidad"></a></font></td>
+            <td width="200"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"> 
+              ${u.unid_desc}</font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"><a href="/servlet/Indicador.HistoriaIndicador?item=${indic}&tipo=${tipo_indic}&unidad=${u.unid_id}&unidad_desc=${u.unid_desc}&peri=${peri}"><img src="/Gestion/botones/historia.gif" width="20" height="19" alt="Ver Historia de esta Unidad" border="0"></a></font></td>
+            <td width="80"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF">${u.tramo}</font></td>
+            <td width="50"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF">${u.valor}</font></div>
+            </td>
+          </tr>
+          <else> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="30"><font face="Arial, Helvetica, sans-serif" size="1"><a href="javascript:;" onClick="encargado_ver('${u.unid_id}')"><img src="/images/Gestion/semaforo/${u.foto}" width="27" height="30" border="0" alt="Encargado de la unidad"></a></font></td>
+            <td width="200"><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${u.unid_desc}</font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"><a href="/servlet/Indicador.HistoriaIndicador?item=${indic}&tipo=${tipo_indic}&unidad=${u.unid_id}&unidad_desc=${u.unid_desc}&peri=${peri}"><img src="/Gestion/botones/historia.gif" width="20" height="19" alt="Ver Historia de esta Unidad" border="0"></a></font></td>
+            <td width="80"><font face="Arial, Helvetica, sans-serif" size="1">${u.tramo}</font></td>
+            <td width="50"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${u.valor}</font></div>
+            </td>
+          </tr>
+          </if> </list> </if> 
+        </table>
+      </div>
+    </td>
+    <td valign="top" width="168"> <list unidades as u> 
+      <div id="LayerEnc${u.unid_id}" style="position:absolute;  z-index:2; visibility: <if (u.unid_id) == (unid_id)>visible<else>hidden</if>; height: 273px; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000"> 
+        <table width="170" border="0" cellspacing="0" cellpadding="0" height="235">
+          <tr> 
+            <td width="180" align="center" height="20"><font face="Arial, Helvetica, sans-serif" size="1"><b><font class="textB">Encargado 
+              ${u.unid_desc}</font></b></font></td>
+          </tr>
+          <if (u.e_tiene)> 
+          <tr> 
+            <td width="180" align="center" height="135"> 
+              <table border="0" background="/Gestion/imagenes_main/vent_foto1.gif" width="86" height="106" cellpadding="3" cellspacing="0">
+                <tr> 
+                  <td valign="middle" align="center"> 
+                    <div align="center"><if (u.e_foto)><img src="/images/Gestion/Trabajadores/${u.e_foto}" width="79" height="100" alt="Foto"> 
+                      <else> <b><font face="Arial, Helvetica, sans-serif"><i><font size="2">Sin 
+                      Foto</font></i></font></b></if></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td width="180" valign="top"> 
+              <table border="0" align="left" cellpadding="0" cellspacing="4" width="100%">
+                <tr> 
+                  <td height="19"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b><font class="textB">${u.e_nombre}</font></b></font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="166" height="17" class="texto"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1" class="texto"> 
+                      ${u.e_cargo}</font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="166" height="17" class="texto"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>Anexo 
+                      ${u.e_anexo}</b></font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="166" height="17" class="texto"> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>E-Mail 
+                      <a href="mailto:${u.e_e_mail}">${u.e_e_mail}</a></b></font></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <else> 
+          <tr> 
+            <td> 
+              <div align="center" class="textB">Esta unidad no tiene un encargado 
+                asignado...</div>
+            </td>
+          </tr>
+          </if> 
+        </table>
+      </div>
+      </list> </td>
+  </tr>
+</table>
+<script language="JavaScript">
+function encargados_ocultar(estado) {
+	<list unidades as u>
+	LayerEnc${u.unid_id}.style.visibility = estado;
+	</list>
+}
+function encargado_ver(unidad) {
+	encargados_ocultar("hidden")
+	eval("LayerEnc"+unidad+".style.visibility = 'visible'");
+}
+</script>

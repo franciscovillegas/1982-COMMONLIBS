@@ -1,0 +1,377 @@
+<html>
+<head>
+<title>SOLICITUD DE FERIADO LEGAL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/RangoFechas.js"></script>
+<script language="JavaScript">
+<!--
+function CalFecha(dat) {
+ var dd=document.form1.diad.value;
+ var md=document.form1.mesd.value;
+ var yd=document.form1.yeard.value;
+ var dh=document.form1.diah.value;
+ var mh=document.form1.mesh.value;
+ var yh=document.form1.yearh.value;
+var desde=dd+"/"+md+"/"+yd;
+var hasta=dh+"/"+mh+"/"+yh;
+//if (desde!="")
+  if (document.form1.dias.value!=""){
+     if (!isNaN(document.form1.dias.value)){
+       MM_openBrWindow('../servlet/FechasPortal?fechaTM='+desde+'&diasTM='+document.form1.dias.value+'&NameHasta=hasta','Calculo','width=1,height=1');
+       LayerCalculo.style.visibility="hidden";
+     }else alert("Ingrese un nº de dias v&#225;lido.");
+  }
+   else
+      alert("Ingrese n° de dias solicitados.");   
+ //else
+   //alert("Ingrese fecha de inicio.");
+}
+
+function ValidaForm() { //v2.0
+ var dd=document.form1.diad.value;
+ var md=document.form1.mesd.value;
+ var yd=document.form1.yeard.value;
+ var dh=document.form1.diah.value;
+ var mh=document.form1.mesh.value;
+ var yh=document.form1.yearh.value;
+ var dias=document.form1.dias.value;
+	//if (RangoValido(dd,md,yd,dh,mh,yh,dias)){	
+	 if (document.form1.dias.value!=""){
+		//var mensaje=confirm("&#191;Desea Imprimir esta Solicitud?");
+		//if (mensaje){//----Imprimir-----------------
+		  // Imprimir();
+           //alert("submit()");
+		   document.form1.submit();
+        //}else window.close();
+     }else
+	   alert("Ingrese cantidad de d&#237;as solicitados."); 
+	//}else 
+	  // alert("Rango de Fechas no v&#225;lido.");
+}
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') {
+        if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (val<min || max<val) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert('N° de dias solicitados debe ser un n° v&#225;lido.');
+  document.MM_returnValue = (errors == '');
+}
+
+function Imprimir() {
+	LayerPrint.style.visibility="hidden";
+        printPage();
+    LayerPrint.style.visibility="visible";
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+    
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" topmargin="0" leftmargin="0">
+<table width="673" height="572">
+  <form name="form1" action="../servlet/com.eje.serhumano.misdatos.sol_vacaciones.S_EnviaSolicitud">
+    <tr> 
+      <td colspan="3" valign="top"> 
+        <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><i></i></font>
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><i><b><img src="../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></b></i></font></td>
+            <td width="64%" align="center"><div align="right"></div>
+            <font face="Arial, Helvetica, sans-serif" size="2"><font size="4" face="Verdana, Arial, Helvetica, sans-serif"><strong>SOLICITUD DE FERIADO LEGAL N&ordm; ${id}</strong></font></font></td>
+            <td width="16%">&nbsp;</td>
+          </tr>
+        </table>      
+      <div align="right"></div>      </td>
+    </tr>
+    <if (tipo_sol)> 
+    <tr> 
+      <td colspan="3"> 
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="23%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>UNIDAD/SUCURSAL:</b></font></td>
+            <td width="42%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${unidad} </font>
+                <div id="Layer2" style="position:absolute; width:259px; height:6px; z-index:3; visibility: hidden; left: 233px; top: 234px;">
+                  <table width="253" border="0" cellspacing="0" cellpadding="0" height="20">
+                    <tr>
+                      <td width="81"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                        <select name="diah">
+                          <option value="01" selected><font color="#FFFFFF">1</font></option>
+                          <option value="02"><font color="#FFFFFF">2</font></option>
+                          <option value="03"><font color="#FFFFFF">3</font></option>
+                          <option value="04"><font color="#FFFFFF">4</font></option>
+                          <option value="05"><font color="#FFFFFF">5</font></option>
+                          <option value="06"><font color="#FFFFFF">6</font></option>
+                          <option value="07"><font color="#FFFFFF">7</font></option>
+                          <option value="08"><font color="#FFFFFF">8</font></option>
+                          <option value="09"><font color="#FFFFFF">9</font></option>
+                          <option value="10"><font color="#FFFFFF">10</font></option>
+                          <option value="11"><font color="#FFFFFF">11</font></option>
+                          <option value="12"><font color="#FFFFFF">12</font></option>
+                          <option value="13"><font color="#FFFFFF">13</font></option>
+                          <option value="14"><font color="#FFFFFF">14</font></option>
+                          <option value="15"><font color="#FFFFFF">15</font></option>
+                          <option value="16"><font color="#FFFFFF">16</font></option>
+                          <option value="17"><font color="#FFFFFF">17</font></option>
+                          <option value="18"><font color="#FFFFFF">18</font></option>
+                          <option value="19"><font color="#FFFFFF">19</font></option>
+                          <option value="20"><font color="#FFFFFF">20</font></option>
+                          <option value="21"><font color="#FFFFFF">21</font></option>
+                          <option value="22"><font color="#FFFFFF">22</font></option>
+                          <option value="23"><font color="#FFFFFF">23</font></option>
+                          <option value="24"><font color="#FFFFFF">24</font></option>
+                          <option value="25"><font color="#FFFFFF">25</font></option>
+                          <option value="26"><font color="#FFFFFF">26</font></option>
+                          <option value="27"><font color="#FFFFFF">27</font></option>
+                          <option value="28"><font color="#FFFFFF">28</font></option>
+                          <option value="29"><font color="#FFFFFF">29</font></option>
+                          <option value="30"><font color="#FFFFFF">30</font></option>
+                          <option value="31"><font color="#FFFFFF">31</font></option>
+                        </select>
+                      </font></td>
+                      <td width="89"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                        <select name="mesh">
+                          <option value="01" selected><font color="#FFFFFF">Enero</font></option>
+                          <option value="02"><font color="#FFFFFF">Febrero</font></option>
+                          <option value="03"><font color="#FFFFFF">Marzo</font></option>
+                          <option value="04"><font color="#FFFFFF">Abril</font></option>
+                          <option value="05"><font color="#FFFFFF">Mayo</font></option>
+                          <option value="06"><font color="#FFFFFF">Junio</font></option>
+                          <option value="07"><font color="#FFFFFF">Julio</font></option>
+                          <option value="08"><font color="#FFFFFF">Agosto</font></option>
+                          <option value="09"><font color="#FFFFFF">Septiembre</font></option>
+                          <option value="10"><font color="#FFFFFF">Octubre</font></option>
+                          <option value="11"><font color="#FFFFFF">Noviembre</font></option>
+                          <option value="12"><font color="#FFFFFF">Diciembre</font></option>
+                        </select>
+                      </font></td>
+                      <td width="83"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                        <select name="yearh">
+                          <option value="2001"><font color="#FFFFFF">2001</font></option>
+                          <option value="2002" selected><font color="#FFFFFF">2002</font></option>
+                          <option value="2003"><font color="#FFFFFF">2003</font></option>
+                          <option value="2004"><font color="#FFFFFF">2004</font></option>
+                          <option value="2005"><font color="#FFFFFF">2005</font></option>
+                          <option value="2006"><font color="#FFFFFF">2006</font></option>
+                          <option value="2007"><font color="#FFFFFF">2007</font></option>
+                          <option value="2008"><font color="#FFFFFF">2008</font></option>
+                          <option value="2009"><font color="#FFFFFF">2009</font></option>
+                          <option value="2010"><font color="#FFFFFF">2010</font></option>
+                        </select>
+                      </font></td>
+                    </tr>
+                  </table>
+              </div></td>
+            <td width="35%" align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${fecha}</font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td height="21" colspan="3">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="21" colspan="3"><blockquote>
+        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Por intermedio de la presente vengo en solicitar al Banco, se me autorice a usar
+              <input type="text" name="dias" size="2" maxlength="2" onChange="MM_showHideLayers('LayerHasta','','hide','LayerCalculo','','show')">
+    dias de vacaciones a cuenta de los dias de feriado legal a que tengo derecho.</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="2">El uso efectivo de los se&ntilde;alados dias de vacaciones comprender&aacute;:</font></p>
+      </blockquote></td>
+    </tr>
+    <tr>
+      <td colspan="3" height="77"><table width="63%" height="58" border="0" align="center">
+        <tr bgcolor="#CEE7FF">
+          <td width="24%"><div align="center"><strong><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Desde el</font></strong></div></td>
+          <td width="13%" height="24" align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+            <select name="diad" onChange="MM_showHideLayers('LayerHasta','','hide','LayerCalculo','','show')">
+              <option value="01" selected><font color="#FFFFFF">1</font></option>
+              <option value="02"><font color="#FFFFFF">2</font></option>
+              <option value="03"><font color="#FFFFFF">3</font></option>
+              <option value="04"><font color="#FFFFFF">4</font></option>
+              <option value="05"><font color="#FFFFFF">5</font></option>
+              <option value="06"><font color="#FFFFFF">6</font></option>
+              <option value="07"><font color="#FFFFFF">7</font></option>
+              <option value="08"><font color="#FFFFFF">8</font></option>
+              <option value="09"><font color="#FFFFFF">9</font></option>
+              <option value="10"><font color="#FFFFFF">10</font></option>
+              <option value="11"><font color="#FFFFFF">11</font></option>
+              <option value="12"><font color="#FFFFFF">12</font></option>
+              <option value="13"><font color="#FFFFFF">13</font></option>
+              <option value="14"><font color="#FFFFFF">14</font></option>
+              <option value="15"><font color="#FFFFFF">15</font></option>
+              <option value="16"><font color="#FFFFFF">16</font></option>
+              <option value="17"><font color="#FFFFFF">17</font></option>
+              <option value="18"><font color="#FFFFFF">18</font></option>
+              <option value="19"><font color="#FFFFFF">19</font></option>
+              <option value="20"><font color="#FFFFFF">20</font></option>
+              <option value="21"><font color="#FFFFFF">21</font></option>
+              <option value="22"><font color="#FFFFFF">22</font></option>
+              <option value="23"><font color="#FFFFFF">23</font></option>
+              <option value="24"><font color="#FFFFFF">24</font></option>
+              <option value="25"><font color="#FFFFFF">25</font></option>
+              <option value="26"><font color="#FFFFFF">26</font></option>
+              <option value="27"><font color="#FFFFFF">27</font></option>
+              <option value="28"><font color="#FFFFFF">28</font></option>
+              <option value="29"><font color="#FFFFFF">29</font></option>
+              <option value="30"><font color="#FFFFFF">30</font></option>
+              <option value="31"><font color="#FFFFFF">31</font></option>
+            </select>
+          </font></td>
+          <td width="22%" height="24"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+            <select name="mesd" onChange="MM_showHideLayers('LayerHasta','','hide','LayerCalculo','','show')">
+              <option value="01" selected><font color="#FFFFFF">Enero</font></option>
+              <option value="02"><font color="#FFFFFF">Febrero</font></option>
+              <option value="03"><font color="#FFFFFF">Marzo</font></option>
+              <option value="04"><font color="#FFFFFF">Abril</font></option>
+              <option value="05"><font color="#FFFFFF">Mayo</font></option>
+              <option value="06"><font color="#FFFFFF">Junio</font></option>
+              <option value="07"><font color="#FFFFFF">Julio</font></option>
+              <option value="08"><font color="#FFFFFF">Agosto</font></option>
+              <option value="09"><font color="#FFFFFF">Septiembre</font></option>
+              <option value="10"><font color="#FFFFFF">Octubre</font></option>
+              <option value="11"><font color="#FFFFFF">Noviembre</font></option>
+              <option value="12"><font color="#FFFFFF">Diciembre</font></option>
+            </select>
+          </font></td>
+          <td width="41%" height="24"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+            <select name="yeard" onChange="MM_showHideLayers('LayerHasta','','hide','LayerCalculo','','show')">
+              <option value="2001"><font color="#FFFFFF">2001</font></option>
+              <option value="2002" selected><font color="#FFFFFF">2002</font></option>
+              <option value="2003"><font color="#FFFFFF">2003</font></option>
+              <option value="2004"><font color="#FFFFFF">2004</font></option>
+              <option value="2005"><font color="#FFFFFF">2005</font></option>
+              <option value="2006"><font color="#FFFFFF">2006</font></option>
+              <option value="2007"><font color="#FFFFFF">2007</font></option>
+              <option value="2008"><font color="#FFFFFF">2008</font></option>
+              <option value="2009"><font color="#FFFFFF">2009</font></option>
+              <option value="2010"><font color="#FFFFFF">2010</font></option>
+            </select>
+          </font></td>
+        </tr>
+        <tr bgcolor="#CEE7FF">
+          <td width="24%" height="26"><div align="center"><strong><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Hasta el </font></strong></div></td>
+          <td colspan="3" align="left">
+            <div align="left"> </div>
+            <div align="left"></div>
+            <div id="LayerHasta" style="position:absolute; width:73px; height:24px; z-index:4; visibility: hidden; left: 235px; top: 235px;"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+              <input type="text" name="hasta" size="10" maxlength="10" readonly="yes">
+          </font></div> 
+            <div id="LayerCalculo" style="position:absolute; width:248px; height:17px; z-index:2; visibility: visible; left: 240px; top: 232px;"> <font face="Verdana, Arial, Helvetica, sans-serif"><a href="#" onClick="CalFecha();return false;"><font size="2">Calculo autom&aacute;tico</font> </a></font></div></td>
+          </tr>
+      </table></td>
+    </tr>
+    <tr> 
+      <td colspan="3"><div align="left">
+        <blockquote>
+          <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">, ambas 
+            fechas inclusive, lo que ya ha sido autorizado por mi jefe superior directo.</font></p>
+        </blockquote>
+      </div></td>
+    </tr>
+    <tr> 
+      <td colspan="3"><div align="left">
+        <blockquote>
+          <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">El trabajador 
+                que suscribe declara haber hecho uso de los d&iacute;as solicitados, con 
+            goce de remuneraci&oacute;n &iacute;ntegra de acuerdo a la Ley.</font></p>
+        </blockquote>
+      </div></td>
+    </tr>
+    <tr> 
+      <td colspan="3" height="73"><font face="Verdana, Arial, Helvetica, sans-serif">&nbsp;</font></td>
+    </tr>
+    <tr> 
+      <td width="51%" height="21"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+          ___________________________<br>
+          Firma 
+              <input type="hidden" name="rut_dest" value="${rut_dest}">
+          <input type="hidden" name="tipo_sol" value="${tipo_sol}">
+          </font></div>
+      </td>
+      <td width="49%" colspan="2"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+          ___________________________<br>
+          Firma </font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="51%"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${nom_jefe}</font></div>
+      </td>
+      <td colspan="2"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">${nom_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="51%" height="14"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${rut_label}</font></div>
+      </td>
+      <td colspan="2"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${rut_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td height="52" colspan="3"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font><font face="Verdana, Arial, Helvetica, sans-serif">&nbsp;
+        </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">La presente solicitud s&oacute;lo ser&aacute; v&aacute;lida una vez autorizada por el <b>DEPTO PROCESOS DE RR.HH.<br>
+Nota: </b>La Solicitud s&oacute;lo ser&aacute; procesada una vez impresa.</font><font face="Verdana, Arial, Helvetica, sans-serif">&nbsp; </font><font face="Verdana, Arial, Helvetica, sans-serif">&nbsp;
+
+      </font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="3" height="21"> 
+        <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif">
+          <input type="button" name="Button" value="Enviar" onClick="ValidaForm()">
+        </font></p>
+      </td>
+    </tr>
+    <else> 
+    <tr> 
+      <td height="18" colspan="3"> 
+        <div align="center"> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b> <if (!error)>No 
+          hay jefe Directo activo.<else>El Jefe Directo no existe como empleado</if></b> 
+        </font></div>
+      </td>
+    </tr>
+    </if> 
+  </form>
+</table>
+<div id="LayerPrint" style="position:absolute; width:77px; height:27px; z-index:1; visibility: visible; top: 17px; left: 575px;"><a href="#"><img src="../servlet/Tool?images/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></div>
+</body>
+</html>

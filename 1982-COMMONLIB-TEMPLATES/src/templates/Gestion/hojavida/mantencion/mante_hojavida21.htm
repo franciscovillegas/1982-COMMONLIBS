@@ -1,0 +1,237 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+var layerVistaAct ="";
+function OcultarLayer(){
+	if (layerVistaAct != "")
+		
+		MM_showHideLayers('LayerDObs'+layerVistaAct,'','hide');
+}
+
+function VerLayer(cual){
+	OcultarLayer();
+	MM_showHideLayers('LayerGrabar','','hide','LayerObs');
+	
+	MM_showHideLayers('LayerDObs'+cual,'','show');
+	MM_showHideLayers('LayerDObs','','show');
+	layerVistaAct = cual;
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+<if mensaje>
+	alert("${mensaje}");
+</if>
+
+function ValidaB(){
+	if (document.fbuscar.rut.value==""){
+		alert("Debe Ingresar un Rut");
+	}
+	else {
+		document.fbuscar.submit();
+	}
+}
+function ValidaG(){
+	if (document.fbuscar.rut.value!=document.fbuscar.rut2.value){
+		if (document.fbuscar.rut.value==""){
+			alert("Debe Ingresar un Rut");
+		}
+		else{
+			alert("Debe presionar Buscar.");
+		}
+	}
+	else {
+		if (document.fgrabar.obs.value==""){
+				alert("Debe ingresar el detalle de la anotaci&#243;n");
+		}
+		else {
+		
+		document.all.fgrabar.rut1.value=document.fbuscar.rut.value;
+		document.all.fgrabar.submit();
+		}
+	}
+}
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="762" border="0" bgcolor="#FFA400">
+  <tr>
+    <td width="418" valign="top" height="418"> 
+      <table width="404" border="0">
+        <form name=fbuscar method=post action=/servlet/MantenedorHojaVidaDF?buscar=1>
+          <tr bgcolor="#FFCF75"> 
+            <td width="150" class="textB">Ingrese Rut (s/dv)</td>
+            <td width="244" class="textB"> 
+              <input type="text" name="rut" value="${rut}" class="texto">
+            </td>
+          </tr>
+          <tr valign="top"> 
+            <td colspan="2" height="300"> 
+              <div id="LayerRut" style="position:absolute; width:386px; height:264px; z-index:1; left: 19px; top: 60px"> 
+                <table width="390" border="0" bgcolor="#FFCF75" align="center">
+                  <tr> 
+                    <td width="12%"><if foto><img src="/images/Gestion/Trabajadores/${foto}" width="91" height="109"><else><img src="/images/Gestion/Trabajadores/sinfoto.jpg" width="91" height="109"></if></td>
+                    <td width="83%"> 
+                      <table width="100%" border="0">
+                        <tr bgcolor="#FDA500"> 
+                          <td colspan="2"> 
+                            <div align="center" class="textB">${nombre}</div>
+                          </td>
+                        </tr>
+                        <tr> 
+                          <td width="79" class="textB" bgcolor="#FDA500" valign="top">Cargo 
+                          </td>
+                          <td width="303" class="texto" bgcolor="#FFCF75" valign="top">${cargo}</td>
+                        </tr>
+                        <tr> 
+                          <td width="79" class="textB" bgcolor="#FDA500" valign="top"> 
+                            Unidad</td>
+                          <td width="303" class="texto" bgcolor="#FFCF75" valign="top">${unidad}</td>
+                        </tr>
+                        <tr> 
+                          <td width="79" class="textB" bgcolor="#FDA500" valign="top">Ubicaci&oacute;n 
+                            F&iacute;sica </td>
+                          <td width="303" class="texto" bgcolor="#FFCF75" valign="top">${ubicacion}</td>
+                        </tr>
+                        <tr> 
+                          <td width="79" class="textB" bgcolor="#FDA500" valign="top" height="18">Anexo 
+                            BAE</td>
+                          <td width="303" class="texto" bgcolor="#FFCF75" valign="top" height="18">${anexo}</td>
+                        </tr>
+                        <tr> 
+                          <td width="79" class="textB" bgcolor="#FDA500" valign="top">e-mail</td>
+                          <td width="303" class="texto" bgcolor="#FFCF75" valign="top">${email}</td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                  </tr>
+                </table>
+                <p align="center"><span class="textB">Ver Anotaciones</span> 
+                  <select name="select"  onChange="VerLayer(this.value);MM_showHideLayers('LayerGrabar','','hide','LayerObs','','show')">
+                    <option value=""></option>
+				  	<list anotaciones as a> 
+                    		<option value="${a.Layer}">${a.nombre}</option>
+					</list> 
+                  </select>
+                </p>
+              </div>
+              <input type="hidden" name="rut2" value="${rut}">
+            </td>
+          </tr>
+          <tr valign="top" align="center"> 
+            <td width="396" colspan="2" height="54"> 
+              <input type="button" name="Button" value="Buscar" onClick="ValidaB()">
+              <input type="reset" name="Submit4" value="limpiar">
+            </td>
+          </tr>
+        </form>
+      </table>
+    </td>
+    <td width="334" valign="top" height="418">&nbsp; </td>
+  </tr>
+</table>
+<div id="LayerGrabar" style="position:absolute; left:424px; top:6px; width:330px; height:283px; z-index:3; visibility: visible; background-color: #FFA400; layer-background-color: #FFA400; border: 1px none #000000"> 
+  <table width="329" border="0">
+    <form name=fgrabar method=post action=/servlet/MantenedorHojaVidaDF?graba=1>
+      <tr bgcolor="#FFCF75"> 
+        <td width="116" height="29" class="textB"> Tipo Observacion</td>
+        <td width="203" height="29" class="textB"> 
+          <select name="tipo" class="texto">
+            <list tiposobs as t> 
+            <option value="${t.tipo_obs}">${t.nombre}</option>
+            </list> 
+          </select>
+        </td>
+      </tr>
+      <tr> 
+        <td colspan="2" height="300"> 
+          <textarea name="obs" rows="18" cols="38"></textarea>
+        </td>
+      </tr>
+      <tr align="center"> 
+        <td height="22" colspan="2"> 
+          <input type="hidden" name="rut1">
+          <input type="button" name="Submit2" value="Grabar" onClick="ValidaG(); return false">
+          <input type="reset" name="Submit3" value="Limpiar">
+        </td>
+      </tr>
+    </form>
+  </table>
+</div>
+<div id="LayerObs" style="position:absolute; left:424px; top:6px; width:330px; height:283px; z-index:2; background-color: #FFA400; layer-background-color: #FFA400; border: 1px none #000000; visibility: visible"> 
+  <table width="329" border="0" bgcolor="#FFA400">
+    <tr bgcolor="#FFCF75"> 
+      <td width="321" height="29" class="textB" bgcolor="#FFCF75"> 
+        <div align="center">Observaciones</div>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top" height="300"> <list anotaciones as a> 
+        <div id="LayerDObs${a.Layer}" style="position:absolute; width:328px; height:283px; z-index:3; left: 2px; top: 33px; overflow: auto; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000; visibility: hidden"> 
+          <table width="892" border="0">
+            <tr> 
+              <td class="detal2" align="center" width="113" bgcolor="#FF6600">Fecha</td>
+              <td class="detal2" width="54" bgcolor="#FF6600">Tipo Observaci&oacute;n</td>
+              <td class="detal2" width="711" bgcolor="#FF6600">Observaci&oacute;n</td>
+            </tr>
+            <list a.varios as v> 
+            <tr bgcolor="#FFFFFF"> 
+              <td class="texto" align="center" width="113"><if v.tipo_obs=="2"><font color="#FF0000">${v.fecha}</font><else>${v.fecha}</if></td>
+              <td class="texto" width="54"><if v.tipo_obs=="2"><font color="#FF0000">${v.nombre}</font><else>${v.nombre}</if></td>
+              <td class="texto" width="711"><if v.tipo_obs=="2"><font color="#FF0000">${v.obs}</font><else>${v.obs}</if></td>
+            </tr>
+            </list> 
+          </table>
+        </div>
+        </list> </td>
+    </tr>
+    <tr align="center"> 
+      <td width="321" height="22"> <a href="#" onclick="MM_showHideLayers('LayerRut','','show','LayerGrabar','','show','LayerObs','','hide','LayerDObs${a.Layer}','','hide'); return false">Cerrar 
+        </a></td>
+    </tr>
+  </table>
+</div>
+<list anotaciones as a> </list> 
+</body>
+</html>

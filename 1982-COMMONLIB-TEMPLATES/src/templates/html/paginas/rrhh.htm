@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>${titulo}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link href="../view/libs/eje/font/roboto.css" rel="stylesheet" type="text/css">
+<link href="../view/libs/eje/style/autoservicio.css" rel="stylesheet" type="text/css">
+<link href="../view/libs/eje/style/color.css" rel="stylesheet" type="text/css">
+
+<!-- <link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css"> -->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language="JavaScript1.2">
+<!--
+function low(which2)
+{
+clearInterval();
+which2.filters.alpha.opacity=50;
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ${body}>
+<table width="800" align="center">
+	  <tr>
+	    	<td height="40" align="center" class="titulo_modulos">${titulo}</td>
+	  </tr>
+	  <tr>
+		    <td height="272" align="center">
+		    	<table cellspacing="7">
+		      		<tr>
+		      			<list lista as l>
+							<td align="center" valign="top" class="font12 bold">
+								${l.value}
+							</td>
+						</list>
+		        	</tr>
+		        </table>
+		   </td>
+	  </tr>
+</table>
+</body>
+</html>

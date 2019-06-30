@@ -1,0 +1,46 @@
+<style type="text/css">
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+.ra1listaCh {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #003366;
+}
+.ra1lista2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #000000;
+}
+-->
+</style>
+
+<assign colorfondo="#E1B500">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <if getEvalObtenida><list getEvalObtenida as a>
+  <tr align="left" valign="middle">
+    <td width="50%" class="ra1listaCh" >${a.competencia}&nbsp;</td>
+    <td width="50%" class="ra1lista">
+
+	<assign ponderacion_int = a.ponderacion_int>
+	<assign ponderacion= a.ponderacion_obt>
+    <assign porcentaje_ponderacion= a.porcentaje_ponderacion>
+
+	<table border="0" width="${porcentaje_ponderacion}%" align="left">
+    <tr><td bgcolor="${colorfondo}" class="ra1listaCh">&nbsp;</td></tr>
+    </table>
+    
+    <font color="#003366">${ponderacion}%</font>&nbsp;
+	
+	</td>
+  </tr>
+  </list></if>
+</table>
+

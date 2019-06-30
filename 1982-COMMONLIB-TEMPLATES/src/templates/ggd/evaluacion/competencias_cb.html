@@ -1,0 +1,37 @@
+<script language="JavaScript" type="text/JavaScript">
+function fnAccion(valor){
+	if (document.form1){
+		if (document.form1.txt_IdCompetencia){
+			document.form1.txt_IdCompetencia.value=valor;
+			document.form1.txt_Competencia.value=document.form1.cb_id_competencia.options[document.form1.cb_id_competencia.selectedIndex].text;
+			
+		}
+	}
+
+}
+</script>
+
+<style type="text/css">
+<!--
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #666666;
+	text-decoration: none;
+}
+
+-->
+</style>
+      <table width="100%" border="0">
+        <tr align="center" valign="top" >
+		  <td width="67%" height="14" align="left" class="texto">
+          <select name="cb_id_competencia" class="texto" id="cb_id_competencia" onChange="fnAccion(this.value);">
+		  <option value="-1" selected></option>
+		  <if getPerfilCompetencias><list getPerfilCompetencias as a>
+          <option value="${a.id_competencia}">${a.competencia}</option>
+		  </list></if>
+          </select>            
+		</td>
+        </tr>
+      </table>

@@ -1,0 +1,177 @@
+<assign p = txt_Perfil>
+<assign pr = txt_Proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut>
+<assign f = txt_Foto>
+
+<html>
+<head>
+<title>apreciacion.jpg</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/manejar_check.js" type="text/JavaScript"></script>
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #CCCCCC;
+}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+function setRut(rut,perfil,rut_img){
+	document.all.apreciacion_r2_c4.src='../servlet/Tool?images/images_ggd/fotos/'+rut_img;
+	document.form1.txt_Foto.value = '../servlet/Tool?images/images_ggd/fotos/'+rut_img;
+	document.form1.txt_Rut.value=rut;
+	document.form1.txt_Perfil.value=perfil;
+}
+
+function fnEnviar(){
+	document.form1.txt_BodyHtml.value=document.all.html1.innerHTML;
+	document.form1.txt_BodyHtm2.value=document.all.html2.innerHTML;
+	document.form1.txt_BodyHtm2a.value=document.all.html2a.innerHTML;
+	document.form1.txt_BodyHtm3.value=document.all.html3.innerHTML;
+	document.form1.txt_BodyHtm4.value=document.all.html4.innerHTML;			
+	document.form1.submit();
+}
+function fnAceptar(){
+	document.form1.txtAccion.value="";
+	document.form1.submit();
+}
+
+function fnInicio(){
+	<if f !="" && f!="0">
+	document.all.apreciacion_r2_c4.src='${f}';
+	document.form1.txt_Foto.value = '${f}';
+	<else>
+    document.all.apreciacion_r2_c4.src='../servlet/Tool?images/images_ggd/fotos/sinfoto.jpg';
+   	document.form1.txt_Foto.value = '../servlet/Tool?images/images_ggd/fotos/sinfoto.jpg';
+	</if>
+	document.form1.txt_Rut.value=${r};
+	document.form1.txt_Perfil.value=${p};
+	if (document.all.radiobutton){
+		var obj = checkgetObj(document.all.radiobutton, '${r}') 
+		if (obj != null)
+			obj.checked=true;
+	}
+
+}
+</script>
+</head>
+<body onLoad="MM_preloadImages('../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r4_c10_f2.jpg','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c6_f2.jpg','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c8_f2.jpg','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c10_f2.jpg');fnInicio();">
+<table border="0" cellpadding="0" cellspacing="0" width="780">
+<!-- fwtable fwsrc="apreciacion.png" fwbase="apreciacion.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+  <tr>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="20" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="215" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="18" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="68" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="199" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="80" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="5" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="80" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="5" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="67" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="13" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="10" height="1" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+
+  <tr>
+   <td colspan="2"><img name="apreciacion_r1_c1" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r1_c1.jpg" width="235" height="25" border="0" alt=""></td>
+   <td colspan="10"><img name="apreciacion_r1_c3" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r1_c3.jpg" width="545" height="25" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="25" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td rowspan="4" colspan="3"><img name="apreciacion_r2_c1" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r2_c1.jpg" width="253" height="130" border="0" alt=""></td>
+   <td><img name="apreciacion_r2_c4" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r2_c4.jpg" width="66" height="80" border="1" alt=""></td>
+   <td rowspan="2" colspan="8"><img name="apreciacion_r2_c5" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r2_c5.jpg" width="459" height="102" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="82" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td rowspan="3"><img name="apreciacion_r3_c4" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r3_c4.jpg" width="68" height="48" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="20" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td rowspan="2" colspan="5"><img name="apreciacion_r4_c5" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r4_c5.jpg" width="369" height="28" border="0" alt=""></td>
+   <td colspan="2"><a href="#" onClick="fnAceptar();return false;" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('apreciacion_r4_c10','','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r4_c10_f2.jpg',1);"><img name="apreciacion_r4_c10" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r4_c10.jpg" width="80" height="16" border="0" alt=""></a></td>
+   <td rowspan="2"><img name="apreciacion_r4_c12" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r4_c12.jpg" width="10" height="28" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td colspan="2"><img name="apreciacion_r5_c10" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r5_c10.jpg" width="80" height="12" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="12" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td rowspan="5"><img name="apreciacion_r6_c1" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r6_c1.jpg" width="20" height="260" border="0" alt=""></td>
+   <td colspan="9"><img name="apreciacion_r6_c2" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r6_c2.jpg" width="737" height="16" border="0" alt=""></td>
+   <td rowspan="3" colspan="2"><img name="apreciacion_r6_c11" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r6_c11.jpg" width="23" height="240" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td colspan="9" bgcolor="#666666">&nbsp;</td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="204" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td colspan="9"><img name="apreciacion_r8_c2" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r8_c2.jpg" width="737" height="20" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="20" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td rowspan="2" colspan="4"><img name="apreciacion_r9_c2" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c2.jpg" width="500" height="20" border="0" alt=""></td>
+   <td><a href="#" onClick="fnEnviar();return false;" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('apreciacion_r9_c6','','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c6_f2.jpg',1);"><img name="apreciacion_r9_c6" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c6.jpg" width="80" height="16" border="0" alt=""></a></td>
+   <td rowspan="2"><img name="apreciacion_r9_c7" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c7.jpg" width="5" height="20" border="0" alt=""></td>
+   <td><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('apreciacion_r9_c8','','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c8_f2.jpg',1);"><img name="apreciacion_r9_c8" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c8.jpg" width="80" height="16" border="0" alt=""></a></td>
+   <td rowspan="2"><img name="apreciacion_r9_c9" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c9.jpg" width="5" height="20" border="0" alt=""></td>
+   <td colspan="2"><a href="javascript:window.close()" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('apreciacion_r9_c10','','../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c10_f2.jpg',1);"><img name="apreciacion_r9_c10" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c10.jpg" width="80" height="16" border="0" alt=""></a></td>
+   <td rowspan="2"><img name="apreciacion_r9_c12" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r9_c12.jpg" width="10" height="20" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  <tr>
+   <td><img name="apreciacion_r10_c6" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r10_c6.jpg" width="80" height="4" border="0" alt=""></td>
+   <td><img name="apreciacion_r10_c8" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r10_c8.jpg" width="80" height="4" border="0" alt=""></td>
+   <td colspan="2"><img name="apreciacion_r10_c10" src="../servlet/Tool?images/images_ggd/apreciacion/apreciacion_r10_c10.jpg" width="80" height="4" border="0" alt=""></td>
+   <td><img src="../servlet/Tool?images/images_ggd/apreciacion/spacer.gif" width="1" height="4" border="0" alt=""></td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; width:434px; height:96px; z-index:2; left: 327px; top: 22px; overflow: auto;"><assign h = "evaluacion/lista_colab_sel_apr.html">${TM_Colab(h,re,"C")}</div>
+<div id="Layer3" style="position:absolute; left:17px; top:173px; width:739px; height:201px; z-index:3; overflow: auto;">
+
+<fieldset id="html1" style="border:0"><if Form.html1> ${Form.html1}<else><include "formulario1.html"></if></fieldset>
+<fieldset id="html2" style="border:0"><if Form.html2>${Form.html2}<else><include "formulario2.html"></if></fieldset>
+<fieldset id="html2a" style="border:0"><if Form.html2a>${Form.html2a}<else><include "formulario2a.html"></if></fieldset>
+<fieldset id="html3" style="border:0"><if Form.html3>${Form.html3}<else><include "formulario3.html"></if></fieldset>
+<fieldset id="html4" style="border:0"><if Form.html4>${Form.html4}<else><include "formulario4.html"></if></fieldset>
+</div>
+
+
+<div id="Layer1" style="position:absolute; width:211px; height:87px; z-index:1; left: 15px; top: 26px; overflow: auto;"> <font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">&middot; Se solicita su opini&oacute;n
+    sobre el Potencial de Desarrollo observado en sus colaboradores. <br>
+&middot; La informaci&oacute;n que usted proporcione ser&aacute; analizada por
+la Gerencia de Desarrollo de Personas, a fin de orientar el desarrollo de carrera
+de los colaboradores del Bci. <br>
+&middot; Seleccione el colaborador sobre el que dar&aacute; su apreciaci&oacute;n y conteste las preguntas que se encuantran a continuaci&oacute;n: </font></div>
+
+<form name="form1" method="post" action="../servlet/Apreciacion">
+<input name="txt_BodyHtml" type="hidden" id="txt_BodyHtml">
+<input name="txt_BodyHtm2" type="hidden" id="txt_BodyHtm2">
+<input name="txt_BodyHtm2a" type="hidden" id="txt_BodyHtm2a">
+<input name="txt_BodyHtm3" type="hidden" id="txt_BodyHtm3">
+<input name="txt_BodyHtm4" type="hidden" id="txt_BodyHtm4">
+
+<input name="txtAccion" type="hidden" id="txtAccion" value="GR">
+<input name="txt_Rut" type="hidden" id="txt_Rut" value="${r}">
+<input name="txt_Perfil" type="hidden" id="txt_Perfil" value="${p}">  
+<input name="txt_Foto" type="hidden" id="txt_Foto" value="">  
+<input type="hidden" name="txt_RutEvaluador" value="${re}">
+</form>
+</body>
+</html>

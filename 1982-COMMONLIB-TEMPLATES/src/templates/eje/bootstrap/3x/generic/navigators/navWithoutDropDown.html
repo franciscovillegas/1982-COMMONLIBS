@@ -1,0 +1,31 @@
+<script type="text/javascript">
+ $(function() {
+	 $('a').tooltip({
+		    'delay': { show: 500, hide: 500 }
+		});
+ });
+
+ 
+</script>
+
+<list grupos as b>
+	<h3>${b.nombre}</h3>
+      		<assign size = b.size >
+    <div class="sidebar-box"> 
+	            <ul class="list-links">
+			      		<if size=="1">
+			      				 <list b.subgrupos as a>
+				      				 	 ${GetHtml("eje/bootstrap/3x/generic/buttons/buttonLink.html")}
+								</list>
+			      		<else>
+				      		
+			 
+						           <list b.subgrupos as a>
+						           		${GetHtml("eje/bootstrap/3x/generic/buttons/buttonLink.html")}
+						           </list>
+						          
+				      		
+			      		</if>
+			      </ul>
+	 </div>
+      	</list>

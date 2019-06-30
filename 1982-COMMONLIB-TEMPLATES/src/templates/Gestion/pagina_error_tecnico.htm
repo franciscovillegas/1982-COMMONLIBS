@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Mensaje</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+function Volver() {
+   self.location.href="/servlet/LeeHtml?ruta=/templates/Proveedor/ingreso.htm";
+}
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<form method="post" action="/servlet/VerLicitaciones" target=main>
+ <table width="50%" align="center" class="texto_negro_bold">
+          <tr> 
+            <td height="2" align="center">Problemas T&#233;cnicos</td>
+          </tr>
+          <tr> 
+            <td height="88" align="center">Estos impiden el correcto funcionamiento del sistema.<br>
+            Intente su ingreso m&#225;s tarde.</td>
+          </tr>
+          <tr align="center"> 
+            <td height="9" align="center"><a href="javascript:window.history.back();">Volver</a></td>
+          </tr>
+  </table> 
+</form>
+</body>
+</html>

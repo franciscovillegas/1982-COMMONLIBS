@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<title>Arbol Mantener Unidades</title>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/msgprocesando.js">
+</script>
+<script language='JavaScript'>
+function Ejecuta(idEmp,idUni,nombre, tipo){
+	//alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else if (tipo == "E"){
+		document.form1.empresa.value=idUni;
+		document.form1.unidad.value="0";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		NoSeleccionarNodo();
+	}
+}
+function Envia(modo) {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	var response;
+	if (unid!=''){
+		var seguir = true;
+		if (unid == "0") {
+			if (modo == 2) {
+				seguir = false;
+				alert("No puede quitar la empresa '" + desc + "'.");
+			}
+			else if (modo == 3) {
+				seguir = false;
+				alert("No puede modificar la empresa '" + desc + "'.");
+			}
+		}
+		if (seguir) {
+			if (modo=="2") {
+				response = window.confirm("Esta seguro que desea eliminar la unidad seleccionada?");
+				if (response) {
+					document.form1.modo.value=modo;
+					document.form1.submit();
+				}
+			}
+			document.form1.modo.value=modo;
+			document.form1.submit();
+			//VerContFormm(document.form1);
+			//alert("action:"+document.form1.action+" unidad:"+document.form1.unidad.value+" descrip:"+document.form1.descrip.value);
+		}
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+function Mover(){
+	opener.location.href="../servlet/MoverUnidades?grabar=0&unidad="+opener.document.all.id_hijo_uni.value+"&desc_unidad="+opener.document.all.desc_hijo_uni.value+"&empresa="+opener.document.all.id_hijo_emp.value+"&unidad_padre="+document.all.unidad.value+"&desc_uni_padre="+document.all.descrip.value+"&empresa_padre="+document.all.empresa.value;	 
+	window.close();
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+</HEAD>
+<body>
+<form name="form1" method="post" action="../servlet/ManUnidades" target='folderFrame'>
+   <input type='hidden' name='unidad'>
+  <input type='hidden' name='empresa'>
+  <input type='hidden' name='descrip'>
+  <input type='hidden' name='modo' value=>
+</form>
+<div class="layer_util" id='Layer1' style='position:absolute; width:311px; height:313px; z-index:1;; left: 11px; top: 30px; overflow: auto'> 
+<if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, empresa)}</if> </div>
+<div id="Layer2" style="position:absolute; left:27px; top:9px; width:270px; height:17px; z-index:2"> 
+  <div align="center" class="negro12B">Seleccionar Unidad</div>
+</div>
+<div id="Layer3" style="position:absolute; left:41px; top:347px; width:241px; height:20px; z-index:3"> 
+  <div align="center"><a href="#" onClick="Mover();return false;"><img src="../servlet/Tool?images/Gestion/botones/seleccionar.gif" width="120" height="24" border="0"></a></div>
+</div>
+</body>
+</HTML>

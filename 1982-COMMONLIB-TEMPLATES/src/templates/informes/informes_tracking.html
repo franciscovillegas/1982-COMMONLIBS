@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Informe de Tracking</title>
+		<link href="../servlet/Tool?style/jquerydatatable/demo_page.css" rel="stylesheet" type="text/css"></link>
+		<link href="../servlet/Tool?style/jquerydatatable/demo_table.css" rel="stylesheet" type="text/css"></link>
+		<link href="../servlet/Tool?style/jquerydatatable/header.ccss.css" rel="stylesheet" type="text/css"></link>
+		<script type="text/javascript" src="../servlet/Tool?scripts/imagesFuncs.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.3.2.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/jquerydatatable/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/modal/modal.js"></script>
+		
+		<script type="text/javascript">
+				$(document).ready(function(){
+					loadTableTracking();
+				});
+		
+				function loadTableTracking() {
+					$("#contenedorTable").html("<table cellpadding='0' cellspacing='0' border='0' class='display' id='example' ></table>");
+					
+					"fecha", "descripcion", "rut", "dig", "nombres", "ape_paterno", "ape_materno"
+					$('#example').dataTable({
+					    "bPaginate": true,
+						"aaData": ${dataTracking},
+						"aoColumns": [
+							{ "sTitle": "Fecha" 		,  "bVisible": true, "sClass" : "textoGrande" },
+							{ "sTitle": "Hora" 			,  "bVisible": true, "sClass" : "textoGrande" },
+							{ "sTitle": "Descripci&oacute;n"	,  "bVisible": true, "sClass" : "textoGrande" },
+							{ "sTitle": "Rut" 			,  "bVisible": true, "sClass" : "textoGrande",
+																						"fnRender": 
+																							function(obj) {
+																								var sReturn = obj.aData[3]+"-"+obj.aData[4];
+																								return sReturn;
+																							}},
+							{ "sTitle": "Dig" 			,  "bVisible": false, "sClass" : "textoGrande" },
+							{ "sTitle": "Nombres"		,  "bVisible": true, "sClass" : "textoGrande" },
+							{ "sTitle": "A. Paterno" 	,  "bVisible": true, "sClass" : "textoGrande" },
+							{ "sTitle": "A. Materno" 	,  "bVisible": true, "sClass" : "textoGrande" }
+									]
+							});	
+				}
+		
+		
+		
+		</script>
+		
+		<style type="text/css">
+			.textoGrande {
+				font-size: 10px;
+				font-family:arial; 
+				font-weight: bold;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="contenedorTable">
+		
+		</div>
+	</body>
+</html>

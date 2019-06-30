@@ -1,0 +1,92 @@
+ <html>
+<head>
+<title>Datos Personales Responsable de la Unidad</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:254px;
+	top:242px;
+	width:116px;
+	height:10px;
+	z-index:1;
+}
+-->
+</Style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersBeige/fondo.jpg" style="background-repeat:no-repeat">
+<div id="Layer1"><a href="javascript:;" onClick="window.close()"><img name="Image_cerrar" border="0" src="../servlet/Tool?images/Gestion/botones/cerrar.gif" width="120" height="24"></a></div>
+<table width="380" height="295" class="texto_negro">
+  <tr> 
+    <td height="10" align="center" class="texto_negro_bold"><if (tipo=="2")>Candidato a Responsable al Periodo ${peri_palabras} 
+    <else> Responsable de Unidad al Periodo ${peri_palabras}</if></td>
+  </tr>
+  <tr> 
+    <td height="10">${unid_desc}</td>
+  </tr>
+  <tr> 
+    <td height="239" valign="top"> 
+	<if (tiene)> 
+	
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr> 
+          <td width="20%" height="97" align="center" valign="top"> 
+            <img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+          <td width="80%" height="97" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+              <tr> 
+                <td height="19" class="tabla_beige">${nombre}</td>
+              </tr>
+              <tr> 
+                <td height="17" class="tabla_beige">${cargo}</td>
+              </tr>
+              <tr> 
+                <td height="17" class="tabla_beige"><a href="javascript:;" onClick="return VerFonosRut('${rut}')" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">[Anexo]</a><!--<if (ver.anexo)><a href="javascript:;" onClick="return buscarAnexoRut('${rut}')" title="Informaci&oacute;n de Anexo">${anexo}</a><else>${anexo}</if>--></td>
+              </tr>
+              <tr> 
+                <td height="17" class="tabla_beige">E-Mail <a href="mailto:${e_mail}">${e_mail}</a></td>
+              </tr>
+              <tr>
+                <td height="17" class="tabla_beige">Dotaci&oacute;n de ${dotacion} personas 
+                <if (VDD)><a href="javascript:;" onClick="return verDetDotacion('${unid_id}', '${empresa}')">Detalle</a> </if></td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td colspan="2">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+              <tr>
+                <td class="tabla_beige">Misi&oacute;n:</td>
+              </tr>
+              <tr>
+                <td height="70" valign="top" class="tabla_negro"><if (mision)>${mision}<else>No asignada.</if></span></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <else>Esta unidad no tiene un responsable asignado 
+        en este periodo...
+      </if> 
+    </td>
+  </tr>
+</table>
+</body>
+</html>

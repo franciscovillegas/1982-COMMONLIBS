@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>PORTAL AUTOSERVICIO RECURSOS HUMANOS</title>
+	<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet"  type="text/css" />
+	<link href="../servlet/Tool?style/login.css"      rel="stylesheet"  type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="../servlet/Tool?style/jqueryalerts/jquery.alerts.css"/>
+	<link href="../servlet/Tool?style/prettyPhoto.css"  rel="stylesheet"  type="text/css"/>
+	<!--SCRIPT DE PORTAL-->
+
+    <script src="../servlet/Tool?scripts/jquery-1.8.3.min.js" 	 type="text/javascript"></script>
+    <script src="../servlet/Tool?scripts/login.js" 		 		 type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/lib/valida_rut.js" 	 type="text/JavaScript"></script>
+	<script src="../servlet/Tool?scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/jqueryprettyPhoto/jquery.prettyPhoto.js" 	 type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/jqueryxml2json/jquery.xml2json.js" 		 type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/jqueryalerts/jquery.alerts.js" type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/jquerymobiledetect/mobileTool.js" type="text/javascript"></script>
+	<script src="../servlet/Tool?scripts/zonaUtil.js" 		 type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		trackea("${googleAnalytics}");
+		if('${GetProp("portal.mobile.activated")}' == "true") {
+			if(jQuery.browser.mobile) {
+				parent.window.location="../../movil";
+			}
+		}
+	</script>
+</head>
+<body leftmargin="0" topmargin="0">
+	<div id="contenedor_login">
+		
+		<div id="contenedor_principal">
+			<div id="login" style="background-image: url(../servlet/Tool?images/new/login_cod/INDEX.png);">
+	        	<div class="login_campos">
+	        	   
+					<form action="../servlet/StartSession" method="post" name="form1">
+						<input id="param" type="hidden" value="true" name="param" />
+						<input type="hidden" name="passline_enc" value="${passlineValueEncoded}"/>
+						
+			            <div id="fila_campos1">
+			                <div id="campo_rut"><input class=campo_texto id=rut  style="WIDTH: 100%; height:100%;" tabindex=1 maxlength=9 name=rut value=''></div> 
+			                <div id="campo_verificador"><input class=campo_texto id=dig style="WIDTH:15px; height:100%"; tabindex=2 maxlength=1 size=1 name=dig value=''></div>
+				     	 </div>
+			            <div id="fila_campos2">
+			            	<div id="clave">
+			            		<input name="clave" type="password" class="campo_texto" id="clave" style="margin-top: 2px; margin-left: 0px; WIDTH: 100%; height:15px;" maxlength="14">
+			            		<input id=htm3 type=hidden value="../servlet/Tool?htm=user/usuario_frame.html" name="htm">
+			            	</div>
+				      	</div>
+				      	<div id="fila_campos3">
+		                	<div id="validacion"><input type="text" name="passline" class="campo_texto" style="WIDTH: 100%; height:20px; margin-left: 0px; margin-top:0px;" maxlength="4"></div>
+		                	<div id="captcha"><img  src="PassImageServlet/${passlineValueEncoded}" width="128" height="32" border="0" class="texto"></div>
+				      	</div>
+				      	<div id="olvido_clave" style="width: 220px;margin-left: 20px">&iquest; <a href="javascript:;" onclick="recuperaClave();" style="color: white;">Ha olvidado su clave o no la conoce?</a></div>
+			            <div id="contenedor_botones">
+					        <div id="entrar"><a href="javascript:;" onClick="return loginIngresoMismaVentana(document.form1)"><img src="../servlet/Tool?images/new/login_cod/entrar.png"/></a></div>
+					  		<div id="cancelar"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/new/login_cod/salir.png"/></a></div>
+				    	</div>
+					</form>
+	            </div>
+			</div>
+			
+		
+			<div id="main">
+				<div align="center"  class="Estilo2" ><b>${msgRespuesta}</b></div>
+				<div align="center"  class="Estilo2" style="padding-top: 50px;" >Copyright &copy; Todos los Derechos Reservados</div>
+			</div>
+			 
+		</div>
+	</div>
+</body>
+</html>

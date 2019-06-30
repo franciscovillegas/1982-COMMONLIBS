@@ -1,0 +1,7 @@
+document.write('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="595" height="109">')
+    document.write('<param name="movie" value="../flash/top.swf">')
+    document.write('<param name="quality" value="high">')
+    document.write('<param name="wmode" value="transparent">')
+    document.write('<param name="menu" value="false">')
+    document.write('<embed src="../flash/top.swf" width="595" height="109" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" menu="false"></embed>')
+  document.write('</object>')

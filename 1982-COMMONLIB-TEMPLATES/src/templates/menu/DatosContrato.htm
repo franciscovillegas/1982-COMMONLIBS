@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Perfil Laboral</title>
+
+<!-- tool FUNCTION -->
+
+<!-- JQUERY  -->
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+
+<!-- PAGINA -->
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/style.css"/>
+
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css"/>
+
+</head>
+
+<body>
+
+	<div class="divCarpetaElectronica">
+
+		<table class="macTableStyle1">
+			<tr>
+
+					<th><header>Datos Contractuales</header></th>
+ 
+			</tr>
+		    <tr>
+		    	<td>
+			    	<div id="divDatosPersonales">
+			    		<table id="tblContenidos">
+			    			<tr>
+	                        	<td rowspan="11">
+	                        		<!--
+	                                <table >
+	                                    <tr>
+	                                         <td align="center"><img src="../temporal/imgtrabajadores/${ir.rut}.jpg" width="62" height="81" onerror="existeFoto(this)" border="1"></td> 
+	                                    </tr>
+	                                    <tr>
+	                                        <td align="center" class="texto_negro_bold_chico">${rut2}</td>
+	                                    </tr>
+	                                </table>
+	                                -->
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="4">
+	                        		<table style="width: 100%;" >
+		                        		<tr>
+		                                    <td class="textoImportante">${nombre}</td>
+		                                </tr>
+		                                <tr>
+		                                  <td class="textoImportante2">Cargo:${cargo}</td>
+		                                </tr>  
+	                        		</table>
+	                            </td>
+	                        </tr>
+	                        <tr>
+					            <td ><strong>Sueldo Base Convenido</strong></td>
+					            <td >: ${moneda_renta}${renta}</td>
+					            <td ><strong>Tipo Contrato</strong></td>
+					            <td >: ${tipo_contrato}</td>
+					          </tr>
+					          <tr>
+					            <td ><strong>Fecha Reconocimiento Antig&uuml;edad</strong></td>
+					            <td >: ${ingre_corp}</td>
+					            <td ><strong>Fin Contrato</strong></td>
+					            <td >: ${termino}</td>
+					          </tr>
+					          <tr>
+					            <td ><strong>Fecha de Ingreso</strong></td>
+					            <td >: ${fec_ingreso}</td>
+					            <td ><strong>A&ntilde;os de antig&#252;edad</strong></td>
+					            <td >: ${xcorp}</td>
+					          </tr>
+					          <tr>
+					            <td ><strong>Seguro Cesant&iacute;a</strong></td>
+					            <td >: <if (segdes) == "S">Si<else>No</if></td>
+					            <td ><strong>Ingreso Seguro Cesant&iacute;a</strong></td>
+					            <td >: <if (segdes) == "S">${fec_segdes}<else>n.a.</if></td>
+					          </tr>
+					          <tr>
+					            <td ><strong>Seguro Salud Comp.</strong></td>
+					            <td >: <if (segsalcom) == "S">Si<else>No</if></td>
+					            <td ><strong>Jornada</strong></td>
+					            <td >: ${ir.jornada}</td>
+					          </tr>
+					          <tr>
+					            <td ></td>
+					            <td ></td>
+					            <td ></td>
+					            <td ></td>
+					          </tr>
+					
+					          <tr>
+								<td colspan="4" align="center">
+					          	<table width="95%">
+					          		<tr>
+					          			<td colspan="2"><div class="unidadOrg">${nom_empresa}</div></td>
+					          		</tr>
+					          		<tr>
+					          			<td><div class="unidadOrg">(${id_cco}) ${cco}</div></td>
+					          			<td><div class="unidadOrg">(${id_unidad}) ${unidad}</div></td>
+					          		</tr>
+					          	</table>				
+								</td>
+					          </tr>
+			    		</table>
+					</div>	    	
+		    	</td>
+		    </tr>     	
+		</table>
+	</div>
+
+</body>
+</html>

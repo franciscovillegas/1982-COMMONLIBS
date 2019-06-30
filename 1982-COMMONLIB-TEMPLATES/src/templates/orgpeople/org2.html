@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Organigrama Gerencia de Recursos Humanos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+-->
+</style>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFotoOrg.js">
+</script>
+<style type="text/css">
+<!--
+table {
+	border: 1px solid #006699;
+}
+-->
+</style>
+</head>
+
+<body  background="Tool?htm=html/orgpeople/main.jpg"leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<function muestra (list)>
+
+
+			
+				
+	<table width="100%" border="0" cellpadding="1" cellspacing="1">
+      <tr>
+	  <list list as m>
+        <td valign="top" align="center">
+		<if (m.strNiv=="0") || (m.strNiv=="1")>
+			<table width="265" height="97" border="0" cellpadding="2" cellspacing="2">
+			  <tr>
+				<td width="172" height="56" align="center"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>${m.strNom} <br>
+${m.strAP} ${m.strAm}</strong><br>
+${m.strRut} <br>
+<strong>${m.strRol}</strong><br>
+${m.strUnidad}</font></td>
+				<td width="91" height="56" align="center"><a href="#" onClick="return openInfoRut('${m.strRutId}');"><img onError="existeFoto('${httpFoto}',this);" src="${httpFoto}Trabajadores/${m.strFoto}" width="77" height="91" border="1"  ></a></td>
+			  </tr>
+	      </table>					
+		    	      <else>
+			<table width="48" height="58" border="0" cellpadding="0" cellspacing="0">			
+			  <tr>
+				<td width="46" height="56" align="center"><a href="#" onClick="return openInfoRut('${m.strRutId}');"><img onError="existeFoto('${httpFoto}',this);" src="${httpFoto}Trabajadores/${m.strFoto}" width="44" height="54" border="1" alt="${m.strNom} ${m.strAP} ${m.strAm}" ></a></td>
+			  </tr>
+		  </table>		
+		</if>  
+			<call muestra(m.list)>
+		</td>
+		
+	  </list>
+      </tr>
+</table>
+</function>
+<br>
+<br>
+<br>
+
+	<table width="200" height="200" border="0" align="center" cellpadding="1" cellspacing="1">
+        <tr> 
+          <td width="5" height="5" valign="bottom">&nbsp;</td>
+          <td width="186"></td>
+          <td width="5" valign="bottom">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td height="189" ></td>
+          <td> <call muestra(list)> </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td valign="top">&nbsp;</td>
+          <td height="5"></td>
+          <td valign="top">&nbsp;</td>
+        </tr>
+</table>
+</body>
+</html>

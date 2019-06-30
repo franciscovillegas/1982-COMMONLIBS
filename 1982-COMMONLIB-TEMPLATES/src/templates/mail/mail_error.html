@@ -1,0 +1,80 @@
+<script>
+function emailvacio()
+{
+if(inserta.Mail.value == "")
+{
+  alert("Para contactarse debe ingresar su E-Mail");
+  inserta.Mail.focus();
+
+}
+else
+	 if (inserta.Mail.value.indexOf("@") == -1 || inserta.Mail.value.indexOf(".") == -1 || inserta.Mail.value.indexOf(";") > -1 || inserta.Mail.value.indexOf(",") > -1 || inserta.Mail.value.indexOf(":") > -1)
+	 {
+ 	 
+	 alert( "Por favor ingresa una direcci&#243;n de email v&#225;lida!")
+ 	 inserta.Mail.focus(); 
+	 } 
+ 	 else
+	 {
+	   	     document.forms.inserta.submit();
+
+	 }
+
+}
+
+</script>
+<title>Error E_Mail</title>
+
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<body background="../servlet/Tool?images/new/main/main_solo.jpg" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/new/botones/volver_f2.gif')">
+<table width="658">
+  <tr>
+    <td width="650" height="40" align="center"><img src="../servlet/Tool?images/new/titulos/enviarmail.jpg" width="436" height="29"></td>
+  </tr>
+  <tr>
+    <td height="101" align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Su Correo no ha sido enviado, Ud no posee una Cuenta de E-Mail v&aacute;lida</strong></font></td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="../servlet/Tool?htm=mail/mail.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image141','','../servlet/Tool?images/new/botones/volver_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/volver.gif" name="Image141" width="91" height="21" border="0" id="Image141"></a></td>
+  </tr>
+</table>
+</body>
+</html>

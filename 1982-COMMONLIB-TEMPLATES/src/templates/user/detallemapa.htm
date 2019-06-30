@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>mapa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Mon Jun 03 07:23:23 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+function colaborador(empresa,unidad){
+
+	//document.location.href="../servlet/S_Region_Unidades?region=13&empresa="+empresa+"&unidad="+unidad;
+	//document.iframe1.src="http://www.chiloe.com";
+	parent.mainFrame.iframe1.document.location = "../servlet/S_Empleados?empresa="+empresa+"&unidad="+unidad;
+//		alert(document.iframe1.SRC);
+	//alert(document.iframe1.src);
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#FFCCFF" background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<table width="500" height="330" border="0" cellpadding="0" cellspacing="0">
+  <!-- fwtable fwsrc="Untitled" fwbase="mapa.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr> 
+    <td width="262" rowspan="2" valign="top"> <div id="Layer3" style="position:absolute; width:482px; height:39px; z-index:1; left: 10px; top: 363px;; visibility: visible"> 
+        <div id="Layer4" style="position:absolute; width:67px; height:50px; z-index:1; left: 81px; top: 8px;; visibility: visible"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="detalleTabla">
+            <tr> 
+              <td class="detalleTabla">${uni}</td>
+            </tr>
+            <tr> 
+              <td class="detalleTabla">${emp}</td>
+            </tr>
+            <tr> 
+              <td class="detalleTabla">${cos}</td>
+            </tr>
+          </table>
+        </div>
+        <img name="mapa_r4_c3" src="../servlet/Tool?images/mapa/mapa_r4_c3.jpg" width="155" height="54" border="0"></div>
+      
+    </td>
+    <td width="238" height="31" colspan="9" valign="top" background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg"> 
+      
+    </td>
+  </tr>
+  <tr> 
+    <td height="299" colspan="9" valign="top" background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg">
+	<iframe id="Layer1" name="iframe1" top="50" width="100%" height="100%" z-index="1" SRC="" bgcolor="#993333"></iframe> </td>
+  </tr>
+</table>
+<div id="Layer7" style="position:absolute; width:214px; height:225px; z-index:2; left: 35px; top: 19px; overflow: auto; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000;; visibility: visible"> 
+  <table width="100%" border="0">
+    <list unidades as u> 
+    <tr> 
+      <td class=""><a href="javascript:colaborador('${u.uni_empresa}','${u.uni_id}')" class="letramc">${u.unidad}</a></td>
+    </tr>
+    </list> 
+  </table>
+</div>
+<p class="letramc">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

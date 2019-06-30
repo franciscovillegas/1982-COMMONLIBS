@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="D">
+
+<table width="100%">
+<tr><td colspan="8"><br><br></td></tr>
+<tr><td colspan="8" align="center" class="tabla_beige"><h3>INFORME TOTAL HABERES :: DOTACION ${nomUnidad}</h3></td></tr>
+<if lunidades>
+<list lunidades as u>
+<if u.mensaje>
+<else>
+<tr><td colspan="8">
+<table width="100%"><tr>
+<td class="tabla_beige" width="20%">C&#243;digo Unidad : ${u.uid}</td>
+<td class="tabla_beige" width="80%">Nombre Unidad : ${u.udesc}</td>
+</tr></table>
+</td></tr>
+<tr><td class="textoInforme" align="center">R.u.t</td><td class="textoInforme" align="center">Nombre</td><td class="textoInforme" align="center">Cod.Cargo</td><td class="textoInforme" align="center">Desc.Cargo</td><td class="textoInforme" align="center">Fec.Ingreso</td><td class="textoInforme" align="center">Fec.T&#233;rmino Contrato</td><td colspan="2" class="textoInforme" align="center">Haberes</td></tr>
+<list u.lpersona as p>
+<tr><td class="textoInforme">${p.rut}-${p.digito}</td><td class="textoInforme">${p.nombre}</td><td class="textoInforme" align="center">${p.ccargo}</td><td class="textoInforme">${p.dcargo}</td><td class="textoInforme" align="center">${p.fecing}</td><td class="textoInforme" align="center">${p.fecter}</td><td class="textoInforme" align="right">$ </td><td class="textoInforme" align="right">${p.haberes}</td></tr>
+</list>
+<tr><td colspan="8">
+<table width="100%">
+<tr>
+<td class="textoInforme" align="right">Nro.Trabajadores Contrato Indefinido</td><td class="textoInforme">: ${u.tpersonasCI}</td>
+<td class="textoInforme" align="right">Nro.Trabajadores Plazo Fijo</td><td class="textoInforme">: ${u.tpersonasCF}</td>
+<td class="textoInforme" align="right">Total Trabajadores</td><td class="textoInforme">: ${u.tpersonasU}</td>
+<td class="textoInforme" align="right">Total Haberes Unidad</td><td class="textoInforme">: $ ${u.thaberes}</td>
+</tr>
+</table>
+</td></tr>
+</if>
+</list>
+<tr><td class="textoInforme" colspan="8">&nbsp;</td></tr>
+
+<tr><td colspan="8">
+<table width="100%">
+<tr>
+<td class="tabla_nara" align="center"><b>Nro.Trabajadores Contrato Indefinido Area :<br> ${tpersonasCIA}</b></td>
+<td class="tabla_nara" align="center"><b>Nro.Trabajadores Plazo Fijo Area :<br> ${tpersonasCFA}</b></td>
+<td class="tabla_nara" align="center"><b>Total Trabajadores Area :<br> ${tpersonasA}</b></td>
+<td class="tabla_nara" align="center"><b>Total Haberes Area :<br> $ ${thaberesarea}</b></td>
+</tr>
+</table>
+</td></tr>
+
+</if>
+
+</table>
+</form>
+</BODY>
+</HTML>

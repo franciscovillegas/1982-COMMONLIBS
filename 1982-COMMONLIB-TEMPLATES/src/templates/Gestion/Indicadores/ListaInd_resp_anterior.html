@@ -1,0 +1,398 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+function exec(){
+	document.item.periodo.value=document.all.ano.value + document.all.mes.value
+   //alert(document.item.periodo.value);
+	document.item.submit();
+	return true;
+}
+
+function Buscar(este) {
+//alert(este);
+
+	este.peri.value=document.all.ano.value + document.all.mes.value;
+	este.submit();
+	return true;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+
+function OcultarLayer(){
+<list lista_ind as a> 
+	<if a.detallebae>
+	<list a.detallebae as b>
+			MM_showHideLayers('Layer${b.item}','','hide')
+	</list>
+	</if>
+	<if a.detallexxi>
+	<list a.detallexxi as b>
+			MM_showHideLayers('Layer${b.item}','','hide')
+	</list>
+	</if>
+	<if a.detalledf>
+	<list a.detalledf as b>
+			MM_showHideLayers('Layer${b.item}','','hide')
+	</list>
+	</if>
+</list> 
+
+
+}
+
+</script>
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal}
+.detal {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF}
+.detalN { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #FFFFFF }
+a.click {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000066; text-decoration: underline overline}
+-->
+</Style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table border="0" cellspacing="3" cellpadding="0" bgcolor="#FFA400" width="644" height="359">
+  <tr bgcolor="#FFCF75"> 
+    <td height="13" bgcolor="#FFCF75"> 
+      <div align="center"><a href="#" onClick="exec();return false" class="textB">Buscar 
+        Selecci&oacute;n</a> <span class="textB"> Mes</span> 
+        <select name="mes" class="texto">
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <span class="textB">A&ntilde;o</span> 
+        <select name="ano" class="texto">
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+          <option value="1999">1999</option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="517" valign="top" height="212">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top">
+      <table width="100%" border="0" height="109" bgcolor="#44406A">
+        <tr>
+          <td align="center" valign="middle" class="detal">Informaci&oacute;n 
+            del Indicador</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div id="Layer2" style="position:absolute; left:19px; top:50px; width:623px; height:200px; z-index:3; overflow: auto; visibility: visible"> 
+  <table width="100%" border="1" bordercolor="#666666">
+    <tr align="center" bgcolor="#999999"> 
+      <td width="8%" class="textB" bgcolor="#FFCF75">Selecci&oacute;n</td>
+      <td width="31%" class="textB" bgcolor="#FFCF75">Nombre del Indicador</td>
+      <td width="20%" class="textB" bgcolor="#FFCF75">Banco</td>
+      <td width="20%" class="textB" bgcolor="#FFCF75">XXI</td>
+      <td width="21%" class="textB" bgcolor="#FFCF75">Manager</td>
+    </tr>
+    <form name="item" method="post" action="/servlet/datafolder.indicadores.ResultadoInd">
+    <list lista_ind as a> 
+    <tr bgcolor="#FFFFFF"> 
+       <td width="8%" align="center" class="texto"> 
+	<if  (a.detalled)>
+	   <input type="checkbox" name="item${a.valoritem}" value="checkbox" checked>
+	<else>
+	   <input type="checkbox" name="item${a.valoritem}" value="checkbox">
+	</if>
+       </td>
+       <td width="31%" align="left" class="texto">${a.glosa}</td>
+
+	<if a.detallebae>
+	    <td width="20%" align="left" class="texto"> <list a.detallebae as b> <a href="#" onClick="OcultarLayer();MM_showHideLayers('Layer${b.item}','','show')" class="click">${b.quetramo}</a><br>
+    ${b.valor}<br>
+	<img src="/images/DataFolder/semaforo/${b.semaforo}">
+	</list>
+	</td>
+	<else>
+	   <td width="20%" align="left" class="texto">&nbsp;</td>
+	</if>
+	
+	<if a.detallexxi>
+	    <td width="20%" align="left" class="texto"> <list a.detallexxi as b> <a href="#" onClick="OcultarLayer();MM_showHideLayers('Layer${b.item}','','show')" class="click">${b.quetramo}</a><br>
+    ${b.valor}<br>
+	<img src="/images/DataFolder/semaforo/${b.semaforo}">
+	</list>
+	</td>
+	<else>
+	   <td width="20%" align="left" class="texto">&nbsp;</td>
+	</if>
+	
+	<if a.detalledf>
+	<td width="20%" align="left" class="texto">		
+	<list a.detalledf as b>
+    ${b.quetramo}<br>
+    ${b.valor}<br>
+	<img src="/images/DataFolder/semaforo/${b.semaforo}">
+	</list>
+	</td>
+	<else>
+	   <td width="20%" align="left" class="texto">&nbsp;</td>
+	</if>
+
+    </tr>
+   </list> 
+<input type="hidden" name="periodo">
+  </form>
+  </table>
+</div>
+
+
+
+
+
+
+<list lista_ind as a> <if a.detallebae> <list a.detallebae as b> 
+<div id="Layer${b.item}" style="position:absolute; left:18px; top:260px; width:623px; height:100px; z-index:2; visibility: hidden; background-color: #44406A; layer-background-color: #44406A; border: 1px none #000000; overflow: auto"> 
+  <table width="100%" border="0" height="109">
+    <tr> 
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td class="detal">${b.desc_item}</td>
+          </tr>
+          <tr> 
+            <td class="detal" height="13">${b.glosa}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Valor : ${b.valor}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Tramo Inf. : ${tinf}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Med. : ${tmed}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Sup. : ${tsup}</td>
+          </tr>
+          <tr> 
+            <td class="detal">${b.desctramo}</td>
+          </tr>
+        </table>
+      </td>
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td width="50%" align="center" class="detal" height="25">Seleccione 
+              Estado del Indicador</td>
+          </tr>
+          <tr> 
+            <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+              <td width="50%"  align="center" valign="middle" class="detal" height="29"> 
+                Rojo 
+                <input type="checkbox" name="semaforor" value="R">
+                Amarillo 
+                <input type="checkbox" name="semaforoa" value="A">
+                Verde 
+                <input type="checkbox" name="semafororv" value="V">
+                <input type="hidden" name="peri">
+                <input type="hidden" name="unidad" value="${b.unidad}">
+                <input type="hidden" name="item" value="${b.item}">
+                <input type="submit" name="Submit" value="Buscar">
+              </td>
+            </form>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" align="center" height="14">Formula</td>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" height="17" align="center">${b.formula}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+      </form>
+    </tr>
+    <tr> </tr>
+    <tr> </tr>
+  </table>
+</div>
+</list> </if> <if a.detallexxi> <list a.detallexxi as b> 
+<div id="Layer${b.item}" style="position:absolute; left:18px; top:260px; width:623px; height:100px; z-index:2; background-color: #44406A; layer-background-color: #44406A; border: 1px none #000000; visibility: hidden; overflow: auto"> 
+  <table width="100%" border="0" height="109">
+    <tr> 
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td class="detal">${b.desc_item}</td>
+          </tr>
+          <tr> 
+            <td class="detal" height="13">${b.glosa}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Valor : ${b.valor}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Tramo Inf. : ${tinf}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Med. : ${tmed}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Sup. : ${tsup}</td>
+          </tr>
+          <tr> 
+            <td class="detal">${b.desctramo}</td>
+          </tr>
+        </table>
+      </td>
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td width="50%" align="center" class="detal" height="25">Seleccione 
+              Estado del Indicador</td>
+          </tr>
+          <tr> 
+            <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+              <td width="50%"  align="center" valign="middle" class="detal" height="29"> 
+                Rojo 
+                <input type="checkbox" name="semaforor" value="R">
+                Amarillo 
+                <input type="checkbox" name="semaforoa" value="A">
+                Verde 
+                <input type="checkbox" name="semaforov" value="V">
+                <input type="hidden" name="peri">
+                <input type="hidden" name="unidad" value="${b.unidad}">
+                <input type="hidden" name="item" value="${b.item}">
+                <input type="submit" name="Submit2" value="Buscar">
+              </td>
+            </form>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" align="center" height="14">Formula</td>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" height="17" align="center">${b.formula}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+      </form>
+    </tr>
+    <tr> </tr>
+    <tr> </tr>
+  </table>
+  
+</div>
+</list> </if> <if a.detalledf> <list a.detalledf as b> </list> 
+<div id="Layer${b.item}" style="position:absolute; left:18px; top:260px; width:623px; height:100px; z-index:2; background-color: #44406A; layer-background-color: #44406A; border: 1px none #000000; visibility: hidden; overflow: auto"> 
+  <table width="100%" border="0" height="109">
+    <tr> 
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td class="detal">${b.desc_item}</td>
+          </tr>
+          <tr> 
+            <td class="detal" height="13">${b.glosa}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Valor : ${b.valor}</td>
+          </tr>
+          <tr> 
+            <td class="detal"> Tramo Inf. : ${tinf}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Med. : ${tmed}</td>
+          </tr>
+          <tr> 
+            <td class="detal">Tramo Sup. : ${tsup}</td>
+          </tr>
+          <tr> 
+            <td class="detal">${b.desctramo}</td>
+          </tr>
+        </table>
+      </td>
+      <td width="50%" class="detal" rowspan="4" align="center" valign="top"> 
+        <table width="100%" border="0">
+          <tr> 
+            <td width="50%" align="center" class="detal" height="25">Seleccione 
+              Estado del Indicador</td>
+          </tr>
+          <tr> 
+            <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+              <td width="50%"  align="center" valign="middle" class="detal" height="29"> 
+                Rojo 
+                <input type="checkbox" name="semaforor" value="R">
+                Amarillo 
+                <input type="checkbox" name="semaforoa" value="A">
+                Verde 
+                <input type="checkbox" name="semaforov" value="V">
+                <input type="hidden" name="peri">
+                <input type="hidden" name="unidad" value="${b.unidad}">
+                <input type="hidden" name="item" value="${b.item}">
+                <input type="submit" name="Submit3" value="Buscar">
+              </td>
+            </form>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" align="center" height="14">Formula</td>
+          </tr>
+          <tr> 
+            <td width="50%" class="detal" height="17" align="center">${b.formula}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <form name="f${b.item}" method="post" action="/servlet/Indicador.DetalleIndicador" onSubmit="return Buscar(this)">
+      </form>
+    </tr>
+    <tr> </tr>
+    <tr> </tr>
+  </table>
+  
+</div>
+</if> </list> 
+</body>
+</html>

@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<title>Arbol Asociar Unidades</title>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language="JavaScript">
+<!--
+function selectAll(checked,checkbox) {
+    var n=checkbox.length;
+	if(checked) {
+	   for(i=0;i<n;i++) {
+		checkbox[i].checked=true;
+	   }
+	}
+	else {
+	   for(i=0;i<n;i++) {
+		checkbox[i].checked=false;
+	   }
+	}
+}
+
+function Carga(){
+   <if carga>
+   document.location.href = "Tool?htm=Gestion/InfoUsuario/Jerarquia/blanco.htm";   
+   parent.treeFrame.location.reload(true);
+   </if>
+}
+
+function FijarRaizOrganica(){
+	document.form1.submit();
+}
+
+<if alerta>
+	alert("Ya existe un cambio de unidad, Debe ser Procesada");
+</if>
+
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#HijoEdita {position:absolute;
+	left:-1px;
+	top:22px;
+	width:300px;
+	height:300px;
+	z-index:11;
+}
+#PadEdita {position:absolute;
+	left:5px;
+	top:5px;
+	width:300px;
+	height:20px;
+	z-index:10;
+	visibility: visible;
+}
+-->
+</Style>
+</HEAD>
+<body onLoad="Carga()">
+<table width="300" height="350" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+<tr>
+	<td valign="top">
+		<form name="form1" action="../servlet/FijarRaizOrganica" method="post">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" height="300">
+			<tr> 
+				<td valign="top" align="center"> 
+				<br>
+				<table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+				<tr> 
+					<td colspan="2" align="center" class="tabla_amarelo">Lista de Empresas</td>
+				</tr>
+				<tr> 
+					<td  colspan="2" align="center">Asignar Raiz de la Organica</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<list empresas as e>
+				<tr style="background-color: #ffffff"> 
+					<td><input type="radio" name="list_empresas" <if !(e.raiz)>checked</if> value="${e.codigo}" class="texto_negro_bold_chico"></td>
+					<td>${e.descripcion}</td>
+					<if !(e.raiz)>
+						<input type="hidden" name="checked" value="${e.codigo}" />
+					</if>
+				</tr>
+				</list>
+				<tr> 
+				</tr>
+				</table>
+				</td>
+			</tr>
+			</table>
+			<if (linkto)=="1">
+				<table width="100%" border="0" cellspacing="1" cellpadding="0">
+				<tr> 
+					<td align="center" class="texto_negro_bold" ><a href="#" onClick="FijarRaizOrganica();return false;">ACTUALIZAR RAIZ ORGANICA</a></td>
+					<input type="hidden" name="actualiz" value="1" />
+				</tr>
+				</table>
+			</if>
+		</form>
+	</td>
+</tr>
+</table>
+</body>
+</HTML>

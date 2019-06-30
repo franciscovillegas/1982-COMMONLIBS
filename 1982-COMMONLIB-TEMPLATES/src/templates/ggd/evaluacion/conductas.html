@@ -1,0 +1,27 @@
+<table width="100%" border="0">
+  <tr align="center">
+    <td colspan="3" >Conductas</td>
+  </tr>
+  <assign perfil=""> <assign compet=""> 
+  <if getPerfilConductas><list getPerfilConductas as a> 
+  <if compet != a.id_competencia>
+	<if a._nfil!="1">
+		</table></td></tr>
+	</if>
+    <tr><td colspan="3" ><table border="1">
+  <assign compet = a.id_competencia> 
+  </if>
+	  <tr valign="top" >
+		<td width="19%">&nbsp;</td>
+		<td width="3%"><if a.rut!="">SI<else>NO</if> &nbsp;</td>
+		<td width="78%"> ${a.conducta}&nbsp;</td>
+	  </tr>
+  </list>
+  </table></td></tr> 
+  <else>
+  <tr>
+    <td colspan="3" >Seleccione una Competencia</td>
+  </tr>
+  </if>
+</table>
+

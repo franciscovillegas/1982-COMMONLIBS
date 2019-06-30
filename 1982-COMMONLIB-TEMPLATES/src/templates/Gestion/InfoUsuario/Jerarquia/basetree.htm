@@ -1,0 +1,219 @@
+<HTML>
+<HEAD>
+<title>Org&#225;nica</title>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js"></script>
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language='JavaScript'>
+<!--
+function SeteaPos(formulario){
+  formulario.pos.value="1";
+
+}
+function Ejecuta(idEmp,idUni,nombre, tipo){
+//	alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+		document.form2.empresa.value=idEmp;
+		document.form2.unidad.value=idUni;
+		document.form2.descrip.value=nombre;
+		Envia();
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value="";
+		document.form2.empresa.value="";
+		document.form2.unidad.value="";
+		document.form2.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Envia() {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	var area = document.form1.area.value;  
+	if (unid!=''){
+		//VerContFormm(document.form1)
+		if(area=="Gestion") document.form1.action = "../servlet/GestionDiaria";
+		else if(area=="Dotacion") document.form1.action = "../servlet/Organizacion";
+		else if(area=="Capacitacion") document.form1.action = "../servlet/JefesCapacitacion";
+		else if(area=="Reportes") document.form1.action = "../servlet/GestionReportes";
+		else  document.form1.action = "../servlet/GestionDiaria";
+
+		document.form1.submit();
+		document.form2.submit();
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+
+function inicio() {
+	inicioArbol();
+   if (window.unidadBuscada){
+		if (!window.unidadEncontrada) 
+		  LayerVerMas.style.visibility="hidden";
+	}
+	document.formBusCod.be.value = window.resulEmp;
+	document.formBusCod.bu.value = window.resulUni;
+	document.formBusGlosa.bu.value = window.resulUni;
+	document.formBusRut.br.value = "${br}";
+	if ( (document.formBusRut.br.value!="") && (!window.unidadEncontrada) ) 
+		alert("El trabajdor con rut '"+document.formBusRut.br.value+"' no se encuentra en la Organica.");
+    
+}
+
+function limpiarBus() {
+	document.formBusCod.reset();
+	document.formBusGlosa.reset();
+	document.formBusRut.reset();
+	return false;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:11px;
+	top:9px;
+	width:500px;
+	height:550px;
+	z-index:1;
+	overflow: auto;
+}
+#Layer2 {
+	position:absolute;
+	left:264px;
+	top:429px;
+	width:10px;
+	height:16px;
+	z-index:2;
+}
+-->
+</style>
+</HEAD>
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' onLoad="inicio()" background="../servlet/Tool?images/Gestion/Fondo/fondo_arbol.jpg">
+<div class="tabla_layer_orga" id="Layer1">
+<table width="100%" height="100%" border="1" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top"><if (Control("df_jer_comp"))> 
+${TraeArbol()} <else> ${TraeArbol(unidad, empresa)} </if> </td>
+</tr>
+</table>
+</div>
+<div id="LayBuscar" style="position:absolute; width:271px; height:234px; top: 47px; left: 12px; overflow: visible; visibility: hidden; z-index: 3;" class="tabla_layer_orga"> 
+        <table width="100%" height="100%" border="0" cellpadding="2" cellspacing="1">
+          <form name="formBusCod" onSubmit="SeteaPos(document.formBusCod)" method="post" action="../servlet/LoadTreeOrg?pag=Gestion/InfoUsuario/Jerarquia/basetree.htm&tc=yes" target="_self">
+            <tr>
+              <td height="30" colspan="2" align="center" class="tabla_beige">Buscar Unidad </td>
+              <td height="30" align="center" class="tabla_beige" ><a href="javascript:;" onClick="MM_showHideLayers('LayBuscar','','hide')">[Cerrar]</a></td>
+            </tr>
+            <tr> 
+              <td height="30" class="texto_negro" colspan="2"> Empresa: 
+                <input type="text" name="be" size="1"  class="negro12N">
+                Unidad: 
+                <input type="text" name="bu" size="5" class="negro12N">
+                <input type="hidden" name="nameform" value="formBusCod">              </td>
+              <td height="30" class="texto_negro" width="28%" align="left"> 
+                <input type="hidden" name="pos" value="${pos}">
+                <input type="image" border="0" name="imageField_b1" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22">              </td>
+            </tr>
+          </form>
+          <form name="formBusGlosa" onSubmit="SeteaPos(document.formBusGlosa)" method="post" action="../servlet/LoadTree?pag=Gestion/InfoUsuario/Jerarquia/basetree.htm&tc=yes" target="_self">
+            <tr> 
+              <td height="20" class="texto_negro" colspan="2"> 
+                <select name="bu" style="width=185">
+                  <option selected value = "">Seleccione una Unidad</option>
+                  <list unidades as u> 
+                  <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+                  </list> 
+                </select>
+                <input type="hidden" name="pos" value="${pos}">
+                <input type="hidden" name="nameform" value="formBusGlosa">              </td>
+              <td height="20" class="texto_negro" width="28%" align="left"> 
+              <input type="image" border="0" name="imageField_b2" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22">              </td>
+            </tr>
+          </form>
+          <form name="formBusRut" onSubmit="SeteaPos(document.formBusRut)" method="post" action="../servlet/LoadTree?pag=Gestion/InfoUsuario/Jerarquia/basetree.htm&tc=yes" target="_self">
+            <tr> 
+              <td width="28%" height="20" align="right" class="texto_negro"> 
+                Rut              </td>
+              <td height="20" class="texto_negro" width="44%" align="left"> 
+                
+                  <input type="text" name="br" size="11" maxlength="12">
+                  <input type="hidden" name="nameform" value="formBusRut">
+                  <input type="hidden" name="pos" value="${pos}">              </td>
+              <td height="20" class="texto_negro" width="28%" align="left"> 
+              <input type="image" border="0" name="imageField_b22" src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" width="20" height="22">              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="texto_negro" align="right" width="28%">Nombre              </td>
+              <td height="20" class="texto_negro" align="left" colspan="2"> 
+                 
+              <input type="text" name="bn" size="20" value="${bn}">              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="texto_negro" align="right" width="28%">Ap Paterno</td>
+              <td height="20" class="texto_negro" align="left" colspan="2"> 
+                 
+              <input type="text" name="bp" size="20" value="${bp}">              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="texto_negro" align="right" width="28%">Ap Materno</td>
+              <td height="20" class="texto_negro" align="left" colspan="2"> 
+                 
+              <input type="text" name="bm" size="20" value="${bm}">              </td>
+            </tr>
+          </form>
+          <form name="formsgte">
+          </form>
+  </table>
+</div>
+<!--
+<div id="Layer2"><a href="javascript:;" onClick="MM_showHideLayers('LayBuscar','','show')"><img src="../servlet/Tool?images/Gestion/topLayers/buscar.gif" alt="Buscar" name="Image41" width="20" height="22" border="0"></a></div>
+-->
+<form name="form1" method="get" action="../servlet/GestionDiaria" target="folderFrame">
+        <input type='hidden' name='unidad'>
+        <input type='hidden' name='empresa'>
+        <input type='hidden' name='descrip'>
+        <input type='hidden' name='area' value="Gestion">        
+</form>
+<form name="form2" method="get" action="../servlet/GestionMenu" target="topFrame">
+        <input type='hidden' name='unidad'>
+        <input type='hidden' name='empresa'>
+        <input type='hidden' name='descrip'>
+        <input type='hidden' name='area' value="Gestion">                
+</form>
+</body>
+</HTML>

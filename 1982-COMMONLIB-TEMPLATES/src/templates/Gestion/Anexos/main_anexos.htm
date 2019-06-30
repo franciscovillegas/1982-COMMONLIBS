@@ -1,0 +1,122 @@
+ <HTML>
+<HEAD>
+<TITLE>Anexos Relacionados</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script src="/Gestion/script/anexos.js"></script>
+<script src="/Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+</HEAD>
+<script language="JavaScript">
+//parent.AbrirVentProcesando();
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#006600" vlink="#006600" alink="#006600" onLoad="window.focus(); MM_preloadImages('/images/Gestion/botones/busqueda_grafi_over.jpg','/images/Gestion/botones/busqueda_alfabe_over.jpg','/images/Gestion/botones/buscar_over.jpg','/images/Gestion/botones/mantener_over.jpg')">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="643">
+  <TR> 
+    <TD valign="top" width="610"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="354" background="/images/Gestion/anexos/fondvent.jpg">
+        <tr bgcolor="#000033"> 
+          <td height="20" align="center" colspan="2" class="textB"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b class="unnamed1">Busqueda 
+            de Anexos Relacionados </b></font> </td>
+        </tr>
+        <tr> 
+          <td valign="top" colspan="2" height="47" class="texto"> </td>
+        </tr>
+        <tr> 
+          <td valign="top" align="center" height="219" width="50%"> 
+            <table width="80%" border="2" cellspacing="0" cellpadding="0" bordercolor="#003366">
+              <tr> 
+                <td align="center" height="20" bgcolor="#000033" class="unnamed1">Buscar 
+                  un Anexo</td>
+              </tr>
+              <tr> 
+                <td align="center" height="101" bordercolor="#003366"> 
+                  <form name="form1" method="post" action="">
+                    <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"> 
+                    Anexo: 
+                    <input type="text" name="anexo" size="5" maxlength="5">
+                    </font> 
+                  </form>
+                </td>
+              </tr>
+              <tr> 
+                <td height="57" bordercolor="#003366"> 
+                  <div align="center"> <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"> 
+                    <a href="javascript" onClick="ventBuscarAnexo(document.form1.anexo.value); return false"><img src="/images/Gestion/botones/buscar_up.jpg" width="108" height="27" border="0" name="bus_anex1" onMouseOver="MM_swapImage('bus_anex1','','/images/Gestion/botones/buscar_over.jpg',1)"></a> 
+                    <if (puede_mant)><a href="javascript:;" onClick="ventBuscarAnexo(document.form1.anexo.value, '', 'M'); return false"><img src="/images/Gestion/botones/mantener_up.jpg" width="108" height="27" name="mant_anex1" border="0" onMouseOver="MM_swapImage('mant_anex1','','/images/Gestion/botones/mantener_over.jpg',1)"></a></if></font></div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td valign="top" align="center" height="219"> 
+            <table width="80%" border="2" cellspacing="0" cellpadding="0" bordercolor="#003366">
+              <tr> 
+                <td align="center" height="20" bgcolor="#000033" class="textB"><span class="unnamed1">Buscar 
+                  el Anexo de una Persona</span></td>
+              </tr>
+              <tr> 
+                <td align="center" width="50%" height="101" bordercolor="#003366"> 
+                  <form name="form2" method="post" action="">
+                    <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"> 
+                    Rut: 
+                    <input type="text" name="rut" size="8" maxlength="8">
+                    </font> 
+                  </form>
+                </td>
+              </tr>
+              <tr> 
+                <td width="50%" height="57" bordercolor="#000033"> 
+                  <div align="center"> <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"> 
+                    <a href="javascript" onClick="ventBuscarAnexo('',document.form2.rut.value, 'B'); return false"><img src="/images/Gestion/botones/buscar_up.jpg" width="108" height="27" border="0" name="bus_rut1" onMouseOver="MM_swapImage('bus_rut1','','/images/Gestion/botones/buscar_over.jpg',1)"></a> 
+                    <if (puede_mant)><a href="javascript:;" onClick="ventBuscarAnexo('', document.form2.rut.value,'M'); return false"><img src="/images/Gestion/botones/mantener_up.jpg" width="108" height="27" name="mant_rut1" border="0" onMouseOver="MM_swapImage('mant_rut1','','/images/Gestion/botones/mantener_over.jpg',1)"></a></if></font></div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr align="center" valign="top"> 
+          <td width="50%"> <a href="javascript:;" onClick="AbrirBGrafica();return false"><img src="/images/Gestion/botones/busqueda_grafi_up.jpg" name="bus_gra" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('bus_gra','','/images/Gestion/botones/busqueda_grafi_over.jpg',1)" width="108" height="27"></a> 
+          </td>
+          <td width="50%"> <a href="javascript:;" onClick="AbrirBAlfa();return false"><img src="/images/Gestion/botones/busqueda_alfabe_up.jpg" width="108" height="27" name="bus_alfa" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('bus_alfa','','/images/Gestion/botones/busqueda_alfabe_over.jpg',1)"></a> 
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#333333"></font></td>
+        </tr>
+      </table>
+    </TD>
+  </TR>
+</TABLE>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+//parent.CerrarVentProcesando();
+</script>
+</HTML>

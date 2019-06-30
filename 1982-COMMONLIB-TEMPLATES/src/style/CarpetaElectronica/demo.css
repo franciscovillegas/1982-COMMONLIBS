@@ -1,0 +1,95 @@
+#main_menu{
+	/* The main container */
+	width:200px;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+
+ul.container{
+	/* The topmost UL */
+	width:200px;
+}
+
+li{
+	list-style:none;
+	text-align:left;
+}
+
+li.menu{
+	/* The main list elements */
+	padding-bottom:10px;
+}
+
+li.button a{
+	/* The section titles */
+	display:block;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:14px;
+	height:30px;
+	overflow:hidden;
+	padding-left:5px;
+	padding-top:10px;
+	padding-bottom:5px;
+	position:relative;
+	width:190px;
+}
+
+li.button a:hover{
+	/* Removing the inherited underline from the titles */
+	text-decoration:none;
+}
+
+li.button a span{
+	/* This span acts as the right part of the section's background */
+}
+
+/* Setting up different styles for each section color */
+
+li.button a.blue{background-image: url(../servlet/Tool?omap=images/qsmcom/blue.png); background-repeat:no-repeat; text-decoration:none;}
+li.button a.blue span{ ackground-image: url(../servlet/Tool?omap=images/qsmcom/blue.png);background-repeat:no-repeat; text-decoration:none;}
+
+
+/* The hover effects */
+
+li.button a:hover{ }
+li.button a:hover span{ }
+
+.dropdown{
+	/* The expandable lists */
+	display:none;
+	padding-top:5px;
+	width:100%;
+}
+
+.dropdown li{
+	/* Each element in the expandable list */
+	background-color:#CCC;
+	color:#333;
+	margin:5px 0;
+	padding:4px 18px;
+	width:160px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+}
+.clear{
+	clear:both;
+}
+
+.dropdown li a:link {
+	color:#333;
+	text-decoration:none;
+	outline:none;
+	border:none;
+}
+.dropdown li a:visited {
+	color: #006;
+	text-decoration:none;
+	outline:none;
+	border:none;
+}
+.dropdown li a:hover{
+	text-decoration:underline;
+}
+

@@ -1,0 +1,24 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+}
+.tablas_fondo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: #E4E4E4;
+	border: 1px solid #666666;
+}
+.tablas_blanco {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #000000;
+	border: 1px solid #666666;
+}
+.textos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #000000;
+}

@@ -1,0 +1,145 @@
+<html>
+<head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<title>Unidades</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Mon Jul 29 16:36:10 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+
+function ShowEmpleados(){
+  var url='../servlet/S_Empleados?region=${GetParam("region")}&emp=';
+  var empresa=document.form1.emp.value;
+  url=url+empresa;
+  //alert("url: "+url);
+  document.location.href=url;
+}
+
+function Envia(f) {
+   //alert("empresa: "+document.form1.emp.value);
+	f.submit();
+	return false;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function Inicio(){
+//"../servlet/Region_Sucursal?region="+region+"&empresa=1"
+  var val_emp='${GetParam("empresa")}';
+   //alert('${GetParam("empresa")}');
+  if (val_emp=='')
+   val_emp="1";
+	
+  //document.all.emp.value='${GetParam("empresa")}';
+   document.all.emp.value=val_emp;
+  //document.form1.empresa.value=document.all.emp.value;
+}
+
+function buscar(region,empresa){
+	document.location.href="../servlet/Region_Sucursal?region="+region+"&empresa="+empresa;
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<style type="text/css">
+<!--
+.Estilo1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="E1E0F0" background="../servlet/Tool?images/main/bck_main.jpg" onLoad="Inicio();MM_preloadImages('../servlet/Tool?images/mapa/sucursales.jpg','../servlet/Tool?images/new/botones/buscar_f2.gif')">
+<form name="form1" method="post" action="../servlet/Region_Sucursal">
+<table width="666">
+  <tr>
+    <td height="40" align="center"><img src="../servlet/Tool?images/new/titulos/sucurdsales.jpg" width="436" height="29"></td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+</table>
+<div id="LayTituloTodo" style="position:absolute; width:639px; height:1px; z-index:5; top: 26px; left: 11px;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr valign="top" align="left">
+      <td width="91%"><font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${reg_nombre}</font></b></font><br>
+          <font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font></b></font></td>
+      <td width="4%" valign="top"><a href='javascript:;' target="_top" onClick="buscar(document.form1.region.value,document.form1.emp.value);return false"><img src="../servlet/Tool?images/new/botones/map_uni.gif" alt="SUCURSALES" name="sucursales" width="27" height="21" border="0"></a></td>
+      <td width="5%" valign="top"><a href="javascript:;" target="_top" onClick="ShowEmpleados();return false"><img src="../servlet/Tool?images/new/botones/map_colab.gif" alt="COLABORADORES" name="colaboradores" width="31" height="21" border="0"></a></td>
+    </tr>
+  </table>
+</div>
+<table width="69%" border="0">
+  <tr valign="top">
+    <td colspan="4" height="271"> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+      <div id="Layer7" style="position:absolute; width:638px; height:274px; z-index:2; overflow: auto; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; ; visibility: visible; top: 54px; left: 12px;">
+        <table width="100%" border="0">
+          <list unidades as u>
+          <tr>
+            <td class=""><a href="javascript:;" onClick="return verPersonal('${u.uni_id}','${GetParam("empresa")}');">${u.unidad}</a></td>
+          </tr>
+          </list>
+        </table>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="2%" rowspan="2">&nbsp;</td>
+    
+      <td width="9%" height="19"><font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Empresa:</font></b></font></td>
+      <td width="74%" height="42" rowspan="2"> <font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+        <select name="empresa" class="inputText" id="emp">
+                  <list empresas as e>
+                  <option value="${e.id}">${e.empresa}</option>
+                  </list>
+        </select>
+                </font><font size="1" face="Arial, Helvetica, sans-serif"><strong><br>
+                </strong></font></b></font>
+        <input name="suc_name" type="text" class="inputText" id="suc_name3" value='${GetParam("suc_name")}' size="47">
+          <input name="region" type="hidden"  value='${GetParam("region")}'>
+          <input name="empresa" type="hidden"  value='${empresa}'>
+          <font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font>
+          <input name="suc_name" type="hidden"  value='${GetParam("suc_name")}'></td>
+      <td width="15%" rowspan="2"><a href="javascript:;" onClick="return Envia(document.form1);" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image211','','../servlet/Tool?images/new/botones/buscar_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/buscar.gif" name="Image211" width="91" height="21" border="0" id="Image211"></a></td>
+    
+  </tr>
+  <tr valign="bottom">
+    <td height="14" valign="bottom"><font size="2" color="#000066"><span class="Estilo1"><font size="1">Sucursal:</font></span></font></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<div id="Layer2" style="position:absolute; left:697px; top:18px; z-index:100">
+<br/>Pagina : 
+<select name="paginas" class="inputTextColor" onchange="ReportesAjax('${unidad}','${recursivo}','PM','${empresa}','${periodo}',this.value)">
+<list lpaginas as p>
+<option value="${p.pagina}" ${p.sel}>${p.pagina}</option>
+</list>
+</select>
+</div>
+
+<form name="frm1b" method="post" action="../servlet/ReportesOrganicaLM" target="reportes">
+<input type="hidden" name="unidad" value="${unidad}"/>
+<input type="hidden" name="recursivo" value="${recursivo}"/>
+<input type="hidden" name="tipo" value="${tipo}"/>
+<input type="hidden" name="empresa" value="${empresa}"/>
+<input type="hidden" name="periodo" value="${periodo}"/>
+<input type="hidden" name="page" value="${page}"/>
+</form>
+
+
+<list lpersonas as p>
+<table width="690" border="1" cellpadding="0" cellspacing="0">
+<tr><td valign="top">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2" height="10" align="center" class="textos" style="font-size: 10px;"><center>${p.empresa}</center></td></tr>
+<tr><td height="10" colspan="2" valign="top">
+	<table width="100%" border="0" cellpadding="0" cellspacing="1">
+	  <tr>
+	<td width="152"><img alt="Hogar de Cristo" src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"/></td>
+	<td width="60%" align="center" class="titulo" style="font-size: 12px;"><center>LIQUIDACION DE REMUNERACIONES<br/><br/>
+	  Fecha de Pago: ${p.fecha_periodo}</center></td>
+	<td width="152">&nbsp;</td>
+	</tr></table>
+</td></tr>
+<tr>
+  <td height="10" colspan="2" valign="top"></td>
+</tr>
+<tr><td height="10" colspan="2" align="center" valign="top"><table width="98%" border="1" cellspacing="0">
+      <tr>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr>
+            <td width="15%"></td>
+            <td width="35%"></td>
+            <td width="15%" class="textos" align="left"><strong style="font-size: 10px;">Rut</strong></font></td>
+            <td width="35%" class="textos" align="left" style="font-size: 10px;">: ${p.rut_trab}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Nombre</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.nombre}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">G&eacute;nero</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.sexo}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Estado Civil</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.ecivil}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Fecha Ingreso</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.fecha_ingreso}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Cargo</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.cargo}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Unidad</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.nom_unidad}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Empresa</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.empresa}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Centro de Costo</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.centro_costo}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Banco</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.banco}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Cuenta</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.cta}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">A.F.P.</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.afp}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">F. de Salud</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.isapre}</td>
+          </tr>
+          <tr>
+            <td class="textos" align="left"><strong style="font-size: 10px;">D&iacute;as Trabajados</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.dias}</td>
+            <td class="textos" align="left"><strong style="font-size: 10px;">Fecha Emisi&oacute;n</strong></td>
+            <td class="textos" align="left" style="font-size: 10px;">: ${p.fecha}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    </td>
+</tr>
+<tr>
+  <td height="5" colspan="2" align="center" valign="top"></td>
+</tr>
+<tr><td height="10" colspan="2" align="center" valign="top"><table width="98%" border="1" cellspacing="0">
+	<tr>
+	<td valign="top">
+	<table width="99%" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+	<td class="tituloTabla" width="75%" align="left" style="font-size: 11px;">HABERES</td>
+	<td class="tituloTabla" width="25%" align="right" style="font-size: 11px;">VALOR</td>
+	</tr>
+	<list p.haberes as h>
+	<tr>
+	<td class="textos" width="75%" align="left" style="font-size: 10px;">${h.glosa_haber} <if ( d.unidad == "HORA" ) > (${d.tip_unidad} hrs.) </if> </td>
+	<td class="textos" width="25%" align="right" style="font-size: 10px;">${h.val_haber}</td></tr>
+	</list>
+	</table>	</td>
+	<td width="50%" align="right" valign="top">
+	<table width="99%" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+	<td class="tituloTabla" width="75%" align="left" style="font-size: 11px;">DESCUENTOS</td>
+	<td class="tituloTabla" width="25%" align="right" style="font-size: 11px;">VALOR</td>
+	</tr>
+	<list p.descuentos as d>
+	<tr>
+	<td class="textos" width="75%" align="left" style="font-size: 10px;">
+      	<if ( d.glosa_descuento=="Descuento A.F.P." ) || ( d.glosa_descuento=="Cotizaci&#243;n Salud" ) >
+      		${d.glosa_descuento} ${d.tip_unidad}<if ( d.unidad=="%IM" ) >%<else>${d.unidad}</if>
+      	<else>
+      	    ${d.glosa_descuento}
+      	</if>
+	</td>
+	<td class="textos" width="25%" align="right" style="font-size: 10px;">${d.val_descuento}</td></tr>
+	</list>
+	</table>	
+	</td>
+	</tr>
+	<tr>
+	  <td valign="bottom"><table width="99%" border="0" cellpadding="0" cellspacing="1">
+        <tr>
+          <td class="tituloTabla" width="75%" align="left" style="font-size: 11px;">TOTAL HABERES</td>
+          <td class="tituloTabla" width="25%" align="right" style="font-size: 11px;">${p.tot_haberes}</td>
+        </tr>
+        <tr><td  colspan="2" class="textos" style="font-size: 10px;">&nbsp;</td></tr>
+      </table></td>
+	  <td valign="bottom"><table width="99%" border="0" cellpadding="0" cellspacing="1">
+        <tr>
+          <td class="tituloTabla" width="75%" align="left" style="font-size: 11px;">TOTAL DESCUENTOS</td>
+          <td class="tituloTabla" width="25%" align="right" style="font-size: 11px;">${p.tot_destos}</td>
+        </tr>
+        <tr>
+          <td class="tituloTabla" width="75%" align="left" style="font-size: 11px;">LIQUIDO $</td>
+          <td class="tituloTabla" width="25%" align="right" style="font-size: 11px;">${p.liquido}</td>
+        </tr>
+      </table></td>
+	  </tr>
+	
+	
+	</table>
+</td></tr>
+<tr>
+  <td height="5" colspan="2" align="center" valign="top"></td>
+</tr>
+<tr>
+  <td height="10" colspan="2" align="center" valign="top"><table width="98%" border="1" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" class="tituloTabla" valign="middle" style="font-size: 11px;"><center>VALORES DEL MES:</center></td>
+      <td class="textos" align="center" style="font-size: 10px;"><center><strong>RENTA IMPONIBLE</strong><br/>
+        $ ${p.renta_impon}</center></td>
+      <td class="textos" align="center" style="font-size: 10px;"><center><strong>TOPE IMPON. (60UF)</strong><br/>
+        $ ${p.tope_renta}</center></td>
+      <td class="textos" align="center" style="font-size: 10px;"><center><strong>VALOR UF</strong><br/>
+        $ ${p.val_uf}</center></td>
+    </tr>
+  </table></td>
+</tr>
+<tr>
+  <td height="10" align="center" valign="top">&nbsp;</td>
+  <td width="40%" valign="bottom"><table border="0" cellspacing="0" cellpadding="0" class="tituloTabla">
+    <tr><td height="180" align="center" valign="bottom" style="font-size: 10px;"><hr></td></tr>
+    <tr><td align="center" class="textos" style="font-size: 10px;"><center>${p.nombre}</center></td></tr>
+    <tr><td align="center" class="textos" style="font-size: 10px;"><center>${p.rut_trab}</center></td></tr>
+    <tr><td height="10" align="center" style="font-size: 11px;">&nbsp;</td></tr>
+  </table></td>
+</tr>
+</table>
+</td></tr>
+
+</table>
+
+<p style="page-break-before: always"> 
+<!-- <!–[if IE 7]><br style="height:0; line-height:0"/><![endif]–> -->
+<br style="height:0; line-height:0"/>
+</p>
+
+</list>

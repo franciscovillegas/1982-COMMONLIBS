@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+  <SCRIPT language=JavaScript src="../servlet/Tool?scripts/validadores.js"></SCRIPT>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:207px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:102px;
+	width:739px;
+	height:333px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:456px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:11px;
+	top:27px;
+	width:200px;
+	height:499px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer12 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	z-index:12;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function verObjetivosColaborador(colaborador,opcion){
+	document.form1.rut_colaborador.value = colaborador;
+	document.form1.tipo.value = opcion;
+	document.form1.submit();
+}
+
+function Accion(evento){
+
+	if (evento == "guardar"){
+
+	   var total = parseFloat(document.form1.ponderacion_new.value) + parseFloat("${total_ponderacion}");
+
+	   if(parseFloat(total) > 100){
+	       alert("Estimado, Si ingresa esta ponderaci&#243;n el total asociado a los objetivos ser&#225; mayor al 100%.");
+	   }
+		
+       if (document.form1.objetivo_new.value == "" || document.form1.ponderacion_new.value == ""){
+           alert("Debe ingresar una descripci&#243;n y una ponderaci&#243;n para el objetivo.");
+       } else{
+    	   if(validarErrorValor(document.form1.ponderacion_new.value)){
+               alert("ERROR en el ingreso de ponderaci&#243;n");
+           }else{
+    	   		document.form1.accion.value = evento;
+    	        document.form1.submit();
+           }
+       }
+	}else {
+		var user_input = "";
+		if (!isNull(document.forms[0].id_objetivo)) {
+	      	if (isArray(document.forms[0].id_objetivo)) {
+		        for (i=0;i<document.forms[0].id_objetivo.length;i++) {
+		          if (document.forms[0].id_objetivo[i].checked) {
+		            user_input = document.forms[0].id_objetivo[i].value;
+		          }
+		        }
+	      	} else  if (document.forms[0].id_objetivo.checked){
+				user_input = document.forms[0].id_objetivo.value;
+			}
+	    }
+	     
+        if (user_input != "") {
+           document.form1.accion.value = evento;
+       	   document.form1.submit();	
+        } else {
+          alert("Seleccione un objetivo!");
+        }
+	}
+} 
+
+function validarErrorValor(valor) { 
+	//alert(valor);
+	var digits="0123456789."; 
+    var temp; 
+	if (valor != ""){ 
+	   for (var i=0;i<valor.length;i++){
+		   temp=valor.substring(i,i+1); 
+	       if (digits.indexOf(temp)==-1){  
+	    	   //alert("DATOS INCORRECTOS.- Solo pueden introducirse caracteres num&#233;ricos o decimales con el caracter punto (EJ: 89.6)"); 
+	           return true; 
+	       } 
+	   } 
+	}
+}
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/def_metas.jpg">
+<form name="form1" method="post" action="../servlet/ServletObjetivosDefinicion">
+<input name="rut_colaborador" type="hidden" class="campo_texto" style="width:97%" value="${rut_colaborador}"/>
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<input name="tipo" type="hidden" class="campo_texto" style="width:10%" value="${tipo}"/>
+<if (rut_colaborador != "0")> 
+<div id="Layer12">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td class="txt_gris_bold">Definici&oacute;n del objetivo <span class="texto_titulo_rojo">${salida}</span></td>
+      <td align="center" class="txt_gris_bold">Ponderaci&oacute;n % </td>
+      <td align="center" class="txt_gris_bold">Guardar</td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="77%" class="texto_texto"><textarea name="objetivo_new" class="txt_gris" rows="2" cols="135"></textarea></td>
+        <td width="11%" align="center" class="texto_texto"><input name="ponderacion_new" type="text" class="campo_texto" style="width:50px"/></td>
+        <td width="8%" align="center" class="texto_texto"><a href="#" onClick="Accion('guardar');"/><img src="../servlet/Tool?images/ggd/botones/grabar.gif" width="16" height="16" border="0"/></a></td>
+        <td width="4%" class="texto_texto">&nbsp;</td>
+      </tr>
+       <tr>
+       <td colspan="4"><hr size="1" noshade="noshade" /></td>
+      </tr>
+  </table>
+</div>
+<div id="Layer5">
+  <table width="96%" border="0" cellpadding="0">    
+    <tr>
+      <td class="txt_gris_bold">Lista de objetivos creados  <span class="texto_titulo_rojo">(Tiene registrado un total de ${total_ponderacion}% de ponderaciones para los objetivos.)</span></td>
+      <td align="center" class="txt_gris_bold">Ponderaci&oacute;n % </td>
+      <td align="center" class="txt_gris_bold">Asociar</td>
+      <td align="center" class="txt_gris_bold">Sel.</td>
+    </tr>
+    <list getObjetivosColaborador as obj>
+	    <tr>
+	      <input name="textfield" type="hidden" class="campo_texto" style="width:97%" value="${obj.rut}"/>
+	      <input name="textfield" type="hidden" class="campo_texto" style="width:97%" value="${obj.rut_evaluador}"/>
+	      <td width="77%" class="texto_texto"><textarea name="objetivo_${obj.id_objetivo}" class="txt_gris" rows="2" cols="135"/>${obj.objetivo}</textarea></td>
+	      <td width="11%" align="center" class="texto_texto"><input name="ponderacion_${obj.id_objetivo}" type="text" class="campo_texto" style="width:50px" value="${obj.ponderacion}"/></td>
+	      <td width="8%" align="center" class="texto_texto"><a href="javascript:;" onclick="MM_openBrWindow('../servlet/ServletAsociarObjColabObjJefe?id_objetivo=${obj.id_objetivo}&rut_colaborador=${obj.rut}','obj','width=700,height=370')" /><img src="../servlet/Tool?images/ggd/iconos/target.png" width="16" height="16" border="0" title="Asociar objetivos de la jefatura"  /></a></td>
+	      <td width="4%" class="texto_texto"><input name="id_objetivo" type="radio" value="${obj.id_objetivo}"/></td>
+	    </tr>
+	</list>    
+  </table>
+</div>
+<div id="Layer6">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+    <tr>
+      <td width="50%">Definici&oacute;n de <span class="texto_titulo_rojo">OBJETIVOS</span> para: <span class="texto_titulo_rojo">${colaborador}</span></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer10">
+  <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+      <td width="30"><a href="#" onClick="Accion('editar')"><img src="../servlet/Tool?images/ggd/botones/editar.gif" width="30" height="30" border="0" alt="EDITAR"/></a></td>
+      <td width="30"><a href="#" onClick="Accion('eliminar')"><img src="../servlet/Tool?images/ggd/botones/eliminar.gif" width="30" height="30" border="0" alt="ELIMINAR"/></a></td>
+      <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+    </tr>
+  </table>
+</div>
+<else>
+ <div id="Layer12">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td class="txt_gris_bold">Definici&oacute;n de objetivos.</td>
+    </tr>
+        <tr>
+      <td class="txt_gris_bold">&nbsp;</td>
+    </tr>
+        <tr>
+      <td class="txt_gris_bold"><span class="texto_titulo_rojo">${salida}</span></td>
+    </tr>
+  </table>
+ </div>
+  <div id="Layer6">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+    <tr>
+      <td width="50%">Definici&oacute;n de <span class="texto_titulo_rojo">OBJETIVOS</span></td>
+    </tr>
+  </table>
+</div>
+</if>
+<div class="boton_rojo" id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="16%">Listado de colaboradores </td>
+    </tr>
+  </table>
+</div>
+<span id="Layer11">
+   <if (incluye != "0")> 
+   <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td width="21%"><span class="txt_gris_bold"><a href="#" onClick="verObjetivosColaborador('${evaluador.rut}','JEFE');"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${evaluador.foto}" alt="" name="foto" width="37" height="48" border="1" id="foto" style="background-color: #FFCC00" /></a></span></td>
+      <td width="79%" class="boton_rojo"><p>${evaluador.nombre} (JEFATURA)</p></td>
+    </tr>
+   </table>
+  </if>
+  <table width="90%" border="0" cellpadding="0">
+   <list getColaboradores as colab>
+    <tr>
+      <td width="21%"><span class="txt_gris_bold"><a href="#" onClick="verObjetivosColaborador('${colab.rut}','COLABORADOR');"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${colab.foto}" alt="" name="foto" width="37" height="48" border="1" id="foto" style="background-color: #FFCC00" /></a></span></td>
+      <td width="79%" class="boton_rojo"><p>${colab.nombre_completo}</p></td>
+    </tr>
+   </list>   
+  </table>
+</span>
+</form>
+</body>
+</html>

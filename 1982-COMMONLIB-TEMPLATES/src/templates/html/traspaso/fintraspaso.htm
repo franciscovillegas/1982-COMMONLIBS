@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Traspaso de Datos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!--
+<link rel="stylesheet" href="/style/estilos.css" type="text/css">
+-->
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+
+
+<script language="JavaScript">
+<!--
+
+
+
+
+function Valida(form) {
+	var valido = false;
+	
+	if (form.peri_ano.value == "") {
+		alert ("Debe indicar el a&#241;o del periodo");
+		form.peri_ano.focus();
+	}
+	else {
+		var mes = parseInt(form.peri_mes.value);
+		form.peri_orig.value = "" + mes + form.peri_ano.value;
+		if (mes < 10)
+			form.peri_dest.value = "" + form.peri_ano.value + "0" + mes;
+		else
+			form.peri_dest.value = "" + form.peri_ano.value + mes;
+		/*validacion*/
+		/*if ((form.historico.checked) && (!fechaValida(form.d_dia.value, form.d_mes.value, form.d_agno.value) )) {
+			alert("Debe indicar una fecha v&#225;lida.");
+			form.d_dia.focus();
+		}
+		else {*/
+			var sel_proc = false;
+			for (x=0; x<form.opciones.length; x++) {
+				if (form.opciones[x].checked) {
+					sel_proc = true;
+					break;
+				}
+			}
+			if (!sel_proc) {
+				for (x=0; x<form.opcion_trab.length; x++) {
+					if (form.opcion_trab[x].checked) {
+						sel_proc = true;
+						break;
+					}
+				}
+				if (!sel_proc) {
+					for (x=0; x<form.opcion_orga.length; x++) {
+						if (form.opcion_orga[x].checked) {
+							sel_proc = true;
+							break;
+						}
+					}
+				}
+			}
+			if (sel_proc)		
+				valido = true;
+			else 
+				alert("Debe seleccionar al menos un proceso");
+		//}
+	}
+	//alert (valido);
+	if (valido) {
+		//VerContFormm(form);
+		form.submit();
+	}
+	return false;
+}
+
+function histoOnOff(form) {
+	if (form.historico.checked) {
+		form.d_mes.disabled = "";
+		form.d_agno.disabled = "";
+		form.d_dia.disabled = "";
+		form.d_dia.focus();
+	}
+	else {
+		form.d_mes.disabled = "true";
+		form.d_agno.disabled = "true";
+		form.d_dia.disabled = "true";
+	}
+}
+
+function inicio() {
+	var msg = "";
+	document.form1.peri_mes.value = '${peri_mes}';
+	document.form1.peri_ano.value= '${peri_agno}';
+	<if msg><list msg as m>msg += "${m}\n";</list>
+	alert(msg);
+	</if>
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/manejar_check.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/manejar_fechas.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/Formularios.js">
+</script>
+</head>
+
+<body bgcolor="#9999CC" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  background="../servlet/Tool?images/main/bck_main.jpg"  onLoad="inicio()">
+<form name="form1" method="post" action="../servlet/S_Traspaso">
+  <table border=0 cellpadding=0 cellspacing=0 width="618">
+    <!--DWLayoutTable-->
+    <tr> 
+      <td width="200" height="148">&nbsp; </td>
+      <td width="145">&nbsp;</td>
+      <td width="273">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="40">&nbsp;</td>
+      <td valign="top">Traspaso finalizado </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="171">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <script language="JavaScript">
+parent.CerrarVentProcesando();
+</script>
+</form>
+</body>
+</html>

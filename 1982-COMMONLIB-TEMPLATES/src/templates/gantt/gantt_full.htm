@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Calendario de vacaciones</title>
+
+<link href="../servlet/Tool?style/gantt/registro.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+	 function imprimir(){
+          window.print();
+	 }
+  </script>  
+
+  <script type="text/javascript">
+	/*$(document).ready(
+		function() {
+			$("#pdf").click(
+	    		function(){
+					generatePdf( {trigger: $(this),content : $('#genPdf').html()} );      		
+				}
+			);
+
+			function generatePdf(options) {
+  			formPdf.content.value=options.content;
+				formPdf.submit();
+  		}
+		}
+	);*/
+  </script>
+<style type="text/css">
+#Layer1 {
+	position:absolute;
+	left:730px;
+	top:0px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:213px;
+	top:69px;
+	width:555px;
+	height:14px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:254px;
+	top:40px;
+	width:489px;
+	height:19px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:235px;
+	top:38px;
+	width:16px;
+	height:16px;
+	z-index:4;
+}
+#Layer5 {
+	position:absolute;
+	left:743px;
+	top:38px;
+	width:17px;
+	height:19px;
+	z-index:5;
+}
+#apDiv1 {
+	position:absolute;
+	left:278px;
+	top:9px;
+	width:440px;
+	z-index:6;
+}
+#leyenda {
+	position:absolute;
+	left:214px;
+	top:69px;
+	width:555px;
+	z-index:8;
+}
+</style>
+</head>
+<body oncontextmenu="return false" onkeydown="return false">
+<div id="Layer4"><a href="../servlet/ServletGanttVacacionesFull${prev}" target="_top"><img src="../servlet/Tool?images/gantt/calendario/izq.jpg" alt="MES ANTERIOR" width="19" height="23" border="0" /></a></div>
+<div id="Layer5"><a href="../servlet/ServletGanttVacacionesFull${next}" target="_top"><img src="../servlet/Tool?images/gantt/calendario/der.jpg" alt="MES SIGUIENTE" width="19" height="23" border="0" /></a></div>
+<div id="Layer1"><a href="#" onClick="imprimir();"><img src="../servlet/Tool?images/gantt/imprimir.png" alt="IMPRIMIR" width="19" height="23" border="0" /></a></div>
+<!-- <div id="Layer1"><a href="#" id="pdf"><img src="../servlet/Tool?images/gantt/imprimir.png" alt="IMPRIMIR" width="19" height="23" border="0" /></a></div>-->
+<div id="genPdf">
+  <div class="Txt_dia_mes" id="Layer3"><center>${mes} - ${ann}</center></div>
+<div id="apDiv1">
+  <table width="420" border="0" cellpadding="0" cellspacing="1" class="boton_rojo">
+    <tr>
+      <td align="center"><img src="../servlet/Tool?images/gantt/calendario/barra.gif" width="40" height="6" alt="Aprobado RRHH"/></td>
+      <td>Aprobado RRHH</td>
+      <td align="center"><img src="../servlet/Tool?images/gantt/calendario/barra3.gif" width="40" height="6" alt="Aprobado Jefatura"/></td>
+      <td>Aprobado Jefatura</td>
+      <td align="center"><img src="../servlet/Tool?images/gantt/calendario/barra2.gif" width="40" height="6" alt="En proceso"/></td>
+      <td>En proceso</td>
+    </tr>
+  </table>
+</div>
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+
+  <tr>
+    <td height="89" colspan="2" background="../servlet/Tool?images/gantt/calendario/top.jpg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="215" valign="top">
+      <!-- LISTA DE NOMBRES -->
+      <table width="215" border="0" cellpadding="0" cellspacing="0" background="../servlet/Tool?images/gantt/calendario/left.jpg">
+  	<list varios as v>
+    <tr>
+      <td height="17" align="left" class="Txt_dia_calendario">${v.nombre}</td>
+      </tr>
+  	</list>  	
+  </table>
+      <!-- FIN LISTA DE NOMBRES -->    
+    </td>
+    <td width="565" valign="top" background="../servlet/Tool?images/gantt/calendario/main.jpg">
+     
+      <!-- BARRAS -->
+      <div id="leyenda">
+<table width="555" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    <list dias as d>
+      <td width="3%" height="20" align="center" class="Txt_dia_calendario">${d.dia}</td>
+    </list>
+    </tr>
+  <list barras as b>
+	<tr>
+	  <list b.rut as r>
+	  	<if (r.ocupado == "1") || (r.ocupado == "11")>	 
+	  	    <if (r.estado == "4")>
+	  	      <td height="17" align="center" valign="middle" class="Txt_dia_calendario"><a title="${r.vac}"><img src="../servlet/Tool?images/gantt/calendario/barra.gif" width="100%" height="6" /></a></td>
+	  	    </if>
+	  	    <if (r.estado == "0")>
+	  	      <td height="17" align="center" valign="middle" class="Txt_dia_calendario"><a title="${r.vac}"><img src="../servlet/Tool?images/gantt/calendario/barra2.gif" width="100%" height="6" /></a></td>
+	  	    </if> 
+	  	    <if (r.estado == "2")>
+	  	      <td height="17" align="center" valign="middle" class="Txt_dia_calendario"><a title="${r.vac}"><img src="../servlet/Tool?images/gantt/calendario/barra3.gif" width="100%" height="6" /></a></td>
+	  	    </if>	  	      
+		<else>
+		      <td height="17" align="center" valign="middle" class="Txt_dia_calendario"><img src="../servlet/Tool?images/gantt/calendario/spacer.gif" width="100%" height="6" /></td>
+		</if>
+	  </list>
+	
+    </tr></list>   
+</table>
+</div>     
+<!-- FIN BARRAS -->
+
+    </td>
+  </tr>
+</table>
+<!-- <form name="formPdf" method="post" action="../servlet/ServletTransformPdf">
+	<input name="content" type="hidden" />  
+</form>-->
+</div>
+</body>
+</html>

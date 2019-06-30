@@ -1,0 +1,239 @@
+<html>
+<head>
+<title>Enviar Mail</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Tue Jun 04 10:53:04 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function Seleccionar() { //v2.0
+  var modo=parent.opener.document.inserta.modo.value;
+  var cadena="";
+  for (x=0;x<document.form1.mail.length;x++){
+ 	 if (document.form1.mail[x].checked==true)
+		   cadena=cadena+document.form1.mail[x].value+";";
+  }
+  if (modo=="1"){//Para		   
+    parent.opener.document.inserta.para.value=cadena;
+	//alert("Para: "+cadena);	
+  }else{//Con Copia
+    parent.opener.document.inserta.copia.value=cadena;
+	//alert("Copia: "+cadena);	
+  } 	
+  window.close();
+}
+function inicio(){
+ var myArray=new Array();
+  var y=0;
+  if (opener.emails)
+    if (opener.emails){
+       myArray=opener.emails;
+       if (myArray.length>0){
+           //alert("arreglo con datos");
+           for (x=0;x<myArray.length;x++){
+               for (y=0;y<document.form1.mail.length;y++){
+                   //alert("val check: "+document.form1.mail[y].value+
+                     //     "\nval array: "+myArray[x]);
+				   if (document.form1.mail[y].value==myArray[x]){
+					    //alert("iguales");
+                        document.form1.mail[y].checked=true;
+                        break;
+                    }
+   		       }
+           }
+       }
+       
+   }
+   
+
+}
+
+function Seleccionarfotos() { //v2.0
+  //alert("llamando direcciones");
+  opener.AddEmail(document.form1.mail);
+  window.close();
+}
+
+//-->
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body background="../servlet/Tool?images/new/main/main_solo.jpg" style="background-repeat:no-repeat "onload="inicio();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="Layer1" style="position:absolute; left:185px; top:331px; width:79px; height:42px; z-index:3"><a href="javascript:;" onClick="Seleccionarfotos();return false;"><img name="enviar_r4_c4" src="../servlet/Tool?images/new/botones/para_ok.gif" width="91" height="21" border="0"></a></div>
+<form name="form1">
+  <table width="503">
+  <!-- fwtable fwsrc="Untitled" fwbase="enviar.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr align="center"> 
+    <td><img src="../servlet/Tool?images/new/titulos/destina.jpg" width="436" height="29"></td>
+    </tr>
+  <tr> 
+    <td height="25">
+        <div id="LayerGaleria" style="position:absolute; width:493px; height:255px; z-index:1; overflow: auto; left: 8px; top: 69px; visibility: visible;"> 
+          <table width="100%" height="243" border="0" cellpadding="1" cellspacing="1">
+            <tr> 
+              <td width="31%"> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/10795720-0.jpg" alt="FERNANDO PATRICIO ROJAS ARANEDA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail4" value="FROJAS@bci.cl">
+                </div>
+              </td>
+              <td width="36%"> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/8044951-8.jpg" alt="EUGENIO ERNESTO ACEVEDO ROJAS" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail5" value="EACEVED@bci.cl">
+                </div>
+              </td>
+              <td width="33%"> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/8336525-0.jpg" alt="HECTOR JOSE MARTINEZ BECERRA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail7" value="HMARTIB@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12524079-8.jpg" alt="ANDRES IGNACIO CARRASCO TORRES" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail8" value="ACARRAS@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12658712-0.jpg" alt="JOSE MARIO CID TORREJON" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail9" value="JCID@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/9115108-1.jpg" alt="JUAN MILTON RODRIGUEZ DELGADO" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail10" value="JRODRIG@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12747032-4.jpg" alt="OMAR MARCELO KRUGER JARA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail11" value="OKRUGER@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/11047957-3.jpg" alt="ALEJANDRA PEREZ ZU&#209;IGA" width="48" height="60"><br>
+                  <input name="mail" type="checkbox" id="mail12" value="APEREZZ@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/8589913-9.jpg" alt="FLORENCIA INES MOLINA BUSTOS" width="48" height="60"><br>
+                  <input name="mail" type="checkbox" id="mail13" value="FLMOLIN@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12472678-6.jpg" alt="PIERRE MARCEL RUMINOT MENICHETTI" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail16" value="PRUMINO@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12294075-6.jpg" alt="VICTOR IVAN MANZOR CERDA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail17" value="VMANZOR@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/9991675-3.jpg" alt="VICTOR SILVA MATZKE" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail18" value="VSILVA@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/8755587-9.jpg" alt="OMAR SOTO LEIVA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail19" value="OSOTO@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/7599494-k.jpg" alt="AMAYA REBECA ESTAY GURIDI" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail20" value="AESTAY@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12227860-3.jpg" alt="MONICA VELIZ BORQUEZ" width="48" height="60"><br>
+                  <input name="mail" type="checkbox" id="mail21" value="MVELIZB@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/11225508-7.jpg" alt="MARIA BERNARDITA VILLOUTA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail23" value="MVILLOU@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12649285-5.jpg" alt="NORMA VALENTINA JARA LEIVA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail24" value="NJARA@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/8459443-1.jpg" alt="FABIOLA JEANNETTE FLORES ALMENDRAS" width="48" height="60"><br>
+                  <input name="mail" type="checkbox" id="mail25" value="FFLORES@bci.cl">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/7203274-8.jpg" alt="JOSE ORRELLANA DURAND" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail26" value="JORELLA@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/6572974-1.jpg" alt="MIGUEL ANGEL SAEZ GARCIA" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail27" value="MSAEZ@bci.cl">
+                </div>
+              </td>
+              <td> 
+                <div align="center"><img src="../servlet/Tool?images/rrhh/12881728-k.jpg" alt="CATHERINE LORETO MENA ARREDONDO" width="48" height="60"> 
+                  <br>
+                  <input name="mail" type="checkbox" id="mail28" value="CMENAA@bci.cl">
+                </div>
+              </td>
+            </tr>
+          </table>
+      </div>
+        <div align="center"><span class="Estilo1">Seleccione el destinatario y presione el boton &quot;para&quot;, si desea enviar con copia, repita la operaci&oacute;n </span></div></td>
+    </tr>
+</table>
+  
+  <div id="Layer2" style="position:absolute; width:141px; height:202px; z-index:2; left: 543px; top: 98px; overflow: auto; visibility: hidden;"> 
+  <table width="100%" border="0" cellpadding="1" cellspacing="1">
+    <tr> 
+      <td bgcolor="#CDCEE9">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</form>
+</body>
+</html>

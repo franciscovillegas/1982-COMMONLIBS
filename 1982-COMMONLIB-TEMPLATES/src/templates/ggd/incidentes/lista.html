@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Listado de Incidentes Cr&iacute;ticos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnInicio(){
+
+}
+function fnAplicar(){
+	document.form1.submit();
+}
+</script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="fnInicio()">
+
+
+<form name="form1" method="post" action="../servlet/incidentesCriticos">
+<table width="90%" border="1" align="center">
+  <tr >
+    <td colspan="3">Lista de Anotaciones 
+      <input name="txt_rut" type="text" id="txt_rut" value="${txt_rut}"></td>
+    <td align="right"><a href="#">[Agregar]</a></td>
+  </tr>
+  <tr>
+    <td class="TituloTabla">Fecha</td>
+    <td class="TituloTabla">Tipo Incidente</td>
+    <td class="TituloTabla">Observaci&oacute;n</td>
+    <td class="TituloTabla">Figura</td>
+  </tr>
+<if getIncidentes>
+<list getIncidentes as a>
+  <tr valign="top">
+    <td >${a.fecha}&nbsp;</td>
+    <td >${a.anotacion}&nbsp;</td>
+    <td ><textarea name="textarea" cols="40" rows="3">${a.descripcion}</textarea>
+      </td>
+    <td >${a.icono}&nbsp;</td>
+  </tr>
+</list>
+<else>
+  <tr>
+    <td colspan="4" >No registra informaci&#243;n.</td>
+  </tr>
+</if>  
+</table>
+</form>
+<p>&nbsp; </p>
+</body>
+</html>

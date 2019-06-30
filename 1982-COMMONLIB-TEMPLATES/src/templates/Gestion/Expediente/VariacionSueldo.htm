@@ -1,0 +1,83 @@
+  <html>
+<head>
+<title>Variaci&oacute;n del Sueldo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body  background="../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg" style="background-repeat:no-repeat" onLoad="focus();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="500" height="183">
+  
+  <tr> 
+    <td height="10" align="center"></td>
+  </tr>
+  <tr> 
+    <td height="54" valign="top"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+              <tr> 
+                <td width="74"  height="21" class="texto_negro_bold">Nombre</td>
+                <td colspan="3" >${nombre}</td>
+                <td width="108" ></td>
+              </tr>
+              <tr> 
+                <td width="74"  height="17" class="texto_negro_bold">R.U.T.</td>
+                <td width="153" >${rut}</td>
+                <td width="76" >Fecha Hoy</td>
+                <td  colspan="2">${fecha_hoy}</td>
+              </tr>
+    </table></td>
+  </tr>
+  <tr valign="top"> 
+    <td height="93"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1">
+              <tr> 
+                <td width="104" rowspan="2" align="center" class="tabla_azul">Fecha</td>
+                <td width="104" rowspan="2" align="center" class="tabla_azul">% 
+                    Variaci&oacute;n</td>
+                <td width="104" rowspan="2" align="center" class="tabla_azul">Motivo</td>
+                <td colspan="2" align="center" class="tabla_azul">Neto</td>
+              </tr>
+              <tr> 
+                <td width="104" align="center" class="tabla_azul">Antes</td>
+                <td width="104" align="center" class="tabla_azul">Despu&eacute;s</td>
+              </tr>
+      </table><div id="Layer1" style="position:absolute; width:492px; height:183px; z-index:1; ; overflow: auto; left: 4px; top: 114px; visibility: visible;"> 
+              <table border="0" width="100%" cellpadding="0" cellspacing="1">
+                <list variacion as v> 
+                <tr> 
+                  <td width="104" class="tabla_negro"> 
+                    ${v.fecha}                  </td>
+                  <td width="104" class="tabla_negro">${v.por}</td>
+                  <td width="104" class="tabla_negro">${v.motivo}</td>
+                  <td width="104" class="tabla_negro">${v.neto_antes}</td>
+                  <td width="104" class="tabla_negro">${v.neto_despues}</td>
+                </tr></list> <if !(variacion)> 
+                <tr> 
+                  <td colspan="5" class="tabla_negro">Sin 
+                      variaciones en su sueldo</td>
+                </tr>
+                </if> 
+              </table>
+            </div>    </td>
+  </tr>
+</table>
+</body>
+</html>

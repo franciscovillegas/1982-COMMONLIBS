@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>Unidades Relativas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+function dispara(f) {
+    f.submit();
+}
+function opera(f,valor)
+{
+	f.operacion.value=valor;
+	dispara(f);
+}
+function borra(valor,nodo)
+{
+	document.frm1.operacion.value=valor;
+	document.frm1.unidadBR.value=nodo;
+	dispara(document.frm1);
+}
+</script>
+</head>
+
+<body bgcolor="#FFA400" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="frm1" action="../servlet/UnidadRelativa" method="post">
+
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="operacion" value="NULA">
+<input type="hidden" name="unidadBR" value="-1">
+
+<table width="300" align="center" height="320" border=0 cellpadding=0 cellspacing=0 class="layer_util">
+<tr><td align="center">
+
+<table width="285" align="center" height="300" border=0 cellpadding=0 cellspacing=0>
+  <tr><td colspan="3" valign="top" height="25" class="texto_negro_bold_chico" align="center">ASIGNACION UNIDAD RELATIVA</td></tr>
+  <tr> 
+    <td valign="top" height="25" class="texto_negro_bold_chico">Usuario</td>
+    <td valign="top" class="texto_negro_bold_chico">:</td>
+    <td valign="top" class="texto_negro_bold_chico">
+    <select name="trabajador" class="texto_negro_bold_chico" onchange="javascript:dispara(this.form);" style="width: 200px">
+      <option value="-1" <if (rut=="-1") >selected</if> >Seleccione un Usuario</option>
+      <list trabajador as t> 
+      <option value="${t.rut}" <if (rut==t.rut) >selected</if> >${t.nombre}</option>
+      </list> 
+    </select>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="25" class="texto_negro_bold_chico">Unidad Relativa</td>
+    <td valign="top" class="texto_negro_bold_chico">:</td>
+    <td valign="top" class="texto_negro_bold_chico">
+    <select name="unidadR" class="texto_negro_bold_chico" style="width: 200px">
+      <option value="-1" <if (unidadrel=="-1") >selected</if> >Seleccione una Unidad Relativa</option>
+      <list unidades as u> 
+      <option value="${u.nodo_id}" <if (unidadrel==u.nodo_id) >selected</if> >${u.nodo_id} - ${u.unid_desc}</option>
+      </list> 
+    </select>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="25" class="texto_negro_bold_chico">Tipo</td>
+    <td valign="top" class="texto_negro_bold_chico">:</td>
+    <td valign="top" class="texto_negro_bold_chico">
+    <table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+    <td class="texto_negro_bold_chico"><input type="radio" name="tipo" value="U" checked> Unidad</td>
+    <td class="texto_negro_bold_chico"><input type="radio" name="tipo" value="R"> Rama</td>
+    </tr>
+    </table>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="25" class="texto_negro_bold_chico" colspan="3" align="center">
+    <input type="button" name="sbm" value="Grabar" class="texto_negro_bold_chico" onclick="javascript:opera(this.form,'GR')">&nbsp;
+    <input type="reset" name="rst" value="Limpiar" class="texto_negro_bold_chico">
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" valign="top" align="center">
+    <table align="center" cellpadding="1" cellspacing="2" border="0">
+    <tr><td colspan="2" class="texto_negro_bold_chico" align="center">UNIDADES RELATIVAS DEL USUARIO</td></tr>
+    <tr>
+    <td class="texto_negro_bold_chico" align="center">Cod.Unidad</td>
+    <td class="texto_negro_bold_chico" align="center">Desc.Unidad</td>
+    <td class="texto_negro_bold_chico" align="center">Tipo</td>
+    <td class="texto_negro_bold_chico" align="center"></td>
+    </tr>
+    <list unidadesR as u2>
+    <tr>
+    <td class="texto_negro_bold_chico">${u2.unidad}</td>
+    <td class="texto_negro_bold_chico">${u2.unid_desc}</td>
+    <td class="texto_negro_bold_chico"><if (u2.tipo == "R") >Rama<else>Unidad</if> </td>
+    <td class="texto_negro_bold_chico">
+    <a href="#">
+    <img onclick="javascript:borra('BR','${u2.unidad}')" src="../servlet/Tool?images/new/botones/eliminar.jpg" width="34" height="34" border="0" alt="Borrar" title="Borrar Unidad Relativa">
+    </a>
+     </td>
+    </tr>
+    </list>
+    </table>
+    </td>
+  </tr>
+</table>
+
+
+</td></tr>
+</table>
+
+
+
+</form>
+</body>
+</html>
+

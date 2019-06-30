@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Programación de Saludos</title>
+	<link rel="stylesheet" href="../servlet/Tool?style/jquery-ui/jquery-ui.css">
+	<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js"></script>
+	<script src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+		$( "#tabs" ).tabs();
+		$( "#tabs" ).tabs( "enable", 1 );
+	});
+	
+	function callZona(zona) {
+		
+	}
+</script>
+<style type="text/css">
+	#tabs {
+		font-size: 70%;
+	}
+</style>
+</head>
+<body>
+	<div id="tabs">
+	  <ul>				
+	    <li><a href="#fragment-1" onClick="callZona(1);"><span>Plantillas</span></a></li>
+	    <li><a href="#fragment-2" onClick="callZona(2);"><span>Programación</span></a></li>
+	  </ul>
+	  <div id="fragment-1">Cargando datos...</div>
+	  <div id="fragment-2">Cargando datos...</div> 
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<table width="500" border="0" cellspacing="0" cellpadding="0" height="300">
+  <tr> 
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; width:125px; height:18px; z-index:2; left: 373px; top: 270px; visibility: visible"><a href="/templates/Gestion/RegistroVisitas/frameset.htm" target="_self"><img name="Image2" border="0" src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24"></a></div>
+<div id="Layer1" style="position:absolute; width:464px; height:244px; z-index:1; left: 14px; top: 15px; visibility: visible"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" height="116" class="texto_negro">
+    <tr> 
+      <td align="center"><if mensaje>
+        <p class="texto_negro_bold">${mensaje}        </p>
+        <table width="300" border="0" cellspacing="1" cellpadding="0">
+            <tr> 
+              <td width="150" align="center" class="tabla_amarelo">Fecha</td>
+              <td width="150" align="center" class="tabla_amarelo">Hora</td>
+            </tr>
+            <tr> 
+              <td width="150" align="center" class="tabla_negro">${fecha}</td>
+              <td width="150" align="center" class="tabla_negro">${hora}</td>
+            </tr>
+          </table>
+          <else>Los Datos han sido registrados exitosamente</if>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

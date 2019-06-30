@@ -1,0 +1,49 @@
+<li  id="${a.idli}" >
+	<a  data-toggle="tooltip" 
+	data-placement="${a.tooltipPlacement}"
+	data-html="${a.tooltipHtml}" 
+	title="${a.tooltip}"
+	template="<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>"
+	id="a_${a.canonicalName}"
+	
+	<if a.disabled == "true" || !(a.accesible== "true") || 
+			((a.type == "SENCHA" && (a.ide == null)) || (a.type== "TEMPLATE" && (a.ide == null)) ) >
+		class="btn" disabled
+	
+	<else>
+		<if a.type == "JAVASCRIPT" >
+			href="${a.href}"
+		<else> <if a.type == "SENCHA" >
+			<if a.ide == "" || a.ide==null >
+				href="javascript:; alertify.error('No se ha ingresado IDE');"
+			<else>
+				href="javascript:; alertify.success('Abriendo ${a.nombre}') ;openIframe('../../../${sencha_opener}','${a.canonicalName}');"
+			</if>
+		<else> <if a.type == "TEMPLATE" >
+			href="javascript:; alertify.success('Abriendo ${a.nombre}') ;openIframe('../../../${sencha_opener}','${a.canonicalName}');"
+		</if>
+		</if>
+		</if>
+	</if>
+	class="${a.aCssClasses}">
+	
+	<if a.spanCssClasses && a.spanCssClasses != null>
+		<span class='${a.spanCssClasses}'></span>
+	</if>
+	
+	<span>${a.nombre} </span>
+	
+	<if a.badgeDanger && a.badgeDanger != "0">
+		<span class='badge badge-danger'>${a.badgeDanger}</span>
+	</if>
+	
+	<if a.badgeWarning  && a.badgeWarning != "0">
+		<span class='badge badge-warning'>${a.badgeWarning}</span>
+	</if>
+	
+	<if a.badgePrimary  && a.badgePrimary != "0">
+		<span class='badge badge-primary'>${a.badgePrimary}</span>
+	</if>
+		
+	</a>
+</li>

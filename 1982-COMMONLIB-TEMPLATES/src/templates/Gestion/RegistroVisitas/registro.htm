@@ -1,0 +1,166 @@
+  <html>
+<head>
+<title>registro visita</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Mostrar(layer) { //v3.0
+      //alert(layer);
+      <list detalle as d> 
+      //  alert('Layer'+'${d.id}'+'.style.visibility="hidden"');  
+        eval('Layer'+'${d.id}'+'.style.visibility="hidden"');
+      </list>
+     //alert('Layer'+layer+'.style.visibility="visible"');
+     eval('Layer'+layer+'.style.visibility="visible"');
+}
+
+function Rescata(mot) { //v2.0
+   var grupo=document.form1.grupo.value;
+   document.form1.g.value=grupo;
+   document.form1.motivo.value=mot;
+  // alert("grupo: "+grupo+"\nmotivo: "+document.form1.motivo.value); 
+}
+
+function Valida() { //v2.0
+   var grupo=document.form1.g.value;
+   var motivo=document.form1.motivo.value;
+   //alert("grupo: " +grupo+"\nmotivo: " +motivo);
+   if ((grupo!="-1")&&(motivo!="-1")&&(grupo!="0")&&(motivo!="0"))
+        document.form1.submit();
+   else
+      alert("Seleccione motivo de la visita.");
+}
+
+function AsignaRut(rut) { //v2.0
+  document.form1.responsable.value=rut;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<table width="500" border="0" cellspacing="0" cellpadding="0" height="300">
+  <form name="form1" method="post" action="../servlet/RegistroVisita" target="_self">
+    <tr> 
+      <td valign="top"> <if !mensaje> 
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr> 
+            <td>Rut visita</td>
+            <td width="152"><input name="box1" type="text" class="texto_negro_bold_chico" value="${rut_v}" size="12" readonly="yes"><input type="hidden" name="g" value="0"><input type="hidden" name="unidad" value="${unidad}"></td>
+            <td width="97">Nombre Contacto</td>
+            <td width="164"><input name="nom_c" type="text" class="texto_negro_bold_chico" value="${nom_c}" size="20" readonly="true" width="20">
+              <input type="hidden" name="motivo" value="0">
+              <input type="hidden" name="empresa" value="${empresa}">
+              <input type="hidden" name="rut_c" value="${rut_c}"></td>
+          </tr>
+          <tr> 
+            <td width="82" height="18">Nombre visita</td>
+            <td width="152" height="18"><input name="box12" type="text" class="texto_negro_bold_chico" value="${nom_v}" size="25" readonly="yes"></td>
+            <td width="97" height="18">Anexo</td>
+            <td width="164" height="18"><input name="box122" type="text" class="texto_negro_bold_chico" value="${anexo}" size="15" readonly="yes"><input type="hidden" name="responsable" value="0">
+              <input type="hidden" name="rut_v" value="${rut_v}"><input type="hidden" name="nom_v" value="${nom_v}"></td>
+          </tr>
+          <tr> 
+            <td width="82" height="18">Empresa</td>
+            <td width="152" height="18"> 
+              <input name="empre_v" type="text" class="texto_negro_bold_chico" value="${emp_v}" size="25">
+            </td>
+            <td width="97" height="18">&nbsp;</td>
+            <td width="164" height="18">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="82" height="2">Observaci&oacute;n</td>
+            <td width="152" height="2"> 
+              <textarea name="obs" cols="25" rows="2" class="texto_negro_bold_chico"></textarea>
+            </td>
+            <td width="97" height="2">&nbsp;</td>
+            <td width="164" height="2">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="100%" height="155" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td width="113" valign="top" height="121"><span class="texto_negro_bold">Anexos Relacionados</span> 
+              <div id="botonaceptar" style="position:absolute; width:125px; height:15px; z-index:3; left: 244px; top: 269px; visibility: visible"><a href="#"><img name="Image3" border="0" src="../servlet/Tool?images/Gestion/botones/aceptar.gif" width="120" height="24" onClick="Valida();return false;"></a></div></td><td width="384" height="121" valign="top"><span id="LayerAnexos" style="position:absolute; width:381px; height:85px; z-index:2; left: 116px; top: 104px; visibility: visible"> 
+                <table width="612" border="0" cellspacing="0" cellpadding="0" height="70">
+                  <tr> 
+                    <td valign="top" height="56" colspan="3"> <if anexos> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                        <tr><td class="tabla_amarelo" width="80">Anexo</td>
+                          <td class="tabla_amarelo" width="298">Nombre</td>
+                        </tr>
+                      </table>
+                      <span id="detalleanexos" style="position:absolute; width:381px; height:87px; z-index:2; left: 0px; top: 31px; overflow: auto; visibility: visible"> 
+                        <table width="401" height="17" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                          <list anexos as a> 
+                          <tr> 
+                            <td class="tabla_negro" width="80">${a.a_rel}</td>
+                            <td class="tabla_negro" width="288">${a.nombre}</td>
+                            <td class="tabla_negro" width="25"><input type="radio" name="radiobutton" value="radiobutton" onClick="AsignaRut('${a.rut}')"></td>
+                          </tr>
+                          </list> 
+                        </table>
+                      </span><else> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+                        <tr> 
+                          <td>No se encontraron anexos relacionados</td>
+                        </tr>
+                      </table>
+                      </if> </td>
+                  </tr>
+                </table>
+              </span>
+            </td>
+          </tr>
+          <tr> 
+            <td width="113" class="texto_negro_bold"> Motivo</td>
+            <td> 
+              <select name="grupo" class="texto_negro_bold_chico" style="width=200" onChange="Mostrar(this.value)">
+                <option value="-1">Seleccione Categor&#237;a</option>
+                <list detalle as d> 
+                <option value="${d.id}">${d.grupo}</option>
+                </list> 
+              </select>
+              <list detalle as d> 
+              <div id="Layer${d.id}" style="position:absolute; width:193px; height:23px; z-index:1; left: auto; top: auto; visibility: visible"> 
+                <select name="select${g.grup}" class="texto_negro_bold_chico" style="width=200" onChange="Rescata(this.value)">
+                  <option value="-1">Seleccione Motivo</option>
+                  <list d.datos as g> 
+                  <option value="${g.m_id}">${g.m_desc}</option>
+                  </list> 
+                </select>
+              </div>
+              </list></td>
+          </tr>
+        </table>
+        <else> </if> </td>
+    </tr>
+  </form>
+</table>
+<div id="volver" style="position:absolute; width:127px; height:15px; z-index:4; left: 374px; top: 269px; visibility: visible"> 
+  <a href="/templates/Gestion/RegistroVisitas/frameset.htm" target="_parent"> 
+  <img name="Image31" border="0" src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24">  </a></div>
+<script>
+      <list detalle as d>eval('Layer'+'${d.id}'+'.style.visibility="hidden"');</list>
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+  <html>
+<head>
+<title>Aviso Invitaci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/msgprocesando.js">
+</script>
+</head>
+<body bgcolor="#FFA400" text="#000000" onload="window.focus();MM_preloadImages('/images/Gestion/botones/cerrar_down.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="390" border="0" bgcolor="#FFA400" align="center" cellpadding="1" cellspacing="1">
+  <form name="form1" action="/servlet/datafolder.videoconf.AceptaAviso">
+    <tr> 
+      <td colspan="4"> 
+        <div align="center">Aviso Conferencia 
+          <input type="hidden" name="id" value="${id}">
+        </div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="23%">De</td>
+      <td colspan="2">${nom_citador}</td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="23%">Asunto</td>
+      <td colspan="2">${asunto}</td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="23%">Fec Inicio</td>
+      <td width="32%">${f_ini}</td>
+      <td width="27%"> 
+        <div align="right">Hora Inicio</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">${h_ini}</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="23%">Fec T&eacute;rmino</td>
+      <td width="32%">${f_ter}</td>
+      <td width="27%"> 
+        <div align="right">Hora T&eacute;rmino</div>
+      </td>
+      <td width="18%"> 
+        <div align="center">${h_ter}</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="23%">Participaci&oacute;n</td>
+      <td width="32%">${tipo}</td>
+      <td width="27%">&nbsp;</td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="23%">Acci&oacute;n</td>
+      <td width="32%">${condicion}</td>
+      <td width="27%">&nbsp;</td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="23%">&nbsp;</td>
+      <td width="32%">&nbsp;</td>
+      <td width="27%">&nbsp;</td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="23%">&nbsp;</td>
+      <td width="32%"><a href="javascript:document.form1.submit();">Aceptar Invitaci&oacute;n</a></td>
+      <td width="27%"><a href="javascript:window.close();">Cerrar</a></td>
+      <td width="18%">&nbsp;</td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

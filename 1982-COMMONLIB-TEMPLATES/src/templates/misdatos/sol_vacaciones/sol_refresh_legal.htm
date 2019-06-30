@@ -1,0 +1,253 @@
+<html>
+<head>
+<title>SOLICITUD DE FERIADO LEGAL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function ValidaForm(operacion) { //v2.0
+  document.form1.operacion.value=operacion;
+  document.form1.submit();
+}
+function Imprimir() {
+	LayerPrint.style.visibility="hidden";
+    
+    printPage();
+    LayerPrint.style.visibility="visible";
+
+    
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <form name="form1" action="../servlet/com.eje.serhumano.misdatos.sol_vacaciones.S_MuestraSolicitud" method="POST">
+    <tr> 
+      <td valign="top" height="82" colspan="2">
+        <table width="100%" border="0" align="center">
+          <tr> 
+            <td width="89%"> 
+              <div align="left"> 
+                <table width="48%" border="0" cellspacing="1" cellpadding="2" align="left">
+                  <tr> 
+                    <td> 
+                      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><b><img src="../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></b></font></i></font></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><font face="Times New Roman, Times, serif"><b><font face="Verdana, Arial, Helvetica, sans-serif">BANCO 
+                        DE CREDITO E INVERSIONES </font></b></font></font></div>
+                    </td>
+                  </tr>
+                </table>
+                <font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><b><br>
+                </b></font></i></font> <font face="Arial, Helvetica, sans-serif" size="2"><font face="Times New Roman, Times, serif"><b> 
+                </b></font></font></div>
+            </td>
+            <td valign="top" width="11%"> 
+              <div id="LayerPrint" style="position:absolute; width:51px; height:39px; z-index:1; visibility: visible"><img src="../servlet/Tool?images/botones/imprimir_up.jpg" width="76" height="43" onClick="Imprimir()" name="Image1"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="32"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b><font face="Verdana, Arial, Helvetica, sans-serif">SOLICITUD 
+          DE FERIADO LEGAL N&ordm; ${id_solic}</font></b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="19%"><font face="Arial, Helvetica, sans-serif" size="2"><b>UNIDAD/SUCURSAL:</b></font></td>
+            <td width="81%"><font face="Arial, Helvetica, sans-serif" size="2">${unidad}</font></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2"> 
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="2">${fecha}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">Por intermedio 
+        de la presente vengo en solicitar al Banco, se me autorice a usar <b>${dias}</b> 
+        dias de vacaciones a cuenta de los dias de feriado legal a que tengo derecho.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">El uso 
+        efectivo de los se&ntilde;alados dias de vacaciones comprender&aacute; 
+        desde el ${inicio} hasta el ${finvaca}</font> <font face="Arial, Helvetica, sans-serif" size="2">, 
+        ambas fechas inclusive, lo que ya ha sido autorizado por mi jefe superior 
+        directo.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">El trabajador 
+        que suscribe declara haber hecho uso de los d&iacute;as solicitados, con 
+        goce de remuneraci&oacute;n &iacute;ntegra de acuerdo a la Ley.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2" height="88">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_trabajador},${fec_solic},${hora_solic} 
+          hrs 
+          <input type="hidden" name="sgte" value="${sgte}">
+          </font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center">________________________________</div>
+      </td>
+      <td width="53%" valign="top"> 
+        <div align="center">___________________________</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Firma</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Firma</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_jefe}</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+          ${rut_label} 
+          <input type="hidden" name="rut_dest" value="${rut_dest}">
+          <input type="hidden" name="tipo_sol" value="${tipo_sol}">
+          <input type="hidden" name="id_solic" value="${id_solic}">
+          <input type="hidden" name="operacion">
+          </font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%" height="48"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+      <td width="53%" height="48"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="49"><font face="Arial, Helvetica, sans-serif" size="2">La 
+        presente solicitud s&oacute;lo ser&aacute; v&aacute;lida una vez autorizada 
+        por el <b>DEPTO PROCESOS DE RR.HH.</b></font></td>
+    </tr>
+    <tr valign="top" align="left"> 
+      <td colspan="2" height="280"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif"><b>AUTORIZACION</b></font></div>
+            </td>
+          </tr>
+          <tr> 
+            <td height="102"><font face="Arial, Helvetica, sans-serif" size="2">Se 
+              autoriza al Trabajador antes individualizado para que de conformidad 
+              con el Cap&iacute;tulo VII, T&iacute;tulo I del Libro I, del C&oacute;digo 
+              del Trabajo, haga uso de los d&iacute;as solicitados, correspondientes 
+              a:<br>
+              <br>
+              </font> 
+              <table width="22%" border="1" cellpadding="0" cellspacing="0" align="center">
+                <tr> 
+                  <td> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Per&iacute;odo</font></div>
+                  </td>
+                  <td> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">D&iacute;as</font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${periodo1}</font></div>
+                  </td>
+                  <td> 
+                    <div align="right"><font face="Arial, Helvetica, sans-serif" size="2">${diasp1}</font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td> 
+                    <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${periodo2}</font></div>
+                  </td>
+                  <td> 
+                    <div align="right"><font face="Arial, Helvetica, sans-serif" size="2">${diasp2}</font></div>
+                  </td>
+                </tr>
+              </table>
+              <font face="Arial, Helvetica, sans-serif" size="2"> </font></td>
+          </tr>
+          <tr> 
+            <td height="42"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+          </tr>
+          <tr> 
+            <td height="42"><font face="Arial, Helvetica, sans-serif" size="2">En 
+              consecuencia, a la fecha quedar&aacute;n por hacer uso de ${restodias} 
+              dias de feriado anual, correspondientes al per&iacute;odo ${restoperi1}/${restoperi2} 
+              </font></td>
+          </tr>
+        </table>
+        <table width="99%" border="0" cellpadding="0" cellspacing="0" height="102">
+          <tr> 
+            <td height="73" width="67%" valign="top">&nbsp; </td>
+            <td height="73" width="33%">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="67%"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"></font></div>
+            </td>
+            <td width="33%"><font face="Arial, Helvetica, sans-serif" size="2"><b>DEPTO 
+              PROCESOS DE RR.HH.</b></font></td>
+          </tr>
+        </table>
+        <font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

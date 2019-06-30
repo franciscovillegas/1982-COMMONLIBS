@@ -1,0 +1,586 @@
+ <HTML>
+<HEAD>
+<TITLE>Herramientas Org&#225;nica</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function Mision() {
+	document.getElementById("orga").src="../servlet/LoadTreeOrg?pag=Gestion/AsignaEncargado/ArbolMantMision.htm"
+}
+function Indi() {
+	document.getElementById("indicadores").src="../servlet/ListaIndicadores"
+}
+function Usuario() {
+	document.getElementById("user").src="Tool?htm=Gestion/Usuarios/JerarquiaOrg.htm"
+}
+function Orga() {
+	document.getElementById("organi").src= "Tool?htm=Gestion/MantUnidades/Jerarquia/JerarquiaOrg.htm"
+}
+function Vis() {
+	document.getElementById("visitas").src="Tool?htm=Gestion/RegistroVisitas/frameset.htm"
+}
+function openAdminDimension() {
+    var url2 = "../servlet/MantenerDimension";
+	ventmsg2 = open(url2, "Dimensiones", "width=400,height=450,left=5,top=5");
+}
+function openAdminOrganica() {
+    var url2 = "../servlet/Tool?htm=admin/cap_usuario_organica.htm";
+	ventmsg2 = open(url2, "Administrador", "width=800,height=450,left=5,top=5");
+}
+
+function AbrirBGaleria() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "Tool?htm=Gestion/BusquedaPorFiltros/Busqueda.htm";
+	ventmsg2 = open(url2, "Galeria", "width=720,height=428,left=50,top=110");
+	//ventmsg2.focus();
+}
+
+function MM_jumpMenuGo(selName,targ,restore){ //v3.0
+  var selObj = MM_findObj(selName); if (selObj) MM_jumpMenu(targ,selObj,restore);
+}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_scanstyles(obj, prop) { //v8.0
+  var inlinestyle = null; var ccProp = prop; var dash = ccProp.indexOf("-");
+  while (dash != -1){ccProp = ccProp.substring(0, dash) + ccProp.substring(dash+1,dash+2).toUpperCase() + ccProp.substring(dash+2); dash = ccProp.indexOf("-");}
+  inlinestyle = eval("obj.style." + ccProp);
+  if(inlinestyle) return inlinestyle;
+  var ss = document.styleSheets;
+  for (var x = 0; x < ss.length; x++) { var rules = ss[x].cssRules;
+	for (var y = 0; y < rules.length; y++) { var z = rules[y].style;
+	  if(z[prop] && (rules[y].selectorText == '*[ID"' + obj.id + '"]')) {
+        return z[prop];
+  }  }  }  return "";
+}
+
+function MM_getProp(obj, prop) { //v8.0
+  if (!obj) return ("");
+  if (prop == "L") return obj.offsetLeft;
+  else if (prop == "T") return obj.offsetTop;
+  else if (prop == "W") return obj.offsetWidth;
+  else if (prop == "H") return obj.offsetHeight;
+  else {
+    if (typeof(window.getComputedstyle) == "undefined") {
+	    if (typeof(obj.currentstyle) == "undefined"){
+		    if (prop == "P") return MM_scanstyles(obj,"position");
+        else if (prop == "Z") return MM_scanstyles(obj,"z-index");
+        else if (prop == "V") return MM_scanstyles(obj,"visibility");
+	    } else {
+	      if (prop == "P") return obj.currentstyle.position;
+        else if (prop == "Z") return obj.currentstyle.zIndex;
+        else if (prop == "V") return obj.currentstyle.visibility;
+	    }
+    } else {
+	    if (prop == "P") return window.getComputedstyle(obj,null).getPropertyValue("position");
+      else if (prop == "Z") return window.getComputedstyle(obj,null).getPropertyValue("z-index");
+      else if (prop == "V") return window.getComputedstyle(obj,null).getPropertyValue("visibility");
+    }
+  }
+}
+
+function MM_dragLayer(objName,x,hL,hT,hW,hH,toFront,dropBack,cU,cD,cL,cR,targL,targT,tol,dropJS,et,dragJS) { //v8.0
+  //Copyright 2005 Macromedia, Inc. All rights reserved.
+  var i,j,aLayer,retVal,curDrag=null,curLeft,curTop,IE=document.all,NS4=document.layers;
+  var NS6=(!IE&&document.getElementById), NS=(NS4||NS6); if (!IE && !NS) return false;
+  retVal = true; if(IE && event) event.returnValue = true;
+  if (MM_dragLayer.arguments.length > 1) {
+    curDrag = MM_findObj(objName); if (!curDrag) return false;
+    if (!document.allLayers) { document.allLayers = new Array();
+      with (document) if (NS4) { for (i=0; i<layers.length; i++) allLayers[i]=layers[i];
+        for (i=0; i<allLayers.length; i++) if (allLayers[i].document && allLayers[i].document.layers)
+          with (allLayers[i].document) for (j=0; j<layers.length; j++) allLayers[allLayers.length]=layers[j];
+      } else {
+        if (NS6) { var spns = getElementsByTagName("span"); var all = getElementsByTagName("div"); 
+          for (i=0;i<spns.length;i++) if (MM_getProp(spns[i],'P')) allLayers[allLayers.length]=spns[i];}
+        for (i=0;i<all.length;i++) {
+	  if (NS4){if (all[i].style&&all[i].style.position) allLayers[allLayers.length]=all[i];}
+          else if (MM_getProp(all[i],'P')) allLayers[allLayers.length]=all[i]; 
+        }
+    } }
+    curDrag.MM_dragOk=true; curDrag.MM_targL=targL; curDrag.MM_targT=targT;
+    curDrag.MM_tol=Math.pow(tol,2); curDrag.MM_hLeft=hL; curDrag.MM_hTop=hT;
+    curDrag.MM_hWidth=hW; curDrag.MM_hHeight=hH; curDrag.MM_toFront=toFront;
+    curDrag.MM_dropBack=dropBack; curDrag.MM_dropJS=dropJS;
+    curDrag.MM_everyTime=et; curDrag.MM_dragJS=dragJS;
+  
+    curDrag.MM_oldZ = (NS4)?curDrag.zIndex:MM_getProp(curDrag,'Z');
+    curLeft= (NS4)?curDrag.left:MM_getProp(curDrag,'L');
+    if (String(curLeft)=="NaN") curLeft=0; curDrag.MM_startL = curLeft;
+    curTop = (NS4)?curDrag.top:MM_getProp(curDrag,'T');
+    if (String(curTop)=="NaN") curTop=0; curDrag.MM_startT = curTop;
+    curDrag.MM_bL=(cL<0)?null:curLeft-cL; curDrag.MM_bT=(cU<0)?null:curTop-cU;
+    curDrag.MM_bR=(cR<0)?null:curLeft+cR; curDrag.MM_bB=(cD<0)?null:curTop+cD;
+    curDrag.MM_LEFTRIGHT=0; curDrag.MM_UPDOWN=0; curDrag.MM_SNAPPED=false; //use in your JS!
+    document.onmousedown = MM_dragLayer; document.onmouseup = MM_dragLayer;
+    if (NS) document.captureEvents(Event.MOUSEDOWN|Event.MOUSEUP);
+  } else {
+    var theEvent = ((NS)?objName.type:event.type);
+    if (theEvent == 'mousedown') {
+      var mouseX = (NS)?objName.pageX : event.clientX + document.body.scrollLeft;
+      var mouseY = (NS)?objName.pageY : event.clientY + document.body.scrollTop;
+      var maxDragZ=null; document.MM_maxZ = 0;
+      for (i=0; i<document.allLayers.length; i++) { aLayer = document.allLayers[i];
+        var aLayerZ = (NS4)?aLayer.zIndex:MM_getProp(aLayer,'Z');
+        if (aLayerZ > document.MM_maxZ) document.MM_maxZ = aLayerZ;
+        var isVisible = ((NS4)?aLayer.visibility:MM_getProp(aLayer,'V')).indexOf('hid') == -1;
+        if (aLayer.MM_dragOk != null && isVisible) with (aLayer) {
+          var parentL=0; var parentT=0;
+          if (NS6) { parentLayer = aLayer.parentNode;
+            while (parentLayer != null && parentLayer != document && MM_getProp(parentLayer,'P')) {
+              parentL += parseInt(MM_getProp(parentLayer,'L')); parentT += parseInt(MM_getProp(parentLayer,'T'));
+              parentLayer = parentLayer.parentNode;
+              if (parentLayer==document) parentLayer = null;
+          } } else if (IE) { parentLayer = aLayer.parentElement;       
+            while (parentLayer != null && MM_getProp(parentLayer,'P')) {
+              parentL += MM_getProp(parentLayer,'L'); parentT += MM_getProp(parentLayer,'T');
+              parentLayer = parentLayer.parentElement; } }
+          var tmpX=mouseX-((NS4)?pageX:(MM_getProp(aLayer,'L'))+parentL+MM_hLeft);
+          var tmpY=mouseY-((NS4)?pageY:(MM_getProp(aLayer,'T'))+parentT+MM_hTop);
+          if (String(tmpX)=="NaN") tmpX=0; if (String(tmpY)=="NaN") tmpY=0;
+          var tmpW = MM_hWidth;  if (tmpW <= 0) tmpW += (NS4)?clip.width:MM_getProp(aLayer,'W');
+          var tmpH = MM_hHeight; if (tmpH <= 0) tmpH += (NS4)?clip.height:MM_getProp(aLayer,'H');
+          if ((0 <= tmpX && tmpX < tmpW && 0 <= tmpY && tmpY < tmpH) && (maxDragZ == null
+              || maxDragZ <= aLayerZ)) { curDrag = aLayer; maxDragZ = aLayerZ; } } }
+      if (curDrag) {
+        document.onmousemove = MM_dragLayer; if (NS4) document.captureEvents(Event.MOUSEMOVE);
+        curLeft = (NS4)?curDrag.left:MM_getProp(curDrag,'L');
+        curTop = (NS4)?curDrag.top:MM_getProp(curDrag,'T');
+        if (String(curLeft)=="NaN") curLeft=0; if (String(curTop)=="NaN") curTop=0;
+        MM_oldX = mouseX - curLeft; MM_oldY = mouseY - curTop;
+        document.MM_curDrag = curDrag;  curDrag.MM_SNAPPED=false;
+        if(curDrag.MM_toFront) {
+          var newZ = parseInt(document.MM_maxZ)+1;
+          eval('curDrag.'+((NS4)?'':'style.')+'zIndex=newZ');
+          if (!curDrag.MM_dropBack) document.MM_maxZ++; }
+        retVal = false; if(!NS4&&!NS6) event.returnValue = false;
+    } } else if (theEvent == 'mousemove') {
+      if (document.MM_curDrag) with (document.MM_curDrag) {
+        var mouseX = (NS)?objName.pageX : event.clientX + document.body.scrollLeft;
+        var mouseY = (NS)?objName.pageY : event.clientY + document.body.scrollTop;
+        var newLeft = mouseX-MM_oldX; var newTop  = mouseY-MM_oldY;
+        if (MM_bL!=null) newLeft = Math.max(newLeft,MM_bL);
+        if (MM_bR!=null) newLeft = Math.min(newLeft,MM_bR);
+        if (MM_bT!=null) newTop  = Math.max(newTop ,MM_bT);
+        if (MM_bB!=null) newTop  = Math.min(newTop ,MM_bB);
+        MM_LEFTRIGHT = newLeft-MM_startL; MM_UPDOWN = newTop-MM_startT;
+        if (NS4) {left = newLeft; top = newTop;}
+        else if (NS6){style.left = newLeft + "px"; style.top = newTop + "px";}
+        else {style.pixelLeft = newLeft; style.pixelTop = newTop;}
+        if (MM_dragJS) eval(MM_dragJS);
+        retVal = false; if(!NS) event.returnValue = false;
+    } } else if (theEvent == 'mouseup') {
+      document.onmousemove = null;
+      if (NS) document.releaseEvents(Event.MOUSEMOVE);
+      if (NS) document.captureEvents(Event.MOUSEDOWN); //for mac NS
+      if (document.MM_curDrag) with (document.MM_curDrag) {
+        if (typeof MM_targL =='number' && typeof MM_targT == 'number' &&
+            (Math.pow(MM_targL-((NS4)?left:MM_getProp(document.MM_curDrag,'L')),2)+
+             Math.pow(MM_targT-((NS4)?top:MM_getProp(document.MM_curDrag,'T')),2))<=MM_tol) {
+          if (NS4) {left = MM_targL; top = MM_targT;}
+          else if (NS6) {style.left = MM_targL + "px"; style.top = MM_targT + "px";}
+          else {style.pixelLeft = MM_targL; style.pixelTop = MM_targT;}
+          MM_SNAPPED = true; MM_LEFTRIGHT = MM_startL-MM_targL; MM_UPDOWN = MM_startT-MM_targT; }
+        if (MM_everyTime || MM_SNAPPED) eval(MM_dropJS);
+        if(MM_dropBack) {if (NS4) zIndex = MM_oldZ; else style.zIndex = MM_oldZ;}
+        retVal = false; if(!NS) event.returnValue = false; }
+      document.MM_curDrag = null;
+    }
+    if (NS) document.routeEvent(objName);
+  } return retVal;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer2 {
+	position:absolute;
+	left:15px;
+	top:17px;
+	width:93px;
+	height:16px;
+	z-index:2;
+	visibility: hidden;
+}
+#Layer3 {
+	position:absolute;
+	left:89px;
+	top:46px;
+	width:62px;
+	height:22px;
+	z-index:3;
+}
+#HijoPre {	position:absolute;
+	left:22px;
+	top:0px;
+	width:193px;
+	height:14px;
+	z-index:0;
+}
+#PadPre {
+	position:absolute;
+	left:6px;
+	top:344px;
+	width:9px;
+	height:22px;
+	z-index:0;
+	visibility: inherit;
+}
+#HijoOrg {	position:absolute;
+	left:0px;
+	top:22px;
+	width:500px;
+	height:200px;
+	z-index:1;
+}
+#PadOrg {
+	position:absolute;
+	left:7px;
+	top:7px;
+	width:500px;
+	height:22px;
+	z-index:1;
+	visibility: hidden;
+}
+#Hijoind {	position:absolute;
+	left:-1px;
+	top:22px;
+	width:500px;
+	height:250px;
+	z-index:2;
+}
+#Padind {
+	position:absolute;
+	left:5px;
+	top:5px;
+	width:236px;
+	height:20px;
+	z-index:2;
+	visibility: hidden;
+}
+#HijoUser {
+	position:absolute;
+	left:-1px;
+	top:22px;
+	width:600px;
+	height:350px;
+	z-index:3;
+}
+#PadUser {
+	position:absolute;
+	left:5px;
+	top:5px;
+	width:600px;
+	height:20px;
+	z-index:3;
+	visibility: hidden;
+}
+#HijoOrgani {	position:absolute;
+	left:-1px;
+	top:22px;
+	width:600px;
+	height:350px;
+	z-index:4;
+}
+#PadOrgani {
+	position:absolute;
+	left:5px;
+	top:5px;
+	width:600px;
+	height:20px;
+	z-index:4;
+	visibility: hidden;
+}
+#HijoVisitas {	position:absolute;
+	left:-1px;
+	top:22px;
+	width:500px;
+	height:400px;
+	z-index:5;
+}
+#PadVisitas {
+	position:absolute;
+	left:9px;
+	top:9px;
+	width:236px;
+	height:20px;
+	z-index:5;
+	visibility: hidden;
+}
+-->
+</Style>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/Herramientas/resp_unidad_f2.gif','../servlet/Tool?images/Gestion/Herramientas/asig_sup_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mision_un_f2.gif','../servlet/Tool?images/Gestion/Herramientas/indicadores_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mant_usuarios_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mant_organ_f2.gif','../servlet/Tool?images/Gestion/Herramientas/reg_visita_f2.gif','../servlet/Tool?images/Gestion/Herramientas/mant_anexos_f2.gif','../servlet/Tool?images/Gestion/Herramientas/tras_datos_f2.gif','../servlet/Tool?images/Gestion/Herramientas/aud_usuarios_f2.gif','../servlet/Tool?images/Gestion/Herramientas/agrup_cargos_f2.gif');MM_dragLayer('PadPre','',0,0,0,0,true,false,-1,-1,-1,-1,6,358,0,'',false,'');MM_dragLayer('PadOrg','',0,0,0,0,true,false,0,-1,0,-1,46,31,0,'',false,'');MM_dragLayer('PadUser','',0,0,0,0,true,false,0,-1,0,-1,61,44,0,'',false,'');MM_dragLayer('Padind','',0,0,0,0,true,false,0,-1,0,-1,35,27,0,'',false,'');MM_dragLayer('PadVisitas','',0,0,0,0,true,false,-1,-1,-1,-1,9,9,0,'',false,'');MM_dragLayer('PadOrgani','',0,0,0,0,true,false,0,-1,0,-1,5,5,0,'',false,'')">
+<form name="form1" method="post" action="">
+<center>
+<br>
+<img src="../servlet/Tool?images/Gestion/Fondo/descanso.jpg" width="400" height="300">
+</center>
+<div id="PadPre">
+  <img src="../servlet/Tool?images/Gestion/Herramientas/tool.gif" width="22" height="36">
+  <span id="HijoPre">
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class="tabla_gris">
+		    <tr>
+		      <td valign="top"><table width="70%" cellpadding="0">
+		        <tr height="30px">
+		        	<td></td>
+		        	<if encargadounidadalfa_visible == "true" >
+				          <td width="7%"> 
+				          	<if encargadounidadalfa_enabled == "true" >
+				          		<a href="Tool?htm=Gestion/arbol/AsignaEncargadoUnidad_Busq_alfa.htm"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if> 
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image1','','../servlet/Tool?images/Gestion/Herramientas/resp_unidad_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/resp_unidad.gif" alt="Responsable Unidad" name="Image1" width="30" height="30" border="0"></a>
+				          </td>
+				    </if>
+				    
+				    <if asignasupervisoralfa_visible == "true" >
+				          <td width="7%">
+				          	<if asignasupervisoralfa_enabled == "true" >
+				          		<a href="Tool?htm=Gestion/arbol/AsignaSupervisor_Busq_alfa.htm"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if> 
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../servlet/Tool?images/Gestion/Herramientas/asig_sup_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/asig_sup.gif" alt="Asignar Supervisor" name="Image2" width="30" height="30" border="0"></a>
+				          </td>
+		          	</if>
+		          	
+		          	<if mantmision_visible == "true" >
+				          <td width="7%">
+				          	<if mantmision_enabled == "true" >
+				          		<a href="javascript:Mision();"
+				          		onClick="MM_showHideLayers('PadOrg','','show')"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if> 
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../servlet/Tool?images/Gestion/Herramientas/mision_un_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/mision_un.gif" alt="Mantener Misi&#243;n Unidad" name="Image3" width="30" height="30" border="0" ></a>
+				          </td>
+		          	</if>
+		          	
+		          	<if mantindicadores_visible == "true" >
+				          <td width="7%">
+				          	<if mantindicadores_enabled == "true" >
+				          		<a href="javascript:Indi();"
+				          			onClick="MM_showHideLayers('Padind','','show')"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../servlet/Tool?images/Gestion/Herramientas/indicadores_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/indicadores.gif" alt="Mantener Indicadores" name="Image4" width="30" height="30" border="0" ></a>
+				          </td>
+				    </if>
+				    
+				    <if mantusuario_visible == "true" >
+				          <td width="7%">
+				          	<if mantusuario_enabled == "true" >
+				          		<a href="javascript:Usuario();"
+				          		onClick="MM_showHideLayers('PadUser','','show')" 
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','../servlet/Tool?images/Gestion/Herramientas/mant_usuarios_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/mant_usuarios.gif" alt="Mantener Usuarios" name="Image5" width="30" height="30" border="0" ></a>
+				          </td>
+		          	</if>
+		          	
+		          	<if mantorganica_visible == "true" >
+				          <td width="7%">
+				          	<if mantorganica_enabled == "true" >
+				          		<a href="javascript:Orga();"
+				          		onClick="MM_showHideLayers('PadOrgani','','show')"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+				          	onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../servlet/Tool?images/Gestion/Herramientas/mant_organ_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/mant_organ.gif" alt="Mantener Org&#225;nica" name="Image6" width="30" height="30" border="0" ></a>
+				          </td>
+		          	</if>
+		          	
+		          	<if mantvisitas_visible == "true" >
+				          <td width="7%">
+				          	<if mantvisitas_enabled == "true" >
+				          		<a href="javascript:Vis();"
+				          			onClick="MM_showHideLayers('PadVisitas','','show')"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+				          	 onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','../servlet/Tool?images/Gestion/Herramientas/reg_visita_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/reg_visita.gif" alt="Registro de Visitas" name="Image7" width="30" height="30" border="0" ></a>
+				          </td>
+				    </if>
+				    
+				    <if adminorganica_visible == "true" >
+					  	  <td width="7%">
+					  	  	<if adminorganica_enabled == "true" >
+				          		<a href="javascript:openAdminOrganica();"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+					  		 onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image33','','../servlet/Tool?images/Gestion/Herramientas/mantenedor_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/mantenedor.gif" alt="Asignaci&oacute;n Trabajadores Org&aacute;nica" name="Image33" width="30" height="30" border="0"></a>
+					  	  </td>
+					</if>
+					
+					<if admindimension_visible == "true" >
+				   		  <td width="7%">
+				   		  	<if admindimension_enabled == "true" >
+				          		<a href="javascript:openAdminDimension();"
+				          	<else>
+				          		<a href="javascript:alert('Funci&#243;n deshabilitada');"
+				          	</if>
+				          	
+				   			 onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image88','','../servlet/Tool?images/Gestion/Herramientas/ico_dim_f2.gif',1)"><img src="../servlet/Tool?images/Gestion/Herramientas/ico_dim.gif" title="Mantenci&oacute;n Dimensiones" alt="Mantenci&oacute;n Dimensiones" name="Image88" width="30" height="30" border="0"></a>
+				   		  </td>
+				    </if>
+		          
+				</tr>
+		        </table></td>
+		    </tr>
+		  </table>
+</span></div>
+<div id="PadOrg">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/mant_mision.gif" width="400" height="22"></td>
+      <td width="20" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif">&nbsp;</td>
+      <td width="20" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoOrg','','hide')"></td>
+      <td width="20" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoOrg','','show')"></td>
+      <td width="20" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/cerrar.gif" width="20" height="22" onClick="MM_showHideLayers('PadOrg','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoOrg">
+    <table width="100%" height="300" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><iframe id="orga" height="300" width="498" frameborder="0" scrolling="no"></iframe></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="Padind">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/indicadores.gif" width="400" height="22"></td>
+      <td width="39" height="22" align="right" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('Hijoind','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('Hijoind','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/cerrar.gif" width="20" height="22" onClick="MM_showHideLayers('Padind','','hide')"></td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="Hijoind">
+    <table width="100%" height="200" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><iframe id="indicadores" height="250" width="498" frameborder="0" scrolling="no"></iframe></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="PadUser">
+  <table width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/mant_usuarios.gif" width="400" height="22"></td>
+      <td width="139" height="22" align="right" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoUser','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoUser','','show')"></td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/cerrar.gif" width="20" height="22" onClick="MM_showHideLayers('PadUser','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoUser">
+    <table width="100%" height="350" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><iframe id="user" height="350" width="598" frameborder="0" scrolling="no"></iframe></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="PadVisitas">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/reg_visitas.gif" width="400" height="22"></td>
+      <td height="22" align="right" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoVisitas','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoVisitas','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/cerrar.gif" width="20" height="22" onClick="MM_showHideLayers('PadVisitas','','hide')"></td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoVisitas">
+    <table width="100%" height="200" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><iframe id="visitas" height="400" width="498" frameborder="0" scrolling="no"></iframe></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="PadOrgani">
+  <table width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="191"><img src="../servlet/Tool?images/Gestion/titulos/mant_organica.gif" width="191" height="22"></td>
+      <td width="349" height="22" align="right" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoOrgani','','hide','botones','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoOrgani','','show','botones','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/cerrar.gif" width="20" height="22" onClick="MM_showHideLayers('PadOrgani','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoOrgani">
+    <iframe id="organi" height="350" width="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+  </div>
+<input type="hidden" name="modo" value="0">
+</form>
+</BODY>
+</HTML>

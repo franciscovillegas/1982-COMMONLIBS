@@ -1,0 +1,25 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="3" class="negro12B" height="25"><u>EXPERIENCIA EN LA EMPRESA</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td class="negro12B" width="20%" align="center">FECHA</td>
+    <td class="negro12B" width="40%" align="center">CARGO</td>
+    <td class="negro12B" width="40%" align="center"> CENTRO COSTO</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="20%" class="negro10N" align="center" height="20">${FFecha("dd/MM/yyyy", 
+      d.fecha)}</td>
+    <td width="40%" class="negro10N" height="20">${d.cargo}</td>
+    <td width="40%" class="negro10N" height="20">${d.unidad}</td>
+  </tr>
+  </list> <else> 
+  <tr> 
+    <td colspan="3" class="negro12N" align="center">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

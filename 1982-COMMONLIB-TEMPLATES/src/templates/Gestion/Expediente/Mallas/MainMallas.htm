@@ -1,0 +1,133 @@
+ <HTML>
+<HEAD>
+<TITLE>Mallas</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<list cursos as c>
+  <if (c.estado) != "APR">
+	//LayerVB${c.id}.style.visibility="hidden";
+  </if>
+</list>
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function verInfo(cual) {
+	eval("LayerCur"+cual+".style.visibility='visible'");
+}
+
+function ocultaInfo(cual) {
+	eval("LayerCur"+cual+".style.visibility='hidden'");
+}
+
+function init() {
+	
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg" style="background-repeat:no-repeat">
+<!-- Sectores de ImageReady (main.psd) -->
+<TABLE width="500" height="300" BORDER=0 CELLPADDING=0 CELLSPACING=0 class="texto_negro">
+  <TR> 
+    <TD height="20" align="center" class="textB"><strong> 
+      ${malla}</strong></TD>
+  </TR>
+  <TR> 
+    <TD align="left" valign="top"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+        <tr> 
+          <td width="132" height="25" valign="top" class="texto_negro_bold">N&ordm; 
+            Cursos Realizados</td>
+          <td width="53" valign="top" height="25" >${n_cur}</td>
+          <td width="311" height="25" colspan="2" valign="top"><u class="negro10B">Observaciones:</u><b> 
+            </b> <span >${observacion}</span></td>
+        </tr>
+      </table>    </TD>
+  </TR>
+  <TR> 
+    <TD valign="top"> 
+      <div id="LayerCursos" style="position:absolute; width:496px; height:122px; z-index:3; left: 1px; top: 48px; overflow: auto" class="carpeta"> 
+        <table border="0" cellspacing="0" cellpadding="3" width="100%">
+          <tr> <assign x=""> <list cursos as c>
+            <assign x=x+"*"> 
+            <td class="azul10NLink" width="25%" valign="middle" align="center"> 
+              <if (c.estado) == "APR"> 
+              <div id="LayerVB1" style="position:absolute; width:17px; height:31px; z-index:1; left: auto; top: auto"><img src="Tool?htm=Gestion/Expediente/Mallas/imagen/VB.gif" width="27" height="31"></div>
+            </if> <a href="javascript:;" onMouseOver="verInfo('${c.fam_id}');" onMouseOut="ocultaInfo('${c.fam_id}');"><img src="../servlet/Tool?images/Gestion/mallas/${c.fam_img}" alt="${c.fam_nom}" border="0" width="82" height="49"></a>            </td>
+            <!-- nueva fila luego de 5 columnas--><if x == "****">
+          </tr>
+          <tr><assign x=""> </if>
+            <!-- --></list>
+          </tr>
+        </table>
+      </div>      <list cursos as c>
+        <div id="LayerCur${c.fam_id}" style="position:absolute; width:495px; height:46px; z-index:2; left: 1px; top: 174px; overflow: visible; ; visibility: hidden;" class="carpetaUn""> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+            <tr> 
+              <td colspan="2" class="texto_negro_bold"> ${c.fam_nom}</td>
+            </tr>
+            <tr> 
+              <td colspan="2" class="texto_negro_bold"><if (c.curso_id)>${c.curso_nom}<else>No 
+              realizado</if></td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold" >Periodo</td>
+              <td width="78%" >${c.periodo}</td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold" >Fec. Ini.</td>
+              <td width="78%" >${FFecha("dd/MM/yyyy",c.fec_ini)}</td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold" >Fec. Ter.</td>
+              <td width="78%" >${FFecha("dd/MM/yyyy",c.fec_ter)}</td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold" >Nota Apr.</td>
+              <td width="78%" >${c.nota}</td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold" >Estado</td>
+              <td width="78%" ><if (c.estado) == "APR">Aprobado<else>No 
+              Aprobado</if> </td>
+            </tr>
+            <tr> 
+              <td width="22%" class="texto_azul_bold">% Asistencia</td>
+              <td width="78%"><if (c.estado) == "APR">${c.asis}</if></td>
+            </tr>
+          </table>
+      </div>
+      </list></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,234 @@
+ <HTML>
+<head>
+<title>Filtros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function Valida() { //v2.0
+  var s1=document.form1.sexo1.value;
+  var s2=document.form1.sexo2.value;
+  var ed1=document.form1.rango1.value;
+  var ed2=document.form1.rango2.value;
+  var apel1=document.form1.apellido1.value;
+  var apel2=document.form1.apellido2.value;
+  var nombre=document.form1.nombre.value;
+  var cargo=document.form1.cargo.value;
+  var civil=document.form1.civil.value;
+
+   //*********No ha seleccionado ning&#250;n criterio******
+  if ((s1!="M")&&(s2!="F")&&(ed1=="")&&(ed2=="")&&(apel1=="")&&(apel2=="")&&(nombre=="")&&(civil=="0")&&(cargo==""))
+     alert("Seleccione un criterio.");
+  else  
+     document.form1.submit();     
+     
+}
+
+
+function Limpia(){
+	document.form1.sexo1.value="0";
+	document.form1.s1.checked=false;
+	document.form1.sexo2.value="0";
+	document.form1.s2.checked=false;
+	document.form1.rango1.value="";
+	document.form1.rango2.value=""; 
+    document.form1.nombre.value="";
+document.form1.cargo.value="";
+    document.form1.apellido1.value="";
+    document.form1.apellido2.value="";
+    document.form1.civil.value="0";
+ }
+
+function Valor1(valor) { //v2.0
+  if (document.form1.ap1.checked==true)
+       document.form1.paterno.value=valor;
+   else{
+      document.form1.paterno.value="0";
+      document.form1.ap1.checked=false;
+    }
+}
+
+function Valor2(valor) { //v2.0
+  if (document.form1.ap2.checked==true)
+         document.form1.materno.value=valor;
+   else{
+      document.form1.materno.value="0";
+      document.form1.ap2.checked=false;
+    }
+}
+
+function Cambia1(valor) { //v2.0
+  if (document.form1.s1.checked==true)
+     document.form1.sexo1.value=valor;
+  else{
+      document.form1.sexo1.value="0";
+      document.form1.s1.checked=false;
+    }
+}
+function Cambia2(valor) { //v2.0
+  if (document.form1.s2.checked==true)
+     document.form1.sexo2.value=valor;
+  else{
+      document.form1.sexo2.value="0";
+      document.form1.s2.checked=false;
+    }
+
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-over.gif");
+		busgraf_17_down = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-down.gif");
+		busgraf_22_busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif");
+		busgraf_36_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif");
+		preloadFlag = true;
+	}
+}
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') {
+        if (isNaN(val)) errors+='- '+nm+' Solo debe Contener N&#250;meros.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (val<min || max<val) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert(''+errors);
+  document.MM_returnValue = (errors == ''); 
+} 
+// -->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersCafe/fondo.jpg" style="background-repeat:repeat-x">
+<form name="form1" method="post" action="../servlet/BuscaCriterios" target="mainF">
+<input type="hidden" name="sexo1" value="0">
+    <input type="hidden" name="sexo2" value="0">
+	<input type="hidden" name="termino" value="12">
+    <input type="hidden" name="inicio" value="1">
+    <input type="hidden" name="actual" value="1">
+    <input type="hidden" name="grupo" value="10">
+    <input type="hidden" name="grupter" value="10">
+    <input type="hidden" name="grupini" value="1">
+    <div id="sexo" style="position:absolute; width:71px; height:16px; z-index:2; left: 5px; top: 4px; visibility: visible"> 
+      <table width="96" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+        <tr>
+          <td colspan="2" class="tabla_azul">G&eacute;nero</td>
+        </tr>
+        <tr>
+          <td>Mujer</td> 
+          <td>
+            <input name="s2" type="checkbox" class="texto_negro_bold_chico" onChange="Cambia2('F');" value="F">        </td>
+        </tr>
+        <tr>
+          <td>Hombre</td> 
+          <td><input name="s1" type="checkbox" class="texto_negro_bold_chico" onChange="Cambia1('M');" value="M">          </td>
+        </tr>
+      </table>
+  </div>
+    <div id="edad" style="position:absolute; width:86px; height:61px; z-index:2; left: 108px; top: 4px; visibility: visible"> 
+      <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+        <tr>
+          <td height="17" colspan="2" class="tabla_azul">Edad</td>
+        </tr>
+        <tr>
+          <td width="72%">Desde</td> 
+          <td width="28%" height="20"><input type="text" name="rango1" size="3" maxlength="2" class="texto_negro_bold_chico" onBlur="MM_validateForm('rango1','','NisNum');return document.MM_returnValue">   </td>
+        </tr>
+        <tr>
+          <td width="72%">Hasta</td> 
+          <td width="28%"> 
+            <input type="text" name="rango2" size="3" maxlength="2" class="texto_negro_bold_chico" onBlur="MM_validateForm('rango2','','NisNum');return document.MM_returnValue">   </td>
+        </tr>
+      </table>
+  </div>
+    
+    <div id="apellidos" style="position:absolute; width:129px; height:55px; z-index:4; left: 202px; top: 11px; visibility: visible"> 
+      <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+        
+        <tr>
+          <td>Nombre</td>
+          <td><input type="text" name="nombre" size="10" maxlength="50" class="texto_negro_bold_chico"></td>
+        </tr>
+        <tr>
+          <td>Ap. Paterno</td> 
+          <td><input type="text" name="apellido1" size="10" maxlength="30" class="texto_negro_bold_chico">     </td>
+        </tr>
+        <tr>
+          <td>Ap. Materno</td> 
+          <td><input type="text" name="apellido2" size="10" maxlength="30" class="texto_negro_bold_chico">         </td>
+        </tr>
+      </table>
+  </div>
+    <div id="Layer3" style="position:absolute; width:90px; height:8px; z-index:6; left: 350px; top: 58px; visibility: visible"> 
+      <a href="javascript:;"  onClick="Valida();return false;"><img name="Image16" border="0" src="../servlet/Tool?images/Gestion/botones/buscar.gif" width="120" height="24"></a>  </div>
+    <div id="Layer2" style="position:absolute; width:150px; height:21px; z-index:5; left: 338px; top: 13px; visibility: visible"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+        <tr>
+          <td width="34%">Est. Civil</td> 
+          <td width="66%" height="18"><select name="civil" class="texto_negro_bold_chico">
+            <option value="0" selected>----------</option>
+            <option value="Casad">Casado(a)</option>
+            <option value="Solter">Soltero(a)</option>
+            <option value="Separ">Separado(a)</option>
+            <option value="Anul">Anulado(a)</option>
+            <option value="Viu">Viudo(a)</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>Cargo</td> 
+          <td> 
+            <input type="text" name="cargo" size="10" maxlength="50" class="texto_negro_bold_chico">          </td>
+        </tr>
+      </table>
+  </div>
+</form>
+</BODY>
+</HTML>

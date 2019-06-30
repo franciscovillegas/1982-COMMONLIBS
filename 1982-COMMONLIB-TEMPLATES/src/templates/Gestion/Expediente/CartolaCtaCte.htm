@@ -1,0 +1,257 @@
+ <HTML>
+<HEAD>
+<TITLE>Cartola Cuenta Corriente</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal}
+-->
+</Style>
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js">
+</script>
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</HEAD>
+<script language="JavaScript">
+<!--
+function detalle(rut, mov) {
+  var v = window.open('/servlet/DetalleDeudas?rut='+rut+'&mov='+mov, 'detalle', 'width=520,height=250');
+  v.focus();
+}
+//-->
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/images/Gestion/botones_exp/perfildown.jpg','/images/Gestion/botones_exp/simudown.jpg')">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644" height="358">
+  <TR> 
+    <TD width="614" height="4"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_01.jpg" WIDTH=614 HEIGHT=4></TD>
+    <TD COLSPAN=2 ROWSPAN=2> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_02.jpg" WIDTH=29 HEIGHT=22></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=4></TD>
+  </TR>
+  <TR> 
+    <TD valign="top" bgcolor="#FFA400" ROWSPAN=8 width="614">
+      <table width="612" border="0" height="350">
+        <tr valign="top"> 
+          <td width="107" height="125" rowspan="2"> 
+            <table width="114" border="0" align="left" height="93" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td valign="top" align="center"> 
+                  <table border="0" background="/images/Gestion/imagenes_main/vent_foto1.gif" width="86" height="106" cellpadding="3" cellspacing="0">
+                    <tr> 
+                      <td valign="middle" align="center"><img src="/images/Gestion/Trabajadores/${foto}" width="79" height="100" onError="existeFoto(this)" border="0"></td>
+                    </tr>
+                  </table>
+                  <table width="112" border="0" cellpadding="0" cellspacing="0">
+                    <tr> 
+                      <td width="112"> 
+                        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>${rut2}</b></font></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="112">&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0">
+                    <tr> 
+                      <td bgcolor="#FFCF75" height="15"> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">Anexo</font></div>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>${anexo}</b></font></div>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td bgcolor="#FFCF75"> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">E-Mail</font></div>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td> 
+                        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>${mail}</b></font></div>
+                      </td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td><if Control("df_perfil_lab", rut)><a href="#" onClick="parent.PerfilLaboral(${rut});return false"><img src="/images/Gestion/botones_exp/perfilup.jpg" width="103" height="33" name="Image1" onMouseOver="MM_swapImage('Image1','','/images/Gestion/botones_exp/perfildown.jpg',1)" border="0"></a></if></td>
+                    </tr>
+                    <tr> 
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td><if Control("df_sim_rta", rut)><a href="#" onClick="parent.Simulacion(${rut});return false;"><img src="/images/Gestion/botones_exp/simup.jpg" width="103" height="33" name="Image2" onMouseOver="MM_swapImage('Image2','','/images/Gestion/botones_exp/simudown.jpg',1)" border="0"></a></if></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="511" height="78"> 
+            <table border="0" width="100%" cellpadding="0" cellspacing="0" height="71">
+              <tr> 
+                <td height="11" valign="top" colspan="4"> 
+                  <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b class="textB">${nombre}</b></font></div>
+                </td>
+              </tr>
+              <tr> 
+                <td width="19%"> <font face="Arial, Helvetica, sans-serif" size="1" class="textB">Cargo</font></td>
+                <td width="45%"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${cargo}</font></td>
+                <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Fecha 
+                  de Ingreso</font> <font face="Arial, Helvetica, sans-serif" size="1" class="textB"> 
+                  </font></td>
+                <td width="16%"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${fecha_ing} 
+                  </font></td>
+              </tr>
+              <tr> 
+                <td width="19%" height="12"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Unidad 
+                  </font></td>
+                <td width="45%" height="12"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:${unidad}</font> 
+                </td>
+                <td width="20%" height="12">&nbsp;</td>
+                <td width="16%" height="12">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td width="19%"><font size="1" face="Arial, Helvetica, sans-serif" class="textB">Dependencia</font></td>
+                <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:${area} 
+                  </font></td>
+              </tr>
+              <tr> 
+                <td width="19%"><font size="1" face="Arial, Helvetica, sans-serif" class="textB">Gerencia</font></td>
+                <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${division} 
+                  </font></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr valign="top" align="left"> 
+          <td></td>
+        </tr>
+      </table>
+    </TD>
+    <TD height="18" width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD ROWSPAN=7 width="13"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_06.jpg" WIDTH=13 HEIGHT=336></TD>
+    <TD width="16" height="39"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_07.jpg" WIDTH=16 HEIGHT=39></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+  </TR>
+  <TR> 
+    <TD height="50" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_08.jpg" WIDTH=16 HEIGHT=50></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+  </TR>
+  <TR> 
+    <TD height="52" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_10.jpg" WIDTH=16 HEIGHT=52></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+  </TR>
+  <TR> 
+    <TD height="45" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_11.jpg" WIDTH=16 HEIGHT=45></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+  </TR>
+  <TR> 
+    <TD height="55" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_12.jpg" WIDTH=16 HEIGHT=55></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+  </TR>
+  <TR> 
+    <TD height="51" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_13.jpg" WIDTH=16 HEIGHT=51></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+  </TR>
+  <TR> 
+    <TD height="44" width="16"> <IMG SRC="/images/Gestion/imagenes_main/main_bienvenida_14.jpg" WIDTH=16 HEIGHT=44></TD>
+    <TD width="1"> <IMG SRC="/images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+  </TR>
+</TABLE>
+<!-- Fin de sectores de ImageReady -->
+<div id="Layer1" style="position:absolute; width:493px; height:186px; z-index:1; left: 128px; top: 147px; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000; overflow: auto; visibility: visible"> 
+  <table border="1" cellpadding="0" cellspacing="0" width="587">
+    <tr bgcolor="#BF7300"> 
+      <td width="168" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Deuda</font></div>
+      </td>
+      <td width="55" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Fecha</font></div>
+      </td>
+      <td width="93" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Monto 
+          Inicial ($)</font></div>
+      </td>
+      <td width="49" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">N. 
+          Ctas. </font></div>
+      </td>
+      <td width="74" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">N. 
+          Ctas. Pend.</font></div>
+      </td>
+      <td width="87" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Valor 
+          Cuota ($)</font></div>
+      </td>
+      <td width="59" bgcolor="#FF6600"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Saldo 
+          ($) </font></div>
+      </td>
+    </tr>
+    <if !(deudas)> 
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="7"> 
+        <div align="center"><b><font face="Arial, Helvetica, sans-serif" size="2">No 
+          Registra Deudas</font></b></div>
+      </td>
+    </tr>
+    </if> <list deudas as d> 
+    <tr bgcolor="#FFFFFF"> 
+      <td width="168" height="13"><font face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="detalle('${rut}', '${d.movimiento}')">${d.deuda}</a></font></td>
+      <td width="55" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.fecha}</font></div>
+      </td>
+      <td width="93" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.monto}</font></div>
+      </td>
+      <td width="49" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.n_ctas}</font></div>
+      </td>
+      <td width="74" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.n_ctas_pend}</font></div>
+      </td>
+      <td width="87" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.valor_cta}</font></div>
+      </td>
+      <td width="59" height="13"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${d.saldo}</font></div>
+      </td>
+    </tr>
+    </list> 
+  </table>
+</div>
+</BODY>
+</HTML>

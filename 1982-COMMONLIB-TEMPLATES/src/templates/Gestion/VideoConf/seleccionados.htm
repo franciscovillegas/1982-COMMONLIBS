@@ -1,0 +1,165 @@
+  <html>
+<head>
+<title>Invitados</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="75%" border="0">
+  <tr>
+    <td>
+      <div id="LayerFotos" style="position:absolute; width:391px; height:223px; z-index:1; left: 10px; top: 81px; overflow: hidden; visibility: visible"> 
+        <table width="55%" border="0">
+          <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+            <td height="75" width="10%" class="maticoN"> 
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><a name="grupo${v.grupo}"></a><a href="javascript:;" onClick="return false">
+<img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                </tr>
+              </table>
+            </td>
+            <assign x="**"> <else> <if x=="**">
+            <td height="75" width="10%" class="maticoN"> 
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                </tr>
+              </table>
+            </td>
+            <assign x="***"> <else> <if x=="***">
+            <td height="75" width="10%" class="maticoN"> 
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                </tr>
+              </table>
+            </td>
+            <assign x="****"> <else> 
+            <td height="75" width="10%" class="maticoN"> 
+              <table width="64%" border="0" cellspacing="1" cellpadding="0">
+                <tr valign="bottom"> 
+                  <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr align="center"> <assign x="*"> </if></if></if></list>
+          <tr align="center"> 
+            <td>&nbsp; 
+            <td> 
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+<div id="LayerFotos" style="position:absolute; width:391px; height:223px; z-index:1; left: 22px; top: 118px; overflow: hidden; visibility: visible"> 
+  <table width="55%" border="0">
+    <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a name="grupo${v.grupo}"></a><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="**"> <else> <if x=="**">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="***"> <else> <if x=="***">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="****"> <else> 
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr align="center"> <assign x="*"> </if></if></if></list>
+    <tr align="center"> 
+      <td>&nbsp; 
+      <td> 
+  </table>
+</div>
+Seleccionados
+<div id="LayerFotos" style="position:absolute; width:391px; height:223px; z-index:1; left: 22px; top: 118px; overflow: hidden; visibility: visible"> 
+  <table width="55%" border="0">
+    <tr align="center"> <assign x="*"> <list detalle as v><if x=="*">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a name="grupo${v.grupo}"></a><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="**"> <else> <if x=="**">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="***"> <else> <if x=="***">
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+      <assign x="****"> <else> 
+      <td height="75" width="10%" class="maticoN"> 
+        <table width="64%" border="0" cellspacing="1" cellpadding="0">
+          <tr valign="bottom"> 
+            <td width="45%"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="40" height="45" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+            <td width="55%"> 
+              <input type="checkbox" name="rut2" value="${v.rut}">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr align="center"> <assign x="*"> </if></if></if></list>
+    <tr align="center"> 
+      <td>&nbsp; 
+      <td> 
+  </table>
+</div>

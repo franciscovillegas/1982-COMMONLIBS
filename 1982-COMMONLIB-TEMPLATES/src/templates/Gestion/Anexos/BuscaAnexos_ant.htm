@@ -1,0 +1,223 @@
+ <HTML>
+<HEAD>
+<TITLE>Busca Anexos</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+var layerVistaAct ="";
+function OcultarLayer(){
+	if (layerVistaAct != "")
+		MM_showHideLayers('Layer'+layerVistaAct,'','hide');
+}
+
+function VerLayer(cual){
+	//alert(cual);
+	if ((cual != "-1") && (cual != "")) {
+		OcultarLayer();
+		MM_showHideLayers('Layer'+cual,'','show');
+		layerVistaAct = cual;
+	}
+}
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<script language="JavaScript">
+function buscaPor(bp){
+	//alert(bp);
+	if (bp == "A") { //anexo
+		document.form1.bus_por.disabled = "true";
+		document.form1.bus_valor.disabled = "true";
+		document.form1.anexo.disabled = "";
+	}
+	else {//persona
+		document.form1.bus_por.disabled = "";
+		document.form1.bus_valor.disabled = "";
+		document.form1.anexo.disabled = "true";
+	}
+}
+
+function setBusqueda(){
+	<if (quebusca)>
+	document.form1.bus_por.value = "${bus_por}";
+	document.form1.bus_valor.value ="${bus_valor}";
+	document.form1.anexo.value ="${anexo}"
+	buscaPor("${quebusca}");
+	for(x=0; x<2; x++) {
+		//alert(document.form1.quebusca[x].value);
+		if(document.form1.quebusca[x].value == "${quebusca}") 
+			document.form1.quebusca[x].checked=true;
+	}
+
+	</if>
+}
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+</HEAD>
+<script language="JavaScript">
+//parent.AbrirVentProcesando();
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad = "setBusqueda()">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644" background="/images/Gestion/anexos/fondvent.jpg">
+  <TR> 
+    <TD ROWSPAN=8 width="4">&nbsp; </TD>
+    <TD valign="top" width="610" ROWSPAN=8 > 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="354">
+        <tr> 
+          <td height="89" align="center" valign="top"> 
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="110" class="unnamed1">Buscar</td>
+                <td width="105" class="unnamed1">&nbsp;</td>
+                <td class="unnamed1">&nbsp;</td>
+              </tr>
+              <form name="form1" method="post" action="/servlet/datafolder.anexos.BuscarAnexos">
+                <tr> 
+                  <td width="110" class="unnamed1"> 
+                    <input type="radio" name="quebusca" value="A" onChange = "buscaPor(this.value);" onClick = "buscaPor(this.value);">
+                    Anexo</td>
+                  <td width="105" class="unnamed1"> 
+                    <input type="text" name="anexo" size="8" style="width=100" >
+                  </td>
+                  <td class="unnamed1"> 
+                    <input type="submit" name="Submit" value="Buscar">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="110" class="unnamed1"> 
+                    <input type="radio" name="quebusca" value="P" onChange = "buscaPor(this.value);" onClick = "buscaPor(this.value);">
+                    Persona por</td>
+                  <td width="105" class="unnamed1"> 
+                    <select name="bus_por" style="width=100">
+                      <option value="nombres" selected>Nombre</option>
+                      <option value="rut">Rut</option>
+                      <option value="ape_paterno">Ape. Paterno</option>
+                      <option value="ape_materno">Ape. Materno</option>
+                    </select>
+                  </td>
+                  <td class="unnamed1"> 
+                    <input type="text" name="bus_valor" style="width=200" >
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top"> <if (quebusca)> 
+            <div id="LayerPerso" style="position:absolute; width:610px; height:261px; z-index:1; left: 10px; top: auto; visibility: visible" class="carpeta"> 
+              <font class="textB">Trabajadores con el anexo &quot;${anexo}&quot;</font><br>
+              <table width="595" border="1" cellspacing="0" cellpadding="0">
+                <tr bgcolor="#000033"> 
+                  <td width="40%"> 
+                    <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Nombre</font></b></font></div>
+                  </td>
+                  <td width="50%"> 
+                    <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Cargo</font></b></font></div>
+                  </td>
+                  <td width="10%" bgcolor="#000033"> 
+                    <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Anexo</font></b></font></div>
+                  </td>
+                </tr>
+              </table>
+              <div id="LayerPDet" style="position:absolute; width:608px; height:219px; z-index:1; left: auto; top: auto; overflow: auto"> 
+                <table width="595" border="1" cellspacing="0" cellpadding="0">
+                  <if !(personas)> 
+                  <tr> 
+                    <td colspan="3" class="unnamed1">No existen trabajadores con 
+                      este anexo... </td>
+                  </tr>
+                  <else><list personas as p> 
+                  <tr> 
+                    <td width="40%" class="unnamed1">${p.nombre}</td>
+                    <td width="50%" class="unnamed1">${p.cargo}</td>
+                    <td width="10%" class="unnamed1"><if (p.anexo)>${p.anexo}<else>---</if></td>
+                  </tr>
+                  </list></if> 
+                </table>
+              </div>
+            </div>
+            </if> 
+            <div id="LayerAnexos" style="position:absolute; width:210px; height:261px; z-index:1; left: 638px; top: auto; visibility: visible" class="carpeta"> 
+              <font class="textB"> Anexos Relacionados</font><br>
+              <table width="195" border="1" cellspacing="0" cellpadding="0">
+                <tr bgcolor="#FF6600"> 
+                  <td width="46%" bgcolor="#000033"> 
+                    <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Anexos</font></b></font></div>
+                  </td>
+                </tr>
+              </table>
+              <div id="LayerADet" style="position:absolute; width:208px; height:219px; z-index:1; left: auto; top: auto; overflow: auto"> 
+                <table width="195" border="1" cellspacing="0" cellpadding="0">
+                  <if !(anexos)> 
+                  <tr bgcolor="#FFFFFF"> 
+                    <td class="unnamed1" bgcolor="#000033">No existen anexos relacionados 
+                      con este... </td>
+                  </tr>
+                  <else><list anexos as a> 
+                  <tr bgcolor="#FFFFFF"> 
+                    <td width="46%" class="unnamed1" bgcolor="#000033">${a.anexo_rel}</td>
+                  </tr>
+                  </list></if> 
+                </table>
+              </div>
+            </div>
+            &nbsp; </td>
+        </tr>
+      </table>
+    </TD>
+    <TD width="1" height="18"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+  </TR>
+  <TR> 
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+  </TR>
+</TABLE>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+//parent.CerrarVentProcesando();
+</script>
+</HTML>

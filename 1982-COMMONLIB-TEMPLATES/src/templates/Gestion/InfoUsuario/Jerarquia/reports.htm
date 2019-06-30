@@ -1,0 +1,643 @@
+<HTML>
+<HEAD>
+<TITLE>M&#243;dulo Reportes MIS</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script src="../servlet/Tool?scripts/google/googleanalitycs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	trackea("${googleAnalytics}");
+</script>
+<script language="JavaScript">
+<!--
+function Reportes(){
+	var idrep = document.frmr.tipo_reporte[document.frmr.tipo_reporte.selectedIndex].value ;
+	var periodo_rep	= document.frmr.periodo[document.frmr.periodo.selectedIndex].value + '01';
+	var esarea=0;
+	var rR = document.frmr.elements["tipo"];
+	if(rR[0].checked)
+	{  esarea = 0; }
+	else
+	{  esarea = 1; }
+	window.open("about:blank", "reportes","scrollbars=yes,toolbar=no,resizable=no,width=1030,height=650,left=100,top=150");
+	document.frmS1.periodo.value=periodo_rep;
+	document.frmS1.cliente.value=${Repo_cliente};
+	document.frmS1.idrep.value=idrep;
+	document.frmS1.unidad.value='${Repo_unidad}';
+	document.frmS1.esarea.value=esarea;
+	document.frmS1.rut.value=${Repo_rut};
+	document.frmS1.submit(); 
+}
+
+function Graficos(){
+	var idgrafo = document.frmg.tipo_grafico[document.frmg.tipo_grafico.selectedIndex].value ;
+	var periodo_desde = document.frmg.periodo_desde[document.frmg.periodo_desde.selectedIndex].value ;
+	var periodo_hasta = document.frmg.periodo_desde[document.frmg.periodo_hasta.selectedIndex].value;
+	var esarea=0;
+	var rG = document.frmg.elements["tipo"];
+	if(rG[0].checked)
+	{  esarea = 0; }
+	else
+	{  esarea = 1; }
+	window.open("about:blank", "graficos","scrollbars=no,toolbar=no,resizable=no,width=1030,height=650,left=100,top=150");
+	document.frmS2.periodo.value=periodo_desde + "-" + periodo_hasta;
+	document.frmS2.cliente.value=${Grafo_cliente};
+	document.frmS2.idgrafo.value=idgrafo;
+	document.frmS2.unidad.value='${Grafo_unidad}';
+	document.frmS2.esarea.value=esarea;
+	document.frmS2.rut.value=${Grafo_rut};
+	document.frmS2.submit(); 
+}
+
+function DatosMis(urlMis){
+	var url = "../servlet/ServletCallMis?url=" + urlMis;
+	var win = open(url, "Reportes", "scrollbars=yes,toolbar=no,resizable=no,width=850,height=560,left=100,top=150");
+	win.focus();
+	return false;
+}
+
+function RptGastos(unidad,tipo){
+   //alert(unidad + "_" + tipo);
+   var href="../servlet/ServletSelectPeriodo?unidad="+unidad+"&tipo="+tipo;
+   window.open(href, 'reporte', 'width=370,height=200');
+}
+
+function CallReports(reporte,unidad,periodo) {
+document.location.href="";
+}
+
+function cantidad(num) {
+	var n = num
+	if (isNaN(n)) {
+	  return n;
+	}
+	if ( n == 0) {
+	  document.write('0');
+	} else {
+	  for (i = 0; i < n; i++) {
+		document.write('<img src=../servlet/Tool?images/Gestion/botones/pers.gif width=24 height=20 border=0>');
+	  }
+	}
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+MM_reloadPage(true);
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function onSelectChange(){
+	var selObj = document.getElementById('tipo_grafico');
+	var index = selObj.selectedIndex;
+ 	var ddVal = selObj.options[index].value;
+ 	var ddText = selObj.options[index].text;
+ 	
+ 	if(ddVal == 'evaluacionGgd'){
+ 		document.getElementById('grafMis').style.display = 'none'; 
+ 		document.getElementById('grafPortal').style.display = 'block'; 
+ 	}
+ 	else{
+ 		document.getElementById('grafPortal').style.display = 'none'; 
+ 		document.getElementById('grafMis').style.display = 'block'; 
+ 	}
+ 	
+
+}
+
+function GraficosGgd(){
+	
+	var selObj = document.getElementById('perfiles');
+	var index = selObj.selectedIndex;
+ 	var value = selObj.options[index].value;
+ 	var text = selObj.options[index].text;
+ 	var esarea=0;
+ 	var tipo = document.frmg.elements["type"];
+ 	if(tipo[0].checked)	{  
+ 		esarea = 0; 
+	}
+	else{  
+		esarea = 1; 
+	}
+ 	
+ 	var unidad = document.getElementById('unid').value; 	
+ 	var empresa = document.getElementById('empresa').value;
+ 	
+ 	var params ="&id_perfil="+value+"&esarea="+esarea+"&unidad="+unidad+"&empresa="+empresa;
+ 	
+	
+ 	window.open('../servlet/Tool?htm=ggd/graficosGgd.html'+params,'popup',width=850,height=580);
+	
+}
+//-->
+</script>
+
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: underline;
+	color: #000000;
+}
+a:visited {
+	text-decoration: underline;
+	color: #000000;
+}
+a:hover {
+	text-decoration: none;
+	color: #D0CDAC;
+}
+a:active {
+	text-decoration: underline;
+	color: #000000;
+}
+#Layer2 {
+	position:absolute;
+	left:304px;
+	top:0px;
+	width:25px;
+	height:214px;
+	z-index:1;
+}
+#PadTool {position:absolute;
+	left:51px;
+	top:341px;
+	width:15px;
+	height:22px;
+	z-index:2;
+}
+#HijoTool {position:absolute;
+	left:22px;
+	top:0px;
+	height:36px;
+	z-index:2;
+}
+-->
+</style>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:491px;
+	top:81px;
+	width:212px;
+	height:134px;
+	z-index:1;
+	visibility: visible;
+}
+#HijoDatosper {
+	position:absolute;
+	left:0px;
+	top:21px;
+	width:450px;
+	height: 325px;
+	overflow: auto;
+}
+#PadreDatosper {
+	position:absolute;
+	left:20px;
+	top:210px;
+	width:450px;
+	height:20px;
+	z-index:2;
+	visibility: visible;
+}
+
+#Reportes {
+	position:absolute;
+	left:20px;
+	top:232px;
+	width:450px;
+	height:300px;
+	z-index:${zorder_rep};
+	visibility: ${zorder_repv};
+    overflow: auto;
+}
+
+#Graficos{
+	position:absolute;
+	left:10px;
+	top:232px;
+	width:450px;
+	height:300px;
+	z-index:${zorder_gra};
+	visibility: ${zorder_grav};
+    overflow: auto;
+}
+
+#grafMis{
+	position:absolute;
+	left:15px;
+	top:90px;
+	width:420px;
+	height:200px;
+    overflow: auto;
+}
+
+#Semaforos{ 
+	position:absolute;
+	left:20px;
+	top:172px;
+	width:369px;
+	height:226px;
+	z-index:${zorder_sem};
+	visibility: ${zorder_semv};
+    overflow: auto;
+}
+
+#Layer3 {
+	position:absolute;
+	left:413px;
+	top:271px;
+	width:176px;
+	height:82px;
+	z-index:3;
+}
+#Layer4 {	position:absolute;
+	left:0px;
+	top:5px;
+	width:410px;
+	height:407px;
+	z-index:4;
+	background-color: #CACC9A;
+	visibility: visible;
+}
+-->
+</style>
+</HEAD>
+<BODY background="../servlet/Tool?images/Gestion/Fondo/fondo_datos2.jpg" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/menu/reportes_f2.jpg','../servlet/Tool?images/Gestion/menu/graficos_f2.jpg','../servlet/Tool?images/Gestion/menu/semaforo_f2.jpg');MM_nbGroup('over','reportes','../servlet/Tool?images/Gestion/menu/reportes_f2.jpg','',1)">
+
+<form name="frmS1" method="post" action="../servlet/ServletCallMisRepo" target="reportes">
+<input type="hidden" name="periodo"/>
+<input type="hidden" name="cliente"/>
+<input type="hidden" name="idrep"/>
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="esarea"/>
+<input type="hidden" name="rut"/>
+</form>
+
+<form name="frmS2" method="post" action="../servlet/ServletCallMisGrafo" target="graficos">
+<input type="hidden" name="periodo"/>
+<input type="hidden" name="cliente"/>
+<input type="hidden" name="idgrafo"/>
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="esarea"/>
+<input type="hidden" name="rut"/>
+</form>
+
+<table width="500" ellpadding="1" cellspacing="1" height="354" width="415" border="0">
+  <tr>
+	<td colspan="2" valign="top">
+	  <table width="98%">
+		<tr>
+			<td height="11" colspan="2"></td>
+		</tr>
+		<tr>
+		  <td colspan="2" height="27" class="TITULO_PerfilLaboral"><img src="../servlet/Tool?images/Gestion/menu/mis_reports.gif" width="56" height="40" align="absmiddle">M.I.S Reports</td>
+	    </tr>
+		<tr>
+			<td height="20" colspan="2"></td>
+		</tr>
+		<tr>
+		  <td height="20"></td>
+		  <td height="27" align="center" class="TITULO_PerfilLaboral">
+			  <table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="5"></td>
+				</tr>
+				<tr>
+				  <td><a href="javascript:;" target="_top" onClick="MM_showHideLayers('Reportes','','show','Graficos','','hide','Semaforos','','hide');MM_nbGroup('down','group1','reportes','../servlet/Tool?images/Gestion/menu/reportes_f2.jpg',1)" onMouseOver="MM_nbGroup('over','reportes','../servlet/Tool?images/Gestion/menu/reportes_f2.jpg','',1)" onMouseOut="MM_nbGroup('out')"><img src="../servlet/Tool?images/Gestion/menu/reportes.jpg" name="reportes" width="73" height="73" border="0"></a></td>
+				  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				  <td><a href="javascript:;" target="_top" onClick="MM_showHideLayers('Reportes','','hide','Graficos','','show','Semaforos','','hide');MM_nbGroup('down','group1','graficos','../servlet/Tool?images/Gestion/menu/graficos_f2.jpg',1)" onMouseOver="MM_nbGroup('over','graficos','../servlet/Tool?images/Gestion/menu/graficos_f2.jpg','',1)" onMouseOut="MM_nbGroup('out')"><img src="../servlet/Tool?images/Gestion/menu/graficos.jpg" name="graficos" width="73" height="73" border="0"></a></td>
+				  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				  <td><a href="javascript:;" target="_top" onClick="MM_showHideLayers('Reportes','','hide','Graficos','','hide','Semaforos','','show');MM_nbGroup('down','group1','semaforo','../servlet/Tool?images/Gestion/menu/semaforo_f2.jpg',1)" onMouseOver="MM_nbGroup('over','semaforo','../servlet/Tool?images/Gestion/menu/semaforo_f2.jpg','',1)" onMouseOut="MM_nbGroup('out')"><img src="../servlet/Tool?images/Gestion/menu/semaforo.jpg" name="semaforo" width="73" height="73" border="0"></a></td>
+				</tr>
+				<tr>
+				  <td align="center" class="negro8B">Reportes</td>
+				  <td align="center" class="negro8B">&nbsp;</td>
+				  <td align="center" class="negro8B">Gr&aacute;ficos</td>
+				  <td align="center" class="negro8B">&nbsp;</td>
+				  <td align="center" class="negro8B">Status</td>
+				</tr>
+			  </table>
+		  </td>
+	    </tr>
+    </table>	</td>
+  </tr>
+  
+  <tr>
+	<td colspan="2" align="center">&nbsp;</td>
+  </tr>
+</table>
+<div id="PadreDatosper">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="22"><img src="../servlet/Tool?images/Gestion/titulos/neutro.gif" width="22" height="22"></td>
+      <td align="center" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif" class="detalleTablaChico" style="font-size:11px;">Unidad:&nbsp;${unid_desc}</td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <span class="tabla_gris" id="HijoDatosper">
+  <table width="100%" height="100%" align="center">
+    <tr>
+      <td align="center" valign="top"><br>
+      </td>
+    </tr>
+  </table>
+</span> </div>
+
+<span id="Graficos">
+<form name="frmg" method="post" action="../servlet/GestionReportes">
+	<input type="hidden" value="${empActual}" name="empresa" id="empresa">
+	<input type="hidden" value="${uniActual}" name="unidad" id="unid">
+	<input type="hidden" value="Graficos" name="tema">
+	<table width="92%" border="0" cellpadding="0" align="center">
+		<tr> 
+			<td colspan="2" width="100%" height="20px"/>&nbsp;
+		</tr>
+		<tr>
+			<td width="18%" height="20px">&nbsp;</td>
+			<td width="82%" style="font-size:12px;"><strong>Seleccione el Tipo de Dato</strong></td>
+		</tr>
+		<tr>
+			<td height="20px">&nbsp;</td>
+			<td>
+				<select class="inputText" id ="tipo_grafico" name="tipo_grafico" onChange="onSelectChange()">
+					<list tipoGraficos as tg><option value="${tg.id}" <if ( tg.id == periodo ) >selected</if> >${tg.desc}</option></list>
+					<option value="evaluacionGgd">Evaluaci&oacute;n del Dempe&ntilde;o</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td height="20" colspan="2"></td>
+		</tr>
+	</table>
+	<div id="grafMis">
+	<table  width="100%" border="0" align="center">
+		<tr>
+			<td width="15%" height="20px">&nbsp;</td>
+			<td width="85%" style="font-size:12px;"><strong>Periodo del Muestreo</strong></td>
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td class="detalleTablaChico">
+				De
+				<select class="inputText" name="periodo_desde">
+					<list periodosMis_Desde as pmd><option value="${pmd.id}" <if ( pmd.id == periodo ) >selected</if> >${pmd.desc}</option></list>
+				</select>
+				Hasta
+				<select class="inputText" name="periodo_hasta">
+					<list periodosMis_Hasta as pma><option value="${pma.id}" <if ( pma.id == periodo ) >selected</if> >${pma.desc}</option></list>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td height="20" colspan="2"></td>
+		</tr>
+		<tr>
+			<td width="18%" height="20px">&nbsp;</td>
+			<td width="82%" style="font-size:12px;"><strong>Universo del Gr&aacute;fico</strong></td>
+		</tr>
+		<tr>
+			<td height="20px">&nbsp;</td>
+			<td class="detalleTablaChico">
+				<center>
+					<table width="100%">
+						<tr>
+							<td class="detalleTablaChico">
+								<input  type="radio" name="tipo" value="0" <if ( esArea == "0" ) >checked</if> > Unidad
+							</td>
+							<td class="detalleTablaChico">
+								<input  type="radio" name="tipo" value="1" <if ( esArea == "1" ) >checked</if> > Area
+							</td>
+						</tr>
+					</table>
+				</center>
+			</td>
+		</tr>
+		<tr>
+			<td height="20" colspan="2"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<center><input type="button" value="Genera Grafico" OnClick="Graficos();"/></center>
+			</td>
+		</tr>
+		
+	</table>
+	</div>
+	<div id="grafPortal" style="display:none">
+		<if existe == "1">
+			<table width="100%" border="0" cellpadding="0">
+				<tr>
+					<td>
+						Perfil
+					</td>
+				</tr>
+				<tr>
+					<td class="detalleTablaChico">
+						<select class="inputText" id="perfiles">
+							<list perfiles as p><option value="${p.idPerfil}">${p.perfil}</option></list>
+						</select>
+					</td>
+				</tr>
+				<tr><td height="10px"/></tr>
+				<tr>
+					<td>
+						Universo del Gr&aacute;fico
+					</td>
+				</tr>
+				<tr>
+					<td class="detalleTablaChico">
+						<center>
+							<table width="100%">
+								<tr>
+									<td class="detalleTablaChico">
+										<input  type="radio" name="type" value="0" <if ( esArea == "0" ) >checked</if> > Unidad
+									</td>
+									<td class="detalleTablaChico">
+										<input  type="radio" name="type" value="1" <if ( esArea == "1" ) >checked</if> > Area
+									</td>
+								</tr>
+							</table>
+						</center>
+					</td>
+				</tr>
+				<tr><td height="10px"/></tr>
+				<tr>
+					<td>
+						<center><input type="button" value="Genera Grafico" OnClick="GraficosGgd();"/></center>
+					</td>
+				</tr>
+				</table>
+			<else>
+				<div style=" border: red 1px solid; margin-top:40px;">
+					<div class="inputText" style=" font-size:11px; padding: 10px;">
+						Usted no ha contratado los servicios que acaba de seleccionar. <br>				
+					Para mayor informaci&oacute;n cont&aacute;ctese con su administrador.
+					</div>
+				</div>
+			</if>
+		</div>
+</form>
+</table>
+</span>
+
+<span id="Reportes">
+<form name="frmr" method="post" action="../servlet/GestionReportes">
+	<input type="hidden" value="${empActual}" name="empresa">
+	<input type="hidden" value="${uniActual}" name="unidad">
+	<input type="hidden" value="Reportes" name="tema">
+	<table width="100%" border="0" cellpadding="0">
+		<!-- 
+		<tr><td height="10px"/></tr>
+		<tr>
+			<td colspan="2">
+				Tipo de Reporte
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="detalleTablaChico">
+				<input onclick="this.form.submit()" type="radio" name="tipoperiodo" value="0" checked/>Anual
+				<input onclick="this.form.submit()" type="radio" name="tipoperiodo" value="1" 		 />Mensual
+			</td>
+		</tr>
+		 -->
+		<tr> 
+			<td colspan="2" width="100%" height="20px"/>&nbsp;
+		</tr>
+		<tr>
+			<td width="18%" height="20px"/>&nbsp;
+			<td width="82%" style="font-size:12px;"><strong>Seleccione el Tipo de Dato</strong></td>
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td class="detalleTablaChico" >
+				<select class="inputText" name="tipo_reporte">
+					<list tipoReporte as tr><option value="${tr.id}" <if ( tr.id == periodo ) >selected</if> >${tr.desc}</option></list>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" width="100%" height="20px"/>&nbsp;
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td style="font-size:12px;"><strong>Periodo del Muestreo </strong></td>
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td>
+				<select onchange="this.form.submit()" class="inputText" name="periodo">
+					<list periodosReporte as pr>
+						<option value="${pr.id}" <if ( pr.id == periodo ) >selected</if> >${pr.desc}</option>
+					</list>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" width="100%" height="20px"/>&nbsp;
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td style="font-size:12px;"> <strong>Universo del Gr&aacute;fico</strong></td>
+		</tr>
+		<tr>
+			<td height="20px"/>&nbsp;
+			<td class="detalleTablaChico">
+					<table width="100%">
+						<tr>
+							<td class="detalleTablaChico"><input onclick="this.form.submit()" type="radio" name="tipo" value="0" <if ( esArea == "0" ) >checked</if> > Unidad</td>
+							<td class="detalleTablaChico"><input onclick="this.form.submit()" type="radio" name="tipo" value="1" <if ( esArea == "1" ) >checked</if> > Area</td>
+						</tr>
+					</table>
+			</td>
+		</tr>
+		<tr><td colspan="2" height="30px"/>&nbsp;</tr>
+		<tr>
+			<td colspan="2" >
+				<center><input type="button" value="Genera Reporte" OnClick="Reportes();"/></center>
+			</td>
+		</tr>
+	</table>
+</form>
+</table>
+</span>
+
+<span id="Semaforos">
+<form name="frmf" method="post" action="../servlet/GestionReportes">
+<input type="hidden" value="Semaforos" name="tema">
+<table align="center" width="100%" border="0" cellpadding="0">
+<tr><td align="center">En desarrollo</td></tr>
+</table>
+</form>
+</span>
+
+
+<!-- tool de reportes -->
+<!-- fin paleta de reportes -->
+</BODY>
+</HTML>

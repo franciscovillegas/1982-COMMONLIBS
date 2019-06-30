@@ -1,0 +1,38 @@
+<style type="text/css">
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+.ra1listaCh {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 6px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+-->
+</style>
+
+
+<assign seq = ["1","2","3","4","5","6"] >
+<assign colorfondo="#009999"> 
+
+<table width="325" border="0" align="left" cellpadding="0" cellspacing="0">
+  <if getNivelesObtenidos><list getNivelesObtenidos as a>
+  <tr align="left" valign="middle">
+    <td width="134" class="ra1lista2" >${a.competencia}&nbsp;</td>
+    <td width="190" class="ra1listaCh">
+    
+    <table width="100%" border="0" >
+    <tr>
+    <script>dos(${a.nivel_esperado},${a.nivel},${a.criticidad});</script>
+    </tr>
+    </table>
+	
+
+	</td>
+  </tr>
+  </list></if>
+</table>

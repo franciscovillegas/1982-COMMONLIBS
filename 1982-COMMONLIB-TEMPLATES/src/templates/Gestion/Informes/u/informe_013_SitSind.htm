@@ -1,0 +1,24 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="3" class="negro12B" height="25"><u>SITUACION SINDICAL</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC" align="center"> 
+    <td class="negro12B" width="60%">NOMBRE SINDICATO</td>
+    <td class="negro12B" width="20%">DESDE</td>
+    <td class="negro12B" width="20%">HASTA</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="60%" class="negro10N" align="center" height="20">${d.sindicato}</td>
+    <td width="20%" class="negro10N" align="center" height="20">${FFecha( "dd/MM/yyyy", d.fec_ing_sindicato)}</td>
+    <td width="20%" class="negro10N" align="center" height="20"><if d.fec_ret_sindicato!="&nbsp;">${FFecha( "dd/MM/yyyy", d.fec_ret_sindicato)}<else>Indefinido</if></td>
+  </tr>
+  </list> <else> 
+  <tr align="center"> 
+    <td colspan="3" class="negro12N">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

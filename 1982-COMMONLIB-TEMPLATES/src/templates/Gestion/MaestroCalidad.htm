@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Maestro Org&#225;nica</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if excel == "0" >
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+	Layer2.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    Layer2.style.visibility="visible";
+}
+
+function Excel() {
+	document.frm.excel.value=1;
+	document.frm.submit();
+}
+//-->
+</script>
+
+</HEAD>
+<BODY>
+<form name="frm" method="post" action="../servlet/MaestroCalidad"><input type="hidden" name="excel" value="${excel}"></form>
+
+<if excel == "0" >
+<div id="Layer1" style="position:absolute; left:20px; top:5px; width:38px; height:38px; z-index:1">
+<a href="#" onClick="Imprimir()">
+<img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" name="Image1" width="80" height="20" border="0">
+</a></div>
+<div id="Layer2" style="position:absolute; left:110px; top:5px; width:38px; height:38px; z-index:1">
+<a href="#" onClick="Excel()">
+<img src="../servlet/Tool?images/new/botones/xcel.gif" alt="IMPRIMIR" name="Image1" width="30" height="30" border="0">
+</a></div>
+</if>
+
+<table width="100%">
+<thead style="display:table-header-group">
+<tr><td colspan="8"><br><br></td></tr>
+<tr><td colspan="8" align="center" class="tabla_beige">MAESTRO CALIDAD</td></tr>
+<tr>
+<td align="center" class="tabla_beige">UNIDAD</td>
+<td colspan="3" align="center" class="tabla_beige">COLABORADOR</td>
+<td colspan="3" align="center" class="tabla_beige">JEFE</td>
+<td align="center" class="tabla_beige">GERENTE AREA</td>
+</tr>
+<tr>
+<td align="center" class="tabla_beige">Nombre</td>
+<td align="center" class="tabla_beige">Rut</td>
+<td align="center" class="tabla_beige">Nombre</td>
+<td align="center" class="tabla_beige">Cargo</td>
+<td align="center" class="tabla_beige">Rut</td>
+<td align="center" class="tabla_beige">Nombre</td>
+<td align="center" class="tabla_beige">Cargo</td>
+<td align="center" class="tabla_beige">Nombre</td>
+</tr>
+</thead>
+<tbody>
+<if trabajadores>
+<list trabajadores as t>
+<tr>
+<td valign="top" class="texto_negro">[ ${t.unid_id} ] ${t.unid_desc}</td>
+<td valign="top" class="texto_negro">${t.rut}</td>
+<td valign="top" class="texto_negro">${t.nombre}</td>
+<td valign="top" class="texto_negro">${t.cargo}</td>
+<td valign="top" class="texto_negro">${t.rutjefe}</td>
+<td valign="top" class="texto_negro">${t.nombrejefe}</td>
+<td valign="top" class="texto_negro">${t.cargojefe}</td>
+<td valign="top" class="texto_negro">${t.gerente}</td>
+</tr>
+</list>
+</if>
+</tbody>
+</table>
+</BODY>
+</HTML>

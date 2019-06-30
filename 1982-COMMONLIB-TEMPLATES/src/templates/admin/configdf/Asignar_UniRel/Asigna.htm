@@ -1,0 +1,213 @@
+<html>
+<head>
+<title>Asignar Unidad Relaliva</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+<assign empresa_ant ="">
+
+
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+		unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('Seleccione la Unidad','-1');
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.sel, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function CargaUni(uni){
+document.Unidades.unidad.value=uni;
+//alert(uni);
+document.Unidades.submit();
+
+}
+
+
+function Graba(){
+<if nombre_enc!="No existe Encargado"> 
+document.form_graba.accion.value="M";
+</if>
+document.form_graba.submit();
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function asigna(form) {
+	/*var url = "/servlet/MantenerUsuario"
+	url += "?rut=${rutuser}&accion=${accion}&rel_uni=${cod_uni}&unirel=1&rel_emp=${cod_empresa}"
+	url += "&rel_tipo="+form.tipo.value;
+	window.opener.location = url;*/
+	window.opener.AsignaUnidRel('${cod_empresa}', '${cod_uni}',form.tipo.value);
+	window.opener.focus();
+	window.close();
+}
+//-->
+</script>
+<!--<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>-->
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/portalrrhh.css" type="text/css">
+</head>
+
+<body bgcolor="#FFA400" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.focus();MM_preloadImages('../servlet/Tool?images/botones/aceptar_over.jpg','../servlet/Tool?images/botones/cerrar_over.jpg')">
+<div align="center"></div>
+<table width="294" border="0" height="292" align="center" class="detalleTabla">
+  <tr>
+    <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="tituloTabla" align="center"> Seleccione la Empresa v/s Unidad</td>
+        </tr>
+        <tr> 
+          <td align="center" class="detalleTabla"> 
+            <form name="Unidades" method="post" action="../servlet/AsignaUniRel?rut=${rutuser}&accion=${accion}">
+              Empresa<br>
+              <select name="empresa" class="inputText" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                <option value="-1">Seleccione una Empresa</option>
+                <list empresas as v> 
+                <option value="${v.id}">${v.desc}</option>
+                </list> 
+              </select>
+              <input type="hidden" name="empresas" value="${cod_empresa}">
+              <br>
+              Unidad<br>
+              <select name="sel" class="inputText" onChange = "CargaUni(this.value)" style="width=250">
+              </select>
+              <input type="hidden" name="unidad" value="${cod_uni}">
+            </form>
+          </td>
+        </tr>
+      </table>
+      <form name="form_graba" action="/servlet/datafolder.Unidad.AsignaUniRel?rut=${rutuser}&accion=${accion}" method="post">
+        <if nombre_enc> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="tituloTabla" height="14" align="center"> Responsable de 
+              la Unidad</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="33%"> 
+              <div align="center"><img onError="existeFoto(this)" src="${GetProp("server.datafolder")}/images/DataFolder/Trabajadores/${foto_enc}" width="60" height="78" vspace="3"></div>
+            </td>
+            <td width="67%"> 
+              <table width="99%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td class="detalleTabla" align="center"> ${nombre_enc}</td>
+                </tr>
+                <tr> 
+                  <td class="detalleTabla" align="center"> 
+                    <input type="hidden" name="rut_resp" value="${rut_resp_r}">
+                    ${rut_resp}</td>
+                </tr>
+                <tr> 
+                  <td class="detalleTabla" align="center"> ${cargo_enc}</td>
+                </tr>
+                <tr> 
+                  <td class="detalleTabla" align="center"> 
+                    <input type="hidden" name="empresa2" value="${cod_empresa}">
+                    <input type="hidden" name="unidad2" value="${cod_uni}">
+                    <input type="hidden" name="accion" value="A">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr align="center" valign="bottom"> 
+            <td colspan="2" height="35"> 
+              <select name="tipo" class="inputText">
+                <option value="U" selected>Ver s&oacute;lo la unidad</option>
+                <option value="R">Ver la Rama bajo esta Unidad</option>
+              </select>
+            </td>
+          </tr>
+          <tr> 
+            <td></td>
+          </tr>
+        </table>
+        </if> 
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><if (cod_uni)><a href="javascript:;" onClick="asigna(document.form_graba); return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image1','','../servlet/Tool?images/botones/aceptar_over.jpg',1)"><img src="../servlet/Tool?images/botones/aceptar.JPG" width="110" height="14" name="Image1" border="0"></a></if><a href="#" onClick="window.close();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../servlet/Tool?images/botones/cerrar_over.jpg',1)"><img src="../servlet/Tool?images/botones/cerrar.JPG" name="Image2" border="0" width="110" height="14"></a> 
+    </td>
+  </tr>
+</table>
+<script language="">
+	document.Unidades.empresa.value="${cod_empresa}";
+	SeleccionaEmpresa("${cod_empresa}");
+	document.Unidades.sel.value="${cod_uni}";
+<if tipo>document.form_graba.tipo.value = "${tipo}";</if>
+</script>
+</body>
+</html>
+

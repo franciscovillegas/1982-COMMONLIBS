@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>Asignar Unidad Relaliva</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+<assign empresa_ant ="">
+
+
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+		unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('Seleccione la Unidad','-1');
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.sel, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function CargaUni(uni){
+document.Unidades.unidad.value=uni;
+//alert(uni);
+document.Unidades.submit();
+
+}
+
+
+function Graba(){
+<if nombre_enc!="No existe Encargado"> 
+document.form_graba.accion.value="M";
+</if>
+document.form_graba.submit();
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function asigna(form) {
+	/*var url = "/servlet/MantenerUsuarioOrga"
+	url += "?rut=${rutuser}&accion=${accion}&rel_uni=${cod_uni}&unirel=1&rel_emp=${cod_empresa}"
+	url += "&rel_tipo="+form.tipo.value;
+	window.opener.location = url;*/
+	window.opener.AsignaUnidRel('${cod_empresa}', '${cod_uni}',form.tipo.value);
+	window.opener.focus();
+	window.close();
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos2.css" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="">
+	document.Unidades.empresa.value="${cod_empresa}";
+	SeleccionaEmpresa("${cod_empresa}");
+	document.Unidades.sel.value="${cod_uni}";
+<if tipo>document.form_graba.tipo.value = "${tipo}";</if>
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="window.focus()">
+<table width="305" height="320" border=0 cellpadding=0 cellspacing=0 class="layer_util">
+  <tr> 
+    <td valign="top" rowspan=8 align="center"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+        <tr> 
+          <td height="27" align="center"><strong>Seleccione la Empresa v/s Unidad</strong></td>
+        </tr>
+        <tr> 
+          <td align="center"> 
+            <form name="Unidades" method="post" action="../servlet/AsignaUniRel?rut=${rutuser}&accion=${accion}">
+             Empresa<br>
+   <select name="empresa" class="negro11lista" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                <option value="-1">Seleccione una Empresa</option>
+                <list empresas as v> 
+                <option value="${v.id}">${v.desc}</option>
+                </list> 
+              </select>
+              <input type="hidden" name="empresas" value="${cod_empresa}">
+              <br>Unidad<br>
+              <select name="sel" onChange = "CargaUni(this.value)" style="width=250">
+              </select>
+              <input type="hidden" name="unidad" value="${cod_uni}">
+            </form>
+          </td>
+        </tr>
+      </table>
+      <form name="form_graba" action="../servlet/AsignaUniRel?rut=${rutuser}&accion=${accion}" method="post">
+        <if nombre_enc> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro_bold">
+          <tr> 
+            <td height="23" align="center">Responsable de la Unidad</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="23%" align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto_enc}" width="62" height="81" vspace="3" border="1" onError="existeFoto(this)"></td>
+            <td width="77%" valign="top"> 
+              <table width="98%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+                <tr> 
+                  <td class="tabla_amarelo">${nombre_enc}</td>
+                </tr>
+                <tr> 
+                  <td class="tabla_amarelo"><input type="hidden" name="rut_resp" value="${rut_resp_r}">${rut_resp}</td>
+                </tr>
+                <tr> 
+                  <td class="tabla_amarelo">${cargo_enc}</td>
+                </tr>
+                <tr> 
+                  <td><input type="hidden" name="empresa2" value="${cod_empresa}">
+                      <input type="hidden" name="unidad2" value="${cod_uni}">
+                      <input type="hidden" name="accion" value="A">                  </td>
+                </tr>
+                <tr>
+                  <td><select name="tipo" class="texto_negro_bold_chico">
+                <option value="U" selected>Ver s&oacute;lo la unidad</option>
+                <option value="R">Ver la Rama bajo esta Unidad</option>
+              </select></td>
+                </tr>
+              </table>            </td>
+          </tr>
+        </table>
+        </if> 
+      </form>
+    </td>
+  </tr>
+
+</table>
+
+
+<div id="Layer2" style="position:absolute; left:5px; top:266px; width:276px; height:33px; z-index:3; overflow: visible"> 
+  <div align="center"><if (cod_uni)><a href="javascript:;" onClick="asigna(document.form_graba); return false;"><img src="../servlet/Tool?images/Gestion/botones/aceptar.gif" width="120" height="24" name="Image1" border="0"></a></if>
+  <a href="#" onClick="window.close();return false;"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" name="Image2" width="120" height="24" border="0"></a>  </div> 
+</div>
+</body>
+</html>
+

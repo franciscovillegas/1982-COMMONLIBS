@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>menu_gd.jpg</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks MX Dreamweaver MX target.  Created Wed Dec 10 09:36:59 GMT-0400 (Hora est&#225;ndar de Sudam&#233;rica O.) 2003-->
+<script language="JavaScript" src="../servlet/Tool?scripts/menu1.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function pm_1(){
+parent.frames.bottomFrame.location.href="../servlet/EvaluacionesG?txt_Rut=${User.Rut}&txt_TipoEval=A&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}";
+/*alert("txt_Rut : ${User.Rut}");
+alert("txt_TipoEval : A");
+alert("txt_Perfil : ${User.id_perfil}");
+alert("txt_Proceso : ${User.id_proceso}");*/
+}
+function pm_2(){
+parent.frames.bottomFrame.location.href="../servlet/RegistroEventos?txt_Rut=${User.Rut}&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}";
+/*alert("txt_Rut : ${User.Rut}");
+alert("txt_Perfil : ${User.id_perfil}");
+alert("txt_Proceso : ${User.id_proceso}");*/
+}
+function pm_3(){
+parent.frames.bottomFrame.location.href="../servlet/ResultadoAnalisisII?txt_Rut=${User.Rut}&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}";
+/*alert("txt_Rut : ${User.Rut}");
+alert("txt_Perfil : ${User.id_perfil}");
+alert("txt_Proceso : ${User.id_proceso}");*/
+}
+function pm_4(){
+parent.frames.bottomFrame.location.href="../servlet/PlanAccion?txt_Rut=${User.Rut}&txt_RutEval=${User.Rut}&id_perfil=${User.id_perfil}&id_proceso=${User.id_proceso}&modo=Auto";
+/*alert("txt_Rut : ${User.Rut}");
+alert("txt_RutEval : ${User.Rut}");
+alert("modo : Auto");
+alert("txt_Perfil : ${User.id_perfil}");
+alert("txt_Proceso : ${User.id_proceso}");*/
+}
+function pm_5(){
+parent.frames.bottomFrame.location.href="../servlet/Apreciacion?txt_Rut=${User.Rut}&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}";
+/*alert("txt_Rut : ${User.Rut}");
+alert("txt_Perfil : ${User.id_perfil}");
+alert("txt_Proceso : ${User.id_proceso}");*/
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {position:absolute;
+	left:668px;
+	top:3px;
+	width:39px;
+	height:43px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:694px;
+	top:75px;
+	width:24px;
+	height:14px;
+	z-index:2;
+}
+-->
+</style>
+</head>
+<body  background="../servlet/Tool?images/ggd/menu_top/fondo.jpg">
+<!--<div id="Layer2"><a href="javascript:;" target="bottomFrame" onClick="MM_openBrWindow('Tool?htm=ggd/ayuda.html','ayuda','scrollbars=yes,width=350,height=350')"><img src="../servlet/Tool?images/images_ggd/ggd/botones/ayuda.gif" alt="AYUDA" width="23" height="18" border="0" align="absmiddle"></a><a href="#"></a></div>-->
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td valign="bottom"><a href="../servlet/WithSessionMetas?pHtm=metas/frameset_metas.html" target="_parent"><img src="../servlet/Tool?images/ggd/menu_top/metas_down.jpg" width="201" height="50" border="0"></a></td>
+        <td valign="bottom"><img src="../servlet/Tool?images/ggd/menu_top/competencias.jpg" width="224" height="50"></td>
+        <td valign="bottom"><a href="../manual_usuario/Screen_Pres_BI/screen-press-BI_2.html" target="_blank" ><img src="../servlet/Tool?images/ggd/menu_top/titulo.jpg" width="575" height="50" border="0"></a></td>
+      </tr>
+</table>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="13"><img src="../servlet/Tool?images/ggd/menu_top/bordgris_cm.jpg" width="13" height="27"></td>
+        <td align="center" valign="bottom" background="../servlet/Tool?images/ggd/menu_top/fondogris_cm.jpg"><table width="90" border="0" align="left" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="10"><img src="../servlet/Tool?images/ggd/menu_top/btn_rojo_cm.gif" width="10" height="27"></td>
+            <td width="56" background="../servlet/Tool?images/ggd/menu_top/btn_rojo_fondo_cm.gif"><table width="80" border="0" cellpadding="0" class="boton_rojo">
+              <tr>
+                <td height="18" align="center">Gesti&oacute;n Diaria </td>
+              </tr>
+            </table></td>
+            <td><img src="../servlet/Tool?images/ggd/menu_top/btn_rojo_fin.gif" width="27" height="27"></td>
+          </tr>
+        </table>
+          <table border="0" align="left" cellpadding="0">
+            <tr>
+              <td width="84" height="20" align="center"><a href="../servlet/WithSession?pHtm=ggd/menu/inf/menu_evacomp_inf.html" target="_self" class="boton_gris">Informes</a></td>
+            </tr>
+          </table>
+          <table border="0" align="left" cellpadding="0">
+            <tr>
+             <if (userAdm=="true" || userGed=="true")>
+              <td width="84" height="20" align="center"><a href="../servlet/WithSession?pHtm=ggd/menu/herr/menu_evacomp_herr.html" target="_self" class="boton_gris">Herramientas</a></td>
+             </if>
+            </tr>
+        </table></td>
+        <td><img src="../servlet/Tool?images/ggd/menu_top/bord2gris_cm.jpg" width="33" height="27"></td>
+        <td width="350">&nbsp;</td>
+      </tr>
+      <tr>
+        <td bgcolor="#ba0409">&nbsp;</td>
+        <td height="22" colspan="3" bgcolor="#ba0409">
+		<div id="Efecto_Hover">
+		<table width="100" border="0" align="left" cellpadding="0">
+          <tr><td align="center"><a href="../servlet/EvaluacionesG?txt_Rut=${User.Rut}&txt_TipoEval=A&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}" target="bottomFrame" title="Observar su evaluaci&#243;n Personal y evaluar a sus Colaboradores">Evaluaciones</a></td>
+          </tr>
+        </table>
+          <table width="120" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/RegistroEventos?txt_Rut=${User.Rut}&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}" target="bottomFrame" title="Visualizar el registro de Observaciones personal del proceso de evaluaci&#243;n y generar observaciones relevantes a sus Colaboradores">Registro de Eventos</a></td>
+            </tr>
+          </table>
+          <table width="120" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/ResultadoAnalisisII?txt_Rut=${User.Rut}&txt_Perfil=${User.id_perfil}&txt_Proceso=${User.id_proceso}" target="bottomFrame" title="Observar un an&#225;lisis gr&#225;fico del proceso de evaluaci&#243;n personal y de sus Colaboradores">Resultados y An&aacute;lisis</a></td>
+            </tr>
+          </table>
+          <table width="150" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/PlanAccion?txt_Rut=${User.Rut}&txt_RutEval=${User.Rut}&id_perfil=${User.id_perfil}&id_proceso=${User.id_proceso}&modo=Auto" target="bottomFrame" title="Observar el plan de acci&#243;n para las competencias personales comprometidas y registrar un plan de acci&#243;n para sus Colaboradores">Apreciaci&oacute;n del Potencial</a> </td>
+            </tr>
+          </table>
+          
+        </div></td>
+        </tr>
+    </table>
+</body>
+</html>

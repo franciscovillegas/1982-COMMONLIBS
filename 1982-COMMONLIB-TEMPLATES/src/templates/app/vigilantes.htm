@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Vigilantes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript">
+var servidorDF = '${GetProp("server.datafolder")}';
+
+function Tx(){
+	//document.location.href=servidorDF+"/Visita/";
+	document.form1.action=servidorDF+"/servlet/LeerUsuario";
+	document.form1.submit();	
+}
+</script>
+
+<body bgcolor="#000066" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="770" height="480">
+  <param name=movie value="../flash/preview/bien_seguridad.swf">
+    <param name=menu value=false>
+    <embed src="../flash/preview/bien_seguridad.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="770" height="480">
+    </embed> 
+  </object> 
+  <form name="form1" method="post" action="">
+  <input type="hidden" name="clave" value="${usuario.pPassword}" >
+  <input type="hidden" name="rut" value="${usuario.pRut}" >
+  <input type="hidden" name="modo" value="4">
+  </form>  
+</body>
+</html>

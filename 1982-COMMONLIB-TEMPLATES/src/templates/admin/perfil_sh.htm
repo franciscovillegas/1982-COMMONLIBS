@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>Asignar Rol</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Wed Aug 07 17:56:43 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+<!--
+function grabarUser(){
+var perfil=document.form1.perfil.value;
+var estado=document.form1.estado.value;
+//alert("perfil:"+perfil+" -->estado:"+estado);
+if (perfil!=""){
+   if (estado!=""){
+		document.form1.grabar.value="si";
+		//alert("Submit!!");
+        document.form1.submit();
+   }else
+     alert("Seleccione el estado del usuario.");
+}else
+   alert("Seleccione el perfil del usuario.");
+}
+function Inicio(){
+	document.form1.perfil.value='${rol_id}';
+	<if GetParam("app_id")=="wfv"> document.form1.estado.value='${vigente}';</if>
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+</head>
+<body  background="../servlet/Tool?images/new/main/main_solo.jpg"leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="Inicio();MM_preloadImages('../servlet/Tool?images/new/botones/aceptar_f2.gif','../servlet/Tool?images/new/botones/cerrar_f2.gif')">
+<table border="0" cellpadding="0" cellspacing="0" width="385">
+<!-- fwtable fwsrc="Untitled" fwbase="priv_workf.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+   <td>&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+   <td>&nbsp;</td>
+   <td colspan="2">&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="Layer1" style="position:absolute; width:356px; z-index:1; left: 14px; top: 31px; height: 194px;"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <form name="form1" method="post" action="../servlet/com.eje.portalrrhh.admin.S_PerfilUser" ><tr> 
+      <td colspan="2"> 
+          <div align="center"><b><font color="000066" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+            <if GetParam("app_id")=="wfv"></if></font></b></div>
+      </td>
+    </tr>
+    <tr bgcolor="#FFDEBD"> 
+      <td width="32%" height="19"><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">Administrador</font></td>
+        <td width="68%" bgcolor="#FFF8F2"><b><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+          ${nom_adm} </font></b></td>
+    </tr>
+    <tr bgcolor="#FFDEBD"> 
+      <td width="32%" height="19"><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">Colaborador</font></td>
+        <td width="68%" bgcolor="#FFF8F2"><b><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">${nombre} 
+          <input type="hidden" name="pRut" value="${GetParam("pRut")}">
+          <input type="hidden" name="grabar" value="no">
+          <input type="hidden" name="app_id" value="${GetParam("app_id")}">
+        </font></b></td>
+    </tr>
+    <tr bgcolor="#FFDEBD"> 
+      <td width="32%" height="19"><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">Rut</font></td>
+        <td width="68%" bgcolor="#FFF8F2"><b><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">${GetParam("pRut")}</font></b></td>
+    </tr>
+    <tr bgcolor="#FFDEBD"> 
+      <td width="32%"><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">Perfil</font></td>
+        <td width="68%" bgcolor="#FFF8F2"><b><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+          <select name="perfil" class="inputText">
+            <list lista as l> 
+            <option value="${l.rol_id}">${l.rol_glosa}</option>
+            </list> 
+          </select>
+        </font></b></td>
+    </tr>
+    <tr bgcolor="#FFDEBD"> 
+      <td width="32%"><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">Estado</font></td>
+        <td width="68%" bgcolor="#FFF8F2"><b><font color="000066" size="1" face="Verdana, Arial, Helvetica, sans-serif">
+          <select name="estado" class="inputText">
+            <option value="1">Vigente</option>
+            <option value="0">No Vigente</option>
+          </select>
+        </font></b></td>
+    </tr>
+      <tr> 
+        <td height="53" colspan="2">
+          <div align="center"><a href="javascript:;" onClick="grabarUser();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image18','','../servlet/Tool?images/new/botones/aceptar_f2.gif',1)"><img name="Image18" border="0" src="../servlet/Tool?images/new/botones/aceptar.gif" width="91" height="21"></a><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image19','','../servlet/Tool?images/new/botones/cerrar_f2.gif',1)"><img name="Image19" border="0" src="../servlet/Tool?images/new/botones/cerrar.gif" width="91" height="21"></a></div>
+        </td>
+    </tr></form>
+  </table>
+</div>
+<div id="Layer2" style="position:absolute; width:354px; height:19px; z-index:2; top: 7px; left: 20px; font-size: 12px;"> 
+  <b> 
+  <font color="000066" face="Verdana, Arial, Helvetica, sans-serif"><if GetParam("app_id")=="wfv">Privilegios WorkFlow </if><if GetParam("app_id")=="sh">Privilegios 
+  Portal RRHH </if></font><font color="000066" size="2" face="Verdana, Arial, Helvetica, sans-serif"><if GetParam("app_id")=="wfv"></if></font></b></div>
+</body>
+</html>

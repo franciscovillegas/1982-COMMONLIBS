@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Recuperaci&#243;n</title>
+</head>
+<body>
+<p>	 
+Estimado (a) ${nombre}, 
+	
+		<if auto>
+			usted solicit&oacute;
+		<else>
+			se ha solicitado
+		</if>
+		
+		la recuperaci&oacute;n de su clave a trav&eacute;s de nuestro sistema.
+</p>
+<p>
+<if !auto>
+	Para ingresar, dir&iacute;jase a nuestra direcci&oacute;n (<a href="${url}">${servidor}</a>) ingrese su usuario y clave y disfrute de toda la informaci&oacute;n que tenemos para usted.
+<else>
+	${adicional}
+</if>
+</p>  
+<p><b>
+usuario: ${usuario}<br> 
+clave: ${clave}<br><br> 	 
+</b></p>	 
+
+<p>
+<img src="${logo}">
+</p>	 
+	 
+	
+</body>
+</html>

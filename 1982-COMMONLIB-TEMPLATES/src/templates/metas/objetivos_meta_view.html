@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Asociar objetivos a la meta.</title>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute; 
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:550px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	height:508px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:556px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:14px;
+	top:32px;
+	width:567px;
+	z-index:11;
+	height: 52px;
+}
+#Layer12 {
+	position:absolute;
+	left:184px;
+	top:325px;
+	width:510px;
+	height:33px;
+	z-index:12;
+}
+#Layer13 {
+	position:absolute;
+	left:13px;
+	top:111px;
+	width:678px;
+	height:200px;
+	z-index:13;
+	overflow: auto;
+}
+#Layer14 {
+	position:absolute;
+	left:13px;
+	top:89px;
+	width:678px;
+	z-index:14;
+}
+#Layer15 {
+	position:absolute;
+	left:599px;
+	top:48px;
+	width:91px;
+	height:35px;
+	z-index:15;
+	overflow: hidden;
+}
+#Layer16 {
+	position:absolute;
+	left:603px;
+	top:29px;
+	width:87px;
+	height:16px;
+	z-index:16;
+}
+.Estilo4 {font-size: larger}
+-->
+</style>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/fondo_chico.jpg">
+<div id="Layer15">
+  <div align="center"><span class="titulo_ficha"><strong><font size="+2">${data_meta.ponderacion}%</font></strong></span></div>
+</div>
+<div id="Layer16"><span class="titulo_ficha">Ponderaci&#243;n:<strong>&nbsp;</strong></span></div>
+<div id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%" class="txt_gris_bold">Objetivos asociados a la meta de <span class="texto_titulo_rojo">${nombre_colab}</span> </td>
+    </tr>
+  </table>
+</div>
+<div id="Layer11">
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    
+    <tr>
+      <td class="txt_gris_bold"><span class="titulo_ficha"><em>"${data_meta.meta}"</em></span></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer12">
+  <div id="layer">
+    <table border="0" align="right" cellpadding="0">
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td nowrap="nowrap">&nbsp;</td>
+        <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13" /></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<span id="Layer13">
+<table width="99%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+   <list getObjetivosMetaColaborador as obj>
+    <tr>
+      <td width="90%">${obj.objetivo}</td>
+      <td align="center" width="10%"><span class="texto_texto">${obj.ponderacion}</span></td>
+    </tr>
+    <tr>
+      <td colspan="3"><HR size="1" noshade="noshade" /></td>
+     </tr>
+   </list>    
+</table>
+</span>
+<div id="Layer14">
+  <table width="97%" border="0" cellpadding="0" cellspacing="0" class="txt_gris">    
+    <tr>
+      <td width="5%" bgcolor="#E0DFE3" class="txt_gris_bold">&nbsp;</td>
+      <td width="80%" height="20" bgcolor="#E0DFE3" class="txt_gris_bold">Lista de objetivos asociados: <span class="texto_titulo_rojo">${salida}</span></td>
+      <td width="15%" align="center" bgcolor="#E0DFE3" class="txt_gris_bold">Ponderaci&#243;n % </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

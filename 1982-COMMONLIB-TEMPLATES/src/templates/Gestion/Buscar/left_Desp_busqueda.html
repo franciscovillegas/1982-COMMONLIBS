@@ -1,0 +1,228 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function Asigna(rut,unidad,empresa){
+	var uni = unidad;
+	var emp = empresa;
+	if (uni){
+		if (uni==""){
+			alert("Debe Seleccionar la unidad a la que desea asignar el nuevo encargado")
+		}
+		else {
+			MM_goToURL('parent.folderFrame','../servlet/AsignaEncargado?unidad='+uni+'&rut='+rut+"&empresa="+emp);
+		}
+	}
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/gestion.css" type="text/css">
+<script language="JavaScript">
+<assign empresa_ant ="">
+<list uni as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.unid_desc}','${a.unid_id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++) {
+			lista.options[i] = array[i]
+		}
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	llena_lista(document.form1.unidad, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+parent.parent.AbrirVentProcesando();
+</script>
+</head>
+
+<body background="../servlet/Tool?images/DataFolder/news/fondo_descanso.jpg" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="window.focus();">
+  
+<table border=0 cellpadding=0 cellspacing=0 width="309" height="453">
+  <form name="form1" method="post" action="../servlet/Buscar_por_Nombre2?Operacion=2&pagina=/templates/Gestion/Buscar/left_Desp_busqueda.html" onSubmit="return Procesando()">
+    <tr>
+      <td width="309" height="72" valign="top">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td valign="top"> 
+        <table width="100%" border="0" height="381">
+          <tr> 
+            <td height="377" align="left" valign="top"> 
+              <table width="98%" border="0" cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td height="9" bgcolor="#FFCF75" class="negro10B" colspan="4"> 
+                    <div align="center" class="negro12B">Busque al nuevo Responsable de la Unidad</div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="18" width="20%" class="negro10B">Rut</td>
+                  <td height="18" width="26%" class="negro10B">Ap. Paterno</td>
+                  <td height="18" width="30%" class="negro10B">Ap. Materno</td>
+                  <td height="18" width="24%" class="negro10B">Nombre</td>
+                </tr>
+                <tr> 
+                  <td width="20%" class="negro10N"> 
+                    <input name="rut" type="text" class="negro8B" size="8">
+                  </td>
+                  <td width="26%" class="negro10N"> 
+                    <input name="apaterno" type="text" class="negro8B" size="10">
+                  </td>
+                  <td width="30%" class="negro10N"> 
+                    <input name="amaterno" type="text" class="negro8B" size="10">
+                  </td>
+                  <td width="24%" class="negro10N"> 
+                    <input name="nombre" type="text" class="negro8B"  size="9">
+                  </td>
+                </tr>
+                <tr align="right"> 
+                  <td height="14" colspan="4"><span class="negro10B"> </span> 
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr> 
+                        <td width="17%" height="32"><span class="negro10B">Empresa</span></td>
+                        <td width="83%"><span class="negro10B"> 
+                          <select name="empresa" class="negro10N" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                            <option value="-1">Seleccione una Empresa</option>
+                            <list emp as v> 
+                            <option value="${v.id}">${v.empresa}</option>
+                            </list> 
+                          </select>
+                          </span></td>
+                      </tr>
+                      <tr> 
+                        <td height="27" width="17%"><span class="negro10B">Unidad</span></td>
+                        <td height="27" width="83%"> 
+                          <select name="unidad" class="negro10NLink" style="width=250" >
+                            <option value="Todas">Todas</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="28%" height="43" class="negro12B">Orden de Busqueda </td>
+                        <td width="72%"> 
+                          <input name="image" type="image" src="../servlet/Tool?images/Gestion/botones/buscar.gif" width="91" height="21" border=0>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="4" class="negro10B">1 
+                    <select name="sel1" class="negro8B">
+                      <option selected>Rut</option>
+                      <option>Nombre</option>
+                      <option>A. Paterno</option>
+                      <option>A. Materno</option>
+                    </select>
+                    2 
+                    <select name="sel2" class="negro8B">
+                      <option selected></option>
+                      <option >Rut</option>
+                      <option>Nombre</option>
+                      <option>A. Paterno</option>
+                      <option>A. Materno</option>
+                    </select>
+                    3 
+                    <select name="sel3" class="negro8B">
+                      <option selected></option>
+                      <option >Rut</option>
+                      <option>Nombre</option>
+0                      <option>A. Paterno</option>
+                      <option>A. Materno</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>      </td>
+    </tr>
+</form>
+  </table>
+  
+<div id="Layer1" style="position:absolute; left:4px; top:264px; width:301px; height:20px; z-index:1; visibility: visible; overflow: auto"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr bgcolor="#FFCF75"> 
+        
+      <td width="31" class="negro10B">Rut</td>
+        
+      <td width="159" class="negro10B">Nombres</td>
+        <td width="118" class="negro10B">Unidad</td>
+    </tr>
+  </table>
+</div>
+  <input type="hidden" name="hiddenField">
+  
+<div id="Layer1" style="position:absolute; left:-1px; top:281px; width:306px; height:167px; z-index:1; visibility: visible; overflow: auto"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <list varios as v> 
+    <tr bgcolor="#FFFFFF"> 
+        
+      <td height="24"><a href="javascript:;" onClick="Asigna('${v.rut}','${v.unid_id}','${v.empresa_trab}'); return false" class="azul10NLink" title="Click , para asignar Nuevo Encargado">${v.ape_paterno} 
+      ${v.ape_materno} ${v.nombres}</a></td>
+      <td height="24" class="negro10N" width="118">${v.unid_desc}</td>
+    </tr>
+    </list> 
+  </table>
+</div>
+  <p>&nbsp;</p>
+
+<p> 
+  <script language="JavaScript">
+<if varios>
+	MM_goToURL('parent.folderFrame','../servlet/AsignaEncargado');
+<else>
+	MM_goToURL('parent.folderFrame','Tool?htm=Gestion/arbol/blanco.htm');
+</if>
+</script>
+  <br>
+  <script language="JavaScript">
+parent.parent.CerrarVentProcesando();
+</script>
+  <script language="">
+	document.form1.empresa.value="${empresa}";
+	SeleccionaEmpresa("${empresa}");
+	document.form1.unidad.value="${unidad}";
+</script>
+</p>
+</body>
+</html>
+

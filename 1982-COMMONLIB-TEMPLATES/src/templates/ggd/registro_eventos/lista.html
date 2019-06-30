@@ -1,0 +1,38 @@
+<style type="text/css">
+<!--
+.re01 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+}
+.re02 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #003366;
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<table width="100%" border="0">
+  <tr class="re02">
+    <td width="19%" bgcolor="#FFFFFF">Fecha</td>
+    <td width="33%" bgcolor="#FFFFFF">Competencia</td>
+    <td width="40%" bgcolor="#FFFFFF">Observaci&oacute;n</td>
+    <td width="8%" align="center">&nbsp;</td>
+  </tr>
+<if getRegistroEventos>
+<list getRegistroEventos as a>  
+  <tr valign="top">
+    <td class="re01">${a.fecha}&nbsp;</td>
+    <td class="re01">${a.competencia}&nbsp;</td>
+    <td class="re01">${a.descripcion}&nbsp;</td>
+    <td align="center"><img src="../servlet/Tool?images/images_ggd/registro_eventos/carita${a.tipo}.gif" width="21" height="21"></td>
+  </tr>
+</list>
+<else>
+  <tr>
+    <td colspan="4" class="re01" >No registra informaci&#243;n.</td>
+  </tr>
+</if>   
+</table>
+

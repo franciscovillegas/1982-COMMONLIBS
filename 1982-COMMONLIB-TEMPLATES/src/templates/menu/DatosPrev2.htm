@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>Actualizar Datos Previsionales</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!--
+<script language="JavaScript" src="/DataFolder/script/ventanas.js">
+</script>
+-->
+<script language="JavaScript">
+<!--
+
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<!--
+<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="/DataFolder/script/ExisteFoto.js">
+</script>
+-->
+
+<style type="text/css">
+<!--
+.Estilo2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #CC0000;
+}
+.Estilo3 {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #CC0000;
+}
+-->
+</style>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY background="../servlet/Tool?images/new/main/main_solo.jpg" text="#000000" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_showHideLayers('afp','','hide','isapre','','hide','detalle','','hide')">
+<div id="Layer2" style="position:absolute; left:553px; top:354px; width:94px; height:27px; z-index:5"><a href="Tool?htm=mail/mail_ok.html"><img src="../servlet/Tool?images/new/botones/enviar_datos.gif" width="91" height="21" border="0"></a></div>
+<table width="660" border="0" cellpadding="0" cellspacing="0" >
+  <tr valign="top">
+    <td height="384" align="center" valign="top"><table width="100%" height="17">
+          <tr align="center">
+            <td width="640" height="11" valign="top">
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><img src="../servlet/Tool?images/new/titulos/act_prev.jpg" width="436" height="29"></font></div></td>
+          </tr>
+        </table>
+        <table width="100%" height="30">
+          <tr>
+            <td height="24" colspan="4">
+              <div align="center" class="Estilo3">AFP:
+                  <input name="text3" type="text" class="detalleTabla" value="${afp}">
+            </div></td>
+          </tr>
+        </table>
+        <table width="90%" height="101" border="0" cellpadding="0" cellspacing="1" bgcolor="#A3B9D0" class="tablas">
+          <tr>
+            <td width="252" height="19" align="right" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB"> Ingreso AFP: </font></strong></div></td>
+            <td width="405" height="19" valign="top" bgcolor="#DFE6EE">
+              <input name="text2" type="text" class="detalleTabla" value="${ingre_afp}"></td>
+          </tr>
+          <tr>
+            <td height="19" align="right" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Cotizaci&oacute;n (%): </font></strong></div></td>
+            <td width="405" height="19" valign="top" bgcolor="#DFE6EE">
+              <div align="left">
+                <input name="text2" type="text" class="detalleTabla" value="${cotizacion}">
+            </div></td>
+          </tr>
+          <tr>
+            <td height="19" align="right" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Cotizaci&oacute;n adicional :</font></strong></div></td>
+            <td width="405" valign="top" bgcolor="#DFE6EE">
+              <div align="left">
+                <input name="text2" type="text" class="detalleTabla" value="${monto_adicional} ${moneda_adicional}">
+            </div></td>
+          </tr>
+          <tr>
+            <td height="19" align="right" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Ahorro voluntario:</font></strong></div></td>
+            <td width="405" height="19" valign="top" bgcolor="#DFE6EE">
+              <div align="left">
+                <input name="text2" type="text" class="detalleTabla" value="${monto_volunt}">
+                <span class="texto">
+                <input name="text2" type="text" class="detalleTabla" value="${moneda_volunt}">
+            </span></div></td>
+          </tr>
+          <tr>
+            <td height="19" align="right" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Jubilado : </font></strong></div></td>
+            <td width="405" height="19" valign="top" bgcolor="#DFE6EE"><input name="text2" type="text" class="detalleTabla" value="${jubilado}"></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="30">
+              <div align="center" class="Estilo3">ISAPRE:<input type="text" class="detalleTabla" value="${isapre}">
+              </div></td>
+          </tr>
+        </table>
+        <table width="90%" border="0" cellpadding="0" cellspacing="1" bgcolor="#A3B9D0" class="tablas">
+          <tr>
+            <td width="38%" height="19" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Ingreso Isapre :</font></strong></div></td>
+            <td width="62%" height="19" bgcolor="#E0E7EF"><input name="text" type="text" class="detalleTabla" value="${ing_isap}"></td>
+          </tr>
+          <tr>
+            <td width="38%" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Cotizaci&oacute;n (%) :</font></strong></div></td>
+            <td width="62%" bgcolor="#E0E7EF"><input name="text" type="text" class="detalleTabla" value="${cotisap}"></td>
+          </tr>
+          <tr>
+            <td width="38%" height="19" bgcolor="#FFFFCC">
+              <div align="right"><strong><font class="textB">Cotizaci&oacute;n Adicional :</font></strong></div></td>
+            <td width="62%" bgcolor="#E0E7EF"><input name="text" type="text" class="detalleTabla" value="${adicsal} ${mone_adicsal}"></td>
+          </tr>
+        </table></td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

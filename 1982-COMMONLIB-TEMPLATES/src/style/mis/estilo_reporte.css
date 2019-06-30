@@ -1,0 +1,115 @@
+.titulos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style:normal;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.subtitulos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	font-style:normal;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.subsubtitulos {
+		
+
+}
+
+.area_unidad{
+
+}
+
+.fecha{
+
+}
+
+.titu_tabla {
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #CC0000;
+}
+
+.dest_tabla {
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+	background-color: #CCCCCC;
+}
+
+.tabla {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style:normal;
+	color: #000000;	
+}
+
+.tabla_destaque {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style:normal;
+	color: #000000;
+    font-weight: bold;
+}
+
+.celda_tabla{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style:normal;
+	color: #000000;	
+}
+
+.celda_pie{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #A4A4A4;
+}
+
+
+.espacio_agrupacion{
+	border-left-width: 0px;
+    border-right-width: 0px; 
+	border-right-style: none;
+	border-left-style: none; 
+    height:80px;
+}
+
+.titulo_total{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #A4A4A4;
+}
+
+.indice_agrupacion_1{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #CC0000;
+}
+
+.indice_agrupacion_2{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #CC0000;
+}
+
+.indice_agrupacion_3{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #CC0000;
+}
+
+.indice_agrupacion_4{
+	font-family: arial;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+

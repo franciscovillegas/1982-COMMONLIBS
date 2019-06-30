@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Lista de Usuarios</title>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="100%"  border="0" cellpadding="2" cellspacing="1" class="TITULO_MODULOS">
+<tr><td colspan="3" height="45" align="center">Lista Usuarios Portal</td></tr>
+<tr> 
+<td height="30" valign="top" align="center" class="tituloTabla">Rut</td> 
+<td valign="top" align="center" class="tituloTabla">Nombre</td>
+<td valign="top" align="center" class="tituloTabla">Clave</td>
+</tr>
+<list lista as l>
+<tr> 
+<td valign="top" align="justify" class="detalleTabla">${l.rut}</td> 
+<td valign="top" align="justify" class="detalleTabla" style="padding-left:30px">${l.nombre}</td>
+<td valign="top" align="left" class="detalleTabla">Clave : ${l.clave}</td>
+</tr>
+</list>
+</table>
+</form>
+</body>
+</html>

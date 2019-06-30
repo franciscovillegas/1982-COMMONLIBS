@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+<TITLE>main_resultado</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+var rut_var = 0;
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function Valor(valor){
+  if (valor) 
+  { if (valor!="") 
+    {
+	  rut_var = valor;
+      document.getElementById("Layer5").innerHTML="<a href=\"../servlet/EvaluacionesG?txt_Rut="+rut_var+"&txt_TipoEval=A&txt_Perfil=1&txt_Proceso=1\" target=\"bottomFrame\"><img src=\"../servlet/Tool?images/images_ggd/aceptar_ch.gif\" width=\"20\" height=\"20\" border=\"0\">E</a>";
+      document.getElementById("Layer6").innerHTML="<a href=\"../servlet/RegistroEventos?txt_Rut="+rut_var+"&txt_Perfil=1&txt_Proceso=1\" target=\"bottomFrame\"><img src=\"../servlet/Tool?images/images_ggd/aceptar_ch.gif\" width=\"20\" height=\"20\" border=\"0\">R</a>";
+      document.getElementById("Layer7").innerHTML="<a href=\"../servlet/ResultadoAnalisisII?txt_Rut="+rut_var+"&txt_Perfil=1&txt_Proceso=1\" target=\"bottomFrame\"><img src=\"../servlet/Tool?images/images_ggd/aceptar_ch.gif\" width=\"20\" height=\"20\" border=\"0\">RA</a>";
+      document.getElementById("Layer8").innerHTML="<a href=\"../servlet/PlanAccion?txt_Rut="+rut_var+"&txt_RutEval="+rut_var+"&id_perfil=1&id_proceso=1&modo=Auto\" target=\"bottomFrame\"><img src=\"../servlet/Tool?images/images_ggd/aceptar_ch.gif\" width=\"20\" height=\"20\" border=\"0\">AP</a>";
+	}
+  } 
+}
+//-->
+</script>
+
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Hijofoto {position:absolute;
+	left:3px;
+	top:5px;
+	width:54px;
+	height:110px;
+	z-index:7;
+}
+#PadFoto {position:absolute;
+	left:3px;
+	top:2px;
+	width:62px;
+	height:22px;
+	z-index:8;
+}
+#HijoOrga {	position:absolute;
+	left:17px;
+	top:365px;
+	width:500px;
+	height:300px;
+	background-color: #FFFFFF;
+}
+#PadreOrga {
+	position:absolute;
+	left:5px;
+	top:5px;
+	width:330px;
+	height:19px;
+	z-index:1;
+	visibility: visible;
+}
+a:link {
+	text-decoration: underline;
+	color: #000000;
+}
+a:visited {
+	text-decoration: underline;
+	color: #000000;
+}
+a:hover {
+	text-decoration: none;
+	color: #D0CDAC;
+}
+a:active {
+	text-decoration: underline;
+	color: #000000;
+}
+#Layer5 {
+	position:absolute;
+	left:188px;
+	top:104px;
+	width:61px;
+	height:19px;
+	z-index:8;
+}
+#Layer6 {
+	position:absolute;
+	left:218px;
+	top:104px;
+	width:61px;
+	height:19px;
+	z-index:8;
+}
+#Layer7 {
+	position:absolute;
+	left:248px;
+	top:104px;
+	width:61px;
+	height:19px;
+	z-index:8;
+}
+#Layer8 {
+	position:absolute;
+	left:288px;
+	top:104px;
+	width:61px;
+	height:19px;
+	z-index:8;
+}
+-->
+</style>
+</HEAD>
+<BODY>
+<div id="Layer5"></div>
+<div id="Layer6"></div>
+<div id="Layer7"></div>
+<div id="Layer8"></div>
+<table width="330" height="350" border="0" cellpadding="0" cellspacing="0" class="tabla_layer_orga" style=" width : 330px; height : 143px;">
+      <tr>
+        <td valign="top">
+		<div id="Layer4" style="position:absolute; left:74px; top:12px; width:248px; height:88px; z-index:4">
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr align="center">
+      <td height="14" colspan="3" class="tabla_beige">Dotaci&oacute;n Directa</td>
+    </tr>
+    <tr align="center">
+      <td class="texto_negro_bold">Planta Aut.</td>
+      <td class="texto_negro_bold">Dot. Real</td>
+      <td class="texto_negro_bold">Dif.</td>
+    </tr>
+    <tr align="center">
+      <td class="texto_negro">${dda}</td>
+      <td class="texto_negro">${ddr}</td>
+      <td class="texto_negro">${ddd}</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer6" style="position:absolute; left:72px; top:102px; width:251px; height:22px; z-index:6; visibility: hidden;">
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" valign="middle"><span class="texto_negro">${unidad}</span><br><a href="#" class="texto_negro_bold" onClick="MM_showHideLayers('Layer1','','show')">MISION</a></td>
+    </tr>
+  </table>
+  
+</div>
+<span id="Layer2" style="position:absolute; width:323px; height:161px; z-index:2; left: 4px; top: 143px; overflow: auto">
+<table width="320" border="0" cellpadding="0" cellspacing="1">
+    <list varios as v>
+    <tr>
+	  <td width="6%" align="center" class="tabla_negro"><input type="radio" name="rut_trabajador" id="rut_trabajador" onClick="Valor('${v.rut}')" value="${v.rut}"></td>    
+      <td width="43%" align="center" class="tabla_negro">${v.nombre}</td>
+      <td width="51%" align="center" class="tabla_negro">${v.desc_cargo}</td>
+    </tr>
+    </list>
+</table>
+</span>
+<div id="Layer1" style="position:absolute; left:71px; top:5px; width:253px; height:127px; z-index:7; background-color: #FFFFFF; visibility: hidden;">
+  <div align="center">
+    <table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+      <tr>
+        <td align="center" bgcolor="#FFFFFF"><span class="texto_negro_bold">${mision}</span><br>
+        <a href="#" class="texto_negro" onClick="MM_showHideLayers('Layer1','','hide')">Cerrar</a> </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br>
+<div id="Layer3" style="position:absolute; left:3px; top:303px; width:324px; height:22px; z-index:3"> 
+  <table width="100%" border="0" cellpadding="0">
+    
+    <tr> 
+      <td width="100%" colspan="2"></td>
+    </tr>
+  </table>
+</div>
+    <table width="72" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center" valign="top"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="62" height="81" border="1" onError="existeFoto(this);"></td>
+      </tr>
+      <tr>
+        <td align="center" class="texto_negro_bold_chico"><a href="#" onClick="VentEncargado('${unid_id}', '${unidad}', '${periodo}', '${empresa}'); return false">Encargado Unidad</a></td>
+      </tr>
+    </table>
+		</td>
+      </tr>
+</table>
+
+<span id="Layer2" style="position:absolute; width:323px; height:19px; z-index:2; left: 4px; top: 125px">
+<table width="320" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+  	<td width="6%" align="center" class="tabla_beige">Ck</td>
+    <td width="43%" align="center" class="tabla_beige">Nombre</td>
+    <td width="51%" align="center" class="tabla_beige">Cargo</td>
+  </tr>
+  <list varios as v>  </list>
+</table>
+</span>
+</BODY>
+</HTML>

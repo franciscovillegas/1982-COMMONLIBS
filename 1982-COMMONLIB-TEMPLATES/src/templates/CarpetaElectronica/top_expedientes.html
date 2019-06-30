@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Ficha Personal</title>
+	<link rel="stylesheet" href="../servlet/Tool?style/jquery-ui/jquery-ui.css">
+	<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js"></script>
+	<script src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+	<script src="../servlet/Tool?scripts/zonaUtil.js"></script>
+	<script src="Tool?htm=Gestion/script/opcion_link.js"></script>
+
+	<script src="../servlet/Tool?scripts/trabajador/zonaTrabajadoresAccesos.js"></script>
+	 
+	<link href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css" rel="stylesheet" type="text/css"></link>
+	<script src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$( "#tabs" ).tabs();
+			$( "#tabs" ).tabs( "enable", 1 );
+			Datos(${brut},'fragment-1');	
+		});
+		
+		
+		function callZona(num) {
+		
+			var funcName = "";
+			var url = "";
+			
+			if ( num == 1) 	    { funcName  ="Datos"; }
+			else if ( num == 2) { funcName  ="Remu"; }
+			else if ( num == 3) { funcName  ="Prev"; }
+			else if ( num == 4) { funcName  ="Perf"; }
+			else if ( num == 5) { funcName  ="Vaca"; }
+			else if ( num == 6) { funcName  ="Lice"; }
+			else if ( num == 7) { funcName  ="Descargables"; }
+			else if ( num == 8) { funcName  ="alert"; }
+			
+			var frameName = "fragment-"+num;
+			if($("#"+frameName).html() == "Cargando datos...") {
+				eval(funcName+"(${brut} ,'"+frameName+"');");
+			}
+			
+		}
+	</script>
+
+</head>
+<body> 
+ 
+<div id="tabs">
+  <ul>				
+    <li><a href="#fragment-1" onClick="callZona(1);"><span>Datos Personales</span></a></li>
+    <li><a href="#fragment-2" onClick="callZona(2);"><span>Remuneraciones</span></a></li>
+    <li><a href="#fragment-3" onClick="callZona(3);"><span>Datos Previsionales</span></a></li>
+    <li><a href="#fragment-4" onClick="callZona(4);"><span>Datos Contractuales</span></a></li>
+    <li><a href="#fragment-5" onClick="callZona(5);"><span>Vacaciones</span></a></li>
+    <li><a href="#fragment-6" onClick="callZona(6);"><span>Licencias M&#233;dicas</span></a></li>
+    <li><a href="#fragment-7" onClick="callZona(7);"><span>Otros documentos</span></a></li>
+    <li><a href="#fragment-8" onClick="callZona(8);"><span>Descripci&#243;n de cargo</span></a></li>
+  </ul>
+  <div id="fragment-1">Cargando datos...</div>
+  <div id="fragment-2">Cargando datos...</div>
+  <div id="fragment-3">Cargando datos...</div>
+  <div id="fragment-4">Cargando datos...</div>
+  <div id="fragment-5">Cargando datos...</div>
+  <div id="fragment-6">Cargando datos...</div>
+  <div id="fragment-7">Cargando datos...</div>
+  <div id="fragment-8" style="height: 500px"><center><img src="../enconstruccion.jpg" ><br/><br/><br/><div style="font-family: Arial, Helvetica, sans-serif;  font-size: 16px; "><strong>Estamos en proceso de publicaci&oacute;n</strong></div></center></div>
+</div>
+ 
+
+ 
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div id="LayerBotonera${pag.p_act}" style=" visibility:hidden; z-index:1; border: 1px none #000000; top: auto" > 
+        <table border="0" cellspacing="0" cellpadding="0" width="248" bgcolor="#CCCCCC" height="36">
+          <tr valign="middle">
+		  <compress> 
+      <td width="49"> <if (pag.p_act) != "1"><a href="#pag_1"><img src="../servlet/Tool?images/botones/botones_informe/inicio_up.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></a> 
+        <else><img src="../servlet/Tool?images/botones/botones_informe/inicio_inac.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></if></td>
+            
+      <td width="50"> <if (pag.p_act) != "1"><a href="#pag_${pag.p_ant}"><img src="../servlet/Tool?images/botones/botones_informe/anterior_up.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></a> 
+        <else><img src="../servlet/Tool?images/botones/botones_informe/anterior_inac.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></if></td>
+            
+      <td width="50"> <if (pag.p_act) != (p_tot)><a href="#pag_${pag.p_sig}"><img src="../servlet/Tool?images/botones/botones_informe/siguiente_up.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></a> 
+        <else><img src="../servlet/Tool?images/botones/botones_informe/siguiente_inac.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></if></td>
+            
+      <td width="49"> <if (pag.p_act) != (p_tot)><a href="#pag_${p_tot}"><img src="../servlet/Tool?images/botones/botones_informe/ultimo_up.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></a> 
+        <else><img src="../servlet/Tool?images/botones/botones_informe/ultimo_inac.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></if></td>
+		
+      <td width="50"> <b><a href="javascript:;" onClick="Imprimir()"><img src="../servlet/Tool?images/botones/botones_informe/imprimir_up.jpg" width="49" height="36" border="0" name="img_imp${pag.p_act}"></a></b></td>
+		  </compress>  
+          </tr>
+        </table>
+      </div>

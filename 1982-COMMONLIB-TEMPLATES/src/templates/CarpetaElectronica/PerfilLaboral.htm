@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Perfil Laboral</title>
+
+<!-- tool FUNCTION -->
+
+<!-- JQUERY  -->
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+
+<!-- PAGINA -->
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/style.css"/>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css"/>
+
+	<style type="text/css">
+			.textoImportante {
+				background-color:#F0F0F0;
+				padding:3px;
+				border:#D7D7D7 1px solid;
+			}
+			
+			.textoImportante2 {
+				padding:3px;
+				border:#D7D7D7 1px solid;
+			}
+	
+	</style>
+
+</head>
+
+<body>
+
+<div id="divCarpetaElectronica">
+		<table  width="800" align="center" style="margin-top:20px;" >
+		<th width="360" colspan="4" class=" macTableStyle1"><div class="titulo">Datos Contractuales</div></th>
+		<tr>
+			<td colspan="3" align="center">
+				<div id="divDatosPersonales" style="height: 600px">
+                	<table id="tblContenidos"  width="100%" style="margin-top:20px;height: 350px" class="cuadro_contenido" >
+							<tr>
+	                        	<td rowspan="11">
+	                        		
+	                                <table >
+	                                    <tr>
+	                                         <td align="center"><img src="../temporal/imgtrabajadores/${ir.rut}.jpg" width="62" height="81" onerror="existeFoto(this)" border="1"></td> 
+	                                    </tr>
+	                                    <tr>
+	                                        <td align="center" class="texto_negro_bold_chico">${dc.rut2}</td>
+	                                    </tr>
+	                                </table>
+	                                
+	                            </td>
+	                        </tr>
+	                        <tr>
+								<td colspan="4" class="textoImportante3">
+										 <table style="width: 80%;">
+			                        		<tr>
+			                        			<td class="textoImportante"><strong>Nombre :</strong></td>
+			                                    <td class="textoImportante2">${dc.nombre}</td>
+			                                </tr>
+			                                <tr>
+			                             		<td class="textoImportante"><strong>Cargo :</strong></td>
+			                                    <td class="textoImportante2">${dc.cargo}</td>
+			                                </tr>  
+		                        		</table>
+								</td>
+							</tr>
+
+	                        <tr>
+					            <td class="textoImportante"><strong>Sueldo Base Convenido</strong></td>
+					            <td class="textoImportante2">: ${dc.moneda_renta}${dc.renta}</td>
+					            <td class="textoImportante"><strong>Tipo Contrato</strong></td>
+					            <td class="textoImportante2">: ${dc.tipo_contrato}</td>
+					          </tr>
+					          <tr>
+					            <td class="textoImportante"><strong>Fecha Reconocimiento Antig&uuml;edad</strong></td>
+					            <td class="textoImportante2">: ${dc.ingre_corp}</td>
+					            <td class="textoImportante"><strong>Fin Contrato</strong></td>
+					            <td class="textoImportante2">: ${dc.termino}</td>
+					          </tr>
+					          <tr>
+					            <td class="textoImportante"><strong>Fecha de Ingreso</strong></td>
+					            <td class="textoImportante2">: ${dc.fec_ingreso}</td>
+					            <td class="textoImportante"><strong>A&ntilde;os de antig&#252;edad</strong></td>
+					            <td class="textoImportante2">: ${dc.xcorp}</td>
+					          </tr>
+					          <tr>
+					            <td class="textoImportante"><strong>Seguro Cesant&iacute;a</strong></td>
+					            <td class="textoImportante2">: <if (dc.segdes) == "S">Si<else>No</if></td>
+					            <td class="textoImportante"><strong>Ingreso Seguro Cesant&iacute;a</strong></td>
+					            <td class="textoImportante2">: <if (dc.segdes) == "S">${dc.fec_segdes}<else>n.a.</if></td>
+					          </tr>
+					          <tr>
+					            <td class="textoImportante"><strong>Seguro Salud Comp.</strong></td>
+					            <td class="textoImportante2">: <if (dc.segsalcom) == "S">Si<else>No</if></td>
+					            <td class="textoImportante"><strong>Sindicato</strong></td>
+					            <td class="textoImportante2">: ${dc.sindicato}</td>
+					          </tr>
+					          <tr>
+					            <td ></td>
+					            <td ></td>
+					            <td ></td>
+					            <td ></td>
+					          </tr>
+					
+					          <tr>
+								<td colspan="4" align="center">
+					          	<table width="95%">
+					          		<tr>
+					          			<td colspan="2"><article class="unidadOrg">${dc.nom_empresa}</article></td>
+					          		</tr>
+					          		<tr>
+					          			<td><article class="unidadOrg">(${dc.id_cco}) ${dc.cco}</article></td>
+					          			<td><article class="unidadOrg">(${dc.id_unidad}) ${dc.unidad}</article></td>
+					          		</tr>
+					          	</table>				
+								</td>
+					          </tr>
+			    		</table>
+					</div>	    	
+		    	</td>
+		    </tr>     	
+		</table>
+	</div>
+
+</body>
+</html>

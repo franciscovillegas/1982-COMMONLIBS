@@ -1,0 +1,217 @@
+<script language="JavaScript" src="/Gestion/script/msgprocesando.js">
+</script>
+ <HTML>
+<HEAD>
+<TITLE>arbol bus grafica</TITLE>
+<script language="JavaScript">
+AbrirVentProcesando()
+
+function VerMas(){
+//alert("${nameform}");  
+<if (nameform!="")>
+  document.${nameform}.submit();
+ </if>
+}
+
+function SeteaPos(formulario){
+  formulario.pos.value="1";
+
+}
+function Ejecuta(idEmp,idUni,nombre, tipo){
+	//alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+		//VerContFormm(document.form1)
+		document.form1.submit();
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function inicio() {
+	focus();
+	inicioArbol();
+    if (window.unidadBuscada) {
+		if (!window.unidadEncontrada) 
+		  LayerVerMas.style.visibility="hidden";
+	}
+	document.formBusCod.be.value = window.resulEmp;
+	document.formBusCod.bu.value = window.resulUni;
+	document.formBusGlosa.bu.value = window.resulUni;
+	document.formBusRut.br.value = "${br}";
+	if ( (document.formBusRut.br.value!="") && (!window.unidadEncontrada) ) 
+		alert("El trabajdor con rut '"+document.formBusRut.br.value+"' no se encuentra en la Organica.");
+}
+
+function limpiarBus() {
+	document.formBusCod.reset();
+	document.formBusGlosa.reset();
+	document.formBusRut.reset();
+	return false;
+}
+</script>
+<script language="JavaScript" src="/Gestion/script/Formularios.js">
+</script>
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</HEAD>
+<BODY background="/images/Gestion/news/fondo_descanso.jpg" text="#000000" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="inicio();MM_preloadImages('/images/Gestion/botones_buscar/limpiar_over.jpg','/images/Gestion/botones/buscar_icon_over.jpg','/images/Gestion/botones/vermas_icon_over.jpg')">
+<div id='LayerArbol' style='position:absolute; width:291px; height:307px; z-index:1;; left: 4px; top: 59px; overflow: auto; background-color: #FFFFFF; layer-background-color: #FFFFFF; ; visibility: visible' class="carpetaUn"> 
+  <if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, empresa)} 
+  </if> </div>
+<div id="LayBuscar" style="position:absolute; width:254px; height:134px; z-index:2; top: 67px; left: 21px; visibility: hidden; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000;" class="carpeta3D"> 
+  <table width="100%" border="0" cellspacing="1" cellpadding="2">
+    <form name="formBusCod" onSubmit="SeteaPos(document.formBusCod)" method="post" action="/servlet/arbol.servlet.LoadTreeOrg?pag=Gestion/InfoUsuario/BusquedaGrafica/basetree.htm&tc=yes">
+      <tr bgcolor="#EBEBEB"> 
+        <td height="20" colspan="2" class="negro12B">Buscar Unidad</td>
+        <td height="20" align="center" class="negro12B"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayBuscar','','hide'); return false">[X]</a></td>
+      </tr>
+      <tr> 
+        <td height="20" class="negro12N" colspan="2"> Empresa: 
+          <input type="text" name="be" size="1"  class="negro12N">
+          Unidad: 
+          <input type="text" name="bu" size="5" class="negro12N">
+          <input type="hidden" name="pos" value="${pos}">
+          <input type="hidden" name="nameform" value="formBusCod">
+        </td>
+        <td height="20" class="negro12N" width="25" align="center"> 
+          <input type="image" border="0" name="imageField_b1" src="/images/Gestion/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='/images/Gestion/botones_buscar/buscar_over.jpg'">
+        </td>
+      </tr>
+    </form>
+    <form name="formBusGlosa" onSubmit="SeteaPos(document.formBusGlosa)" method="post" action="/servlet/arbol.servlet.LoadTreeOrg?pag=Gestion/InfoUsuario/BusquedaGrafica/basetree.htm&tc=yes">
+      <tr> 
+        <td height="20" class="negro12N" colspan="2"> 
+          <select name="bu" class="negro10N" style="width=220">
+            <option selected value = "">Seleccione una Unidad</option>
+            <list unidades as u> 
+            <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+            </list> 
+          </select>
+          <a href="javascript:;" onClick="return limpiarBus()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_limp','','/images/Gestion/botones_buscar/limpiar_over.jpg',1)"> 
+          <input type="hidden" name="pos" value="${pos}">
+          </a><a href="javascript:;" onClick="return limpiarBus()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_limp','','/images/Gestion/botones_buscar/limpiar_over.jpg',1)"> 
+          <input type="hidden" name="nameform" value="formBusGlosa">
+          </a> </td>
+        <td height="20" class="negro12N" width="25" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="/images/Gestion/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='/images/Gestion/botones_buscar/buscar_over.jpg'">
+        </td>
+      </tr>
+    </form>
+    <form name="formBusRut" onSubmit="SeteaPos(document.formBusRut)" method="post" action="/servlet/arbol.servlet.LoadTreeOrg?pag=Gestion/InfoUsuario/BusquedaGrafica/basetree.htm&tc=yes">
+      <tr> 
+        <td height="20" class="negro12N"> 
+          <div align="right">Rut 
+            <input type="hidden" name="pos" value="${pos}">
+          </div>
+        </td>
+        <td height="20" class="negro12N"> 
+          <input type="text" name="br" size="15" class="negro12N">
+          <input type="hidden" name="nameform" value="formBusRut">
+        </td>
+        <td height="20" class="negro12N" width="25" align="center"> 
+          <input type="image" border="0" name="imageField_b2" src="/images/Gestion/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='/images/Gestion/botones_buscar/buscar_over.jpg'">
+        </td>
+      </tr>
+      <tr align="right"> 
+        <td height="20" class="negro12N">Nombre</td>
+        <td height="20" class="negro12N" colspan="2"> 
+          <div align="left"> 
+            <input type="text" name="bn" size="20" class="negro12N" value="${bn}">
+          </div>
+        </td>
+      </tr>
+      <tr align="right"> 
+        <td height="20" class="negro12N">Ap Paterno</td>
+        <td height="20" class="negro12N" colspan="2"> 
+          <div align="left"> 
+            <input type="text" name="bp" size="20" class="negro12N" value="${bp}">
+          </div>
+        </td>
+      </tr>
+      <tr align="right"> 
+        <td height="20" class="negro12N">Ap Materno</td>
+        <td height="20" class="negro12N" colspan="2"> 
+          <div align="left"> 
+            <input type="text" name="bm" size="20" class="negro12N" value="${bm}">
+          </div>
+        </td>
+      </tr>
+      <tr align="right"> 
+        <td height="20" class="negro12N" colspan="3">&nbsp;</td>
+      </tr>
+    </form>
+  </table>
+</div>
+<div id="LayerVerMas" style="position:absolute; width:23px; height:23px; z-index:8; left: 262px; top: 373px; visibility: visible"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> <if (!inicio)&&(!fin)&&(br=="")&&(nameform!="formBusCod")> 
+        <a href="javascript:;" onClick="VerMas();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image42','','/images/Gestion/botones/vermas_icon_over.jpg',1)"><img name="Image42" border="0" src="/images/Gestion/botones/vermas_icon.jpg" width="20" height="20" alt="Ver M&aacute;s"></a></if> 
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="LayBoton" style="position:absolute; width:27px; height:25px; z-index:3; top: 373px; left: 232px; visibility: visible"><a href="javascript:;" onClick="MM_showHideLayers('LayBuscar','','show'); return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','/images/Gestion/botones/buscar_icon_over.jpg',1)"><img name="Image41" border="0" src="/images/Gestion/botones/buscar_icon.jpg" width="20" height="20" alt="Buscar"></a></div>
+<form name='form1' method='post' action='/servlet/Buscar_Grafica/' target='folderFrameG'>
+  <input type='hidden' name='unidad'>
+  <input type='hidden' name='descrip'>
+  <input type='hidden' name='empresa'>
+</form>
+<script>
+CerrarVentProcesando()
+</script>
+</BODY>
+</HTML>

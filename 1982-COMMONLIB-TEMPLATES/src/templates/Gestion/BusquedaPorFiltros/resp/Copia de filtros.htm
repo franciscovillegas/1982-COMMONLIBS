@@ -1,0 +1,165 @@
+  <html>
+<head>
+<title>Filtros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function Valida() { //v2.0
+  var s1=document.form1.sexo1.value;
+  var s2=document.form1.sexo2.value;
+  var ed1=document.form1.rango1.value;
+  var ed2=document.form1.rango2.value;
+  var apel1=document.form1.apellido1.value;
+  var apel2=document.form1.apellido2.value;
+  var civil=document.form1.civil.value;
+   //*********No ha seleccionado ning&#250;n criterio******
+  if ((s1!="M")&&(s2!="F")&&(ed1=="")&&(ed2=="")&&(apel1=="")&&(apel2=="")&&(civil=="0"))
+     alert("Seleccione un criterio.");
+  else  
+     document.form1.submit();     
+     
+}
+
+
+function Limpia(){
+	document.form1.sexo1.value="0";
+	document.form1.s1.checked=false;
+	document.form1.sexo2.value="0";
+	document.form1.s2.checked=false;
+	document.form1.rango1.value="";
+	document.form1.rango2.value="";  
+    document.form1.apellido1.value="";
+    document.form1.apellido2.value="";
+    document.form1.civil.value="0";
+ }
+
+function Valor1(valor) { //v2.0
+  if (document.form1.ap1.checked==true)
+       document.form1.paterno.value=valor;
+   else{
+      document.form1.paterno.value="0";
+      document.form1.ap1.checked=false;
+    }
+}
+
+function Valor2(valor) { //v2.0
+  if (document.form1.ap2.checked==true)
+         document.form1.materno.value=valor;
+   else{
+      document.form1.materno.value="0";
+      document.form1.ap2.checked=false;
+    }
+}
+
+function Cambia1(valor) { //v2.0
+  if (document.form1.s1.checked==true)
+     document.form1.sexo1.value=valor;
+  else{
+      document.form1.sexo1.value="0";
+      document.form1.s1.checked=false;
+    }
+}
+function Cambia2(valor) { //v2.0
+  if (document.form1.s2.checked==true)
+     document.form1.sexo2.value=valor;
+  else{
+      document.form1.sexo2.value="0";
+      document.form1.s2.checked=false;
+    }
+
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="/servlet/BuscaCriterios" target="mainF">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="193" bgcolor="#ffa400">
+    <tr>
+      <td>
+        <table width="245" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td colspan="3"> 
+              <div align="center" class="textB">Filtros</div>
+            </td>
+          </tr>
+          <tr> 
+            <td width="70"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Sexo</font></td>
+            <td width="39"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+              <input type="checkbox" name="s1" value="M" onChange="Cambia1('M');">
+              </font></td>
+            <td width="136"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Masculino 
+              <input type="hidden" name="sexo1" value="0">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="70"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+            <td width="39"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+              <input type="checkbox" name="s2" value="F" onChange="Cambia2('F');">
+              </font></td>
+            <td width="136"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Femenino 
+              <input type="hidden" name="sexo2" value="0">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="70">Est. Civil<font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+            <td colspan="2">
+              <select name="civil">
+                <option value="0" selected>----------</option>
+                <option value="Casad">Casado(a)</option>
+					<option value="Solter">Soltero(a)</option>
+				<option value="Separ">Separado(a)</option>
+                  <option value="Anul">Anulado(a)</option>
+					<option value="Viu">Viudo(a)</option>
+              </select>
+            </td>
+          </tr>
+          <tr> 
+            <td width="70" height="11"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Edad</font></td>
+            <td height="11" colspan="2"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+              <input type="text" name="rango1" size="4" maxlength="2">
+              - 
+              <input type="text" name="rango2" size="4" maxlength="2">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="70"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Apellido 
+              Paterno </font></td>
+            <td colspan="2"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+              <input type="text" name="apellido1" size="20" maxlength="30">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="70"><font face="Arial, Helvetica, sans-serif" size="2" class="texto">Apellido 
+              Materno </font></td>
+            <td colspan="2"> <font face="Arial, Helvetica, sans-serif" size="2"> 
+              <input type="text" name="apellido2" size="20" maxlength="30">
+              <input type="hidden" name="grupini" value="1">
+              <input type="hidden" name="grupter" value="15">
+              <input type="hidden" name="grupo" value="15">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="70">&nbsp;</td>
+            <td colspan="2" valign="top"> 
+              <div align="center"> 
+                <input type="button" name="Button" value="Limpiar" onClick="Limpia();">
+                <input type="button" name="Button" value="Buscar" onClick="Valida();">
+                <input type="hidden" name="inicio" value="1">
+                <input type="hidden" name="termino" value="12">
+                <input type="hidden" name="actual" value="1">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

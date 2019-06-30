@@ -1,0 +1,445 @@
+ <HTML>
+<HEAD>
+<TITLE>OrganicaCertif</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/lib/manejar_listas.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+
+function decode( valstring ) {
+var resultstring = ""
+for (var p=0; p < valstring.length - 1; p +=2) {
+    tmp = '%' + valstring.charAt(p) + valstring.charAt(p + 1)
+    resultstring += unescape( tmp )
+}
+return resultstring
+}
+
+function ValidaForm() {
+       //Variables del Report
+       if (document.form1.descrip.value != ""){   
+	            var prompt0=document.form1.empresa.value
+				var prompt1=document.form1.unidad.value
+				var prompt2=document.form1.d_ano.value+document.form1.d_mes.value
+                var prompt3=document.form1.h_ano.value+document.form1.h_mes.value
+				if (document.form1.tipo[0].checked) prompt4 = document.form1.tipo[0].value;
+		        if (document.form1.tipo[1].checked) prompt4 = document.form1.tipo[1].value;
+				
+				//var prompt4=document.form1.tipo.value
+				alert("Empresa: "+prompt0+" Unidad: "+prompt1+" Peri_INI: "+prompt2+" Peri TER: "+prompt3+" Tipo: "+prompt4)
+	            
+				//viewernum = document.parmform.init.selectedIndex
+				viewernum=0
+				if (viewernum > 3) {
+					document.form1.init.name = 'cmd'
+				}
+				if (viewernum == 4) {
+					document.form1.EXPORT_FMT.value = 'U2FXLS:3'
+				}
+				if (viewernum == 5) {
+					document.parmform.EXPORT_FMT.value = 'U2FWORDW:0'
+				}
+				if (viewernum == 6) {
+					document.form1.EXPORT_FMT.value = 'U2FRTF:0'
+				}
+				if (viewernum == 7) {
+					document.form1.EXPORT_FMT.value = 'U2FHTML:2'
+				}
+				document.form1.user0.value = decode( document.form1.user0.value )
+				document.form1.password0.value = decode( document.form1.password0.value )
+				document.form1.user1.value = decode( document.form1.user1.value )
+				document.form1.password1.value = decode( document.form1.password1.value )
+				document.form1.user2.value = decode( document.form1.user2.value )
+				document.form1.password2.value = decode( document.form1.password2.value )
+				document.form1.user3.value = decode( document.form1.user3.value )
+				document.form1.password3.value = decode( document.form1.password3.value )
+				document.form1.user4.value = decode( document.form1.user4.value )
+				document.form1.password4.value = decode( document.form1.password4.value )
+				document.form1.user5.value = decode( document.form1.user5.value )
+				document.form1.password5.value = decode( document.form1.password5.value )
+				document.form1.user6.value = decode( document.form1.user6.value )
+				document.form1.password6.value = decode( document.form1.password6.value )
+				document.form1.user0Haberesrpt.value = decode( document.form1.user0Haberesrpt.value )
+				document.form1.password0Haberesrpt.value = decode( document.form1.password0Haberesrpt.value )
+				document.form1.user0Haberesrpt.name = "user0@Haberes.rpt"
+				document.form1.password0Haberesrpt.name = "password0@Haberes.rpt"
+				document.form1.user0Descuentosrpt.value = decode( document.form1.user0Descuentosrpt.value )
+				document.form1.password0Descuentosrpt.value = decode( document.form1.password0Descuentosrpt.value )
+				document.form1.user0Descuentosrpt.name = "user0@Descuentos.rpt"
+				document.form1.password0Descuentosrpt.name = "password0@Descuentos.rpt"
+				//alert("Submit!!!!")
+				document.form1.submit()
+		}else alert('Seleccione una Unidad.')
+		    
+}
+
+function CargaLista(ARREGLO){
+	//alert(ARREGLO);
+	listaLlenar(document.formOp.rutcomp,ARREGLO);
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+//-->
+</script>
+<!--<script language="JavaScript" src="/Gestion/script/selecciona_informe_arbol.js">
+</script>-->
+<script language="JavaScript" src="/Gestion/script/msgprocesando.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+//Selecciona unidad/Empresa
+function Ejecuta(idEmp,idUni,nombre, tipo){
+    //alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Buscar(){
+	var nombre="";
+	var rut="";
+	var paterno="";
+	var materno="";
+	var emp="";
+	var uni="";
+	//alert(eval("document.formOp.b_rut"));
+	emp=document.form1.empresa.value;
+	uni=document.form1.unidad.value;
+	rut=document.formOp.brut.value;
+	nombre=document.formOp.bnombre.value;
+	paterno=document.formOp.bapate.value;
+	materno=document.formOp.bamate.value;
+	
+	if(emp=="")
+		alert("Seleccione la unidad");
+	else {
+		if ((nombre=="") && (rut=="") && (paterno=="") && (materno==""))
+			alert("Ingrese par&#225;metros de busqueda.");
+		else
+			//alert(emp+"-"+uni+"-"+rut+"-"+nombre+"-"+paterno+"-"+materno)
+			AbrirVentProcesandoBuscar(emp,uni,rut,nombre,paterno,materno)
+		}		
+	}
+
+function VerRango(valor) { //v1.0
+	MM_showHideLayers('LayerRangoNeto','','hide');
+	MM_showHideLayers('LayerColabCargo','','hide');
+	MM_showHideLayers('LayerColabNivel','','hide');
+	
+	if (valor.value == "_6")
+		LayerRangoNeto.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerRangoNeto','','inherit');
+
+	if ((valor.value == "_2") || (valor.value == "_4") || (valor.value == "_7"))
+		LayerColabCargo.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerColabCargo','','inherit');
+	
+	if ((valor.value == "_3") || (valor.value == "_5"))
+		LayerColabNivel.style.visibility = 'inherit';
+		//MM_showHideLayers('LayerColabNivel','','inherit');	
+		
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function validaNum(texto) {
+	window.valido = false;
+	if (texto.value == "") {
+		texto.value = "0";
+		window.valido = true;
+	}
+	else if (!isNaN(texto.value)) {
+		n = parseInt(texto.value);
+		if (n>=0) window.valido = true;
+	}
+	if (!window.valido) {
+		alert('Valor incorrecto');
+		texto.select();
+		texto.focus();
+	}
+}
+//-->
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="parent.CerrarVentProcesando();MM_preloadImages('/images/Gestion/botones/ver_over.jpg','/images/Gestion/botones/buscar_over.jpg')">
+<table border=0 cellpadding=0 cellspacing=0 width="644" height="358">
+  <tr> 
+    <td width="614" height="4"> <img src="/images/Gestion/imagenes_main/main_bienvenida_01.jpg" width=614 height=4></td>
+    <td colspan=2 rowspan=2> <img src="/images/Gestion/imagenes_main/main_bienvenida_02.jpg" width=29 height=22></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=4></td>
+  </tr>
+  <tr> 
+    <td valign="top" bgcolor="#FFA400" rowspan=8 width="614"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="350">
+        <tr> 
+          <td width="39%" rowspan="2" valign="top" align="left">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" height="350">
+              <tr>
+                <td height="227" valign="top" align="left"> 
+                  <div id='LayerArbol' style='position:absolute; width:294px; height:253px; z-index:1;; left: 3; top: auto; overflow: auto; background-color: #FFFFFF; layer-background-color: #FFFFFF; ; visibility: visible' class="carpetaUn"> 
+                    <if (Control("df_jer_comp"))> ${TraeArbol()} <else> ${TraeArbol(unidad, 
+                    empresa)} </if> </div>
+                </td>
+              </tr>
+              <tr>
+			   <!--<form name="form1" method="post" action="">-->
+			   <form action="/cgi-bin/Wcscgi.exe/Gestion/Reportes/liquida.rpt" method="POST" name="form1" target="_blank">
+                <td valign="bottom"> 
+                  
+                    <input type="hidden" name="empresa">
+                    <input type="hidden" name="unidad">
+                    <input type="hidden" name="descrip">
+                    <input type=hidden name="user1" value="7361">
+                    <input type=hidden name="password1" value="">
+                    <input type=hidden name="user2" value="7361">
+                    <input type=hidden name="password2" value="">
+                    <input type=hidden name="user3" value="7361">
+                    <input type=hidden name="password3" value="">
+                    <input type=hidden name="user4" value="7361">
+                    <input type=hidden name="password4" value="">
+                    <input type=hidden name="user5" value="7361">
+                    <input type=hidden name="password5" value="">
+                    <input type=hidden name="user6" value="7361">
+                    <input type=hidden name="password6" value="">
+                    <input type=hidden name="user0Haberesrpt" value="7361">
+                    <input type=hidden name="password0Haberesrpt" value="">
+                    <input type=hidden name="user0Descuentosrpt" value="7361">
+                    <input type="hidden" name="CMD">
+                    <input type="hidden" name="EXPORT_FMT">
+                    <input type=hidden name="password0Descuentosrpt" value="">
+                    <input type=hidden name="promptOnRefresh" value=1>
+                    <input type=hidden name="user0" value="7361">
+                    <input type=hidden name="password0" value="">
+                    <input type="hidden" name="hiddenField">
+                    <div id="LayerRango" style="position:absolute; width:327px; height:54px; z-index:2; left: 298px; top: 81px; visibility: visible"> 
+                      <table width="100%" border="1" cellspacing="0" cellpadding="0">
+                        <tr> 
+                          <td> 
+                            <table width="100%">
+                              <tr align="center"> 
+                                <td colspan="2"> 
+                                  <div align="left"><font face="Arial, Helvetica, sans-serif" size="2"><b><i>Rangos 
+                                    de Per&igrave;odos</i></b></font></div>
+                                </td>
+                              </tr>
+                              <tr> 
+                                <td width="48"><font size="1" face="Arial, Helvetica, sans-serif">Desde</font></td>
+                                <td width="251"> 
+                                  <select name=d_mes size=1 class="listas">
+                                    <option value="01" selected>Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                  </select>
+                                  <select name="d_ano" class="listas">
+                                    <option value="1990">1990</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1999">1999</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2001" selected>2001</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                  </select>
+                                </td>
+                              </tr>
+                              <tr> 
+                                <td width="48"><font size="1" face="Arial, Helvetica, sans-serif">Hasta</font></td>
+                                <td width="251"> 
+                                  <select name=h_mes size=1 class="listas">
+                                    <option value="01" selected>Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                  </select>
+                                  <select name="h_ano" class="listas">
+                                    <option value="1990">1990</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1999">1999</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2001" selected>2001</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                  </select>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <input type="hidden" name="prompt0">
+                    <input type="hidden" name="prompt1">
+                    <input type="hidden" name="prompt2">
+                    <input type="hidden" name="prompt3">
+                    <input type="hidden" name="prompt4">
+                    <input type="hidden" name="init">
+                    <div id = "opcionUR" ><span class="negro12B"> Informe para</span> 
+                      <span class="negro12N"><br>
+                    <input type="radio" name="tipo" value="U" checked>
+                    Unidad 
+                    <input type="radio" name="tipo" value="R">
+                    Rama</span> </div></td>
+                </form>
+              </tr>
+            </table>
+          </td>
+          <td height="322" colspan="2" valign="top" align="right"> 
+            <form name="formOp" method="post" action="">
+            </form>
+          </td>
+        </tr>
+        <tr> 
+          <td width="294" height="28"></td>
+          <td width="81" valign="top"><a href="javascrip:;" onClick="ValidaForm();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_generar','','/images/Gestion/botones/ver_over.jpg',1)"><img name="img_generar" border="0" src="/images/Gestion/botones/ver_up.jpg" width="108" height="27" alt="Ver"></a></td>
+        </tr>
+      </table>
+    </td>
+    <td height="18" width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=18></td>
+  </tr>
+  <tr> 
+    <td rowspan=7 width="13"> <img src="/images/Gestion/imagenes_main/main_bienvenida_06.jpg" width=13 height=336></td>
+    <td width="16" height="39"> <img src="/images/Gestion/imagenes_main/main_bienvenida_07.jpg" width=16 height=39></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=39></td>
+  </tr>
+  <tr> 
+    <td height="50" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_08.jpg" width=16 height=50></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=50></td>
+  </tr>
+  <tr> 
+    <td height="52" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_10.jpg" width=16 height=52></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=52></td>
+  </tr>
+  <tr> 
+    <td height="45" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_11.jpg" width=16 height=45></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=45></td>
+  </tr>
+  <tr> 
+    <td height="55" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_12.jpg" width=16 height=55></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=55></td>
+  </tr>
+  <tr> 
+    <td height="51" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_13.jpg" width=16 height=51></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=51></td>
+  </tr>
+  <tr> 
+    <td height="44" width="16"> <img src="/images/Gestion/imagenes_main/main_bienvenida_14.jpg" width=16 height=44></td>
+    <td width="1"> <img src="/images/Gestion/imagenes_main/espacio.gif" width=1 height=44></td>
+  </tr>
+</table>
+<div id="Layer1" style="position:absolute; width:312px; height:136px; z-index:3; left: 310px; top: 56px; visibility: hidden"> 
+  <form name="form2" method="post" action="">
+    <table width="310" border="0">
+      <tr> 
+        <td width="100" class="negro12B"> 
+          <input type="checkbox" name="check${rut}" value="checkbox">
+          ${rut}${dv} </td>
+        <td width="200" class="negro12N">${nombre}</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<script language="JavaScript">
+//parent.frames.topFrame.document.form1.informe.disabled = "";
+</script>
+</BODY>
+</HTML>

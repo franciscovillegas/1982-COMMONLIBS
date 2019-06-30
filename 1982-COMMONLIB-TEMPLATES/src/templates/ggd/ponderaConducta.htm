@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ponderacion de Conductas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:12px;
+	top:7px;
+	width:309px;
+	height:15px;
+	z-index:4;
+}
+#Layer3 {
+	position:absolute;
+	left:9px;
+	top:37px;
+	width:318px;
+	height:12px;
+	z-index:5;
+}
+-->
+</style>
+</head>
+<script>
+function fnInicio(){
+var cont = 0;
+<if conductas_ponderadores>
+<if conductas_ponderadores!=0>
+
+<if conductas_ponderadores!=1>
+		<list conductas_ponderadores as p>
+	document.form.pond_conductas[cont].value='${p.ponderador}';
+	cont++;
+        </list>
+</if>
+		<list conductas_ponderadores as p>
+	document.form.pond_conductas.value='${p.ponderador}';
+        </list>
+</if>
+</if>
+
+}
+function fnEnviar(opcion){
+	if(opcion == "guardar"){
+		form.action="../servlet/ponderadores?pHtm=ggd/ponderaConducta.htm&txtAccion=GR";
+		form.submit();
+	}
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="fnInicio()" background="../servlet/Tool?images/images_ggd/ggd/pond_perfiles/pondera_cond.jpg">
+<form name="form" method="post">
+<div class="boton_rojo" id="Layer1">Ponderaci&oacute;n de Conductas </div>
+<div id="Layer3">Datos</div>
+<div id="Layer8" style="position:absolute; left:171px; top:372px; width:168px; height:19px; z-index:2;">
+  <table width="100%">
+    <tr>
+      <td width="58%">&nbsp;</td>
+      <td width="21%"><a href="#" onClick="fnEnviar('guardar');return false"><img name="pondera_nivel_r8_c6" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt=""></a></td>
+      <td width="21%"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="CERRAR"></a></td>
+    </tr>
+  </table>
+</div>
+<input name="id_proceso" type="hidden" value="${id_proceso}">
+<input name="id_perfil" type="hidden" value="${dataPerfil.id_perfil}">
+<input name="id_competencia" type="hidden" value="${dataCompetencia.id_competencia}">
+<input name="nivel" type="hidden" value="${nivel}">
+<div id="Layer2" style="position:absolute; width:330px; height:70px; z-index:2; left: 10px; top: 60px;">
+  <table border="0" cellpadding="0" cellspacing="1">
+    <tr>
+      <td width="90" height="20" class="texto_titulo">Proceso:</td>
+      <td width="237" height="20" class="txt_gris"><span class="Estilo1"><if dataProceso>${dataProceso.proceso}</if></span></td>
+    </tr>
+    <tr>
+      <td height="20" class="texto_titulo">Perfil:</td>
+      <td height="20" class="txt_gris"><span class="Estilo1"><if dataPerfil>${dataPerfil.perfil}</if></span></td>
+    </tr>
+    <tr>
+      <td height="20" class="texto_titulo">Competencia:</td>
+      <td height="20" class="txt_gris"><span class="Estilo1"><if dataCompetencia>${dataCompetencia.competencia}</if></span></td>
+    </tr>
+  </table>
+</div>
+<span id="Layer7" style="position:absolute; width:331px; height:215px; z-index:3; left: 9px; top: 147px; overflow: auto;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+      <td width="16%" align="center" valign="top" class="fondo_tablaGris">Nivel</td>
+      <td width="15%" align="center" valign="top" class="fondo_tablaGris">Ponderador</td>
+      <td width="69%" align="center" valign="top" class="fondo_tablaGris">Glosa</td>
+    </tr>
+   <if conductas_ponderadores>
+   <list conductas_ponderadores as cp>
+    <tr>
+      <list conductas as c>
+	      <if cp.id_conducta == c.id_conducta>
+		      <td width="16%" align="left" valign="top" class="fondo_tablaGris">${c.nivel}</td>
+		      <td width="15%" align="left" valign="top" class="fondo_tablaGris"><input name="pond_conductas" type="text" class="campo_texto" size="3" maxlength="3" value="${cp.ponderador}">%</td>
+		      <td width="69%" valign="top" class="fondo_tablaGris">${c.glosa}</td>
+	      </if>
+      </list>
+    </tr>
+   </list>
+   </if>
+  </table>
+</span>
+</form>
+</body>
+</html>

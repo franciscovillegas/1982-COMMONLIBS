@@ -1,0 +1,332 @@
+<HTML>
+<HEAD>
+<title>Organizaci&oacute;n</title>
+<script language="JavaScript" src="/DataFolder/script/Formularios.js">
+</script>
+<script language='JavaScript'>
+
+function fnMostrarAnexos(id_unidad){
+	var url = "/anexos/consultarAnexo?cmb_dependencia="+id_unidad;
+	window.open(url,'Funcionario','status=yes,width=900,height=500');
+}
+
+function VerMas(){
+//alert("${nameform}");  
+<if (nameform!="")>
+  document.${nameform}.submit();
+ </if>
+}
+
+function SeteaPos(formulario){
+  formulario.pos.value="1";
+
+}
+function Ejecuta(idEmp,idUni,nombre, tipo){
+//	alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+		Envia();
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";//la unidad insertada sera el padre de todas
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Envia() {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	if (unid!=''){
+		//VerContFormm(document.form1)
+		document.form1.submit();
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+
+function inicio() {
+	inicioArbol();
+   if (window.unidadBuscada){
+		if (!window.unidadEncontrada) 
+		  LayerVerMas.style.visibility="hidden";
+	}
+	document.formBusCod.be.value = window.resulEmp;
+	document.formBusCod.bu.value = window.resulUni;
+	document.formBusGlosa.bu.value = window.resulUni;
+	document.formBusRut.br.value = "${br}";
+	if ( (document.formBusRut.br.value!="") && (!window.unidadEncontrada) ) 
+		alert("El trabajdor con rut '"+document.formBusRut.br.value+"' no se encuentra en la Organica.");
+    
+}
+
+function limpiarBus() {
+	document.formBusCod.reset();
+	document.formBusGlosa.reset();
+	document.formBusRut.reset();
+	return false;
+}
+</script>
+<script>
+<!--
+parent.parent.AbrirVentProcesando()
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</HEAD>
+
+<body bgcolor='#000000' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' onLoad="inicio();MM_preloadImages('../servlet/Tool?images/images_ggd//DataFolder/botones/ver_over.jpg','../servlet/Tool?images/images_ggd//DataFolder/botones_buscar/limpiar_over.jpg','../servlet/Tool?images/images_ggd//DataFolder/botones/buscar_icon_over.jpg','../servlet/Tool?images/images_ggd//DataFolder/botones/vermas_icon_over.jpg')">
+<table border=0 cellpadding=0 cellspacing=0 >
+  <tr> 
+    <td width=10 height=0></td>
+    <td width=48 height=0></td>
+    <td width=4 height=0></td>
+    <td width=55 height=0></td>
+    <td width=6 height=0></td>
+    <td width=52 height=0></td>
+    <td width=8 height=0></td>
+    <td width=55 height=0></td>
+    <td width=4 height=0></td>
+    <td width=15 height=0></td>
+    <td width=48 height=0></td>
+    <td width=7 height=0></td>
+    <td width=1 height=0></td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td colspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_01.jpg' width=58 height=10></td>
+    <td colspan=3> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_02.jpg' width=65 height=10></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_03.jpg' width=52 height=10></td>
+    <td colspan=4> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_04.jpg' width=82 height=10></td>
+    <td colspan=3> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_05.jpg' width=56 height=10></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=10></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_06.jpg' width=10 height=39></td>
+    <td colspan=10 rowspan=11 bgcolor='#ffffff' valign="top"> 
+      <div id='Layer1' style='position:absolute; width:298px; height:280px; z-index:1; ; left: auto; top: auto; overflow: auto; visibility: visible; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000;'> 
+        ${TraeArbol()} </div>
+      <form name="form1" method="get" action="/servlet/Organizacion" target='folderFrame'>
+        <input type='hidden' name='unidad'>
+        <input type='hidden' name='empresa'>
+        <input type='hidden' name='descrip'>
+      </form>
+      <div id="LayerVerMas" style="position:absolute; width:33px; height:23px; z-index:8; left: 254px; top: 317px; visibility: visible"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td valign="top"> 
+                  <if (!inicio)&&(!fin)&&(br=="")&&(nameform!="formBusCod")> 
+                    <a href="javascript:;" onClick="VerMas();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image42','','../servlet/Tool?images/images_ggd//DataFolder/botones/vermas_icon_over.jpg',1)"><img name="Image42" border="0" src="/images/DataFolder/botones/vermas_icon.jpg" width="20" height="20" alt="Ver M&aacute;s"></a> 
+                  </if> </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+      <div id="BotBuscar" style="position:absolute; width:22px; height:23px; z-index:8; left: 221px; top: 317px"><a href="javascript:;" onClick="MM_showHideLayers('LayBuscar','','show'); return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','../servlet/Tool?images/images_ggd//DataFolder/botones/buscar_icon_over.jpg',1)"><img name="Image41" border="0" src="/images/DataFolder/botones/buscar_icon.jpg" width="20" height="20" alt="Buscar"></a></div>
+      <div id="LayBuscar" style="position:absolute; width:291px; height:268px; z-index:4; top: 17px; left: 14px; overflow: visible; background-color: #FF9900; layer-background-color: #FF9900; border: 1px none #000000; visibility: hidden" class="carpeta3D"> 
+        <table width="100%" border="0" cellspacing="1" cellpadding="2">
+          <form name="formBusCod" onSubmit="SeteaPos(document.formBusCod)" method="post" action="/servlet/arbol.servlet.LoadTree?pag=Datafolder/InfoUsuario/Jerarquia/basetree.htm&tc=yes">
+            <tr bgcolor="#FFC246"> 
+              <td height="20" class="negro12B" colspan="2"> 
+                <div align="center">Buscar Unidad</div>
+              </td>
+              <td height="20" class="negro12B" align="center" width="28%"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayBuscar','','hide'); return false">[X]</a></td>
+            </tr>
+            <tr> 
+              <td height="30" class="negro12N" colspan="2"> Empresa: 
+                <input type="text" name="be" size="1"  class="negro12N">
+                Unidad: 
+                <input type="text" name="bu" size="5" class="negro12N">
+                <input type="hidden" name="nameform" value="formBusCod">
+              </td>
+              <td height="30" class="negro12N" width="28%" align="center"> 
+                <input type="hidden" name="pos2" value="${pos}">
+                <input type="image" border="0" name="imageField_b1" src="/images/DataFolder/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='../servlet/Tool?images/images_ggd//DataFolder/botones_buscar/buscar_over.jpg'">
+              </td>
+            </tr>
+          </form>
+          <form name="formBusGlosa" onSubmit="SeteaPos(document.formBusGlosa)" method="post" action="/servlet/arbol.servlet.LoadTree?pag=Datafolder/InfoUsuario/Jerarquia/basetree.htm&tc=yes">
+            <tr> 
+              <td height="20" class="negro12N" colspan="2"> 
+                <select name="bu" class="negro10N" style="width=185">
+                  <option selected value = "">Seleccione una Unidad</option>
+				  <if unidades> <if unidades!=0>
+                  <list unidades as u> 
+                  <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+                  </list> 
+					</if>
+					</if>
+                </select>
+                <input type="hidden" name="pos" value="${pos}">
+                <input type="hidden" name="nameform" value="formBusGlosa">
+              </td>
+              <td height="20" class="negro12N" width="28%" align="center"> 
+                <input type="image" border="0" name="imageField_b2" src="/images/DataFolder/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='../servlet/Tool?images/images_ggd//DataFolder/botones_buscar/buscar_over.jpg'">
+              </td>
+            </tr>
+          </form>
+          <form name="formBusRut" onSubmit="SeteaPos(document.formBusRut)" method="post" action="/servlet/arbol.servlet.LoadTree?pag=Datafolder/InfoUsuario/Jerarquia/basetree.htm&tc=yes">
+            <tr> 
+              <td height="20" class="negro12N" width="28%"> 
+                <div align="right">Rut</div>
+              </td>
+              <td height="20" class="negro12N" width="44%" align="center"> 
+                <div align="left"> 
+                  <input type="text" name="br" size="11" class="negro12N" maxlength="12">
+                  <input type="hidden" name="nameform" value="formBusRut">
+                  <input type="hidden" name="pos" value="${pos}">
+                </div>
+              </td>
+              <td height="20" class="negro12N" width="28%" align="center"> 
+                <input type="image" border="0" name="imageField_b22" src="/images/DataFolder/botones_buscar/buscar_up.jpg" width="22" height="24" onClick="this.src='../servlet/Tool?images/images_ggd//DataFolder/botones_buscar/buscar_over.jpg'">
+              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="negro12N" align="right" width="28%">Nombre 
+              </td>
+              <td height="20" class="negro12N" align="right" colspan="2"> 
+                <div align="left"> 
+                  <input type="text" name="bn" size="20" class="negro12N" value="${bn}">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="negro12N" align="right" width="28%">Ap Paterno</td>
+              <td height="20" class="negro12N" align="right" colspan="2"> 
+                <div align="left"> 
+                  <input type="text" name="bp" size="20" class="negro12N" value="${bp}">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="negro12N" align="right" width="28%">Ap Materno</td>
+              <td height="20" class="negro12N" align="right" colspan="2"> 
+                <div align="left"> 
+                  <input type="text" name="bm" size="20" class="negro12N" value="${bm}">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td height="20" class="negro12N" align="right" width="28%">&nbsp;</td>
+              <td valign="bottom" class="negro12N" align="right" colspan="2"><a href="javascript:;" onClick="return limpiarBus()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_limp','','../servlet/Tool?images/images_ggd//DataFolder/botones_buscar/limpiar_over.jpg',1)"><img src="/images/DataFolder/botones_buscar/limpiar_up.jpg" name="img_limp" border="0"></a></td>
+            </tr>
+          </form>
+          <form name="formsgte">
+          </form>
+        </table>
+      </div>
+    </td>
+    <td colspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_08.jpg' width=8 height=4></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=4></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_09.jpg' width=7 height=59></td>
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_10.jpg' width=1 height=59></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=35></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_11.jpg' width=10 height=45></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=24></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_12.jpg' width=8 height=51></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=21></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_13.jpg' width=10 height=53></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=30></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_14.jpg' width=8 height=52></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_15.jpg' width=10 height=55></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=29></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_16.jpg' width=8 height=65></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=26></td>
+  </tr>
+  <tr> 
+    <td rowspan=2> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_17.jpg' width=10 height=48></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=39></td>
+  </tr>
+  <tr> 
+    <td colspan=2 rowspan=3> <img name='main_indicadores_18' src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18.jpg' width=8 height=57></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=9></td>
+  </tr>
+  <tr> 
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_19.jpg' width=10 height=40></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=40></td>
+  </tr>
+  <tr> 
+    <td colspan=3> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_20.jpg' width=62 height=8></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_21.jpg' width=55 height=8></td>
+    <td colspan=3> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_22.jpg' width=66 height=8></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_23.jpg' width=55 height=8></td>
+    <td colspan=3> <img name='main_indicadores_24' src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24.jpg' width=67 height=8></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=8></td>
+  </tr>
+  <tr> 
+    <td colspan=12 rowspan=2 bgcolor='#FFa400' valign="top" align="right"><br>
+      <!--<a href="javascript:;" onClick="Envia()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ver','','../servlet/Tool?images/images_ggd//DataFolder/botones/ver_over.jpg',1)"><img src="/images/DataFolder/botones/ver_up.jpg" width="108" height="27" name="img_ver" border="0"></a>-->
+    </td>
+    <td rowspan=2> <img name='main_indicadores_27' src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27.jpg' width=1 height=60></td>
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>
+  </tr>
+  <tr> 
+    <td> <img src='/Templates/DataFolder/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=37></td>
+  </tr>
+</table>
+<!--
+<script>
+	parent.parent.CerrarVentProcesando()
+</script>
+-->
+</body>
+</HTML>

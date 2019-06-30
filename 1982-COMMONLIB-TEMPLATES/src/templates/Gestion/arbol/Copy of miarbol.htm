@@ -1,0 +1,50 @@
+
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+MM_preloadImages('/images/Gestion/images_arbol/av.jpg','/images/Gestion/images_arbol/an.jpg');
+// -->
+</script>
+<script language="JavaScript" src="/Gestion/script/arbol.js">
+</script>
+<function muestra(nodo)>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td nowrap ><compress><a href="javascript:;" onClick="return exp_colap('img_${nodo.Em}_${nodo.Id}', 'hijos_${nodo.Em}_${nodo.Id}')"> 
+      <if (nodo.NU)> <if (nodo.Li)> <img src="/images/Gestion/images_arbol/perpen+.jpg" border="0" align="absbottom"> 
+      <else> <img src="/images/Gestion/images_arbol/perpen-.jpg" border="0" align="absbottom"> 
+      </if> <else> <if (nodo.Li)> <img src="/images/Gestion/images_arbol/angulo+.jpg" border="0" align="absbottom"> 
+      <else> <img src="/images/Gestion/images_arbol/angulo-.jpg" border="0" align="absbottom"> 
+      </if> </if> <img name="img_${nodo.Em}_${nodo.Id}" src="/images/Gestion/images_arbol/an.jpg" border="0" align="absbottom" ></a> 
+      <switch (nodo.Ti)> <case "R"><font class="textoTipoNodo" color="#333366">C</font><break> 
+      <case "E"><font class="textoTipoNodo" color="#FF6600">S</font><break> <case "U"><font class="textoTipoNodo" color="#0033FF">U</font><break> 
+      </switch> </compress> <a href="#" onClick="SeleccionarNodo(this); Ejecuta('${nodo.Em}','${nodo.Id}','${nodo.No}', '${nodo.Ti}');return false" class="textoNodo" >${nodo.No}</a> 
+    </td>
+  </tr>
+  <if (nodo.Li)> 
+  <tr> 
+    <td> 
+      <table id="hijos_${nodo.Em}_${nodo.Id}" border="0" cellpadding="0" cellspacing="0" style="display:none" >
+        <list nodo.Li as a> 
+        <tr> 
+		  <if (!nodo.NU)>
+		  	
+          <td width="16" background="/images/Gestion/images_arbol/Blank.gif" valign="top"><img src="/images/Gestion/images_arbol/Blank.gif"></td>
+		  <else>	<td width="16" background="/images/Gestion/images_arbol/vertical.jpg" valign="top"><img src="/images/Gestion/images_arbol/vertical.jpg"></td>
+		  </if>
+          <td> <call muestra(a)> </td>
+        </tr>
+        </list> 
+      </table>
+    </td>
+  </tr>
+  </if> 
+</table>
+</function>
+<call muestra(sentencia)> 

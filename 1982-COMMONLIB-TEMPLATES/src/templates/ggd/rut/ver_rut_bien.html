@@ -1,0 +1,25 @@
+<style type="text/css">
+<!--
+.vr1nombre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #003366;
+	font-weight: normal;
+}
+-->
+</style>
+<table width="100%" height="174" border="0">
+<tr><td height="71"><div align="center"><img src="../servlet/Tool?images/images_ggd/fotos/${dRut.foto}" width="60" height="67" onError="existeFoto(this);"></div></td></tr>
+<tr><td height="38" align="center" class="vr1nombre">
+<strong><br>${dRut.nombre_completo}</strong><br>${dRut.unidad}<br>${dRut.rut_full}
+</td></tr>
+<tr><td height="45" align="center" class="vr1nombre">
+<hr>Bienvenido, haz visitado GGD <br>en ${dRut.nro_visitas}
+<if dRut.nro_visitas !="1"> 
+oportunidades
+<else>
+oportunidad.
+</if>
+</td></tr>
+</table>
+

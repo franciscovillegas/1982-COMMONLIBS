@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="../servlet/Tool?style/jquerydatatable/demo_page.css" rel="stylesheet" type="text/css"></link>
+<link href="../servlet/Tool?style/jquerydatatable/demo_table.css" rel="stylesheet" type="text/css"></link>
+<link href="../servlet/Tool?style/jquerydatatable/header.ccss.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="../servlet/Tool?scripts/imagesFuncs.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquerydatatable/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/modal/modal.js"></script>
+<script type="text/javascript">
+	var modal = null;
+		
+	$(document).ready(function(){
+			loadPerfiles();
+		
+			$("#selectorPerfiles").click(function(){
+				loadPrivilegios(this.options[this.selectedIndex].value);
+
+			});
+	});
+
+	function loadPerfiles() {
+		$("#selectorPerfiles").html("");
+		var str = "";
+		
+		loadJSON({"accion":"select","thing":"perfiles"}, 
+					function(data) {
+						  $.each(data, function(k,v){
+							  str += ("<option value='"+v.id+"'>"+v.nombre+"</option>");
+							  //$('#selectorPerfiles').append( new Option(v.nombre,v.id) );
+						  });
+						  
+						  $("#selectorPerfiles").html(str);
+					});
+		
+		
+		
+	}
+
+	function iniciarPrivilegios() {
+		$("#divGuardar").hide();
+		$("#contenedorTable").html("");
+	}
+
+	function loadPrivilegios(idPerfil) {
+		iniciarPrivilegios();
+		$("#contenedorTable").html("<table cellpadding='0' cellspacing='0' border='0' class='display' id='example' style='width: 460px'></table>");
+		
+		loadJSON({"accion":"select", "thing":"privilegios", "idPerfil": idPerfil}, 
+				function(data) {
+					$("#divGuardar").show();
+					
+					$('#example').dataTable( {
+						"sScrollY": "270px",
+					    "bPaginate": false,
+						"aaData": data,
+						"aoColumns": [
+							{ "sTitle": "id" ,  "bVisible": true  , "tooltip" : 'Click to edit platforms' },
+							{ "sTitle": "Desc", "bVisible": false },
+							{ "sTitle": "orden" , "bVisible": false},
+							{ "sTitle": "Vigente",  "bVisible": true, "sClass": "center" ,
+																		"fnRender": function(obj) {
+																			var checked = "";
+																			if(obj.aData[3] == "true") {
+																				checked = "checked='checked'";
+																			} 
+																			var sReturn = obj.aData[3]+ "<input type='checkbox' value='"+obj.aData[0]+"' name='checkVigentes' id='vigente_"+obj.aData[0]+"' "+checked+"/>";
+																			return sReturn;
+																		}},
+							{ "sTitle": "Heredable",  "bVisible": true, "sClass": "center" ,
+																		"fnRender": function(obj) {
+																			var checked = "";
+																			if(obj.aData[4] == "true") {
+																				checked = "checked='checked'";
+																			} 
+																			
+																			var sReturn = "<input type='checkbox' value='"+obj.aData[0]+"' name='checkHeredables' id='heredables_"+obj.aData[0]+"' "+checked+"/>";
+																			return sReturn;
+																		}}
+									]
+							} );	
+
+
+
+					
+				});
+	}
+
+	function showModalNewPerfil() {
+		var inputText = "";
+		inputText += "<table>";
+		inputText += "<tr><td><input type='text' size='20' maxlength='50' id='newPefilName'/></td><tr>";
+		inputText += "<tr><td><input type='button' value='Guardar' onClick='saveNewPerfil();'/></td><tr>";
+		inputText += "</table>";
+		
+		modal = new Modal(200,100);
+		modal.build();
+		modal.setTitulo("Ingrese el nuevo Perfil");
+		modal.setHtml(inputText);
+		modal.show();
+	}
+
+	function saveNewPerfil() {
+		var perfilName = $("#newPefilName").val();
+		
+		loadJSON({"accion":"insert","thing":"perfil","perfilName": perfilName },
+					function(data) {
+						modal.hide();
+						loadPerfiles();
+					});
+	}
+
+	function savePrivilegios() {
+		var vigentes   = getArray("input[name=checkVigentes]:checked");
+		var heredables = getArray("input[name=checkHeredables]:checked");
+		var idPerfil = $("#selectorPerfiles :selected").val();
+
+		loadJSON({"accion":"insert","thing":"privilegios","idPerfil": idPerfil , "vigentes":vigentes, "heredables":heredables},
+				function(data) {
+					alert("El estado de la transaccion fue:"+data);
+				});
+	}
+
+	function delNewPerfil() {
+
+		if(confirm("Esta seguro que desea eliminar el perfil \""+$("#selectorPerfiles :selected").text()+"\"")) {
+			iniciarPrivilegios();
+			var idPerfil = $("#selectorPerfiles :selected").val();
+			
+			loadJSON({"accion":"delete","thing":"perfil","idPerfil": idPerfil },
+						function(data) {
+							loadPerfiles();
+						});
+			
+		}
+	}
+
+	function getArray(key) {
+		 var str = "";
+		 var first = 0;
+		 
+	     $(key).each(function() {
+		    if(first==0) {
+			    first = 1;
+		    }
+		    else {
+		    	str += ",";
+		    }
+		    str += $(this).val();
+	     });
+
+	     return str;
+
+	}
+
+
+	function loadJSON(params, func) {
+		$.ajax({
+			  url: "../servlet/EjeCore?claseweb=portal.com.eje.permiso.ServletModPerfil",
+			  data: params,
+			  type: "get",
+			  success:eval(func),
+			  dataType: 'json'
+			});
+	}
+	
+</script>
+
+<title>Insert title here</title>
+</head>
+
+<body>
+<table width="100%" >
+	<tr>
+		<td style="width: 265px">Perfiles</td>
+		<td style="width: 10px"></td>
+		<td style="width: 300px" >
+			<div id="divGuardar" style="display: none;">
+				<a href="javascript:savePrivilegios();" 
+					onMouseOut="MM_swapImgRestore()" 
+					onMouseOver="MM_swapImage('desp_admin_r7_c11','','../servlet/Tool?images/new/botones/grabar_f2.gif',1)">
+						<img name="desp_admin_r7_c11" src="../servlet/Tool?images/new/botones/grabar.gif" width="91" height="21" border="0"></a>
+			</div>
+					
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table width="100%">
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<input type="button" value="Add" onclick="showModalNewPerfil();" />
+								</td>
+								<td>
+									<input type="button" value="Edit" />
+								</td>
+								<td>
+									<input type="button" value="Del" onclick="delNewPerfil();" />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select name size="17" style="width: 150px" id="selectorPerfiles">
+							<list lperfiles as l>
+								<option value="${l.id}" id="option_${l.id}">${l.nombre}</option>
+							</list>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="width: 5px">			
+		</td>
+		<td id="contenedorTable">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

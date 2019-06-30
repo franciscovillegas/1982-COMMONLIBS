@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cartola VacacionesS</title>
+		
+		<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+		
+		<!-- PAGINA -->
+		<link href="../servlet/Tool?omap=style/estilosPersonalizado.css" rel="stylesheet" type="text/css">
+		
+			<script language="JavaScript">
+				<!--
+				function Envia(rut,periodo) { //v2.0
+				  	var link ="../servlet/DetalleVaca?rut="+rut+"&periodo="+periodo;
+					window.open(link,"Detalle","toolbar=no,width=280,height=270,location=no,directories=no,status=no,scrollbars=no,resizable=yes,menubar=no");  
+				}
+				function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+				  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+				    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+				  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+				}
+				MM_reloadPage(true);
+				// -->
+			</script>
+		
+			<script language="JavaScript">
+				<!--
+				function Imprimir() {
+					
+				    printPage();
+
+				    
+				}
+				//-->
+			</script>
+	
+	</head>
+
+<body >
+
+<div id="divCarpetaElectronica">
+	<table width="800" align="center"  style="margin-top:20px;">
+		<th colspan="4" class="macTableStyle1"><div class="titulo">Vacaciones</div></th>
+		<tr>
+			<td>
+
+				<table width="90%" height="100%"  border="0" cellpadding="0" cellspacing="0" align="center" class="cuadro_contenido">
+				  <tr>
+				    <td width="100%" height="528" valign="top" style="margin-top:20px;">
+				    <table width="100%">
+				      <tr>
+				        <td width="180"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"><!--<img src="../servlet/Tool?images/new/logos/logo1.gif" width="83" height="61">--></td>
+				        <td width="214" align="center"><div class="titulo" name="Layer1" id=""><strong>CARTOLA VACACIONES <br>
+				        al ${hoy}</strong></div></td>
+				        <td width="169" align="right"><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0"></a></td>
+				      </tr>
+				    </table>      
+				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				  <tr>
+				    <td width="100%" colspan="3">
+				    <table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+				          <tr valign="top">
+				            <td width="100%" >
+				            
+				                <table width="100%" border="0" cellspacing="1" cellpadding="1">
+				                  
+				                  <tr>
+				                    <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" width="15%" nowrap="nowrap">NOMBRE:</td>
+				                    <td style="border:solid 1px #CCC"><div id="Layer5" style="width:300px; height:15px; z-index:5; overflow: hidden;">${nombre}</div></td>
+				                    <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" nowrap="nowrap">RUT</td>
+				                    <td style="border:solid 1px #CCC"><div id="Layer6" style="width:124px; height:17px; z-index:6; overflow: hidden;">${rut_trab}</div></td>
+				                  </tr>
+				                  <tr>
+				                    <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" nowrap="nowrap">CARGO:</td>
+				                    <td style="border:solid 1px #CCC"><div id="Layer7" style="width:244px; height:17px; z-index:8; overflow: hidden;">${cargo}</div></td>
+				                    <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" nowrap="nowrap">FECHA INGRESO</td>
+				                    <td style="border:solid 1px #CCC"><div id="Layer7" style="width:109px; height:18px; z-index:7; overflow: hidden;" >${fec_ingreso}</div></td>
+				                  </tr>
+				                  <tr>
+				                    <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;" nowrap="nowrap">SALDO VACACIONES:</td>
+				                    <td style="border:solid 1px #CCC"><div id="Layer45" style="width:39px; height:17px; z-index:9; overflow: hidden;" >${saldo}</div></td>
+				                    
+				                  </tr>        
+				                </table>
+				            </td>
+				          </tr>
+				        </table>
+				    
+				    </td>
+				  </tr>
+				  <tr align="center"> 
+				    <td colspan="3" valign="top"> 
+				     
+				          <table width="100%"  >
+				            <tr align="center">
+				              <td align="center" height="31" colspan="4" style="font-size:14px;" class="macTableStyle1"><div class="titulo">Registro de vacaciones tomadas</div></td>
+				              </tr>
+				            <tr>
+				              <td width="10%" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Correlativo</td>
+				              <td width="30%" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Fecha de inicio </td>
+				              <td width="30%" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Fecha de t&eacute;rmino</td>
+				              <td width="30%" align="center" bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">D&iacute;as tomados </td>
+				              </tr>
+				          </table>
+				           <div style="overflow:auto; height: 190px; ">
+				          		<table width="100%"  align="center" style="font-size: 9px;" >
+						              <list vacaciones as v>
+						              <tr align="center" >
+						                <td width="10%" style="border:#D7D7D7 1px solid;">
+						                ${v.corr}</td>
+						                <td width="30%" align="center" style="border:#D7D7D7 1px solid;">${v.desde}</td>
+						                <td width="30%" align="center" style="border:#D7D7D7 1px solid;">${v.hasta}</td>
+						                <td width="30%" align="center" style="border:#D7D7D7 1px solid;">${v.dias}</td>
+						                </tr>
+						              </list>
+								</table>
+							</div>
+				           
+				      
+				    </td>
+				  </tr>
+				</table>
+				      
+				
+				</td>
+				  </tr>
+				  <tr>
+				    <td height="13" align="center"><strong>${nom_empresa}</strong></td>
+				  </tr>
+				</table>
+
+			</td>
+		</tr>
+	</table><!-- macTableStyle1 -->
+</div>	
+</body>
+</html>

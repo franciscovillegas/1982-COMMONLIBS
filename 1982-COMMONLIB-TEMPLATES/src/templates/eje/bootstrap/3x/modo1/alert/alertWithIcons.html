@@ -1,0 +1,28 @@
+<link href="../../../view/bs/3.3.2/assets/vendors/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../templates/eje/bootstrap/3x/modo1/alert/alertWithIcons.css" rel="stylesheet" type="text/css"/>
+
+
+		 <link rel="shortcut icon" href="">
+		    
+	    <!-- Start Global plugin css -->
+	    <link href="../../../view/bs/3.3.2/assets/css/global-plugins.css" rel="stylesheet">
+	   		
+
+ 
+	<div class="alert ${GetHtmlLikeVariable("templates/eje/bootstrap/3x/modo1/alert/alertproperty/class.html")} alert-white rounded" >
+		<button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+		
+		${GetHtmlLikeVariable("templates/eje/bootstrap/3x/modo1/alert/alertproperty/glipIcon.html")}
+		
+		  <if header && title != null && title != "">
+				<strong>${title}</strong>
+		  </if>
+		  <p>${body}</p>
+		  
+		  <if footer && footer != "">
+			  <hr>
+			  <p class="mb-0">${footer}</p>
+		  </if>
+	</div>
+ 
+ 

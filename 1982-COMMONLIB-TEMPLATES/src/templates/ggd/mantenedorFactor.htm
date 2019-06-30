@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ponderacion de Perfiles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:14px;
+	top:11px;
+	width:305px;
+	height:14px;
+	z-index:3;
+}
+#Layer7 {
+	position:absolute;
+	left:13px;
+	top:65px;
+	width:335px;
+	height:14px;
+	z-index:4;
+}
+#Layer8 {
+	position:absolute;
+	left:13px;
+	top:8px;
+	width:359px;
+	height:144px;
+	z-index:5;
+}
+#Layer9 {
+	position:absolute;
+	left:432px;
+	top:93px;
+	width:114px;
+	height:18px;
+	z-index:6;
+}
+#Layer10 {
+	position:absolute;
+	left:641px;
+	top:93px;
+	width:87px;
+	height:16px;
+	z-index:7;
+}
+#Layer11 {
+	position:absolute;
+	left:439px;
+	top:228px;
+	width:95px;
+	height:18px;
+	z-index:8;
+}
+#Layer12 {
+	position:absolute;
+	left:660px;
+	top:229px;
+	width:74px;
+	height:15px;
+	z-index:9;
+}
+#Layer13 {
+	position:absolute;
+	left:664px;
+	top:361px;
+	width:97px;
+	height:29px;
+	z-index:10;
+}
+#Layer2 {
+	position:absolute;
+	left:267px;
+	top:160px;
+	width:105px;
+	height:29px;
+	z-index:11;
+}
+-->
+</style>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+
+function AsignaValor(factorSel){
+	document.form.radio.value = factorSel;
+}
+
+function fnAplicar(opcion){
+
+if(opcion == "salir"){
+	document.form.action="../servlet/WithSession?pHtm=ggd/menu/herr/menu_evacomp_herr.html";
+	document.form.submit();
+}
+if(opcion == "grabar"){
+		if(confirm('&#191;Est&#225; seguro de Crear el nuevo Factor')){
+			document.form.action="../servlet/crearFactorExcelencia?operacion=2&grabar=si&nombre="+document.form.nombre.value+"&pInicial="+document.form.pinicial.value+"&pFinal="+document.form.pfinal.value+"&nivel="+document.form.nivel.value+"&factorSeleccionado="+document.form.factorSeleccionado.value+"&glosa="+document.form.txt_Glosa.value;
+			document.form.submit();
+		}
+}
+if(opcion == "editar"){
+		if(confirm('&#191;Est&#225; seguro de Editar el Factor seleccionado')){
+			document.form.action="../servlet/crearFactorExcelencia?operacion=2&editar=si&seleccionar=si&factorSel="+document.form.radio.value;
+			document.form.submit();
+		}
+}
+if(opcion == "eliminar"){
+		if(confirm('&#191;Est&#225; seguro de Eliminar el Factor seleccionado')){
+			document.form.action="../servlet/crearFactorExcelencia?operacion=2&eliminar=si&factorSel="+document.form.radio.value;
+			document.form.submit();
+		}	
+}
+
+}
+
+function inicio(){
+<if REG == true && MSG !="">
+	alert('${MSG}');
+</if>
+<if REG == false && MSG !="">
+	alert('${MSG}');
+</if>
+<if proceso>
+<if procesos>
+	<list procesos as p>
+		<if proceso == p.id_proceso>
+         document.form.procesos.value='${p.id_proceso}';
+		</if>
+      </list>
+</if>
+</if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="inicio()" background="../servlet/Tool?images/images_ggd/ggd/pond_perfiles/fondo_mantenedorFactor.jpg">
+  <div id="Layer2">
+    <table width="100%" border="0">
+      <tr>
+        <td width="14%">&nbsp;</td>
+        <td width="52%"></td>
+        <td width="34%"><a href="#" onClick="fnAplicar('grabar');return false;"><img src="../servlet/Tool?images/images_ggd/ggd/botones/crear.gif" title="Agregar Factor Excelencia" alt="AGREGAR" name="pperfiles_r13_c13" width="30" height="30" border="0"></a></td>
+      </tr>
+    </table>
+</div>
+  <form name="form"  method="post">
+    <div id="Layer8">
+<table width="100%" border="0" cellpadding="0" cellspacing="2" class="txt_gris">
+            <!--DWLayoutTable-->
+            <tr>
+              <td height="18" colspan="4" class="txt_gris"><strong>Factor de Excelencia</strong></td>
+      </tr>
+            <tr> 
+              <td width="107" class="txt_gris">Nombre Factor</td>
+      <td colspan="3" valign="top"><input name="nombre" value="${nombreSel}" type="text" class="txt_gris" id="nombre" size="40" maxlength="20"></tr>
+									<input name="factorSeleccionado" type="hidden" value="${factorSeleccionado}">
+            <tr> 
+              <td width="107" class="txt_gris">% Inicial</td>
+              <td width="79"><input name="pinicial" value="${pInicialSel}" type="text" class="txt_gris" id="pinicial" size="10" maxlength="10"> 
+              <td width="63" class="textos">% Final</td>
+      <td width="100"><input name="pfinal" value="${pFinalSel}" type="text" class="txt_gris" id="pfinal" size="10" maxlength="10">            </tr>
+            <tr> 
+              <td width="107" class="txt_gris">Nivel</td>
+              <td colspan="3"><select name="nivel" class="txt_gris" style="width=190">
+        	      <option value="-1">Seleccionar</option>
+        	      <if (nivelSel==1)>
+                  <option value="1" selected="true">1</option>
+                  <else>
+                  <option value="1">1</option>
+                  </if>
+        	      <if (nivelSel==2)>
+                  <option value="2" selected="true">2</option>
+                  <else>
+                  <option value="2">2</option>
+                  </if>
+        	      <if (nivelSel==3)>
+                  <option value="3" selected="true">3</option>
+                  <else>
+                  <option value="3">3</option>
+                  </if>
+        	      <if (nivelSel==4)>
+                  <option value="4" selected="true">4</option>
+                  <else>
+                  <option value="4">4</option>
+                  </if>
+        	      <if (nivelSel==5)>
+                  <option value="5" selected="true">5</option>
+                  <else>
+                  <option value="5">5</option>
+                  </if>
+	            </select></td>
+            </tr>
+            <tr>
+              <td valign="top" class="txt_gris">Glosa</td>
+              <td colspan="3"><textarea name="txt_Glosa" id="txt_Glosa" cols="40" rows="3" class="txt_gris">${glosaSel}</textarea></td>
+            </tr>
+    </table>  
+  </div>
+  
+  <div id="Layer13">
+    <table width="100%" border="0">
+      <tr>
+        <td width="14%"><a href="#" onClick="fnAplicar('editar');return false;" ><img src="../servlet/Tool?images/images_ggd/ggd/botones/editar.gif" title="Modificar Factor Excelencia" alt="EDITAR" width="30" height="30" border="0"></a></td>
+        <td width="14%"><a href="#" onClick="fnAplicar('eliminar');return false;" ><img name="pperfiles_r13_c8" src="../servlet/Tool?images/images_ggd/ggd/botones/eliminar.gif" width="30" height="30" border="0" title="Eliminar Factor Excelencia" alt="ELIMINAR"></a></td>
+        <td width="72%"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" title="Salir" alt="SALIR" name="pperfiles_r13_c13" width="30" height="30" border="0"></a></td>
+      </tr>
+    </table>
+  </div>
+    <div id="Layer3" style="position:absolute; width:341px; height:22px; z-index:2; left: 24px; top: 462px;"> 
+<!--       <select name="procesos" class="campo_texto">
+<option value="0">Seleccione Proceso</option>
+<if procesos>
+	<list procesos as p>
+        <option value="${p.id_proceso}">${p.proceso}</option>
+	</list>
+</if>
+</select>
+ -->
+ </div>
+
+        <span id="CabeceraFactor" style="position:absolute; width:377px; height:16px; z-index:2; left: 390px; top: 8px; overflow: auto;"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1">
+            <tr> 
+              <td width="25%" align="center" class="texto_titulo">Nombre</td>
+              <td width="25%" align="center" class="texto_titulo">% Inicial</td>
+              <td width="25%" align="center" class="texto_titulo">% Final</td>
+              <td width="25%" align="center" class="texto_titulo">Nivel</td>
+            </tr>
+        </table>
+    </span>
+        <span id="DetalleFactor" style="position:absolute; width:377px; height:326px; z-index:2; left: 390px; top: 28px; overflow: auto;"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" class="fondo_tablaGris">
+            <list factores as f> 
+            <tr> 
+              <td width="25%" align="center" bgcolor="#FFFFFF">${f.nombre}</td>
+              <td width="25%" align="center" bgcolor="#FFFFFF">${f.pInicial}</td>
+              <td width="25%" align="center" bgcolor="#FFFFFF">${f.pFinal}</td>
+              <td width="20%" align="center" bgcolor="#FFFFFF">${f.nivel}</td>
+              <td width="5%" align="center"><input type="radio" name="radio" value="${f.codigo}" onClick="AsignaValor(this.value)"></td>
+            </tr>
+            </list> 
+        </table>
+    </span>
+ 
+ 
+
+
+</form>
+  
+</body>
+</html>

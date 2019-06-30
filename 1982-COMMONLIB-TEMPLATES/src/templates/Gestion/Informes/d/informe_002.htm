@@ -1,0 +1,204 @@
+  <html>
+<head>
+<title>Informe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/imprimir.js">
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function botones_estado(estado) {
+	<list paginas as pag>
+	LayerBotonera${pag.p_act}.style.visibility = estado;
+	</list>
+}
+
+function Imprimir(){
+	botones_estado("hidden");
+	//window.print();
+	printPage();
+	botones_estado("visible");
+}
+// -->
+</script>
+</head>
+<script language="JavaScript">
+window.scroll(0,0);
+</script>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<script language="JavaScript">
+opener.parent.AbrirVentProcesando();
+</script>
+<div align="center">
+ <list paginas as pag> 
+  <table width="670" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr valign="top"> 
+      <td width="250" valign="top" rowspan="2">&nbsp; </td>
+      <td valign="top" rowspan="2" > 
+        <div align="center"><a name="pag_${pag.p_act}"></a></div>
+      </td>
+      <td width="250" valign="top" height="66" align="right"> <include "templates/Datafolder/Informes/botonera_imprimir.htm"> 
+        <!--<div id="LayerBotonera${pag.p_act}" style=" visibility:hidden; z-index:1; border: 1px none #000000; top: auto" > 
+        <table border="0" cellspacing="0" cellpadding="0" width="248" bgcolor="#CCCCCC" height="36">
+          <tr valign="middle">
+		  <compress> 
+            <td width="50"> <b><a href="javascript:;" onClick="Imprimir()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_imp${pag.p_act}','','/Gestion/botones/botones_informe/imprimir_up.jpg',1)"><img src="/Gestion/botones/botones_informe/imprimir_down.jpg" width="49" height="36" border="0" name="img_imp${pag.p_act}"></a></b></td>
+            <td width="49"> <if (pag.p_act) != "1"><a href="#pag_1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ini${pag.p_act}','','/Gestion/botones/botones_informe/inicio_up.jpg',1)"><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></if></td>
+            <td width="50"> <if (pag.p_act) != "1"><a href="#pag_${pag.p_ant}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ant${pag.p_act}','','/Gestion/botones/botones_informe/anterior_up.jpg',1)"><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></if></td>
+            <td width="50"> <if (pag.p_act) != (p_tot)><a href="#pag_${pag.p_sig}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_sig${pag.p_act}','','/Gestion/botones/botones_informe/siguiente_up.jpg',1)"><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></if></td>
+            <td width="49"> <if (pag.p_act) != (p_tot)><a href="#pag_${p_tot}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ult${pag.p_act}','','/Gestion/botones/botones_informe/ultimo_up.jpg',1)"><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></if></td>
+		  </compress>  
+          </tr>
+        </table>
+      </div>-->
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td width="250" valign="top"> 
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">P&aacute;g. 
+          ${pag.p_act} de ${p_tot}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" height="20"> 
+        <div align="center"><b><font face="Arial, Helvetica, sans-serif" size="2"><u>Informe 
+          Composici&oacute;n de Renta<br>
+          </u>(${FFecha("dd/MM/yyyy")})</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+      <td align="right"> </td>
+    </tr>
+    <tr> 
+      <td height="1" width="181"></td>
+      <td width="174"></td>
+      <td width="133"></td>
+    </tr>
+  </table>
+  <table width="670" border="0" cellpadding="0" cellspacing="0">
+    <tr align="center"> 
+      <td valign="top" height="463" colspan="2"> 
+        <table border="1" cellspacing="0" cellpadding="2" width="100%">
+          <tr> 
+            <td width="10%" bgcolor="#CCCCCC"> 
+              <div align="center"> <b><font size="1"><font size="1"><b><b><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"><font size="1"><b><b><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"><b>Fecha<br>
+                Ingreso</b></font></font></font></font></b></b></font></font></font></font></font></b></b></font></font></b></div>
+            </td>
+            <td width="10%" bgcolor="#CCCCCC"> 
+              <div align="center"> <b><font face="Arial, Helvetica, sans-serif" size="1">Rut</font></b></div>
+            </td>
+            <td width="40%" bgcolor="#CCCCCC"> 
+              <div align="center"> <font size="1"><font size="1"><b><b><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"><b><font size="1"><font size="1"><b><b><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"><b>Nombre</b></font></font></font></font></b></b></font></font></b></font></font></font></font></b></b></font></font></div>
+            </td>
+            <td width="40%" bgcolor="#CCCCCC"> 
+              <div align="center"> <font size="1"><font size="1"><b><b><b><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"><font size="1"><b><b><b><font face="Arial, Helvetica, sans-serif" size="1">Cargo</font><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="1"><font size="1"></font></font></font></font></b></b></b></font></font></font></font></font></b></b></b></font></font></div>
+            </td>
+          </tr>
+          <if !(pag.datos)> 
+          <tr> 
+            <td colspan="5"> 
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b><i> 
+                Informaci&oacute;n no Disponible...</i></b></font></div>
+            </td>
+          </tr>
+          </if> <list pag.datos as d> <if (d.FILATIPO) == "ENC"> <if (d.ENCunid_id)> 
+          <tr> 
+            <td colspan="4"><font face="Arial, Helvetica, sans-serif" size="2"><i><b>Dependencia:</b>${d.area_desc} 
+              </i></font> </td>
+          </tr>
+          </if> <if ((d.ENCunid_id) || d.ENCarea_id)> 
+          <tr> 
+            <td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial, Helvetica, sans-serif" size="2"><i><b>Unidad:</b> 
+              ${d.unid_desc}</i></font></td>
+          </tr>
+          </if></if> 
+          <!-- fin de encabezado-->
+          <tr> 
+            <td width="10%"><b><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${FFecha( "dd/MM/yyyy", d.fec_ingre)}</font></b></td>
+            <td width="10%"><b><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${d.rut}</font></b></td>
+            <td width="40%"><b><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${d.nombre}</font></b></td>
+            <td width="40%"><b><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${d.carg_desc}</font></b></td>
+          </tr>
+          <tr> 
+            <td colspan="4"> 
+              <div align="left"><u><font face="Arial, Helvetica, sans-serif" size="2"> 
+                <b><i>Costo Real (Detalle de Haberes)</i></b></font></u></div>
+              ${SubQuery("templates/Datafolder/Informes/informe_002_renta.htm", 
+              "SELECT h.descrip AS haber,h.tipo as tipo,th.monto FROM eje_ges_airh_df_haber 
+              h INNER JOIN eje_ges_airh_df_trab_haberes th ON h.haber = th.haber WHERE 
+              (th.rut = "+d.rut+") and (tipo=1) ORDER BY th.haber")} <br>
+              &nbsp; </td>
+          </tr>
+          </list> 
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td height="20" valign="top" width="561">&nbsp; </td>
+      <td width="139" valign="top"> 
+        <div align="right"></div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+<if (pag.p_act) != (p_tot)>
+<p class="pageEnd" align="center">&nbsp;</p>
+</if>
+ </list> 
+ </div>
+<script language="JavaScript">
+opener.parent.CerrarVentProcesando();
+botones_estado("visible");
+</script>
+
+</body>
+</html>

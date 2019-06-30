@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Bloqueo Accesos a Usuarios</title>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquery-1.8.3.min.js"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<!-- JQUERY  -->
+<script type="text/javascript">
+
+	try{
+		var jqueryIsLoaded=jQuery;
+		jQueryIsLoaded=true;
+	}
+		catch(err){
+		var jQueryIsLoaded=false;
+	}
+
+	if (!jqueryIsLoaded) {
+		loadScript("../servlet/Tool?omap=scripts/jquery-1.8.3.min.js");
+	}
+	
+	
+	function loadScript(url, callback) {
+	    // adding the script tag to the head as suggested before
+	   var head = document.getElementsByTagName('head')[0];
+	   var script = document.createElement('script');
+	   script.type = 'text/javascript';
+	   script.src = url;
+
+	   // then bind the event to the callback function 
+	   // there are several events for cross browser compatibility
+	   script.onreadystatechange = callback;
+	   script.onload = callback;
+
+	   // fire the loading
+	   head.appendChild(script);
+	}
+
+<!--
+function asigna(f) {
+  var elementos = document.getElementsByName("usuario");
+  var j=0;
+  
+  for (var i=0;i<elementos.length;i++) {
+    if(elementos[i].checked) {
+      j = j+1;
+    }	
+  }
+  if(j<1) {
+    alert("Debe seleccionar al menos un Usuario");        
+  }
+  else {
+	f.op.value="Y";
+	var  data = $("#frm1").serialize();
+	
+	
+	loadJSONforMain('../servlet/BloqueoUsuarios',
+			'POST',data,'html',
+			function(data){
+				$("#subFormBloqueo").html(data);
+			});
+    
+  }
+}
+
+
+function loadJSONforMain(url, paramType, params, recepcionType, func) {
+	$.ajax({
+		  url: url,
+		  data: params,
+		  type: paramType,
+		  success: eval (func),
+		  dataType: recepcionType
+		});
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#usuarios {
+	position:relative;
+	left:1px;
+	top:0px;
+	width:680px;
+	height:230px;
+	z-index:4;
+	overflow: auto;
+}
+-->
+</style>
+
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	<div id="subFormBloqueo">
+		<form name="frm1" id="frm1" method="post" action="../servlet/BloqueoUsuarios">
+			<table align="center" border="0" cellpadding="2" cellspacing="1">
+				<tr>
+					<td class="tituloTabla" height="45" align="center" style="font-size:16;" >Lista de Bloqueos de Acceso a Usuarios</td>
+				</tr>
+				<tr>
+					<td>
+					    <div id="usuarios">
+							<table width="100%" align="center" border="1" cellpadding="2" cellspacing="1">
+								<tr> 
+									<td width="10%" height="30" valign="top" align="center" class="detalleTabla" style="font-size:12;">Rut</td> 
+									<td width="30%" valign="top" align="center" class="detalleTabla" style="font-size:12;">Nombre</td>
+									<td width="10%" valign="top" align="center" class="detalleTabla" style="font-size:12;">Acceso Fallidos</td>
+									<td width="15%" valign="top" align="center" class="detalleTabla" style="font-size:12;">Fecha Bloqueo</td>
+									<td width="15%" valign="top" align="center" class="detalleTabla" style="font-size:12;">Tipo Bloqueo</td>
+									<td width="8%" valign="top" align="center" class="detalleTabla" style="font-size:12;">Activar acceso</td>
+								</tr>
+								<list lista as l>
+								<tr> 
+									<td valign="top" align="right" class="detalleTablaChico" style="font-size:11;">${l.rut}-${l.dv}</td> 
+									<td valign="top" align="justify" class="detalleTablaChico" style="padding-left:30px;font-size:11;">${l.nombre}</td>
+									<td valign="top" align="center" class="detalleTablaChico" style="font-size:11;">${l.intentos}</td>
+									<td valign="top" align="center" class="detalleTablaChico" style="font-size:11;">${l.bloqueo}</td>
+									<td valign="top" align="center" class="detalleTablaChico" style="font-size:11;">${l.tipo}</td>
+									<td valign="top" align="center" class="detalleTablaChico"><input type="checkbox" name="usuario" value="${l.rut}"></td>
+								</tr>
+								</list>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input onClick="javascript:asigna(this.form);" type="button" name="sbm" value="Activar Acceso Usuarios">
+						<input type="hidden" name="op">
+						&nbsp;&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

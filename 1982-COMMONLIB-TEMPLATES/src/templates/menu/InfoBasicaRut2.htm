@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Actualizar Datos Personales</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/DataFolder/script/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/new/main/main_solo.jpg" style="background-repeat:no-repeat">
+
+<div id="Layer1" style="position:absolute; left:529px; top:350px; width:102px; height:22px; z-index:1"><a href="Tool?htm=mail/mail_ok.html"><img src="../servlet/Tool?images/new/botones/enviar_datos.gif" width="119" height="22" border="0"></a></div>
+<table width="661" border="0" cellpadding="0" cellspacing="0" >
+  <tr valign="top">
+    <td height="381" align="center" valign="top">
+
+      <table width="85%">
+        <tr align="center">
+          <td colspan="4"><img src="../servlet/Tool?images/new/titulos/act_perso.jpg" width="436" height="29"> </td>
+        </tr>
+        <tr align="center">
+          <td colspan="4" class="textB"><img src="../servlet/Tool?images/new/main/barra.gif" width="604" height="3"></td>
+        </tr>
+        <tr valign="top">
+          <td height="13" width="9%" class="textB">
+          <div></div></td>
+          <td width="27%" class="textB">Fecha Nacimiento </td>
+          <td height="13" colspan="2" class="texto"><input type="text" value="${fec_nac}"><font face="Arial, Helvetica, sans-serif" size="1"> </font><font face="Arial, Helvetica, sans-serif" size="1" class="texto">&nbsp; </font></td>
+        </tr>
+        <tr valign="top">
+          <td height="6" class="textB"><span class="texto"></span></td>
+          <td height="6" class="textB"><span class="texto"><font face="Arial, Helvetica, sans-serif" size="2" class="textB">Edad</font></span></td>
+          <td height="6" colspan="2" class="texto"><input type="text" value="${edad}"> a&ntilde;os </td>
+        </tr>
+        <tr valign="top">
+          <td width="9%" height="6" class="textB">
+          <div></div></td>
+          <td width="27%" height="6" class="textB">Estado Civil </td>
+          <td height="6" colspan="2" class="texto"><input type="text" value="${est_civil}"></td>
+        </tr>
+        <tr valign="top">
+          <td width="9%" height="17" class="textB">
+          <div></div></td>
+          <td width="27%" height="17" class="textB">Nacionalidad</td>
+          <td height="17" colspan="2" class="texto"><input type="text" value="${nacionalidad}"></td>
+        </tr>
+        <tr valign="top">
+          <td height="17" class="textB">&nbsp;</td>
+          <td height="17" class="textB">N&deg; de Cargas </td>
+          <td width="15%" height="17" class="texto"><input type="text" value="${numcargas}"></td>
+          <!--
+		  <td width="49%" class="texto"><font face="Arial, Helvetica, sans-serif" size="1" class="texto"><span class="textB"><a href="../servlet/S_GrupoFamiliar">Grupo Familiar</a></span></font></td>
+		  -->
+        </tr>
+        <tr valign="top">
+          <td colspan="4" align="center" class="textB"><img src="../servlet/Tool?images/new/main/barra.gif" width="604" height="3"></td>
+        </tr>
+      </table>
+      <br>      <br>
+      <table width="69%">
+        <tr valign="top">
+          <td colspan="3" class="textB"><img src="../servlet/Tool?images/new/main/barra.gif" width="604" height="3"></td>
+        </tr>
+        <tr valign="top">
+          <td width="10%" class="textB">&nbsp;</td>
+          <td width="26%" class="textB">Direcci&oacute;n</td>
+          <td width="64%"><input type="text" value="${domicilio}" size="50"></td>
+        </tr>
+        <tr valign="top">
+          <td width="10%" class="textB">&nbsp;</td>
+          <td width="26%" class="textB">Comuna</td>
+          <td><input type="text" value="${comuna}"></td>
+        </tr>
+        <tr valign="top">
+          <td width="10%" class="textB">&nbsp;</td>
+          <td width="26%" class="textB">Tel&eacute;fono</td>
+          <td><input type="text" value="${fono}"></td>
+        </tr>
+        <tr valign="top">
+          <td colspan="3" class="textB"><img src="../servlet/Tool?images/new/main/barra.gif" width="604" height="3"></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

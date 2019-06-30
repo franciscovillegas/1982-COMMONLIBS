@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Unidades Ver</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+<!--
+<assign empresa_ant ="">
+
+
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+		unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('Seleccione la Unidad','-1');
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.unidad, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function AgregarUnidad(form) {
+//alert("Cargo: "+form.cargo.value);
+if ((form.unidad.value!="-1")&&(form.unidad.value!="")){
+	form.submit();
+}else
+  alert("Seleccione la Unidad a asociar.");
+return false;
+}
+
+function EliminarUnidades(form) {
+	form.submit();
+	return false;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+//-->
+</script>
+<!--<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>
+<script language="JavaScript" src="/DataFolder/script/ExisteFoto.js">
+</script>-->
+<link rel="stylesheet" href="../servlet/Tool?style/portalrrhh.css" type="text/css">
+</head>
+
+<body bgcolor="#FFA400" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.focus();MM_preloadImages('/images/DataFolder/botones/eliminar_over.jpg','/images/DataFolder/botones/agregar_over.jpg','/images/DataFolder/botones/agregar_over.jpg','../servlet/Tool?images/botones/aceptar_over.jpg','../servlet/Tool?images/botones/cerrar_over.jpg')">
+<div align="center"></div>
+<table border=0 cellpadding=0 cellspacing=0 width="565" height="290">
+  <tr> 
+    <td valign="top" class="detalleTabla" rowspan=8 align="left"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="tituloTabla" height="20" align="center"> Seleccione la Empresa 
+            v/s Unidad</td>
+        </tr>
+        <tr> 
+          <td align="center"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+              <form name="Unidades" method="post" action="../servlet/AsignaUnidadesVer?rut=${rut}&accion=A">
+                <tr> 
+                  <td width="49%" class="detalleTabla"> Empresa<br>
+                    <select name="empresa" class="inputText" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                      <option value="-1">Seleccione una Empresa</option>
+                      <list empresas as v> 
+                      <option value="${v.id}">${v.desc}</option>
+                      </list> 
+                    </select>
+                    <input type="hidden" name="empresas" value="${cod_empresa}">
+                  </td>
+                  <td colspan="2" class="detalleTabla"> Unidad<br>
+                    <select name="unidad" class="inputText"  style="width=250">
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" class="detalleTabla"> 
+                    <input type="radio" name="tipo" value="R" checked>
+                    Ver la Rama bajo esta Unidad 
+                    <input type="radio" name="tipo" value="U">
+                    Ver s&oacute;lo la unidad</td>
+                  <td width="25%" align="center" class="detalleTabla"><a href="javascript:;" onClick="return AgregarUnidad(document.Unidades)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('agregar','','/images/DataFolder/botones/agregar_over.jpg',1);MM_swapImage('agregar','','../servlet/Tool?images/Gestion/botones/agregar.gif',1)"><img src="../servlet/Tool?images/Gestion/botones/agregar.gif" width="120" height="24" name="agregar" border="0"></a></td>
+                </tr>
+              </form>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <form name="form_graba" action="../servlet/AsignaUnidadesVer?rut=${rut}&accion=E" method="post">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="tituloTabla" height="20" align="center"> Unidades que puede 
+              ver</td>
+          </tr>
+        </table>
+        <div id="Layer1" style="position:absolute; width:565px; height:115px; z-index:4; left: 0; top: auto; background-color: #E9E9E9; layer-background-color: #E9E9E9; border: 1px none #000000; overflow: auto"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="2">
+            <list unidades_rel as u> 
+            <tr> 
+              <td class="detalleTabla"> 
+                <input type="checkbox" name="elim" value="${u.emp_id},${u.uni_id}">
+              </td>
+              <td class="detalleTabla" width="45%">${u.empresa}</td>
+              <td class="detalleTabla" width="45%">${u.unidad}</td>
+              <td class="detalleTabla" width="7%" align="center"><if (u.tipo)=="U">Unidad<else>Rama</if></td>
+            </tr>
+            </list> 
+          </table>
+        </div>
+      </form>
+    </td>
+  </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+</table>
+
+<div id="Layer2" style="position:absolute; left:312px; top:254px; width:250px; height:33px; z-index:3; overflow: visible"> 
+  <div align="center"><a href="javascript:;" onClick="return EliminarUnidades(document.form_graba)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('elim','','../servlet/Tool?images/Gestion/botones/eliminar.gif',1)"><img src="../servlet/Tool?images/Gestion/botones/eliminar.gif" width="120" height="24" name="elim" border="0" alt="Eliminar"></a><a href="#" onclick="window.close();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../servlet/Tool?images/Gestion/botones/cerrar.gif',1)"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" name="Image2" border="0" width="120" height="24" border="0"></a> 
+  </div> 
+</div>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Historial</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:448px;
+	top:161px;
+	width:172px;
+	height:80px;
+	z-index:3;
+}
+.Estilo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+-->
+</Style>
+<script type="text/javascript">
+<!--
+
+
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.Estilo7 {font-size: 10px}
+.Estilo6 {	color: #FFFFFF;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+}
+.Estilo7 {	font-size: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: #FFFFFF;
+}
+-->
+</style>
+</HEAD>
+<BODY onLoad="MM_preloadImages('../servlet/Tool?images/new/top/cerrar_f2.jpg','../servlet/Tool?images/new/top/clave_f2.jpg')" leftmargin="0" topmargin="0" background="../servlet/Tool?images/new/top/${GetImagenEmpresa("fondotop.jpg")}">
+<div id="Layer3" style="position:absolute; left:168px; top:19px; width:191px; height:23px; z-index:4">
+<table width="100%"  border="0">
+<tr>
+<td width="16%"><a href="javascript:history.back();"><img src="../servlet/Tool?images/new/top/volver.jpg" alt="Volver atras" name="Image28" border="0"></a></td>
+      <td width="16%"><a href="Tool?htm=Gestion/bottom.htm" target="mainF"><img src="../servlet/Tool?images/new/top/home.jpg" alt="Inicio" name="menutop_b_r3_c611" border="0" id="menutop_b_r3_c61"></a></td>
+      <td width="16%"><a href="../servlet/CerrarSession?htm=Tool?htm=user/usuario_frame_cont.html" target="_top"><img src="../servlet/Tool?images/new/top/salir.jpg" alt="Cerrar la sesi&oacute;n" name="menutop_b_r3_c811" border="0" id="menutop_b_r3_c81"></a></td>
+      <td width="23%"><a href="../servlet/CambioClave" target="mainF"><img src="../servlet/Tool?images/new/top/cclave.jpg" alt="Cambiar Clave" name="Image291" border="0" id="Image291"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer2" style="position:absolute; left:682px; top:30px; width:86px; height:75px; z-index:8">
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="12" valign="top"><span class="Estilo7"><span class="Estilo6">${usuario.nombre}</span><font face="Arial, Helvetica, sans-serif"><font face="Verdana, Arial, Helvetica, sans-serif">
+        <!--${nombre}-->
+      </font></font></span></td>
+    </tr>
+    <tr>
+      <td valign="bottom"><span class="Estilo7">Es su visita N&ordm; ${usuario.cant_ingresos}</span></td>
+    </tr>
+  </table>
+</div>
+<div id="layer" style="position:absolute; left:616px; top:18px; width:62px; height:79px; z-index:7"><span class="titulo"><font size="2" face="Arial, Helvetica, sans-serif"><img src='${GetProp("server.portal.trabajadores.fotos")}/${usuario.foto}' width="62" height="81" border="1"  style="border-color:#FFFFFF" onerror="existeFoto(this)"></font></span></div>
+</BODY>
+</HTML>

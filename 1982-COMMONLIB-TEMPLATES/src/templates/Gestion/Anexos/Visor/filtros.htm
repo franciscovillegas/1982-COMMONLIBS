@@ -1,0 +1,263 @@
+ <HTML>
+<head>
+<title>Filtros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+<!--
+function Valida() { //v2.0
+  var s1=document.form1.sexo1.value;
+  var s2=document.form1.sexo2.value;
+  var ed1=document.form1.rango1.value;
+  var ed2=document.form1.rango2.value;
+  var apel1=document.form1.apellido1.value;
+  var apel2=document.form1.apellido2.value;
+  var nombre=document.form1.nombre.value;
+  var civil=document.form1.civil.value;
+
+   //*********No ha seleccionado ning&#250;n criterio******
+  if ((s1!="M")&&(s2!="F")&&(ed1=="")&&(ed2=="")&&(apel1=="")&&(apel2=="")&&(nombre=="")&&(civil=="0"))
+     alert("Seleccione un criterio.");
+  else  
+     document.form1.submit();     
+     
+}
+
+
+function Limpia(){
+	document.form1.sexo1.value="0";
+	document.form1.sexo2.value="0";
+	document.form1.rango1.value="";
+	document.form1.rango2.value=""; 
+    document.form1.nombre.value="";
+    document.form1.apellido1.value="";
+    document.form1.apellido2.value="";
+    document.form1.civil.value="0";
+ }
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-over.gif");
+		busgraf_17_down = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-down.gif");
+		busgraf_22_busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif");
+		busgraf_36_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif");
+		preloadFlag = true;
+	}
+}
+
+// -->//-->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript">
+<!--
+function verAsignacion(accion, valor, form) {
+	url = "../servlet/VerAsignacion?accion="+accion;
+	url += "&valor="+valor;
+	//alert(url);
+	parent.bottomFrame.location.href = url;
+	parent.mainF.location.href = "Tool?htm=Gestion/Anexos/Visor/SinResul.htm";
+	form.unidad.value = "-1";
+	form.ver_anexo.checked = false;
+	form.ver_fono.checked = false;
+	form.ver_fax.checked = false;
+	return false;
+}
+
+function buscarAnexos(form) {
+	if (form.bus_anexo.value != "") {
+		form.bus_fono.value="";
+		form.bus_fax.value="";
+		verAsignacion("AN", form.bus_anexo.value, form);
+	}
+	else if (form.bus_fono.value != "") {
+		form.bus_anexo.value="";
+		form.bus_fax.value="";		
+		verAsignacion("FO", form.bus_fono.value, form);
+	}
+	else if (form.bus_fax.value != "") {
+		form.bus_fono.value="";
+		form.bus_anexo.value="";
+		verAsignacion("FA", form.bus_fax.value, form);
+	}
+	else if (form.unidad.value == "-1")
+		alert("seleccione el criterio de busqueda");
+	else if (!form.ver_anexo.checked && !form.ver_fono.checked && !form.ver_fax.checked)		
+		alert("seleccione lo que desea ver (Anexo, Telefono y/o Fax)");
+	else
+		form.submit();
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 ONLOAD="parent.focus();preloadImages();MM_preloadImages('../servlet/Tool?images/Gestion/news/botones/buscar_ane_f2.jpg','../servlet/Tool?images/Gestion/news/botones/limpiar_f2.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+<form name="form1" method="post" action="../servlet/BuscaCriterios" target="mainF">
+  <div id="LayerPersonas" style="position:absolute; width:700; height:105; z-index:9; left: 0; top: 0; visibility: hidden;"> 
+    <input type="hidden" name="sexo1" value="0">
+    <input type="hidden" name="sexo2" value="0">
+    <input type="hidden" name="termino" value="12">
+    <input type="hidden" name="inicio" value="1">
+    <input type="hidden" name="actual" value="1">
+    <input type="hidden" name="grupo" value="10">
+    <input type="hidden" name="grupter" value="10">
+    <input type="hidden" name="grupini" value="1">
+    <input type="hidden" name="rango1" >
+    <input type="hidden" name="rango2" >
+    <input type="hidden" name="civil" value="0">
+    <div id="LayerBuscar" style="position:absolute; width:67px; height:35px; z-index:3; left: 465px; top: 39px; visibility: inherit"> 
+      <table width="83">
+        <tr> 
+          <td width="83"> 
+            <div align="center"><a href="javascript:;" onClick="Valida();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image14','','../servlet/Tool?images/Gestion/news/botones/buscar_ane_f2.jpg',1)"><img name="Image14" border="0" src="../servlet/Tool?images/Gestion/news/botones/buscar_ane.jpg" width="91" height="21"></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="javascript:;"  onClick="Limpia();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image15','','../servlet/Tool?images/Gestion/news/botones/limpiar_f2.jpg',1)"><img name="Image15" border="0" src="../servlet/Tool?images/Gestion/news/botones/limpiar.jpg" width="91" height="21"></a></td>
+        </tr>
+      </table>
+    </div>
+    <div id="LayerApe" style="position:absolute; width:400px; height:29px; z-index:9; left: 66px; top: 40px"><font face="Arial, Helvetica, sans-serif" size="2"> 
+      </font> 
+      <table width="100%">
+        <tr> 
+          <td valign="bottom" width="229"> 
+            <input type="text" name="apellido1" maxlength="30" class="inputs" style="width=160">
+          </td>
+          <td valign="bottom" width="159">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td valign="top" width="229"> 
+            <input type="text" name="apellido2" maxlength="30" class="inputs" style="width=160">
+          </td>
+          <td valign="top" width="159"> 
+            <input type="text" name="nombre" maxlength="50" class="inputs" style="width=160">
+          </td>
+        </tr>
+      </table>
+    </div>
+  <img src="../servlet/Tool?images/Gestion/news/top_perso.jpg" width="721" height="108" usemap="#Map_Personas" border="0"></div>
+</form>
+<map name="Map_Personas"> 
+      <area shape="rect" coords="4,4,147,23" href="#" onClick="MM_showHideLayers('LayerPersonas','','hide','LayerAnexos','','show')">
+</map>
+<div id="LayerAnexos" style="position:absolute; width:700; height:105; z-index:8; left: 0px; top: 0px; visibility: visible;"> 
+  <form name="formAnexo" method="post" action="../servlet/VisorResul" target="mainF">
+    <div id="Layer1" style="position:absolute; width:281px; height:22px; z-index:9; left: 60px; top: 58px"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="90" height="20"> 
+          <input type="checkbox" name="ver_anexo" value="checkbox">          </td>
+          <td width="96"> 
+            <input type="checkbox" name="ver_fono" value="checkbox">
+          </td>
+          <td width="79"> 
+            <input type="checkbox" name="ver_fax" value="checkbox">
+          </td>
+        </tr>
+        <tr> 
+          <td width="90"> 
+            <input type="text" name="bus_anexo" class="inputs" size="10">
+          </td>
+          <td width="96"> 
+            <input type="text" name="bus_fono" class="inputs" size="10">
+          </td>
+          <td width="79"> 
+            <input type="text" name="bus_fax" size="10" class="inputs">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="LayerBuscarAn" style="position:absolute; width:45px; height:11px; z-index:8; left: 465px; top: 39px; visibility: inherit"> 
+      <table width="101">
+        <tr> 
+          <td width="91"> 
+            <div align="center"><a href="javascript:;" onClick="buscarAnexos(document.formAnexo); return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image141','','../servlet/Tool?images/Gestion/news/botones/buscar_ane_f2.jpg',1)"><img name="Image141" border="0" src="../servlet/Tool?images/Gestion/news/botones/buscar_ane.jpg" width="91" height="21"></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="#" onClick="document.formAnexo.reset()" onMouseOver="MM_swapImage('Image6','','../servlet/Tool?images/Gestion/news/botones/limpiar_f2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/Gestion/news/botones/limpiar.jpg" name="Image6" width="91" height="21" border="0"></a></td>
+        </tr>
+      </table>
+    </div>
+    <div id="Layer2" style="position:absolute; left:62px; top:35px; width:266px; height:2px; z-index:9">
+      <select name="unidad" class="inputs" style="width=300">
+        <option value="-1" selected>Seleccione una Unidad</option>
+        <list unidades as u>
+        <option value="${u.id}">${u.descrip}</option>
+        </list>
+      </select>
+    </div>
+    <img src="../servlet/Tool?images/Gestion/news/top_anexos.jpg" width="721" height="108" usemap="#Map_anexos" border="0"> 
+    <map name="Map_anexos"> 
+      <area shape="rect" coords="162,4,303,24" href="#" onClick="MM_showHideLayers('LayerPersonas','','show','LayerAnexos','','hide')">
+    </map>
+</form></div>
+<br>
+<br>
+</BODY>
+</HTML>

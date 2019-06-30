@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ponderacion de Perfiles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:14px;
+	top:12px;
+	width:305px;
+	height:14px;
+	z-index:3;
+}
+#Layer7 {
+	position:absolute;
+	left:13px;
+	top:72px;
+	width:335px;
+	height:14px;
+	z-index:4;
+}
+#Layer8 {
+	position:absolute;
+	left:12px;
+	top:135px;
+	width:298px;
+	height:15px;
+	z-index:5;
+}
+#Layer9 {
+	position:absolute;
+	left:568px;
+	top:159px;
+	width:114px;
+	height:18px;
+	z-index:6;
+}
+#Layer10 {
+	position:absolute;
+	left:762px;
+	top:159px;
+	width:87px;
+	height:16px;
+	z-index:7;
+}
+#Layer11 {
+	position:absolute;
+	left:579px;
+	top:294px;
+	width:95px;
+	height:18px;
+	z-index:8;
+}
+#Layer12 {
+	position:absolute;
+	left:788px;
+	top:295px;
+	width:74px;
+	height:15px;
+	z-index:9;
+}
+#Layer13 {
+	position:absolute;
+	left:880px;
+	top:459px;
+	width:12px;
+	height:29px;
+	z-index:10;
+}
+-->
+</style>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnTraerCombo(opcion){
+	if(opcion.name == "perfil"){
+		form.action="../servlet/ponderacionPerfil?id_proceso=${id_proceso}&id_perfil="+opcion.value;
+		form.submit();
+	}
+}
+function fnAplicar(opcion){
+	if(opcion == "grabar"){
+	    var valor1 = parseInt(document.form.pond_auto.value);
+	    var valor2 = parseInt(document.form.pond_superv.value);
+	    var valor3 = parseInt(document.form.pond_subord.value);
+	    var valor4 = parseInt(document.form.pond_pares.value);
+	    var total = valor1 + valor2 + valor3 + valor4;
+	    if(total==100)
+	    {  form.action="../servlet/ponderacionPerfil?txtAccion=GR&id_proceso=${id_proceso}&id_perfil=${id_perfil}";
+		   form.submit(); }
+		else { alert("La suma de los ponderadores debe ser 100%");  }
+	}
+	if(opcion == "limpiar"){
+		form.action="../servlet/ponderacionPerfil?";
+		form.submit();		
+	}
+	if(opcion == "ponderadores"){
+		form.action="../servlet/ponderadores?id_proceso=${id_proceso}&id_perfil=${id_perfil}";
+		form.submit();		
+	}
+	if(opcion == "cerrar"){
+		form.action="../servlet/WithSession?pHtm=ggd/menu/herr/menu_evacomp_herr.html";
+		form.submit();		
+	}
+}
+function fnEnviar(opcion){
+	if(opcion.name == "procesos"){
+		form.action="../servlet/ponderacionPerfil?id_proceso="+opcion.value;
+		form.submit();
+	}
+}
+function inicio(){
+<if REG == true && MSG !="">
+	alert('${MSG}');
+</if>
+<if REG == false && MSG !="">
+	alert('${MSG}');
+</if>
+<if perfilPonderaciones>
+document.form.pond_auto.value = "${perfilPonderaciones.pond_auto}";
+document.form.pond_superv.value = "${perfilPonderaciones.pond_superv}";
+document.form.pond_subord.value = "${perfilPonderaciones.pond_subord}";
+document.form.pond_pares.value = "${perfilPonderaciones.pond_pares}";
+</if>
+<if perfil>
+<if perfiles_proceso>
+	<list perfiles_proceso as p>
+		<if perfil == p.id_perfil>
+document.form.perfil.value='${p.id_perfil}';
+		</if>
+    </list>
+</if>
+</if>
+<if proceso>
+<if procesos>
+	<list procesos as p>
+		<if proceso == p.id_proceso>
+         document.form.procesos.value='${p.id_proceso}';
+		</if>
+      </list>
+</if>
+</if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="inicio()" background="../servlet/Tool?images/ggd/competencias/ponderacion.jpg">
+  <div class="txt_gris_bold" id="Layer1">Procesos</div>
+  <div class="txt_gris_bold" id="Layer7">Perfiles</div>
+  <div class="txt_gris_bold" id="Layer8"><!-- Cargos -->Observaciones</div>
+  <div class="boton_rojo" id="Layer9">AUTOEVALUACION</div>
+  <div class="boton_rojo" id="Layer10">SUPERVISION</div>
+  <div class="boton_rojo" id="Layer11">SUBORDINADOS</div>
+  <div class="boton_rojo" id="Layer12">PARES</div>
+  <div id="Layer13">
+    <table width="100%" border="0">
+      <tr>
+        <td width="14%"><a href="#" onClick="fnAplicar('grabar');return false;" ><img name="pperfiles_r13_c8" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt="GRABAR"></a></td>
+        <td width="14%"><a href="#" onClick="fnAplicar('limpiar');return false;"><img name="pperfiles_r13_c10" src="../servlet/Tool?images/images_ggd/ggd/botones/limpiar.gif" width="30" height="30" border="0" alt="LIMPIAR"></a></td>
+        <td width="72%"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="CERRAR"></a></td>
+      </tr>
+    </table>
+</div>
+  <form name="form"  method="post">
+
+    <div id="Layer2" style="position:absolute; width:420px; height:27px; z-index:2; left: 12px; top: 95px;"> 
+      <select name="perfil" class="campo_texto" onChange="fnTraerCombo(this)">
+	<option value="">Seleccione Perfil</option>
+	<if perfiles_proceso> 
+		<list perfiles_proceso as p>
+        <option value="${p.id_perfil}">${p.perfil}</option>
+        </list>
+</if>
+</select>
+</div>
+    <div id="Layer3" style="position:absolute; width:418px; height:23px; z-index:2; left: 13px; top: 36px;"> 
+      <select name="procesos" class="campo_texto" onChange="fnEnviar(this)">
+<option value="0">Seleccione Proceso</option>
+<if procesos>
+	<list procesos as p>
+        <option value="${p.id_proceso}">${p.proceso}</option>
+	</list>
+</if>
+</select>
+</div>
+    <span id="Layer4" style="position:absolute; width:420px; height:253px; z-index:2; left: 11px; top: 176px; overflow: auto;">
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+
+Antes de realizar esta evaluaci&oacute;n, es necesario que usted conozca y comprenda
+  el Modelo de Ponderaci&oacute;n de los Perfiles definidos al interior de su compa&ntilde;&iacute;a. <br>
+    <br>
+    <strong>Instrucciones:</strong><br>
+  </p>
+  - Seleccione el proceso de evaluaci&oacute;n vigente.<br>
+    <br>
+  - Seleccione el Perfil deseado.
+  </p>
+  -Ingrese la modalidad a operar por cada Perfil existente, asignando el 100% cuando corresponda.<strong><br>
+    <br>
+</table>
+</span>
+    <div id="Layer5" style="position:absolute; width:259px; height:105px; z-index:2; left: 600px; top: 183px;"> 
+      <table width="260" height="104">
+        <tr> 
+          <td width="47" height="38"> 
+            <input name="pond_auto" type="text" class="verTabla" size="3" maxlength="3"> 
+      </td>
+	  <td width="129">&nbsp;&nbsp;</td>
+      <td width="68"> <input name="pond_superv" type="text" class="verTabla" size="3" maxlength="3"> 
+      </td>
+	</tr>
+	<tr>
+		<td height="20">&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+      <td height="36"> <input name="pond_subord" type="text" class="verTabla" size="3" maxlength="3"> 
+      </td>
+	  <td>&nbsp;&nbsp;</td>
+      <td> <input name="pond_pares" type="text" class="verTabla" size="3" maxlength="3"> 
+      </td>
+    </tr>
+  </table></div>
+      
+  </form>
+  
+</body>
+</html>

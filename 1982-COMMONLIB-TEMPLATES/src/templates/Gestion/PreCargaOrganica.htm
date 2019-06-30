@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Subir Org&#225;nica</title>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+<body topmargin="0" leftmargin="0">
+<form name="form1" action="../servlet/UploadingOrganicaUploadServlet" enctype='multipart/form-data' method="post">
+<table>
+  <tr>
+    <td align=center>
+    <table width="100%" border=0 cellpadding="0" cellspacing=0
+      class="geohead_fm" cellpaddding=0>
+      <tr>
+        <td width="79%" align="center" class="TITULO_PerfilLaboral">Ingreso Archivo Org&#225;nica</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td valign=top class="campo_texto">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="campo_texto">
+      <tr>
+        <td class="campo_texto">
+        Seleccione el archivo Excel a subir desde su disco duro, u otra
+        unidad en la cual se encuentra el archivo<br><br>
+        <strong>El archivo debe tener las siguientes
+        caracter&iacute;sticas:</strong>
+        <ul>
+        <list errors as error>                                         
+          <p>
+            <div class="error">           
+            ${error}
+           </div>
+          </p>              
+        </list> 
+        <list messages as message>                                         
+          <p>
+            <div class="message">           
+            ${message}
+           </div>
+          </p>                 
+        </list>                 
+        </ul>
+                
+        <ul>
+          <div class="campo_texto">
+          <li>Tipo Archivo: Excel</li>
+          <li>Nombre: debe llamarse organica.xls</li>
+          </div>
+          <br>
+          <div>
+          <center>
+          <input name="userfile" type="file" class="detalleTabla" size=30> <br>
+          </div>
+          </li>
+        </ul>
+        <table width="41%" align="center">
+          <tr>
+            <td width="59%" align="right"><input name="op-upload" type="submit" class="layer1" value="Subir Archivo"></td>
+            <td width="41%" align="left"><input name="reset" type="reset" class="layer1" value="Limpiar"></td>
+          </tr>
+          <tr><td colspan="2"><img src="../servlet/Tool?images/Gestion/organica.png"></td></tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+

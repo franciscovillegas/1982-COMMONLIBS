@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Documento sin t&iacute;tulo</title>
+<script type="text/JavaScript">
+  <!-- 
+
+  function buscarEvaluacion(){
+		if(document.form1.proceso.value != "0"){		
+				document.form1.submit();
+		}else{
+	        alert("Debe seleccionar un proceso!.");        
+		}
+	}
+
+	function setProceso(){
+		document.form1.proceso.value = "${proc}";
+	}
+
+    function imprSelec() {
+  	   var ventimp = window.open(' ', 'popimpr');	   
+  	   var Layer2 = document.getElementById("Layer2");
+  	   var Layer11 = document.getElementById("Layer11");
+  	   var Layer112 = document.getElementById("Layer112");
+  	   var Layer111 = document.getElementById("Layer111"); 	 
+  	   ventimp.document.write("<br>");
+  	   ventimp.document.write( Layer2.innerHTML );
+  	   ventimp.document.write("<br>");
+  	   ventimp.document.write( Layer11.innerHTML );
+  	   ventimp.document.write("<br>");
+	   ventimp.document.write( Layer112.innerHTML );
+	   ventimp.document.write("<br>");
+  	   ventimp.document.write( Layer111.innerHTML );
+  	   ventimp.document.write("<br>");
+  	   ventimp.document.write("<LINK REL='stylesheet' HREF='../servlet/Tool?style/ggd.css' TYPE='text/css'>"); 
+  	   ventimp.document.close();
+  	   ventimp.print();
+  	   ventimp.close();
+    } 
+  //-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:307px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	height:508px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:556px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:14px;
+	top:32px;
+	width:790px;
+	height:280px;
+	z-index:11;
+}
+#Layer111 {
+	position:absolute;
+	left:14px;
+	top:160px;
+	width:975px;
+	height:284px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer112 {
+	position:absolute;
+	left:14px;
+	top:100px;
+	width:830px;
+	height:60px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer12 {
+	position:absolute;
+	left:450px;
+	top:456px;
+	width:537px;
+	height:33px;
+	z-index:12;
+}
+#Layer100 {
+	position:absolute;
+	left:355px;
+	top:460px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+-->
+</style>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body onLoad="setProceso();" background="../servlet/Tool?images/ggd/metas/metas2.jpg">
+<form name="form1" method="post" action="../servlet/ServletResumenEvaluados">
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<div id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%" class="txt_gris_bold">METAS: INFORME RESUMEN DE EVALUADOS</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer11">
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    <tr>
+      <td colspan="6" class="texto_titulo">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="6" class="txt_gris_bold">Periodo de evaluaci&#243;n metas:
+	        <select name="proceso" class="txt_gris">
+	                <option value="0">Selecione un proceso</option>
+	              <list getProcesos as p>
+                    <option value="${p.id_proceso}">${p.proceso}</option>
+                  </list>
+            </select>
+            &nbsp;
+             <a href="#" onClick="buscarEvaluacion();"><img src="../servlet/Tool?images/ggd/botones/buscar_ch.gif" alt="VER EVALUACI&#211;N" name="evaluaciones_r13_c11" width="18" height="18" border="0" id="evaluaciones_r13_c11" title="BUSCAR"/></a>
+	  </td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">&nbsp;</td>
+      <td colspan="4" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+ </table>
+</div>
+<div id="Layer112">  
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    <tr> 
+      <td colspan="7" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="7" class="txt_gris_bold">LISTA DE EVALUADOS AGRUPADOS POR EVALUADOR (TOTAL EVALUADOS PARA EL PROCESO SELECCIONADO: ${total}) </td>
+    </tr>    
+  </table>
+</div>
+<div id="Layer111">  
+   <!-- ************************************************************************* -->
+    
+    <table width="96%">
+			<list pEval as p>
+				 <if p.rut_evaluador >
+					  <tr>
+						  <td align="left" colspan="9">
+							<table align="left" width="100%" border="0">
+							 <tr>		
+						     	 <td width="40%" align="left" height="22" colspan="5" class="fondo_tablaAmarillo">&nbsp;EVALUADOR: ${p.nombre_eval}</td>		
+							     <td width="60%" align="left" height="22" colspan="5" class="fondo_tablaAmarillo">&nbsp;UNIDAD: ${p.unidad}</td>		
+							 </tr>
+							</table> 
+						  </td>
+					  </tr>
+					 <tr>    
+			         <td valign="top">
+			          <table width="100%"  border="0" cellspacing="0" cellpadding="0"> 
+				 </if>
+				     <TR>
+				            <TD width="5%" height="22" class="campo_texto" align="center" valign="top"  style="BACKGROUND-COLOR: #CCCCCC;">Nro.</TD>
+				            <TD width="50%" height="18" class="campo_texto" align="center"  style="BACKGROUND-COLOR: #CCCCCC;">EVALUADO</TD>
+				            <TD width="45%" height="18" class="campo_texto" align="center"  style="BACKGROUND-COLOR: #CCCCCC;">CARGO</TD>
+					 </TR>
+					    <list p.agrupDet as colab>
+						   <TR>
+				            <TD width="5%" height="22" class="campo_texto" align="center">${colab.num}</TD>
+				            <TD width="50%" height="18" class="campo_texto" align="left">&nbsp;${colab.nombre} (${colab.rut}-${colab.digito_ver})</TD>
+				            <TD width="45%" height="18" class="campo_texto" align="left">&nbsp;${colab.descrip}</TD>
+						   </TR>
+						</list>
+					</table>
+		    </list>
+		  </table>   
+    
+         <!-- ************************************************************************* -->
+       
+  </table>
+</div>
+<div id="Layer12">
+   <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td nowrap="nowrap"></td>
+      <td nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+      <td width="30"><a href="#" onClick="imprSelec();"><img src="../servlet/Tool?images/ggd/botones/iconoprint.gif" width="30" height="30" border="0" alt="IMPRIMIR"/></a></td>
+      <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+    </tr>
+  </table>  
+</div>
+	<div id="Layer100">
+	  <table border="0" align="right" cellpadding="0">
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td nowrap="nowrap"><span class="texto_titulo_rojo">${salida}</span></td>
+	      <td width="30">&nbsp;</td>
+	      <td width="30">&nbsp;</td>
+	    </tr>
+	  </table>
+	</div>
+</form>
+</body>
+</html>

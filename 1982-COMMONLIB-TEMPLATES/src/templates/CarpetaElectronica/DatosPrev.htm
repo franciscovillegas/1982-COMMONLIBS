@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>Datos Previsionales</TITLE>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<!-- tool FUNCTION -->
+	
+	<!-- JQUERY  -->
+	<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+	
+	<!-- PAGINA -->
+	<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css"/>
+
+
+	<style type="text/css">
+			.textoImportante {
+				background-color:#F0F0F0;
+				padding:3px;
+				border:#D7D7D7 1px solid;
+			}
+			
+			.textoImportante2 {
+				padding:3px;
+				border:#D7D7D7 1px solid;
+			}
+	
+	</style>
+</HEAD>
+<BODY>
+
+<div id="divCarpetaElectronica">
+		<table  width="800" align="center" style="margin-top:20px;" >
+		<th width="360" colspan="4" class=" macTableStyle1"><div class="titulo">Datos Personales</div></th>
+		<tr>
+			<td colspan="3" align="center">
+				<div id="divDatosPersonales" style="height: 600px">
+                	<table id="tblContenidos"  width="100%" style="margin-top:20px;height: 350px" class="cuadro_contenido" >
+							<tr>
+				        		<td rowspan="9">
+ 
+				            		<table >
+				                    	<tr>
+				                        	<td align="center"><img src="../temporal/imgtrabajadores/${rut}.jpg" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+				                        </tr>
+				                        <tr>
+				                        	<td align="center" class="texto_negro_bold_chico">${rut2}</td>
+				                        </tr>
+				                    </table>
+								</td>
+							</tr>
+				            <tr>
+								<td colspan="4" class="textoImportante3">
+										 <table style="width: 80%;">
+			                        		<tr>
+			                        			<td class="textoImportante"><strong>Nombre :</strong></td>
+			                                    <td class="textoImportante2">${nombre}</td>
+			                                </tr>
+			                                <tr>
+			                             		<td class="textoImportante"><strong>Cargo :</strong></td>
+			                                    <td class="textoImportante2">${cargo}</td>
+			                                </tr>  
+		                        		</table>
+								</td>
+							</tr>
+							<tr>
+                            	<td class="textoImportante"><strong	>AFP:</strong></td>
+                            	<td class="textoImportante2">${afp}</td>
+                            	<td class="textoImportante"><strong	>ISAPRE:</strong></td>
+                            	<td class="textoImportante2">${isapre}</td>                            	
+                            </tr>
+                            <tr>
+                            	<td class="textoImportante"><strong>Ingreso AFP:</strong></td>
+                            	<td class="textoImportante2">${ingre_afp}</td>
+                            	<td class="textoImportante"><strong	>Ingreso Isapre:</strong></td>
+								<td class="textoImportante2">${ing_isap}</td>
+                            </tr>
+							<tr>
+                            	<td class="textoImportante"><strong	>Cotizaci&oacute;n (%):</strong></td>
+                            	<td class="textoImportante2">${cotizacion}</td>
+                                <td class="textoImportante"><strong	>Cotizaci&oacute;n :</strong></td>
+								<td class="textoImportante2">${mon_plan}</td>
+                    		</tr>                                        
+							<tr>
+                            	<td class="textoImportante"><strong>Cotizaci&oacute;n adicional:</strong></td>
+                            	<td class="textoImportante2">${monto_adicional} ${moneda_adicional}</td>
+                                <td colspan="2"></td>
+                            </tr> 
+							<tr>
+                            	<td class="textoImportante"><strong>Ahorro voluntario:</strong></td>
+                            	<td class="textoImportante2">${monto_volunt}</td>
+                                <td colspan="2"></td>                            </tr> 
+							<tr>
+                                <td class="textoImportante">Jubilado:</td>
+                                <td class="textoImportante2">${jubilado}</td>
+                                <td colspan="2"></td>
+                        	</tr> 
+						</table>
+					</div> <!-- datosPrevisionales -->
+				</td>
+			</tr>
+		</table> <!-- macTableStyle1 -->
+    </div>
+</BODY>
+</HTML>

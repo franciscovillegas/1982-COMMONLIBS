@@ -1,0 +1,260 @@
+ <HTML>
+<HEAD>
+<TITLE></TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function LimpiaNom(){
+ document.form1.nom_grupo.value="";
+}
+
+function ValidaEnvio(){
+var grupo=document.form1.grupo.value;
+var nom_grupo=document.form1.grupo.options[document.form1.grupo.selectedIndex].text;
+document.form1.name_grupo.value=nom_grupo;
+  if (grupo!="-1"){
+		//alert("Submit!!");
+		document.form1.operacion.value="0"; 
+		parent.AbrirVentProcesando();
+		document.form1.submit();
+  }else
+	   alert("Seleccione un Agrupador de la Lista.");   
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function windowOnload(){
+  <if (error)>
+    alert("El Nuevo agrupador no ha sido creado");
+  </if>
+
+
+}
+
+function EditaGrupo(){
+var pos=document.form1.grupo.selectedIndex;
+var nom_selec=document.form1.grupo.options[pos].text;
+ if (document.form1.grupo.value!="-1"){
+	 document.form1.nom_mantener.value=nom_selec;
+	 MM_showHideLayers('LayerGrupos','','hide','NuevoGrupo','','hide','MantenerGrupo','','show')  
+ }else
+   alert("Seleccione el Agrupador que desea Mantener.");   
+}
+
+function EnviaForm(oper){
+var nom_grupo="";
+var id_grupo=document.form1.grupo.value;
+var msg="Mantener";
+if (oper=="1")
+	nom_grupo=document.form1.nom_grupo.value;
+if (oper=="2")
+	nom_grupo=document.form1.nom_mantener.value;
+  if ((id_grupo!="-1")&&(oper!="1")){
+  	 if (nom_grupo!="")
+	     document.location.href="../servlet/ListGruposCargos?operacion="+
+                oper+"&nom_grupo="+nom_grupo+"&id_grupo="+id_grupo;
+	 else
+	     alert("Ingrese un nombre para el agrupador.");
+  }else
+   if (oper=="1"){
+      if (nom_grupo!=""){
+	     document.location.href="../servlet/ListGruposCargos?operacion="+
+                oper+"&nom_grupo="+nom_grupo+"&id_grupo="+id_grupo;
+		//alert("Nuevo grupo");	 
+	  }else
+	     alert("Ingrese un nombre para el agrupador.");
+   }else
+      alert("Seleccione el Agrupador que desea "+msg);   
+}
+
+function EliminaGrupo(){
+var nom_grupo="";
+var id_grupo=document.form1.grupo.value;
+var msg="Eliminar";
+//alert("eliminando");
+  if (id_grupo!="-1"){
+    if (id_grupo!="101"){
+      if (confirm("&#191;Esta seguro que desea eliminar este Agrupador de cargos?"))
+        document.location.href="../servlet/ListGruposCargos?operacion=3"+
+                "&nom_grupo=nombre&id_grupo="+id_grupo;
+    }else
+        alert("Este Agrupador no puede ser eliminado.");  
+    
+  }else
+     alert("Seleccione el Agrupador que desea "+msg);   
+}
+
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+     if ((obj=MM_findObj(args[i]))!=null){ 
+        v=args[i+2];
+        
+        if (obj.style) { 
+           obj=obj.style; 
+           v=(v=='show')?'visible':(v='hide')?'hidden':v;
+        }
+       obj.visibility=v; 
+  }
+}
+//-->
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" onLoad="windowOnload()" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" action="../servlet/CargosColegas">
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644" height="358">
+    <TR> 
+      <TD width="614" height="4"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_01.jpg" WIDTH=614 HEIGHT=4></TD>
+      <TD COLSPAN=2 ROWSPAN=2> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_02.jpg" WIDTH=29 HEIGHT=22></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=4></TD>
+    </TR>
+    <TR> 
+      <TD valign="top" bgcolor="#FFA400" ROWSPAN=8 width="614"> 
+        <div id="LayerGrupos" style="position:absolute; width:599px; height:318px; z-index:5; overflow: auto; visibility: visible"> 
+          <table width="100%" border="0" cellspacing="4" cellpadding="1" height="314">
+            <tr> 
+              <td height="25" class="tituloTabChico" colspan="4"> 
+                <div align="center" class="textB">Agrupadores Disponibles</div>
+              </td>
+            </tr>
+            <tr valign="top"> 
+              <td colspan="4"> 
+                <div align="center"> 
+                  <select name="grupo" size="15" style="width=220" class="listas">
+                    <option value="-1" selected>Seleccione un Grupo</option>
+                    <list grupos as g> 
+                    <option value="${g.colegas}">${g.nombre}</option>
+                    </list> 
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr valign="top"> 
+              <td width="32%" class="azul10NLink"> 
+                <div align="right"><a href="javascript:;" onClick="ValidaEnvio();return false;" class="azul10NLink">[Definir 
+                  Colegas]</a></div>
+              </td>
+              <td width="25%" class="azul10NLink"> 
+                <div align="center"><a href="javascript:;" onClick="LimpiaNom();MM_showHideLayers('LayerGrupos','','hide','NuevoGrupo','','show')" class="azul10NLink">[Nuevo 
+                  Agrupador]</a></div>
+              </td>
+              <td width="17%" class="azul10NLink" > 
+                <div align="center"><a href="javascript:;" class="azul10NLink" onClick="EditaGrupo();return false;">[Mantener]</a> 
+                </div>
+              </td>
+              <td width="26%" class="azul10NLink"><a href="javascript:;" onClick="EliminaGrupo();return false;" class="azul10NLink">[Eliminar]</a>
+                <input type="hidden" name="operacion">
+                <input type="hidden" name="name_grupo">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="NuevoGrupo" style="position:absolute; width:399px; height:84px; z-index:6; top: 92px; left: 131px; visibility: hidden"> 
+          <table width="100%" border="0" cellspacing="3" cellpadding="1">
+            <tr valign="middle"> 
+              <td colspan="2" class="negro10N"> 
+                <div align="center" class="textB">Nuevo Agrupador de Cargo</div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="42%" class="azul10NLink"> 
+                <div align="right" class="textB">Nombre Agrupador</div>
+              </td>
+              <td width="58%" class="azul10NLink"> 
+                <input type="text" name="nom_grupo" size="30" maxlength="50">
+              </td>
+            </tr>
+            <tr> 
+              <td width="42%" class="azul10NLink"> 
+                <div align="right"><a href="javascript:;" onClick="EnviaForm('1');return false;" class="azul10NLink">[Guardar]</a></div>
+              </td>
+              <td width="58%" class="azul10NLink"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayerGrupos','','show','NuevoGrupo','','hide','MantenerGrupo','','hide')">[Cerrar]</a></td>
+            </tr>
+          </table>
+        </div>
+        <div id="MantenerGrupo" style="position:absolute; width:399px; height:84px; z-index:6; top: 92px; left: 131px; visibility: hidden"> 
+          <table width="100%" border="0" cellspacing="3" cellpadding="1">
+            <tr valign="middle"> 
+              <td colspan="2" class="negro10N"> 
+                <div align="center" class="textB">Mantener Agrupador de Cargo</div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="42%" class="azul10NLink"> 
+                <div align="right" class="textB">Nombre Agrupador</div>
+              </td>
+              <td width="58%" class="azul10NLink"> 
+                <input type="text" name="nom_mantener" size="30" maxlength="50">
+              </td>
+            </tr>
+            <tr> 
+              <td width="42%" class="azul10NLink"> 
+                <div align="right"><a href="javascript:;" onClick="EnviaForm('2');return false;" class="azul10NLink">[Mantener]</a></div>
+              </td>
+              <td width="58%" class="azul10NLink"><a href="javascript:;" class="azul10NLink" onClick="MM_showHideLayers('LayerGrupos','','show','NuevoGrupo','','hide','MantenerGrupo','','hide')">[Cerrar]</a></td>
+            </tr>
+          </table>
+        </div>
+      </TD>
+      <TD height="18" width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+    </TR>
+    <TR> 
+      <TD ROWSPAN=7 width="13"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_06.jpg" WIDTH=13 HEIGHT=336></TD>
+      <TD width="16" height="39"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_07.jpg" WIDTH=16 HEIGHT=39></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+    </TR>
+    <TR> 
+      <TD height="50" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_08.jpg" WIDTH=16 HEIGHT=50></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+    </TR>
+    <TR> 
+      <TD height="52" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_10.jpg" WIDTH=16 HEIGHT=52></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+    </TR>
+    <TR> 
+      <TD height="45" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_11.jpg" WIDTH=16 HEIGHT=45></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+    </TR>
+    <TR> 
+      <TD height="55" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_12.jpg" WIDTH=16 HEIGHT=55></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+    </TR>
+    <TR> 
+      <TD height="51" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_13.jpg" WIDTH=16 HEIGHT=51></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+    </TR>
+    <TR> 
+      <TD height="44" width="16"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_14.jpg" WIDTH=16 HEIGHT=44></TD>
+      <TD width="1"> <IMG SRC="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+    </TR>
+</TABLE>
+  </form>
+<script type="text/javascript">
+	parent.CerrarVentProcesando()
+</script>
+</BODY>
+</HTML>

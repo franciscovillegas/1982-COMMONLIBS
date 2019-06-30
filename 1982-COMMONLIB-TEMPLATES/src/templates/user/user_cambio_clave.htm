@@ -1,0 +1,187 @@
+<title>Cambiar Clave</title>
+
+
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/valida_rut.js" type="text/JavaScript">
+</script>
+
+<script language="JavaScript">
+
+var correoActual = '${usuario.emailValidado}';
+function getMail() {
+	   jPrompt('Ingrese/actualice su actual direcci&oacute;n de correo electr&oacute;nico', correoActual, 'Dirección e-mail', function(r) {
+			var correo = r; 
+			if (correo != null) {
+				correoActual = correo;
+				$("#email").val(correo);
+				sendMailToServer();
+			}
+		});
+}
+
+function sendMailToServer() {
+	  implementationWOUTFiles("form1", "html", function(data) {
+		  jAlert("correo actualizado correctamente.","Dirección e-mail");
+	  });
+}
+
+
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function enviar(f) {
+
+  <if (usuario.app_adm) || (usuario.app_adm_clave)>
+	if (!checkDigitoV(f.pRut.value, f.pDig.value)) {
+		alert('Rut no v&#225;lido...');
+		f.pRut.focus(); 
+	} 
+	else 
+	</if>
+	if (f.aClave.value == f.nClave.value){
+		alert("Clave nueva debe ser distinta a la anterior.");
+		f.aClave.focus();
+	}
+	else if (f.nClave.value == ""){
+		alert("Debe ingresar la nueva clave.");
+		f.nClave.focus();
+	}
+	else if (f.nClave.value.length < 8 ){
+		alert("Debe la nueva clave debe tener un largo mayor o igual a 8 caracteres.");
+		f.nClave.focus();
+	}
+	else if (f.nClave.value != f.rClave.value){
+		alert("La nueva clave no coincide con la confirmaci&#243;n.");
+		f.rClave.focus();
+	}
+	else {
+		f.submit();
+	}
+	
+	return false;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/new/main/main.jpg" style="background-repeat: no-repeat;" onLoad="MM_preloadImages('../servlet/Tool?images/new/botones/aceptar_f2.gif','../servlet/Tool?images/new/botones/cerrar_f2.gif')">
+
+
+<form name="form1" method="post" action="../servlet/CambiarClave" >
+
+<div id="Layer1" style="position:absolute; left:270px; top:80px; width:280px; height:280px; z-index:1 ; border-color: black; border-style: solid;border-width: 1px;">
+  <table width="100%"   cellpadding="0" cellspacing="0" class="TITULO_MODULOS" style="margin: auto; background-color: white;">
+    <tr>
+      <td height="45" align="center"  >Cambiar Clave</td>
+    </tr>
+    <tr>
+      <td height="45" align="center" class="detalleTablaChico">${msgClave}</td>
+    </tr>
+    <tr> 
+        <td height="170"   valign="top"> 
+        
+      			<table border="0" cellpadding="0" cellspacing="0" class="detalleTablaChico">
+
+		          	<if !cambiar> 
+						  <if (usuario.app_op_adm_mod_password)>
+							   <tr> 
+					            <td width="104" align="center" >Rut</td>
+					            <td width="153" align="left"> 
+					              <input name="pRut" class="inputText" size="10" maxlength="10" value=${pRut}>
+					- 
+					              <input name="pDig" class="inputText" size="1" maxlength="1" value=${pDig}>
+								 </td>
+					          </tr>
+						  </if>
+						  
+				          <tr> 
+				            <td width="104" align="center">Anterior</td>
+				            <td width="153" align="left"> 
+				              <input type="password" name="aClave" size="10" maxlength="20">            </td>
+				          </tr>
+				          <tr> 
+				            <td width="104" align="center">Nueva</td>
+				            <td width="153" align="left"> 
+				              <input type="password" name="nClave" size="10" maxlength="20">            </td>
+				          </tr>
+				          <tr> 
+				            <td width="104" align="center">Confirmar</td>
+				            <td width="153" align="left"> 
+				              <input type="password" name="rClave" size="10" maxlength="20">            </td>
+				          </tr>
+		
+		            <else> 
+				          <tr> 
+				            <td colspan="2" align="center" class="titulo">${passok}</td>
+				          </tr>
+		            </if> 
+		
+					
+					  	<if error_rut>
+					  		<tr>
+								<td colspan="2" align="center">Error. Rut ingresado no encontrado.</td>
+							</tr>
+						</if>
+						<if error_pass>
+							<tr>
+								<td colspan="2" align="center">Error. Clave Anterior ingresada erroneamente.</td>
+							</tr>
+						</if>
+
+	        	      	<tr> 
+				            <td colspan="2" align="center">
+				            	<table border="0">
+				            		<tr>
+				            			<td>
+							            	<if !cambiar>
+							            		<a href="javascript:;" onClick="return enviar(document.form1);" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('aceptar','','../servlet/Tool?images/new/botones/aceptar_f2.gif',1)"><img name="aceptar" border="0" src="../servlet/Tool?images/new/botones/aceptar.gif" width="91" height="21"></a>
+							            	</if> 
+				            			</td>
+				            			<td>
+				              				<a href="Tool?htm=html/user/main.htm" onMouseOut="MM_swapImgRestore()"  onMouseOver="MM_swapImage('cancelar','','../servlet/Tool?images/new/botones/cerrar_f2.gif',1)"><img name="cancelar" border="0" src="../servlet/Tool?images/new/botones/cerrar.gif" width="91" height="21"></a>
+				              			</td>
+				              		</tr>
+				              	</table>
+				            </td>
+				        </tr>
+          
+	      		</table>
+	     	 </td>
+	     </tr>
+	</table>
+</div>
+
+</form>
+</body>
+</html>

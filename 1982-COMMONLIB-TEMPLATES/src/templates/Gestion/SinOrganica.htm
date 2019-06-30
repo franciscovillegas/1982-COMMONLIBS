@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<TITLE>Usuarios no presentes en la Org&#225;nica</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<div id="Layer1" style="position:absolute; width:290px; height:330px; z-index:1; left: 5px; top: 5px; overflow: auto"> 
+<table width="100%">
+<tr><td colspan="3" align="center" class="tabla_beige">Usuarios no presentes en la Org&#225;nica</td></tr>
+<tr><td align="center" class="tabla_beige">Rut</td><td align="center" class="tabla_beige">Nombre</td><td align="center" class="tabla_beige">Cod.Unidad Actual</td></tr>
+<if lusuarios>
+<list lusuarios as u>
+<tr><td valign="top" class="texto_negro">${u.rut}</td><td valign="top" class="texto_negro">${u.nombre}</td><td valign="top" class="texto_negro">${u.unidad}</td></tr>
+</list>
+</if>
+</table>
+</div>
+</BODY>
+</HTML>

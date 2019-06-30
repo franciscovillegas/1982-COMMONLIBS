@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Informaci&oacute;n del Colaborador</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri May 31 20:35:17 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div id="LayerFoto" style="position:absolute; width:37px; height:46px; z-index:1; left: 23px; top: 49px; visibility: visible;">
+  <div align="center"><img src='${GetProp("server.portal.trabajadores.fotos")}/${foto}' width="62" height="81" border="1" style="border-color:#FFFFFF" onError="existeFoto(this)"></div>
+</div>
+<div id="LayerCabecera1" style="position:absolute; width:209px; height:195px; z-index:2; left: 129px; top: 107px; visibility: visible;"> 
+  <table width="100%" cellpadding="0" class="campo_texto">
+<tr valign="top">
+  <td width="29%" height="20"><strong>Nombre:</strong></td> 
+      <td width="71%" height="20">${nombre}</td>
+    </tr>
+    <tr valign="top">
+      <td height="20"><strong>Cargo:</strong></td> 
+      <td height="20">${cargo}</td>
+    </tr>
+    <tr valign="top">
+      <td height="20"><strong>Unidad:</strong></td> 
+      <td height="20">${unidad}</td>
+    </tr>
+    <tr valign="top">
+      <td height="20"><strong>Anexo:</strong></td> 
+      <td height="20"><list anexo as a>${a.anexo}</list></td>
+    </tr>
+    <tr valign="top">
+      <td height="20"><strong>E-Mail:</strong></td> 
+      <td height="20">${email}</td>
+    </tr>
+    <tr valign="top">
+      <td height="20"><strong>Empresa:</strong></td>
+      <td height="20">${nom_empresa}</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:0px; top:4px; width:400px; height:34px; z-index:3">
+  <div align="center"><span class="TITULO_MODULOS">Ficha Personal</span></div>
+</div>
+<div id="Layer2" style="position:absolute; left:128px; top:78px; width:241px; height:15px; z-index:4; overflow: hidden;" class="detalleTablaChico">${nom_empresa}</div>
+<img src="../servlet/Tool?images/new/ficha/ficha.gif" width="392" height="322">
+</body>
+</html>

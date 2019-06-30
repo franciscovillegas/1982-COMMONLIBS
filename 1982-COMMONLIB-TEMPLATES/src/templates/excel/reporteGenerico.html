@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Reporte</title>
+	<script type="text/javascript">
+		function documentReady() {
+					
+		}
+	</script>
+</head>
+<body>
+	Tiempo de generación: ${tiempo} <br/>
+	Fecha: ${hora}<br/>
+	Archivo generado por: ${usuario.nombre}<br/>
+	
+	<table style="width: 100%;">
+		<tr>
+			<list cabecera as c>
+				<td>
+					${c.valor}
+				</td>
+			</list>
+		</tr>
+		<list filas as f>
+			<tr <if rowHeight != "">height="${rowHeight}px"  style="height:${rowHeight}px"</if>>  
+				<list f.columnas as c>
+					<td>
+						${c.valor}
+					</td>
+				</list>
+			</tr>
+		</list>
+		
+	</table>
+</body>
+</html>
+

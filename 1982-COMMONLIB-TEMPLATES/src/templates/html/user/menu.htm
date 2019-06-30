@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+
+<script type="text/javascript"	src="../servlet/Tool?scripts/jquery-1.8.3.min.js" ></script>
+<script type="text/javascript"  src="../servlet/Tool?scripts/jquery.jqDock.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="../servlet/Tool?style/dock.css">
+
+<script type="text/JavaScript" >
+<!--
+
+	<list lista as l>
+		//functoin KEY: ${l.key}
+		${l.value}
+	</list>
+
+	
+	$(function(){
+		var jqDockOpts = {align: 'left', duration: 200, labels: 'tc', size: 48, distance: 85};
+		$('#jqDock').jqDock(jqDockOpts);
+	});
+	
+	function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+	  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+	    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+	  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+	}
+	MM_reloadPage(true);
+//-->
+</script>
+
+
+<title>menu4</title>
+</head>
+<body leftmargin="0" topmargin="0" background="../servlet/Tool?images/new/menu/fondo.jpg" style="background-repeat:no-repeat; margin-top:50px;">
+   <!-- BEGIN DOCK 2 ============================================================ -->
+	<div id="dockContainer">
+		<ul id="jqDock">
+			<li><a class="dockItem" href="javascript:;" onclick="showCompania();">				<img src="../servlet/Tool?images/new/menu2014/home-sm.png" alt="La Compañ&iacute;a" title="La Compañia" /></a></li>
+			<li><a class="dockItem" href="javascript:;" onclick="showFichaPersonal();">			<img src="../servlet/Tool?images/new/menu2014/ficha-sm.png" alt="Ficha Personal" title="Ficha Personal" /></a></li>
+            <li><a class="dockItem" href="javascript:;" onclick="showDocumentos();">			<img src="../servlet/Tool?images/new/menu2014/carpeta-sm.png" alt="Documentos" title="Documentos" /></a></li>
+			<li><a class="dockItem" href="javascript:;" onclick="showPublicaciones();">			<img src="../servlet/Tool?images/new/menu2014/publicaciones-sm.png" alt="Publicaciones" title="Publicaciones" /></a></li>
+            <li><a class="dockItem" href="javascript:;" onclick="showEfemerides();">			<img src="../servlet/Tool?images/new/menu2014/calendar-sm.png" alt="Efemérides" title="Efemérides" /></a></li>
+            
+            <if (usuario.app_btn_gestion) ||  (usuario.app_btn_administracion)>
+	            <li><a class="dockItem" href="javascript:;" onclick="showCarpetaElectronica();">	<img src="../servlet/Tool?images/new/menu2014/portfolio-sm.png" alt="Carpeta Electronica" title="Carpeta Electrónica" /></a></li>
+	            <li><a class="dockItem" href="javascript:;" onclick="showInfGestion();">			<img src="../servlet/Tool?images/new/menu2014/informes-sm.png" alt="Informes de Gestión" title="Informes de Gestión" /></a></li>
+			</if>
+			
+			<!-- 
+			<li><a class="dockItem" href="#"><img src="../servlet/Tool?images/new/menu2014/link-sm.png" alt="links" title="Links" /></a></li>
+			<li><a class="dockItem" href="#"><img src="../servlet/Tool?images/new/menu2014/rss-sm.png" alt="rss" title="RSS" /></a></li>
+			<li><a class="dockItem" href="#"><img src="../servlet/Tool?images/new/menu2014/rss2-sm.png" alt="rss" title="RSS" /></a></li>
+			 -->
+		</ul>
+	</div><!-- end div #dockContainer -->
+	<!-- END DOCK 2 ============================================================ -->
+	
+
+
+	
+
+
+ 
+ 
+</body>
+</html>

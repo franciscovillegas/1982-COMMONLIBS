@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">	
+		<title>.:: Administrador de Plantillas - Saludos ::.</title>
+
+		<link href="../servlet/Tool?omap=style/saludos/jquery.switchButton.css" rel="stylesheet" type="text/css">
+	
+  	
+	<script src="../servlet/Tool?omap=scripts/saludos/jquery.min.js"></script>
+    <script src="../servlet/Tool?omap=scripts/saludos/jquery-ui.min.js"></script>
+    <script src="../servlet/Tool?omap=scripts/saludos/jquery.switchButton.js"></script>
+    
+   	<link rel="stylesheet" href="../servlet/Tool?style/jquery-ui/jquery-ui.css">
+	<script src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			selectProgramacion();
+		});
+		
+		function execPrueba(idProg) {
+			 $.ajax({
+			        url: '../servlet/EjeCore',  //Server script to process data
+			        type: 'POST',
+			        dataType: "json",
+			        data: {"claseweb" 	 	: "portal.com.eje.serhumano.saludos.admin.Saludos",
+			        	   "accion"	  	 	: "test",
+			        	   "thing" 			: "mail",
+			        	   "idprogramacion" : idProg}
+			 		,
+			        success: function(data) {
+			        
+			        },
+			        complete: function() {
+			        	alert("Correo Enviado.");
+			        }});
+		}
+		
+		function selectProgramacion() {
+			 console.log("Selecting Programacion");
+		
+			 $.ajax({
+			        url: '../servlet/EjeCore',  //Server script to process data
+			        type: 'POST',
+			        dataType: "json",
+			        data: {"claseweb" 	 	: "portal.com.eje.serhumano.saludos.admin.Saludos",
+			        	   "accion"	  	 	: "select",
+			        	   "thing" 			: "programaciones" }
+			 		,
+			        success: function(data) {
+			        	var cab = "<tr>";
+			        	cab += "<td>ID</td>";
+			        	cab += "<td>HORA</td>";
+						cab += "<td>¿SOLO UNA VEZ?</td>";
+						cab += "<td>ESTADO</td>";
+						cab += "<td>DESTINATARIOS</td>";
+						cab += "<td></td>";
+						cab += "</tr>";
+						
+						$("#tableContainer").html(cab);
+						
+						$.each(data, function(k,v) {
+							var d = "";
+							if( v.destinatarios == "1" ) {
+								d = "Para : Victoria y Nicole";
+							}
+							else if( v.destinatarios == "2" ) {
+								d = "Para : Todo el personal";	
+							}
+							else if( v.destinatarios == "3" ) {
+								d = "Para : Todas las nuevas contrataciones";	
+							}
+							else if( v.destinatarios == "4" ) {
+								d = "Para : Todos los cumpleañeros";	
+							}
+
+							var str = "<tr>";
+							str += "<td>"+v.id_programacion+"</td>";
+							str += "<td>"+v.hora+":"+v.minuto+"</td>";
+							str += "<td><div class='chkStyleDip' id='chkActivar'><input disabled='disabled' type='checkbox' value='"+v.solounavez+"' checked id='estado'></div></td>";
+							str += "<td><div class='chkStyleDip' id='chkActivar'><input disabled='disabled' type='checkbox' value='"+v.estado+"' checked id='estado'></div></td>";
+							str += "<td>"+d+"</td>";
+							str += "<td><a href='javascript:;execPrueba("+v.id_programacion+");'>Prueba</a></td>";
+							str += "</tr>";
+							$("#tableContainer").append(str);
+						});
+						
+						$('.chkStyleDip input').switchButton({
+					    	on_label: 'YES',
+					        off_label: 'NO',
+					        checked: true,
+					        width: 70,
+					        height: 15,
+					        button_width: 40
+						});
+				    },
+				    complete : function() {
+				    
+				    }
+			    });			 
+		}
+		
+		
+	</script>
+	</head>
+	<body>
+		<input type="button" onclick="selectProgramacion()"  value="refrescar"/>
+		<table id="tableContainer" border="1" style="width: 100%;">
+		
+		</table>
+	</body>
+	
+</html>

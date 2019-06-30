@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Registro de Observaciones</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #CCCCCC;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 10px;
+}
+.Estilo1 {color: #000000}
+#Layer9 {
+	position:absolute;
+	left:13px;
+	top:10px;
+	width:321px;
+	height:15px;
+	z-index:5;
+}
+#Layer11 {
+	position:absolute;
+	left:13px;
+	top:113px;
+	width:320px;
+	height:17px;
+	z-index:6;
+}
+#Layer13 {
+	position:absolute;
+	left:392px;
+	top:10px;
+	width:371px;
+	height:16px;
+	z-index:7;
+}
+#Layer14 {
+	position:absolute;
+	left:14px;
+	top:12px;
+	width:344px;
+	height:16px;
+	z-index:8;
+}
+#Layer15 {
+	position:absolute;
+	left:390px;
+	top:221px;
+	width:378px;
+	height:17px;
+	z-index:9;
+}
+#Layer16 {
+	position:absolute;
+	left:337px;
+	top:169px;
+	width:30px;
+	height:31px;
+	z-index:10;
+}
+#Layer17 {
+	position:absolute;
+	left:708px;
+	top:168px;
+	width:30px;
+	height:33px;
+	z-index:11;
+}
+#Layer17a {
+	position:absolute;
+	left:738px;
+	top:168px;
+	width:30px;
+	height:33px;
+	z-index:11;
+}
+#Layer18 {
+	position:absolute;
+	left:318px;
+	top:360px;
+	width:29px;
+	height:29px;
+	z-index:12;
+}
+#Layer18a {
+	position:absolute;
+	left:348px;
+	top:360px;
+	width:29px;
+	height:29px;
+	z-index:12;
+}
+#Layer19 {
+	position:absolute;
+	left:737px;
+	top:365px;
+	width:31px;
+	height:30px;
+	z-index:13;
+}
+-->
+</style></head>
+<script language="JavaScript" type="text/JavaScript">
+function fnInicio(){
+   <if txt_Msg !="0">
+   alert('${txt_Msg}'); 
+   window.opener.fnRefresh();    
+   </if>
+}
+function fnEnviar(opcion){
+	if(opcion == "GR_observaciones"){
+	    form3.action="../servlet/RegEventObservacion?txt_Rut=${txt_Rut}&txt_RutEv=${txt_RutEv}&txt_Proceso=${txt_Proceso}&txt_Perfil=${txt_Perfil}&Accion=2&txtAccion=GR";
+		form3.submit();
+	}
+}
+function fnReload(){
+	window.reload();
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="fnInicio()" background="../servlet/Tool?images/images_ggd/ggd/conf_perfiles/fondo_competencias.jpg">
+<div id="Layer14">Registro de Observaciones</div>
+<div id="Layer18"><a href="#" onClick="fnEnviar('GR_observaciones');return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" alt="Grabar Observacion" title="Grabar Observacion" name="cfg_perfiles_r12_c162" width="30" height="30" border="0" id="cfg_perfiles_r12_c162"></a></div>
+<div id="Layer18a"><a href="#" onClick="window.close();return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" alt="Cerrar" title="Cerrar" name="cfg_perfiles_r12_c162" width="30" height="30" border="0" id="cfg_perfiles_r12_c162"></a></div>
+
+<form name="form3"  method="post">
+<input name="id_perfil" type="hidden"  id="id_perfil" value="${id_perfil}">
+<input name="id_proceso" type="hidden"  id="id_proceso" value="${id_proceso}">
+<input name="txtAccion" type="hidden"  id="txtAccion" value="GR">
+<span id="Layer8" style="position:absolute; width:374px; height:310px; z-index:5; overflow: auto; left: 10px; top: 30px;"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+<tr><td class="txt_gris" colspan="3"><br><br></td></tr>
+<tr>
+<td class="txt_gris">Competencias</td>
+<td class="txt_gris">:</td>
+<td class="txt_gris">
+  <select name="competencia" class="campo_texto" style="width:250px">
+  <if getRegistroEventosCompetencias><list getRegistroEventosCompetencias as a>
+  <option value="${a.id_competencia}">${a.competencia}</option>
+  </list></if>
+  </select>
+</td>
+</tr>
+<tr><td colspan="3" class="txt_gris">Observacion</td></tr>
+<tr><td align="center" colspan="3" class="txt_gris"><textarea name="observacion" rows="10" cols="40"></textarea></td></tr>
+<tr><td align="center" colspan="3" class="txt_gris">
+<input type="radio" name="tipo" value="S" checked> Observacion Positiva 
+<input type="radio" name="tipo" value="N">Observacion Negativa
+</td></tr>
+</table>
+</span>
+</form>
+</body>
+</html>

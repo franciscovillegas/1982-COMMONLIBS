@@ -1,0 +1,517 @@
+<html>
+<head>
+<title>Informe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/imprimir.js">
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function botones_estado(estado) {
+	<list paginas as pag>
+	LayerBotonera${pag.p_act}.style.visibility = estado;
+	</list>
+}
+
+function Imprimir(){
+	botones_estado("hidden");
+	//window.print();
+	printPage();
+	botones_estado("visible");
+}
+// -->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+</head>
+<script language="JavaScript">
+window.scroll(0,0);
+</script>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<script language="JavaScript">
+opener.parent.AbrirVentProcesando();
+</script>
+<div align="center"> <list paginas as pag> 
+  <table width="670" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr valign="top"> 
+      <td width="250" valign="top" rowspan="2">&nbsp; </td>
+      <td valign="top" rowspan="2" > 
+        <div align="center"><a name="pag_${pag.p_act}"><img src="Tool?htm=Gestion/Informes/logos/logo_banco.jpg" width="177" height="73" border="0"></a></div>
+      </td>
+      <td width="250" valign="top" height="66" align="right"> 
+        <div id="LayerBotonera${pag.p_act}" style=" visibility:hidden; z-index:1; border: 1px none #000000; top: auto" > 
+        <table border="0" cellspacing="0" cellpadding="0" width="248" bgcolor="#CCCCCC" height="36">
+          <tr valign="middle">
+		  <compress> 
+            <td width="50"> <a href="javascript:;" onClick="Imprimir()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_imp${pag.p_act}','','../servlet/Tool?images/Gestion/botones/botones_informe/imprimir_up.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/botones_informe/imprimir_down.jpg" width="49" height="36" border="0" name="img_imp${pag.p_act}"></a></td>
+            <td width="49"> <if (pag.p_act) != "1"><a href="#pag_1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ini${pag.p_act}','','../servlet/Tool?images/Gestion/botones/botones_informe/inicio_up.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></a>
+			  <else><img src="../servlet/Tool?images/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></if></td>
+            <td width="50"> <if (pag.p_act) != "1"><a href="#pag_${pag.p_ant}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ant${pag.p_act}','','../servlet/Tool?images/Gestion/botones/botones_informe/anterior_up.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="../servlet/Tool?images/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></if></td>
+            <td width="50"> <if (pag.p_act) != (p_tot)><a href="#pag_${pag.p_sig}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_sig${pag.p_act}','','../servlet/Tool?images/Gestion/botones/botones_informe/siguiente_up.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="../servlet/Tool?images/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></if></td>
+            <td width="49"> <if (pag.p_act) != (p_tot)><a href="#pag_${p_tot}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ult${pag.p_act}','','../servlet/Tool?images/Gestion/botones/botones_informe/ultimo_up.jpg',1)"><img src="../servlet/Tool?images/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></a>
+			  <else><img src="../servlet/Tool?images/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></if></td>
+		  </compress>  
+          </tr>
+        </table>
+      </div>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td width="250" valign="top"> 
+        <div align="right" class="negro12N"> 
+          <!--P&aacute;g. ${pag.p_act} de ${p_tot}-->
+        </div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" height="20"> 
+        <div align="center"><u><span class="negro12B">Informe Perfil Laboral</span><br>
+          </u><span class="negro12N">(${FFecha("dd/MM/yyyy")})</span></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+      <td align="right"> </td>
+    </tr>
+    <tr> 
+      <td height="1" width="181"></td>
+      <td width="174"></td>
+      <td width="133"></td>
+    </tr>
+  </table>
+  <table width="670" border="0" cellpadding="0" cellspacing="0">
+    <tr align="center" valign="middle"> 
+      <td height="463" colspan="2"> <if !(pag.datos)> 
+        <div align="center"><i class="negro12N"> Informaci&oacute;n no Disponible...</i></div>
+        </if> <list pag.datos as d> 
+        <!-- fin de encabezado-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td colspan="2" class="negro12B" height="25" valign="top"><u>IDENTIFICACION</u></td>
+            <td rowspan="11" width="150" align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${d.id_foto}" width="120" height="140" onError="existeFoto(this)" border="0"></td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">NOMBRE</td>
+            <td class="negro12N" align="left" valign="top">: ${d.nombre}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">RUT</td>
+            <td class="negro12N" align="left" valign="top">: ${FNum(d.rut)}-${d.digito_ver}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">FECHA NACIMIENTO</td>
+            <td class="negro12N" align="left" valign="top">: ${FFecha("dd/MM/yyyy", 
+              d.fecha_nacim)}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">EDAD</td>
+            <td class="negro12N" align="left" valign="top">: ${d.Xedad} a&ntilde;os</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">ESTADO 
+              CIVIL</td>
+            <td class="negro12N" align="left" valign="top">: ${d.estado_civil}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">DIRECCION</td>
+            <td class="negro12N" align="left" valign="top">: ${d.domicilio}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">COMUNA</td>
+            <td class="negro12N" align="left" valign="top">: ${d.comuna}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">TELEFONO</td>
+            <td class="negro12N" align="left" valign="top">: ${d.telefono}</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">SEXO</td>
+            <td class="negro12N" align="left" valign="top">: <if (d.sexo) == "M">Masculino<else>Femenino</if></td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" align="left" valign="top">NACIONALIDAD</td>
+            <td class="negro12N" align="left" valign="top">: ${d.nacionalidad}</td>
+          </tr>
+        </table>
+        <br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="negro12B" height="25" valign="top"><u>SITUACION DE RENTAS</u></td>
+            <td colspan="3" class="negro12B" height="25" valign="top">&nbsp;</td>
+            <td colspan="3" class="negro12B" height="25" valign="top">&nbsp;</td>
+            <td class="negro12B" height="25" valign="top">&nbsp;</td>
+            <td colspan="3" class="negro12B" height="25" valign="top">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">PRE</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${d.pre}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12N" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">SUELDO BASE</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.sueldo)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">BRUTO REGULAR</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bruto_regular)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">NETO REGULAR</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.neto_regular)}</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">BONO GESTION</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bono_gestion)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">ZONA</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bono_zona)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">BRUTO ZONA</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bruto_zona)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">NETO ZONA</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.neto_zona)}</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">TRASLADO</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.traslado)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">CAJA</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.asig_caja)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">BRUTO PROMEDIO</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bruto_promedio)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">NETO PROMEDIO</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.neto_promedio)}</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">RENTA VARIABLE</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.rta_variable)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">BONO ANUAL</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bono_anual)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">BRUTO TOTAL</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bruto_total)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">NETO TOTAL</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.neto_total)}</td>
+          </tr>
+          <tr align="left" valign="top"> 
+            <td width="145" class="negro12B">ANTIG&Uuml;EDAD</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${FNum( d.bono_antig)}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B">NIVEL REMUNERACION</td>
+            <td class="negro12B" width="2">:</td>
+            <td class="negro10N" width="80" align="right"> ${d.nivel}</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80" align="right">&nbsp;</td>
+            <td class="negro12N">&nbsp;</td>
+            <td class="negro12B" width="110">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+            <td class="negro10N" width="80">&nbsp;</td>
+          </tr>
+        </table>
+        <br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="negro12B" height="25" valign="top" width="145"><u>SITUACION 
+              ACTUAL</u></td>
+            <td colspan="2" class="negro12B" height="25" valign="top">&nbsp;</td>
+            <td colspan="2" class="negro12B" height="25" valign="top">&nbsp;</td>
+            <td width="2" class="negro12B" height="25" valign="top">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">SOCIEDAD</td>
+            <td class="negro10N" valign="top" align="left">: ${d.empresa}</td>
+            <td class="negro10N" colspan="4">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">FECHA INGRESO</td>
+            <td class="negro10N" valign="top" align="left">: ${FFecha( "dd/MM/yyyy", 
+              d.fecha_ingreso )}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70">&nbsp;</td>
+            <td class="negro12B" width="3">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">INGRESO 
+              CORPORACION</td>
+            <td class="negro10N" valign="top" align="left">: ${FFecha( "dd/MM/yyyy", 
+              d.fecha_corporacion )}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70">&nbsp;</td>
+            <td class="negro12B" width="3">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">LUGAR DE 
+              CONTRATO</td>
+            <td class="negro10N" valign="top" align="left">:</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70">&nbsp;</td>
+            <td class="negro12B" width="3">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">CENTRO 
+              DE COSTO</td>
+            <td class="negro10N" valign="top" align="left">: ${d.unidad}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70" align="right" valign="top">DESDE</td>
+            <td class="negro10N" width="90" align="right" valign="top">: ${FFecha( 
+              "dd/MM/yyyy", d.ingcco)}</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">CENTRO 
+              TRABAJO</td>
+            <td class="negro10N" valign="top" align="left">: ${d.centro_trabajo}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70" align="right" valign="top">DESDE</td>
+            <td class="negro10N" width="90" align="right" valign="top">: ${FFecha( 
+              "dd/MM/yyyy", d.fec_centro_trabajo)}</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">CARGO</td>
+            <td class="negro10N" valign="top" align="left"> : ${d.cargo}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70" align="right" valign="top">DESDE</td>
+            <td class="negro10N" width="90" align="right" valign="top">: ${FFecha( 
+              "dd/MM/yyyy", d.fecha_cargo)}</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">DEPENDENCIA</td>
+            <td class="negro10N" valign="top" align="left">: ${d.area}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70" align="right" valign="top">&nbsp;</td>
+            <td class="negro10N" width="90" align="right" valign="top">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">PODER DE 
+              FIRMA</td>
+            <td class="negro10N" valign="top" align="left">: ${d.tipo_poder}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70" align="right" valign="top">DESDE</td>
+            <td class="negro10N" width="90" align="right" valign="top">: ${FFecha( 
+              "dd/MM/yyyy", d.fec_otorga_poder)}</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="145" class="negro12B" valign="top" align="left">CONVENIO</td>
+            <td class="negro10N" valign="top" align="left">: ${d.conv_laboral}</td>
+            <td class="negro12N" width="30">&nbsp;</td>
+            <td class="negro12B" width="70">&nbsp;</td>
+            <td class="negro10N" width="90">&nbsp;</td>
+            <td class="negro12B" width="2">&nbsp;</td>
+          </tr>
+        </table>
+        <p class="pageEnd" align="center">&nbsp;</p>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_IncRentas.htm", 
+              "SELECT fecha, motivo, neto_antes, neto_despues, por_incremento 
+              FROM airh_df_historia_sueldos WHERE (rut = " + d.rut + ") ORDER 
+              BY fecha desc")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_AntAca.htm", 
+              "SELECT ti.descrip AS titulo, inst.descrip AS instituto, fp.estado 
+              FROM eje_ges_airh_df_formacion_profesional fp LEFT OUTER JOIN eje_ges_airh_df_institutos 
+              inst ON fp.instituto = inst.instituto LEFT OUTER JOIN eje_ges_airh_df_titulos 
+              ti ON fp.titulo = ti.titulo WHERE (fp.rut = " + d.rut + ") ORDER 
+              BY fp.fecha desc")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_SitSind.htm", 
+              "SELECT eje_ges_airh_df_sindicatos.descrip AS sindicato,t.fec_ing_sindicato, 
+              t.fec_ret_sindicato FROM eje_ges_airh_df_trabajadores t INNER JOIN eje_ges_airh_df_sindicatos 
+              ON t.sindicato = airh_df_sindicatos.sindicato WHERE t.rut = " + 
+              d.rut)} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_AntGruFam.htm", 
+              "SELECT nombre, sexo, RTRIM(parentesco) AS parentesco, es_carga, 
+              fecha_nacim, DATEDIFF(month, fecha_nacim, GETDATE()) edad FROM eje_ges_airh_df_grupo_familiar 
+              WHERE (rut = "+ d.rut +")")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_Eval.htm", 
+              "SELECT tipo_eval AS tipo_e, periodo AS peri, nota, eval_final AS 
+              final, escala, evaluador FROM vista_evaluaciones WHERE (rut = "+ 
+              d.rut +") ORDER BY periodo DESC")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_Hoja.htm","SELECT 
+              hv.rut, hv.empresa, hv.rut_resp, hv.tipo,hv.fecha,hv.comment, hv.titulo, 
+              trab1.nombre,trab2.nombre AS resp FROM eje_ges_airh_df_hoja_vida_trab hv 
+              INNER JOIN eje_ges_airh_df_trabajadores trab1 ON hv.rut = trab1.rut AND 
+              hv.empresa = trab1.empresa INNER JOIN eje_ges_airh_df_trabajadores trab2 
+              ON hv.rut_resp = trab2.rut WHERE (hv.rut = "+ d.rut +") 
+              order by hv.fecha desc")} </td>
+          </tr>
+        </table>
+        <p class="pageEnd" align="center">&nbsp;</p>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_PartCursos.htm", 
+              "SELECT curso, fecha_inicio, fecha_termino, resul_texto AS condicion, 
+              nota_aprob, organismo FROM eje_ges_airh_df_capacitaciones WHERE (rut = "+d.rut+") 
+              order by fecha_inicio desc")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_ExpOpe.htm", 
+              "SELECT fecha, cargo_dest AS cargo, unidad_dest AS unidad FROM view_movimiento_historico 
+              WHERE (rut = "+d.rut+") order by fecha desc")} </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>${SubQuery("Tool?htm=Datafolder/Informes/u/informe_013_ExpLaboral.htm", 
+              "SELECT empresa, cargo, desde, hasta FROM view_experiencia_laboral 
+              WHERE (rut = "+d.rut+") order by desde desc")} </td>
+          </tr>
+        </table>
+        </list> </td>
+    </tr>
+    <tr> 
+      <td height="20" valign="top" width="561">&nbsp; </td>
+      <td width="139" valign="top"> 
+        <div align="right"></div>
+      </td>
+    </tr>
+  </table>
+  
+  <if (pag.p_act) != (p_tot)> 
+  <p class="pageEnd" align="center">&nbsp;</p>
+  </if> </list> </div>
+<script language="JavaScript">
+botones_estado("visible");
+opener.parent.CerrarVentProcesando();
+</script>
+
+</body>
+</html>

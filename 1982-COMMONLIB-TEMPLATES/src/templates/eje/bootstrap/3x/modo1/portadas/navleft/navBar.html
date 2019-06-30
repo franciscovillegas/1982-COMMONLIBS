@@ -1,0 +1,210 @@
+<script type="text/javascript" src="../../../Tool?templates/eje/bootstrap/3x/generic/scripts/onClickActivate.js" ></script>
+<script type="text/javascript" src="../../../Tool?templates/eje/bootstrap/3x/generic/scripts/windowOpener.js" ></script>
+
+<style type="text/css">
+ body {
+ 	margin: 0;
+ 	border: 0;
+ 	margin: 0;
+ }
+ 
+#wrapper {
+  padding-left: 300px;
+  transition: all 0.4s ease 0s;
+  
+}
+#wrapper #sidebar-wrapper .fa{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#sidebar-wrapper {
+  margin-left: -300px;
+  left: 300px;
+  width: 300px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#wrapper.active {
+  padding-left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 0;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#wrapper h3 {
+	padding-left: 15px;
+}
+
+#wrapper .btn {
+ 	padding: 0px;
+ 	text-align: left;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 300px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a span:before {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 20px;
+  line-height: 18px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li.active {
+  text-decoration: none;
+  background: #F3F3F3;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  line-height: 60px;
+  font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+ 
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  background: none;
+}
+
+
+
+.content-header {
+
+}
+
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+#menu-toggle {
+    text-decoration: none;
+}
+
+.btn-menu {
+ 
+} 
+
+.inset {
+   
+}
+
+@media (max-width:767px) {
+
+#wrapper {
+  padding-left: 0;
+}
+
+#sidebar-wrapper {
+  left: 0;
+}
+
+#wrapper.active {
+  position: relative;
+  left: 300px;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 300px;
+  width: 300px;
+  transition: all 0.4s ease 0s;
+}
+
+#menu-toggle {
+  display: inline-block;
+}
+
+.inset {
+  padding: 0px;
+}
+
+</style>
+
+
+<style type="text/css">
+ 
+#wrapper .container-fluid-local {
+  padding-right: 10px;  
+  padding-left: 10px; 
+  
+  
+}
+.container-fluid-local .col-sm-12 {
+  padding: 0;
+}
+.navbar {
+  margin-bottom: 0;
+}
+
+ .container-fluid-local {
+    height: 100vh;
+}
+
+.container-fluid-local .main-content {
+  background: #efefef;
+  height:calc(100vh - 1px);
+}
+
+#wrapper #sidebar-wrapper li {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #F3F3F3;
+}
+
+</style>
+
+
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <nav id="spy">
+                <ul class="sidebar-nav nav">
+                    ${GetHtml("eje/bootstrap/3x/generic/navigators/navWithoutDropDown.html" )}
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Page content -->
+        <div id="contenedor-principal" class="container-fluid-local">
+        	 
+			  </div>
+       
+  </div>
+ 

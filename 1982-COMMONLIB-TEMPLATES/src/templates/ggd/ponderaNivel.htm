@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ponderacion de Niveles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:15px;
+	top:11px;
+	width:414px;
+	height:14px;
+	z-index:3;
+}
+#Layer9 {
+	position:absolute;
+	left:15px;
+	top:80px;
+	width:416px;
+	z-index:4;
+}
+#Layer10 {
+	position:absolute;
+	left:12px;
+	top:147px;
+	width:420px;
+	z-index:5;
+}
+-->
+</style>
+</head>
+<script>
+function fnTraerCombo(opcion){
+	if(opcion.name == "procesos"){
+		form.action="../servlet/ponderadores?id_proceso="+opcion.value;
+		form.submit();
+	}
+}
+function fnEnviar(opcion){
+	if(opcion.name == "perfil"){
+		form.action="../servlet/ponderadores?id_perfil="+opcion.value;
+		form.submit();
+	}
+	if(opcion == "guardar"){
+		form.action="../servlet/ponderadores?id_perfil=${id_perfil}&id_competencia=${id_competencia}&txtAccion=GR";
+		form.submit();
+	}
+}
+function nivelPondComp(nivel)
+{
+    document.form.nivelPonderacionCompetencia.value=nivel;
+}
+function fnEnviarConducta(opcion){
+	var url = "../servlet/ponderadores?pHtm=ggd/ponderaConducta.htm&id_proceso=${proceso}&id_perfil=${id_perfil}&id_competencia=${id_competencia}&nivel="+opcion;
+	//alert(url);
+	window.open(url,'Crear','status=yes,width=350,height=415');
+}
+function fnTraerDatos(opcion){
+		form.action="../servlet/ponderadores?id_perfil=${id_perfil}&id_competencia="+opcion;
+		form.submit();
+}
+function fnTraerDatos2(opcion,nivel){
+	nivelPondComp(nivel);
+	form.action="../servlet/ponderadores?id_perfil=${id_perfil}&id_competencia="+opcion+"&nivel="+nivel;
+	form.submit();
+}
+function fnInicio(){
+<if proceso>
+<if procesos>
+		<list procesos as p>
+			<if proceso == p.id_proceso>
+					document.form.procesos.value='${p.id_proceso}';
+			</if>
+        </list>
+</if>
+</if>
+<if id_perfil>
+<if perfiles_proceso>
+	<list perfiles_proceso as p>
+			<if id_perfil == p.id_perfil>
+					document.form.perfil.value='${p.id_perfil}';
+			</if>
+        </list>
+</if>
+</if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body  background="../servlet/Tool?images/ggd/competencias/conductas.jpg"  style="background-repeat:no-repeat " onLoad="fnInicio()">
+  <div class="txt_gris_bold" id="Layer1">Proceso</div>
+  <div class="txt_gris_bold" id="Layer9">Perfiles</div>
+  <div class="txt_gris_bold" id="Layer10">Competencias</div>
+  <form name="form" method="post">
+    <div id="Layer2" style="position:absolute; width:416px; height:24px; z-index:2; left: 14px; top: 36px;"> 
+      <select name="procesos" class="campo_texto" onChange="fnTraerCombo(this)">
+	<option value="0">Seleccione Proceso</option>
+     <if procesos><list procesos as p> 
+            <option value="${p.id_proceso}">${p.proceso}</option>
+      </list></if> </select>			
+	</div>
+	
+    <span id="Layer4" style="position:absolute; width:423px; height:380px; z-index:2; left: 11px; top: 168px; overflow: auto;"> 
+    <table width="100%" border="0" cellpadding="0" cellspacing="1">
+        <if competencias_perfil>
+			<list competencias_perfil as p>
+			<tr> 
+        	<td class="fondo_tablaGris"><a href="#" class="Estilo1" onClick="fnTraerDatos2(${p.id_competencia},${p.nivel_esperado});return false;">${p.competencia}</a></td>
+            </tr>
+			</list>
+		</if>
+    </table>
+	</span>
+	
+      <div class="txt_gris_bold" id="Layer6" style="position:absolute; width:531px; z-index:2; left: 457px; top: 12px; visibility: visible;"> 
+    <if dataCompetencia>Competencia : <strong>${dataCompetencia.competencia}</strong></if><if dataCompetencia></if> </div>
+      <span id="Layer7" style="position:absolute; width:535px; height:514px; z-index:3; left: 454px; top: 32px; overflow: auto;"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+          <if niveles_ponderadores>
+          <tr>
+            <td width="71" align="center" class="fondo_tablaAmarillo"><span class="Estilo1">Nivel</span></td>
+			<td width="136" align="center" class="fondo_tablaAmarillo">Peso</td>
+			<td width="109" align="center" class="fondo_tablaAmarillo">Nro.Conductas</td>
+			<td width="109" align="center" class="fondo_tablaAmarillo">Ver Conductas</td>
+		  </tr>
+		  <list niveles_ponderadores as n> 
+          <tr>
+            <td width="71" align="center"><span class="Estilo1">${n.nivel}</span></td>
+			<td width="136" align="center"><input class="campo_texto" name="pond_niveles" type="text" size="3" maxlength="3" value="${n.ponderador}"> %</td>
+			<td width="109" align="center">${nro_conductas.numero}</td>
+			<td width="109" align="center"><a href="#" class="Estilo1" onClick="fnEnviarConducta(${nivel});return false;">Conductas</a></td>
+		  </tr>
+		  </list>
+		</if>
+	  </table>
+    </span>
+    <input name="id_proceso" type="hidden" value="${proceso}">
+    <div id="Layer3" style="position:absolute; width:414px; height:21px; z-index:2; left: 15px; top: 104px;"> 
+      <select name="perfil" class="campo_texto" onChange="fnEnviar(this)">
+            <option value="0">Seleccione Perfil</option>
+            <if perfiles_proceso><list perfiles_proceso as p> 
+            <option value="${p.id_perfil}">${p.perfil}</option>
+    </list></if> </select></div>
+<input type="hidden" name="nivelPonderacionCompetencia" value="${nivelPonderacionCompetencia}">    
+  </form>
+<div id="Layer8" style="position:absolute; left:822px; top:555px; width:168px; height:19px; z-index:2;">
+  <table align="right">
+    <tr>
+      <td>&nbsp;</td>
+      <td width="21%"><a href="#" onClick="fnEnviar('guardar');return false"><img name="pondera_nivel_r8_c6" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt=""></a></td>
+      <td width="21%"><a href="../servlet/WithSession?pHtm=ggd/menu/gd/menu_evacomp_gd.html" onClick="fnAplicar('cerrar');return false;"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="CERRAR"></a></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

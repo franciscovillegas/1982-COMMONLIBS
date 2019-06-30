@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Detalle Hist&oacute;rico de AFP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+
+<body background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="afp" style="position:absolute; width:458px; height:156px; z-index:1; overflow: auto; left: 1px; top: 1px; visibility: visible"> 
+  <table width="457" border="1" cellpadding="0" cellspacing="0">
+<tr> 
+      <td colspan="2" > 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr > 
+            <td width="100%" class="titulo"> 
+<div align="center">
+                Historia AFP
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr class="tituloTabla"> 
+<td width="301"> 
+<div align="center"><b><font class="negro10B">Movimiento</font></b></div>
+      </td>
+      <td width="150" > 
+        <div align="center">Fecha</div>
+      </td>
+    </tr>
+    <list AFP as a> 
+    <tr class="detalleTabla"> 
+<td width="301"> 
+<p>${a.NOMBRE}</p>
+        </td>
+      <td width="150" align="center"> 
+        <p>${a.FECHA_ING}</p>
+        </td>
+    </tr>
+    </list> 
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:0px; top:154px; width:458px; height:16px; z-index:2"> 
+  <div align="center"><a href="javascript:window.close();">Cerrar</a></div>
+</div>
+</body>
+</html>

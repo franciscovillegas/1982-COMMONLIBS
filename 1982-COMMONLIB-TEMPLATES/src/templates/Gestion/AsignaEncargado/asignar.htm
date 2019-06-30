@@ -1,0 +1,75 @@
+ <HTML>
+<HEAD>
+<TITLE>Mensaje</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+function Aceptar() { 
+  document.form1.submit();
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#0000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="get" action="/servlet/AsignaEncargado" target="main">
+  <table border=0 cellpadding=0 cellspacing=0 width="329" height="355">
+    <tr> 
+      <td valign="top" width="297" rowspan=8 bgcolor="#FFa400">
+        <table width="292" border="0" height="360" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="17"><font face="Arial, Helvetica, sans-serif" size="2">Unidades</font> 
+            </td>
+          </tr>
+          <tr>
+            <td height="261" valign="top"> 
+              <select name="unidad" size="15" class="listas" onClick="Aceptar()">
+                <if detalle> <list detalle as d> 
+                <option value="${d.id}" ${d.valor}>${d.desc}</option>
+                </list> <else> 
+                <option value="-1" >0 unidades disponibles</option>
+                </if> 
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"> 
+              <div align="right"></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td colspan=2 height="14" bgcolor="#FFa400">&nbsp; </td>
+    </tr>
+    <tr> 
+      <td rowspan=7 width="9" bgcolor="#FFa400">&nbsp; </td>
+      <td height="40" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="42" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="51" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="55" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="54" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="57" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="42" width="13" bgcolor="#FFa400">&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</BODY>
+<script>parent.parent.CerrarVentProcesando()</script>
+</HTML>

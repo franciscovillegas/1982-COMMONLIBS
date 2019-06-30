@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>Solicitud de Permiso</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+// -->
+</script>
+</head>
+<style type="text/css">
+<!--
+.unnamed1 {  }
+.checkbox {  background-color: #FFFFFF}
+.maticoB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000}
+.maticoN { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000}
+.maticoBSolic { font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #000000 }
+
+-->
+</style>
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center">
+  <br>
+    
+  <table width="680" border="0" align="left">
+    <tr>
+        <td width="38">&nbsp;</td>
+        
+      <td width="652" align="center"> 
+        <p><img src="http://${Servidor}../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></p>
+          
+        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Formulario 
+          de Permiso</b></font><br>
+          <font face="Verdana, Arial, Helvetica, sans-serif" size="1">( ${fecha})</font><br>
+        </p>
+      </td>
+    </tr>
+      <tr> 
+        <td width="38">&nbsp;</td>
+        
+      <td width="652"> 
+        <table width="100%" border="0" align="center">
+          <tr valign="top"> 
+            <td width="69" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>De</b></font></td>
+            <td width="270" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${nombre}<br>
+              ${rut2} </font></td>
+            <td width="57" bgcolor="#D8D6E4">
+              <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>Unidad<br>
+                Cargo </b></font></div>
+            </td>
+            <td width="286" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">(${id_unidad})${unidad}<br>
+              ${cargo} </font></td>
+          </tr>
+          <tr valign="top"> 
+            <td width="69" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="270" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="57" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="286" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+          </tr>
+          <tr valign="top"> 
+            <td width="69" height="19" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <b>A</b></font></td>
+            <td colspan="3" height="19" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <!--${unidaddestino}-->
+              Recursos Humanos</font></td>
+          </tr>
+        </table>
+        <br>
+          
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="7" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              Solicito tenga a bien autorizar, los d&iacute;as que ha continuaci&oacute;n 
+              se detallan:</font></td>
+          </tr>
+          <tr> 
+            <td width="10%"  height="31"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="8%"  height="31" bgcolor="#D8D6E4">
+              <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Desde</font></div>
+            </td>
+            <td width="21%"  height="31" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="desde" size="15" maxlength="10" value="${desde}" readonly="true">
+              </font></td>
+            <td width="8%"  height="31" bgcolor="#D8D6E4">
+              <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Hasta</font></div>
+            </td>
+            <td width="23%"  height="31" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="hasta" size="15" maxlength="10" value="${hasta}" readonly="true">
+              </font></td>
+            <td width="10%"  height="31" bgcolor="#D8D6E4">
+              <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Reintegro 
+                </font></div>
+            </td>
+            <td width="20%"  height="31" bgcolor="EFEEF4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="reintegro" size="15" maxlength="10" value="${reintegro}" readonly="true">
+              </font></td>
+          </tr>
+        </table>
+          
+        <div align="center"><span ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">(ej: 
+          26/12/20001)</font></span><br>
+        </div>
+        <table width="100%" border="0">
+            <tr> 
+              <td > 
+                
+              <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Motivo 
+                del Permiso</font></div>
+              </td>
+            </tr>
+        </table>
+          <br>
+          <br>
+		  <if rad=="1">
+          
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="5" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="radio" name="radiobutton" value="1" checked>
+              Cambio de Domicilio</font></td>
+          </tr>
+          <tr> 
+            <td width="2%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="20%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Calle 
+              </font></td>
+            <td width="37%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="calle" size="30" value="${calle}" readonly="true">
+              </font></td>
+            <td width="11%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Numero</font></td>
+            <td width="30%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="numero" size="8" value="${numero}"   readonly="true">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="2%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="20%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Fono:</font></td>
+            <td width="37%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="fono" value="${fono}" readonly="true">
+              </font></td>
+            <td width="11%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Ciudad</font></td>
+            <td width="30%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="ciudad" value="${ciudad}"   readonly="true">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="2%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;</font></td>
+            <td width="20%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Villa/Depto.</font></td>
+            <td width="37%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="villa" size="30" value="${villa}" readonly="true">
+              </font></td>
+            <td width="11%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comuna</font></td>
+            <td width="30%" align="left" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="comuna" value="${comuna}"   readonly="true">
+              </font></td>
+          </tr>
+        </table>
+		  </if>
+		  <if rad=="2">
+            
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="2"  height="23"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="radio" name="radiobutton" value="2" checked>
+              Casamiento</font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Nombre 
+              C&oacute;nyuge </font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="conyuge" size="40" value="${conyuge}"   readonly="true">
+              </font></td>
+          </tr>
+        </table>
+        </if>
+			<if rad=="3">
+            
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="2"  height="23"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="radio" name="radiobutton" value="3" checked>
+              Nacimiento</font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Nombre 
+              Hijo </font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="hijo" size="40" value="${hijo}"   readonly="true">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Fecha 
+              de Nacimiento </font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="fec_nac" size="15" maxlength="10" value="${fec_nac}"  readonly="true" >
+              </font></td>
+          </tr>
+        </table>
+            </if>
+			<if rad=="4">
+            
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="2"  height="23"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="radio" name="radiobutton" value="4" checked>
+              Defunci&oacute;n</font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Nombre</font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="nombre" size="40" value="${nombre_def}"  readonly="true">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Parentesco</font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="parentesco" size="15" maxlength="10" value="${parentesco}"   readonly="true">
+              </font></td>
+          </tr>
+        </table>
+            
+        </if> <br>
+        <br>
+        <table width="100%" border="0">
+          <tr> 
+            <td colspan="2"  height="23"> 
+              <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Todo 
+                Requerimiento contingente con mi funci&oacute;n, que precise de 
+                mi participaci&oacute;n, agradecer&eacute; contactarme en :</font></div>
+            </td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Tel&eacute;fono 
+              Casa</font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="casa" size="40" value="${casa}"   readonly="true">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="28%" align="right" bgcolor="#D8D6E4" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Tel&eacute;fono 
+              Celular</font></td>
+            <td width="72%" bgcolor="EFEEF4" > <font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+              <input type="text" name="celular" size="15" maxlength="10" value="${celular}"   readonly="true">
+              </font></td>
+          </tr>
+        </table>
+
+            
+        <div align="center"><br>
+          <b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${mensaje}</font></b><br>
+        </div>
+      </td>
+      </tr>
+
+  </table>
+    <p><br>
+    </p>
+</div>
+  <br>
+  <br>
+<br>
+  <br>
+<br>
+
+  <div align="center"> </div>
+
+</body>
+</html>

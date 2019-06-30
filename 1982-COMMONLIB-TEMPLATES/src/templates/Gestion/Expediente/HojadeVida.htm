@@ -1,0 +1,208 @@
+ <HTML>
+<HEAD>
+<TITLE>Hoja de Vida</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+function Oculta(){
+<list detalle as l> 
+  eval("Layer"+${l.num}+".style.visibility='hidden'");
+  //alert("Layer"+${l.num}+".style.visibility='hidden'");
+</list>
+
+}
+
+function Muestra(num){
+<list detalle as l> 
+  eval("Layer"+${l.num}+".style.visibility='hidden'");
+</list>
+eval("Layer"+num+".style.visibility='visible'");
+}
+
+
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal}
+-->
+</Style>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+-->
+</Style>
+</HEAD>
+<BODY background="../servlet/Tool?images/Gestion/news/fondo_descanso.jpg" text="#000000" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="Oculta();MM_preloadImages('../servlet/Tool?images/Gestion/botones/opcion_over.jpg','../servlet/Tool?images/Gestion/botones/cancelar_over.jpg','../servlet/Tool?images/Gestion/botones/aceptar_over.jpg')">
+<table width="563" border="0" cellpadding="0" cellspacing="0" >
+  <tr valign="top">
+    <td width="13%" height="433" align="center" valign="top">
+      <table width="113" border="0" align="left" height="93" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="67" align="center" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">
+            <table width="86" height="106">
+              <tr>
+                <td valign="middle" align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="79" height="100" onError="existeFoto(this)" border="0"></td>
+              </tr>
+            </table>
+            <table width="111" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="111">
+                  <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>${rut2}</b></font></div></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" height="22">
+              <tr>
+                <td height="18">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <br>
+    </td>
+    <td valign="top"><table width="100%" border="0" align="center">
+        <tr>
+          <td width="100%" height="67">&nbsp;</td>
+        </tr>
+        <!-- ubicaci&oacute;n F&iacute;sica
+              <tr valign="top"> 
+                <td width="34%" class="textB"> 
+                  <div align="right">Ubicaci&oacute;n F&iacute;sica</div>
+                </td>
+                <td width="66%" class="texto"> 
+                  <div align="left">: ${ubicacion}</div>
+                </td>
+              </tr>-->
+      </table>
+      <table width="100%">
+        <tr>
+          <td height="11" valign="top" colspan="6">
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b class="titulo">${nombre}</b></font></div></td>
+        </tr>
+        <tr>
+          <td width="19%" height="13"> <font face="Arial, Helvetica, sans-serif" size="1" class="textB">Cargo</font></td>
+          <td height="13" colspan="3"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${cargo}</font></td>
+          <td width="23%" height="13"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Fec. Ingreso</font> </td>
+          <td width="19%" height="13"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${fecha_ing}</font></td>
+        </tr>
+        <tr>
+          <td width="19%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Centro Costo </font></td>
+          <td colspan="5"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:(${id_unidad}) ${unidad}</font> </td>
+        </tr>
+        <tr>
+          <td width="19%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Dependencia</font></td>
+          <td colspan="5"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:${area} </font></td>
+        </tr>
+        <tr>
+          <td width="19%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Gerencia</font></td>
+          <td colspan="5"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${division}</font></td>
+        </tr>
+        <tr>
+          <td width="19%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Amonestaciones</font></td>
+          <td width="12%"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${amon}</font></td>
+          <td width="16%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Felicitaciones</font></td>
+          <td width="11%"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${feli}</font></td>
+          <td width="23%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Plan Mejoramiento </font></td>
+          <td width="19%"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${plan}</font></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<div id="LayerDet" style="position:absolute; width:547px; height:186px; z-index:1; left: 8px; top: 238px; overflow: auto; visibility: visible">
+  <table border="0" cellpadding="0" cellspacing="1" width="100%">
+    <tr bgcolor="#E5E5E5">
+      <td width="15%" height="19">
+      <div align="center" class="Estilo1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Tipo</font></div></td>
+      <td width="46%" height="19">
+      <div align="center" class="Estilo1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Descripci&oacute;n</font></div></td>
+      <td width="9%" height="19">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Fecha</font></div></td>
+      <td width="30%" height="19">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Responsable</font></div></td>
+    </tr>
+    <if !(detalle)>
+    <tr bgcolor="#FFFFFF">
+      <td height="2" colspan="4"> <b><font face="Arial, Helvetica, sans-serif" size="2">No registra Evaluaciones</font></b></td>
+    </tr>
+    </if> <list detalle as l>
+    <tr bgcolor="#FFFFFF">
+      <td height="20" width="15%"><font face="Arial, Helvetica, sans-serif" size="1"> ${l.tipo}</font></td>
+      <td height="20" width="46%"> <font face="Arial, Helvetica, sans-serif" size="1"><a href="javascript:;" onClick="Muestra('${l.num}');return false;">${l.titulo}</a></font></td>
+      <td height="20" width="9%">
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${l.fecha}</font></div></td>
+      <td height="20" width="30%">
+        <div align="left"><font face="Arial, Helvetica, sans-serif" size="1">${l.resp}</font></div></td>
+    </tr>
+    </list>
+  </table>
+</div>
+<list detalle as l>
+<div id="Layer${l.num}" style="position:absolute; width:365px; height:149px; z-index:2; left: 145px; top: 265px; background-color: #E8E8E8; layer-background-color: #E8E8E8; border: 1px none #000000; visibility: hidden" class="carpeta3D"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" class="textB">
+    <tr> 
+      <td height="18" valign="top"> 
+        <div align="center" class="textoTipoNodo">Comentario </div>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top" height="105"> 
+        <div align="center"> 
+          <textarea name="textfield" rows="6" cols="45" readonly="true">${l.comentario}</textarea>
+        </div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <div align="center"><a href="javascript:;" onClick="Oculta();return false;">Cerrar</a></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</list>
+</BODY>
+</HTML>

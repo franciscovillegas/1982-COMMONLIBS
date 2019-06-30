@@ -1,0 +1,193 @@
+<assign p = txt_Perfil>
+<assign pr = txt_Proceso>
+
+<assign r = txt_Rut>
+<assign re = User.Rut2>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function uno(nivelesperado,nivel)
+{  var aux="";
+   for(i=1;i<6;i++)
+   {  if( (nivelesperado > 0) && (i == nivelesperado || nivelesperado > i) ) 
+      { colorfondo="#009999"; }
+	  else 
+	  { colorfondo=""; }
+
+      aux+= "<td bgcolor=\"" + colorfondo + "\" class=\"ra1listaCh\">";
+
+  	  if ((nivel > 0) && (i == nivel || nivel > i) ) { colorfondo="#66CCFF"; }
+	  else { colorfondo=""; }
+
+   	  aux+= "<table width=\"100%\" border=\"0\">";
+	  aux+= "<tr><td bgcolor=\"" + colorfondo + "\" class=\"ra1listaCh\">&nbsp;</td></tr>";
+	  aux+= "</table>";
+	  aux+= "</td>";	
+
+   }
+   return aux;
+}
+function dos(nivelesperado,nivel,criticidad)
+{  var aux="";
+   for(i=1;i<7;i++)
+   { if( (nivelesperado >0) && (i == nivelesperado || nivel_esperado > i) ) { colorfondo="#009999"; }
+	 else { colorfondo=""; }
+	 aux+= "<td bgcolor=\"" + colorfondo + "\" class=\"ra1listaCh\">";
+     if( (nivel >0) && (i == nivel || nivel > i) ) { colorfondo="#66CCFF"; }
+	 else { colorfondo=""; }
+	 if (i==6) 
+	 {  semaforo="";
+		if (criticidad == "alta") { semaforo="rojo.gif"; }
+		else if (criticidad == "media") { semaforo="amarillo.gif"; }
+		else if (criticidad == "baja") { semaforo="verde.gif"; }
+		aux+= "<table width=\"25\" border=\"0\">";
+		aux+= "<tr><td bgcolor=\"" + colorfondo + "\" class=\"ra1listaCh\" align=\"left\">";
+		if (semaforo=="") { aux+= "&nbsp"; }
+		else { aux+= "<img src=\"../servlet/Tool?images/images_ggd/res_ana/" + semaforo + "\">"; }
+		aux+= "</td></tr>";
+		aux+= "</table>";
+     }
+	 else
+	 {  aux+= "<table width=\"25\" border=\"0\">";
+		aux+= "<tr><td bgcolor=\"" + colorfondo + "\" class=\"ra1listaCh\">&nbsp;</td></tr>";
+		aux+= "</table>";
+	 }
+	 aux+= "</td>";
+   }
+}
+
+function fnBuscar(){
+	MM_openBrWindow('../servlet/Evaluadores?txt_Rut=${r}','evaluadores','status=yes,width=780,height=250');
+}
+function fnMiEval(){
+	parent.frames.topFrame.pm_3();
+}
+function fnCambioRut(strRut,strPerfil,strProceso){
+  document.location.href='../servlet/ResultadoAnalisisII?txt_Rut='+strRut+'&txt_Perfil='+strPerfil+'&txt_Proceso='+strProceso;
+}
+function fnResultadoAnalisisII(){
+    //alert("../servlet/ResultadoAnalisisII?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}");
+	location.href = "../servlet/ResultadoAnalisisII?txt_Rut=${r}&txt_Perfil=${p}&txt_Proceso=${pr}";
+}
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer7 {position:absolute;
+	left:221px;
+	top:126px;
+	width:212px;
+	height:21px;
+	z-index:6;
+}
+#Layer6 {position:absolute;
+	left:565px;
+	top:557px;
+	width:425px;
+	height:24px;
+	z-index:5;
+}
+#Layer13 {position:absolute;
+	left:11px;
+	top:11px;
+	width:186px;
+	height:13px;
+	z-index:12;
+}
+#Layer8 {position:absolute;
+	left:15px;
+	top:175px;
+	width:250px;
+	height:13px;
+	z-index:7;
+}
+#Layer10 {position:absolute;
+	left:11px;
+	top:296px;
+	width:292px;
+	height:14px;
+	z-index:9;
+}
+#Layer11 {position:absolute;
+	left:402px;
+	top:175px;
+	width:283px;
+	height:15px;
+	z-index:10;
+}
+#Layer12 {position:absolute;
+	left:11px;
+	top:196px;
+	width:292px;
+	height:14px;
+	z-index:9;
+}
+-->
+</style>
+</head>
+
+<body background="../servlet/Tool?images/ggd/competencias/resanalisis.jpg">
+<form name="form1" method="post" action="../servlet/ResultadoAnalisisI">
+<div class="boton_rojo" id="Layer4" style="position:absolute; width:198px; height:127px; z-index:4; left: 11px; top: 30px; overflow: auto;">
+  <p>Se presentan los resultados de su evaluaci&oacute;n de competencias para su an&aacute;lisis
+    y reflexi&oacute;n.</p>
+  <p>En el gr&aacute;fico de la derecha se muestra su perfil de competencias observado
+      (que arroja la evaluaci&oacute;n) comparado con el requerido para su cargo.</p>
+</div>
+<div class="txt_gris" id="Layer11">Observaciones</div>
+<div class="txt_gris" id="Layer10">Fortalezas</div>
+<div class="txt_gris" id="Layer12">Debilidades</div>
+<div class="txt_gris" id="Layer8">Reflexi&oacute;n</div>
+<div id="Layer13"></div>
+<div id="Layer6">
+  <table width="100" border="0" align="right" cellpadding="0">
+    <tr>
+      <td width="32" nowrap><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+      <td width="30"><a href="#" onClick="fnAplicar();return false"><img name="resultados_analisis_r22_c19" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt="Grabar"></a></td>
+      <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="resultados_analisis_r22_c21" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer7">
+  <table width="211" border="0" cellpadding="0">
+    <tr>
+      <td width="143"><span class="txt_gris">::::: Seleccione una opci&oacute;n: </span></td>
+      <td width="30"><a href="#"  onClick="fnMiEval();return false;"><img name="resultados_analisis_r7_c2" src="../servlet/Tool?images/images_ggd/ggd/botones/mi_evaluacion.gif" width="30" height="30" border="0" alt="Mi Evaluaci&oacute;n"></a></td>
+      <td width="30"><a href="#" onClick="fnBuscar();return false"><img name="resultados_analisis_r7_c6" src="../servlet/Tool?images/images_ggd/ggd/botones/colaboradores.gif" width="30" height="30" border="0" alt="Colaboradores"></a></td>
+    </tr>
+  </table>
+</div>
+<!--<div id="Layer5" style="position:absolute; left:445px; top:156px; width:133px; height:7px; z-index:3"><a href="#" onClick="fnResultadoAnalisisII();return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image98','','../servlet/Tool?images/images_ggd/res_ana2/porc_obs_over.jpg',1)"><img src="../servlet/Tool?images/images_ggd/res_ana2/porc_obs.jpg" name="Image98" width="115" height="14" border="0"></a></div>-->
+<div id="Layer2" style="position:absolute; width:212px; height:85px; z-index:1; left: 221px; top: 30px;" >
+<assign h = "ggd/rut/ver_rut_ra.html">${TM_Rut(h,r)}</div>
+<div id="Layer1" style="position:absolute; width:314px; height:128px; z-index:2; left: 450px; top: 15px; overflow: auto;">
+<assign h = "ggd/resultado_analisis/indicador.html">${TM_NivObt(h,re,r,p,pr,"")}</div>
+<div id="Layer1" style="position:absolute; width:373px; height:90px; z-index:2; left: 12px; top: 210px; overflow: auto;">
+<assign h = "ggd/resultado_analisis/indicador2.html">${TM_NivObt(h,re,r,p,pr,"D")}</div>
+<div id="Layer1" style="position:absolute; width:374px; height:84px; z-index:2; left: 11px; top: 311px; overflow: auto;">
+<assign h = "ggd/resultado_analisis/indicador2.html">${TM_NivObt(h,re,r,p,pr,"F")}</div>
+<div id="Layer3" style="position:absolute; width:480px; height:311px; z-index:3; left: 511px; top: 237px;">
+<table width="100%" border="0">
+<tr><td><textarea name="textfield" cols="40" rows="3"></textarea></td></tr>
+<tr><td><textarea name="textarea" cols="40" rows="3"></textarea></td></tr>
+</table>
+</div>
+</form>
+</body>
+</html>

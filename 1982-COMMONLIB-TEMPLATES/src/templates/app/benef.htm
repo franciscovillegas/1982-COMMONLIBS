@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Beneficios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script language="JavaScript">
+window.resizeTo(510,430);
+window.focus();
+function mode1(){
+	<if GetParam("adm")>
+	document.form1.action="${GetProp("server.benef")}/serv/admin/LoginAdmin";
+	<else>
+	document.form1.action="${GetProp("server.benef")}/serv/admin/Login";
+	</if>
+	document.form1.submit();
+}
+</script>
+
+<body bgcolor="#000066" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="mode1();">
+<!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="500" height="400">
+  <param name=movie value="../flash/preview/intro_noticias.swf">
+    <param name=menu value=false>
+    <embed src="../flash/preview/intro_noticias.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="400">
+    </embed> 
+</object> -->
+ <form name="form1" method="post" action="">
+  <input type="hidden" name="clave" value="${usuario.pPassword}" >
+  <input type="hidden" name="login" value="${usuario.pRutId}" >
+  <input name="send" type="hidden" value="../Tool?htm=admin/frameAdmin.htm">
+</form>
+</body>
+</html>

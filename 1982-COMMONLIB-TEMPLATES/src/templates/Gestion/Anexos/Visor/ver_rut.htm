@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>Ver Informaci&oacute;n del Empleado</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/msgprocesando.js">
+</script>
+</head>
+<script>
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+</script>
+<body bgcolor="#000000" text="#000000" onload="window.focus();MM_preloadImages('../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="390" border="0" align="center" cellpadding="0" cellspacing="0" background="../servlet/Tool?images/Gestion/busgraf/fond.jpg" height="300">
+  <tr> 
+    <td width="12%" valign="top" height="120"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="91" height="109" vspace="4" hspace="4" class="carpetaUn"></td>
+    <td width="83%" align="center" height="120"> <b>${nombre}</b> 
+      <table width="100%" border="0" class="carpetaUn">
+        <!--<tr> 
+          <td colspan="2" height="5"> </td>
+        </tr>-->
+        <tr> 
+          <td width="79" valign="top"><b>Cargo </b></td>
+          <td width="303" valign="top">${cargo}</td>
+        </tr>
+        <tr> 
+          <td width="79" valign="top"><b> Unidad</b></td>
+          <td width="303" valign="top">${unidad}</td>
+        </tr>
+        <tr> 
+          <td width="79" valign="top"><b>Anexo </b></td>
+          <td width="303" valign="top"> 
+            <!--<if (ver.anexo)><a href="javascript:;" onClick="return buscarAnexoRut('${rut}')" title="Informaci&oacute;n del Anexo" class="azul10NLink">${anexo}</a><else>${anexo}</if>-->
+            <a href="javascript:;" onClick="return VerFonosRut('${rut}', 'Visor/VerFonosRut.htm')" class="azul10NLink" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">[Ver 
+            Anexo]</a></td>
+        </tr>
+        <tr> 
+          <td width="79" valign="top"><b>e-mail</b></td>
+          <td width="303" valign="top">${email}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td colspan="2"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="479" colspan="2" class="maticoBLink" height="25"> 
+            <div align="center"><if (ver_expediente)><a href="#" onClick="MM_openBrWindow('../servlet/TopExpedienteWeb?rut=${rut}','topFrame','');return false" class="azul10NLink">Ver 
+              Expediente</a> <span class="negro10N">|</span></if><if (ver.pmp) && !(modo)><if (hacer_pmp)  && Control("df_exp_remu", rut)> 
+              <span class="maticoBLink"><a href="#" onclick="verAnotaciones(${rut}); return false" class="azul10NLink">PMP 
+              </a></span><a href="#" onclick="verAnotaciones(${rut}); return false" class="azul10NLink"><span class="negro10N">|</span></a></if> 
+              </if> <if (ver.anexo)><a href="javascript:;" onClick="return VerFonosRut('${rut}', 'Visor/VerFonosRut.htm')" class="azul10NLink" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">Anexo</a> <if (ver_expediente) && Control("df_perfil_lab", rut)>| <a href="javascript:;" onClick=" PerfilLaboral('${rut}');return false" class="azul10NLink" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">Perfil 
+              Laboral</a> </if>
+              <!--<a href="javascript:;" onClick="return buscarAnexoRut('${rut}')" title="Informaci&oacute;n del Anexo" class="azul10NLink">Anexos</a> -->
+              </if> </div>
+          </td>
+        </tr>
+        <tr> 
+          <td width="479" colspan="2" class="maticoB" height="25"> 
+            <div align="center" class="negro10B"><b>SUPERVISOR DIRECTO</b></div>
+          </td>
+        </tr>
+        <tr align="center"> 
+          <td colspan="2"> 
+            <table width="95%" border="0" class="carpetaUn" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="94" valign="top"><b>Nombre </b></td>
+                <td width="383" valign="top">: ${nomsup}</td>
+              </tr>
+              <tr> 
+                <td width="94" valign="top"><b>Cargo</b></td>
+                <td width="383" valign="top">: ${cargosup}</td>
+              </tr>
+              <tr> 
+                <td width="94" valign="top"><b> Unidad</b></td>
+                <td width="383" valign="top">: ${unidadsup}</td>
+              </tr>
+              <tr> 
+                <td width="94" valign="top"><b>Anexo</b></td>
+                <td width="383" valign="top"> 
+                  <!--<if (ver.anexo)><a href="javascript:;" onClick="return buscarAnexoRut('${rutsup}')" title="Informaci&oacute;n del Anexo" class="azul10NLink">${anexosup}</a><else>${anexosup}</if>-->
+                  <if (rutsup)><a href="javascript:;" onClick="return VerFonosRut('${rutsup}', 'Visor/VerFonosRut.htm')" class="azul10NLink" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">[Ver 
+                  Anexo]</a></if></td>
+              </tr>
+              <tr> 
+                <td width="94" valign="top"><b>e-mail</b></td>
+                <td width="383" valign="top">: ${emailsup}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr valign="bottom" align="right"> 
+    <td colspan="2" height="42"><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif',1)"><img name="Image4" border="0" src="../servlet/Tool?images/Gestion/busgraf/busgraf_36.gif" width="84" height="42"></a></td>
+  </tr>
+</table>
+</body>
+</html>

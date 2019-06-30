@@ -1,0 +1,235 @@
+<assign nomCompetencia = nomCompetencia>
+<assign glosaCompetencia = glosaCompetencia>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Crear Competencias</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+body {
+	background-color: #CCCCCC;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#Layer6 {
+	position:absolute;
+	left:12px;
+	top:7px;
+	width:322px;
+	height:15px;
+	z-index:2;
+}
+#Layer7 {
+	position:absolute;
+	left:9px;
+	top:32px;
+	width:199px;
+	height:15px;
+	z-index:3;
+}
+#Layer8 {
+	position:absolute;
+	left:10px;
+	top:84px;
+	width:330px;
+	height:16px;
+	z-index:4;
+}
+#Layer9 {	position:absolute;
+	left:106px;
+	top:375px;
+	width:235px;
+	height:32px;
+	z-index:4;
+}
+-->
+</style>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnEnviar(opcion){
+	if(opcion.name == "procesos"){
+		form.action="../servlet/crearCompetencia?txtAccion=AC&id_proceso="+opcion.value;
+		form.submit();
+	}
+}
+function fnAplicar(opcion){
+	if(opcion == "grabar"){
+		form.action="../servlet/crearCompetencia?txtAccion=MC&id_proceso=${id_proceso}";
+		form.submit();
+	}
+}
+function fnInicio(){
+<if REG == true && MSG !="">
+	alert('${MSG}');
+	opener.parent.fnTraerCombo(${id_proceso});
+</if>
+<if REG == false && MSG !="">
+	alert('${MSG}');
+	opener.parent.bottonFrame.fnTraerCombo(${id_proceso});
+</if>
+<if proceso>
+<if procesos>
+	<list procesos as p>
+			<if proceso == p.id_proceso>
+					document.form.procesos.value='${p.id_proceso}';
+			</if>
+        </list>
+</if>
+</if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="fnInicio()" background="../servlet/Tool?images/images_ggd/ggd/diccCompetencias/fondo_crear.jpg">
+  <form name="form"  method="post" action="/servlet/crearCompetencia?">
+   <div id="Layer2" style="position:absolute; width:334px; height:21px; z-index:2; left: 7px; top: 52px;"> 
+      <select name="procesos" class="campo_texto" onChange="fnEnviar(this)">
+<option value="0">Seleccione Proceso</option>
+<if procesos>
+	<list procesos as p>
+        <option value="${p.id_proceso}">${p.proceso}</option>
+	</list>
+</if>
+</select></div>
+    <span id="Layer3" style="position:absolute; width:329px; height:21px; z-index:2; left: 9px; top: 107px; overflow: hidden;"> 
+    <input name="competencia" type="text" class="campo_texto" size="76" value="${nomCompetencia}">
+	<input name="id_proceso" type="hidden" value="${id_proceso}">
+	<input name="id_competencia" type="hidden" value="${id_competencia}">
+	<input name="id_tipo_competencia" type="hidden" value="${id_tipo_competencia}">
+    </span>
+    <span id="Layer10" style="position:absolute; width:329px; height:21px; z-index:2; left: 9px; top: 127px; overflow: hidden;"> 
+	  <select name="tipoCompetencia" class="campo_texto" onChange="fnEnviar(this)">
+	   <option value="0">Seleccione Tipo Competencia</option>
+	   <if tipoCompetencias>
+		<list tipoCompetencias as tc>
+		<if (tipoCompetencia==tc.id_tipo)>
+	     <option value="${tc.id_tipo}" selected>${tc.descripcion}</option>
+	    <else> 
+	     <option value="${tc.id_tipo}">${tc.descripcion}</option>
+	    </if> 
+		</list>
+	   </if>
+	  </select>
+	 </span>
+    <div id="Layer4" style="position:absolute; width:328px; height:95px; z-index:2; left: 11px; top: 148px;"> 
+    <textarea name="glosa" cols="72" rows="5" class="fondo_tablaGris">${glosaCompetencia}</textarea>
+    </div>
+    <span id="Layer5" style="position:absolute; width:332px; height:121px; z-index:2; left: 8px; top: 243px; overflow: auto;"> 
+    <table width="100%" border="0" cellpadding="0" cellspacing="1">
+<if conductas>
+    	<list conductas as c>
+		<tr>
+			<td width="6%" valign="top"><input type="checkbox" name="conductas" value="${c.id_conducta}"></td>
+        	<td width="12%" valign="top"><select name="nivel" class="campo_texto">
+				<if (c.nivel==1)>
+				<option value="1" selected>1</option>
+				<else>
+				<option value="1">1</option>
+				</if>
+				<if (c.nivel==2)>
+				<option value="2" selected>2</option>
+				<else>
+				<option value="2">2</option>
+				</if>
+				<if (c.nivel==3)>
+				<option value="3" selected>3</option>
+				<else>
+				<option value="3">3</option>
+				</if>
+				<if (c.nivel==4)>
+				<option value="4" selected>4</option>
+				<else>
+				<option value="4">4</option>
+				</if>
+				<if (c.nivel==5)>
+				<option value="5" selected>5</option>
+				<else>
+				<option value="5">5</option>
+				</if>
+			</select></td>
+			<td width="82%" class="fondo_tablaGris">${c.glosa}</td>
+		</tr>
+		</list>
+</if>
+</table></span>
+  <div class="boton_rojo" id="Layer6">Crear Competencias </div>
+  <div id="Layer7">Seleccione Proceso </div>
+  <div id="Layer8">Competencias</div>
+  <table border="0" cellpadding="0" cellspacing="0" width="350">
+  <!-- fwtable fwsrc="crear_competencia.png" fwbase="crear_comp.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+  <tr>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="16" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="154" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="5" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="77" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="3" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="15" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="28" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="19" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="34" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="19" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="3">&nbsp;</td>
+    <td colspan="4">&nbsp;</td>
+    <td rowspan="3" colspan="2">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="130" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="18" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="124" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/ag_cond/spacer.gif" width="1" height="23" border="0" alt=""></td>
+  </tr>
+</table>
+  <div id="Layer9">
+    <table width="100%" border="0" cellpadding="0">
+      <tr>
+        <td width="5%">&nbsp;</td>
+        <td width="67%">&nbsp;</td>
+        <td width="14%"><a href="#" onClick="fnAplicar('grabar');return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" alt="" name="dicc_com_r5_c51" width="30" height="30" border="0" id="dicc_com_r5_c51"></a></td>
+        <td width="14%"><a href="javascript:window.close();"><img src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" alt="" name="dicc_com_r5_c71" width="30" height="30" border="0" id="dicc_com_r5_c71"></a></td>
+      </tr>
+    </table>
+  </div>
+</form>
+</body>
+</html>

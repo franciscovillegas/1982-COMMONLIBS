@@ -1,0 +1,236 @@
+<HTML>
+<HEAD>
+<TITLE>Mantenedor Dimensiones</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function sel_div(nombre) {
+  var elemento = document.getElementById(nombre);
+  document.getElementById("nuevo").style.visibility="hidden"; document.getElementById("modificar").style.visibility="hidden";
+  document.getElementById("eliminar").style.visibility="hidden"; document.getElementById("valores").style.visibility="hidden";
+  document.getElementById("nuevoval").style.visibility="hidden"; document.getElementById("modificarval").style.visibility="hidden";
+  document.getElementById("eliminarval").style.visibility="hidden";
+  elemento.style.visibility="visible";
+}
+
+
+function sel_val(f) { f.fmvaldimension.value=f.fevalvalores.options[f.fevalvalores.selectedIndex].text; }
+
+function sel_dim(f) { 
+document.fdimensiones.texto.value=f.dimensiones.options[f.dimensiones.selectedIndex].text;
+document.fdimensiones.submit(); 
+}
+
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<table width="380">
+<tr><td align="center" class="TITULO_MODULOS">
+<font size="4">Mantenedor de Dimensiones</font>
+</td></tr>
+<tr><td align="center">
+
+<table width="320" border="0" cellpadding="0" cellspacing="0">
+<tr><td align="center">
+<form name="fdimensiones" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="D">
+<input type="hidden" name="texto" value="">
+<table><tr>
+<td width="68" class="campo_texto"><strong>Dimensi&oacute;n</strong></td><td>:</td>
+<td width="123"><select name="dimensiones" class="inputText" onchange="sel_dim(this.form)"><if (dimensiones)><list dimensiones as d><option value="${d.id}" ${d.select}>${d.desc}</option></list></if></select></td>
+</tr></table>
+</form>
+</td></tr>
+
+<tr><td align="center">
+<table width="100%"><tr>
+<td><a href="javascript:sel_div('nuevo')">
+<img src="../servlet/Tool?images/images_arbol/av.jpg" width="24" height="22" border="0">Nuevo</a>&nbsp;&nbsp;</td>
+<td><a href="javascript:sel_div('modificar')">
+<img src="../servlet/Tool?images/images_arbol/av.jpg" width="24" height="22" border="0">Modificar</a>&nbsp;&nbsp;</td>
+<td><a href="javascript:sel_div('eliminar')">
+<img src="../servlet/Tool?images/images_arbol/av.jpg" width="24" height="22" border="0">Eliminar</a>&nbsp;&nbsp;</td>
+<td><a href="javascript:sel_div('valores')">
+<img src="../servlet/Tool?images/images_arbol/av.jpg" width="24" height="22" border="0">Valores</a></td></tr></table>
+</td></tr>
+
+<tr><td align="center">
+
+<div id="nuevo" style="position:absolute; width:380px; height:307px; z-index:1; left: 11px; top: 127px; visibility: hidden;">
+<form name="fnuevo" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="N">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas">Nueva Dimension</td></tr>
+<tr>
+  <td width="40%" height="21" class="campo_texto">Dimension:</td>
+  <td valign="top"><input type="text" class="inputText" name="fndimension" value="${Sdimension}" size="30" maxlenght="30"></td>
+</tr>
+<tr>
+  <td height="21" class="campo_texto">Tipo:</td>
+  <td valign="top">
+  <select name="fntipo" class="inputText">
+  <option value="check">Checkbox</option>
+  <option value="opcion">Option</option>
+  <option value="text">Text</option>
+  <option value="textarea">Textarea</option>
+  <option value="select">Lista</option>
+  <option value="selectmult">Lista Multiple</option> 
+  </select>
+  </td>
+</tr>
+<tr>
+  <td valign="top" class="campo_texto">Cardinalidad:</td>
+  <td valign="top">
+  <select name="fncardinalidad" class="inputText">
+  <option value="S">Simple</option>
+  <option value="M">Multipe</option>
+  </select>
+  </td>
+</tr>
+<tr><td height="24" colspan="2" align="center"><input type="submit" name="fnsbm" class="fondo_tablas" value="Grabar">&nbsp;<input type="reset" name="rst" class="fondo_tablas" value="Limpiar"></td></tr>
+</table>
+</form>
+</div>
+
+<div id="modificar" style="position:absolute; width:380px; height:307px; z-index:1; left: 11px; top: 127px; visibility: hidden;">
+<form name="fmodificar" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="M">
+<input type="hidden" name="iddimension" value="${dimid}">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas"> Modificacion de Dimension</td></tr>
+<tr><td width="40%" height="178" valign="top" class="campo_texto">Dimension:</td><td valign="top"><input type="text" name="fmdimension" class="inputText" value="${dimtxt}" size="30" maxlenght="30"></td></tr>
+<tr><td height="24" colspan="2" align="center"><input type="submit" name="fmsbm" class="fondo_tablas" value="Grabar">&nbsp;<input type="reset" name="rst" class="fondo_tablas" value="Limpiar"></td></tr>
+</table>
+</form>
+</div>
+
+<div id="eliminar" style="position:absolute; width:380px; height:307px; z-index:1; left: 11px; top: 127px; visibility: hidden;">
+<form name="feliminar" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="E">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas"> Eliminacion de Dimension</td></tr>
+<tr><td width="40%" valign="top" class="campo_texto">Dimension</td>
+<td valign="top">
+<select multiple name="fedimensiones" size="10" class="inputText">
+<if (dimensiones)><list dimensiones as d><option value="${d.id}">${d.desc}</option></list></if>
+</select>
+</td>
+</tr>
+<tr><td colspan="2" align="center"><input type="submit" name="fesbm" class="fondo_tablas" value="Eliminar"></td></tr>
+</table>
+</form>
+</div>
+
+<div id="valores" style="position:absolute; width:78px; height:47px; z-index:1; left: 281px; top: 130px; visibility: hidden;">
+<table width="100%" border="0" cellpadding="0" cellspacing="1">
+<tr><td class="campo_texto"><a href="javascript:sel_div('nuevoval')">Nuevo</a></td></tr>
+<tr><td class="campo_texto"><a href="javascript:sel_div('modificarval')">Modificar</a></td></tr>
+<tr><td class="campo_texto"><a href="javascript:sel_div('eliminarval')">Eliminar</a></td></tr>
+</table>
+</div>
+
+<div id="nuevoval" style="position:absolute; width:380px; height:310px; z-index:1; left: 11px; top: 126px; visibility: hidden;">
+<form name="fnuevoval" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="NV">
+<input type="hidden" name="dimensiones" value="${dimid}">
+<input type="hidden" name="texto" value="${dimtxt}">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas"> Valor Dimension</td></tr>
+<tr>
+  <td width="40%" height="213" valign="top" class="campo_texto">Valor Dimension</td>
+  <td valign="top">
+  <if (dimtipo == "textarea")>
+  <textarea name="fnvaldimension" class="inputText" colspan="30" rowspan="4">${Sdimension}</textarea>
+  <else>
+  <input type="text" name="fnvaldimension" class="inputText" value="${Sdimension}" size="30" maxlenght="30">
+  </if>
+  </td>
+  
+</tr>
+<tr><td colspan="2" align="center"><input type="submit" name="fnvalsbm" class="fondo_tablas" value="Grabar">&nbsp;<input type="reset" name="rst" class="fondo_tablas" value="Limpiar"></td></tr>
+</table>
+</form>
+</div>
+
+<div id="modificarval" style="position:absolute; width:380px; height:307px; z-index:1; left: 11px; top: 128px; visibility: hidden;">
+<form name="fmodificarval" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="MV">
+<input type="hidden" name="dimensiones" value="${dimid}">
+<input type="hidden" name="texto" value="${dimtxt}">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas"> Modificacion de Valor Dimension</td></tr>
+<tr><td height="18" class="campo_texto"><p>Valores</p></td><td class="campo_texto">Valor :</td></tr>
+<tr>
+<td width="60%" valign="top">
+<select name="fevalvalores" size="10" class="inputText" onchange="sel_val(this.form)">
+<if (valoresdimensiones)><list valoresdimensiones as vd><option value="${vd.id}">${vd.desc}</option></list></if>
+</select>
+</td>
+<td valign="top"><input type="text" name="fmvaldimension" size="30" class="inputText" maxlenght="30"></td>
+</tr>
+<tr><td colspan="2" align="center"><input type="submit" name="fmvalsbm" class="fondo_tablas" value="Grabar">&nbsp;<input type="reset" name="rst" class="fondo_tablas" value="Limpiar"></td></tr>
+</table>
+</form>
+</div>
+
+<div id="eliminarval" style="position:absolute; width:380px; height:308px; z-index:1; left: 11px; top: 128px; visibility: hidden;">
+<form name="feliminarval" method="post" action="../servlet/MantenerDimension">
+<input type="hidden" name="accion" value="EV">
+<input type="hidden" name="dimensiones" value="${dimid}">
+<input type="hidden" name="texto" value="${dimtxt}">
+<table width="320" height="250" border="0" cellpadding="1" cellspacing="2">
+<tr><td height="20" colspan="2" align="center" class="fondo_tablas"> Eliminacion de Dimension</td></tr>
+<tr><td width="50%" valign="top" class="campo_texto">Valores Dimension</td>
+<td align="left" valign="top">
+<select multiple name="fevalvalores" size="10" class="inputText">
+<if (valoresdimensiones)><list valoresdimensiones as vd><option value="${vd.id}">${vd.desc}</option></list></if>
+</select>
+</td>
+</tr>
+<tr><td colspan="2" align="center"><input type="submit" name="fevalsbm" class="fondo_tablas" value="Eliminar"></td></tr>
+</table>
+</form>
+</div>
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+</BODY>
+</HTML>

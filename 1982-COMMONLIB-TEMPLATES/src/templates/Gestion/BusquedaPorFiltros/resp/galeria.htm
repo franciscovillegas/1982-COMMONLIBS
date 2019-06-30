@@ -1,0 +1,201 @@
+  <html>
+<head>
+<title>Galeria Fotos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+function Envia(rut){ //v2.0
+   //parent.frames.bottomFrame.location.href="/servlet/FichaBasicaOrga?rut="+rut;
+  //alert(parent.frames.bottomFrame.document.Muestra("Layer"+rut));
+ parent.frames.bottomFrame.Muestra("Layer"+rut);
+ 
+}
+function Asigna(ini,ter,actual){
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   document.form1.actual.value=actual;
+   document.form1.submit();
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Anterior(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+    //alert("Anterior inicio: "+inicio+"\ntermino: "+termino);
+	start=inicio-grupo;
+	document.form1.grupini.value=start;
+	if (termino==paginas)
+      finish=inicio-1;  
+    else
+      finish=termino-grupo;
+	document.form1.grupter.value=finish;
+    //alert("Nuevos Valores : "+start+" - " +finish);
+    //alert("actual: "+start);
+    document.form1.actual.value=start; 
+    document.form1.inicio.value=ini;
+    document.form1.termino.value=ter;
+    document.form1.submit();
+}
+
+
+
+function Siguiente(inicio,termino,actual,ini,ter,paginas,grupo) { //v2.0
+	var start;
+	var finish;
+	start=inicio+grupo;
+	document.form1.grupini.value=start;
+	finish=termino+grupo;
+    if (finish>paginas)
+	  document.form1.grupter.value=paginas;
+    else
+	  document.form1.grupter.value=finish;
+   
+   document.form1.actual.value=actual+1; 
+   document.form1.inicio.value=ini;
+   document.form1.termino.value=ter;
+   //alert("sgte actual: "+document.form1.actual.value+"\nInicio: " +ini+"\ntermino: "+ter);
+   document.form1.submit();
+}
+
+
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<table width="617" border="0" cellspacing="0" cellpadding="0" height="475" bgcolor="#ffa400">
+  <tr>
+    <td valign="top" width="1019"> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><b>Busqueda 
+        grafica por filtros</b></font> 
+        <form name="form2" method="post" action="/servlet/FichaBasica" target="bottomFrame">
+        <list detalle as v>
+           <input type="hidden" name="rut" value="${v.rut}">
+        </list>
+        </form><script>document.form2.submit();</script>
+        <form name="form1" method="post" action="/servlet/BuscaCriterios" target="_self">
+          <input type="hidden" name="sexo1" value="${sexo1}">
+          <input type="hidden" name="sexo2" value="${sexo2}">
+          <input type="hidden" name="rango1" value="${rango1}">
+          <input type="hidden" name="rango2" value="${rango2}">
+          <input type="hidden" name="inicio" value="${ini}">
+          <input type="hidden" name="termino" value="${ter}">
+          <input type="hidden" name="actual">
+          <input type="hidden" name="apellido1" value="${apellido1}">
+          <input type="hidden" name="apellido2" value="${apellido2}">
+          <font face="Arial, Helvetica, sans-serif" size="2"> 
+          <input type="hidden" name="grupini" value="${gini}">
+          <input type="hidden" name="grupter" value="${gter}">
+          <input type="hidden" name="grupo" value="${grupo}">
+          <input type="hidden" name="civil" value="${civil}">
+          </font> <if pag> 
+          <table width="608" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="2">Pagina 
+                ${pag} de ${paginas}</font>.</td>
+            </tr>
+            <tr> 
+              <td width="313" height="17"><font face="Arial, Helvetica, sans-serif" size="2">Se 
+                encontraron ${regs} empleados.</font></td>
+           <if !fin>
+					  
+              <td width="91" height="17">Grupo<font face="Arial, Helvetica, sans-serif" size="2"> 
+                Paginas </font></td>
+					  
+              <td width="204" height="17"> 
+                <div align="center"> 
+						 
+						  <if !atras><a href="#" onClick="Anterior(${gini},${gter},${firstnum},${firstini},${firstter},${paginas},${grupo});return false;">Back</a></if> 
+						  <font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#FF0000">${gini}- 
+						  ${gter}</font></b></font> 
+						 <if !sig><a href="#" onClick="Siguiente(${gini},${gter},${ultnum},${ultini},${ultter},${paginas},${grupo});return false;">Next</a></if> 
+						  <font face="Arial, Helvetica, sans-serif" size="2"> </font> 
+						   </div>
+					  </td></if>
+            </tr>
+          </table>
+         </if>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" height="381" align="center">
+            <tr>
+              <td height="353" valign="top" width="100%">
+                <div id="LayerFotos" style="position:absolute; width:591px; height:118px; z-index:1; left: 3px; top: 111px; visibility: hidden"> <if detalle> 
+                  <table width="55%" border="0" bgcolor="#FFA400">
+                  <tr bgcolor="#FFA400" align="center"> 
+         <assign x="*">
+  <list detalle as v>
+    <if x=="*">
+      <td height="75" width="10%" class="maticoN"> 
+        <a href="#"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onMouseOver="Envia('${v.rut}');"></a> 
+      </td>
+      <assign x="**">
+    <else>
+     <if x=="**"> 
+       <td height="75" width="10%" class="maticoN">
+         <a href="#"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onMouseOver="Envia('${v.rut}');"></a>
+       </td>
+       <assign x="***">
+     <else>
+       <if x=="***"> 
+         <td height="75" width="10%" class="maticoN">
+           <a href="#"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onMouseOver="Envia('${v.rut}');"></a>
+         </td>
+        <assign x="****">
+       <else>
+          <td height="75" width="10%" class="maticoN">
+           <a href="#"><img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}" border="0" onMouseOver="Envia('${v.rut}');"></a>
+         </td>
+         </tr><tr bgcolor="#FFA400" align="center"> 
+         <assign x="*">
+       </if>
+     </if>   
+   </if>
+  </list>
+            <tr bgcolor="#FFA400" align="center">
+              <td>&nbsp;
+              <td>
+            </table>
+
+				</div>
+                <else> 
+                <table width="98%" border="0" align="left" bgcolor="#FFA400">
+            <tr bgcolor="#FFA400" align="center">
+             <td height="75" width="10%" class="maticoN">No se encontraron Empleados que cumplan con este criterio</td>
+            </tr></table></if>
+              </td>
+            </tr>
+            <tr>
+              <td valign="middle" width="100%"> <if urls> 
+                <table width="80%" border="0" cellspacing="0" cellpadding="0" align="center" height="16">
+                  <tr>
+                    <td> 
+                      <div align="center"><list urls as u> ${u.sentencia} </list>
+               <if sini>
+               <a href="#" onClick="Asigna('${sini}','${ster}','${num}');return false;">Siguiente</a> </if>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                </if> </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

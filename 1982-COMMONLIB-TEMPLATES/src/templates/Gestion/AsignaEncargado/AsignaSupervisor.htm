@@ -1,0 +1,179 @@
+<html>
+<head>
+<title>Busqueda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+<!--
+<assign empresa_ant ="">
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.sel, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function CargaUni(uni){
+document.Unidades.unidad.value=uni;
+//alert(uni);
+document.Unidades.submit();
+
+}
+
+
+function Graba(){
+
+if (document.empleados.rut_super.value!=""){
+	document.empleados.ruts.value= listaCreaCadena(document.empleados.listas);
+	alert("rtus : " + document.empleados.ruts.value);
+	document.empleados.submit();
+}
+else{
+	alert("Debe Ingresar el Supervisor");
+}
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_listas.js">
+</script>
+</head>
+
+<body background="../servlet/Tool?images/Gestion/news/rigth_arbol.jpg" style="background-repeat:no-repeat" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.focus();">
+<table border=0 cellpadding=0 cellspacing=0 width="249" height="358">
+<form name="empleados" action="../servlet/AsignaSupervisor" method="post">
+  <tr> 
+    <td width="249" height="336" align="center" valign="top"> 
+      <table width="100%">
+        <tr>
+          <td height="72">&nbsp;</td>
+        </tr>
+        <tr>
+          <td bgcolor="#FFCC66">
+              <div align="center"><font face="Arial, Helvetica, sans-serif" size="1" class="negro12B">Empleados 
+                Seleccionados </font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td height="10">            </td>
+        </tr>
+        <tr> 
+            <td align="center"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+              </font> <font face="Arial, Helvetica, sans-serif" size="1"> 
+              <select name="listas" class="negro10N" size="8" style="width:200">
+              </select>
+              <input type="hidden" name="ruts">
+              <br>
+              </font> 
+              <a href="javascript:;" onClick="listaQuitarElemSel(document.empleados.listas); return false;"><img name="Imag_quitar" border="0" src="../servlet/Tool?images/Gestion/news/botones/quitar.gif" width="91" height="21"></a> 
+            </td>
+        </tr>
+      </table>
+        <table width="100%">
+        <tr>
+          <td class="maticoB" height="23">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td class="maticoB" height="14" bgcolor="#FFCC66"> 
+              <div align="center" class="negro12B"> Asignar Supervisor</div>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="33%"> 
+              <div align="center"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="60" height="78" vspace="3" name="foto_trab"></div>
+          </td>
+          <td width="67%"> 
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td class="negro10N"> 
+                    <div>
+                      <input type="text" name="nombre_sup" align="center" class="negro10N" readonly="yes" size="25" >
+                    </div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N"> 
+                    <div>
+                      <input type="text" name="rut_sup" align="center" class="negro10N" readonly="yes" size="25">
+                      <input type="hidden" name="rut_super">
+                      <input type="hidden" name="rut_dig">
+                    </div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N"> 
+                    <div>
+                      <input type="text" name="cargo_sup" align="center" class="negro10N" readonly="yes" size="25">
+                    </div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+          </td>
+        </tr>
+      </table>
+        <div><a href="#" onclick="Graba();return false" onMouseOut="MM_swapImgRestore()"><img src="../servlet/Tool?images/Gestion/news/botones/asig_sup.gif" width="91" height="21" border="0" name="Image2"></a> 
+      </div>    </td>
+    </tr>
+        </form>
+</table>
+</body>
+</html>
+

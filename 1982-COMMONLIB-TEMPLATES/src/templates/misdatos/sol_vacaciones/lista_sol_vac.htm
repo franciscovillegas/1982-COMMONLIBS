@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>SOLICITUDES DE VACACIONES</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 20:50:50 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="666" align="center">
+  <tr>
+    <td width="153" height="40" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><img src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"></font></i></font></td>
+    <td width="373" align="center"><b>SOLICITUDES DE VACACIONES</b></td>
+    <td width="124" align="center">&nbsp;</td>
+  </tr>
+</table>
+<form name="form1" action="../servlet/ListaSolicitudVaca">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<div>
+  <table width="570" border="0" cellspacing="10" cellpadding="0" height="20" align="center">
+    <tr>
+      <td width="260" align="left">
+        <font size="1" face="Arial, Helvetica, sans-serif">BUSCAR SOLICITUDES INGRESADAS DESDE EL: </font>
+      </td>
+      <td width="30">
+        <select name="diasol">
+          <option value="01" selected="selected">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select></td>
+      <td width="30">
+        <select name="messol">
+          <option value="01" selected="selected">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+		</td>
+      <td width="43">
+        <select name="yearsol">
+          <option value="2005" selected="selected">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+        </select>
+      </td>
+      <td width="43"><input type="radio" name="search" value="1" checked></td>
+    </tr>
+  </table>
+ </div>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<div>
+  <table width="570" border="0" cellspacing="10" cellpadding="0" height="20" align="center">
+    <tr>
+      <td width="260" align="left">
+        <font size="1" face="Arial, Helvetica, sans-serif">BUSCAR SOLICITUDES POR FECHA DE INICIO VACACIONES: </font>
+      </td>
+      <td width="30">
+        <select name="diad">
+          <option value="01" selected="selected">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select></td>
+      <td width="30">
+        <select name="mesd">
+          <option value="01" selected="selected">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+		</td>
+      <td width="43">
+        <select name="yeard">
+          <option value="2005" selected="selected">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+        </select>
+      </td>
+      <td width="43"><input type="radio" name="search" value="2"> </td>
+      <td width="43">
+         <input type="submit" name="Button" value="Buscar">
+      </td>
+    </tr>
+  </table>
+ </div>
+</table>
+</form>
+  <br/>
+<table width="666" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <div id="Layer1" style="position:absolute; width:649px; height:38px; z-index:3; visibility: visible; left: 6px; top: 60px">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+             <tr bgcolor="#FEDFC2" class="detalleTablaChico">
+                 <td height="20" align="center">ID SOLICITUD</a></td>
+                 <td height="20" align="center">RUT</a></td>
+                 <td height="36" align="center">NOMBRE</td>
+                 <td height="20" align="center">FECHA DE INICIO</td>
+                 <td height="20" align="center">FECHA DE TERMINO</td>
+                 <td height="20" align="center">DIAS SOLICITADOS</td>
+                 <td height="20" align="center">FECHA DE SOLICITUD</td>
+             </tr>
+              <td>
+                <div>
+                    <list solicitudes as s>
+                      <tr bgcolor="#FFFFFF" class="detalleTablaChico">
+                       <td height="20" align="center">${s.id_sol}</a></td>
+                       <td height="20" align="center">${s.rut2}</a></td>
+                       <td height="36" align="center">${s.nombre}</td>
+                       <td height="20" align="center">${s.fecha_desde}</td>
+                       <td height="20" align="center">${s.fecha_hasta}</td>
+                       <td height="20" align="center">${s.dias}</td>
+                       <td height="20" align="center">${s.fecha_sol}</td>
+                      </tr>
+                    </list>
+                </div>
+              </td>
+            </tr>
+          </table>
+            </div>
+        </td>
+        </tr>
+      </table>      </td>
+  </tr>
+</table>
+</body>
+</html>

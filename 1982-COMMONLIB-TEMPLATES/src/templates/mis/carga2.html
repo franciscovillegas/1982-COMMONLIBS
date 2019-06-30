@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>MetaInformaci&#243;n</title>	
+	<link rel="stylesheet" href="/portalrrhh/Style/tablas/jq.css" type="text/css" media="print, projection, screen" />
+    <link rel="stylesheet" href="/portalrrhh/Style/tablas/style.css" type="text/css" media="print, projection, screen" />
+    <script type="text/javascript" src="/portalrrhh/scripts/tablas/jquery-latest.js"></script>
+    <script type="text/javascript" src="/portalrrhh/scripts/tablas/__jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/portalrrhh/scripts/tablas/addons/pager/jquery.tablesorter.pager.js"></script>
+<style type="text/css">
+body { font-family: Arial; font-size: 10px; }
+.container { float: left; width: 750px; border: 1px solid #000000; }
+.navcontainer ul {
+	background-color: #5F707A;
+	border-bottom:1px solid #DFDFDF;
+	border-top:1px solid #DFDFDF;
+	float:left;
+	font-family:arial,helvetica,sans-serif;
+	font-size:12px;
+	margin:0pt;
+	padding:0pt;
+	width:100%; }
+.navcontainer ul li { display: inline; text-align: center; }
+.navcontainer ul li a:hover { background-color:#CCCCCC; color:#FFFFFF; }
+.navcontainer ul li a {
+	border-right:1px solid #DFDFDF;
+	background-color: #BBBBBB;
+	font-weight: bold;
+	color:#FFFFFF;
+	float:left;
+	padding:10px;
+	text-decoration:none;
+	width: 210px; }
+#tabcontent { min-height: 510px; padding-top: 80px; padding-left: 10px; }
+#preloader {
+	position: absolute;
+	top: 150px;
+	left: 100px;
+	z-index: 100;
+	padding: 5px;
+	text-align: center;
+	background-color: #FFFFFF;
+	border: 1px solid #000000; }
+</style>
+<script type="text/javascript" src="/portalrrhh/scripts/metainformacion/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+		
+	$(document).ready( function() {
+		$("#tabcontent_vis").empty();
+		$("#preloader").show();
+		$.ajax( {
+			url : "/portalrrhh/servlet/ServletCallMis?${param}",
+			type : "GET",
+			cache : false,
+	    	success : function(message) {	
+	    		$("#preloader").hide();
+	    		$("#tabcontent").empty().html(message);
+	    		
+	            $("#table").trigger("update"); 
+	            var sorting = [[2,1],[0,0]]; 
+	            $("#table").trigger("sorton",[sorting]);
+	            
+	    	}
+		});	
+	});
+	
+</script>
+</head>
+<body>
+	<div id="preloader">
+		<img src="/portalrrhh/images/loading.gif" align="absmiddle"> Cargando informacion...				
+	</div>
+			
+	<div id="tabcontent"></div>
+					
+	</div>
+</body>
+</html>

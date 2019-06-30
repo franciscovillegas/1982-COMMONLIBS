@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Perfil Laboral</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="/Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/certificados.css" rel="stylesheet" type="text/css">
+</head>
+
+<body leftmargin="0" topmargin="0">
+<div id="Layer2dc" style="position:absolute; left:157px; top:152px; width:289px; height:18px; z-index:2">
+  <div align="center">${dc.nom_empresa}</div>
+</div>
+<!--  
+<div id="Layer3dc" style="position:absolute; left:156px; top:204px; width:289px; height:18px; z-index:3">
+  <div align="center">${dc.nom_sociedad}</div>
+</div>
+-->
+<div id="Layer4dc" style="position:absolute; left:9px; top:210px; width:284px; height:19px; z-index:4">
+  <div align="center">(${dc.id_cco}) ${dc.cco}</div>
+</div>
+<div id="Layer5" style="position:absolute; left:317px; top:210px; width:288px; height:20px; z-index:5">
+  <div align="center">(${dc.id_unidad}) ${dc.unidad}</div>
+</div>
+<!--  
+<div id="Layer6dc" style="position:absolute; left:154px; top:315px; width:288px; height:17px; z-index:6">
+  <div align="center">(${dc.id_ctrab}) ${dc.ctrab}</div>
+</div>
+-->
+<table width="620" border="0" cellpadding="0" cellspacing="0" >
+  <tr valign="top">
+    <td valign="top"><table width="100%" border="0" align="center" cellpadding="0">
+      <tr align="center" class="titulo_grande">
+        <td height="25">Datos Contractuales
+          <hr></td>
+        </tr>
+      <tr valign="top">
+        <td height="15" align="center"><table width="95%" border="0" cellpadding="0" cellspacing="1">
+          <!--DWLayoutTable-->
+          <tr>
+            <td width="132" class="inputText"><strong>Cargo</strong></td>
+            <td width="172" class="detalleTabla">: ${dc.cargo}</td>
+            <td width="13" rowspan="6" class="texto">&nbsp;</td>
+            <td width="150" class="inputText">
+              <strong>Tipo Contrato</strong></td>
+            <td width="152" class="detalleTabla">
+              : ${dc.tipo_contrato}</td>
+          </tr>
+          <tr>
+            <td class="inputText"><strong>Ingreso Corporaci&oacute;n</strong></td>
+            <td class="detalleTabla">: ${dc.ingre_corp}</td>
+            <td class="inputText">
+              <strong>Fin Contrato</strong></td>
+            <td class="detalleTabla">
+             : ${dc.termino}</td>
+          </tr>
+          <tr>
+            <td class="inputText">
+              <strong>Ingreso Planta</strong></td>
+            <td class="detalleTabla">
+              : ${dc.fec_ingreso}</td>
+            <td class="inputText">
+              <strong>A&ntilde;os Corporaci&oacute;n</strong></td>
+            <td class="detalleTabla">
+              : ${dc.xcorp}</td>
+          </tr>
+          <tr>
+            <td class="inputText">
+              <strong>Seguro Cesant&iacute;a</strong></td>
+            <td class="detalleTabla">
+              : <if (dc.segdes) == "S">Si<else>No</if></td>
+            <td class="inputText">
+              <strong>A&ntilde;os Planta </strong></td>
+            <td class="detalleTabla">
+              : ${dc.xempre}</td>
+          </tr>
+          <tr>
+            <td class="inputText">
+              <strong>Seguro Salud Comp.</strong></td>
+            <td class="detalleTabla">
+              : <if (dc.segsalcom) == "S">Si<else>No</if></td>
+            <td class="inputText">
+              <strong>Ingreso Seguro Cesant&iacute;a</strong></td>
+            <td class="detalleTabla">
+              : 
+                <if (dc.segdes) == "S">${dc.fec_segdes}<else>n.a.</if></td>
+          </tr>
+          <tr>
+            <td height="12" class="inputText"><strong>Sueldo Base Convenido</strong></td>
+            <td height="12" class="detalleTabla">: ${dc.moneda_renta}${dc.renta}</td>
+            <td class="inputText">
+             <strong>Sindicato</strong></td>
+            <td class="detalleTabla">
+             : ${dc.sindicato}</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>      
+    </td>
+  </tr>
+</table>
+<table width="620" border="0" cellpadding="0">
+  <tr>
+    <td align="center" valign="top"><img src="../servlet/Tool?images/new/main/fondo_contrac.gif" width="612" height="217"></td>
+  </tr>
+</table>
+</body>
+</html>

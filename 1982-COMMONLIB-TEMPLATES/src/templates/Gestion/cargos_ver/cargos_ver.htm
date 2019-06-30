@@ -1,0 +1,194 @@
+  <html>
+<head>
+<title>Cargos Ver</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+<!--
+<assign empresa_ant ="">
+
+
+<list cargos as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var cargo_${a.empresa} = new Array();
+		cargo_${a.empresa}[cargo_${a.empresa}.length] = new Option('Seleccione un Cargo','-1');
+	</if>
+	cargo_${a.empresa}[cargo_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.cargo, eval("window.cargo_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function AgregarUnidad(form) {
+//alert("Cargo: "+form.cargo.value);
+if ((form.cargo.value!="-1")&&(form.cargo.value!="")){
+	form.submit();
+}else
+  alert("Seleccione el cargo a asociar.");
+return false;
+}
+
+function EliminarUnidades(form) {
+	form.submit();
+	return false;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function asigna(form) {
+	var url = "/servlet/MantenerUsuarioOrga"
+	url += "?rut=${rutuser}&accion=${accion}&rel_uni=${cod_uni}&unirel=1&rel_emp=${cod_empresa}"
+	url += "&rel_tipo="+form.tipo.value;
+	opener.document.location.href = url;
+	opener.focus();
+	window.close();
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos2.css" type="text/css">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</head>
+
+<body bgcolor="#FFA400" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.focus();MM_preloadImages('/images/Gestion/botones/eliminar_over.jpg','/images/Gestion/botones/cerrar_over.jpg','/images/Gestion/botones/agregar_over.jpg','/images/Gestion/botones/agregar_over.jpg')">
+<div align="center"></div>
+<table border=0 cellpadding=0 cellspacing=0 width="565" height="290">
+  <tr> 
+    <td valign="top" bgcolor="#FFA400" rowspan=8 align="left"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td bgcolor="#FFCC66" height="20"> 
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="1" class="negro12B">Seleccione 
+              la Empresa v/s Cargo</font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td align="center"> 
+            
+              
+            <table width="100%" border="0" cellspacing="0" cellpadding="2" class="negro12B">
+              <form name="Unidades" method="post" action="/servlet/datafolder.Unidad.AsignaCargosVer?rut=${rut}&accion=A">
+                <tr> 
+                  <td width="49%"> Empresa<br>
+                    <select name="empresa" class="negro11lista" onChange = "SeleccionaEmpresa(this.value)" style="width=250">
+                      <option value="-1">Seleccione una Empresa</option>
+                      <list empresas as v> 
+                      <option value="${v.id}">${v.desc}</option>
+                      </list> 
+                    </select>
+                    <input type="hidden" name="empresas" value="${cod_empresa}">
+                  </td>
+                  <td colspan="2"> Cargo<br>
+                    <select name="cargo" class="negro11lista"  style="width=250">
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" class="negro12N">&nbsp; </td>
+                  <td width="25%" align="center"><a href="javascript:;" onClick="return AgregarUnidad(document.Unidades)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('agregar','','/images/Gestion/botones/agregar_over.jpg',1);MM_swapImage('agregar','','/images/Gestion/botones/agregar_over.jpg',1)"><img src="/images/Gestion/botones/agregar_up.jpg" width="108" height="27" name="agregar" border="0"></a></td>
+                </tr>
+              </form>
+            </table>
+            
+          </td>
+        </tr>
+      </table>
+      <form name="form_graba" action="/servlet/datafolder.Unidad.AsignaCargosVer?rut=${rut}&accion=E" method="post">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="negro12B" height="20" bgcolor="#FFCC66" align="center"> 
+              Cargos Seleccionados</td>
+          </tr>
+        </table>
+        <div name="LayerDetalle" style="position:absolute; width:565px; height:115px; z-index:4; left: 0; top: auto; background-color: #E9E9E9; layer-background-color: #E9E9E9; border: 1px none #000000; overflow: auto; visibility: visible" id="LayerDetalle"> 
+        <table width="100%" border="0" cellspacing="1" cellpadding="2">
+            <list emple_cargos as c> 
+            <tr bgcolor="#D4DBD5"> 
+              <td class="negro10N">
+                <input type="checkbox" name="elim" value="${c.emp_id},${c.cargo_id}">
+              </td>
+              <td class="negro10N" width="45%">${c.empresa}</td>
+              <td class="negro10N" width="45%">${c.cargo}</td>
+            </tr>
+            </list> 
+          </table>
+        </div>
+        </form>
+    </td>
+  </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+</table>
+
+<div id="Layer2" style="position:absolute; left:312px; top:254px; width:250px; height:33px; z-index:3; overflow: visible"> 
+  <div align="center"><a href="javascript:;" onClick="return EliminarUnidades(document.form_graba)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('elim','','/images/Gestion/botones/eliminar_over.jpg',1)"><img src="/images/Gestion/botones/eliminar_up.jpg" width="108" height="27" name="elim" border="0"></a><a href="#" onClick="window.close();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','/images/Gestion/botones/cerrar_over.jpg',1)"><img src="/images/Gestion/botones/cerrar_up.jpg" name="Image2" border="0"></a> 
+  </div>
+</div>
+</body>
+</html>
+

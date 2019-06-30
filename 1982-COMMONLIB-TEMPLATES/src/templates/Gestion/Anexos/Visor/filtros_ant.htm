@@ -1,0 +1,238 @@
+ <HTML>
+<head>
+<title>Filtros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+<!--
+function Valida() { //v2.0
+  var s1=document.form1.sexo1.value;
+  var s2=document.form1.sexo2.value;
+  var ed1=document.form1.rango1.value;
+  var ed2=document.form1.rango2.value;
+  var apel1=document.form1.apellido1.value;
+  var apel2=document.form1.apellido2.value;
+  var nombre=document.form1.nombre.value;
+  var civil=document.form1.civil.value;
+
+   //*********No ha seleccionado ning&#250;n criterio******
+  if ((s1!="M")&&(s2!="F")&&(ed1=="")&&(ed2=="")&&(apel1=="")&&(apel2=="")&&(nombre=="")&&(civil=="0"))
+     alert("Seleccione un criterio.");
+  else  
+     document.form1.submit();     
+     
+}
+
+
+function Limpia(){
+	document.form1.sexo1.value="0";
+	document.form1.sexo2.value="0";
+	document.form1.rango1.value="";
+	document.form1.rango2.value=""; 
+    document.form1.nombre.value="";
+    document.form1.apellido1.value="";
+    document.form1.apellido2.value="";
+    document.form1.civil.value="0";
+ }
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-over.gif");
+		busgraf_17_down = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_17-down.gif");
+		busgraf_22_busgraf_17_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_22-busgraf_17_over.gif");
+		busgraf_36_over = newImage("../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif");
+		preloadFlag = true;
+	}
+}
+
+// -->//-->
+</SCRIPT>
+<!-- Finalizar gui&#243;n de carga previa -->
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript">
+function buscarAnexos(form) {
+	form.submit();
+}
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 ONLOAD="parent.focus();preloadImages();MM_preloadImages('Tool?htm=Gestion/BusquedaPorFiltros/buscar_over.gif','Tool?htm=Gestion/BusquedaPorFiltros/limpiar_over.gif')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+<table width="700" border="0" cellspacing="0" cellpadding="0" bgcolor="#000033" height="105" align="left">
+  <tr> 
+    <td height="20" id="td_anexos" width="90" align="center" bgcolor="#006699"><a href="javascript:;" onClick="MM_showHideLayers('LayerPersonas','','hide','LayerAnexos','','show');td_anexos.bgColor='#006699';td_personas.bgColor='#000066'">[Anexos]</a></td>
+    <td height="20" id="td_personas" width="90" align="center" bgcolor="#000066"><a href="javascript:;" onClick="MM_showHideLayers('LayerPersonas','','show','LayerAnexos','','hide'); td_anexos.bgColor='#000066';td_personas.bgColor='#006699'">[Personas]</a></td>
+    <td height="20" align="right">Gerencia RECURSOS HUMANOS</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="90">&nbsp;</td>
+    <td width="90">&nbsp; </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="LayerPersonas" style="position:absolute; width:700; height:85; z-index:7; left: 0; top: 20; background-color: #006699; layer-background-color: #006699; border: 1px none #000000; visibility: hidden"> 
+  <table border=0 cellpadding=0 cellspacing=0 width="700" height="85">
+    <tr valign="bottom"> 
+      <td height="64"> 
+        <form name="form1" method="post" action="../servlet/BuscaCriterios" target="mainF">
+          <input type="hidden" name="sexo1" value="0">
+          <input type="hidden" name="sexo2" value="0">
+          <font face="Arial, Helvetica, sans-serif" size="2"> 
+          <input type="hidden" name="termino" value="12">
+          <input type="hidden" name="inicio" value="1">
+          <input type="hidden" name="actual" value="1">
+          <input type="hidden" name="grupo" value="10">
+          <input type="hidden" name="grupter" value="10">
+          <input type="hidden" name="grupini" value="1">
+          <input type="hidden" name="rango1" >
+          <input type="hidden" name="rango2" >
+          <input type="hidden" name="civil" value="0">
+          </font> 
+          <div id="apellidos" style="position:absolute; width:121px; height:50px; z-index:4; left: 258px; top: 25px; visibility: inherit"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="100%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                  <input type="text" name="apellido1" size="15" maxlength="30" class="negro12B">
+                  </font></td>
+              </tr>
+              <tr> 
+                <td width="100%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                  <input type="text" name="apellido2" size="15" maxlength="30" class="negro12B">
+                  </font></td>
+              </tr>
+            </table>
+          </div>
+          <font face="Arial, Helvetica, sans-serif" size="2"> </font> 
+          <div id="LayerNombre" style="position:absolute; width:86px; height:31px; z-index:5; left: 425px; top: 24px; visibility: inherit"> 
+            <input type="text" name="nombre" size="13" maxlength="50" class="negro12B">
+          </div>
+          <div id="LayerBuscar" style="position:absolute; width:177px; height:39px; z-index:3; left: 536px; top: 44px; visibility: inherit"> 
+            <table width="164" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="83"> 
+                  <div align="center"><a href="javascript:;" onClick="Valida();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image14','','/templates/Gestion/BusquedaPorFiltros/buscar_over.gif',1)"><img name="Image14" border="0" src="/templates/Gestion/BusquedaPorFiltros/buscar_up.gif" width="73" height="34"></a></div>
+                </td>
+                <td width="75"><a href="javascript:;"  onClick="Limpia();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image15','','/templates/Gestion/BusquedaPorFiltros/limpiar_over.gif',1)"><img name="Image15" border="0" src="/templates/Gestion/BusquedaPorFiltros/limpiar_up.gif" width="73" height="34"></a></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </td>
+      <td height="64">&nbsp; </td>
+      <td height="64" width="113"> <img src="/templates/Gestion/Anexos/Visor/top_busqueda/top_busqueda_09.gif" width=113 height=65></td>
+      <td height="64" width="141"> <img src="/templates/Gestion/Anexos/Visor/top_busqueda/top_busqueda_10.gif" width=141 height=65></td>
+      <td height="64" width="108"><img src="/templates/Gestion/Anexos/Visor/top_busqueda/top_busqueda_11.gif" width=108 height=65></td>
+      <td height="64" width="165">&nbsp; </td>
+    </tr>
+  </table>
+</div>
+<div id="LayerAnexos" style="position:absolute; width:700; height:85; z-index:8; background-color: #006699; layer-background-color: #006699; border: 1px none #000000; left: 0; top: 20; visibility: visible"> 
+  <form name="formAnexo" method="post" action="../servlet/VisorResul" target="mainF">
+    <table width="700" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td width="70" align="center">Unidad</td>
+        <td colspan="4"> 
+          <select name="unidad" class="inputs" style="width=500">
+            <option selected value = "">Seleccione una Unidad</option>
+            <list unidades as u> 
+            <option value = "${u.id}">${u.descrip}</option>
+            </list> 
+          </select>
+        </td>
+      </tr>
+      <tr> 
+        <td width="70" align="center">Buscar</td>
+        <td width="100"> 
+          <input type="checkbox" name="ver_anexo" value="checkbox" checked>
+          Anexos </td>
+        <td width="100"> 
+          <input type="checkbox" name="ver_fono" value="checkbox" checked>
+          Tel&eacute;fonos </td>
+        <td width="100"> 
+          <input type="checkbox" name="ver_fax" value="checkbox" checked>
+          Faxes </td>
+        <td width="380">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td width="70">&nbsp;</td>
+        <td width="100"> 
+          <input type="text" name="bus_anexo" class="inputs" size="10">
+        </td>
+        <td width="100"> 
+          <input type="text" name="bus_fono" class="inputs" size="10">
+        </td>
+        <td width="100"> 
+          <input type="text" name="bus_fax" size="10" class="inputs">
+        </td>
+        <td width="380" align="center"><a href="javascript:;" onClick="buscarAnexos(document.formAnexo); return false">[Buscar]</a> <a href="javascript:;" onClick="document.formAnexo.reset();">[Limpiar]</a></td>
+      </tr>
+    </table>
+  </form>
+  
+</div>
+<br>
+<br>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="4" class="negro12B" height="25"><u>EXPERIENCIA LABORAL FUERA 
+      DE LA EMPRESA</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td class="negro12B" width="35%" align="center"> EMPRESA</td>
+    <td class="negro12B" width="35%" align="center">CARGO</td>
+    <td class="negro12B" width="15%" align="center">DESDE</td>
+    <td class="negro12B" width="15%" align="center">HASTA</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="35%" class="negro10N" height="20">${d.empresa}</td>
+    <td width="35%" class="negro10N" height="20">${d.cargo}</td>
+    <td width="15%" class="negro10N" align="center" height="20">${ d.desde}</td>
+    <td width="15%" class="negro10N" align="center" height="20">${d.hasta}</td>
+  </tr>
+  </list> <else> 
+  <tr> 
+    <td colspan="4" class="negro12N" align="center">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

@@ -1,0 +1,119 @@
+  <html>
+<head>
+<title>Personal Directo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/cerrar_down.jpg','../servlet/Tool?images/Gestion/botones/cerrar_over.jpg')">
+<table width="457" border="0" cellspacing="0" cellpadding="0" height="217" bgcolor="#FFa400">
+  <tr>
+    <td valign="top">
+      <table width="442" border="1" cellspacing="0" cellpadding="0" height="18" bgcolor="#FFBB3C">
+        <tr> 
+          <td height="2" class="Negrita"> 
+            <div align="center"><b class="negro10B">PERSONAL DIRECTO <br>
+              ${unidad} </b></div>
+          </td>
+        </tr>
+      </table>
+      <table width="442" border="1" cellspacing="0" cellpadding="0" align="left" height="22" bgcolor="#FFA704">
+        <tr> 
+          <td width="191" class="negro10B"> 
+            <div align="center">Nombre</div>
+          </td>
+          <td width="180" class="negro10B"> 
+            <div align="center">Cargo</div>
+          </td>
+          <td width="63" class="negro10B"> 
+            <div align="center">Costo($)</div>
+          </td>
+        </tr>
+      </table>
+      <div id="Layer1" style="position:absolute; width:439px; height:124px; z-index:1; left: 0px; overflow: auto; visibility: visible; top: 55px; background-color: #FFBB3C; layer-background-color: #FFBB3C; border: 1px none #000000"> 
+        <table width="100%" border="1" cellspacing="0" cellpadding="0" align="left" height="22">
+          <list detalle as d> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="45%" height="15" class="Text"> 
+              <div align="left"><a href="#" onClick="VerRut('${d.rut}');return false;"><img src="../servlet/Tool?images/Gestion/botones/pers.gif" width="24" height="20" border="0"></a><a href="#" onClick="VerRut('${d.rut}');return false;" class="azul10NLink">${d.nombre}</a></div>
+            </td>
+            <td width="43%" height="15" class="negro10N"> 
+              <div align="left">${d.cargo}</div>
+            </td>
+            <td height="15" width="12%" class="negro10N"> 
+              <div align="right">${d.costo}</div>
+            </td>
+          </tr>
+          </list> 
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; left:312px; top:180px; width:129px; height:15px; z-index:2"> 
+  <div align="right"><a href="#" onClick="MM_nbGroup('down','group1','cerrar_up','../servlet/Tool?images/Gestion/botones/cerrar_down.jpg',1);window.close();" onMouseOver="MM_nbGroup('over','cerrar_up','../servlet/Tool?images/Gestion/botones/cerrar_over.jpg','',1)" onMouseOut="MM_nbGroup('out')"><img src="../servlet/Tool?images/Gestion/botones/cerrar_up.jpg" width="108" height="27" name="cerrar_up" border="0" onLoad=""></a></div>
+</div>
+</body>
+</html>

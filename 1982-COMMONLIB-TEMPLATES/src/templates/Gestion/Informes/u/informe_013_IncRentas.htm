@@ -1,0 +1,29 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="5" class="negro12B" height="25"><u>INCREMENTO DE RENTAS</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC" align="center"> 
+    <td class="negro12B" width="15%">FECHA</td>
+    <td class="negro12B" width="25%">TIPO</td>
+    <td class="negro12B" width="30%">NETO ANTES</td>
+    <td class="negro12B" width="30%">NETO DESPUES</td>
+    <td class="negro12B" width="10%"> % INCREMENTO</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="15%" class="negro10N" align="center" height="20">${FFecha("dd/MM/yyyy", 
+      d.fecha)}</td>
+    <td width="25%" class="negro10N" height="20">${d.motivo}</td>
+    <td width="30%" class="negro10N" align="right" height="20">${FNum(d.neto_antes)}</td>
+    <td width="30%" class="negro10N" align="right" height="20">${FNum(d.neto_despues)}</td>
+    <td width="10%" class="negro10N" align="right" height="20">${d.por_incremento}</td>
+  </tr>
+  </list> <else> 
+  <tr align="center"> 
+    <td colspan="5" class="negro12N">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

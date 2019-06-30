@@ -1,0 +1,422 @@
+<HTML> 
+<HEAD>
+<TITLE>M&#243;dulo Gesti&#243;n Diaria</TITLE>
+
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<script src="Tool?htm=Gestion/script/ventanas.js"></script>
+	<script src="Tool?htm=Gestion/script/opcion_link.js"></script>
+<script type="text/javascript">
+<!--
+function checkValor(valor)
+{
+	document.frm1b.periodo.value=valor;
+}
+
+function Gantt() {
+	  window.open("about:blank", "gantt","width=780,height=500,status=1");
+	  document.vac.unidad.value='${uniActual}';
+	  document.vac.submit();
+}
+
+
+function Reportes(unidad,recursivo,tipo,empresa)
+{
+	window.open("about:blank", "reportes","scrollbars=yes,toolbar=no,resizable=no,width=850,height=560,left=100,top=150");
+	document.frm1.unidad.value=unidad;
+	document.frm1.recursivo.value=recursivo;
+	document.frm1.tipo.value=tipo;
+	document.frm1.empresa.value=empresa;
+	document.frm1.submit(); 
+}
+
+
+function ReportesByMis(idrep,unidad,esarea){
+	window.open("about:blank", "reportesbymis","scrollbars=yes,toolbar=no,resizable=yes,width=850,height=560,left=100,top=150");
+	document.frmMis.gestiondiaria.value=1;
+	document.frmMis.idrep.value=idrep;
+	document.frmMis.unidad.value=unidad;
+	document.frmMis.esarea.value=esarea;
+	document.frmMis.submit(); 
+}
+
+
+function ReportesAjax(unidad,recursivo,tipo,empresa)
+{
+	window.open("about:blank", "reportes","scrollbars=yes,toolbar=no,resizable=no,width=850,height=560,left=100,top=150");
+	document.frm1b.unidad.value=unidad;
+	document.frm1b.recursivo.value=recursivo;
+	document.frm1b.tipo.value=tipo;
+	document.frm1b.empresa.value=empresa;
+	document.frm1b.submit(); 
+}
+
+function RptGastos(unidad,tipo){
+   //alert(unidad + "_" + tipo);
+   var href="../servlet/ServletSelectPeriodo?unidad="+unidad+"&tipo="+tipo;
+   window.open(href, 'reporte', 'width=370,height=200');
+}
+
+function CallReports(reporte,unidad,periodo) {
+document.location.href="";
+}
+
+function cantidad(num) {
+	var n = num
+	if (isNaN(n)) {
+	  return n;
+	}
+	if ( n == 0) {
+	  document.write('0');
+	} else {
+	  for (i = 0; i < n; i++) {
+		document.write('<img src=../servlet/Tool?images/Gestion/botones/pers.gif width=24 height=20 border=0>');
+	  }
+	}
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+MM_reloadPage(true);//-->
+</script>
+
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<form name="vac" method="post" action="../servlet/ServletGanttVacacionesFull" target="gantt">
+<input type="hidden" name="unidad"/>
+</form>
+
+<form name="frm1" method="post" action="../servlet/ReportesOrganica" target="reportes">
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="recursivo"/>
+<input type="hidden" name="tipo"/>
+<input type="hidden" name="empresa"/>
+</form>
+
+<form name="frmMis" method="post" action="../servlet/ServletCallMisRepo" target="reportesbymis">
+<input type="hidden" name="gestiondiaria"/>
+<input type="hidden" name="idrep"/>
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="esarea"/>
+</form>
+
+<form name="frm1b" method="post" action="../servlet/ReportesOrganicaLM" target="reportes">
+<input type="hidden" name="unidad"/>
+<input type="hidden" name="recursivo"/>
+<input type="hidden" name="tipo"/>
+<input type="hidden" name="empresa"/>
+<input type="hidden" name="periodo" value="${lperiodo}"/>
+</form>
+
+<div id="menuReportes">
+	<table class="tableStyle">
+		<th><header>Gesti&#243;n diaria</header></th>
+		<tr>
+			<td>
+			
+				<table id="tblContenidos" >
+				    <tr>
+				      <td class="textoImportante">Unidad:&nbsp;${unid_desc}</td>
+				    </tr>
+				   <tr>
+				   	<td>
+					   	  <if cantJefe  == "0" || cantJefe == "1">
+								  <table>
+									    <tr>
+									    	<td rowspan="3" >
+									    		<div class="divImagen">
+									    		    <img src="../temporal/imgtrabajadores/${rut}.jpg" onerror="existeFoto(this)" border="1"> 	
+												</div>
+									    	</td>
+									    	
+									        <td ><if nombre>${nombre}<else>Jefe de Unidad</if></td>
+										</tr>
+									    <tr>
+									    	<td >${cargo}</td>
+										</tr>
+									    <tr>
+									    	<td >E-Mail :<a href="mailto:${e_mail}">${e_mail}</a></td>
+										</tr>
+								  </table>
+						  <else>
+						  		<table>
+						  			<tr>
+						  				<list jefes as j>
+						  				<td>
+						  					
+						  						  <table>
+													    <tr>
+													    	<td rowspan="3" >
+													    		<div class="divImagen">
+													    		    <img src="../temporal/imgtrabajadores/${j.rut}.jpg" onerror="existeFoto(this)" border="1"> 	
+																</div>
+													    	</td>
+													    	
+													        <td style="font-size:9px;"><if nombre>${j.nombre}<else>Jefe de Unidad</if></td>
+														</tr>
+													    <tr>
+													    	<td style="font-size: 80%;">${j.cargo}</td>
+														</tr>
+													    <tr>
+													    	<td style="font-size: 80%;">E-Mail :<a href="mailto:${e_mail}">${j.e_mail}</a></td>
+														</tr>
+												  </table>
+											
+						  				</td>
+						  				</list>
+						  			</tr>
+						  		</table>
+						  </if>
+				   	</td>
+				   </tr>
+				   <tr>
+				   	<td>
+					   	<table id="tblDatos">
+						<tr>
+					    	<td width="50%" class="tabla_negro"  >&nbsp;Costo Unidad:</td>
+					        <td width="50%" align="center" class="tablas" ><strong>&nbsp;${total}</strong></td>
+						</tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Costo Area:</td>
+					            <td align="center" class="tablas" ><strong>&nbsp;${totalCA}</strong> </td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotaci&oacute;n Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(20,'${uniActual}','0')"> ${dotacion} Empleado(s) </div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotaci&oacute;n Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(20,'${uniActual}','1')"> ${dotacionDA} Empleado(s) </div> </td>
+					          </tr>
+					          <!-- 
+							  <tr>
+							    <td width="60%" class="tabla_negro">&nbsp;Nro de trabajadores en vacaciones:</td>
+							    <td width="40%" align="center" class="tabla_negro">
+							    <a href="http://192.168.0.4:6190/birt-viewer/frameset?__report=report\rpt_vacaciones.rptdesign&unidad=${uniActual}&year=${ann}&month=${mes}" target="_blank">
+							    <script language="JavaScript">
+							    cantidad(${vacaciones}); 
+							    </script>
+							    </div>
+							    </td>
+							  </tr>
+							   -->
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Cargos Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(21,'${uniActual}','0')">&nbsp;${num_cargos}</div> </td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Cargos Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(21,'${uniActual}','1')">&nbsp;${num_cargosDA}</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotaci&#243;n Unidad Tipo Contrato:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(22,'${uniActual}','0')" alt="Dotacion Unidad Tipo Contrato">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotaci&#243;n Area Tipo Contrato:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(22,'${uniActual}','1')" alt="Dotacion Area Tipo Contrato">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Costo Unidad por Empresa:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(23,'${uniActual}','0')" alt="Costos Unidad por Empresa">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Costo Area por Empresa:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(23,'${uniActual}','1')" alt="Costos Area por Empresa">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          
+					          
+					          <tr>
+		            			<td class="tabla_negro" >&nbsp;Ingreso Personal por Unidad:</td>
+		            			<td align="center" class="tablas" ><div onClick="ReportesByMis(18,'${uniActual}','0')" alt="Ingreso Personal por Unidad">&nbsp;Ver Detalle</div></td>
+							  </tr>	          
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Ingreso Personal por Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(18,'${uniActual}','1')" alt="Ingreso Personal por Area">&nbsp;Ver Detalle</div></td>
+							</tr>				
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Egreso Personal por Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(66,'${uniActual}','0')" alt="Egreso Personal por Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>				
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Egreso Personal por Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(66,'${uniActual}','1')" alt="Egreso Personal por Area">&nbsp;Ver Detalle</div></td>
+							</tr>	
+			<!--  			
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Proceso Finiquito por Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(73,'${uniActual}','0')" alt="Proceso Finiquito por Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>			
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Proceso Finiquito por Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(73,'${uniActual}','1')" alt="Proceso Finiquito por Area">&nbsp;Ver Detalle</div></td>
+							</tr>
+			-->			
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Rotaci&oacuten Personal por Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(70,'${uniActual}','0')" alt="Rotacion Personal por Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>			
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Rotaci&oacuten Personal por Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(70,'${uniActual}','1')" alt="Rotacion Personal por Area">&nbsp;Ver Detalle</div></td>
+							</tr>				
+	
+	<!--  
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Ausencias Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','N','AUS',${empActual})" alt="Ausencias Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>				
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Ausencias Area:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','S','AUS',${empActual})" alt="Ausencias Area">&nbsp;Ver Detalle</div></td>
+							</tr>          				
+							<tr>
+								<td class="titulo" colspan="2">Otros Informes-Activos Proceso Remuneraci&oacuten ${periodorem}</td>
+							</tr>				          
+					          		          
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Saldo Vacaciones Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','N','V',${empresa})" alt="Saldo Vacaciones Unidad">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Saldo Vacaciones Area:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','S','V',${empresa})" alt="Saldo Vacaciones Area">&nbsp;Ver Detalle</div></td>
+					          </tr>
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Licencias M&eacute;dicas Area:</td>
+				    	        <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','S','LIC',${empActual})" alt="Licencias Medicas Area">&nbsp;Ver Detalle</div></td>
+							</tr>          
+	
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Licencias M&eacute;dicas del A&#241;o Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','N','LAV',${empActual})" alt="Licencias Medicas del A&#241;o Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>
+	
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Licencias M&eacute;dicas del A&#241;o Area:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','S','LAV',${empActual})" alt="Licencias Medicas del A&#241;o Area">&nbsp;Ver Detalle</div></td>
+							</tr>          
+	
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Historico Ausencias Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','N','HA',${empActual})" alt="Historico de Ausencias Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>
+	
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Historico Ausencias Area:</td>
+					            <td align="center" class="tablas" ><div onClick="Reportes('${uniActual}','S','HA',${empActual})" alt="Historico de Ausencias Area">&nbsp;Ver Detalle</div></td>
+							</tr>
+	
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Finiquito Historico por Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(80,'${uniActual}','0')" alt="Finiquito Historico por Unidad">&nbsp;Ver Detalle</div></td>
+							</tr>
+							<tr>
+					            <td class="tabla_negro" >&nbsp;Finiquito Historico por Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(80,'${uniActual}','1')" alt="Finiquito Historico por Area">&nbsp;Ver Detalle</div></td>
+							</tr>
+		
+		-->
+		
+					           
+					<if ( muga == "4183944" ) || ( muga == "99999999" ) >          
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotacion Hab/Dctos. Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(25,'${uniActual}','0')" alt="Dotacion Haberes Unidad">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotacion Hab/Dctos. Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(25,'${uniActual}','1')" alt="Dotacion Haberes Area">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotacion Maestro Unidad:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(26,'${uniActual}','0')" alt="Dotacion Maestro Unidad">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					          <tr>
+					            <td class="tabla_negro" >&nbsp;Dotacion Maestro Area:</td>
+					            <td align="center" class="tablas" ><div onClick="ReportesByMis(26,'${uniActual}','1')" alt="Dotacion Maestro Area">&nbsp;Ver Detalle</div></td>
+					          </tr>
+					</if>                    
+					          <tr><td style="height: 5px;"></td></tr>
+					</table>
+				   	</td>
+				   </tr>
+				  </table>
+			</td>
+		</tr>
+		
+	</table>	
+</div> <!-- menuReportes -->
+
+
+
+<!--  
+<div id="Layer3">
+  <table width="60%" border="0" cellpadding="0" cellspacing="2">
+    <tr>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=gfc_rentas.rptdesign&params=${uniActual}&params=${periodo}" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/alfa.gif" width="30" height="30" border="0" title="Gr&aacute;fico de Rentas"> </a> </td>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=gfc_rentaxcargo.rptdesign&params=${uniActual}&params=${periodo}" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/filtros.gif" width="30" height="30" border="0" title="Gr&aacute;fico Dispersi&oacute;n de Rentas x Cargo"> </a> </td>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=gfc_rentaxunidad.rptdesign&params=${uniActual}&params=${periodo}" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/grafica.gif" width="30" height="30" border="0" title="Gr&aacute;fico Dispersi&oacute;n de Rentas x Unidad"> </a> </td>
+    </tr>
+    <tr>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=rpt_planilla.rptdesign&params=${uniActual}&params=${periodo}" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/alfa.gif" width="30" height="30" border="0" title="Planilla de Trabajadores"> </a> </td>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=rpt_gestion.rptdesign" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/filtros.gif" width="30" height="30" border="0" title="Planilla de Capacitaci&oacute;n"> </a> </td>
+      <td align="center"><a href="../servlet/ServletCallReports?rptName=gfc_unhijas.rptdesign&params=${uniActual}" target="_blank"> <img src="../servlet/Tool?images/Gestion/Busqueda/grafica.gif" width="30" height="30" border="0" title="Gr&aacute;fico Dispersi&oacute;n de Rentas x Unidad"> </a> </td>
+    </tr>
+  </table>
+</div>
+
+
+
+<table cellpadding="1" cellspacing="1" height="354" width="415" border="0" >
+  <tr>
+	<td height="2"></td>
+  </tr>
+  <tr>
+	<td height="64" colspan="2" valign="top">
+	  <table width="98%">
+		<tr>
+		  <td height="27" class="TITULO_PerfilLaboral"><img src="../servlet/Tool?images/Gestion/menu/gestion.gif" width="56" height="40" align="absmiddle">Gesti&oacute;n Diaria</td>
+	    </tr>
+	   </table>	
+	</td>
+  </tr>
+</table>
+-->
+
+
+
+</BODY>
+</HTML>

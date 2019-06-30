@@ -1,0 +1,194 @@
+ <HTML>
+<HEAD>
+<TITLE>Evaluaciones</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal}
+-->
+</Style>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+-->
+</Style>
+</HEAD>
+<BODY background="../servlet/Tool?images/Gestion/news/fondo_descanso.jpg" text="#000000" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/opcion_over.jpg','../servlet/Tool?images/Gestion/botones/cancelar_over.jpg','../servlet/Tool?images/Gestion/botones/aceptar_over.jpg','../servlet/Tool?images/Gestion/botones_exp/perfildown.jpg','../servlet/Tool?images/Gestion/botones_exp/simudown.jpg')">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<table width="563" border="0" cellpadding="0" cellspacing="0" >
+  <tr valign="top">
+    <td width="13%" height="433" align="center" valign="top">
+      <table width="113" border="0" align="left" height="93" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="67" align="center" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">
+            <table width="86" height="106">
+              <tr>
+                <td valign="middle" align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="79" height="100" onError="existeFoto(this)" border="0"></td>
+              </tr>
+            </table>
+            <table width="111" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="111">
+                  <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>${rut2}</b></font></div></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" height="75">
+              <tr>
+                <td height="18">&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="12">
+                  <div align="center"><a href="javascript:;" onClick="return VerFonosRut('${rut}')" class="azul10NLink" title="Informaci&oacute;n de Anexo, Tel&eacute;fono y Fax.">[Anexo]</a></div></td>
+              </tr>
+              <tr>
+                <td height="12" class="negro10N" align="center">&nbsp;
+                    <!--${anexo}--></td>
+              </tr>
+              <tr>
+                <td>
+                  <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">E-Mail</font></div></td>
+              </tr>
+              <tr>
+                <td height="12">
+                  <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b>${email}</b></font></div></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><if Control("df_perfil_lab", rut)><a href="#" onClick="parent.PerfilLaboral(${rut});return false"><img src="../servlet/Tool?images/Gestion/botones_exp/perfilup.jpg" name="Image11" width="103" height="33" border="0" id="Image11" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/Gestion/botones_exp/perfildown.jpg',1)"></a></if></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><if Control("df_sim_rta", rut)><a href="#" onClick="parent.Simulacion(${rut});return false;"><img src="../servlet/Tool?images/Gestion/botones_exp/simup.jpg" name="Image21" width="103" height="33" border="0" id="Image21" onMouseOver="MM_swapImage('Image21','','../servlet/Tool?images/Gestion/botones_exp/simudown.jpg',1)"></a></if></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+      <br>
+    </td>
+    <td valign="top"><table width="100%" border="0" align="center">
+        <tr>
+          <td width="100%" height="67">&nbsp;</td>
+        </tr>
+        <!-- ubicaci&oacute;n F&iacute;sica
+              <tr valign="top"> 
+                <td width="34%" class="textB"> 
+                  <div align="right">Ubicaci&oacute;n F&iacute;sica</div>
+                </td>
+                <td width="66%" class="texto"> 
+                  <div align="left">: ${ubicacion}</div>
+                </td>
+              </tr>-->
+      </table>
+      <table width="100%">
+        <tr>
+          <td height="11" valign="top" colspan="4">
+            <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b class="titulo">${nombre}</b></font></div></td>
+        </tr>
+        <tr>
+          <td width="18%" height="13"> <font face="Arial, Helvetica, sans-serif" size="1" class="textB">Cargo</font></td>
+          <td width="41%" height="13"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${cargo}</font></td>
+          <td width="23%" height="13"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Fec. Ingreso</font> </td>
+          <td width="18%" height="13"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${fecha_ing}</font></td>
+        </tr>
+        <tr>
+          <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Centro Costo </font></td>
+          <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:(${id_unidad}) ${unidad}</font> </td>
+        </tr>
+        <tr>
+          <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Dependencia</font></td>
+          <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif" class="texto">:${area} </font></td>
+        </tr>
+        <tr>
+          <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Gerencia</font></td>
+          <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">:${division}</font></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<div id="Layer1" style="position:absolute; width:438px; height:225px; z-index:1; left: 120px; top: 204px; overflow: auto; visibility: visible">
+  <table border="0" cellpadding="0" cellspacing="1" width="100%">
+    <tr bgcolor="#E2E2E2">
+      <td width="28%" height="28">
+      <div align="center" class="Estilo1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Tipo Evaluaci&oacute;n</font></div></td>
+      <td width="7%" height="28">
+      <div align="center" class="Estilo1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Per&iacute;odo</font></div></td>
+      <td width="10%" height="28">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Escala Evaluaci&oacute;n</font></div></td>
+      <td width="6%" height="28">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Nota</font></div></td>
+      <td width="21%" height="28">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Eval. Final </font></div></td>
+      <td width="28%" height="28">
+      <div align="center" class="Estilo1"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Evaluador</font></div></td>
+    </tr>
+    <if !(evaluaciones)>
+    <tr bgcolor="#FFFFFF">
+      <td height="2" colspan="6"> <b><font face="Arial, Helvetica, sans-serif" size="2">No registra Evaluaciones</font></b></td>
+    </tr>
+    </if> <list evaluaciones as l>
+    <tr bgcolor="#FFFFFF">
+      <td height="20" width="28%"><font face="Arial, Helvetica, sans-serif" size="1"> ${l.tipo_e}</font></td>
+      <td height="20" width="7%">
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${l.peri}</font></div></td>
+      <td height="20" width="10%">
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1">${l.escala}</font></div></td>
+      <td height="20" width="6%">
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${l.nota}</font></div></td>
+      <td height="20" width="21%"> <font face="Arial, Helvetica, sans-serif" size="1"> ${l.final}</font></td>
+      <td height="20" width="28%"> <font face="Arial, Helvetica, sans-serif" size="1">${l.evaluador}</font></td>
+    </tr>
+    </list>
+  </table>
+</div>
+<!-- Fin de sectores de ImageReady -->
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+</HTML>

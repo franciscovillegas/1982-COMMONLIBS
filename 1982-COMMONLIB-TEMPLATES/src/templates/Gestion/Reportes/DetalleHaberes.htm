@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+	<title>Reporte</title>
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	
+<if ( excel == "0") >	
+	<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>	
+
+	<script LANGUAGE="JavaScript" src="/portalrrhh/scripts/lib/imprimir.js"></script>
+	<script language="JavaScript">
+		<!--
+		function Imprimir() {
+			Layer1.style.visibility="hidden";
+		    printPage();
+		    Layer1.style.visibility="visible";
+		    
+		}
+		
+		function Excel() {
+			document.frmmis.submit();
+		}
+	//-->
+	</script>
+	<style type="text/css">
+		tr.highlightning td {
+			background-color: #FF0000; color: #ffffff;font-family: Arial,Helvetica,sans-serif; font-size: 9px; font-weight: normal			
+		}
+	</style>	
+</HEAD>
+<BODY >
+<if ( excel == "0") >
+<div id="Layer1" style="position: absolute; left: 0px; top: 5px; width: 78px; height: 38px; z-index: 1">
+	<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.png" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="20" height="20" border="0"></a></td>
+	</tr>
+	</table>
+</div>
+</if>
+<form name="frmmis" method="post" action="../servlet/DetalleHaberes">
+	  <input type="hidden" id="excel" name="excel" value="1" />
+	  <input type="hidden" id="periodo" name="periodo" value="${periodo}" />
+	  <input type="hidden" id="unidad" name="unidad" value="${unidad}" />
+	  <input type="hidden" id="unidad_desc" name="unidad_desc" value="${unidad_desc}" />
+	  <input type="hidden" id="tipo" name="tipo" value="${tipo}" />
+	  <input type="hidden" id="bd" name="bd" value="${bd}" />
+</form>
+<table width="100%">
+	<tr><td colspan="9"><br><br></td></tr>
+	<tr><td colspan="9" align="center" class="tabla_beige"><h3>INFORME DETALLE COSTO TOTAL REMUNERACION :: ${titulo} :: Per&iacute;odo ${periodo}</h3></td></tr>
+	<tr><td colspan="9">
+		<table width="100%"><tr>
+			<td class="tabla_beige" width="20%">C&#243;digo Unidad : ${unidad}</td>
+			<td class="tabla_beige" width="80%">Nombre Unidad : ${unidad_desc}</td>
+		</tr></table>
+	</td></tr>
+	<tr><td colspan="9">
+		<table width="100%">
+			<tr>
+				<td class="tabla_beige" >RUT</td>
+				<td class="tabla_beige" width="15%">NOMBRE</td>
+				<list haberes as hfv>
+				<td class="tabla_beige" width="10%" <if ( hfv.haber_variable == "S" || hfv.haber_imponible == "1" || hfv.haber_tributable == "1" ) > style="background-color: #EFCFFE" <else> style="background-color: #DF9FFE" </if> >${hfv.glosa_haber}</td>
+				</list>
+			</tr>
+			<list trabajadores as t>
+			<tr class="textoInforme">
+				<td class="textoInforme" valign="top" align="center">${t.rut}</td>
+				<td class="textoInforme" valign="center" align="center">${t.nombre}</td>
+				<list t.haberes as h>
+				<td class="textoInforme" valign="center" align="center" <if ( h.tipo == "S" || h.tipo == "1" ) > style="background-color: #EFCFFE" <else> style="background-color: #DF9FFE" </if> >${h.valor}</td>
+				</list>
+			</tr>
+			</list>
+			</table>
+		</td>
+	</tr>
+	
+</table>
+</BODY>
+</HTML>

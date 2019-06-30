@@ -1,0 +1,289 @@
+  <html>
+<head>
+<title>Resultado de Busqueda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+function exec(){
+	document.item.periodo.value=document.all.ano.value + document.all.mes.value
+   //alert(document.item.periodo.value);
+	document.item.submit();
+	return true;
+}
+function Carga(){
+	
+
+}
+function Buscar(este) {
+//alert(este);
+
+	//este.peri.value=document.all.ano.value + document.all.mes.value;
+	parent.AbrirVentProcesando();
+	este.submit();
+	return true;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+
+function OcultarLayer(){
+<list lista_ind as b> 
+<list b.Bae as a> 
+	MM_showHideLayers('Layer${a.Id}${a.item}','','hide');
+</list> 	
+<list b.Xxi as a> 
+	MM_showHideLayers('Layer${a.Id}${a.item}','','hide');
+</list> 
+<list b.Df as a> 
+	MM_showHideLayers('Layer${a.Id}${a.item}','','hide');
+</list> 
+</list>
+}
+
+/*var pagina;
+MM_openBrWindow('/servlet/datafolder.procesando','Procesando','top=250,left=300,width=240,height=120');
+*/
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  pagina = window.open(theURL,winName,features);
+}
+//pagina.focus();
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:379px;
+	top:152px;
+	width:111px;
+	height:18px;
+	z-index:4;
+}
+-->
+</Style>
+</head>
+<body  background="../servlet/Tool?images/Gestion/LayersNara/fondo.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-repeat:no-repeat" >
+<div id="Layer1"><a href="javascript:window.history.back()"><img src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24" border="0" name="volver"></a></div>
+<table border="0" cellspacing="0" cellpadding="0" width="500" height="176">
+  
+  <tr> 
+    <td height="13" width="293" class="texto_negro_bold">${unidad_desc} </td>
+    <td width="207" height="13" class="texto_negro_bold">Periodo al ${fecha_act}</td>
+  </tr>
+  <tr align="left" valign="top"> 
+    <td height="143" colspan="2"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1">
+        <tr align="center"> 
+          <td width="31%" class="tabla_nara"> Indicador</td>
+          <td width="20%" class="tabla_nara">Banco</td>
+          <td width="20%" class="tabla_nara">XXI</td>
+          <td width="21%" class="tabla_nara">Manager</td>
+        </tr>
+      </table>
+      <span id="Layer2" style="position:absolute; left:0px; top:32px; width:500px; height:124px; z-index:3; overflow: auto; visibility: visible;"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <if !(lista_ind)> 
+          <tr> 
+            <td colspan="4" align="center" class="tabla_negro"><font class="texto">Indicadores no encontrados...</font></td>
+          </tr>
+          <else> <list lista_ind as b> 
+          <tr> 
+            <td width="31%" align="center" class="tabla_negro">${b.Nombre}</td>
+            <td width="20%" align="center" class="tabla_negro">
+			<if b.Bae>
+			<list b.Bae as a>
+			<a href="#" onClick="OcultarLayer();MM_showHideLayers('Layer${a.Id}${a.item}','','show')" class="click"> 
+              <img src="../servlet/Tool?images/DataFolder/semaforo/${a.semaforo}" alt="${a.quetramo}" border="0"></a>${a.valor}			</list>
+			<else>&nbsp;</if>			</td>
+            <td width="20%" align="center" class="tabla_negro">
+			<if b.Xxi>
+			<list b.Xxi as a>
+			<a href="#" onClick="OcultarLayer();MM_showHideLayers('Layer${a.Id}${a.item}','','show')" class="click"> 
+              <img src="../servlet/Tool?images/DataFolder/semaforo/${a.semaforo}" alt="${a.quetramo}" border="0"></a>${a.valor}			</list>
+			<else>&nbsp;</if>			</td>			
+            <td width="20%" align="center" class="tabla_negro">
+			<if b.Df>
+			<list b.Df as a>
+			<a href="#" onClick="OcultarLayer();MM_showHideLayers('Layer${a.Id}${a.item}','','show')" class="click"> 
+              <img src="../servlet/Tool?images/DataFolder/semaforo/${a.semaforo}" alt="${a.quetramo}" border="0"></a>${a.valor}			</list>
+			<else>&nbsp;</if>			</td>
+          </tr>
+          </list> </if> 
+      </table>
+    </span>    </td>
+  </tr>
+  
+  <tr> 
+    <td height="19" colspan="2" align="center" valign="middle" class="texto_negro_bold"> 
+      Informaci&oacute;n del Indicador</td>
+  </tr>
+</table>
+<list lista_ind as b> 
+<list b.Bae as a> <span class="tabla_layer_Indi" id="Layer${a.Id}${a.item}" style="position:absolute; left:0px; top:177px; width:500px; height:113px; z-index:2; overflow: auto; visibility: hidden;"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td valign="top" class="texto_negro_bold">${a.desc_item} ${a.grupo}</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+    <tr> 
+      <td width="59%" valign="top" class="detal2 Estilo1">${a.nombre}</td>
+      <td width="41%" align="center" class="detal2 Estilo1">${a.valor}</td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >${a.glosa}</td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr align="center" class="blanco"> 
+            <td width="30%" class="tabla_nara" >Normal</td>
+            <td width="35%" class="tabla_nara" >Sensible</td>
+            <td width="35%" class="tabla_nara" >Cr&iacute;tico</td>
+          </tr>
+          <tr align="center"> 
+            <td width="30%" class="tabla_negro" >${a.tinf}</td>
+            <td width="35%" class="tabla_negro" >${a.tmed}</td>
+            <td width="35%" class="tabla_negro" > ${a.tsup}</td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >Estado de Alerta ${a.desctramo}</td>
+    </tr>
+    <tr> 
+        <td width="59%" valign="top" >Formula ${a.formula}</td>
+        <td width="46%" >
+		  <span class="Estilo1"><a href="../servlet/DetalleIndicador?item=${a.item}&unidad=${a.unidad}&peri=${periodo}&semaforor=semaforor&semaforov=semaforov&semaforoa=semaforoa" class="detal" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('item}1','','../servlet/Tool?images/DataFolder/news/botones/anal_prof_f2.gif',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_prof.gif" name="anal_prof_${a.Id}${a.item}1" width="91" height="21" border="0" id="anal_prof_${a.Id}${a.item}1"></a><a href="../servlet/HistoriaIndicador?item=${a.item}&unidad=${a.unidad}&unidad_desc=&peri=${periodo}&tipo=R" class="click2" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('1','','../servlet/Tool?images/DataFolder/news/botones/anal_hist_f2.gif',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_hist.gif" name="anal_histo_${a.Id}${a.item}1" width="91" height="21" border="0" id="anal_histo_${a.Id}${a.item}1"></a>          </span></td>
+    </tr>
+  </table>
+</span></list> 
+
+
+
+<list b.Xxi as a> <span class="tabla_layer_Indi" id="Layer${a.Id}${a.item}" style="position:absolute; left:0px; top:177px; width:500px; height:113px; z-index:2; overflow: auto; visibility: hidden;"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td valign="top" class="texto_negro_bold">${a.desc_item} ${a.grupo}</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+    <tr> 
+      <td width="59%" valign="top" class="detal2 Estilo1">${a.nombre}</td>
+      <td width="41%" align="center" class="detal2 Estilo1">${a.valor}</td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >${a.glosa}</td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr align="center"> 
+            <td width="30%" class="tabla_nara" >Normal</td>
+            <td  width="35%" class="tabla_nara">Sensible</td>
+            <td  width="35%" class="tabla_nara">Cr&iacute;tico</td>
+          </tr>
+          <tr align="center"> 
+            <td width="30%" class="tabla_negro">${a.tinf}</td>
+            <td width="35%" class="tabla_negro" >${a.tmed}</td>
+            <td width="35%" class="tabla_negro" > ${a.tsup}</td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >Estado de Alerta ${a.desctramo}</td>
+    </tr>
+    <tr> 
+        <td width="59%" height="27" valign="top" >Formula ${a.formula}</td>
+        <td width="46%" ><span class="Estilo1"><a href="../servlet/DetalleIndicador?item=${a.item}&unidad=${a.unidad}&peri=${periodo}&semaforor=semaforor&semaforov=semaforov&semaforoa=semaforoa" class="detal" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('item}2','','../servlet/Tool?images/DataFolder/news/botones/anal_prof_f2.gif','item}','','../servlet/Tool?images/DataFolder/botones/analiprofun_over.jpg',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_prof.gif" name="anal_prof_${a.Id}${a.item}2" width="91" height="21" border="0" id="anal_prof_${a.Id}${a.item}2"></a><a href="../servlet/HistoriaIndicador?item=${a.item}&unidad=${a.unidad}&unidad_desc=&peri=${periodo}&tipo=R" class="click2" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('item}21','','../servlet/Tool?images/DataFolder/news/botones/anal_hist_f2.gif','item}','','../servlet/Tool?images/DataFolder/botones/analihisto_over.jpg',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_hist.gif" name="anal_histo_${a.Id}${a.item}21" width="91" height="21" border="0" id="anal_histo_${a.Id}${a.item}2"></a> 
+        </span></td>
+    </tr>
+  </table>
+</span>
+</list> 
+
+
+
+<list b.Df as a>
+<div class="tabla_layer_Indi" id="Layer${a.Id}${a.item}" style="position:absolute; left:0px; top:177px; width:500px; height:113px; z-index:2; visibility: hidden;"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td valign="top" class="texto_negro_bold">${a.desc_item} ${a.grupo}</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+    <tr> 
+      <td width="59%" valign="top" >${a.nombre}</td>
+      <td width="41%" align="center" >${a.valor}</td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >${a.glosa}</td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr align="center"> 
+            <td width="30%" class="tabla_nara" >Normal</td>
+            <td width="35%" class="tabla_nara" >Sensible</td>
+            <td width="35%" class="tabla_nara" >Cr&iacute;tico</td>
+          </tr>
+          <tr align="center"> 
+            <td width="30%" class="tabla_negro" >${a.tinf}</td>
+            <td width="35%" class="tabla_negro" >${a.tmed}</td>
+            <td width="35%" class="tabla_negro" > ${a.tsup}</td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" >Estado de Alerta ${a.desctramo}</td>
+    </tr>
+    <tr> 
+        <td width="59%" valign="top" >Formula ${a.formula}</td>
+        
+      <td width="46%" ><span class="Estilo1"><a href="../servlet/DetalleIndicador?item=${a.item}&unidad=${a.unidad}&peri=${periodo}&semaforor=semaforor&semaforov=semaforov&semaforoa=semaforoa" class="detal" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('item}2','','../servlet/Tool?images/DataFolder/botones/analiprofun_over.jpg','item}3','','../servlet/Tool?images/DataFolder/news/botones/anal_prof_f2.gif',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_prof.gif" name="anal_prof_${a.Id}${a.item}3" width="91" height="21" border="0" id="anal_prof_${a.Id}${a.item}3"></a><a href="../servlet/HistoriaIndicador?item=${a.item}&unidad=${a.unidad}&unidad_desc=&peri=${periodo}&tipo=R" class="click2" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('1','','../servlet/Tool?images/DataFolder/botones/analihisto_over.jpg','item}','','../servlet/Tool?images/DataFolder/news/botones/anal_hist_f2.gif',1)"><img src="../servlet/Tool?images/DataFolder/news/botones/anal_hist.gif" width="91" height="21" border="0" name="anal_histo_${a.Id}${a.item}"></a> 
+      </span></td>
+    </tr>
+  </table>
+</div>
+</list> 
+</list> 
+</body>
+</html>

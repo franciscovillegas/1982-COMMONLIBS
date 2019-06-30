@@ -1,0 +1,198 @@
+<assign r = txt_Rut>
+<assign te = txt_TipoEval>
+<assign te2 = txt_TipoEval2>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Evaluaci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+#Layer8 {position:absolute;
+	left:362px;
+	top:378px;
+	width:81px;
+	height:21px;
+	z-index:5;
+}
+#Layer11 {position:absolute;
+	left:103px;
+	top:389px;
+	width:203px;
+	height:10px;
+	z-index:7;
+}
+#Layer3 {
+	position:absolute;
+	left:14px;
+	top:9px;
+	width:391px;
+	height:14px;
+	z-index:8;
+}
+#Layer4 {
+	position:absolute;
+	left:13px;
+	top:37px;
+	width:205px;
+	height:15px;
+	z-index:9;
+}
+</style>
+
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnAplicar(){
+	document.form1.action="../servlet/EvaluacionG?txtAccion=GE";
+	document.form1.submit();
+	window.opener.fnRefresh();
+	window.close();
+}
+
+function fnInicio(){
+<if MSG !=""> 	alert('${MSG}'); </if>
+<if REG == true && MSG !=""> 
+	opener.parent.bottomFrame.fnRefresh();
+	top.close(); </if>
+}
+</script>
+
+<body  background="../servlet/Tool?images/images_ggd/ggd/evaluacion/fondo_evalrut.jpg" onLoad="fnInicio();">
+<div class="boton_rojo" id="Layer3">${txt_Comp}</div>
+<div id="Layer4">Datos Personales </div>
+<form action="../servlet/EvaluacionG" method="post" name="form1">
+<table border="0" cellpadding="0" cellspacing="0" width="487">
+  <!-- fwtable fwsrc="evaluacion.png" fwbase="evaluacion.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+  <tr>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="12" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="4" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="4" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="68" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="150" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="62" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="5" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="80" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="3" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="18" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="1" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="12">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="27" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="4">&nbsp;</td>
+    <td colspan="4">&nbsp;</td>
+    <td colspan="7" rowspan="4">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="21" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="2" colspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="82" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="11" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="4" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="12">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="19" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="8">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><img name="evaluacion_r7_c12" src="../servlet/Tool?images/images_ggd/evalua2/evaluacion_r7_c12.jpg" width="1" height="211" border="0" alt=""></td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="211" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="12">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="20" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="2" colspan="6">&nbsp;</td>
+    <td><img src="../servlet/Tool?images/images_ggd/evalua2/spacer.gif" width="1" height="16" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+</table>
+<div class="texto_titulo" id="Layer5" style="position:absolute; width:448px; height:11px; z-index:4; left: 14px; top: 159px; visibility: visible;">
+CONDUCTA</div>
+<div id="Layer11"><span class="txt_gris">&nbsp; </span></div>
+<div id="Layer8">
+  <table width="100" border="0" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td width="8">&nbsp;</td>
+      <td width="12">&nbsp;</td>
+      <td width="30"><a href="#" onClick="return false"><img src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" title="Grabar" alt="Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0" onClick="fnAplicar()"></a></td>
+      <td width="30"><a href="javascript:window.close()"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; width:212px; height:85px; z-index:1; left: 11px; top: 59px;">
+  <assign h = "ggd/rut/ver_rut_eval.html">${TM_Rut(h,r)}</div>
+	<input name="txt_RutEvaluador" type="hidden" id="txt_RutEvaluador2" value="${txt_RutEvaluador}">
+	<input name="txt_Rut" type="hidden" id="txt_Rut" value="${txt_Rut}">		
+	<input name="txt_Proceso" type="hidden" id="txt_Proceso" size="5" maxlength="3" value="${txt_Proceso}">
+	<input name="txt_Perfil" type="hidden" id="txt_Perfil" size="5" maxlength="5" value="${txt_Perfil}">
+	<input name="txt_Competencia_Eval" type="hidden" id="txt_Competencia_Eval" size="5" maxlength="5" value="${txt_Competencia_Eval}">
+<span id="Layer2" style="position:absolute; width:456px; height:192px; z-index:2; left: 9px; top: 180px; overflow: auto;">
+  <table width="97%" border="0" cellpadding="0" cellspacing="1">
+	  
+	  
+	  
+	<assign perfil="">
+	<assign compet="">
+	<if getPerfilesConductas>
+		<list getPerfilesConductas as a>  
+			<if perfil != a.id_perfil>
+			  <tr>
+				<td colspan="2" class="texto_titulo"> ${a.perfil}
+			    <input name="txtAccion" type="hidden" id="txtAccion" value="CR"></td>
+			  </tr>
+			<assign perfil = a.id_perfil>		  
+			</if>
+			<if compet != a.id_competencia>
+			  <tr>
+				<td colspan="2" class="fondo_tablaAmarillo">&nbsp;** ${a.competencia}</td>
+			  </tr>
+			<assign compet = a.id_competencia>		  
+			</if>
+		  <tr>
+			<td width="5%">
+				<if a.existe!="">
+					<input name="ch_resp" type="checkbox" value="${a.id_perfil}#${a.id_competencia}#${a.id_conducta}" checked>
+				<else>
+					<input name="ch_resp" type="checkbox" value="${a.id_perfil}#${a.id_competencia}#${a.id_conducta}">
+				</if>
+			</td>
+			<td width="95%" class="fondo_tablaGris"> ${a.conducta}&nbsp;</td>
+		  </tr>
+		</list>
+	<else>
+		  <tr>
+			<td colspan="2" class="txt_gris">No registra informaci&#243;n.</td>
+		  </tr>
+	</if>
+  </table>	
+  </span>
+    <input type="hidden" name="pHtm" value="${pHtm}">
+</form>
+</body>
+</html>

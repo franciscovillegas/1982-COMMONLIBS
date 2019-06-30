@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>menu_evacomp_herr.jpg</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks MX Dreamweaver MX target.  Created Wed Dec 10 09:36:59 GMT-0400 (Hora est&#225;ndar de Sudam&#233;rica O.) 2003-->
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+
+var nodoSeleccionado = null;
+var padreSeleccionado = null;
+
+function SeleccionarNodo(nodo){
+   NoSeleccionarNodo();
+   nodo.className = "tree-control-selected";
+   nodoSeleccionado = nodo;
+}
+
+function NoSeleccionarNodo(){
+	if (nodoSeleccionado != null) {
+	       nodoSeleccionado.className = "tree-control-unselected"; 
+	}
+   nodoSeleccionado = null;
+}
+</script>
+<style type="text/css">
+<!--
+.tree-control
+{
+   FONT-SIZE: 10;
+   FONT-FAMILY: arial, verdana, geneva, helvetica, sans-serif;
+   color: #FFFFFF;
+}
+.tree-control-selected
+{
+   COLOR: #FFFFFF;
+   background-color: #003399;
+}
+.tree-control-selected:hover
+{
+   COLOR: #FFFFFF;
+   FONT-STYLE: normal;
+}
+.tree-control-unselected
+{
+   FONT-WEIGHT: normal;
+   COLOR: #FFFFFF;
+   FONT-STYLE: normal;
+} 
+
+.tree-control-unselected:hover
+{
+   COLOR: #FFFFFF;
+   FONT-STYLE: normal;
+   background-color: #003399;
+}
+-->
+</style>
+<style type="text/css">
+<!--
+#Layer1 {	position:absolute;
+	left:668px;
+	top:3px;
+	width:39px;
+	height:43px;
+	z-index:1;
+}
+-->
+</style>
+</head>
+<body background="../servlet/Tool?images/ggd/menu_top/fondo.jpg" onLoad="parent.mainFrame.location='../servlet/ServletMetasDefinicion'">
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="bottom"><img src="../servlet/Tool?images/ggd/menu_top/metas.jpg" width="201" height="50"></td>
+    <td valign="bottom"><a href="../servlet/WithSession?pHtm=ggd/menu/evalu.html" target="_parent"><img src="../servlet/Tool?images/ggd/menu_top/competencias_down.jpg" width="224" height="50" border="0"></a></td>
+    <td valign="bottom"><a href="../manual_usuario/Screen_Pres_BI/screen-press-BI_2.html" target="_blank" ><img src="../servlet/Tool?images/ggd/menu_top/titulo.jpg" width="575" height="50" border="0"></a></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="13"><img src="../servlet/Tool?images/ggd/menu_top/bordgris.jpg" width="24" height="27"></td>
+        <td align="center" valign="bottom" background="../servlet/Tool?images/ggd/menu_top/fondogris.jpg"><table width="84" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+         
+				  <td width="95" height="27" align="center"><a href="Tool?htm=metas/menu_metas.html" target="_self" class="boton_gris">Evaluaci&oacute;n metas</a></td>
+				  <!-- /ggd/servlet/WithSession?pHtm=ggd/menu/cons/menu_evacomp_cons.html -->
+                </tr>
+          </table>
+          
+	        <table border="0" align="left" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="84" height="27" align="center"><a href="Tool?htm=metas/menu_acciones.html" target="_self" class="boton_gris">Acciones de acuerdo</a></td>
+              </tr>
+            </table>
+	        <table width="90" border="0" align="left" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="10"><img src="../servlet/Tool?images/ggd/menu_top/btn_verde.gif" width="10" height="27"></td>
+                <td width="56" valign="bottom" background="../servlet/Tool?images/ggd/menu_top/btn_verde_fondo.gif"><table width="80" border="0" cellpadding="0" cellspacing="0" class="boton_rojo">
+                    <tr>
+                      <td height="18" align="center">Proceso de Metas</td>
+                    </tr>
+                </table></td>
+                <td><img src="../servlet/Tool?images/ggd/menu_top/btn_verde_fin.gif" width="27" height="27"></td>
+              </tr>
+            </table>
+	        <table border="0" align="left" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="84" height="27" align="center"><a href="Tool?htm=metas/menu_admin.html" target="_self" class="boton_gris">Administrador </a></td>
+              </tr>
+            </table></td>
+        <td width="32"><img src="../servlet/Tool?images/ggd/menu_top/bord2gris.jpg" width="33" height="27"></td>
+        <td width="200">&nbsp;</td>
+      </tr>
+      <tr>
+        <td bgcolor="#009900">&nbsp;</td>
+        <td height="22" colspan="3" bgcolor="#009900"><div id="Efecto_Hover">
+          <table width="120" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/ServletMetasDefinicion" target="mainFrame" title="DEFINICI&#211;N DE LAS METAS PARA CADA COLABORADOR." onClick="SeleccionarNodo(this)">Definici&oacute;n de metas</a></td>
+              <!-- <td align="center"><a href="Tool?htm=metas/definicion.html" target="mainFrame" title="Observar una dimensi&oacute;n de la evaluaci&oacute;n del personal de otras unidades dependientes">Definici&oacute;n de metas</a></td>-->
+            </tr>
+          </table>
+          <table width="130" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/ServletObjetivosDefinicion" target="mainFrame" title="DEFINICI&#211;N DE LOS OBJETIVOS PARA CADA COLABORADOR." onClick="SeleccionarNodo(this)">Definici&oacute;n de objetivos </a></td>
+              <!-- <td align="center"><a href="Tool?htm=metas/def_objetivos.html" target="mainFrame" title="Observar una dimensi&oacute;n de la evaluaci&oacute;n del personal de otras unidades dependientes">Definici&oacute;n de objetivos </a></td>-->
+            </tr>
+          </table>
+          <table width="80" border="0" align="left" cellpadding="0">
+            <tr>
+              <td align="center"><a href="../servlet/ServletRptEvalMetasObjetivosColaborador" target="mainFrame" title="REPORTE DE METAS Y OBJETIVOS PARA CADA COLABORADOR." onClick="SeleccionarNodo(this)">Reportes</a></td>
+              <!-- <td align="center"><a href="Tool?htm=metas/reportes.html" target="mainFrame" title="Observar una dimensi&oacute;n de la evaluaci&oacute;n del personal de otras unidades dependientes">Reportes</a> </td>-->
+            </tr>
+          </table>
+        </div></td>
+      </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,431 @@
+ <HTML>
+<HEAD>
+<TITLE>Vacaciones</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" type="text/JavaScript">
+function ano(){
+
+        document.getElementById("ano").src="Envia(${rut},${v.pe})";
+
+}
+
+function Envia(rut,periodo) { //v2.0
+  	document.getElementById("ano").src="../servlet/DetalleVacaOrga?rut="+rut+"&periodo="+periodo;
+//document.location.href="/servlet/DetalleVaca?rut="+rut+"&periodo="+periodo;
+}
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Hijofoto {position:absolute;
+	left:0px;
+	top:23px;
+	width:54px;
+	height:69px;
+	z-index:7;
+}
+#PadFoto {position:absolute;
+	left:5px;
+	top:3px;
+	width:62px;
+	height:22px;
+	z-index:13;
+}
+#HijoDat {position:absolute;
+	left:0px;
+	top:22px;
+	width:500px;
+	height:150px;
+	z-index:9;
+}
+#PadDat {position:absolute;
+	left:90px;
+	top:6px;
+	width:479px;
+	height:13px;
+	z-index:10;
+}
+#HijoDet {	position:absolute;
+	left:0px;
+	top:22px;
+	width:600px;
+	height:255px;
+	z-index:12;
+}
+#PadDet {	position:absolute;
+	left:7px;
+	top:167px;
+	width:600px;
+	height:22px;
+	z-index:11;
+}
+#Hijo12meses {	position:absolute;
+	left:0px;
+	top:22px;
+	width:300px;
+	height:250px;
+	z-index:7;
+}
+#Pad12meses {
+	position:absolute;
+	left:278px;
+	top:127px;
+	width:300px;
+	height:250px;
+	z-index:12;
+	visibility: hidden;
+}
+#HijoTool {position:absolute;
+	left:0px;
+	top:21px;
+	width:70px;
+	height:141px;
+	z-index:10;
+}
+#PadTool {position:absolute;
+	left:600px;
+	top:28px;
+	width:70px;
+	height:22px;
+	z-index:9;
+}
+-->
+</Style>
+<script type="text/JavaScript">
+<!--
+
+
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_scanstyles(obj, prop) { //v8.0
+  var inlinestyle = null; var ccProp = prop; var dash = ccProp.indexOf("-");
+  while (dash != -1){ccProp = ccProp.substring(0, dash) + ccProp.substring(dash+1,dash+2).toUpperCase() + ccProp.substring(dash+2); dash = ccProp.indexOf("-");}
+  inlinestyle = eval("obj.style." + ccProp);
+  if(inlinestyle) return inlinestyle;
+  var ss = document.styleSheets;
+  for (var x = 0; x < ss.length; x++) { var rules = ss[x].cssRules;
+	for (var y = 0; y < rules.length; y++) { var z = rules[y].style;
+	  if(z[prop] && (rules[y].selectorText == '*[ID"' + obj.id + '"]')) {
+        return z[prop];
+  }  }  }  return "";
+}
+
+function MM_getProp(obj, prop) { //v8.0
+  if (!obj) return ("");
+  if (prop == "L") return obj.offsetLeft;
+  else if (prop == "T") return obj.offsetTop;
+  else if (prop == "W") return obj.offsetWidth;
+  else if (prop == "H") return obj.offsetHeight;
+  else {
+    if (typeof(window.getComputedstyle) == "undefined") {
+	    if (typeof(obj.currentstyle) == "undefined"){
+		    if (prop == "P") return MM_scanstyles(obj,"position");
+        else if (prop == "Z") return MM_scanstyles(obj,"z-index");
+        else if (prop == "V") return MM_scanstyles(obj,"visibility");
+	    } else {
+	      if (prop == "P") return obj.currentstyle.position;
+        else if (prop == "Z") return obj.currentstyle.zIndex;
+        else if (prop == "V") return obj.currentstyle.visibility;
+	    }
+    } else {
+	    if (prop == "P") return window.getComputedstyle(obj,null).getPropertyValue("position");
+      else if (prop == "Z") return window.getComputedstyle(obj,null).getPropertyValue("z-index");
+      else if (prop == "V") return window.getComputedstyle(obj,null).getPropertyValue("visibility");
+    }
+  }
+}
+
+function MM_dragLayer(objName,x,hL,hT,hW,hH,toFront,dropBack,cU,cD,cL,cR,targL,targT,tol,dropJS,et,dragJS) { //v8.0
+  //Copyright 2005 Macromedia, Inc. All rights reserved.
+  var i,j,aLayer,retVal,curDrag=null,curLeft,curTop,IE=document.all,NS4=document.layers;
+  var NS6=(!IE&&document.getElementById), NS=(NS4||NS6); if (!IE && !NS) return false;
+  retVal = true; if(IE && event) event.returnValue = true;
+  if (MM_dragLayer.arguments.length > 1) {
+    curDrag = MM_findObj(objName); if (!curDrag) return false;
+    if (!document.allLayers) { document.allLayers = new Array();
+      with (document) if (NS4) { for (i=0; i<layers.length; i++) allLayers[i]=layers[i];
+        for (i=0; i<allLayers.length; i++) if (allLayers[i].document && allLayers[i].document.layers)
+          with (allLayers[i].document) for (j=0; j<layers.length; j++) allLayers[allLayers.length]=layers[j];
+      } else {
+        if (NS6) { var spns = getElementsByTagName("span"); var all = getElementsByTagName("div"); 
+          for (i=0;i<spns.length;i++) if (MM_getProp(spns[i],'P')) allLayers[allLayers.length]=spns[i];}
+        for (i=0;i<all.length;i++) {
+	  if (NS4){if (all[i].style&&all[i].style.position) allLayers[allLayers.length]=all[i];}
+          else if (MM_getProp(all[i],'P')) allLayers[allLayers.length]=all[i]; 
+        }
+    } }
+    curDrag.MM_dragOk=true; curDrag.MM_targL=targL; curDrag.MM_targT=targT;
+    curDrag.MM_tol=Math.pow(tol,2); curDrag.MM_hLeft=hL; curDrag.MM_hTop=hT;
+    curDrag.MM_hWidth=hW; curDrag.MM_hHeight=hH; curDrag.MM_toFront=toFront;
+    curDrag.MM_dropBack=dropBack; curDrag.MM_dropJS=dropJS;
+    curDrag.MM_everyTime=et; curDrag.MM_dragJS=dragJS;
+  
+    curDrag.MM_oldZ = (NS4)?curDrag.zIndex:MM_getProp(curDrag,'Z');
+    curLeft= (NS4)?curDrag.left:MM_getProp(curDrag,'L');
+    if (String(curLeft)=="NaN") curLeft=0; curDrag.MM_startL = curLeft;
+    curTop = (NS4)?curDrag.top:MM_getProp(curDrag,'T');
+    if (String(curTop)=="NaN") curTop=0; curDrag.MM_startT = curTop;
+    curDrag.MM_bL=(cL<0)?null:curLeft-cL; curDrag.MM_bT=(cU<0)?null:curTop-cU;
+    curDrag.MM_bR=(cR<0)?null:curLeft+cR; curDrag.MM_bB=(cD<0)?null:curTop+cD;
+    curDrag.MM_LEFTRIGHT=0; curDrag.MM_UPDOWN=0; curDrag.MM_SNAPPED=false; //use in your JS!
+    document.onmousedown = MM_dragLayer; document.onmouseup = MM_dragLayer;
+    if (NS) document.captureEvents(Event.MOUSEDOWN|Event.MOUSEUP);
+  } else {
+    var theEvent = ((NS)?objName.type:event.type);
+    if (theEvent == 'mousedown') {
+      var mouseX = (NS)?objName.pageX : event.clientX + document.body.scrollLeft;
+      var mouseY = (NS)?objName.pageY : event.clientY + document.body.scrollTop;
+      var maxDragZ=null; document.MM_maxZ = 0;
+      for (i=0; i<document.allLayers.length; i++) { aLayer = document.allLayers[i];
+        var aLayerZ = (NS4)?aLayer.zIndex:MM_getProp(aLayer,'Z');
+        if (aLayerZ > document.MM_maxZ) document.MM_maxZ = aLayerZ;
+        var isVisible = ((NS4)?aLayer.visibility:MM_getProp(aLayer,'V')).indexOf('hid') == -1;
+        if (aLayer.MM_dragOk != null && isVisible) with (aLayer) {
+          var parentL=0; var parentT=0;
+          if (NS6) { parentLayer = aLayer.parentNode;
+            while (parentLayer != null && parentLayer != document && MM_getProp(parentLayer,'P')) {
+              parentL += parseInt(MM_getProp(parentLayer,'L')); parentT += parseInt(MM_getProp(parentLayer,'T'));
+              parentLayer = parentLayer.parentNode;
+              if (parentLayer==document) parentLayer = null;
+          } } else if (IE) { parentLayer = aLayer.parentElement;       
+            while (parentLayer != null && MM_getProp(parentLayer,'P')) {
+              parentL += MM_getProp(parentLayer,'L'); parentT += MM_getProp(parentLayer,'T');
+              parentLayer = parentLayer.parentElement; } }
+          var tmpX=mouseX-((NS4)?pageX:(MM_getProp(aLayer,'L'))+parentL+MM_hLeft);
+          var tmpY=mouseY-((NS4)?pageY:(MM_getProp(aLayer,'T'))+parentT+MM_hTop);
+          if (String(tmpX)=="NaN") tmpX=0; if (String(tmpY)=="NaN") tmpY=0;
+          var tmpW = MM_hWidth;  if (tmpW <= 0) tmpW += (NS4)?clip.width:MM_getProp(aLayer,'W');
+          var tmpH = MM_hHeight; if (tmpH <= 0) tmpH += (NS4)?clip.height:MM_getProp(aLayer,'H');
+          if ((0 <= tmpX && tmpX < tmpW && 0 <= tmpY && tmpY < tmpH) && (maxDragZ == null
+              || maxDragZ <= aLayerZ)) { curDrag = aLayer; maxDragZ = aLayerZ; } } }
+      if (curDrag) {
+        document.onmousemove = MM_dragLayer; if (NS4) document.captureEvents(Event.MOUSEMOVE);
+        curLeft = (NS4)?curDrag.left:MM_getProp(curDrag,'L');
+        curTop = (NS4)?curDrag.top:MM_getProp(curDrag,'T');
+        if (String(curLeft)=="NaN") curLeft=0; if (String(curTop)=="NaN") curTop=0;
+        MM_oldX = mouseX - curLeft; MM_oldY = mouseY - curTop;
+        document.MM_curDrag = curDrag;  curDrag.MM_SNAPPED=false;
+        if(curDrag.MM_toFront) {
+          var newZ = parseInt(document.MM_maxZ)+1;
+          eval('curDrag.'+((NS4)?'':'style.')+'zIndex=newZ');
+          if (!curDrag.MM_dropBack) document.MM_maxZ++; }
+        retVal = false; if(!NS4&&!NS6) event.returnValue = false;
+    } } else if (theEvent == 'mousemove') {
+      if (document.MM_curDrag) with (document.MM_curDrag) {
+        var mouseX = (NS)?objName.pageX : event.clientX + document.body.scrollLeft;
+        var mouseY = (NS)?objName.pageY : event.clientY + document.body.scrollTop;
+        var newLeft = mouseX-MM_oldX; var newTop  = mouseY-MM_oldY;
+        if (MM_bL!=null) newLeft = Math.max(newLeft,MM_bL);
+        if (MM_bR!=null) newLeft = Math.min(newLeft,MM_bR);
+        if (MM_bT!=null) newTop  = Math.max(newTop ,MM_bT);
+        if (MM_bB!=null) newTop  = Math.min(newTop ,MM_bB);
+        MM_LEFTRIGHT = newLeft-MM_startL; MM_UPDOWN = newTop-MM_startT;
+        if (NS4) {left = newLeft; top = newTop;}
+        else if (NS6){style.left = newLeft + "px"; style.top = newTop + "px";}
+        else {style.pixelLeft = newLeft; style.pixelTop = newTop;}
+        if (MM_dragJS) eval(MM_dragJS);
+        retVal = false; if(!NS) event.returnValue = false;
+    } } else if (theEvent == 'mouseup') {
+      document.onmousemove = null;
+      if (NS) document.releaseEvents(Event.MOUSEMOVE);
+      if (NS) document.captureEvents(Event.MOUSEDOWN); //for mac NS
+      if (document.MM_curDrag) with (document.MM_curDrag) {
+        if (typeof MM_targL =='number' && typeof MM_targT == 'number' &&
+            (Math.pow(MM_targL-((NS4)?left:MM_getProp(document.MM_curDrag,'L')),2)+
+             Math.pow(MM_targT-((NS4)?top:MM_getProp(document.MM_curDrag,'T')),2))<=MM_tol) {
+          if (NS4) {left = MM_targL; top = MM_targT;}
+          else if (NS6) {style.left = MM_targL + "px"; style.top = MM_targT + "px";}
+          else {style.pixelLeft = MM_targL; style.pixelTop = MM_targT;}
+          MM_SNAPPED = true; MM_LEFTRIGHT = MM_startL-MM_targL; MM_UPDOWN = MM_startT-MM_targT; }
+        if (MM_everyTime || MM_SNAPPED) eval(MM_dropJS);
+        if(MM_dropBack) {if (NS4) zIndex = MM_oldZ; else style.zIndex = MM_oldZ;}
+        retVal = false; if(!NS) event.returnValue = false; }
+      document.MM_curDrag = null;
+    }
+    if (NS) document.routeEvent(objName);
+  } return retVal;
+}
+//-->
+</script>
+</HEAD>
+
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_dragLayer('PadDat','',0,0,500,22,true,false,0,-1,-1,-1,90,6,0,'',false,'');MM_dragLayer('PadFoto','',0,0,0,0,true,false,-1,-1,-1,-1,5,3,0,'',false,'');MM_dragLayer('PadDet','',0,0,0,0,true,false,-1,-1,-1,-1,7,167,0,'',false,'');MM_dragLayer('Pad12meses','',0,0,0,0,true,false,-1,-1,-1,-1,278,127,0,'',false,'')">
+
+<div id="PadDat">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/vacaciones.gif" width="400" height="22"></td>
+      <td width="26" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"></td>
+      <td width="13" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoDat','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoDat','','show')"></td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoDat">
+    <table width="500" height="150" border="0" cellpadding="0" cellspacing="0" class="tabla_layer">
+      <tr>
+        <td valign="top">
+		<table width="100%">
+        <tr valign="top">
+          <td colspan="4" class="texto_negro_bold">${nombre}</td>
+        </tr>
+        <tr valign="middle">
+          <td height="16" colspan="4" class="texto_negro_bold">${cargo}</td>
+        </tr>
+        <tr valign="middle">
+          <td width="174" height="17" class="texto_azul_bold">A&ntilde;os Rec Otros Empleadores:</td>
+          <td width="98" height="17" class="texto_negro">${anos}</td>
+          <td width="81" height="17" align="right" class="texto_azul_bold">Fec. Ingreso:</td>
+          <td width="125" height="17" class="texto_negro">${fec_ingreso}</td>
+        </tr>
+        <tr valign="top">
+          <td class="texto_azul_bold">Saldo Vac. Pendientes:</td>
+          <td class="texto_negro">${nsaldo}</td>
+          <td class="texto_azul_bold">&nbsp;</td>
+          <td class="texto_negro">&nbsp;</td>
+        </tr>
+        <tr valign="top">
+          <td colspan="4">
+            <table width="100%" border="0">
+              <tr valign="top">
+                <td class="texto_negro_bold">&nbsp;</td>
+                <td class="texto_negro_bold">&nbsp;</td>
+                <td class="texto_negro_bold">&nbsp;</td>
+              </tr>
+              <tr valign="top">
+                <td width="30%" class="texto_negro_bold">Normal: ${nsaldo_n}</td>
+                <td width="34%" class="texto_negro_bold">Progresivo: ${nsaldo_p}</td>
+                <td width="36%" class="texto_negro_bold">Provisi&oacute;n: $ ${prov}                    </td>
+              </tr>
+          </table></td>
+  </tr>
+</table>
+		
+		
+		</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="PadFoto">
+  <table width="72" height="22" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="42"><img src="../servlet/Tool?images/Gestion/titulos/foto.gif" width="42" height="22"></td>
+      <td width="10" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif">&nbsp;</td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="Hijofoto">
+    <table width="72" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center" class="texto_negro_bold_chico">${rut2}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="PadDet">
+  <table width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/det_vacaciones.gif" width="400" height="22"></td>
+      <td width="111" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"></td>
+      <td width="29" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoDet','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoDet','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoDet">
+    <table width="600" height="255" border="0" cellpadding="0" cellspacing="0" class="tabla_layer">
+      <tr>
+        <td valign="top">&nbsp;</td>
+      </tr>
+    </table>
+    <span id="Layer1" style="position:absolute; left:2px; top:1px; width:596px; height:255px; z-index:11; overflow: auto;">
+<table width="100%" height="23" border="0" cellpadding="0" cellspacing="1">
+    <tr valign="top">
+      <td width="53" height="20" align="center" class="tabla_azul">Per&iacute;odo</td>
+      <td height="20" colspan="2" align="center" class="tabla_azul">D&iacute;as<br>
+      con Derecho</td>
+      <td height="20" colspan="2" align="center" class="tabla_azul">D&iacute;as <br>
+      Utilizados</td>
+      <td height="20" colspan="2" align="center" class="tabla_azul">D&iacute;as <br>
+      Pendientes</td>
+      <td width="72" height="20" align="center" class="tabla_azul">Saldo<br>
+      Acum</td>
+      <td width="80" height="12" rowspan="2" align="center" class="tabla_azul">Dias Prog.<br>
+      Vendidos</td>
+    </tr>
+    <tr>
+      <td width="53" align="center" class="tabla_azul">A&ntilde;o</td>
+      <td width="63" align="center" class="tabla_azul">Normales</td>
+      <td width="55" align="center" class="tabla_azul">Progr.</td>
+      <td width="63" align="center" class="tabla_azul">Normales</td>
+      <td width="49" align="center" class="tabla_azul">Progr.</td>
+      <td width="66" align="center" class="tabla_azul">Normales</td>
+      <td width="49" align="center" class="tabla_azul">Progr.</td>
+      <td width="72" align="center" class="tabla_azul">Dias</td>
+    </tr>
+    <list vacaciones as v>
+    <tr>
+      <td width="53" align="center" class="tabla_negro"><a href="javascript:;" onClick="Envia(${rut},${v.pe});MM_showHideLayers('Pad12meses','','show')">${v.pe}</a></td>
+      <td width="63" align="center" class="tabla_negro">${v.dn}</td>
+      <td width="55" align="center" class="tabla_negro">${v.dp}</td>
+      <td width="63" align="center" class="tabla_negro">${v.un}</td>
+      <td width="49" align="center" class="tabla_negro">${v.up}</td>
+      <td width="66" align="center" class="tabla_negro">${v.pn}</td>
+      <td width="49" align="center" class="tabla_negro">${v.pp}</td>
+      <td width="72" align="center" class="tabla_negro">${v.s}</td>
+      <td width="80" align="center" class="tabla_negro">${v.dpv}</td>
+    </tr>
+    <if !(vacaciones)>
+    <tr>
+      <td colspan="9" align="center" class="tabla_negro">No registra vacaciones</td>
+    </tr>
+    </if> </list>
+</table>
+</span>
+  </div>
+</div>
+<div id="Pad12meses">
+  <table width="300" border="0" cellpadding="0" cellspacing="0" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif">
+    <tr>
+      <td width="420"><img src="../servlet/Tool?images/Gestion/titulos/det_ano.gif" width="200" height="22"></td>
+      <td width="20"></td>
+      <td width="20"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('Hijo12meses','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('Hijo12meses','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <span id="Hijo12meses">
+  <table width="100%" height="250" border="0" cellpadding="0" cellspacing="0" class="tabla_layer">
+    <tr>
+      <td valign="top"><iframe id="ano" height="250" width="300" frameborder="0" scrolling="no"></iframe></td>
+    </tr>
+  </table>
+</span></div>
+</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="servlet/Tool?scripts/jquery-1.8.3.min.js" 	 					 type="text/javascript"></script>
+<script src="http://consumer.easyxdm.net/current/easyXDM.debug.js" 	 		 type="text/javascript"></script>
+
+<script type="text/javascript">
+
+	var socket = new easyXDM.Socket({});
+
+	function logea() {
+		console.log("[Petición enviada]");
+		var rut = $("#rut").val();
+		var clave = $("#clave").val();
+		var dig = $("#dig").val();
+		
+		$.ajax({
+	        url : '?claseweb=', //Server script to process data
+	        type : 'POST',
+	        datatype : "html",
+	        data : {"rut" : rut, "clave" : clave , "dig" : dig},
+	        success : function(data) {
+	        	console.log("[Respuesta recibida]");
+	        	var isInIFrame = (window.location != window.parent.location);
+	        	if(isInIFrame!=true){
+	        		alert("Esta p&aacute;gina debe estar contenida");
+	        	}
+	        	else {
+	        		callMsg(data);
+	        	}
+	        	
+	        }
+	    });
+	}
+	
+	
+	
+	function callMsg(data) {
+		socket.postMessage(data);
+	}
+
+	
+	callMsg("Hola Señor panchito");
+
+	
+
+	
+</script>    
+</head>
+<body>
+	
+	<form action="servlet/EjeCoreI">
+		<input type="hidden"  	name="claseweb" value="loginsw.StartSession" />
+		<input type="text" 		name="rut"   id="rut"   size="5" value=""/>-<input type="text" name="dig" id="dig" size="1"  value=""/><br/>
+		<input type="text"		name="clave" id="clave" size="8" value=""/><br/>
+		<input type="button" 	name="ingresar" value="Logear" onclick="logea();" /><br/>
+	</form>
+</body>
+</html>

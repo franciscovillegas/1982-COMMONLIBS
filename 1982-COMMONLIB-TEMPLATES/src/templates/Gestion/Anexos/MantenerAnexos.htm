@@ -1,0 +1,317 @@
+ <HTML>
+<HEAD>
+<TITLE>Mantener Anexos</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function inicio(){
+	document.formAA.anexo_rel.multiple = false;
+	window.focus();
+	<if (msg)>alert("${msg}");</if>
+}
+
+function cambiarAnexos(form, nuevo_anexo){
+  <list personas as p>
+	form.anexo${p.rut}.value = nuevo_anexo;
+  </list>	
+}
+
+var anexExist = new Array();
+<list anexos_existentes as ae>anexExist[anexExist.length] = '${ae.id}';</list>
+
+var anexRelExist = new Array();
+<list anexos as a>anexRelExist[anexRelExist.length] = '${a.anexo_rel}';</list>
+
+
+/*function ver(nuevo_anexo){
+	document.location.href="/servlet/datafolder.anexos.BuscarAnexos?anexo="+nuevo_anexo;
+	return false;
+}*/
+
+function verOtro(){
+	var nuevo_anexo = prompt("Buscar informaci&#243;n de otro Anexo de la Unidad.\n(M&#225;x. 5 d&#237;gitos)", "${anexo}");
+	if (nuevo_anexo != null) {
+		if (nuevo_anexo.length > 5)
+			alert("El anexo tiene un m&#225;ximo de 5 d&#237;gitos, incluyendo los espacios..");
+		else
+		ver(nuevo_anexo,'${unidad}', '', 'M');
+	}
+	return false;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/anexos.js"></script>
+<script language="JavaScript" src="/Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+</HEAD>
+<script language="JavaScript">
+//parent.AbrirVentProcesando();
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad= "inicio();MM_preloadImages('/images/Gestion/botones/anterior_over.jpg','/images/Gestion/botones/mantener_otro_over.jpg','/images/Gestion/botones/aplicar_over.jpg','/images/Gestion/botones/cancelar_over.jpg','/images/Gestion/botones/agregar_over.jpg','/images/Gestion/botones/quitar_over.jpg','/images/Gestion/botones/cerrar_down.jpg')" link="#006600" vlink="#006600" alink="#006600">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width="644">
+  <TR> 
+    <TD COLSPAN=2 height="4"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_01.jpg" WIDTH=614 HEIGHT=4></TD>
+    <TD COLSPAN=2 ROWSPAN=2> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_02.jpg" WIDTH=29 HEIGHT=22></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=4></TD>
+  </TR>
+  <TR> 
+    <TD ROWSPAN=8 width="4" bgcolor="#FFA400">&nbsp; </TD>
+    <TD valign="top" width="623" ROWSPAN=8 bgcolor="#FFA400"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="354">
+        <tr> 
+          <td height="47" valign="top"> 
+            <table width="100%" border="2" cellspacing="0" cellpadding="0">
+              <tr bgcolor="#FFCF75"> 
+                <td height="22" class="textB" colspan="4" bgcolor="#FFCF75" align="center"> 
+                  <b><font size="2">Informaci&oacute;n del anexo &quot;${anexo}&quot;</font></b></td>
+                <td valign="top" width="25"><a href="javascript:;" onClick = "return ventModifAnexo('${anexo}', '${infoanexo.fax}', '${infoanexo.unid_id}', '${infoanexo.empresa}')"><img src="/images/Gestion/botones/anex.gif" border="0" alt="Cambiar todos los Anexo" width="24" height="20"></a></td>
+              </tr>
+              <tr> 
+                <td width="55" height="20" class="textB" bordercolor="#FFA400"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Unidad:</font></td>
+                <td valign="top" bordercolor="#FFA400" class="texto" width="475"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">${infoanexo.unid_desc}</font></td>
+                <td width="32" valign="top" class="textB" bordercolor="#FFA400"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Fax:</font></td>
+                <td valign="top" colspan="2" class="texto" bordercolor="#FFA400"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">${infoanexo.fax}</font></td>
+              </tr>
+              <tr> 
+                <td height="5" width="55"></td>
+                <td width="475"></td>
+                <td width="32"></td>
+                <td width="16"></td>
+                <td width="25"></td>
+              </tr>
+            </table>
+          
+          </td>
+        </tr>
+		<tr> 
+          <td height="10" valign="top" bgcolor="#FFC448"> 
+            <div align="center"><font class="textB"><b>Trabajadores con este anexo</b></font></div>
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top" height="116"> 
+            <table width="595" border="1" cellspacing="0" cellpadding="0" align="center">
+              <tr bgcolor="#FFCF75" align="center" valign="middle"> 
+                <td width="40%"> 
+                  <div align="center"><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Nombre</font></b></div>
+                </td>
+                <td width="30%"> 
+                  <div align="center"><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Cargo</font></b></div>
+                </td>
+                <td width="15%"> 
+                  <div align="center"><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Tel&eacute;fono</font></b></div>
+                </td>
+                <td width="15%" bgcolor="#FFCF75"> 
+                  <div align="center"><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Anexo</font> 
+                    <font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="javascript:;" onClick = "cambiarTodosAnexos(document.formTA, '${anexo}')"><img src="/images/Gestion/botones/anex.gif" border="0" alt="Cambiar todos los Anexo" width="24" height="20"></a> 
+                    </font></b></div>
+                </td>
+              </tr>
+            </table>
+            <div id="LayerPDet" style="position:absolute; width:608px; height:107px; z-index:1; left: 12px; top: auto; overflow: auto"> 
+              <table width="595" border="1" cellspacing="0" cellpadding="0" bgcolor="#FFCF75">
+                <if !(personas)> 
+                <tr bgcolor="#FFC448"> 
+                  <td colspan="4" class="texto"> 
+                    <div align="center"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">No 
+                      existen trabajadores con este anexo... </font></div>
+                  </td>
+                </tr>
+                <else> 
+                <form name="formTA" method="post" action="/servlet/datafolder.anexos.BuscarAnexos">
+                  <list personas as p> 
+                  <tr> 
+                    <td width="40%" class="texto"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="javascript:;" onCLick="VerRut('${p.rut}'); return false"><img src="/images/Gestion/botones/pers.gif" alt="Informaci&oacute;n B&aacute;sica " border="0" width="24" height="20"></a> 
+                      <if (p.rut) == (rut)><font class="textB">${p.nombre}</font><else>${p.nombre}</if></font></td>
+                    <td width="30%" class="texto"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">${p.cargo}</font></td>
+                    <td width="15%" class="texto" align="center"><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">${p.telefono}</font></td>
+                    <td width="15%" class="texto" valign="middle" align="center"> 
+                      <font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                      <input type="hidden" name="rut_trab" value="${p.rut}">
+                      <input type="text" name="anexo${p.rut}" value="${p.anexo}"  size="5" maxlength="5" readonly="true">
+                      <a href="javascript:;" onClick = "cambiarAnexo('${p.nombre}', document.formTA.anexo${p.rut})"><img src="/images/Gestion/botones/anex.gif" border="0" alt="Cambiar este Anexo" width="24" height="20"></a> 
+                      </font></td>
+                  </tr>
+                  </list> 
+                  <input type="hidden" name="anexo" value="${anexo}">
+                  <input type="hidden" name="rut" value="${rut}">
+                  <input type="hidden" name="accion" value="CA">
+                  <input type="hidden" name="QV" value="M">
+                </form>
+                </if> 
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" class="texto" height="30" > <a href="javascript:;" onClick = "window.history.back(); return false"><img src="/images/Gestion/botones/anterior_up.jpg" border="0" width="108" height="27" name="anterior" onMouseOver="MM_swapImage('anterior','','/images/Gestion/botones/anterior_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a><a href="javascript:;" onClick = "return verOtro()"><img src="/images/Gestion/botones/mantener_otro_up.jpg" width="108" height="27" alt="Mantener Otro Anexo" border="0" name="m_otro" onMouseOver="MM_swapImage('m_otro','','/images/Gestion/botones/mantener_otro_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a> 
+            <a href="javascript:;" onClick = "return aplicarCambios(document.formTA)"><img src="/images/Gestion/botones/aplicar_up.jpg" width="108" height="27" name="aplicar" onMouseOver="MM_swapImage('aplicar','','/images/Gestion/botones/aplicar_over.jpg',1)" alt="Aplicar Cambios en los Anexos" border="0" onMouseOut="MM_swapImgRestore()"></a> 
+            <a href="javascript:;" onClick = "return cambiarAnexos(document.formTA, '${anexo}')"><img src="/images/Gestion/botones/cancelar_up.jpg" width="108" height="27" name="cancelar" border="0" onMouseOver="MM_swapImage('cancelar','','/images/Gestion/botones/cancelar_over.jpg',1)" alt="Cancelar Cambios en los Anexos" onMouseOut="MM_swapImgRestore()"></a> 
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top" height="90"> <if (quebusca)> </if> 
+            <table width="595" border="1" cellspacing="0" cellpadding="0" align="center">
+              <tr> 
+                <td width="256" bgcolor="#FFCF75"> 
+                  <div align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000"><b>Anexos 
+                    Relacionados </b></font></div>
+                </td>
+                <td width="333" class="texto"> <a href="javascript:;" onClick = "MM_showHideLayers('LayerAgAnexo','','show')"><img src="/images/Gestion/botones/agregar_up.jpg" width="108" height="27" name="agr_anexo" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('agr_anexo','','/images/Gestion/botones/agregar_over.jpg',1)" alt="Agregar Anexos a la Relaci&oacute;n"></a><a href="javascript:;" onClick = "return quitarAnexoRel(document.formAR)"><img src="/images/Gestion/botones/quitar_up.jpg" name="quit_anexo" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('quit_anexo','','/images/Gestion/botones/quitar_over.jpg',1)" alt="Quitar Anexos de la Relaci&oacute;n" width="108" height="27"></a><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','/images/Gestion/botones/cerrar_down.jpg',1)"><img name="Image4" border="0" src="/images/Gestion/botones/cerrar_up.jpg" width="108" height="27"></a></td>
+              </tr>
+            </table>
+            <div id="LayerADet" style="position:absolute; width:608px; height:67px; z-index:1; left: 11px; top: auto; overflow: auto"> 
+              <table width="595" border="1" cellspacing="0" cellpadding="0" bgcolor="#FFCF75">
+                <form name="formAR" method="post" action="/servlet/datafolder.anexos.BuscarAnexos">
+                  <input type="hidden" name="unidad" value = "${unidad}">
+                  <if !(anexos)> 
+                  <tr> 
+                  <td class="texto" width="48%" bgcolor="#FFC448">No existen anexos 
+                    relacionados con este... </td>
+                </tr>
+                <else> 
+                
+                  <assign x=""> 
+                  <tr > 
+                    <list anexos as a> <assign x=x+"*"> 
+                    <td width="10%" class="texto" align="right"> 
+                      <input type="checkbox" name="anexo_rel" value="${a.anexo_rel}">
+                      <a href="javascript:;" onClick="return ver('${a.anexo_rel}','','M')"> 
+                      ${a.anexo_rel}</a></td>
+                    <if (x) == "********"> <assign x=""> 
+                  </tr>
+                  <tr> 
+                    </if> 
+                    </list> 
+                  </tr>
+                  <input type="hidden" name="anexo" value="${anexo}">
+                  <input type="hidden" name="rut" value="${rut}">
+                  <input type="hidden" name="accion" value="">
+                  <input type="hidden" name="QV" value="M">
+                
+                </if> 
+				</form>
+              </table>
+            </div>
+            &nbsp; </td>
+        </tr>
+      </table>
+    </TD>
+    <TD width="1" height="18"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD ROWSPAN=7 width="13"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_06.jpg" WIDTH=13 HEIGHT=336></TD>
+    <TD width="16" height="39"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_07.jpg" WIDTH=16 HEIGHT=39></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=39></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="50"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_08.jpg" WIDTH=16 HEIGHT=50></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=50></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="52"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_10.jpg" WIDTH=16 HEIGHT=52></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=52></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="45"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_11.jpg" WIDTH=16 HEIGHT=45></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=45></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="55"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_12.jpg" WIDTH=16 HEIGHT=55></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=55></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="51"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_13.jpg" WIDTH=16 HEIGHT=51></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=51></TD>
+  </TR>
+  <TR> 
+    <TD width="16" height="44"> <IMG SRC="/Gestion/imagenes_main_bienvenida/main_bienvenida_14.jpg" WIDTH=16 HEIGHT=44></TD>
+    <TD width="1"> <IMG SRC="/Gestion/imagenes_main_bienvenida/espacio.gif" WIDTH=1 HEIGHT=44></TD>
+  </TR>
+</TABLE>
+<div id="LayerAgAnexo" style="position:absolute; width:337px; height:139px; z-index:2; left: 166px; top: 113px; visibility: hidden" class="carpeta"> 
+  <form name="formAA" method="post" action="/servlet/datafolder.anexos.BuscarAnexos">
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+      <tr bgcolor="#FF6600" align="center"> 
+        <td colspan="2" class="textB"><font color="#FFFFFF">Relacionar Anexos 
+          con el &quot; ${anexo}&quot; </font> 
+          <input type="hidden" name="anexo" value="${anexo}">
+          <!--<input type="hidden" name="rut" value="${rut}">-->
+		  <input type="hidden" name="unidad" value = "${unidad}">
+          <input type="hidden" name="accion" value="AAR">
+          <input type="hidden" name="QV" value="M">
+        </td>
+      </tr>
+      <tr> 
+        <td width="30%" align="center" valign="middle"> 
+          <select name="anexo_rel" size="6" style="width=100" multiple>
+          </select>
+        </td>
+        <td height="42" align="center"> 
+          <input type="hidden" name="lista_anexo_rel">
+          <span class="texto"> Indique Anexo: 
+          <input type="text" name="nuevo_anexo" size="5" maxlength="5">
+          </span> 
+          <table border="1" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td class="texto"><a href="javascript:;" onClick = "return agregarAnexo(document.formAA.anexo_rel, eval('document.formAR.anexo_rel'),document.formAA.nuevo_anexo)"><img src="/images/Gestion/botones/agregar_up.jpg" name="agr_rel" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('agr_rel','','/images/Gestion/botones/agregar_over.jpg',1)" alt="Agregar  Anexo a la lista" width="108" height="27"></a></td>
+              <td class="texto"><a href="javascript:;" onClick = "return quitarAnexo(document.formAA.anexo_rel)"><img src="/images/Gestion/botones/quitar_up.jpg" border="0" name="qui_rel" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('qui_rel','','/images/Gestion/botones/quitar_over.jpg',1)" alt="Quitar Anexo de la lista" width="108" height="27"></a></td>
+            </tr>
+            <tr> 
+              <td class="texto"><a href="javascript:;" onClick = "return agregarAnexosRel(document.formAA)"><img src="/images/Gestion/botones/aplicar_up.jpg" width="108" height="27" name="apl_rel" border="0" alt="Aplicar Cambios en la Relaci&oacute;n" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('apl_rel','','/images/Gestion/botones/aplicar_over.jpg',1)"></a></td>
+              <td class="texto"><a href="javascript:;" onClick = "MM_showHideLayers('LayerAgAnexo','','hide')"><img src="/images/Gestion/botones/cancelar_up.jpg" width="108" height="27" name="cancelar_rel" border="0" onMouseOver="MM_swapImage('cancelar_rel','','/images/Gestion/botones/cancelar_over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+//parent.CerrarVentProcesando();
+</script>
+</HTML>

@@ -1,0 +1,314 @@
+  <html>
+<head>
+<title>Video Conferencia</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Tue Dec 18 19:29:48 GMT-0300 (Hr. de ver. del Pac&#237;fico SA) 2001-->
+<script language="JavaScript">
+<!--
+
+function Invitar(){
+   var x=0;
+   var valor=false;
+   //alert("Largo: "+document.form1.rut.length);
+    /*if (document.form1.rut.length>1){
+		   for (x=0;x<document.form1.rut.length;x++){
+				 if (document.form1.rut[x].checked==true)
+					valor=true;
+		   }
+    }else if (document.form1.rut.checked==true)
+					valor=true;
+   if (valor){
+	//  alert("Submit...");
+	 document.form1.submit();
+   }else
+	 alert("Seleccione un Participante.");   */
+   	 document.form1.submit();
+}
+function MuestraLayer(rut) { //v2.0
+   //alert("Mostrar Layer: "+rut);
+   var x=0;
+   var valor=false;
+   <list detalle as d>
+     eval("Layer"+${d.rut}+".style.visibility='hidden'");
+   </list>
+   eval("Layer"+rut+".style.visibility='visible'");
+   /*if (document.form1.rut.length>1)  
+	   for (x=0;x<document.form1.rut.length;x++){
+			 if (document.form1.rut[x].checked==true){
+			   //alert("Rut: "+document.form1.rut[x].value+"Chekeado!!");
+			   <list detalle as d>
+				 eval("Layer"+${d.rut}+".style.visibility='hidden'");
+			   </list>
+			   eval("Layer"+document.form1.rut[x].value+".style.visibility='visible'");
+			  }else{
+				 //alert("Rut: "+document.form1.rut[x].value+"No Chekeado!!");
+				 eval("Layer"+document.form1.rut[x].value+".style.visibility='hidden'");
+			   }
+	   }
+    else{
+        if (document.form1.rut.checked==true){
+			   //alert("Rut: "+document.form1.rut[x].value+"Chekeado!!");
+			   <list detalle as d>
+				 eval("Layer"+${d.rut}+".style.visibility='hidden'");
+			   </list>
+			   eval("Layer"+document.form1.rut.value+".style.visibility='visible'");
+			  }else{
+				 //alert("Rut: "+document.form1.rut[x].value+"No Chekeado!!");
+				 eval("Layer"+document.form1.rut.value+".style.visibility='hidden'");
+			   }
+
+    }*/
+    
+}
+
+function OcultarTodos() { //v2.0
+ 
+ <list detalle as d>
+    eval("Layer"+${d.rut}+".style.visibility='hidden'");
+  </list>
+ 
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/video.css" type="text/css">
+</head>
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/images/Gestion/videoconf/invitados_over_r4_c4.jpg','/images/Gestion/videoconf/capa_over_r4_c3.jpg','/images/Gestion/videoconf/capa_over_r4_c3.jpg')">
+<table border="0" cellpadding="0" cellspacing="0" width="765">
+  <form name="form1" action="/servlet/datafolder.videoconf.Conferencia" method="post">
+    <!-- fwtable fwsrc="/images/Gestion/videoconf/Untitled" fwbase="invitados.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+    <tr> 
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="24" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="338" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="284" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="82" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="19" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="18" height="1" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="1" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="6"><img name="invitados_r1_c1" src="/images/Gestion/videoconf/invitados_r1_c1.jpg" width="765" height="41" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="41" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="6"> 
+        <input type="hidden" name="cadena" value="${cadena}">
+        <div id="titulos" style="position:absolute; width:183px; height:26px; z-index:5; left: 61px; top: 15px" class="unnamed1"><a href="/servlet/datafolder.videoconf.ParticipantesP" class="linkblanco">COLABORADORES 
+          VIRTUALES </a></div>
+        <img src="/images/Gestion/videoconf/invitados_r2_c1.jpg" width="765" height="35" usemap="#Map" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="35" border="0"></td>
+    </tr>
+    <tr> 
+      <td rowspan="3"><img name="invitados_r3_c1" src="/images/Gestion/videoconf/invitados_r3_c1.jpg" width="24" height="319" border="0"></td>
+      <td background="/images/Gestion/videoconf/invitados_r3_c2.jpg" valign="top"> 
+        <div id="LayerInvita" style="position:absolute; width:147px; height:247px; z-index:2; top: 112px; left: 87px; overflow: auto; visibility: visible"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td> <font face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="hidden" name="id" value="${conf_id}">
+                </font></td>
+              <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>Asunto</b></font></td>
+            </tr>
+            <tr valign="top"> 
+              <td colspan="3" height="29"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>${asunto} 
+                </b> </font></td>
+            </tr>
+            <tr> 
+              <td><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+              <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>Inicio</b></font></td>
+            </tr>
+            <tr> 
+              <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${f_ini}</font></td>
+              <td><font face="Arial, Helvetica, sans-serif" size="1">${h_ini} 
+                Hrs </font></td>
+            </tr>
+            <tr> 
+              <td width="17%" height="27"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                </font></td>
+              <td colspan="2" height="27"><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+              <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>T&eacute;rmino</b></font></td>
+            </tr>
+            <tr> 
+              <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${f_ter} 
+                </font></td>
+              <td><font face="Arial, Helvetica, sans-serif" size="1">${h_ter} 
+                Hrs </font></td>
+            </tr>
+            <tr> 
+              <td width="17%" height="36"><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+              <td colspan="2" height="36"><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+              <td width="23%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>Moderador</b></font><font face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+              <td width="47%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td colspan="3"><font face="Verdana, Arial, Helvetica, sans-serif"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">${nom_m}</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"></font></td>
+            </tr>
+            <tr> 
+              <td colspan="3">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+      <td colspan="2" background="/images/Gestion/videoconf/invitados_r3_c3.jpg" valign="top"> 
+       <list detalle as d> 
+        <div id="Layer${d.rut}" style="position:absolute; width:399px; height:272px; z-index:2; left: 365px; top: 82px; visibility: visible"> 
+          <table border="0" cellpadding="0" cellspacing="0" width="168" align="center">
+            <!-- fwtable fwsrc="/images/Gestion/videoconf/Untitled" fwbase="capa.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+            <tr> 
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="3" height="1" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="37" height="1" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="95" height="1" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="29" height="1" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="2" height="1" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="1" border="0"></td>
+            </tr>
+            <tr> 
+              <td colspan="5"><img name="capa_r1_c1" src="/images/Gestion/videoconf/capa_r1_c1.jpg" width="166" height="2" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="2" border="0"></td>
+            </tr>
+            <tr> 
+              <td rowspan="4"><img name="capa_r2_c1" src="/images/Gestion/videoconf/capa_r2_c1.jpg" width="3" height="300" border="0"></td>
+              <td colspan="3" bgcolor="#336699"> 
+                <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><img src="/images/Gestion/Trabajadores/${d.foto}" width="67" height="74"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></font></div>
+              </td>
+              <td rowspan="4"><img name="capa_r2_c5" src="/images/Gestion/videoconf/capa_r2_c5.jpg" width="2" height="300" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="87" border="0"></td>
+            </tr>
+            <tr> 
+              <td colspan="3" background="/images/Gestion/videoconf/capa_r3_c2.jpg" valign="top"> 
+                <div id="Layer3" style="position:absolute; width:16px; height:184px; z-index:3; left: 118px; top: 109px"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="153">
+                    <tr> 
+                      <td height="20"><font face="Arial, Helvetica, sans-serif" size="1">
+                        <input type="radio" name="tipo${d.rut}" value="OB" checked>
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="19"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="tipo${d.rut}" value="OC">
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="12"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="tipo${d.rut}" value="C">
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="12"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="tipo${d.rut}" value="I">
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="2"><img src="/images/Gestion/videoconf/spacer.gif" width="8" height="4"></td>
+                    </tr>
+                    <tr> 
+                      <td height="13">&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td height="9"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="cond${d.rut}" value="O">
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="13"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="cond${d.rut}" value="PU" checked>
+                        </font></td>
+                    </tr>
+                    <tr> 
+                      <td height="16"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                        <input type="radio" name="cond${d.rut}" value="PR">
+                        </font></td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="184" border="0"></td>
+            </tr>
+            <tr> 
+              <td rowspan="2"><img name="capa_r4_c2" src="/images/Gestion/videoconf/capa_r4_c2.jpg" width="37" height="29" border="0"></td>
+              <td><a href="javascript:;" onClick="OcultarTodos();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('capa_r4_c3${d.rut}','','/images/Gestion/videoconf/capa_over_r4_c3.jpg',1)"><img name="capa_r4_c3${d.rut}" src="/images/Gestion/videoconf/capa_r4_c3.jpg" width="95" height="24" border="0"></a></td>
+              <td rowspan="2"><img name="capa_r4_c4" src="/images/Gestion/videoconf/capa_r4_c4.jpg" width="29" height="29" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="24" border="0"></td>
+            </tr>
+            <tr> 
+              <td><img name="capa_r5_c3" src="/images/Gestion/videoconf/capa_r5_c3.jpg" width="95" height="5" border="0"></td>
+              <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="5" border="0"></td>
+            </tr>
+          </table>
+        </div></list>
+        <div id="LayerFotos2" style="position:absolute; width:360px; height:106px; z-index:1; left: 365px; top: 82px; overflow: auto; visibility: visible"> 
+          <table width="13%" border="0" cellpadding="0" cellspacing="6" height="56">
+            <tr> <list detalle as v> 
+              <td> 
+                 <if (rut_m!=v.rut)>
+                  <a href="javascript:;" onClick="MuestraLayer('${v.rut}');return false;"> 
+                     <img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"> 
+                  </a> <else>
+
+                     <img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="Moderador Conferencia /${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"> 
+
+                </if>
+               </td>
+              </list> </tr>
+          </table>
+        </div>
+      </td>
+      <td><img name="invitados_r3_c5" src="/images/Gestion/videoconf/invitados_r3_c5.jpg" width="19" height="279" border="0"></td>
+      <td rowspan="3"><img name="invitados_r3_c6" src="/images/Gestion/videoconf/invitados_r3_c6.jpg" width="18" height="319" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="279" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" background="/images/Gestion/videoconf/invitados_r4_c2.jpg">&nbsp;</td>
+      <td colspan="2"><a href="javascript:;" onClick="Invitar();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('invitados_r4_c4','','/images/Gestion/videoconf/invitados_over_r4_c4.jpg',1)"><img name="invitados_r4_c4" src="/images/Gestion/videoconf/invitados_r4_c4.jpg" width="101" height="30" border="0"></a></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="30" border="0"></td>
+    </tr>
+    <tr> 
+      <td colspan="4"><img name="invitados_r5_c2" src="/images/Gestion/videoconf/invitados_r5_c2.jpg" width="723" height="10" border="0"></td>
+      <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="10" border="0"></td>
+    </tr>
+  </form>
+</table>
+<map name="Map">
+  <area shape="rect" coords="70,9,215,26" href="/servlet/datafolder.videoconf.ParticipantesP">
+</map>
+</body>
+</html>

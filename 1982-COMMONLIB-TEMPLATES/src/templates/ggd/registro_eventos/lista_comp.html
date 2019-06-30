@@ -1,0 +1,38 @@
+<script language="JavaScript" type="text/JavaScript">
+function fnAccion(valor){ }
+</script>
+
+<style type="text/css">
+<!--
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.texto2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #CC0000;
+	text-decoration: none;
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #AAFFFF;
+}
+-->
+</style>
+      <table width="100%" border="0">
+
+        <if getRegistroEventosCompetencias>
+        <list getRegistroEventosCompetencias as a>
+        <tr align="center" valign="top" class="texto" >
+          <td width="74%" height="14" align="left"><a href="#" onClick="fnAccion('${a.id_competencia}');return false;">${a.competencia}</a>&nbsp;</td>
+		  <td width="26%" class="texto2"> ${a.buenas}&nbsp;/ ${a.malas}&nbsp;</td>
+	    </tr>
+        </list></if>
+      </table>
+      

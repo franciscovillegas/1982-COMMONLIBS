@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Lista de Beneficios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Thu May 30 18:51:08 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+
+function inicio(){
+	document.form1.vigente.value = "${vigente}";
+}
+
+function vigente_change(valor){
+	document.location.href="../servlet/ListaBeneficios?vigente="+valor;
+}
+
+function crearBeneficio() {
+    var url2 = "../servlet/AdmBeneficios";
+	ventmsg2 = open(url2, "AdmBeneficios", "width=465,height=360,left=140,top=160");
+}
+
+function editBeneficio(valor) {
+    var url2 = "../servlet/AdmBeneficios?accion=update&beneficio="+valor;
+	ventmsg2 = open(url2, "AdmBeneficios", "width=465,height=360,left=140,top=160");
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/funciones.js" type="text/JavaScript"></script>
+<style type="text/css">
+<!--
+a:hover {
+	color: #0066CC;
+	text-decoration: underline;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style></head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="inicio();MM_preloadImages('../servlet/Tool?images/botones/buscar_over.jpg','../servlet/Tool?images/botones/seleccionar_over.jpg','../servlet/Tool?images/new/botones/cerrar_f2.gif','../servlet/Tool?images/new/botones/crear_f2.gif')">
+<form name="form1" action="../servlet/S_SearchAlfabetic" method="post">
+  <table border="0" cellpadding="0" cellspacing="0" width="467">
+    <!-- fwtable fwsrc="Untitled" fwbase="desp_main.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+    <tr>
+    </tr>
+    <tr align="center"> 
+      <td height="40" colspan="5" class="TITULO_MODULOS">Lista de Beneficios </td>
+    </tr>
+    <tr> 
+      <td height="316">&nbsp;</td>
+      <td colspan="2" valign="top" height="316"><div id="LayerCerrar" style="position:absolute; width:207px; height:25px; z-index:4; visibility: visible; left: 240px; top: 41px"><a href="javascript:;" onClick="crearBeneficio();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_cre','','../servlet/Tool?images/new/botones/crear_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/crear.gif" name="img_cre" width="91" height="21" border="0" id="img_cre"></a><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/new/botones/cerrar_f2.gif',1)"><img src="../servlet/Tool?images/new/botones/cerrar.gif" name="Image11" width="91" height="21" border="0" id="Image11"></a></div>
+</td>
+      <td height="316">&nbsp;</td>
+      <td height="316">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="4">&nbsp;</td>
+      <td></td>
+    </tr>
+  </table>
+  <span id="DetalleUser" style="position:absolute; width:424px; height:248px; z-index:2; left: 25px; top: 92px; overflow: auto;; visibility: visible">
+  <table width="100%" border="0" class="detalleTabla">
+      <list beneficios as b>
+      <tr class="detalleTablaChico">
+        <td width="50" align="right">${b.benef_id} </td>
+        <td width="341"><a href="javascript:;" onClick="editBeneficio('${b.benef_id}'); return false;">${b.benef_glosa}</a></td>
+      </tr>
+      </list>
+  </table>
+  </span>
+  <span id="CabeceraUser" style="position:absolute; width:426px; height:21px; z-index:2; left: 25px; top: 70px; overflow: auto;; visibility: visible">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="fondo_tablas">
+      <tr align="center">
+        <td width="58" height="18"><strong>C&oacute;d.</strong></td>
+        <td width="341"><strong>Glosa</strong></td>
+      </tr>
+  </table>
+  </span>
+  <div id="Layer2" style="position:absolute; width:78px; height:23px; z-index:5; left: 524px; top: 158px; visibility: visible"><a href="#" onClick="javascript:buscar();return false;" onMouseOver="MM_swapImage('buscar_r5_c9','','../servlet/Tool?images/botones/buscar_over.jpg',1)" onMouseOut="MM_swapImgRestore()"><img name="buscar_r5_c9" src="../servlet/Tool?images/botones/buscar.jpg" width="91" height="21" border="0"></a></div>
+  <div id="LayerSel" style="position:absolute; width:80px; height:26px; z-index:3; left: 516px; top: 228px; visibility: visible"><a href="javascript:;" onClick="Seleccionar();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image20','','../servlet/Tool?images/botones/seleccionar_over.jpg',1)"><img name="Image20" border="0" src="../servlet/Tool?images/botones/seleccionar.jpg" width="91" height="21"></a></div>
+  <div id="Layer1" style="position:absolute; width:170px; height:23px; z-index:7; left: 28px; top: 41px;">
+    <select name="vigente" id="vigente" class="campo_texto" onChange="vigente_change(this.value);">
+    <option value="S">Vigentes</option>
+    <option value="N">No Vigentes</option>
+    </select>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+ <HTML>
+<HEAD>
+<TITLE>Indicadores</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript">
+function AbrirBGaleria() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "Tool?htm=Gestion/BusquedaPorFiltros/Busqueda.htm";
+	ventmsg2 = open(url2, "Galeria", "width=720,height=428,left=50,top=110");
+	//ventmsg2.focus();
+}
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_jumpMenuGo(selName,targ,restore){ //v3.0
+  var selObj = MM_findObj(selName); if (selObj) MM_jumpMenu(targ,selObj,restore);
+}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</SCRIPT>
+<link rel="stylesheet" href="../servlet/Tool?style/estilos.css" type="text/css">
+</HEAD>
+<BODY background="../servlet/Tool?images/Gestion/news/left_ind.jpg" style="background-repeat:no-repeat" ONLOAD="parent.frames.mainFrame.location.href='../servlet/RelacionInd';" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action=""><input type="hidden" name="modo" value="0"></form>
+</BODY>
+</HTML>

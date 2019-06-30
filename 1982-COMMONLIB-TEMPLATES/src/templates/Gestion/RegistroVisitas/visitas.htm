@@ -1,0 +1,116 @@
+  <html>
+<head>
+<title>Registrar salida</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Captura(rutv,rutc) { //v2.0
+  document.form1.rut_v.value=rutv;
+document.form1.rut_c.value=rutc;
+//alert("rut_v: "+rutv+"\nrut_c: " +rutc);
+//document.form1.submit();
+
+}
+
+function ValidaVal() { //v2.0
+var x=0;
+var val=false;
+var largo=document.form1.valor.length;
+	if (largo){
+	    for (x=0;x<document.form1.valor.length;x++){
+		  if (document.form1.valor[x].checked){
+			val=true;
+		   break;
+		  }
+		}
+	}else{
+		if (document.form1.valor.checked)
+			val=true;
+	}
+   	if (val)
+	  document.form1.submit();
+    else
+      alert("Seleccione la salida a registrar.");
+ 
+
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-repeat:no-repeat">
+<table width="500" border="0" cellspacing="0" cellpadding="0" height="300">
+  <form name="form1" method="post" action="../servlet/RegistroSalida">
+  <tr> 
+      <td valign="top"> <if detalle>
+					<table width="100%" align="center" class="texto_negro_bold">
+					  <tr> 
+						<td align="center">Visitas Activas</td>
+					  </tr>
+		  </table>
+					
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" height="13" align="center">
+          <tr> 
+            <td height="7" colspan="2" align="center" class="tabla_amarelo">Visita
+              <div id="Layeraceptar" style="position:absolute; width:121px; height:15px; z-index:2; left: 249px; top: 271px; visibility: visible"><a href="javascript:;" onClick="ValidaVal();return false;" target="_parent"><img src="../servlet/Tool?images/Gestion/botones/aceptar.gif" name="Image1" width="120" height="24" border="0"></a></div>            </td>
+            <td width="15%" rowspan="2" align="center" class="tabla_amarelo">Contacto
+              <input type="hidden" name="rut_v" value="0">            </td>
+            <td width="15%" rowspan="2" align="center" class="tabla_amarelo">Fecha
+              <input type="hidden" name="rut_c" value="0">            </td>
+            <td width="15%" rowspan="2" align="center" class="tabla_amarelo">Hora</td>
+            <td width="5%" rowspan="2" align="center" class="tabla_amarelo">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="15%" align="center" class="tabla_amarelo">Rut</td>
+            <td width="30%" align="center" class="tabla_amarelo">Nombre</td>
+          </tr>
+        </table><span id="LayerDetalle" style="position:absolute; width:500px; height:190px; z-index:1; left: 0px; top: 77px; overflow: auto; visibility: visible"> 
+          <table width="655" border="0" cellspacing="1" cellpadding="0" height="24">
+					<list detalle as d> 
+					<tr><td width="15%" align="center" class="tabla_negro">${d.rutv}</td>
+					<td width="30%" align="center" class="tabla_negro">${d.nomv}</td>
+					<td width="15%" align="center" class="tabla_negro">${d.nomc}</td>
+					  <td width="15%" align="center" class="tabla_negro">${d.fec}</td>
+					  <td width="15%" align="center" class="tabla_negro">${d.hora}</td>
+					  <td width="5%" align="center" class="tabla_negro"><input type="checkbox" name="valor" value="${d.rutv}#${d.rutc}">				</td>
+					</tr>
+					</list> 
+	      </table>
+				
+        </span>
+        <else>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1">
+          <tr> 
+            <td></td>
+          </tr>
+          
+          <tr> 
+            <td></td>
+          </tr>
+          
+          <tr>
+            <td align="center" class="tabla_negro">No se registran visitas activas</td>
+          </tr>
+        </table>
+        </if>
+        <div id="Layer2" style="position:absolute; width:121px; height:20px; z-index:2; left: 376px; top: 271px; visibility: visible"><a href="/templates/Gestion/RegistroVisitas/frameset.htm" target="_parent"><img name="Image2" border="0" src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24"></a></div>
+        
+      </td>
+  </tr></form>
+</table>
+</body>
+</html>

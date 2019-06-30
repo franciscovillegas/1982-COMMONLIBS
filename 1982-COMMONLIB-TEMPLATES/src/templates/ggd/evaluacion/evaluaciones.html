@@ -1,0 +1,268 @@
+<assign Eauto = User.Pautoev>
+<assign Esuper = User.Psuperv>
+<assign Esubord = User.Psubord>
+<assign Epares = User.Ppares>
+
+<assign user = User.Rut>
+<assign p = txt_Perfil>
+<assign pcol = txt_PerfilCol>
+<assign pr = txt_Proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut2>
+<assign te = txt_TipoEval>
+<assign te2 = txt_TipoEval2>
+<if  te!="A">
+  <assign p = dRut.id_perfil>
+  <assign pr = dRut.id_proceso>		
+</if>
+<assign c = txt_Competencia>
+<assign cn = txt_CompetenciaN>
+<assign cg = txt_CompetenciaG>
+<assign n = txt_nivel>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Evaluaci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+
+function fnEval(valor){
+	if (document.form1.txt_PerfilCol.value==""){
+		alert('Colaborador no tiene definido un perfil.')
+		return false;
+	}
+	if(valor!=0)
+	{  var url ='pHtm=ggd/evaluacion/evalRut.html';
+       url = url + '&txt_Proceso=' + document.form1.txt_Proceso.value;
+	   url = url + '&txt_Rut='+ document.form1.txt_Rut.value;
+       url = url + '&txt_RutEvaluador='+  document.form1.txt_RutEvaluador.value;
+	   url = url + '&txt_Perfil='+  document.form1.txt_Perfil.value;
+	   url = url + '&txt_TipoEval='+  document.form1.txt_TipoEval.value;
+	   url = url + '&txt_Competencia='+  document.form1.txt_Competencia.value;
+	   url = url + '&txt_Comp='+  document.form1.txt_Comp.value;
+	   url = url + '&txt_nivel='+  document.form1.txt_nivel.value;
+	   MM_openBrWindow('../servlet/EvaluacionG?'+url,'evaluacion','status=yes,width=477,height=417');
+	}
+	else
+	{  alert("No existen permisos de autoevaluacion asignados"); }   
+}
+//AUTOEVALUACION
+function azul(){
+<if Eauto == "0">
+    alert("El Perfil del Usuario no permite Autoevaluaci&#243;n"); 
+<else>
+    //AUTOEVALUACION
+	//document.form1.txt_TipoEval.value='A';
+	//document.form1.txt_Rut.value='${re}';
+	//document.form1.pHtm.value='';	
+	//document.form1.submit();
+	document.form1.txt_TipoEval.value='A';
+	document.form1.txt_Rut.value='${user}';
+	document.form1.pHtm.value='';	
+	document.form1.submit();
+</if>	
+}
+//JEFE   
+function rojo(){
+<if Esuper == "0">
+    alert("El Perfil del Usuario no permite Evaluaci&#243;n del Jefe"); 
+<else>
+    //SUPERVISOR
+	//document.form1.txt_TipoEval.value='S';
+	//document.form1.txt_Rut.value='${User.rut_sup}';
+	//document.form1.pHtm.value='';
+	//document.form1.submit();
+	document.form1.txt_TipoEval.value='S';
+	document.form1.txt_Rut.value='${user}';
+	document.form1.pHtm.value='';
+	document.form1.submit();
+</if>	
+}
+//COLABORADOR   
+function amarillo(){
+<if Esubord == "0">
+    alert("El Perfil del Usuario no permite Evaluaci&#243;n de Colaboradores"); 
+<else>
+    //COLABORADOR
+	//document.form1.txt_TipoEval.value='C';
+	//document.form1.txt_Rut.value='';	
+	//document.form1.pHtm.value='';
+	//document.form1.submit();	
+    document.form1.txt_TipoEval.value='C';
+	document.form1.txt_Rut.value='${user}';
+	document.form1.pHtm.value='';
+	document.form1.submit();
+</if>
+}
+//PARES   
+function verde(){
+<if Epares == "0">
+    alert("El Perfil del Usuario no permite Evaluaci&#243;n de Pares"); 
+<else>
+    //PARES
+	document.form1.txt_TipoEval.value='P';
+	document.form1.txt_Rut.value='${user}';
+	document.form1.pHtm.value='';	
+	document.form1.submit();
+</if>	
+}
+function fnRefresh(){
+	alert("Las conductas para la competencia  " + "'" + '${cn}'+ "'" + "  se han grabado exitosamente!");
+	document.form1.action = '../servlet/EvaluacionesG?txt_Rut=${r}&txt_RutEvaluador=${re}&txt_TipoEval=${te}&txt_Perfil=${p}&txt_Proceso=${pr}&txt_Competencia=${c}&txt_nivel=${n}';
+	document.form1.submit();
+}
+function fnRefresh2(){
+	alert("La evaluaci&#243;n para la competencia  " + "'" + '${cn}'+ "'" + "  se han grabado exitosamente!");
+	document.form1.action = '../servlet/EvaluacionesG?txt_Rut=${r}&txt_RutEvaluador=${re}&txt_TipoEval=${te}&txt_Perfil=${p}&txt_Proceso=${pr}&txt_Competencia=${c}&txt_nivel=${n}';
+	document.form1.submit();
+}
+function fnAplicar(){
+	var noIngresadas=0
+	for (var i=0;i<document.form1.elements.length;i++){
+		  	if (document.form1.elements[i].tagName == 'SELECT')
+		   	  if (document.form1.elements[i].value == "-1")
+		    	  noIngresadas=noIngresadas + 1;
+	}  	  
+	if (noIngresadas > 0){
+			alert("Debe seleccionar un valor (1 a 4) para cada Conducta!!");
+		  }else{
+				document.form1.action="../servlet/EvaluacionG?txtAccion=GE";
+				document.form1.submit();
+				fnRefresh2();
+	}
+}
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script src="../servlet/Tool?scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer10 {	position:absolute;
+	left:12px;
+	top:35px;
+	z-index:6;
+}
+#Layer11 {	position:absolute;
+	left:389px;
+	top:564px;
+	width:203px;
+	height:10px;
+	z-index:7;
+}
+#Layer8 {	position:absolute;
+	left:890px;
+	top:460px;
+	width:81px;
+	height:21px;
+	z-index:5;
+}
+#Layer1 {
+	position:absolute;
+	left:135px;
+	top:9px;
+	width:211px;
+	height:16px;
+	z-index:8;
+}
+-->
+</style>
+</head>
+<body background="../servlet/Tool?images/ggd/competencias/evaluaciones.jpg">
+<div class="txt_gris_bold" id="Layer1">Datos Personales</div>
+<form name="form1" method="post" action="../servlet/EvaluacionesG">
+<input type="hidden" name="txt_Proceso" value="${txt_Proceso}">
+<input type="hidden" name="txt_Rut" value="${r}">
+<input type="hidden" name="txt_RutEvaluador" value="${re}">
+<input type="hidden" name="txt_Perfil" value="${p}">
+<input type="hidden" name="txt_PerfilCol" value="${pcol}">
+<input type="hidden" name="txt_TipoEval" value="${te}">
+<input type="hidden" name="txt_TipoEval2" value="${te2}">
+<input type="hidden" name="txt_Competencia" value="${c}">
+<input type="hidden" name="txt_nivel" value="${n}">
+<input type="hidden" name="pHtm" value="">
+<div id="Layer2" style="position:absolute; width:212px; height:126px; z-index:1; left: 134px; top: 30px; visibility: visible;" >
+  <assign h = "ggd/rut/ver_rut.html">${TM_Rut(h,r)}
+  </div>  
+  <div id="Layer3" style="position:absolute; width:624px; height:125px; z-index:2; left: 365px; top: 29px; visibility: visible; overflow: hidden;">
+  <assign h = "ggd/evaluacion/competencias.html">${TM_CmtRut(h,r,re,pcol,pr,cn,cg,te)}</div>
+  <div id="Layer4" style="position:absolute; width:626px; height:248px; z-index:3; left: 363px; top: 190px; overflow: auto; visibility: visible;">
+  <assign h = "ggd/evaluacion/comp_conductas.html">${TM_CmtCndRut(h,r,re,pcol,pr,c,n)}</div>
+  <div id="Layer5" style="position:absolute; width:624px; height:11px; z-index:4; left: 366px; top: 157px; visibility: visible;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+      <tr>
+        <td width="15%">Nivel</td>
+        <td width="85%" align="center">Conductas Observables para la Competencia ${cn}</td>
+      </tr>
+    </table>
+  </div>
+<div id="Layer6" style="position:absolute; width:623px; height:17px; z-index:2; left: 366px; top: 7px; visibility: visible;" class="txt_gris_bold">Perfil :  
+  &nbsp;
+  <strong>${NomPerfil}</strong>
+</div>
+
+<span class="boton_rojo" id="Layer9" style="position:absolute; width:205px; z-index:4; left: 138px; top: 159px; overflow: auto; visibility: visible;"><strong>Importante:</strong></span>
+<span class="boton_rojo" id="instrucciones" style="position:absolute; width:211px; height:286px; z-index:4; left: 135px; top: 177px; overflow: auto; visibility: visible;">Antes de realizar esta evaluaci&oacute;n es necesario que usted conozca y comprenda
+  el Modelo de Competencias de su compa&ntilde;&iacute;a. <br>
+    <br>
+    <strong>Instrucciones:</strong><br>
+  -Seleccione la modalidad de evaluaci&oacute;n (autoevaluaci&oacute;n, colaboradores, etc)<br>
+    <br>
+  -Seleccione una competencia y comience evaluando el nivel 1 (que es el m&aacute;s
+  b&aacute;sico). Para cada conducta presentada, marque el casillero correspondiente
+  si considera que la persona realiza la acci&oacute;n descrita.
+  </p>
+  -Pase al siguiente nivel s&oacute;lo cuando haya tickeado todas las conductas del anterior.<strong><br>
+    <br>
+    Recuerde:</strong><br>
+  -Debe evaluar cada competencia en forma independiente y evaluar todas las competencias del perfil.
+  </p>
+  -Cada nivel de competencias incluye a los niveles anteriores.
+  </p>
+  -Recuerde utilizar las observaciones de situaciones destacadas en el desempe&ntilde;o.
+  </p>
+  </span>
+
+<div id="Layer10">
+ <script type="text/javascript">
+AC_FL_RunContent( 'type','application/x-shockwave-flash','data','../flash/flash_ggd/puzzle.swf','width','107','height','107','movie','../flash/flash_ggd/puzzle','quality','high','wmode','transparent','menu','false' ); //end AC code
+</script><noscript><object type="application/x-shockwave-flash" data="../flash/flash_ggd/puzzle.swf" width="107" height="107">
+    <param name="movie" value="../flash/flash_ggd/puzzle.swf">
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <param name="menu" value="false">
+  </object></noscript></div>
+<div id="Layer8">
+  <table width="100" border="0" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td width="8">&nbsp;</td>
+      <td width="12">&nbsp;</td>
+      <td width="30">
+      	<if (puedeEvaluar=="1")>
+      		<!-- <a href="#"><img src="../servlet/Tool?images/images_ggd/ggd/botones/evaluacion.gif" title="Seleccione Conductas por Competencias" alt="Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0" onClick="fnEval(${EvalRut});"></a> -->
+			<a href="#" onClick="return false"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" title="Grabar" alt="Grabar" onClick="fnAplicar()"></a>      		
+      	</if>
+      </td>
+      <td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+    </tr>
+  </table>
+</div>
+<if te == "C" || te == "P" || te=="S">
+<div id="Layer7" style="position:absolute; width:111px; height:283px; z-index:3; top: 167px; overflow: auto; left: 9px; visibility: visible;">
+  <assign h = "ggd/evaluacion/lista_colab.html">${TM_Colab(h,r,te)}</div>
+</if>
+</form>
+</body>
+</html>

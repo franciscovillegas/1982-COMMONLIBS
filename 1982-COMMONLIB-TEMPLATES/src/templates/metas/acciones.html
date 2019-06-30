@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+  <SCRIPT language=JavaScript src="../servlet/Tool?scripts/validadores.js"></SCRIPT>
+  <script language=JavaScript src="../servlet/Tool?scripts/AnchorPosition.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/PopupWindow.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/CalendarPopup.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/date.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/calendar.js"></script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:207px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:115px;
+	width:739px;
+	height:330px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:456px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:13px;
+	top:27px;
+	width:205px;
+	height:499px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer12 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	z-index:12;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+
+//-------------------------------------------------------------------
+// compareFechas(string, string)
+// Devuelve true si fecha1 > fecha 2, formato dd/mm/yyyy
+//-------------------------------------------------------------------
+function compareFechas (fecha1, fecha2) {
+	auxfec1=fecha1.split('/');
+	auxfec2=fecha2.split('/');
+	if (auxfec1[1].length == 1)
+		auxfec1[1] = '0' + auxfec1[1];
+	if (auxfec1[2].length == 1)
+		auxfec1[2] = '0' + auxfec1[2];
+	if (auxfec2[1].length == 1)
+		auxfec2[1] = '0' + auxfec2[1];
+	if (auxfec2[2].length == 1)
+		auxfec2[2] = '0' + auxfec2[2];
+	fecha1 = auxfec1[2] + auxfec1[1] + auxfec1[0];
+	fecha2 = auxfec2[2] + auxfec2[1] + auxfec2[0];
+	fecha1 = parseInt(fecha1);
+	fecha2 = parseInt(fecha2);
+	return (fecha1 > fecha2);
+}
+
+function openCal(field, field2){
+    setDateField(field, field2);
+    top.newWin = window.open('Tool?htm=html/calendar.html', 'cal', 'dependent=yes, width=210, height=230, left=235, top=253, titlebar=no');
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function verMetasColaborador(colaborador){
+	document.form1.rut_colaborador.value = colaborador;
+	document.form1.submit();
+}
+
+function Accion(evento){
+
+	if (evento == "guardar"){
+		
+       if (document.form1.accion_new.value == "" || document.form1.fecha_desde.value == "" || document.form1.fecha_hasta.value == ""){
+           alert("Debe ingresar una descripci&#243;n, fecha de inicio y t&#233;rmino.");
+       } else{
+    	   var user_input_meta = "";
+	   		if (!isNull(document.forms[0].id_meta)) {
+	   	      	if (isArray(document.forms[0].id_meta)) {
+	   		        for (i=0;i<document.forms[0].id_meta.length;i++) {
+	   		          if (document.forms[0].id_meta[i].checked) {
+	   		        	user_input_meta = document.forms[0].id_meta[i].value;
+	   		          }
+	   		        }
+	   	      	} else  if (document.forms[0].id_meta.checked){
+	   	      	    user_input_meta = document.forms[0].id_meta.value;
+	   			}
+	   	    }
+   	     
+           if (user_input_meta != "") {
+               document.form1.accion.value = evento;
+
+               if(compareFechas(document.form1.fecha_desde.value, document.form1.fecha_hasta.value)){
+                   alert("La fecha de t&#233;rmino debe ser mayor a la fecha de inicio.");
+               }else{
+            	   document.form1.submit();
+               }
+          	   
+           } else {
+             alert("Seleccione una meta!");
+           }
+       }
+	}else {
+		var user_input = "";
+		if (!isNull(document.forms[0].id_accion)) {
+	      	if (isArray(document.forms[0].id_accion)) {
+		        for (j=0;j<document.forms[0].id_accion.length;j++) {
+		          if (document.forms[0].id_accion[j].checked) {
+		            user_input = document.forms[0].id_accion[j].value;
+		          }
+		        }
+	      	} else  if (document.forms[0].id_accion.checked){
+				user_input = document.forms[0].id_accion.value;
+			}
+	    }
+	     
+        if (user_input != "") {
+           document.form1.accion.value = evento;
+       	   document.form1.submit();       	   
+        } else {
+          alert("Seleccione una accion para eliminar!");
+        }
+	}
+}
+
+    function reporteExcelMetasAcciones() {	
+		 var href="../servlet/ServletRpExcelMetasAccionesSeguimientosColaborador?rut_colaborador=${rut_colaborador}";
+		 window.open(href, 'reportexcelall', 'width=570,height=400,toolbar=yes, location=yes, directories=yes, status=yes, menubar=yes, scrollbars=yes, resizable=yes');
+	}
+
+    function reporteExcelMetasAccionesSeguimientos() {	
+		 var href="../servlet/ServletRpExcelMetasAccionesSeguimientosInColaborador?rut_colaborador=${rut_colaborador}";
+		 window.open(href, 'reportexcelall', 'width=570,height=400,toolbar=yes, location=yes, directories=yes, status=yes, menubar=yes, scrollbars=yes, resizable=yes');
+	}
+
+    function imprSelec() {
+ 	   var ventimp = window.open(' ', 'popimpr');	   
+ 	   var capa6 = document.getElementById("Layer6");
+ 	   var capa5 = document.getElementById("Layer5");	   	 
+ 	   ventimp.document.write("<br>");
+ 	   ventimp.document.write( capa6.innerHTML );
+ 	   ventimp.document.write("<br>");
+ 	   ventimp.document.write( capa5.innerHTML );
+ 	   ventimp.document.write("<LINK REL='stylesheet' HREF='../servlet/Tool?style/ggd.css' TYPE='text/css'>"); 
+ 	   ventimp.document.close();
+ 	   ventimp.print();
+ 	   ventimp.close();
+   } 
+
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/def_metas.jpg">
+<form name="form1" method="post" action="../servlet/ServletMetasAcciones">
+<input name="rut_colaborador" type="hidden" class="campo_texto" style="width:97%" value="${rut_colaborador}"/>
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<if (rut_colaborador != "0")> 
+<div id="Layer12">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td class="txt_gris_bold">Definici&oacute;n de acci&#243;n de acuerdo entre las partes.<span class="texto_titulo_rojo">${salida}</span> </td>
+      <td align="center" class="txt_gris_bold">Inicio</td>
+       <td align="center" class="txt_gris_bold">T&#233;rmino</td>
+      <td align="center" class="txt_gris_bold">Agregar</td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="50%" class="texto_texto"><textarea name="accion_new" class="txt_gris" rows="2" cols="90"/></textarea></td>
+   
+             <td width="21%"><input name="fecha_desde" type="text" class="txt_gris_bold" id="fecha_desde" size="12" readonly="readonly" value="${fecha_desde}"/>
+      <input type="hidden" name="fecha_d" size="11" maxlength="10">
+      <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_d, document.forms[0].fecha_desde)"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">Inicio</span> </td>
+
+               <td width="21%"><input name="fecha_hasta" type="text" class="txt_gris_bold" id="fecha_hasta" size="12" readonly="readonly" value="${fecha_hasta}"/>
+      <input type="hidden" name="fecha_h" size="11" maxlength="10">
+      <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_h, document.forms[0].fecha_hasta)"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">T&#233;rmino</span> </td>
+        
+        
+        <td width="8%" align="center" class="texto_texto"><a href="#" onClick="Accion('guardar');"/><img src="../servlet/Tool?images/ggd/botones/grabar.gif" width="18" height="18" border="0"/></a></td>
+        <td width="1%" class="texto_texto">&nbsp;</td>
+      </tr>
+      <tr>
+       <td colspan="4"><hr size="1" noshade="noshade" /></td>
+      </tr>
+  </table>
+</div>
+<span id="Layer5">
+  <table width="96%" border="0" cellpadding="0">
+    
+    <tr>
+      <td class="txt_gris_bold">Aspectos a mejorar o desarrollar: (Compromisos concretos del supervisor y evaluado para mejorar cada una de estas falencias) </td>
+      <td align="center" class="txt_gris_bold">&nbsp;</td>
+      <td align="center" class="txt_gris_bold">&nbsp;</td>
+      <td align="center" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    
+    <!-- ************************************************************************* -->
+    
+    <table width="96%">
+			<list pEval as p>
+				 <if p.meta >
+					  <tr>
+						  <td align="left" colspan="9">
+							<table align="left" width="100%">
+							 <tr>		
+						     	 <td width="78%" align="left" colspan="2" style="BACKGROUND-COLOR: #CCCCCC;"><input type="radio" name="id_meta" value="${p.id_meta}"/> ${p.meta} (${p.ponderacion})</td>		
+							     <TD width="10%" align="center" class="txt_gris_bold" style="BACKGROUND-COLOR: #CCCCCC;">Inicio</TD>
+				                 <TD width="10%" align="center" class="txt_gris_bold" style="BACKGROUND-COLOR: #CCCCCC;">T&#233;rmino</TD>
+				                 <TD width="4%" align="center" class="txt_gris_bold" style="BACKGROUND-COLOR: #CCCCCC;">Seg.</TD>
+				                 <TD width="4%" align="center" class="txt_gris_bold" style="BACKGROUND-COLOR: #CCCCCC;">Elim.</TD>
+							 </tr>
+							</table> 
+						  </td>
+					  </tr>
+					 <tr>    
+			         <td valign="top">
+			          <table width="100%"  border="0" cellspacing="0" cellpadding="0"> 
+				 </if>
+					    <list p.agrupDet as acc>
+					     <if (acc.accion == "")>
+					         <TD width="30%" height="18" class="Tablas" align="left" colspan="3">Sin acciones de acuerdo.</TD>
+					     <else>
+						   <TR>
+				            <TD width="3%" height="22" class="Tablas" align="left" valign="top">&nbsp;&nbsp;<img src="../servlet/Tool?images/Gestion/images_arbol/angulo-.gif" border="0" align="absbottom"><img name="img_1000_10750" src="../servlet/Tool?images/Gestion/images_arbol/an.gif" border="0" align="absbottom" ></TD>
+				            <TD width="67%" height="22" class="Tablas" align="left" valign="top">${acc.accion}</TD>
+				            <TD width="10%" height="18" class="Tablas" align="center">${acc.fecha_inicio}</TD>
+				            <TD width="10%" height="18" class="Tablas" align="center">${acc.fecha_termino}</TD>
+				            <TD width="4%" height="18" class="Tablas" align="center"><a href="javascript:;" onclick="MM_openBrWindow('../servlet/ServletAsociarSeguimientosAccionesColaborador?id_accion=${acc.id_accion}&rut_colaborador=${rut_colaborador}','seguimiento','width=700,height=370')" /><img src="../servlet/Tool?images/ggd/botones/enviar.gif" border="0" width="16" height="16" alt="SEGUIMIENTO"></a></TD>
+				            <TD width="4%" height="18" class="Tablas" align="center"><input type="radio" name="id_accion" value="${acc.id_accion}"/></TD>
+						  </TR>
+						 </if>
+						</list>
+					</table>
+		    </list>
+		  </table>   
+    
+         <!-- ************************************************************************* -->
+       
+  </table>
+</span>
+<div id="Layer6">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+    <tr>
+      <td width="50%"><span class="texto_titulo_rojo">Definici&oacute;n de Acciones de Acuerdo con: ${colaborador}</span></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer10">
+  <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td nowrap="nowrap"></td>
+      <td nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+      <td width="30">	         
+	         <a href="#" onClick="imprSelec();"><img src="../servlet/Tool?images/ggd/botones/iconoprint.gif" alt="Informe Metas y Acciones" name="evaluaciones_r13_c11" width="30" height="30" border="0" id="evaluaciones_r13_c11" title="Informe Metas y Acciones" /></a>
+	  </td>      
+      <td width="30"><a href="#" onClick="reporteExcelMetasAcciones()"><img src="../servlet/Tool?images/ggd/botones/asig_pondera.gif" width="30" height="30" border="0" alt="Informe Excel Metas y Acciones"/></a></td>
+      <td width="30"><a href="#" onClick="reporteExcelMetasAccionesSeguimientos()"><img src="../servlet/Tool?images/ggd/botones/evaluacion.gif" width="30" height="30" border="0" alt="Informe Excel Acciones y Seguimientos"/></a></td>
+      <td width="30"><a href="#" onClick="Accion('eliminar')"><img src="../servlet/Tool?images/ggd/botones/eliminar.gif" width="30" height="30" border="0"/></a></td>
+      <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+    </tr>
+  </table>
+</div>
+<else>
+ <div id="Layer12">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td class="txt_gris_bold">Definici&oacute;n de Acciones de Acuerdo.</td>
+    </tr>
+        <tr>
+      <td class="txt_gris_bold">&nbsp;</td>
+    </tr>
+        <tr>
+      <td class="txt_gris_bold"><span class="texto_titulo_rojo">${salida}</span></td>
+    </tr>
+  </table>
+ </div>
+  <div id="Layer6">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+    <tr>
+      <td width="50%">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</if>
+<div class="boton_rojo" id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="16%">Listado de colaboradores </td>
+    </tr>
+  </table>
+</div>
+<span id="Layer11">
+  <table width="90%" border="0" cellpadding="0">
+   <list getColaboradores as colab>
+    <tr>
+      <td width="21%"><span class="txt_gris_bold"><a href="#" onClick="verMetasColaborador('${colab.rut}');"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${colab.foto}" alt="" name="foto" width="37" height="48" border="1" id="foto" style="background-color: #FFCC00" /></a></span></td>
+      <td width="79%" class="boton_rojo"><p>${colab.nombre_completo}</p></td>
+    </tr>
+   </list>   
+  </table>
+</span>
+</form>
+</body>
+</html>

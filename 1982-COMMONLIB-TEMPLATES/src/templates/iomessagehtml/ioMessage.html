@@ -1,0 +1,73 @@
+<assign logometas = GetParametro("metas","cliente","logo","Tool?images/logo_ppm.png") >
+
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js" 	   type="text/javascript"></script>
+<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+<!-- MODAL -->
+<link rel="stylesheet" href="../servlet/Tool?omap=scripts/jquery-ui/1.9.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="../view/libs/eje/style/afc.css" 	   			   />
+<link rel="stylesheet" href="../view/libs/eje/font/roboto.css" 	   			   />
+	
+<script type="text/javascript">
+	var dialogid="dialog-message";
+	
+	$(document).ready(function() {
+		initDialog();
+		
+		$( "#"+dialogid ).dialog().dialog("open" );
+	});
+	
+	function initDialog() {
+		var t = this;
+ 
+		var div = "	<!-- DIALOG DERIVACION Y CIERRE --> ";
+		div+="<div id='"+dialogid+"' >";
+		div+="<fieldset  style='border: 0px' > ";
+		div+="<div class='font'>"
+		div+="	<b>${message}</b>";
+		div+="</div>"
+		div+="</fieldset> ";
+		div+="</div> ";
+		
+		$("body").append(div);
+		
+		var buttons = { "Aceptar": function() {
+			if( "${urlAfter}" != ""  ) {
+				window.href.location = '${urlAfter}';
+			}
+			else {
+				$( this ).dialog( "close" );	
+			}
+        }}
+		
+		$( "#"+dialogid).dialog({
+			  title:"<div class='font'>People Manager</div>",
+		      autoOpen: false,
+		      height: 230,
+		      width: 410,
+		      modal: true,
+		      resizable: false,  
+		      buttons: buttons,
+		      close: function() {
+
+		      },
+		      open: function()   { 	
+		    	  $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+	          }
+		});
+	}
+	
+</script>
+<style type="text/css">
+ 	body {
+ 		font-size: 13px;
+ 	}
+</style>
+<body>
+ 
+</body>
+</body>
+</html>

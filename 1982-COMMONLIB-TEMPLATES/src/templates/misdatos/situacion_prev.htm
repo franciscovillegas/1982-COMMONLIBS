@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<TITLE>Datos Previsionales</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js"></script>
+<script language="JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY background="../servlet/Tool?images/mapa/mapa_r2_c13.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_showHideLayers('afp','','hide','isapre','','hide','detalle','','hide');MM_preloadImages('../../../DataFolder/botones/isa_up.jpg')">
+<table width="503" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><include "menutop/menutop.html"></td>
+  </tr>
+  <tr>
+    <td>
+      <div id="Layer1" style="position:absolute; width:503px; height:115px; z-index:4"> 
+        <table width="492" border="0" height="350">
+          <tr valign="top"> 
+            <td width="486" height="74"> 
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" height="124">
+                <tr> 
+                  <td height="11" valign="top" class="tituloTabla"> 
+                    <div align="right">Nombre: </div>
+                  </td>
+                  <td height="11" valign="top">&nbsp;</td>
+                  <td height="11" colspan="2" valign="top" class="detalleTabla"><b class="textB">${nombre}</b></td>
+                </tr>
+                <tr> 
+                  <td height="11" valign="top" class="tituloTabla"> 
+                    <div align="right">Cargo:</div>
+                  </td>
+                  <td height="11" valign="top">&nbsp;</td>
+                  <td height="11" colspan="2" valign="top" class="detalleTabla"><font class="texto">${cargo}</font></td>
+                </tr>
+                <tr> 
+                  <td height="30" colspan="4"> 
+                    <div align="center" class="titulo"><font class="texto"><b><font class="textB">AFP 
+                      </font><font class="texto">${afp}</font><font class="textB"> 
+                      </font></b> </font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="217" height="19" valign="top" class="tituloTabla"> 
+                    <div align="right"><font class="textB"> Ingreso AFP: </font></div>
+                  </td>
+                  <td width="4" height="19" valign="top" class="detalleTabla">&nbsp;</td>
+                  <td width="196" height="19" valign="top" class="detalleTabla"> 
+                    <font class="texto"> ${ingre_afp}</font></td>
+                  <td width="69" height="19" valign="top" class="detalleTabla">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td width="217" height="24" valign="top" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Cotizaci&oacute;n (%): 
+                      </font></div>
+                  </td>
+                  <td width="4" height="24" valign="top" class="detalleTabla">&nbsp;</td>
+                  <td width="196" height="24" valign="top" class="detalleTabla"> 
+                    <div align="left"><font class="texto"> ${cotizacion}</font></div>
+                  </td>
+                  <td width="69" height="24" valign="top" class="detalleTabla">&nbsp; 
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="217" height="6" valign="top" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Cotizaci&oacute;n adicional 
+                      :</font></div>
+                  </td>
+                  <td width="4" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                  <td width="196" height="6" valign="top" class="detalleTabla"> 
+                    <div align="left"><font class="texto">${monto_adicional} ${moneda_adicional} 
+                      </font></div>
+                  </td>
+                  <td width="69" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td width="217" height="6" valign="top" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Ahorro voluntario:</font></div>
+                  </td>
+                  <td width="4" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                  <td width="196" height="6" valign="top" class="detalleTabla"> 
+                    <div align="left"><font class="texto"><span class="texto">${monto_volunt} 
+                      </span></font><span class="texto"><font class="texto">${moneda_volunt}</font></span></div>
+                  </td>
+                  <td width="69" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td width="217" height="6" valign="top" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Jubilado : </font></div>
+                  </td>
+                  <td width="4" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                  <td width="196" height="6" valign="top" class="detalleTabla"><font class="texto">${jubilado}</font></td>
+                  <td width="69" height="6" valign="top" class="detalleTabla">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td width="217" valign="top">&nbsp;</td>
+                  <td width="4" valign="top">&nbsp;</td>
+                  <td width="196" valign="top">&nbsp;</td>
+                  <td width="69" valign="top">&nbsp;</td>
+                </tr>
+              </table>
+              <font size="1"><b><font size="1"><b><font face="Arial, Helvetica, sans-serif"></font></b></font></b></font> 
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td height="30"> 
+                    <div align="center" class="titulo"><font class="texto"><b><font class="textB">ISAPRE</font><font class="texto"> 
+                      ${isapre}</font></b></font></div>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td width="45%" height="22" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Ingreso Isapre :</font></div>
+                  </td>
+                  <td width="1%" height="22" class="detalleTabla">&nbsp;</td>
+                  <td width="54%" height="22" class="detalleTabla"><font class="texto">${ing_isap}</font></td>
+                </tr>
+                <tr> 
+                  <td width="45%" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Cotizaci&oacute;n (%) 
+                      :</font></div>
+                  </td>
+                  <td width="1%" class="detalleTabla"> 
+                    <div align="right"></div>
+                  </td>
+                  <td width="54%" class="detalleTabla"><font class="texto">${cotisap}</font></td>
+                </tr>
+                <tr> 
+                  <td width="45%" class="tituloTabla"> 
+                    <div align="right"><font class="textB">Cotizaci&oacute;n Adicional 
+                      :</font></div>
+                  </td>
+                  <td width="1%" class="detalleTabla"> 
+                    <div align="right"></div>
+                  </td>
+                  <td width="54%" class="detalleTabla"><font class="texto">${adicsal} 
+                    ${mone_adicsal} </font></td>
+                </tr>
+              </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td>
+                    <div align="center"></div>
+                  </td>
+                  <td>
+                    <div align="center"></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <div align="center"><a href="javascript:;" onClick="VentAfp(${rut});return false;">AFP</a></div>
+                  </td>
+                  <td>
+                    <div align="center"><a href="javascript:;" onClick="VentIsapre(${rut});return false;">ISAPRE</a></div>
+                  </td>
+                </tr>
+              </table>
+              <div align="center"><br>
+                <font face="Arial, Helvetica, sans-serif" size="1" color="#FFFFFF"></font> 
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

@@ -1,0 +1,393 @@
+ <HTML>
+<HEAD>
+<TITLE>Mantener Usuario</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+-->
+</Style>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Cambiarclave.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+</script>
+<script language="JavaScript">
+<!--
+
+
+function Valida(form, form_claves){
+	var seguir = true;
+	if (form_claves.clave.value != "") 
+		seguir = compara_claves(form_claves.clave.value, form_claves.clave_repit.value);
+	form.clave.value = form_claves.clave.value;
+	if (seguir)	{
+		form.submit();
+	}
+}
+function Inicio() {
+	window.focus();
+	<if (MSGRESUL)>
+	window.opener.location.reload();
+	alert("${MSGRESUL}");
+	
+	</if>
+	<if bloqueo>alert('Usuario bloqueado, cambiar clave para desbloquear.');</if>
+}
+
+function selectAll(checked,checkbox) {
+    var n=checkbox.length;
+	if(checked) {
+	   for(i=0;i<n;i++) {
+		checkbox[i].checked=true;
+	   }
+	}
+	else {
+	   for(i=0;i<n;i++) {
+		checkbox[i].checked=false;
+	   }
+	}
+}
+
+function AsignaUnidRel(emp, uni, tipo) {
+	var url = "../servlet/MantenerUsuarioOrga"
+	url += "?rut=${rut}&accion=${accion}&rel_uni="+uni+"&unirel=1&rel_emp="+emp
+	url += "&rel_tipo="+tipo;
+	//alert(url);
+	document.location.href = url;
+}
+
+function ocultarRuts() {
+	<list accesos as a>
+	<if (a.acc_tipo) == "R">LayerRut${a.acc_id}.style.visibility="hidden";</if>
+	</list>
+}
+
+function selecRestric(acceso_id) {
+	ocultarRuts();
+	eval("LayerRut"+acceso_id+".style.visibility='inherit'");
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+ 
+</HEAD>
+
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="Inicio();MM_preloadImages('../servlet/Tool?images/Gestion/botones/aplicar_over.jpg','../servlet/Tool?images/Gestion/botones/asigroles_down.jpg','../servlet/Tool?images/Gestion/botones/asigroles_over.jpg','../servlet/Tool?images/Gestion/botones/asigpermisos_up.jpg','../servlet/Tool?images/Gestion/botones/asigpermisos_over.jpg','../servlet/Tool?images/Gestion/botones/cerrar_over.jpg','../servlet/Tool?images/Gestion/botones/uni3.jpg')">
+
+<TABLE width="646" height="358" BORDER=0 CELLPADDING=0 CELLSPACING=0 class="layer_util">
+  
+  <TR> 
+    <TD width="614" height="354" valign="top"> 
+      <table width="99%" border="0" height="350" cellpadding="0" cellspacing="0" style="" >
+        <tr valign="top"> 
+          <td width="88" valign="top" height="111"> 
+            <table border="0" width="98" cellpadding="3" cellspacing="0" height="110">
+              <tr> 
+                <td height="111" width="92" valign="middle" align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+              </tr>
+            </table>          </td>
+          <td width="9"></td>
+          <td valign="top" colspan="3" rowspan="2"> 
+            <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="texto_negro">
+              <tr align="center"> 
+                <td height="19" colspan="2"><font class="textB"> <if (accion == "C")>Crear 
+                  nuevo Usuario <else>Mantener Usuario </if> </font></td>
+              </tr>
+              <tr> 
+                <td height="19" > <font class="textB">${nombre}</font></td>
+                <td height="19" rowspan="5" valign="top" align="center" > 
+                  <table width="100%" border="2" cellspacing="0" cellpadding="0" bgcolor="#FFCF75" align="center" bordercolor="#FFCF75">
+                      <form name="form1" method="post" action="">
+					  <tr> 
+                        <td colspan="2"> 
+                          <div align="center"><u><font size="1" class="textB"><if (accion) == "C">Asignar<else>Cambiar</if> 
+                            Clave de acceso</font></u></div>                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="44%">Clave 
+                        </td>
+                        <td width="56%"> 
+                          <input type="password" name="clave" size="8" maxlength="8" value="${clave}">
+                          *</td>
+                      </tr>
+                      <tr> 
+                        <td width="44%">Confirmar 
+                          Clave</td>
+                        <td width="56%"><input type="password" name="clave_repit" size="8" maxlength="8" value="${clave}">
+                          *</font></b></font></td>
+                      </tr></form>
+                  </table>
+                  <if accion == "M"><a href="javascript:;" onClick="VentUnidadVer('${rut}'); return false" class="azul10NLink">[ 
+                  Unidades Ver ]</a> <a href="javascript:;" onClick="VentCargosVer('${rut}'); return false" class="azul10NLink">[Cargos 
+                  Ver]</a> </if></td>
+              </tr>
+              <tr> 
+                <td height="19" width="59%" > <font class="textB">Cargo: </font><font class="texto"> 
+                  : ${cargo}</font></td>
+              </tr>
+              <tr> 
+                <td height="19" width="59%" class="texto" valign="top"><font class="textB">Anexo</font> 
+                  <font class="texto">${anexo}</font> </td>
+              </tr>
+              <tr> 
+                <td height="19" width="59%" class="texto" valign="top"><font class="textB">Email</font> 
+                  <font class="texto">${email}</font> </td>
+              </tr>
+              <tr> 
+                <td width="59%" class="texto" align="center"> <if bloqueo>Usuario 
+                  bloqueado, cambiar clave para desbloquear.</if></td>
+              </tr>
+            </table>          </td>
+        </tr>
+        <tr valign="top"> 
+          <td></td>
+          <td height="20"></td>
+        </tr>
+        <tr valign="top"> 
+          <td height="160" valign="top" colspan="2">&nbsp;</td>
+          <td valign="top" colspan="3">&nbsp; </td>
+        </tr>
+        <tr> 
+          <td height="0"></td>
+          <td></td>
+          <td width="262"></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>    </TD>
+  </TR>
+</TABLE>
+<form name="Permisos" method="post" action="../servlet/MantenerUsuarioOrga">
+  <div id="LayRoles" style="position:absolute; width:592px; height:183px; z-index:1; left: 8px; top: 159px; visibility: visible" class="tabla_amarelo"> 
+    <table width="94%" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr>
+        <td><font size="1" class="textB">Roles</font></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="139" valign="top">
+          <div id="LayerRol" style="position:absolute; width:468px; height:135px; z-index:2; overflow: auto; background-color: #E9E9E9; layer-background-color: #E9E9E9; border: 1px none #000000; left: auto; top: auto"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <if (roles)> <list roles as r> <if (r.selec)> 
+              <tr> 
+                <td width="36%"> 
+                  <input type="checkbox" name="rol" value="${r.rol_id}" checked>
+                  <input type="hidden" name="accion_rol_${r.rol_id}" value="existe">
+                  <font class="texto">${r.rol_glosa} </font> </td>
+                <td width="64%"><font class="texto">${r.rol_desc} </font></td>
+              </tr>
+              <else> 
+              <tr> 
+                <td width="36%"> 
+                  <input type="checkbox" name="rol" value="${r.rol_id}">
+                  <font class="texto">${r.rol_glosa} </font> </td>
+                <td width="64%"><font class="texto">${r.rol_desc} </font></td>
+              </tr>
+              </if> </list> <else> 
+              <tr> 
+                <td colspan="2"> <font class="texto">No existen roles disponibles</font></td>
+              </tr>
+              </if> 
+            </table>
+          </div>        </td>
+        <td height="139">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <div id="LayAccesos" style="position:absolute; width:592px; height:183px; z-index:3; left: 8px; top: 159px; visibility: hidden" class="tabla_amarelo"> 
+    <table width="94%" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td colspan="2"><font size="1" class="textB">Permisos a Diferentes Opciones 
+          del DataFolder</font></td>
+      </tr>
+      <tr> 
+        <td height="100" valign="top" width="50%"> 
+		  <div id="LayerAcceso" style="position:absolute; width:253px; height:160px; z-index:2; overflow: auto; background-color: #E9E9E9; layer-background-color: #E9E9E9; border: 1px none #000000; left: auto; top: auto"> 
+            <table border="0" cellspacing="0" cellpadding="1" width="100%">
+              <assign grupo_ant = ""> <if (accesos)> <list accesos as a> <if (grupo_ant) != (a.acc_grupo)> 
+              <assign grupo_ant = a.acc_grupo> 
+              <tr> 
+                <td><font size="1" class="textB">${a.acc_grupo}</font></td>
+                <td><font size="1" class="textB">Todos</font>
+                    <input type="checkbox" name="all_${a.acc_grupo}" STATUS=true onClick="selectAll(document.Permisos.all_${a.acc_grupo}.status,document.Permisos.acc_${a.acc_grupo})">
+					<input type="hidden" name="acceso" value="${a.acc_grupo}"/>                </td>
+              </tr>
+              </if> 
+              <tr> 
+                <td>
+				    <if (a.selec)>
+						<assign seleccionado = "checked">
+						<input type="hidden" name="accion_acc_${a.acc_id}" value="existe">
+					<else><assign seleccionado = ""></if>
+					<if (a.acc_tipo) == "R">
+                  		<input type="checkbox" name="acc_${a.acc_grupo}" value="${a.acc_id}" ${seleccionado} onClick="selecRestric('${a.acc_id}')">
+					<else>
+						<input type="checkbox" name="acc_${a.acc_grupo}" value="${a.acc_id}" ${seleccionado} >
+					</if>
+				  <if (a.acc_tipo) == "R">
+						<input type="hidden" name="acc_tipo_${a.acc_id}" value="${a.acc_tipo}">
+				  </if>
+                  <font class="texto">${a.acc_glosa} </font>				</td>
+                <td width="16"><if (a.acc_tipo) == "R"> <a href="javascript:;" onClick="selecRestric('${a.acc_id}'); return false"><img src="../servlet/Tool?images/Gestion/botones/pers.gif" width="24" height="20" alt="Seleccionar restricciones" border="0"></a> 
+                  </if></td>
+              </tr>
+              </list> <else> 
+              <tr> 
+                <td colspan="2"> <font class="texto">No existen permisos disponibles</font></td>
+              </tr>
+              </if> 
+            </table>
+          </div>        </td>
+        <td height="139" width="50%" valign="top">
+		<list accesos as a><if (a.acc_tipo) == "R">
+          <div id="LayerRut${a.acc_id}" style="position:absolute; width:284px; height:160px; z-index:2; overflow: visible; background-color: #E9E9E9; layer-background-color: #E9E9E9; border: 1px none #000000; left: auto; top: auto; visibility: hidden"> 
+            <table border="1" cellspacing="0" cellpadding="1" width="100%" height="160">
+              <tr> 
+                <td height="20"><font class="textB">${a.acc_glosa} </font></td>
+				<td><font size="1" class="textB">Todos</font><br>
+  					<input type="checkbox" name="allt_${a.acc_id}" STATUS="true" onClick="selectAll(   document.Permisos.allt_${a.acc_id}.status,document.Permisos.rut_${a.acc_id}  );"/>                </td>
+              </tr>
+              <tr>
+                <td height="20" colspan="2">
+                  <select name="puede_ver_${a.acc_id}" class="listas" style="width=240">
+                    <option value="N" >Ver Todos los trabajadores menos...</option>
+                    <option value="S">Ver s&oacute;lo los siguientes trabajadores...</option>
+                  </select><script language="JavaScript">document.Permisos.puede_ver_${a.acc_id}.value="${a.acc_puede_ver}";</script>                </td>
+              </tr>
+              <tr> 
+                <td valign="top" colspan="2"> 
+                  <div id="LayerListaRut${a.acc_id}" style="position:static; width:auto; height:110px; z-index:4; left: auto; top: auto; overflow: auto; visibility: inherit"> 
+                    <table border="0" cellspacing="0" cellpadding="1" width="100%">
+                      <if (a.ruts)> <list a.ruts as r><if (r.selec)> 
+                      <tr> 
+                        <td> 
+                          <input type="checkbox" name="rut_${a.acc_id}" value="${r.rut_trab}" checked>
+                          <input type="hidden" name="accion_acc_${a.acc_id}_${r.rut_trab}" value="existe">
+                          <if (r.rut_trab)!=(rut)><font class="texto">${r.nombre} 
+                          </font> <else><font class="texto"><b>Informaci&#243;n propia 
+                          del usuario</b></font></if> </td>
+                      </tr>
+                      <else> 
+                      <tr> 
+                        <td> 
+                          <input type="checkbox" name="rut_${a.acc_id}" value="${r.rut_trab}">
+                          <if (r.rut_trab)!=(rut)><font class="texto">${r.nombre} 
+                          </font> <else><font class="texto"><b>Informaci&#243;n propia 
+                          del usuario</b></font></if> </td>
+                      </tr>
+                      </if> </list> <else> 
+                      <tr> 
+                        <td> <font class="texto">No existen otros Trabajadores 
+                          en la Unidad</font></td>
+                      </tr>
+                      </if> 
+                    </table>
+                  </div>                </td>
+              </tr>
+            </table>
+          </div>
+		  </if></list>        </td>
+      </tr>
+    </table>
+  </div>
+  <input type="hidden" name="clave">
+  <input type="hidden" name="rut" value="${rut}">
+  <input type="hidden" name="accion" value="${accion}">
+  <if (unirel)>
+	  <input type="hidden" name="unirel" value="${unirel}">
+	  <input type="hidden" name="rel_emp" value="${rel_emp}">
+	  <input type="hidden" name="rel_uni" value="${rel_uni}">
+	  <input type="hidden" name="rel_tipo" value="${rel_tipo}">
+  </if>
+</form>
+<div id="LRol" style="position:absolute; width:598px; height:27px; z-index:4; left: 8px; top: 126px; visibility: visible;">
+  <table width="100%">
+    <tr>
+      <td width="21%"><img src="../servlet/Tool?images/Gestion/botones/asigna_roles.gif" width="124" height="22"></td>
+      <td width="16%"><a href="javascript:;" onClick="MM_showHideLayers('LayRoles','','hide','LayAccesos','','show','LRol','','hide','LPer','','show')"><img src="../servlet/Tool?images/Gestion/botones/asigna_permisos.gif" width="124" height="22" border="0"></a></td>
+      <td width="45%">&nbsp;</td>
+      <td width="6%"><a href="javascript:;" onClick="VentUnidadRelativa('${rut}','${accion}');return false;"><img src="../servlet/Tool?images/Gestion/botones/un_relativa.gif" width="120" height="24" border="0"></a></td>
+      <td width="6%"><a href="javascript:;" onClick="Valida(document.Permisos, document.form1); return false;" ><img src="../servlet/Tool?images/Gestion/botones/aplicar.gif" width="120" height="24" border="0"></a></td>
+      <td width="6%"><a href="javascript:window.close();"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" width="120" height="24" border="0"></a></td>
+    </tr>
+  </table>
+<a href="javascript:;" onClick="VentUnidadRelativa('${rut}','${accion}');return false;"></a><a href="javascript:;" onClick="Valida(document.Permisos, document.form1); return false;" ></a><a href="javascript:;" onClick="window.close(); return false;"></a></div>
+<div id="LPer" style="position:absolute; width:598; height:27; z-index:4; left: 8; top: 126; visibility: hidden;"><a href="javascript:;" onClick="VentUnidadRelativa('${rut}','${accion}');return false;"></a><a href="javascript:;" onClick="Valida(document.Permisos, document.form1); return false;"></a><a href="javascript:;" onClick="window.close(); return false;"></a>
+  <table width="100%">
+    <tr>
+      <td width="21%"><a href="javascript:;" onClick="MM_showHideLayers('LayRoles','','show','LayAccesos','','hide','LRol','','show','LPer','','hide')"><img src="../servlet/Tool?images/Gestion/botones/asigna_roles.gif" width="124" height="22" border="0"></a></td>
+      <td width="16%"><img src="../servlet/Tool?images/Gestion/botones/asigna_permisos.gif" width="124" height="22"></td>
+      <td width="45%">&nbsp;</td>
+      <td width="6%"><a href="javascript:;" onClick="VentUnidadRelativa('${rut}','${accion}');return false;"><img src="../servlet/Tool?images/Gestion/botones/un_relativa.gif" width="120" height="24" border="0"></a></td>
+      <td width="6%"><a href="javascript:;" onClick="Valida(document.Permisos, document.form1); return false;" ><img src="../servlet/Tool?images/Gestion/botones/aplicar.gif" width="120" height="24" border="0"></a></td>
+      <td width="6%"><a href="javascript:window.close();"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" width="120" height="24" border="0"></a></td>
+    </tr>
+  </table>
+</div>
+</BODY>
+</HTML>

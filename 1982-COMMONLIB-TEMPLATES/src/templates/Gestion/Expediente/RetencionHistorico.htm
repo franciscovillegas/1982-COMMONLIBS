@@ -1,0 +1,116 @@
+  <html>
+<head>
+<title>Retencion Hist&oacute;rico</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal}
+-->
+</Style>
+</head>
+
+<body bgcolor="#FFa400" text="#000000" leftmargin="5" topmargin="5" marginwidth="5" marginheight="5">
+<table border="0" width="584" cellpadding="0" cellspacing="0">
+  <tr bgcolor="#FF6600"> 
+    <td><font color="#FFFFFF"><b><font face="Arial, Helvetica, sans-serif" size="2">RetencionHist&oacute;rico</font></b></font></td>
+    <td> 
+      <div align="right"><a href="#" onClick = "window.close();" ><b><i><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Cerrar</font></i></b></a></div>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" colspan="2"> 
+      <table border="1" width="100%" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="500" align="center"> 
+            <table border="0" width="500">
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Nombre</font></b></td>
+                <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">${nombre}</font></td>
+              </tr>
+              <tr> 
+                <td width="74"><b><font face="Arial, Helvetica, sans-serif" size="1" class="textB">R.U.T.</font></b></td>
+                <td width="153"><font face="Arial, Helvetica, sans-serif" size="1" class="textB">${rut}</font></td>
+                <td width="76"><b><font face="Arial, Helvetica, sans-serif" size="1" class="textB">Fecha 
+                  Hoy</font></b></td>
+                <td width="179"><font face="Arial, Helvetica, sans-serif" size="1" class="texto">${fecha_hoy}</font></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td height="93" colspan="2"> 
+      <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td valign="top" height="189">&nbsp; </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div id="Layer1" style="position:absolute; width:569px; height:175px; z-index:1; ; overflow: scroll; left: 13px; top: 67px; visibility: visible; background-color: #FFCF75; layer-background-color: #FFCF75; border: 1px none #000000"> 
+  <table border="1" width="707" cellpadding="0" cellspacing="0">
+    <tr bgcolor="#FF6600"> 
+      <td width="50"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">Periodo</font></div>
+      </td>
+      <td width="90"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">Mes</font></div>
+      </td>
+      <td width="45"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">N&uacute;mero</font></div>
+      </td>
+      <td width="76"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">Rut</font></div>
+      </td>
+      <td width="290"> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">Nombre</font></div>
+      </td>
+      <td width="65"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Monto</font></div>
+      </td>
+      <td width="87"> 
+        <div align="center"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Moneda</font></div>
+      </td>
+    </tr>
+    <list retencion as r> 
+    <tr bgcolor="#FFFFFF"> 
+      <td width="50"> <font face="Arial, Helvetica, sans-serif" size="1">${r.periodo}</font></td>
+      <td width="90"> <font face="Arial, Helvetica, sans-serif" size="1">${r.mes}</font></td>
+      <td width="45"> <font face="Arial, Helvetica, sans-serif" size="1">${r.num}</font></td>
+      <td width="76"> <font face="Arial, Helvetica, sans-serif" size="1">${r.benef_rut}</font></td>
+      <td width="290"> <font face="Arial, Helvetica, sans-serif" size="1">${r.benef_nom}</font></td>
+      <td width="65"> <font face="Arial, Helvetica, sans-serif" size="1">${r.monto}</font></td>
+      <td width="87"> <font face="Arial, Helvetica, sans-serif" size="1">${r.moneda}</font></td>
+    </tr>
+    </list> <if !(retencion)> 
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="7"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b><i><font size="2">Sin 
+          Retenciones Judiciales</font></i></b></font></div>
+      </td>
+    </tr>
+    </if> 
+  </table>
+</div>
+</body>
+</html>

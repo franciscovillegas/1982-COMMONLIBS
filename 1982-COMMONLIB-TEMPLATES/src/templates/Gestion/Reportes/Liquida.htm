@@ -1,0 +1,141 @@
+  <html>
+
+<head>
+<meta http-equiv="Content-Type"content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="ReCrystallize Web Publishing Wizard for Seagate Crystal Reports 3.5.2">
+<title>Call Reporte</title>
+<SCRIPT>
+
+function decode( valstring ) {
+var resultstring = ""
+for (var p=0; p < valstring.length - 1; p +=2) {
+    tmp = '%' + valstring.charAt(p) + valstring.charAt(p + 1)
+    resultstring += unescape( tmp )
+}
+return resultstring
+}
+
+function validateandsubmit( f ) {
+viewernum = document.parmform.init.selectedIndex
+//alert("Item: "+viewernum)
+if (viewernum > 3) {
+    document.parmform.init.name = 'cmd'
+}
+if (viewernum == 4) {
+    document.parmform.EXPORT_FMT.value = 'U2FXLS:3'
+}
+if (viewernum == 5) {
+    document.parmform.EXPORT_FMT.value = 'U2FWORDW:0'
+}
+if (viewernum == 6) {
+    document.parmform.EXPORT_FMT.value = 'U2FRTF:0'
+}
+if (viewernum == 7) {
+    document.parmform.EXPORT_FMT.value = 'U2FHTML:2'
+}
+document.parmform.user0.value = decode( document.parmform.user0.value )
+document.parmform.password0.value = decode( document.parmform.password0.value )
+document.parmform.user1.value = decode( document.parmform.user1.value )
+document.parmform.password1.value = decode( document.parmform.password1.value )
+document.parmform.user2.value = decode( document.parmform.user2.value )
+document.parmform.password2.value = decode( document.parmform.password2.value )
+document.parmform.user3.value = decode( document.parmform.user3.value )
+document.parmform.password3.value = decode( document.parmform.password3.value )
+document.parmform.user4.value = decode( document.parmform.user4.value )
+document.parmform.password4.value = decode( document.parmform.password4.value )
+document.parmform.user5.value = decode( document.parmform.user5.value )
+document.parmform.password5.value = decode( document.parmform.password5.value )
+document.parmform.user6.value = decode( document.parmform.user6.value )
+document.parmform.password6.value = decode( document.parmform.password6.value )
+document.parmform.user0Haberesrpt.value = decode( document.parmform.user0Haberesrpt.value )
+document.parmform.password0Haberesrpt.value = decode( document.parmform.password0Haberesrpt.value )
+document.parmform.user0Haberesrpt.name = "user0@Haberes.rpt"
+document.parmform.password0Haberesrpt.name = "password0@Haberes.rpt"
+document.parmform.user0Descuentosrpt.value = decode( document.parmform.user0Descuentosrpt.value )
+document.parmform.password0Descuentosrpt.value = decode( document.parmform.password0Descuentosrpt.value )
+document.parmform.user0Descuentosrpt.name = "user0@Descuentos.rpt"
+document.parmform.password0Descuentosrpt.name = "password0@Descuentos.rpt"
+document.parmform.submit()
+}
+</SCRIPT>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><strong>Call Reporte</strong></font></p>
+
+<!--<form action="/cgi-bin/Wcscgi.exe/Gestion/Reportes/LiquidaAlias.rpt" method="POST" name="parmform">-->
+<form action="/cgi-bin/Wcscgi.exe/Gestion/Reportes/stock.rpt" method="POST" name="parmform">
+<input type=hidden name="promptOnRefresh" value=1>
+<input type=hidden name="user0" value="7361">
+<input type=hidden name="password0" value="">
+<input type=hidden name="user1" value="7361">
+<input type=hidden name="password1" value="">
+<input type=hidden name="user2" value="7361">
+<input type=hidden name="password2" value="">
+<input type=hidden name="user3" value="7361">
+<input type=hidden name="password3" value="">
+<input type=hidden name="user4" value="7361">
+<input type=hidden name="password4" value="">
+  <input type=hidden name="user5" value="7361">
+  <input type=hidden name="password5" value="">
+<input type=hidden name="user6" value="7361">
+<input type=hidden name="password6" value="">
+<input type=hidden name="user0Haberesrpt" value="7361">
+<input type=hidden name="password0Haberesrpt" value="">
+<input type=hidden name="user0Descuentosrpt" value="7361">
+<input type=hidden name="password0Descuentosrpt" value="">
+    <table border="1">
+        <tr>
+            <td>empresa</td><td>
+            <input type="text" size="10" maxlength="10" name="prompt0"></td>
+
+</tr>
+        <tr>
+            <td>unidad</td><td>
+            <input type="text" size="10" maxlength="10" name="prompt1"></td>
+
+</tr>
+        <tr>
+            <td>periodo_ini</td><td>
+            <input type="text" size="10" maxlength="10" name="prompt2"></td>
+
+</tr>
+        <tr>
+            <td>periodo_ter</td><td>
+            <input type="text" size="10" maxlength="10" name="prompt3"></td>
+
+</tr>
+        <tr>
+            <td>tipo</td><td>
+            <input type="text" size="10" maxlength="10" name="prompt4"></td>
+
+</tr>
+        <tr>
+        <td>
+Please select a report viewer:
+        </td>
+        <td>
+         <select NAME="init" SIZE="1" onChange=>
+         <OPTION VALUE="actx">ActiveX
+         <OPTION VALUE="java">Java
+         <OPTION VALUE="html_frame">HTML with Frames
+         <OPTION VALUE="html_page">HTML
+         <OPTION VALUE="EXPORT">Microsoft Excel
+         <OPTION VALUE="EXPORT">Microsoft Word
+         <OPTION VALUE="EXPORT">Rich Text (RTF)
+         <OPTION VALUE="EXPORT">HTML File
+         </select>
+         <input type="hidden" name="CMD"><input type="hidden" name="EXPORT_FMT">
+         </td>
+         </tr>
+        <tr><td colspan="2">
+        <p align="center"> 
+          <INPUT TYPE="BUTTON" VALUE="View Report" onClick="validateandsubmit(this.form)">
+      </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+

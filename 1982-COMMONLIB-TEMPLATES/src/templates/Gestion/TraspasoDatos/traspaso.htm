@@ -1,0 +1,387 @@
+  <html>
+<head>
+<title>Traspaso de Datos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function Valida(form) {
+	var valido = false;
+	
+	if (form.peri_ano.value == "") {
+		alert ("Debe indicar el a&#241;o del periodo");
+		form.peri_ano.focus();
+	}
+	else {
+		var mes = parseInt(form.peri_mes.value);
+		form.peri_orig.value = "" + mes + form.peri_ano.value;
+		if (mes < 10)
+			form.peri_dest.value = "" + form.peri_ano.value + "0" + mes;
+		else
+			form.peri_dest.value = "" + form.peri_ano.value + mes;
+		/*validacion*/
+		/*if ((form.historico.checked) && (!fechaValida(form.d_dia.value, form.d_mes.value, form.d_agno.value) )) {
+			alert("Debe indicar una fecha v&#225;lida.");
+			form.d_dia.focus();
+		}
+		else {*/
+			var sel_proc = false;
+			for (x=0; x<form.opciones.length; x++) {
+				if (form.opciones[x].checked) {
+					sel_proc = true;
+					break;
+				}
+			}
+			if (!sel_proc) {
+				for (x=0; x<form.opcion_trab.length; x++) {
+					if (form.opcion_trab[x].checked) {
+						sel_proc = true;
+						break;
+					}
+				}
+				if (!sel_proc) {
+					for (x=0; x<form.opcion_orga.length; x++) {
+						if (form.opcion_orga[x].checked) {
+							sel_proc = true;
+							break;
+						}
+					}
+				}
+			}
+			if (sel_proc)		
+				valido = true;
+			else 
+				alert("Debe seleccionar al menos un proceso");
+		//}
+	}
+	//alert (valido);
+	if (valido) {
+		//VerContFormm(form);
+		form.submit();
+	}
+	return false;
+}
+
+function histoOnOff(form) {
+	if (form.historico.checked) {
+		form.d_mes.disabled = "";
+		form.d_agno.disabled = "";
+		form.d_dia.disabled = "";
+		form.d_dia.focus();
+	}
+	else {
+		form.d_mes.disabled = "true";
+		form.d_agno.disabled = "true";
+		form.d_dia.disabled = "true";
+	}
+}
+
+function inicio() {
+	var msg = "";
+	document.form1.peri_mes.value = '${peri_mes}';
+	document.form1.peri_ano.value= '${peri_agno}';
+	<if msg><list msg as m>msg += "${m}\n";</list>
+	alert(msg);
+	</if>
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/lib/manejar_check.js">
+</script>
+<script language="JavaScript" src="/Gestion/script/lib/manejar_fechas.js">
+</script>
+<script language="JavaScript" src="/Gestion/script/Formularios.js">
+</script>
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/images/Gestion/botones/aceptar_over.jpg');inicio()">
+<form name="form1" method="post" action="/servlet/datafolder.traspaso.TraspasoDatos">
+  <table border=0 cellpadding=0 cellspacing=0 width="645">
+    <tr> 
+      <td width="614"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_01.jpg" width=614 height=4></td>
+      <td colspan=2 rowspan=2> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_02.jpg" width=29 height=22></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=4></td>
+      <td width="1"></td>
+    </tr>
+    <tr> 
+      <td valign="top" rowspan=8 align="right" bgcolor="#FFA400">
+        <table border="0" cellspacing="2" cellpadding="1" bgcolor="#FFA400" width="98%">
+          <tr align="center"> 
+            <td bgcolor="#FFCF75" class="negro12B" height="20" align="center" colspan="2">Traspaso 
+              de Datos</td>
+          </tr>
+          <tr> 
+            <td width="302" rowspan="2" valign="top"> 
+              <table width="100%" border="0" cellspacing="1" cellpadding="1" height="178">
+                <tr> 
+                  <td class="negro10N" width="25" align="center"> 
+                    <input type="checkbox" name="opciones" value="fotos">
+                  </td>
+                  <td class="negro10N" width="284">Traspaso de Fotos</td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="25" height="21" align="center"> 
+                    <input type="checkbox" name="opcion_trab_t" value="trab" onClick="checkMarcarTodos(this.form.opcion_trab, this.checked)">
+                  </td>
+                  <td class="negro10N" height="21" width="284">Traspaso de Trabajadores 
+                    (completa) </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="25" align="center">&nbsp;</td>
+                  <td class="negro10N" width="284"> 
+                    <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="basica" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Informaci&oacute;n B&aacute;sica.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="licen" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Licencias M&eacute;dicas.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="vaca" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Vacaciones.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="remu" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Remuneraciones.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="forma" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Formaci&oacute;n.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="exp_lab" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Experiencia Laboral.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="movi" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Movimientos.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="eval" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Evaluaciones, Hoja de Vida.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="25" height="21" align="center">
+                    <input type="checkbox" name="opciones" value="certif">
+                  </td>
+                  <td class="negro10N" height="21" width="284">Certificados y 
+                    Liquidaci&oacute;n de Remuneraciones.</td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="25" height="2" align="center"> 
+                    <input type="checkbox" name="opciones" value="otros">
+                  </td>
+                  <td class="negro10N" height="2" width="284">Tabla de Par&aacute;metros 
+                    (Ciudad, Pa&iacute;s, etc)</td>
+                </tr>
+              </table>
+            </td>
+            <td height="134" width="290" valign="top"> 
+              <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                <tr> 
+                  <td class="negro10N" width="24" height="21" align="center">
+                    <input type="checkbox" name="opciones" value="simu">
+                  </td>
+                  <td class="negro10N" height="21" width="237">Simulaci&oacute;n 
+                    de Renta.</td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="24" height="21" align="center"> 
+                    <input type="checkbox" name="opcion_orga_t" value="orga" onClick="checkMarcarTodos(this.form.opcion_orga, this.checked)">
+                  </td>
+                  <td class="negro10N" height="21" width="237">Informaci&oacute;n 
+                    de Org&aacute;nica </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="24" align="center">&nbsp;</td>
+                  <td class="negro10N" width="237"> 
+                    <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="unidad" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Unidades</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="centro" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Centro de Costo</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="cargo" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Cargos</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="24" align="center"> 
+                    <input type="checkbox" name="opciones" value="indica">
+                  </td>
+                  <td class="negro10N" width="237">Generar Indicadores</td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" width="24" align="center"> 
+                    <input type="checkbox" name="opciones" value="info">
+                  </td>
+                  <td class="negro10N" width="237">Generar Informes</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td height="70" valign="bottom"> 
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr> 
+                  <td class="negro12B" width="45">Periodo</td>
+                  <td class="negro10N"> 
+                    <select name=peri_mes size=1 class="listas">
+                      <option value="1" selected>Enero</option>
+                      <option value="2">Febrero</option>
+                      <option value="3">Marzo</option>
+                      <option value="4">Abril</option>
+                      <option value="5">Mayo</option>
+                      <option value="6">Junio</option>
+                      <option value="7">Julio</option>
+                      <option value="8">Agosto</option>
+                      <option value="9">Septiembre</option>
+                      <option value="10">Octubre</option>
+                      <option value="11">Noviembre</option>
+                      <option value="12">Diciembre</option>
+                    </select>
+                    <input type="text" name="peri_ano" size="4" maxlength="4" class="listas">
+                    <input type="hidden" name="peri_orig"><input type="hidden" name="peri_dest">
+                  </td>
+                  <td class="negro10N" width="65" nowrap>(mes, a&ntilde;o)</td>
+                </tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr> 
+                  <td class="negro12B" colspan="3">
+                    <input type="checkbox" name="historico" value="checkbox" onClick="histoOnOff(this.form)">
+                    Informaci&oacute;n Hist&oacute;rica</td>
+                </tr>
+                <tr> 
+                  <td class="negro12B" width="45">desde</td>
+                  <td class="negro10N"> 
+                    <input type="text" name="d_dia" size="2" maxlength="2" class="listas" disabled="true">
+                    <select name=d_mes size=1 class="listas" disabled="true">
+                      <option value="1" selected>Enero</option>
+                      <option value="2">Febrero</option>
+                      <option value="3">Marzo</option>
+                      <option value="4">Abril</option>
+                      <option value="5">Mayo</option>
+                      <option value="6">Junio</option>
+                      <option value="7">Julio</option>
+                      <option value="8">Agosto</option>
+                      <option value="9">Septiembre</option>
+                      <option value="10">Octubre</option>
+                      <option value="11">Noviembre</option>
+                      <option value="12">Diciembre</option>
+                    </select>
+                    <input type="text" name="d_agno" size="4" maxlength="4" class="listas" disabled="true">
+                  </td>
+                  <td class="negro10N" nowrap width="65">(dd/mm/yyy) </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td width="1" height="18"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=18></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td rowspan=8 width="13"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_06.jpg" width=13 height=336></td>
+      <td width="16" height="39"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_07.jpg" width=16 height=39></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=39></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" height="50"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_08.jpg" width=16 height=50></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=50></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" height="52"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_10.jpg" width=16 height=52></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=52></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" height="45"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_11.jpg" width=16 height=45></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=45></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" height="55"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_12.jpg" width=16 height=55></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=55></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" height="51"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_13.jpg" width=16 height=51></td>
+      <td width="1"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=51></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td width="16" rowspan="2"> <img src="/Gestion/imagenes_main_bienvenida/main_bienvenida_14.jpg" width=16 height=44></td>
+      <td width="1" rowspan="2"> <img src="/Gestion/imagenes_main_bienvenida/espacio.gif" width=1 height=44></td>
+      <td height="10"></td>
+    </tr>
+    <tr>
+      <td height="34" align="right" bgcolor="#FFA400"><a href="javascript:;" onClick="return Valida(document.form1)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Img_aceptar','','/images/Gestion/botones/aceptar_over.jpg',1)"><img name="Img_aceptar" border="0" src="/images/Gestion/botones/aceptar_up.jpg" width="108" height="27"></a></td>
+      <td></td>
+    </tr>
+  </table>
+  <script language="JavaScript">
+parent.CerrarVentProcesando();
+</script>
+</form>
+</body>
+</html>

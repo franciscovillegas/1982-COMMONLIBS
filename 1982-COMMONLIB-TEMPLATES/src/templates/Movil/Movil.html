@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Portal Autoservicio</title>
+<style>
+img{border:none;}
+.texto_opciones{ font-family:Arial, Helvetica, sans-serif; font-size:12px; text-align:center;}
+.texto_opciones_tit{ font-family:Arial, Helvetica, sans-serif; font-size:12px; text-align:justify; }
+#container_pantalla {
+	font-family:Arial, Helvetica, sans-serif; font-size:12px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+	background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	background-color:#ededed;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #dcdcdc;
+	color:#777777;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	width:880px;
+	height:100%;
+	margin:0 auto;
+	margin-bottom:5px;
+}
+#container_pantalla_2 {
+	font-family:Arial, Helvetica, sans-serif; font-size:12px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+	background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	background-color:#ededed;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #dcdcdc;
+	color:#777777;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	width:880px;
+	height:100%;
+	margin:0 auto;
+    margin-bottom:5px;
+}
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+	background:-moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+	background:-webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+	background:-o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+	background:-ms-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25',GradientType=0);
+	background-color:#ffc477;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:6px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+	background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+	background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+	background:-o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+	background:-ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+	background-color:#fb9e25;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../servlet/Tool?style/Movil/lightbox.css" />
+<script type="text/javascript" src="../servlet/Tool?scripts/jquerylast/jquery.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquerylast/lightbox-2.6.min.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquerylast/modernizr.custom.js"></script>
+<script type="text/javascript" src="../servlet/Tool?scripts/jquerylast/pdfobject.js"></script>
+<script type="text/javascript">
+function SendingMail() {
+    $('#formEnvioMovil').find('input[name="movil"]').val($('input[name=dispositivo]').filter(':checked').val());
+    $('#formEnvioMovil').find('input[name="mail"]').val($("#correo").val());
+    $("#sendsuccess").hide; 
+    $("#sendfail").hide; 
+    $("#sendmail").show("slow");
+	var formData = new FormData($("form[name='formEnvioMovil']")[0]);
+	$.ajax({
+	    url: '../servlet/EjeCore',
+   		type: 'POST',
+   		dataType: "json",
+   		data: formData,
+        success: function(data) {
+            $('#sendmail').hide();
+            $.each(data, function (index, value) {
+			   	if(value.sending == "OK") {
+			   	  $('#sendsuccess').show("slow");
+			   	}
+			   	else {
+			   	  $('#sendfail').show("slow");
+			   	}
+			});
+	    },
+        cache: false,
+        contentType:false,
+        processData: false
+    });
+}
+
+function videoShow(valor){
+  if(valor==1) {
+    $("#videoInstall").hide;
+    $("#videoQR").show("slow");
+  }
+  else {
+    $("#videoQR").hide;
+    $("#videoInstall").show("slow");
+  } 
+}  
+
+function videoClose(){
+  $("#videoInstall").hide();
+  $("#videoQR").hide();
+}
+</script>
+
+</head>
+<body>
+
+<form name="formEnvioMovil" id="formEnvioMovil">
+<input type="hidden" name="claseweb" value="portal.com.eje.movil.Movil" />
+<input type="hidden" name="accion" value="send" />
+<input type="hidden" name="thing" value="mail"/>
+<input type="hidden" name="movil" id="movil" value="android"></input>
+<input type="hidden" name="mail" id="mail" value=""></input>
+</form>
+
+<div id="container_pantalla_2">
+	<table width="850" border="0" cellspacing="2" cellpadding="2" align="center" style=" margin-top:10px;">
+    <tr>
+      <td colspan="7" align="center" style="color:#00C; font-size:16px;"><strong>Disponga del Portal Autoservicio en su Celular</strong></td></tr>
+    <tr> 
+     <tr>
+      <td colspan="7"><strong>Para instalar  la versi&oacute;n m&oacute;vil del Portal Autoservicio en su celular hemos dispuesto dos mecanismos:</strong></td></tr>
+    <tr> 
+      <td style="text-align:justify; width:48%;">
+        <strong>Mecanismo 1: &quot;Desde un C&oacute;digo QR</strong>&quot;<BR />
+        <BR /> 
+       Usando el lector de  c&oacute;digo QR de su celular, usted puede escanear la imagen del c&oacute;digo QR (que est&aacute; m&aacute;s abajo), directamente en su celular. La aplicaci&oacute;n se instalar&aacute; inmediatamente. <br />
+        Si usted no tiene lector de c&oacute;digo QR, baje uno gratis, disponible en la tienda de aplicaciones de su celular.
+        <p align="center"><a href="#" onclick="videoShow(1);"> Ver video de apoyo <img src="../servlet/Tool?images/Movil/icono-video.png" /></a></p>
+        <strong>Este mecanismo funciona para los siguientes tipos de celulares:</strong><br /> 
+        <img src="../servlet/Tool?images/Movil/desponibles.png" /> 
+      </td>
+      <td style="text-align:justify; width:2%;"><img src="../servlet/Tool?images/Movil/separador.png" /></td>
+<td style="text-align:justify; width:48%;" ><BR />
+        <strong>Mecanismo  2 : &quot;Desde un Instalador</strong>&quot;<BR />
+        <BR />
+        Para ejecutar esta forma  de instalar le solicitaremos  que usted ingrese el correo que tiene registrado en su celular. 
+        Inmediatamente la Plataforma le enviar&aacute; un instalador a su correo. En el mail se adjuntar&aacute; el archivo instalador. B&aacute;jelo a su celular e inst&aacute;lelo terminada la operaci&oacute;n anterior. <br />
+        M&aacute;s abajo de esta p&aacute;gina le indicaremos paso a paso lo que debe hacer.
+		<p align="center"><a href="#" onclick="videoShow(2) ;"><br />Ver video de apoyo <img src="../servlet/Tool?images/Movil/icono-video.png" /></a></p>
+        <strong>Este mecanismo fuinciona para los siguientes tipos de celulares:</strong><br /> 
+       <img src="../servlet/Tool?images/Movil/desponibles.png" /> 
+      </td>      
+    </tr>
+    </table>
+</div>
+<div id="container_pantalla">
+    <table width="850" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr>
+        <td colspan="6" class="texto_opciones_tit"><strong>Mecanismo 1: Para obtener la   versi&oacute;n del Portal  Autoservicio en su celular a trav&eacute;s de un c&oacute;digo QR </strong></td></tr>
+      <tr><td colspan="6" class="texto_opciones_tit" align="center"><a class="example-image-link" href="../servlet/Tool?temporal/movil/PortalRRHHMovilIST.png" data-lightbox="example-1"><strong>Presione aqu&iacute;</strong></a><br /><br />
+       </td></tr>
+    </table>
+</div>
+<div id="container_pantalla">
+    <table width="850" border="0" cellspacing="1" cellpadding="1" align="center">
+      <tr>
+        <td colspan="6" class="texto_opciones_tit"><strong>Mecanismo  2: Si usted desea obtener la  versi&oacute;n del Portal  Autoservicio en su celular  a trav&eacute;s de un instalador, primero, seleccione el sistema operativo de su dispositivo y luego ingrese el correo electr&oacute;nico que tiene  en su celular. Inmediatamente recibir&aacute;  un correo con el archivo de instalaci&oacute;n.</strong></td></tr>
+      <tr>
+        <td colspan="6" class="texto_opciones_tit" height="40"><strong>Seleccione su Sistema Operativo de celular:</strong></td></tr>
+      <tr>
+        <td class="texto_opciones" width="10%"><img src="../servlet/Tool?images/Movil/Android-logo_p.png" /></td>
+        <td class="texto_opciones" width="10%"><img src="../servlet/Tool?images/Movil/apple-logo_p.png" /></td>
+        <td class="texto_opciones"><img src="../servlet/Tool?images/Movil/blackberry_p.png" /></td>
+        <td class="texto_opciones"><img src="../servlet/Tool?images/Movil/logo_windowsPhone_p.png"/></td>
+        <td class="texto_opciones"><img src="../servlet/Tool?images/Movil/symbian-logo_p.png" /></td>
+        <td class="texto_opciones"><img src="../servlet/Tool?images/Movil/WebOS_logo_p.png" /></td>
+      </tr>
+      <tr align="center">
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="android" /></td>
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="ios" /></td>
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="blackberry" /></td>
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="windows" /></td>
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="symbian" /></td>
+        <td><input id="dispositivo" name="dispositivo" type="radio" value="webos" /></td>
+      </tr>
+      <tr><td  colspan="6">&nbsp;</td></tr>
+      <tr><td colspan="6" class="texto_opciones_tit" align="center">
+        <strong>Ingrese su correo : </strong><input id="correo" name="correo" type="text" style="width:300px;"> <a id="send" href="#" onclick="SendingMail();" class="myButton">Enviar</a>
+      </td></tr>
+      <tr><td colspan="6" class="texto_opciones_tit" align="center">
+        <div id="sendmail" name="sendmail" style="display: none; padding-left:200px; width:350px; height:300px; z-index:1; position:absolute;"> 
+          <table cellpadding="0" cellspacing="0"><tr>
+          <td valign="top"><img src="../servlet/Tool?images/Movil/load.gif" id="loading" name="loading" /></td>
+          <td valign="middle">Enviando E-mail...espere por favor.</td>
+          </tr></table>
+        </div>
+        <div id="sendsuccess" name="sendsuccess" style="display: none; padding-left:200px; width:350px; height:300px; z-index:2; position:absolute;">
+          <table cellpadding="0" cellspacing="0"><tr>
+          <td valign="top"><img src="../servlet/Tool?images/Movil/email.png" id="loading" name="loading" /></td>
+          <td valign="middle">E-mail enviado con &eacute;xito.</td>
+          </tr></table> 
+        </div>
+        <div id="sendfail" name="sendfail" style="display: none; padding-left:200px; width:350px; height:300px; z-index:2; position:absolute;">
+          <table cellpadding="0" cellspacing="0"><tr>
+          <td valign="top"><img src="../servlet/Tool?images/Movil/email.png" id="loading" name="loading" /></td>
+          <td valign="middle">E-mail no pudo ser enviado.</td>
+          </tr></table> 
+        </div><br>
+        <strong>Opci&oacute;n Instalador disponible para:</strong><br /> 
+       <img src="../servlet/Tool?images/Movil/desponibles.png" /><br /><br />
+       <strong><span style="color:#900;">*Si su Sistema Operativo es IOS (iPhone) o Blackberry, le enviaremos una url de instalaci&oacute;n, la cual deber&aacute; usar para acceder al Portal Autoservicio*</span> </strong></td>
+      </tr>    
+      
+    </table>
+</div>
+<div id="container_pantalla">
+<table width="850" border="0" cellspacing="1" cellpadding="1" align="center">
+<tr>
+<td style="text-align:center; padding:5px;">
+     <strong> Si tiene  dificultades en la instalaci&oacute;n, escr&iacute;banos a <a href="mailto:soporte@ejedigital.cl">soporte@peoplemanager.cl</a>, y un ejecutivo de atenci&oacute;n se comunicar&aacute; con usted para apoyarle.</strong></td>
+</tr>
+</table>
+</div>
+
+
+<div id="videoInstall" style="display:none; border:1px solid black; z-index:1; position:absolute; left:25px; top:50px; background-color:#FFF"><a href="#" onClick="videoClose();"><img src="../servlet/Tool?images/Movil/close.png" align="right" /></a>
+<object type="application/x-shockwave-flash" data="../temporal/movil/instructivo_movil2.swf" width="800" height="600">
+<param name="movie" value="../temporal/movil/instructivo_movil2.swf" />
+<embed src="../temporal/movil/instructivo_movil2.swf" width="800" height="600” name="video1" />
+</object>
+</div>
+
+<div id="videoQR" style="display:none; border:1px solid black; z-index:1; position:absolute; left:25px; top:50px; background-color:#FFF"><a href="#" onClick="videoClose();"><img src="../servlet/Tool?images/Movil/close.png" align="right" /></a>
+<object type="application/x-shockwave-flash" data="../temporal/movil/instructivo_movil.swf" width="800" height="600">
+<param name="movie" value="../temporal/movil/instructivo_movil.swf" />
+<embed src="../temporal/movil/instructivo_movil2.swf" width="800" height="600” name="video2" />
+</object>
+</div>
+
+</body>
+</html>

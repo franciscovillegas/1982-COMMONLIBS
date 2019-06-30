@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute; 
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:207px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:89px;
+	width:739px;
+	height:453px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:556px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:14px;
+	top:34px;
+	width:205px;
+	height:510px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer12 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	z-index:12;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function verMetasColaborador(colaborador){
+	document.form1.rut_colaborador.value = colaborador;
+	document.form1.submit();
+}
+
+function Accion(evento){
+	document.form1.accion.value = evento;
+	document.form1.submit();
+}
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/def_metas.jpg">
+<form name="form1" method="post" action="../servlet/ServletMetasDefinicion">
+<input name="rut_colaborador" type="hidden" class="campo_texto" style="width:97%" value="${rut_colaborador}"/>
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<if (rut_colaborador != "0")> 
+<div id="Layer12">
+  <table width="100%" border="0" cellpadding="0">
+    <tr>
+      <td class="txt_gris_bold">Definici&oacute;n de objetivos</td>
+      <td align="center" class="txt_gris_bold">Ponderaci&oacute;n % </td>
+      <td align="center" class="txt_gris_bold">Guardar</td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="77%" class="texto_texto"><input name="meta" type="text" class="campo_texto" style="width:97%" /></td>
+        <td width="11%" align="center" class="texto_texto"><input name="ponderacion" type="text" class="campo_texto" style="width:50px"/></td>
+        <td width="8%" align="center" class="texto_texto"><a href="#" onClick="Accion('guardar');"/><img src="../servlet/Tool?images/ggd/botones/grabar.gif" width="16" height="16" border="0"/></a></td>
+        <td width="4%" class="texto_texto">&nbsp;</td>
+      </tr>
+  </table>
+</div>
+<span id="Layer5">
+  <table width="100%" border="0" cellpadding="0">
+    
+    <tr>
+      <td class="txt_gris_bold">Lista de objetivos creados</td>
+      <td align="center" class="txt_gris_bold">Ponderaci&oacute;n % </td>
+      <td align="center" class="txt_gris_bold">Asociar</td>
+      <td align="center" class="txt_gris_bold">Sel.</td>
+    </tr>
+    <list getMetasColaborador as metas>
+	    <tr>
+	      <input name="textfield" type="hidden" class="campo_texto" style="width:97%" value="${metas.id_meta}"/>
+	      <input name="textfield" type="hidden" class="campo_texto" style="width:97%" value="${metas.rut}"/>
+	      <input name="textfield" type="hidden" class="campo_texto" style="width:97%" value="${metas.rut_evaluador}"/>
+	      <td width="77%" class="texto_texto"><input name="textfield" type="text" class="campo_texto" style="width:97%" value="${.}"/></td>
+	      <td width="11%" align="center" class="texto_texto"><input name="textfield5" type="text" class="campo_texto" style="width:50px" value="${.ponderacion}"/></td>
+	      <td width="8%" align="center" class="texto_texto"><a href="javascript:;" onclick="MM_openBrWindow('Tool?htm=metas/asoc_objetivos.html','obj','width=475,height=370')" /><img src="../servlet/Tool?images/ggd/iconos/target.png" width="16" height="16" border="0" title="Asociar objetivos"  /></a></td>
+	      <td width="4%" class="texto_texto"><input name="radiobutton" type="radio" value="radiobutton" /></td>
+	    </tr>
+	</list>    
+  </table>
+</span>
+<div id="Layer6">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+    <tr>
+      <td width="50%">Definici&oacute;n de objetivos para: ${colaborador}</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer10">
+  <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td width="8">&nbsp;</td>
+      <td width="8">&nbsp;</td>
+      <td width="12" nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+      <td width="30"><a href="#"><img src="../servlet/Tool?images/ggd/botones/crear.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13" /></a></td>
+      <td width="30"><img src="../servlet/Tool?images/ggd/botones/editar.gif" width="30" height="30" /></td>
+      <td width="30"><img src="../servlet/Tool?images/ggd/botones/grabar.gif" width="30" height="30" /></td>
+      <td width="30"><a href="#"></a>
+              
+            <a href="#"><img src="../servlet/Tool?images/ggd/botones/iconoprint.gif" name="evaluaciones_r13_c11" width="30" height="30" border="0" id="evaluaciones_r13_c11" title="Imprimir" /></a>      </td>
+      <td width="30"><a href="#"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+    </tr>
+  </table>
+</div>
+</if>
+<div id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="16%" class="txt_gris_bold">Listado de colaboradores  </td>
+    </tr>
+  </table>
+</div>
+<span id="Layer11">
+  <table width="100%" border="0" cellpadding="0">
+   <list getColaboradores as colab>
+    <tr>
+      <td width="31%"><a href="#" onClick="verMetasColaborador('${colab.rut}');"><img src="../servlet/Tool?images/trabajadores/fotos/${colab.foto}" title="${colab.nombre_completo}" name="foto" width="62" height="81" border="1" id="foto" style="background-color: #FFCC00" /></a></td>
+      <td width="69%" class="texto_texto"><p>${colab.nombre_completo}</p></td>
+    </tr>
+   </list>   
+  </table>
+</span>
+</form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+
+	<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js"></script>
+	<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+  
+<script type="text/javascript">
+
+var tipoRep = "gestDiaria";
+var tipoOrgan = "0";
+
+function tipoReporte(idTipo){
+	tipoRep = idTipo;
+
+	if 	(nodoArbol == null) {
+		alert('Seleccione un nodo del &#225;rbol de unidades.');	
+	}else{
+		selectedNode(nodoArbol, tipoOrgan);		
+	}
+}
+
+function cargarArbol(idOrganica){
+	nodoArbol = null;
+	tipoOrgan = idOrganica;
+	loadTreeZone(idOrganica);
+}
+</script> 
+<style type="text/css">
+	.btnGestionDiaria:HOVER {
+		cursor: pointer;
+		color: blue;
+	}
+	
+	.btnReportesMis {
+		cursor: pointer;
+		color: blue;
+	}
+	
+</style>
+
+</head>
+<body>
+	<div class="TFviewTree">
+		<div class="contIzq">
+            <div class="TFtoolTree">
+                <div class="TFbuttonTree" onClick="cargarArbol(0);">U. RR.HH.</div>
+                <div class="TFbuttonTree" onClick="cargarArbol(1);">U. Cargos</div>
+                <!-- <div class="TFbuttonTree" onClick="cargarArbol(2);">U. Sucursal</div>  -->
+                <!-- <div class="TFbuttonTree" onClick="cargarArbol(3);">U. Lugar a pago</div>  -->
+                <!-- <div class="TFbuttonTree" onClick="cargarArbol(4);">U. UAdm</div>  -->
+                <div class="TFbuttonTree" onClick="cargarArbol(5);">U. Centro Costo</div>
+            </div>
+        
+            <div class="TFtreeZone">
+                <input type="hidden" name="nameInput" id="nameInput" value="${nameInput}" />
+                <div id="tree" class="TFtree">
+                </div>
+            </div>
+    
+            <div class="TFmodZone" id="TFmodZone">
+            </div>
+            
+        </div>
+        
+        <div class="contDer">
+            <div class="topInformeGestion">
+    
+                <div class="btnGestionDiaria" onClick="tipoReporte('gestDiaria');"><span  class="txtVert">Gesti&oacute;n Diaria</span></div>
+                <div class="btnReportesMis" onClick="tipoReporte('mis');"><span  class="txtVert_2">MIS</span></div>
+            </div>
+        </div>
+
+  	</div>
+</body>
+</html>

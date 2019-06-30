@@ -1,0 +1,23 @@
+<assign colorfondo="#E1B500">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td>Competencias con Debilidades</td></tr>
+<if getEvalObtenida>
+<list getEvalObtenida as a>
+  <if (a.ponderacion_int < 40 ) >
+    <tr align="left" valign="middle">
+     <td width="42%" class="texto_texto" >${a.competencia}&nbsp;</td>
+     <td width="58%" class="ra1lista">
+  	 <assign ponderacion_int = a.ponderacion_int>
+	 <assign ponderacion= a.ponderacion_obt>
+	 <assign porcentaje_ponderacion= a.porcentaje_ponderacion>
+     <table border="0" width="${porcentaje_ponderacion}%" align="left">
+     <tr><td bgcolor="${colorfondo}" class="ra1lista">&nbsp;</td></tr>
+     </table>
+     <font color="#003366">${ponderacion}%</font>&nbsp;
+	 </td>
+    </tr>
+   </if>
+</list>
+</if>
+</table>

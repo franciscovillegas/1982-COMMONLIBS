@@ -1,0 +1,90 @@
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+MM_preloadImages('../servlet/Tool?images/Gestion/images_arbol/av.jpg','../servlet/Tool?images/Gestion/images_arbol/an.jpg');
+// -->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/arbol.js">
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css" />
+
+<if (Param("exp")!="")>
+	<assign display = "">
+<else>
+	<assign display = "none">
+</if>
+<function muestra(nodo)>
+
+<table border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+  <tr> 
+    <td nowrap ><compress><a href="javascript:;" onClick="return exp_colap('img_${nodo.Em}_${nodo.Id}', 'hijos_${nodo.Em}_${nodo.Id}')"> 
+      <if (nodo.NU)> <if (nodo.Li)> <img src="../servlet/Tool?images/Gestion/images_arbol/perpen+.gif" width="16" height="22" border="0" align="absbottom"> 
+      <else> <img src="../servlet/Tool?images/Gestion/images_arbol/perpen-.gif" border="0" align="absbottom"> 
+      </if> <else> <if (nodo.Li)> <img src="../servlet/Tool?images/Gestion/images_arbol/angulo+.gif" border="0" align="absbottom"> 
+      <else> <img src="../servlet/Tool?images/Gestion/images_arbol/angulo-.gif" border="0" align="absbottom"> 
+      </if> </if> <img name="img_${nodo.Em}_${nodo.Id}" src="../servlet/Tool?images/Gestion/images_arbol/an.gif" border="0" align="absbottom" ></a> 
+      <switch (nodo.Ti)> <case "R">
+        <img src="../servlet/Tool?images/Gestion/images_arbol/home.gif" width="15" height="15" /><break> 
+      <case "E">S<break> <case "U">U<break> 
+      </switch> </compress> <a name="nodo_${nodo.Em}_${nodo.Id}" id="nodo_${nodo.Em}_${nodo.Id}" href="#" onClick="SeleccionarNodo(this); Ejecuta('${nodo.Em}','${nodo.Id}','${nodo.No}', '${nodo.Ti}');return false" class="textoNodo" target="_self">${nodo.No}</a>    </td>
+  </tr>
+  <if (nodo.Li)> 
+  <tr> 
+    <td> 
+      <table id="hijos_${nodo.Em}_${nodo.Id}" border="0" cellpadding="0" cellspacing="0" style="display:${display}" >
+        <list nodo.Li as a> 
+        <tr> 
+		  <if (!nodo.NU)>
+		  	
+          <td width="16" background="../servlet/Tool?images/Gestion/images_arbol/blank.gif" valign="top"><img src="../servlet/Tool?images/Gestion/images_arbol/blank.gif"></td>
+		  <else>	<td width="16" background="../servlet/Tool?images/Gestion/images_arbol/vertical.gif" valign="top"><img src="../servlet/Tool?images/Gestion/images_arbol/vertical.gif" width="16" height="22"></td>
+		  </if>
+          <td> <call muestra(a)> </td>
+        </tr>
+        </list> 
+      </table>
+    </td>
+  </tr>
+  </if> 
+</table>
+</function>
+<call muestra(sentencia)> 
+
+<script language="JavaScript">
+<!--
+var unidadEncontrada = false;
+var unidadBuscada = false;
+var resulEmp = "";
+var resulUni = "";
+
+function inicioArbol() {
+	<if rama>
+	<list rama as n>exp_colap('img_${n.emp}_${n.uni}', 'hijos_${n.emp}_${n.uni}');
+	</list>
+	window.unidadEncontrada = true; 
+	window.resulEmp = "${resulEmp}";
+	window.resulUni  = "${resulUni}";
+	<else>
+	window.unidadEncontrada = false;
+	</if>
+	//${resulEmp}/${resulUni}
+	<if (bu)>
+	window.unidadBuscada = true;
+	<else>
+	window.unidadBuscada = false;
+	</if>
+	if (window.unidadBuscada) {
+		if (window.unidadEncontrada) {
+			//alert("La unidad buscada se encuentra en la org&#225;nica.")
+			busNodo(window.resulEmp, window.resulUni);
+		}
+		else
+			alert("La unidad buscada no se encuentra en la org&#225;nica.")
+	}
+}
+// -->
+</script>

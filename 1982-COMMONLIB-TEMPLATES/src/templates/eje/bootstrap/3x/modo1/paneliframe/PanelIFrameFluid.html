@@ -1,0 +1,54 @@
+<style type="text/css">
+ 
+  body {
+ 	margin: 0;
+ 	border: 0;
+ 	margin: 0;
+ }
+ 
+body > .container-fluid {
+  padding-top: 0px;
+}
+.container-fluid .col-sm-12 {
+  padding: 0;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.footer {
+   
+}
+
+.main-content {
+  background: #efefef;
+  height:calc(100vh - 60px);
+}
+ .container-fluid {
+    height: 99%;
+ 
+}
+
+</style>
+
+<section id="main-content" >
+            <section class="wrapper padding-top-0 margin-top-0 padding-bottom-0 margin-bottom-0">
+				<div class="container-fluid padding-top-0 margin-top-0 padding-bottom-0 margin-bottom-0">
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div class="main-content">
+        <div class="form-group modal-body embed-responsive resp-iframe container-fluid">
+        								<assign idePath="../../../view/ide/"+ide >
+        								<if ContainStr(idePath,"?") == "true">
+        									<assign append="&" >	
+        								<else>
+        									<assign append="?" >	
+        								</if>
+											<iframe class="iframeContainer" src="${idePath}${append}${paramsAdicionales}" >
+											</iframe>
+										  </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+  </section>

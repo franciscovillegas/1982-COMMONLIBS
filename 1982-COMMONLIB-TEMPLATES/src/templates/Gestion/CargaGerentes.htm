@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<TITLE>Carga Gerentes</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<table width="100%">
+<tr><td colspan="3" align="center" class="tabla_beige">Proceso Carga Gerentes</td></tr>
+<tr><td class="texto_negro">Nro. Cargas Exitosas</td><td class="texto_negro">:</td><td class="texto_negro">${exito}</td></tr>
+<tr><td class="texto_negro">Nro. Cargas No Exitosas</td><td class="texto_negro">:</td><td class="texto_negro">${fallos}</td></tr>
+<tr>
+<td class="texto_negro" colspan="2"></td>
+<td class="texto_negro">
+<table width="100%">
+<if lfallos>
+<tr><td align="center" class="tabla_beige" colspan="2">Fallas:</td></tr>
+<tr><td align="center" class="tabla_beige">Rut</td><td align="center" class="tabla_beige">Descripcion</td></tr>
+<list lfallos as f>
+<tr><td class="texto_negro">${f.rut}</td><td class="texto_negro">No se pudo insertar</td></tr>
+</list>
+</if>
+</table>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>

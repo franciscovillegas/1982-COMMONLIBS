@@ -1,0 +1,199 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.contIzq{
+	float: left;
+	width: 90%;
+	background-color:#FFE77E;
+	-webkit-box-shadow: -2px -2px 4px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    -2px -2px 4px rgba(50, 50, 50, 0.3);
+	box-shadow:         -2px -2px 4px rgba(50, 50, 50, 0.3);
+}
+
+.contIzq2{
+	float: left;
+	width: 100%;
+	background-color:#FFE77E;
+	-webkit-box-shadow: -2px -2px 4px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    -2px -2px 4px rgba(50, 50, 50, 0.3);
+	box-shadow:         -2px -2px 4px rgba(50, 50, 50, 0.3);
+}
+.contDer{
+	margin-top:50px;
+	margin-left:0;
+	float: left;
+  	width:56px;
+	border:none;
+	
+}
+
+.topInformeGestion{
+  		height: 30px;
+  		width: 100%;
+	}
+
+
+/* Botones MIS - GESTION DIARIA */
+.topInformeGestion div{		
+	float: right;
+ 	display: block; 
+ 	width: 80%;
+ 	height: 100px; 	
+	display:inline-block;
+	padding:4px 4px;
+	vertical-align: middle;
+	margin:0px 2px ;
+	background-image:url(../servlet/Tool?omap=images/carpelect/ficha1_hover.png);
+	background-repeat:no-repeat;
+
+}
+	
+.topInformeGestion div:hover{
+	background-image:url(../servlet/Tool?omap=images/carpelect/ficha1.png);
+	background-repeat:no-repeat;	
+	color: #fff;
+	text-shadow: 0 1px 0 #000;		
+}
+
+
+.txtVert{
+	width:100%;
+    margin-top:20px;
+	color: #FFF;
+	font-family:arial;
+	font-size:10px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #030;
+	text-align: center;
+	text-transform: uppercase;
+	text-align: center;
+	display:block;
+	white-space:nowrap;
+    -webkit-transform: rotate(90deg);  /* Saf3.1+, Chrome */
+       -moz-transform: rotate(90deg);  /* FF3.5+ */
+        -ms-transform: rotate(90deg);  /* IE9 */
+         -o-transform: rotate(90deg);  /* Opera 10.5 */
+            transform: rotate(90deg);
+               filter: progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, sizingMethod='auto expand'); /* IE 6-9 */
+                 zoom: 1; /* IE hasLayout trigger */
+
+}
+.txtVert_2{
+	width:100%;
+    margin-top:35px;
+	color: #FFF;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #030;
+	text-align: center;
+	text-transform: uppercase;
+	text-align: center;
+	display:block;
+	white-space:nowrap;
+    -webkit-transform: rotate(90deg);  /* Saf3.1+, Chrome */
+       -moz-transform: rotate(90deg);  /* FF3.5+ */
+        -ms-transform: rotate(90deg);  /* IE9 */
+         -o-transform: rotate(90deg);  /* Opera 10.5 */
+            transform: rotate(90deg);
+               filter: progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=1, M21=-1, M22=6.123031769111886e-17, sizingMethod='auto expand'); /* IE 6-9 */
+                 zoom: 1; /* IE hasLayout trigger */
+
+}
+
+
+/* =================================================*/
+/* Contenedor de unidades */
+.TFtoolTree {
+	height: 45px;
+  	width: 100%;
+  		
+  	background-color:#FFE77E;	
+
+  }
+  	
+
+
+  	.TFbuttonTree:active {
+  		cursor: pointer; 		
+  		color: #c9c9c9;
+ 		text-shadow: 0 1px 0 #333; 		
+ 		background: #ccc;
+  	}
+  	
+	.TFtoolTree div {
+		background-image:url(../servlet/Tool?omap=images/carpelect/tiqueta.png);
+		background-repeat:no-repeat;
+		width:100px;
+		height:30px;
+		z-index: -1;
+  		float: left;
+ 		display: block; 
+		text-align: center;
+		text-transform: uppercase;	  
+	    display:inline-block;
+	    color: #FFF;
+	    font-family:arial;
+	    font-size:10px;
+	    font-weight:bold;
+	    padding:4px 5px;
+	    text-decoration:none;
+	    text-shadow:1px 1px 0px  #630;
+	    margin: 0px 5px 0px 5px;
+}
+	.TFbuttonTree:hover {
+		background-image:url(../servlet/Tool?omap=images/carpelect/tiqueta_hover.png);
+		background-repeat:no-repeat;
+		width:100px;
+		height:30px;
+		z-index: -1;
+  		float: left;
+ 		display: block; 
+		text-align: center;
+		text-transform: uppercase;	  
+	    display:inline-block;
+	    color: #FFF;
+	    font-family:arial;
+	    font-size:10px;
+	    font-weight:bold;
+	    padding:4px 5px;
+	    text-decoration:none;
+	    text-shadow:1px 1px 0px  #630;
+	    margin: 0px 5px 0px 5px;
+		cursor:pointer;
+}
+/* ================================================ */
+
+
+  	.TFtreeZone {
+  		float: left;
+  		min-height: 400px; 
+  		width:40%;
+  		-webkit-border-bottom-left-radius: 10px;
+		-webkit-border-bottom-right-radius: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		-moz-border-radius-bottomright: 10px;
+  		/*-moz-box-shadow: 0 10px 5px rgba(0,0,0,.5);
+	    -webkit-box-shadow: 0 10px 5px rgba(0,0,0,.5);
+	    box-shadow:  0 10px 10px 3px rgba(0,0,0,.5);*/
+  		background-color:#FFE77E;
+
+  	}
+
+/* ================================================ */
+  	.TFmodZone {
+  		float: left;
+  		height: 480px;
+		width: 59%;
+		overflow: auto;
+		
+  	}
+/* ================================================ */  	
+  	.TFtree {
+  		padding: 10px;
+  		height: 460px;
+  		overflow: auto;
+  	}

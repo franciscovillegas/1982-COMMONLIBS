@@ -1,0 +1,106 @@
+  <html>
+<head>
+<title>Mantener Anexos Relacionados</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<script language="JavaScript">
+<!--
+function inicio() {
+	window.focus();
+}
+
+function eliminar(accion, form) {
+	var elim = false;
+	elim=confirm("&#191;Desea elimimar este Anexo Relacionado?");
+	if (elim) {
+		form.action="/servlet/datafolder.anexos.MantAnexoRel?accion="+accion;	
+		form.submit();
+	}
+	return false;
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/anexos.js">
+</script>
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+</head>
+
+<body bgcolor="#000000" text="#000000" onLoad="inicio();MM_preloadImages('/images/Gestion/anexos/botones/eliminar_over.jpg','/images/Gestion/anexos/botones/agregar_over.jpg','/images/Gestion/anexos/botones/cerrar_over.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="430" border="0" cellspacing="2" cellpadding="0" background="/images/Gestion/anexos/fondvent.jpg">
+  <tr> 
+    <td class="unnamed1" bgcolor="#000033" align="center"><b>Anexos Relacionados 
+      con &quot;${anexo}&quot; </b></td>
+  </tr>
+  <tr> 
+    <td class="unnamed1">Unidad: ${unidad_desc}</td>
+  </tr>
+  <form name="formAnexRel" method="post" action="">
+    <input type="hidden" name="unidad" value="${unidad}">
+    <input type="hidden" name="anexo" value="${anexo}">
+    <input type="hidden" name="unidad_desc" value="${unidad_desc}">
+    <tr> 
+      <td height="160" valign="top"> 
+        <div id="LayerAnexoRel" style="position:absolute; width:426; height:160; z-index:1; left: auto; top: auto; overflow: auto"> 
+          <table width="410" border="0" cellspacing="1" cellpadding="1">
+            <if (anexos_rel)> <list anexos_rel as a> 
+            <tr bgcolor="#000033"> 
+              <td class="unnamed1" width="69"> 
+                <input type="checkbox" name="anexo_rel" value="${a.anexo_rel},${a.unidad_rel}">
+                ${a.anexo_rel}</td>
+              <td class="unnamed1" width="340">(${a.unidad_rel}) ${a.unidad_rel_desc}</td>
+              <td class="unnamed1" width="55" align="center"> <if (a.publico=="S")>P&uacute;blico<else>Privado</if></td>
+              <td class="unnamed1" width="30" align="center"><a href="javascript:;" class="unnamed1"  onClick="return ventInfoAnexo('${empresa}', '${a.unidad_rel}', '${a.anexo_rel}')" title="Informaci&oacute;n del Anexo">[Info]</a></td>
+            </tr>
+            </list> <else> 
+            <tr bgcolor="#000033"> 
+              <td colspan="4" class="unnamed1">No se registran anexos relacionados</td>
+            </tr>
+            </if> 
+          </table>
+        </div>
+      </td>
+    </tr>
+  </form>
+  <tr> 
+    <td align="center" height="50"><a href="javascript:;" onClick="return eliminar('EAR', document.formAnexRel) " onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('elim_fono','','/images/Gestion/anexos/botones/eliminar_over.jpg',1)"><img name="elim_fono" border="0" src="/images/Gestion/anexos/botones/eliminar_up.jpg" width="99" height="23" alt="Eliminar Anexo Relacionado"></a><a href="javascript:;" onClick = "SeleccionarAnexosUnidad('${empresa}', '${unidad}', '${unidad_desc}', '${anexo}'); return false" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('cre_fono','','/images/Gestion/anexos/botones/agregar_over.jpg',1)"><img src="/images/Gestion/anexos/botones/agregar_up.jpg" width="99" height="23" name="cre_fono" border="0" alt="Agregar Anexo Relacionado"></a><a href="javascript:;" onClick="window.close(); return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_cerrar','','/images/Gestion/anexos/botones/cerrar_over.jpg',1)"><img name="img_cerrar" border="0" src="/images/Gestion/anexos/botones/cerrar_up.jpg" width="99" height="23"></a></td>
+  </tr>
+</table>
+</body>
+</html>

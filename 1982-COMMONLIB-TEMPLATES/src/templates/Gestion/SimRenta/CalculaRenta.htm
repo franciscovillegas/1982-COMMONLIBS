@@ -1,0 +1,50 @@
+  <html>
+<head>
+<title>Procesando</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+function fin(){
+	window.focus();
+	opener.document.all.tbl_resul.rows(0).cells(1).innerHTML = "${cod_remu}";
+	opener.document.all.tbl_resul.rows(1).cells(1).innerHTML = "${FNum(pre, "2")}";
+	opener.document.all.tbl_resul.rows(2).cells(1).innerHTML = "${FNum(sueldo)}";
+	opener.document.all.tbl_resul.rows(3).cells(1).innerHTML = "${FNum(gestion)}";
+	opener.document.all.tbl_resul.rows(4).cells(1).innerHTML = "${FNum(movi)}";
+	opener.document.all.tbl_resul.rows(5).cells(1).innerHTML = "${FNum(b_reg)}";
+	opener.document.all.tbl_resul.rows(6).cells(1).innerHTML = "${FNum(n_reg)}";
+	opener.document.all.tbl_resul.rows(7).cells(1).innerHTML = "${FNum(zona)}";
+	opener.document.all.tbl_resul.rows(8).cells(1).innerHTML = "${FNum(b_zona)}";
+	opener.document.all.tbl_resul.rows(9).cells(1).innerHTML = "${FNum(n_zona)}";
+	opener.document.all.tbl_resul.rows(10).cells(1).innerHTML = "${FNum(b_anual)}";
+	opener.document.all.tbl_resul.rows(11).cells(1).innerHTML = "${FNum(caja)}";
+	opener.document.all.tbl_resul.rows(12).cells(1).innerHTML = "${FNum(b_antig)}";
+	opener.document.all.tbl_resul.rows(13).cells(1).innerHTML = "${FNum(rta_var)}";
+	opener.document.all.tbl_resul.rows(14).cells(1).innerHTML = "${FNum(b_prom)}";
+	opener.document.all.tbl_resul.rows(15).cells(1).innerHTML = "${FNum(n_prom)}";
+	opener.document.all.tbl_resul.rows(16).cells(1).innerHTML = "${FNum(tras)}";
+	opener.document.all.tbl_resul.rows(17).cells(1).innerHTML = "${FNum(b_total)}";
+	opener.document.all.tbl_resul.rows(18).cells(1).innerHTML = "${FNum(n_total)}";
+	opener.document.all.tbl_resul.rows(19).cells(1).innerHTML = "${FNum(efecto_ra)}";
+	opener.document.all.tbl_resul.rows(20).cells(1).innerHTML = "${FNum(efecto_12m)}";
+	opener.document.formDatos.nivel.disabled="";
+	opener.document.formDatos.mes_efecto.disabled="";
+	opener.document.formDatos.mes_efecto.value="${mes_efecto}";
+	opener.document.formDatos.n_total2.value="${n_total}";
+	window.close();
+}
+</script>
+</head>
+
+<body onblur="window.focus()" onload="fin();" bgcolor="#000000" text="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="250" border="0" cellspacing="2" cellpadding="2" bgcolor="#FFCF75">
+  <tr> 
+    <td class="negro12B" align="center" height="20">Simulaci&oacute;n de Rena</td>
+  </tr>
+  <tr> 
+    <td bgcolor="#FFA400" align="center" class="negro12N" height="35">Calculo 
+      Terminado</td>
+  </tr>
+</table>
+</body>
+</html>

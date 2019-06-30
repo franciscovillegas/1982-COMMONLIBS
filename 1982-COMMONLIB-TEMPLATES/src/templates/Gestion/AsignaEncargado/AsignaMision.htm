@@ -1,0 +1,86 @@
+ <HTML>
+<HEAD>
+<TITLE>Asigna Mision</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="Tool?htm=Gestion/script/ventanas.js">
+</script>
+
+<script language="JavaScript">
+<!--
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+//-->
+</script>
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Mensaje() { //v2.0
+  var mision=document.form1.mision.value;
+  if (mision=="")    
+	 alert("Debe ingresar misi&#243;n.");        
+  else{
+	// alert("Los datos han sido registrados con &#233;xito.");
+	 document.form1.submit();
+  }   	 
+}
+
+function Detalle(rut) { //v2.0
+  
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<form name="form1" method="post" action="../servlet/AsignaMision">
+  <table width="500" height="216" border=0 cellpadding=0 cellspacing=0>
+      <tr>
+        <td height="58" align="center" class="texto_negro_bold">Modificar Misi&oacute;n</td>
+      </tr>
+    <tr>
+      <td height="44" align="center" valign="top"><textarea name="mision" cols="60" rows="7" class="texto_negro">${mision}</textarea><if (!mision)><assign mision = "En Estudio">
+      </if>
+        <table width="80%">
+        
+        <tr>
+          <td width="50%" align="center"><input type="hidden" name="empresa" value="${empresa}">
+              <input type="hidden" name="accion" value="${accion}">
+              <input type="hidden" name="unidad" value="${unidad}">
+              <a href="#"  onClick="Mensaje();return false"><img name="Image9" border="0" src="../servlet/Tool?images/Gestion/botones/aceptar.gif" width="120" height="24"></a></td>
+          <td align="center"><a href="../servlet/LoadTreeOrg?pag=Gestion/AsignaEncargado/ArbolMantMision.htm" target="_self"><img src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24" border="0"></a></td>
+        </tr>
+      </table>
+      </td> 
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

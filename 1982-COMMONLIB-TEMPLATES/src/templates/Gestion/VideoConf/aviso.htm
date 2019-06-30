@@ -1,0 +1,144 @@
+  <html>
+<head>
+<title>Aviso Invitaci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/images/Gestion/videoconf//Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript" src="/images/Gestion/videoconf//Gestion/script/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="/images/Gestion/videoconf//Gestion/script/msgprocesando.js">
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<link rel="stylesheet" href="/Gestion/Style/video.css" type="text/css">
+</head>
+<body bgcolor="#000000" text="#000000" onload="window.focus();MM_preloadImages('/images/Gestion/botones/cerrar_down.jpg','/images/Gestion/videoconf/ventanaop_r3_c2_over.jpg','/images/Gestion/videoconf/ventanaop_r3_c4_over.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" width="432">
+  <!-- fwtable fwsrc="/images/Gestion/videoconf/Untitled" fwbase="ventanaop.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr> 
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="13" height="1" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="110" height="1" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="186" height="1" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="109" height="1" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="14" height="1" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="5"><img name="ventanaop_r1_c1" src="/images/Gestion/videoconf/ventanaop_r1_c1.jpg" width="432" height="44" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="44" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="5">
+      <div id="Layer1" style="position:absolute; width:398px; height:246px; z-index:1; top: 55px; left: 18px; overflow: auto"> 
+        <table width="390" border="0" align="center" cellpadding="1" cellspacing="1" class="unnamed1">
+          <form name="form1" action="/servlet/datafolder.videoconf.AceptaAviso">
+            <tr> 
+              <td colspan="4"> 
+                <div align="center"><font size="4">Aviso Conferencia<br>
+                  <br>
+                  </font> 
+                  <input type="hidden" name="id" value="${id}">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="23%">De</td>
+              <td colspan="2">${nom_citador}</td>
+              <td width="18%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="23%">Asunto</td>
+              <td colspan="2">${asunto}</td>
+              <td width="18%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="23%">Fec Inicio</td>
+              <td width="32%">${f_ini}</td>
+              <td width="27%"> 
+                <div align="right">Hora Inicio</div>
+              </td>
+              <td width="18%"> 
+                <div align="center">${h_ini}</div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="23%">Fec T&eacute;rmino</td>
+              <td width="32%">${f_ter}</td>
+              <td width="27%"> 
+                <div align="right">Hora T&eacute;rmino</div>
+              </td>
+              <td width="18%"> 
+                <div align="center">${h_ter}</div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="23%">Participaci&oacute;n</td>
+              <td width="32%">${tipo}</td>
+              <td width="27%">&nbsp;</td>
+              <td width="18%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="23%">Acci&oacute;n</td>
+              <td width="32%">${condicion}</td>
+              <td width="27%">&nbsp;</td>
+              <td width="18%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="23%">&nbsp;</td>
+              <td width="32%">&nbsp;</td>
+              <td width="27%">&nbsp;</td>
+              <td width="18%">&nbsp;</td>
+            </tr>
+          </form>
+        </table>
+      </div>
+      <img name="ventanaop_r2_c1" src="/images/Gestion/videoconf/ventanaop_r2_c1.jpg" width="432" height="267" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="267" border="0"></td>
+  </tr>
+  <tr> 
+    <td><img name="ventanaop_r3_c1" src="/images/Gestion/videoconf/ventanaop_r3_c1.jpg" width="13" height="33" border="0"></td>
+    <td><a href="javascript:document.form1.submit();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('ventanaop_r3_c2','','/images/Gestion/videoconf/ventanaop_r3_c2_over.jpg',1)"><img name="ventanaop_r3_c2" src="/images/Gestion/videoconf/ventanaop_r3_c2.jpg" width="110" height="33" border="0"></a></td>
+    <td><img name="ventanaop_r3_c3" src="/images/Gestion/videoconf/ventanaop_r3_c3.jpg" width="186" height="33" border="0"></td>
+    <td><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('ventanaop_r3_c4','','/images/Gestion/videoconf/ventanaop_r3_c4_over.jpg',1)"><img name="ventanaop_r3_c4" src="/images/Gestion/videoconf/ventanaop_r3_c4.jpg" width="109" height="33" border="0"></a></td>
+    <td><img name="ventanaop_r3_c5" src="/images/Gestion/videoconf/ventanaop_r3_c5.jpg" width="14" height="33" border="0"></td>
+    <td><img src="/images/Gestion/videoconf/spacer.gif" width="1" height="33" border="0"></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

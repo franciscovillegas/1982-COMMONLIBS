@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ponderacion de Perfiles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:14px;
+	top:11px;
+	width:305px;
+	z-index:3;
+}
+#Layer13 {
+	position:absolute;
+	left:185px;
+	top:325px;
+	width:12px;
+	height:29px;
+	z-index:10;
+}
+-->
+</style>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnAplicar(opcion){
+if(opcion == "salir"){
+	document.form.action="../servlet/WithSession?pHtm=ggd/menu/herr/menu_evacomp_herr.html";
+	document.form.submit();
+}else
+{
+if (document.form.procesos.value!=0)
+{
+	if(opcion == "abrir"){
+		if(confirm('&#191;Est&#225; seguro de Abrir el Proceso seleccionado')){
+			document.form.action="../servlet/abrirCerrarProceso?id_proceso="+document.form.procesos.value+"&cierra='s'";
+			document.form.submit();
+		}
+	}
+	if(opcion == "cerrar"){
+		if(confirm('&#191;Est&#225; seguro de Cerrar el Proceso seleccionado')){
+			document.form.action="../servlet/abrirCerrarProceso?id_proceso="+document.form.procesos.value+"&cierra='n'";
+			document.form.submit();
+		}	
+	}
+}else alert("Debe seleccionar un Proceso");
+}
+}
+
+function fnEnviar(opcion){
+	if(opcion == "CR_proceso"){
+		window.open('../servlet/crearProceso?','Crear','status=yes,width=345,height=350');
+	}
+	if(opcion == "grabar"){
+		form.action="../servlet/crearPerfil?txtAccion=CR"
+		form.submit();
+	}
+}
+
+function inicio(){
+<if REG == true && MSG !="">
+	alert('${MSG}');
+</if>
+<if REG == false && MSG !="">
+	alert('${MSG}');
+</if>
+<if proceso>
+<if procesos>
+	<list procesos as p>
+		<if proceso == p.id_proceso>
+         document.form.procesos.value='${p.id_proceso}';
+		</if>
+      </list>
+</if>
+</if>
+}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<body onLoad="inicio()" background="../servlet/Tool?images/ggd/competencias/proceso.jpg">
+  <div class="txt_gris_bold" id="Layer1"><strong>Procesos</strong></div>
+  <div id="Layer13">
+    <table width="100%" border="0">
+      <tr>
+        <td><a href="#" onClick="fnAplicar('abrir');return false;" ><img name="pperfiles_r13_c8" src="../servlet/Tool?images/images_ggd/ggd/botones/abrir_proc.gif" width="99" height="30" border="0" alt="ABRIR"></a></td>
+        <td><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerr_pro.gif" width="99" height="30" border="0" alt="CERRAR"></a></td>
+        <td><a href="#" onClick="fnEnviar('CR_proceso');return false;"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/proceso.gif" width="30" height="30" border="0" title="Crear Proceso" alt="CREAR"></a></td>
+        <td><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="pperfiles_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" title="Salir" alt="SALIR"></a></td>
+      </tr>
+    </table>
+</div>
+  <form name="form"  method="post">
+    <div id="Layer3" style="position:absolute; width:445px; height:282px; z-index:2; left: 13px; top: 32px;"> 
+      <select name="procesos" class="campo_texto">
+<option value="0">Seleccione Proceso</option>
+<if procesos>
+	<list procesos as p>
+        <option value="${p.id_proceso}">${p.proceso}</option>
+	</list>
+</if>
+</select>
+</div>
+  </form>
+</body>
+</html>

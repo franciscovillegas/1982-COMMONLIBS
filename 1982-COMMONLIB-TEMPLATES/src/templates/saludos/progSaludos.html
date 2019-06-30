@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">	
+		<title>.:: Administrador de Plantillas - Saludos ::.</title>
+
+		<link href="../servlet/Tool?omap=style/saludos/jquery.switchButton.css" rel="stylesheet" type="text/css">
+	
+  	
+	<script src="../servlet/Tool?omap=scripts/saludos/jquery.min.js"></script>
+    <script src="../servlet/Tool?omap=scripts/saludos/jquery-ui.min.js"></script>
+    <script src="../servlet/Tool?omap=scripts/saludos/jquery.switchButton.js"></script>
+    
+   	<link rel="stylesheet" href="../servlet/Tool?style/jquery-ui/jquery-ui.css">
+	<script src="../servlet/Tool?scripts/jquery-ui/1.9.1/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+
+	var edit = null;
+		
+
+		function grabar() {
+			document.form1.submit();
+		}
+		
+		function grabarProgramacion() {
+			console.log("Grabar Programacion");
+		
+			 $.ajax({
+			        url: '../servlet/EjeCore',  //Server script to process data
+			        type: 'POST',
+			        dataType: "json",
+			        data: {"claseweb" 	 	: "portal.com.eje.serhumano.saludos.admin.Saludos",
+			        	   "accion"	  	 	: "grabar",
+			        	   "thing" 			: "programacion",
+			        	   "idplantilla"	: $("#lstTipoTemplate").val(),
+			        	   "hora"	 	 	: $("#hora").val(),
+			        	   "minuto"		 	: $("#minuto").val(),
+			        	   "solounavez"	 	: $("#solounavez").val(),
+			        	   "estado"		 	: $("#estado").val(),
+			        	   "destinatarios"	: $("#destinatarios").val() }
+			 		,
+			        success: function(data) {
+						console.log("Programación guardada");
+						
+				    },
+				    complete : function() {
+				    	$("form[name='formOsho']")[0].reset();
+
+				    }
+			    });
+			 
+		}
+		
+		function previewTemplate(){
+
+			var selObj = document.getElementById('lstTemplate');
+			var index = selObj.selectedIndex;
+		 	var idTemplate = selObj.options[index].value;
+		 	var ddText = selObj.options[index].text;
+			
+		 
+			if(idTemplate != null) {
+				loadJSONforMain('../servlet/EjeCore?claseweb=portal.com.eje.serhumano.saludos.admin.Saludos',
+						'GET',{ "accion": "select", 
+								"thing": "preview", 
+								"idTemplate":idTemplate},
+						'html',
+						function(data){
+							var obj = jQuery.parseJSON(data);
+							var str = "";
+							
+							$.each(obj, function(k,v){
+								str += ("<img src=../temporal/filesUnicos/"+ v.name_unic +"> <br>");
+								str += ("<p>"+ v.texto_template +"</p>");
+
+							 });
+							
+							$("#divPreview").html(str);
+							
+						});
+			}
+		
+		}
+
+		
+		$(function() {
+			loadTemplates(llenaComboProgramacion);
+			$( "#fecInicio" ).datepicker();
+			$( "#fecTermino" ).datepicker();
+			
+	    	$('#chkActivar.chkStyle input, #chkEnviarEquipoFestejado.chkStyle input, #chkEnviarFestejado.chkStyle input').switchButton({
+		    	on_label: 'YES',
+		        off_label: 'NO',
+		        checked: true,
+		        width: 70,
+		        height: 15,
+		        button_width: 40
+			});
+		})
+		
+		
+		
+	</script>
+
+
+	
+	</head>
+	
+	<body>
+
+	<form name="formOsho" action="EjeCore" enctype='multipart/form-data'> <!--  -->
+
+
+		<div id="divMainAdminTemplate" style="display: table;">
+			<div style="display: table-row;" >
+					<div id="divMiddleAdminTemplate" style="display: table-cell;vertical-align: top;" >
+		
+						<table border="0" width="100%;">
+							<caption>Caption Table Programación de Saludos </caption>
+							<tr>
+								<td width="250px">Seleccione un tipo una plantilla</td>
+								<td width="10px">:</td>
+								<td width="200px">
+									<select id="lstTipoTemplate" style="width:100%;" >
+										
+									</select>
+								</td>
+								<td rowspan="8" width="400px">
+									<div id="divPreview">
+		
+									</div>
+		
+									
+								</td>
+							</tr>
+							<!-- 
+							<tr>
+								<td>Fecha de Inicio</td>
+								<td>:</td>
+								<td>
+									<input type="text" id="fecInicio" maxlength="10">
+								</td>
+							</tr>
+
+							<tr>
+								<td>Fecha de Término</td>
+								<td>:</td>
+								<td>
+									<input type="text" id="fecTermino" maxlength="10">
+								</td>
+							</tr>
+							-->
+							
+							<tr>
+								<td>Hora de envío</td>
+								<td>:</td>
+								<td>
+									<select id="hora">
+										<option value="0">00</option>
+										<option value="1">01</option>
+										<option value="2">02</option>
+										<option value="3">03</option>
+										<option value="4">04</option>
+										<option value="5">05</option>
+										<option value="6">06</option>
+										<option value="7">07</option>
+										<option value="8">08</option>
+										<option value="9">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+									</select> 
+									 : 
+									<select id="minuto">
+										<option value="00">00</option>
+										<option value="5" >05</option>
+										<option value="10">10</option>
+										<option value="15">15</option>
+										<option value="20">20</option>
+										<option value="25">25</option>
+										<option value="30">30</option>
+										<option value="35">35</option>
+										<option value="40">40</option>
+										<option value="45">45</option>
+										<option value="50">50</option>
+										<option value="55">55</option>
+									</select> 
+									
+								</td>
+							</tr>
+
+							<!-- 
+							<tr>
+								<td>Enviar saludo a festejado</td>
+								<td>:</td>
+								<td>
+									<div class="chkStyle" id="chkEnviarFestejado">
+									  <input type="checkbox" value="1" checked id="chkActive">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Enviar saludo a equipo del festejado</td>
+								<td>:</td>
+								<td>
+									<div class="chkStyle" id="chkEnviarEquipoFestejado">
+									  <input type="checkbox" value="1" checked id="chkActive">
+									</div>
+								</td>
+							</tr>
+							 -->
+							<tr>
+								<td>¿Solo una vez?</td>
+								<td>:</td>
+								<td>
+									<div class="chkStyle" id="chkActivar">
+									  <input type="checkbox" value="1" checked id="solounavez" >
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Estado de Activaci&oacute;n</td>
+								<td>:</td>
+								<td>
+									<div class="chkStyle" id="chkActivar">
+									  <input type="checkbox" value="1" checked id="estado">
+									</div>
+								</td>
+							</tr>
+							
+						
+							
+						</table>
+					
+					</div>	
+					<div  style="display: table-cell;" >
+						Destinatarios:
+						<select id="destinatarios" size="14" style="width: 300px">
+							<option value="1">Para : Victoria y Nicole</option>
+							<option value="2">Para : Todo el personal </option>
+							<option value="3">Para : Todas las nuevas contrataciones </option>
+							<option value="4">Para : Todos los cumpleañeros </option>
+						</select>
+					</div>
+				</div>	
+				<div style="display: table-row;">
+					<div style="display: table-cell;" align="center">
+							
+					            	<input type="button" value="Crear" onclick="grabarProgramacion();" ></input>
+					            
+					</div>
+				</div>
+		</div>
+		
+		
+	</form>
+
+	</body>
+	
+</html>

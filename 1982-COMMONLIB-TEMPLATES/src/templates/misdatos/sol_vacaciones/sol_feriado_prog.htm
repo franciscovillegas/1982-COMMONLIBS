@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>SOLICITUD DE FERIADO LEGAL PROGRESIVO</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/RangoFechas.js"></script>
+<script language="JavaScript">
+<!--
+function ValidaForm() { //v2.0
+/* var dd=document.form1.diad.value;
+ var md=document.form1.mesd.value;
+ var yd=document.form1.yeard.value;
+var dh=document.form1.diah.value;
+ var mh=document.form1.mesh.value;
+ var yh=document.form1.yearh.value;
+
+if (RangoValido(dd,md,yd,dh,mh,yh)){
+   //alert("Enviar!!!");
+   
+}else
+   alert("Rango de Fechas no v&#225;lido.");*/
+
+if (document.form1.dias.value!=""){
+   //var mensaje=confirm("&#191;Desea Imprimir esta Solicitud?");
+   //if (mensaje){//----Imprimir-----------------
+	//Imprimir();  
+    document.form1.submit();
+   //}else
+     // windiw.close();
+}else
+   alert("Ingrese cantidad de d&#237;as solicitados."); 
+}
+
+function Imprimir() {
+	LayerPrint.style.visibility="hidden";
+    printPage();
+    LayerPrint.style.visibility="visible";
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <form name="form1" action="../servlet/com.eje.serhumano.misdatos.sol_vacaciones.S_EnviaSolicitud">
+    <tr> 
+      <td valign="top" height="82" colspan="2">
+        <table width="100%" border="0" align="center">
+          <tr> 
+            <td width="91%"> 
+              <div align="left"> 
+                <table width="48%" border="0" cellspacing="1" cellpadding="2" align="left">
+                  <tr> 
+                    <td> 
+                      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><b><img src="../servlet/Tool?images/logos/logo.jpg" width="115" height="66"></b></font></i></font></div>
+                    </td>
+                  </tr>
+                </table>
+                <font face="Arial, Helvetica, sans-serif" size="2"><i><font face="Times New Roman, Times, serif"><b><br>
+                </b></font></i></font> <font face="Arial, Helvetica, sans-serif" size="2"><font face="Times New Roman, Times, serif"><b> 
+                </b></font></font></div>
+            </td>
+            <td valign="top" width="9%"> 
+              <div id="LayerPrint" style="position:absolute; width:51px; height:39px; z-index:1; visibility: visible"><a href="#"><img src="../servlet/Tool?images/botones/imprimir_up.jpg" alt="IMPRIMIR" name="Image1" width="76" height="43" border="0" onClick="Imprimir()"></a></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="32"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b><font face="Verdana, Arial, Helvetica, sans-serif">SOLICITUD 
+          DE COMPENSACION DE DIAS DE FERIADO LEGAL PROGRESIVO <b>N&ordm; ${id}</b></font></b></font></div>
+      </td>
+    </tr>
+    <if (tipo_sol)> 
+    <tr> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="19%"><font face="Arial, Helvetica, sans-serif" size="2"><b>UNIDAD/SUCURSAL:</b></font></td>
+            <td width="81%"><font face="Arial, Helvetica, sans-serif" size="2">${unidad}</font></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2"> 
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="2">${fecha}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" height="12"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">Por intermedio 
+        de la presente vengo en solicitar al Banco, negociar la compensaci&oacute;n 
+        en dinero de 
+        <input type="text" name="dias" size="3" maxlength="2">
+        dias de vacaciones que exceden de los 15 d&iacute;as h&aacute;biles base 
+        que me corresponden de acuerdo al art&iacute;culo 67 del C&oacute;digo 
+        del Trabajo, para lo cual cuento desde ya, con la autorizaci&oacute;n 
+        de mi Jefe Directo.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr> 
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2">El trabajador 
+        que suscribe declara haber recibido por parte del Banco, a entera conformidad, 
+        el pago de los d&iacute;as que se acord&oacute; negociar.</font></td>
+    </tr>
+    <tr> 
+      <td colspan="2" height="70">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+          Firma 
+          <input type="hidden" name="rut_dest" value="${rut_dest}">
+          <input type="hidden" name="tipo_sol" value="${tipo_sol}">
+          </font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"> 
+          Firma </font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_jefe}</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${nom_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_label}</font></div>
+      </td>
+      <td width="53%"> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">${rut_trabajador}</font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="47%" height="22"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+      <td width="53%" height="22"><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="33"> 
+        <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">La presente solicitud 
+          s&oacute;lo ser&aacute; v&aacute;lida una vez autorizada por el <b>DEPTO 
+          PROCESOS DE RR.HH.<br>
+          Nota: 
+          </b>La Solicitud 
+          s&oacute;lo ser&aacute; procesada una vez impresa.</font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"> 
+        <div align="center"> 
+          <input type="button" name="Button" value="Enviar" onClick="ValidaForm()">
+        </div>
+      </td>
+    </tr>
+    <else> 
+    <tr> 
+      <td colspan="2"> 
+        <div align="center"> <b><font face="Arial, Helvetica, sans-serif"> <if (!error)>No 
+          hay jefe Directo activo.<else>El Jefe Directo no existe como empleado</if></font></b> 
+        </div>
+      </td>
+    </tr>
+    </if> 
+  </form>
+</table>
+</body>
+</html>

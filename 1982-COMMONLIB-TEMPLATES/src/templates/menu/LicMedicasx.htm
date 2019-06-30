@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<TITLE>Licencias M&eacute;dicas</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.textB {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #006666}
+.texto {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+}
+-->
+</style>
+
+<!--
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="/DataFolder/script/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>
+-->
+
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+.Estilo2 {font-family: Verdana, Arial, Helvetica, sans-serif}
+.Estilo3 {font-size: 12px}
+.Estilo5 {color: #CC0000}
+.Estilo6 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: #CC0000; }
+.Estilo7 {	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	border: none;
+}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</HEAD>
+<BODY background="../servlet/Tool?images/new/main/main_solo.jpg" text="#000000" style="background-repeat:no-repeat" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+  <div id="Layer2" style="position:absolute; left:525px; top:97px; width:129px; height:20px; z-index:2"><a href="javascript:;" onClick="MM_openBrWindow('../servlet/Tool?htm=mail/mail_licencias.html','','width=500,height=350')"><img src="../servlet/Tool?images/new/botones/actaualizar.gif" width="119" height="22" border="0"></a></div>
+  <table width="661"  border="0">
+    <tr>
+      <td height="384" align="center" valign="top">
+      <table border="0" width="100%">
+        <tr align="center">
+          <td width="100%" colspan="4" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><b><img src="../servlet/Tool?images/new/titulos/licencias.jpg" width="436" height="29"></b></font></td>
+        </tr>
+</table>
+
+
+      <table width="99%" border="0" cellpadding="0" cellspacing="1" bgcolor="#A9BED3" class="Estilo7">
+        <tr bgcolor="#DBE2EC">
+          <td colspan="4"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr class="Estilo7">
+              <td width="19%" align="right" valign="top">AFP</td>
+              <td valign="top" width="37%" >:${afp}</td>
+              <td width="11%" align="right" valign="top">ISAPRE</td>
+              <td valign="top" width="33%">:${isapre}</td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr bgcolor="#DBE2EC">
+          <td width="17%" bgcolor="#FFFFCC">Run:</td>
+          <td width="83%" colspan="3">${rut_trab}</td>
+        </tr>
+        <tr bgcolor="#DBE2EC">
+          <td bgcolor="#FFFFCC">Nombre: </td>
+          <td colspan="3">${nombre}</td>
+        </tr>
+        <tr bgcolor="#DBE2EC">
+          <td height="6" bgcolor="#FFFFCC">Fecha Contrato:</td>
+          <td height="6" colspan="3">&nbsp;</td>
+        </tr>
+        <tr bgcolor="#DBE2EC">
+          <td height="6" bgcolor="#FFFFCC">F. Antiguedad:</td>
+          <td height="6" colspan="3">&nbsp;</td>
+        </tr>
+        <tr bgcolor="#DBE2EC">
+          <td height="6" bgcolor="#FFFFCC">Centro Costo: </td>
+          <td height="6" colspan="3">${ccosto}</td>
+        </tr>
+      </table>
+      <div id="Layer1" style="position:absolute; width:656px; height:257px; z-index:1; left: 3px; top: 129px; overflow: auto; visibility: visible">
+  <table width="98%" border="0" cellpadding="0" cellspacing="1" bgcolor="#A9BED3" class="texto">
+    <tr bgcolor="#FFFFCC">
+      <td width="10%">Inicio</td>
+      <td width="10%">Termino</td>
+      <td width="13%">Grupo<br>
+        Enfermedad</td>
+      <td width="1%">D&iacute;as</td>
+      <td width="13%">Tipo de <br>
+        Licencia</td>
+      <td width="10%">Rut <br>
+        Profesional</td>
+      <td width="15%">Profesional</td>
+      <td width="18%">Especialidad Profesional</td>
+      <td width="10%">Mes <br>
+        Descuento </td>
+    </tr>
+    <if !(licencias)>
+    <tr bgcolor="#E0E4ED">
+      <td height="2" colspan="9">No registra Licencias</td>
+    </tr>
+    </if> <list licencias	as l>
+    <tr bgcolor="#E0E4ED">
+      <td height="2"> ${l.inicio}</td>
+      <td height="2"> ${l.termino}</td>
+      <td height="2"> ${l.grupo}</td>
+      <td height="2"> ${l.dias}</td>
+      <td height="2"> ${l.tipo_licencia}</td>
+      <td height="2"> ${l.rut_profesional}</td>
+      <td height="2"> ${l.profesional}</td>
+      <td height="2"> ${l.espe_profesional}</td>
+      <td>Diciembre</td>
+    </tr>
+    </list>
+  </table>
+</div></td>
+    </tr>
+  </table>
+
+</BODY>
+</HTML>

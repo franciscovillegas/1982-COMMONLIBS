@@ -1,0 +1,116 @@
+ <HTML>
+<HEAD>
+<TITLE>Editar valores</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+function OcultarLayer(){
+<list detalle as d> 
+	MM_showHideLayers('Layer${d.item}','','hide');
+</list> 
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+// -->
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<form name="form1" method="post" action="../servlet/ManIndicadores" target="_self">
+  <table width="500" height="300" border=0 cellpadding=0 cellspacing=0>
+    <tr> 
+      <td align="center" valign="top"><table width="100%" align="center" class="texto_negro">
+          <tr>
+            <td height="30" colspan="2" align="center" class="texto_negro_bold">Mantenci&oacute;n Indicadores </td>
+          </tr>
+          <tr> 
+            <td width="122">Nombre</td>
+            <td width="369"> 
+            <input name="nombre" type="text" disabled="true" class="texto_negro_bold_chico" value="${nom}" size="50" maxlength="200">            </td>
+          </tr>
+          <tr> 
+            <td width="122">Glosa</td>
+            <td width="369"> 
+            <input name="glosa" type="text" class="texto_negro_bold_chico" value="${glosa}" size="50" maxlength="200" >            </td>
+          </tr>
+          <tr> 
+            <td width="122">F&oacute;rmula</td>
+            <td width="369"> 
+            <input name="formula" type="text" class="texto_negro_bold_chico" value="${formula}" size="50" maxlength="200" >            </td>
+          </tr>
+          <tr> 
+            <td width="122">Pol&iacute;tica</td>
+            <td width="369"> 
+            <input name="politica" type="text" class="texto_negro_bold_chico" value="${politica}" size="50" maxlength="200" >            </td>
+          </tr>
+          <tr> 
+            <td width="122">Desc. Alerta Normal</td>
+            <td width="369"> 
+            <input name="descf" type="text" class="texto_negro_bold_chico" value="${descf}" size="50" maxlength="200">            </td>
+          </tr>
+          <tr> 
+            <td width="122">Desc. Alerta Sensible</td>
+            <td width="369"> 
+            <input name="descm" type="text" class="texto_negro_bold_chico" value="${descm}" size="50" maxlength="200">            </td>
+          </tr>
+          <tr>
+            <td width="122">Desc. Alerta Cr&iacute;tica</td>
+            <td width="369"> 
+            <input name="descs" type="text" class="texto_negro_bold_chico" value="${descs}" size="50" maxlength="200">            </td>
+          </tr>
+        </table>
+        <table width="80%">
+          
+          <tr>
+            <td width="50%" height="37" align="center"><a href="../servlet/ListaIndicadores?gral_id=${gral_id}" target="_self"><img name="volver" border="0" src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24"></a></td>
+            <td align="center"><a href="javascript:;" target="_self" onClick="document.form1.submit(); return false;"><img name="aceptar" border="0" src="../servlet/Tool?images/Gestion/botones/aceptar.gif" width="120" height="24" alt="Aplica los Cambios Realizados"></a></td>
+          </tr>
+        </table>
+        <input type="hidden" name="queAct" value="Descripcion">
+          <input type="hidden" name="item" value="${item}">
+          <input type="hidden" name="desde" value="${desde}">
+          <input type="hidden" name="hasta" value="${hasta}">
+          <input type="hidden" name="inf1" value="${inf1}" size="10">
+          <input type="hidden" name="inf2" value="${inf2}" size="10">
+          <input type="hidden" name="med1" value="${med1}" size="10">
+          <input type="hidden" name="med2" value="${med2}" size="10">
+          <input type="hidden" name="sup1" value="${sup1}" size="10">
+          <input type="hidden" name="sup2" value="${sup2}" size="10">
+          <input type="hidden" name="id_agrup" value="${id_agrup}" size="10">
+          <input type="hidden" name="agrup" value="${agrup}" size="10">
+          <input type="hidden" name="gral_id" value="${gral_id}">
+      </td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

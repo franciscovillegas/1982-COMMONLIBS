@@ -1,0 +1,148 @@
+  <html>
+<head>
+<title>Mantener Motivos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+function Mostrar(layer) { //v3.0
+       <list detalle as d> 
+        eval('Layer'+'${d.id}'+'.style.visibility="hidden"');
+      </list>
+         eval('Layer'+layer+'.style.visibility="visible"');
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function Captura(rutv,rutc) { //v2.0
+  document.form1.rut_v.value=rutv;
+document.form1.rut_c.value=rutc;
+//alert("rut_v: "+rutv+"\nrut_c: " +rutc);
+//document.form1.submit();
+
+}
+
+function Chequea(){
+var grupo="";
+var motivo="";
+var valor=false;
+	<list detalle as d>
+	   grupo=document.form1.${d.id}.value;
+	   <list d.datos as g>
+		 motivo=document.form1.${g.m_id}.value;
+		 if ((grupo!="")&&(motivo!="")){
+			 //alert("Bien!!Submit()!");
+			valor=true;//document.form1.submit();
+		 }
+		 else{
+		   alert("Ingrese las descripciones para el grupo: ${d.grupo}");
+		   return 1;
+		  }
+	   </list>
+	</list>
+
+if (valor) document.form1.submit();
+}
+
+function ValidaVal() { //v2.0
+var x=0;
+var val=false;
+var largo=document.form1.valor.length;
+	if (largo){
+	    for (x=0;x<document.form1.valor.length;x++){
+		  if (document.form1.valor[x].checked){
+			val=true;
+		   break;
+		  }
+		}
+	}else{
+		if (document.form1.valor.checked)
+			val=true;
+	}
+   	if (val)
+	  document.form1.submit();
+    else
+      alert("Seleccione la salida a registrar.");
+ 
+
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<table width="500" border="0" cellspacing="0" cellpadding="0" height="300">
+  <form name="form1" method="post" action="../servlet/ManMotivos">
+  <tr> 
+      <td valign="top"> 
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr> 
+						
+            <td height="20" align="center" valign="top" class="texto_negro_bold">Mantener Motivos</td>
+					  </tr>
+		</table>
+					
+        <table width="100%" height="283" align="center">
+          <tr>
+            <td width="290"> <list detalle as d> <span id="Layer${d.id}" style="position:absolute; width:264px; height:255px; z-index:1; left: 230px; top: 20px; visibility: visible; overflow: visible"> 
+                <table width="392" border="0" cellspacing="1" cellpadding="0" height="46" class="blanco12B">
+                  <tr> 
+                    <td class="texto_negro_bold">Descripci&oacute;n Grupo <span class="tabla_beige" id="Layer4" style="position:absolute; width:257px; height:185px; z-index:5; left: 1px; top: 59px; overflow: auto"> 
+                    <table width="100%" height="26">
+                        <list d.datos as g> 
+                          <tr> 
+                            <td height="23"> 
+                              <input name="${g.m_id}" type="text" class="texto_negro" value="${g.m_desc}" size="30" maxlength="70">                            </td>
+                          </tr>
+                        </list> 
+                      </table>
+                    </span></td></tr>
+                  <tr>
+                    <td height="22"><input name="${d.id}" type="text" class="texto_negro" value="${d.grupo}" size="30" maxlength="70"></td>
+                  </tr>
+                  <tr> 
+                    <td height="22" class="texto_negro_bold"> Motivos asociados</td>
+                  </tr>
+                </table>
+                </span>
+              </list> 
+              <div class="texto_negro_bold" id="Layer1" style="position:absolute; width:212px; height:13px; z-index:3; left: 7px; top: 22px; visibility: visible">Grupos de Motivos</div>
+              <span id="Layer3" style="position:absolute; width:216px; height:237px; z-index:4; left: 8px; top: 37px; overflow: visible; visibility: visible"> 
+              <select name="grupo" size="16" class="texto_negro" style="width=200" onChange="Mostrar(this.value)" >
+                  <list detalle as d> 
+                  <option value="${d.id}">${d.grupo}</option>
+                  </list> 
+              </select>
+              </span>            </td>
+            <td width="347">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="136" colspan="2" valign="bottom">            <a href="../servlet/NuevoMotivo"><img name="Image4" border="0" src="../servlet/Tool?images/Gestion/botones/nuevo.gif" width="120" height="24"></a><a href="javascript:;" onClick="Chequea();return false;"> <img name="Image3" border="0" src="../servlet/Tool?images/Gestion/botones/mantener.gif" width="120" height="24"></a>            </td>
+          </tr>
+        </table>
+        <div id="Layer2" style="position:absolute; width:123px; height:13px; z-index:2; left: 373px; top: 272px; visibility: visible"><a href="Tool?htm=Gestion/RegistroVisitas/frameset.htm" target="_parent"><img name="Image2" border="0" src="../servlet/Tool?images/Gestion/botones/volver.gif" width="120" height="24"></a></div>
+        
+      </td>
+  </tr></form>
+</table>
+<script>
+   //alert("Largo: "+document.form1.grupo.length);
+   if (document.form1.grupo.length>0){
+      document.form1.grupo.value=document.form1.grupo.options[0].value;
+      Mostrar(document.form1.grupo.value);
+   }
+
+</script>
+</body>
+</html>

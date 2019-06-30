@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>Subir Fotografias</title>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet"
+  type="text/css">
+<script type="text/javascript" language="JavaScript">
+<!--
+boxct=0;
+
+function dispMoreFiles() {
+   var upbox = "<input type='file' class='detalleTabla' name='userfile' size=50> <br>";
+   var updiv = document.getElementById("morefiles");
+   if (boxct<20) {
+       var addhtml = updiv.innerHTML+upbox;
+       updiv.innerHTML = addhtml;
+       boxct++;
+   } else {
+       document.getElementById("operation").style.background = "#cccccc";
+       document.getElementById("operation").disabled = true;
+   }
+}
+-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:0px;
+	top:71px;
+	width:666px;
+	height:323px;
+	z-index:1;
+	overflow: auto;
+}
+-->
+</style>
+</head>
+<body topmargin="0" leftmargin="0">
+<form name="form1" action="../servlet/UploadingImagesUploadServlet"
+  enctype='multipart/form-data' method="post">
+<table width=600>
+  <tr>
+    <td align=center>
+    <table width="100%" border=0 cellpadding="0" cellspacing=0
+      class="geohead_fm" cellpaddding=0>
+      <tr>
+        <td width="21%" id="geologo"><img
+          src="../servlet/Tool?images/new/logos/${GetImagenEmpresa("logo.gif")}" width="152" height="61"></td>
+        <td width="79%" align="center" class="TITULO_MODULOS">Ingresar
+        fotograf&iacute;as del personal</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<span id="Layer1">
+<table width=600 height="340">
+  <tr>
+    <td valign=top>
+    <table width="100%" height="328" border="0" cellpadding="0"
+      cellspacing="0" class="input">
+      <tr>
+        <td height="328">
+
+        <p>Seleccione la imagen a subir desde su disco duro, u otra
+        unidad en la cual se encuentra el archivo</p>
+        <p><strong>El archivo debe tener las siguientes
+        caracter&iacute;sticas: </strong>
+        <ul>
+        <list errors as error>                                         
+          <p>
+            <div class="error">           
+            ${error}
+           </div>
+          </p>              
+        </list> 
+        <list messages as message>                                         
+          <p>
+            <div class="message">           
+            ${message}
+           </div>
+          </p>                 
+        </list>                 
+        </ul>
+                
+        <ul>
+          <div class="descriptiveText">
+          <li>Dimensiones: 81x62 px</li>
+          <li>Peso: no superior a 70 Kb</li>
+          <li>Nombre: debe ser el RUN sin puntos, sin guion ni
+          digito verificador. (Ej: 15.589.695-K ser&aacute;
+          15589695.jpg)</li>
+          <li>Extensi&oacute;n: s&oacute;lo se aceptan archivos
+          jpg, con min&uacute;sculas (no se aceptan JPG, jpeg, JPEG,
+          gif, bmp, tiff, png, etc.)<br>
+          <br>
+          <font color=red><b>Nota:</b></font> Los archivos no pueden
+          contener espacios. El m&aacute;ximo por subida es de 1MB.
+          </div>
+          <br>
+          <div>
+          <center>
+          <input name="userfile" type="file" class="detalleTabla"
+            size=50> <br>
+          <input name="userfile" type="file" class="detalleTabla"
+            size=50> <br>
+          <input name="userfile" type="file" class="detalleTabla"
+            size=50> <br>
+          <input name="userfile" type="file" class="detalleTabla"
+            size=50> <br>
+          <input name="userfile" type="file" class="detalleTabla"
+            size=50> <br>
+          <div id="morefiles">
+          </center>
+          </div>
+          </div>
+          </li>
+        </ul>
+        <table width="41%" align="center">
+          <tr>
+            <td width="43%"><input name="operation" type="button"
+              class="layer1" id="operation"
+              onClick="javascript:dispMoreFiles();"
+              value="Agregar mas fotos"></td>
+            <td width="36%"><input name="op-upload" type="submit"
+              class="layer1" value="Subir Archivos"></td>
+            <td width="21%"><input name="reset" type="reset"
+              class="layer1" value="Limpiar"></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</span>
+</form>
+</body>
+</html>
+

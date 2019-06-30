@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<TITLE>Formaci&oacute;n</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<!--
+<script language="JavaScript" src="/DataFolder/script/ExisteFoto.js">
+</script>
+<link rel="stylesheet" href="/DataFolder/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="/DataFolder/script/opcion_link.js">
+</script>
+-->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY leftmargin="0" topmargin="0">
+
+<table width="662
+" >
+  <tr>
+    <td height="47" align="center" valign="top" class="TITULO_MODULOS">Datos Formaci&oacute;n </td>
+  </tr>
+</table>
+<div id="formacion" style="position:absolute; left:6px; top:39px; width:151px; height:165px; z-index:2; visibility: visible;">
+<div id="LayerFormProf" style="position:absolute; width:629px; height:287px; z-index:1; ; overflow: auto; left: 8px; top: 39px; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+    <tr class="titulo">
+      <td width="400">
+      <div align="center">T&iacute;tulo</div></td>
+      <td width="350">
+      <div align="center">Organismo Formador </div></td>
+      <td width="50">
+      <div align="center">Condici&oacute;n</div></td>
+    </tr>
+    <if !(profesional)  || (rut) == "5196456">
+    <tr>
+      <td colspan="3"> <font class="detalleTablaChico">Sin antecedentes de su formaci&oacute;n.</font></td>
+    </tr>
+    <else> <list profesional as p>
+    <tr class="detalleTablaChico">
+      <td width="400"> ${p.titulo}</td>
+      <td width="350"> ${p.organismo}</td>
+      <td width="50" align="center"> <switch (p.estado)> <case "T">Titulado<break> <case "E">Egresado<break> <default>${p.estado}<break> </switch> </td>
+    </tr>
+    </list> </if>
+  </table>
+</div>
+<img src="../servlet/Tool?images/new/main/carpeta_formacion.jpg" width="650" height="339" border="0" usemap="#Map2">
+<map name="Map2">
+  <area shape="rect" coords="152,4,258,26" href="javascript:;" onClick="MM_showHideLayers('formacion','','hide','LayerFormProf','','hide','cursos','','show','LayerPerfecInt','','show','Layer1','','show')">
+</map>
+</div>
+<div id="cursos" style="position:absolute; left:6px; top:39px; width:91px; height:108px; z-index:3; visibility: hidden;">
+<div id="LayerPerfecInt" style="position:absolute; width:633px; height:272px; z-index:1; ; left: 8px; top: 60px; visibility: hidden;">
+  <table width="98%" border="0" cellpadding="0" cellspacing="1" class="tablas">
+    <tr>
+      </tr>
+    <if !(cursos)  || (rut) == "5196456">
+    <tr>
+      <td colspan="6">No ha realizado cursos de perfeccionamiento.</td>
+    </tr>
+    <else> <list cursos as c>
+    <tr>
+      <td width="30%"> <div align="center">${c.curso}</div></td>
+      <td width="15%"> <div align="center">${c.fecha_inicio}</div></td>
+      <td width="15%"> <div align="center">${c.fecha_termino}</div></td>
+      <td width="20%"> <div align="center">${c.organismo}</div></td>
+      <td width="10%"> <div align="center">${c.nota_aprob}</div></td>
+      <td width="10%"> <div align="center">${c.concepto_aprob}</div></td>
+    </tr>
+    </list> </if>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:8px; top:33px; width:622px; height:10px; z-index:4; visibility: hidden;">
+  <table width="100%"  border="0" cellpadding="0" cellspacing="1">
+    <tr class="titulo">
+      <td width="30%">
+      <div align="center"><strong>Curso</strong></div></td>
+      <td width="15%">
+      <div align="center">Fecha Inicio</div></td>
+      <td width="15%">
+      <div align="center">Fecha Termino </div></td>
+      <td width="20%">
+      <div align="center">Organismo Instructor </div></td>
+      <td width="10%">
+      <div align="center">Nota <br>
+        Aprob. </div></td>
+      <td width="10%">
+      <div align="center">Concepto <br>
+        Aprobaci&oacute;n</div></td>
+  </table>
+</div>
+<img src="../servlet/Tool?images/new/main/carpeta_cursos.jpg" width="650" height="339" border="0" usemap="#Map">
+<map name="Map">
+  <area shape="rect" coords="10,3,124,32" href="javascript:;" onClick="MM_showHideLayers('formacion','','show','LayerFormProf','','show','cursos','','hide','LayerPerfecInt','','hide','Layer1','','hide')">
+</map>
+</div>
+</BODY>
+</HTML>

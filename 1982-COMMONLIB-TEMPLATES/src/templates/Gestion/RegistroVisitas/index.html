@@ -1,0 +1,66 @@
+  <html>
+<head>
+<title>Visita</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+function inicio(){
+	if (parent.msg != "")
+		alert("Fallo en la Autenticaci&#243;n\n\n${mensaje}\n${intentos} Intento(s)");
+	document.form1.intentos.value="${intentos}";
+	document.form1.rut.focus();
+}
+</script>
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri Nov 23 16:24:47 GMT-0300 (Hr. de ver. del Pac&#237;fico SA) 2001-->
+</head>
+<body bgcolor="00173F" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="inicio();" background="../servlet/Tool?images/DataFolder/Visitas/visita.JPG">
+<table border="0" cellpadding="0" cellspacing="0" width="770">
+  <!-- fwtable fwsrc="Untitled" fwbase="login.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr> 
+    <td><img src="../servlet/Tool?images/DataFolder/anexos/spacer.gif" width="172" height="1" border="0"></td>
+    <td><img src="../servlet/Tool?images/DataFolder/anexos/spacer.gif" width="52" height="1" border="0"></td>
+    <td><img src="../servlet/Tool?images/DataFolder/anexos/spacer.gif" width="75" height="1" border="0"></td>
+    <td><img src="../servlet/Tool?images/DataFolder/anexos/spacer.gif" width="28" height="1" border="0"></td>
+    <td><img src="../servlet/Tool?images/DataFolder/anexos/spacer.gif" width="443" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="5"  valign="top"> 
+      <form name="form1" method="post" action="../servlet/LeerUsuario" target="_parent" >
+        <div id="Layer1" style="position:absolute; width:263px; height:84px; z-index:1; left: 6px; top: 112px"> 
+          <table width="64%" border="0" cellspacing="0" cellpadding="0" align="right">
+            <tr> 
+              <td> 
+                <input type="text" name="rut" size="14" maxlength="14">
+              </td>
+            </tr>
+            <tr> 
+              <td>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td> 
+                <input type="password" name="clave" size="14" maxlength="14">
+              </td>
+            </tr>
+            <tr> 
+              <td>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td align="right"><a href="javascript:document.form1.submit()"><img name="login_r4_c3" src="../servlet/Tool?images/DataFolder/anexos/login_r4_c3.jpg" width="103" height="32" border="0"></a></td>
+            </tr>
+          </table>
+        </div>
+        <input type="hidden" name="modo" value="4">
+        <input type="hidden" name="intentos" value="">
+      </form>
+    </td>
+  </tr>
+  <tr> 
+    <td rowspan="2" colspan="2">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td rowspan="2" >&nbsp;</td>
+  </tr>
+  <tr> 
+    <td colspan="2" >&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

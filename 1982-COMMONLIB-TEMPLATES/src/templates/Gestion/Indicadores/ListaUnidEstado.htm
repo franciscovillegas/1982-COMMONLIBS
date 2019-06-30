@@ -1,0 +1,193 @@
+ 
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+var layerVistaAct ="";
+function OcultarLayer(){
+	if (layerVistaAct != "")
+		MM_showHideLayers('Layer'+layerVistaAct,'','hide');
+}
+
+function VerLayer(cual){
+	OcultarLayer();
+	MM_showHideLayers('Layer'+cual,'','show');
+	layerVistaAct = cual;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+MM_preloadImages('/images/Gestion/botones/buscar_over.jpg');
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/ventanas.js">
+</script>
+
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+-->
+</Style>
+<table width="551" border="0" cellspacing="2" cellpadding="0" height="315" align="center">
+  <tr> 
+    <td colspan="2" height="16" valign="top"> <span class="textB">Indicador:</span><span class="texto">${item}</span></td>
+  </tr>
+  <tr> 
+    <td valign="top" height="148" width="547"> 
+      <div id="Layer1" style="position:static; z-index:1; layer-background-color: #FFCF75; border: 1px none #000000; overflow: auto; width: 100%; height: 150px"> 
+        <table border="0" cellspacing="1" cellpadding="0" width="100%">
+          <tr bgcolor="#CCCCCC"> 
+            <td colspan="4"> 
+            <div align="center" class="Estilo1"><font size="1"><b><font face="Arial, Helvetica, sans-serif">Unidad</font></b></font></div>            </td>
+            <td width="59"> 
+            <div align="center" class="Estilo1"><font size="1"><b><font face="Arial, Helvetica, sans-serif">Valor</font></b></font></div>            </td>
+            <td width="71"> 
+              <div align="center" class="Estilo1"><font size="1"><b><font face="Arial, Helvetica, sans-serif">Impacto 
+            Relativo </font></b></font></div>            </td>
+          </tr>
+          <if !(unidades)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td colspan="6"><font face="Arial, Helvetica, sans-serif" size="1"><i><font size="2">No 
+              existen unidades en este estado...</font></i></font></td>
+          </tr>
+          <else> <list unidades as u> <if (u.unid_id) == (unid_id)> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="29"><font face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="VerLayer('${u.unid_id}')"><img src="/images/Gestion/semaforo/${u.foto}" width="27" height="30" border="0" alt="${u.quetramo}"></a></font></td>
+            <td width="16"><font face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="VentEncargado('${u.unid_id}', '${u.unid_desc}', '${peri}'); return false"><img src="/images/Gestion/botones/encargado.gif" width="19" height="24" alt="Encargado de la unidad" border="0"></a></font></td>
+            <td width="208"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"> 
+              ${u.unid_desc}</font></td>
+            <td width="21"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"><a href="/servlet/Indicador.HistoriaIndicador?item=${indic}&tipo=${tipo_indic}&unidad=${u.unid_id}&unidad_desc=${u.unid_desc}&peri=${peri}"><img src="/images/Gestion/botones/historial.gif" width="30" height="30" alt="Ver Historia de esta Unidad" border="0"></a></font></td>
+            <td width="59"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF">${u.valor}</font></div>
+            </td>
+            <td width="71">&nbsp;</td>
+          </tr>
+          <else> 
+          <tr bgcolor="#FFFFFF"> 
+            <td width="29"><font face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="VerLayer('${u.unid_id}')"><img src="/images/Gestion/semaforo/${u.foto}" width="27" height="30" border="0" alt="${u.quetramo}"></a></font></td>
+            <td width="16"><font face="Arial, Helvetica, sans-serif" size="1"><a href="#" onClick="VentEncargado('${u.unid_id}', '${u.unid_desc}', '${peri}'); return false"><img src="/images/Gestion/botones/encargado.gif" width="19" height="24" alt="Encargado de la unidad" border="0"></a></font></td>
+            <td width="208"><font face="Arial, Helvetica, sans-serif" size="1"> 
+              ${u.unid_desc}</font></td>
+            <td width="21"><font face="Arial, Helvetica, sans-serif" size="1" color="#0000FF"><a href="/servlet/Indicador.HistoriaIndicador?item=${indic}&tipo=${tipo_indic}&unidad=${u.unid_id}&unidad_desc=${u.unid_desc}&peri=${peri}"><img src="/images/Gestion/botones/historial.gif" width="30" height="30" alt="Ver Historia de esta Unidad" border="0"></a></font></td>
+            <td width="59"> 
+              <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">${u.valor}</font></div>
+            </td>
+            <td width="71">&nbsp;</td>
+          </tr>
+          </if> </list> </if> 
+        </table>
+      </div>
+    </td>
+    
+      <!--td valign="top" width="162" align="center"> 
+        
+      <!--table width="90%" border="2" cellspacing="0" cellpadding="0" bordercolor="#FFCF75">
+        <form name="form1" method="post" action="/servlet/Indicador.DetalleIndicador">
+          <tr> 
+            <td bgcolor="#FFCF75"><span class="textB">Estado del Indicador</span></td>
+          </tr>
+          <tr> 
+            <td align="center" bordercolor="#FFA400"><input type="hidden" name="unidad" value="${unid_id}"><if (semV)> 
+              <input type="checkbox" name="semaforov" value="V" checked>
+              <else> 
+              <input type="checkbox" name="semaforov" value="V">
+              </if> <font face="Arial, Helvetica, sans-serif" size="1"><img src="/images/Gestion/semaforo/verde.gif" width="27" height="30" border="0" alt="Normal"></font></td>
+          </tr>
+          <tr> 
+            <td align="center" bordercolor="#FFA400"><input type="hidden" name="peri" value="${peri}">
+		  <if (semA)> 
+              <input type="checkbox" name="semaforoa" value="A" checked>
+              <else> 
+              <input type="checkbox" name="semaforoa" value="A">
+              </if> <font face="Arial, Helvetica, sans-serif" size="1"><img src="/images/Gestion/semaforo/amarillo.gif" width="27" height="30" border="0" alt="Sensible"></font></td>
+          </tr>
+          <tr> 
+            <td align="center" bordercolor="#FFA400"><input type="hidden" name="item" value="${indic}">
+		  <if (semR)> 
+              <input type="checkbox" name="semaforor" value="R" checked>
+              <else> 
+              <input type="checkbox" name="semaforor" value="R">
+              </if> <font face="Arial, Helvetica, sans-serif" size="1"><img src="/images/Gestion/semaforo/rojo.gif" width="27" height="30" border="0" alt="Cr&iacute;tico"></font></td>
+          </tr>
+          <tr> 
+            <td align="right" bordercolor="#FFA400"> 
+              
+              <a href="javascript:document.form1.submit();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('buscar','','/images/Gestion/botones/buscar_over.jpg',1)"><img src="/images/Gestion/botones/buscar_up.jpg" name="buscar" border="0" width="108" height="27"></a> 
+            </td>
+          </tr></form>
+        </table>
+      </td-->
+  </tr>
+  
+  <tr> 
+    <td colspan="2" valign="top"><list unidades as u> 
+      <div id="Layer${u.unid_id}" style="position:absolute; left:auto; top:auto; width:545px; height:132px; z-index:2; background-color: #E4E4E4; layer-background-color: #E4E4E4; border: 1px none #000000; overflow: auto; visibility: hidden"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bordercolor="#8A85B6" bgcolor="#999999">
+          <tr bgcolor="#FFFFFF"> 
+            <td width="59%" valign="top" class="detal2 Estilo1">${u.unid_desc}: ${u.quetramo}</td>
+            <td width="41%" align="center" class="detal2 Estilo1">${u.valor}</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td colspan="2" class="detal Estilo1">${u.glosa}</td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td colspan="2"> 
+              <table width="100%" border="1" cellspacing="0" cellpadding="0" bordercolor="#7D7D7D">
+                <tr align="center"> 
+                  <td width="30%" class="detal Estilo1">Normal</td>
+                  <td class="detal" width="35%">Sensible</td>
+                  <td class="detal" width="35%">Cr&iacute;tico</td>
+                </tr>
+                <tr align="center" bgcolor="#E9E9E9"> 
+                  <td class="negro12B" width="30%">${u.tinf}</td>
+                  <td class="negro12B" width="35%">${u.tmed}</td>
+                  <td class="negro12B" width="35%"> ${u.tsup}</td>
+                </tr>
+            </table>            </td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td colspan="2" class="detal Estilo1">Estado de Alerta ${u.desctramo}</td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="105%" colspan="2" valign="top" class="detal Estilo1">Formula ${u.formula} 
+            </td>
+          </tr>
+        </table>
+      </div>
+      </list> </td>
+  </tr>
+</table>

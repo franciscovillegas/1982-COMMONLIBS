@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Incidentes Cr&iacute;ticos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+</head>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+
+
+
+function fnInicio(){
+<if MSG !=""> 	alert('${MSG}'); </if>
+<if REG == true && MSG !=""> 	top.close(); </if>
+}
+
+function fnAplicar(){
+	document.form1.submit();
+}
+function fnRefresh(){
+	document.form1.txtAccion.value="";
+	fnAplicar();
+}
+function fnLimpiar(){
+	document.form1.txt_rut.value='';
+	document.form1.txt_rut_supervisor.value='';
+	document.form1.txt_descripcion.value='';
+}
+</script>
+
+<body onLoad="fnInicio()">
+
+<form name="form1" method="post" action="../servlet/incidentesCriticos">
+
+  <table width="100%" border="1">
+    <tr>
+      <td colspan="2" class="TituloTabla">Incidentes Cr&iacute;ticos</td>
+    </tr>
+    <tr>
+      <td >Incidente</td>
+      <td><select name="cb_id_tipo" id="cb_id_tipo" onChange="fnRefresh()">
+			<if getTiposIncidentes>
+			<list getTiposIncidentes as a>
+				<if cb_id_tipo==a.id_tipo || (cb_id_tipo=="" && a.id_tipo=="1")>
+					<option value="${a.id_tipo}" selected>${a.nombre}</option>
+				<else>
+					<option value="${a.id_tipo}" >${a.nombre}</option>
+		  </if>
+			</list>
+			</if>  
+	  
+	  </select>	  <select name="cb_id_anotacion" id="cb_id_anotacion">
+        <option value="-1" selected>Seleccione Opcion</option>
+		<if getIncidentes>
+		<list getIncidentes as a>
+			<option value="${a.id_anotacion}" >${a.nombre}</option>
+		</list>
+		</if>
+      </select>
+        <a href="#" onClick="MM_openBrWindow('../servlet/tiposIncidentes','Incidentes','width=450,height=120')">[Nuevo Incidentea]</a><br>
+        Rut
+        <input name="txt_rut" type="text" id="txt_rut" value="${txt_rut}"> 
+        Rut Sup 
+        <input name="txt_rut_supervisor" type="text" id="txt_rut_supervisor" value="${txt_rut_supervisor}"> 
+        <input name="txtAccion" type="hidden" id="txtAccion" value="CR">
+      </td>
+    </tr>
+    <tr>
+      <td >Anotacion</td>
+      <td><textarea name="txt_descripcion" cols="60" rows="5" id="txt_descripcion">${txt_descripcion}</textarea></td>
+    </tr>
+  </table>
+  <p>
+	<input type="button" name="Button" value="Grabar" onClick="fnAplicar()">
+    <input type="button" name="Button" value="limpiar" onClick="fnLimpiar();">
+</p>
+  <p>&nbsp;  </p>
+</form>
+<p>&nbsp; </p>
+</body>
+</html>

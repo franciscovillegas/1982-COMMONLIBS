@@ -1,0 +1,255 @@
+ <HTML>
+<HEAD>
+<TITLE>Busca Anexos</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function inicio(){
+	window.focus();
+	/*alert(window.history.length);
+	if (window.history.length == 0)
+		volver.style.visibility = "hidden";*/
+	<if (msg)>alert("${msg}");</if>
+}
+
+function verOtro(){
+	var nuevo_anexo = prompt("Buscar informaci&#243;n de otro Anexo de la Unidad.\n(M&#225;x. 5 d&#237;gitos)", "${anexo}");
+	if (nuevo_anexo != null) {
+		if (nuevo_anexo.length > 5)
+			alert("El anexo tiene un m&#225;ximo de 5 d&#237;gitos, incluyendo los espacios..");
+		else
+		ver(nuevo_anexo, '${unidad}');
+	}
+	return false;
+}
+
+
+
+function verMantener() {
+	ver("${anexo}", "${unidad}", "${rut}", "M");
+	
+	return false;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/anexos.js"></script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_layer.js">
+</script>
+</HEAD>
+<script language="JavaScript">
+//parent.AbrirVentProcesando();
+</script>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad= "inicio();MM_preloadImages('../servlet/Tool?images/Gestion/botones/mantener_over.jpg','../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif')" link="006600" vlink="006600" alink="006600">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<table border="0" cellspacing="1" cellpadding="1" height="360" width="644" background="../servlet/Tool?images/Gestion/busgraf/fond.jpg">
+  <tr> 
+    <td height="40" valign="top" width="10">&nbsp; </td>
+    <td height="40" valign="top" colspan="2"> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1">
+        <tr align="center"> 
+          <td height="20"> <b>Informaci&oacute;n del anexo &quot;${anexo}&quot; 
+            <if (infoanexo.publico=="N")>(Privado)</if></b><if (infoanexo.publico=="N")></if></td>
+        </tr>
+        <tr> 
+          <td height="20" class="textB" align="center">${infoanexo.unid_desc}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td height="16" class="negro12B" width="10">&nbsp; </td>
+    <td height="16" class="negro12B" colspan="2"><b>Trabajadores con este anexo.</b></td>
+  </tr>
+  <tr> 
+    <td valign="top" height="130" width="10">&nbsp;</td>
+    <td valign="top" height="130" colspan="2"> 
+      <table width="595" border="1" cellspacing="0" cellpadding="0" bordercolor="#FFFFFF">
+        <tr align="center"> 
+          <td width="45%" class="negro12N"><b> Nombre</b></td>
+          <td width="35%" class="negro12N"><b> Cargo</b></td>
+          <td class="negro12N"><b>&nbsp;</b> </td>
+        </tr>
+      </table>
+      <div id="LayerPDet" style="position:absolute; width:612px; height:118px; z-index:1; left: auto; top: auto; overflow: auto; visibility: visible" class="carpetaUn"> 
+        <table width="595" border="1" cellspacing="0" cellpadding="1" bordercolor="#FFFFFF">
+          <if !(personas)> 
+          <tr> 
+            <td colspan="3">No existen trabajadores con este anexo... </td>
+          </tr>
+          <else> 
+          <form name="formTA" method="post" action="../servlet/BuscarAnexos">
+            <list personas as p> 
+            <tr> 
+              <td width="45%"><a href="javascript:;" onClick="VerRut('${p.rut}', 'Anexos/Visor/ver_rut.htm'); return false"><img src="../servlet/Tool?images/Gestion/botones/pers.gif" alt="Informaci&oacute;n B&aacute;sica " border="0" width="24" height="20"></a> 
+                <a href="javascript:;" onClick="VerRut('${p.rut}', 'Anexos/Visor/ver_rut.htm'); return false"><if (p.rut) == (rut)>${p.nombre}<else>${p.nombre}</if></a></td>
+              <td width="35%"> ${p.cargo}</td>
+              <td class="negro10N" valign="middle" align="center"> <a href="javascript:;" onClick="layerVer('LayerAnexos${p.rut}'); return false;">[Anexo]</a> 
+                <a href="javascript:;" onClick="layerVer('LayerFonos${p.rut}'); return false;" class="azul10NLink">[Fono]</a> 
+                <a href="javascript:;" onClick="layerVer('LayerFaxes${p.rut}'); return false;" class="azul10NLink">[Fax]</a> 
+              </td>
+            </tr>
+            </list> 
+            <input type="hidden" name="anexo" value="${anexo}">
+            <input type="hidden" name="rut" value="${rut}">
+            <input type="hidden" name="accion" value="CA">
+          </form>
+          </if> 
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr> 
+    <td align="right" valign="top" class="negro10N" height="5" colspan="3" > 
+      <!--<if (puede_mant)><a href="javascript:;" onClick = "return verMantener()"><img src="../servlet/Tool?images/Gestion/botones/mantener_up.jpg" alt="Versi&oacute;n Mantenedor" border="0" name="mant" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('mant','','../servlet/Tool?images/Gestion/botones/mantener_over.jpg',1)"></a></if>-->
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" align="left" width="10">&nbsp;</td>
+    <td valign="top" align="left" width="492"> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="1" align="center">
+        <tr > 
+          <td height="16"><b>Anexos </b><span class="negro12B"><b>Relacionados 
+            </b></span></td>
+        </tr>
+      </table>
+      <div id="LayerAnexoRel" style="position:absolute; width:489px; height:86px; z-index:1; left: auto; top: auto; overflow: auto; visibility: visible" class="carpetaUn"> 
+        <table width="410" border="1" cellspacing="0" cellpadding="1" bordercolor="#FFFFFF">
+          <assign cant = ""> <list anexos as a> <if (a.publico=="S")> <assign cant = cant+"*"> 
+          <tr> 
+            <td width="69"> ${a.anexo_rel}</td>
+            <td width="340">(${a.unidad_rel}) ${a.unidad_rel_desc}</td>
+            <!--<td bgcolor="#FFCF75" class="negro12N" width="55" align="center"> 
+                    <if (a.publico=="S")>P&uacute;blico<else>Privado</if></td>-->
+            <td class="negro12N" width="30" align="center"><a href="javascript:;"  onClick="return linkInfoAnexo('${empresa}', '${a.unidad_rel}', '${a.anexo_rel}', '${htm}')" title="Informaci&oacute;n del Anexo">[Info]</a></td>
+          </tr>
+          </if> </list> <if (cant) == ""> 
+          <tr> 
+            <td colspan="4">No se registran anexos relacionados</td>
+          </tr>
+          </if> 
+        </table>
+      </div>
+    </td>
+    <td valign="bottom" height="102" align="right" width="111"> <if volver></if><if volver> 
+      <a href="javascript:;" onClick = "window.history.go(-1); return false">[ 
+      Volver ]<br>
+      </a> </if><a href="javascript:;" onClick = "return verOtro()">[ Buscar Otro 
+      ]</a><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../servlet/Tool?images/Gestion/busgraf/busgraf_36-over.gif',1)"><img name="Image4" border="0" src="../servlet/Tool?images/Gestion/busgraf/busgraf_36.gif" width="84" height="42"></a> 
+    </td>
+  </tr>
+</table>
+<list personas as p> 
+<div id="LayerAnexos${p.rut}" style="position:absolute; width:180; height:100; z-index:1; left: 270px; top: 110px; visibility: hidden" class="ventana"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr bgcolor="#FFC448"> 
+      <td align="center" class="negro12B" height="20" bgcolor="#003366">Anexos</td>
+      <td width="15" align="right" valign="middle" bgcolor="#003366"><a href="javascript:;" onClick="layerOcultarUltimo(); return false" class="azul10NLink">[X]</a></td>
+    </tr>
+  </table>
+  <div id="Layer1" style="position:absolute; width:175px; height:75px; z-index:1; left: auto; top: auto; overflow: auto; visibility: inherit"> 
+    <table border="0" cellspacing="2" cellpadding="1" width="100%">
+      <assign cant = ""> <list p.anexos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+      <tr> 
+        <td class="negro12N" align="center"> ${f.anexo}</td>
+        <td class="negro12N" width="30" align="center"><a href="javascript:;" class="azul10NLink"  onClick="return linkInfoAnexo('${empresa}', '${f.unidad}', '${f.anexo}', '${htm}')" title="Informaci&oacute;n del Anexo">[Info]</a></td>
+      </tr>
+      </if> </list> <if (cant)  == ""> 
+      <tr> 
+        <td class="negro12N" colspan="3">No registra Anexos</td>
+      </tr>
+      </if> 
+    </table>
+  </div>
+</div>
+<div id="LayerFonos${p.rut}" style="position:absolute; width:180; height:100; z-index:1; left: 270px; top: 110px; visibility: hidden" class="ventana"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr bgcolor="#FFC448"> 
+      <td align="center" class="negro12B" height="20" bgcolor="#003366">Tel&#233;fonos</td>
+      <td width="15" align="right" valign="middle" bgcolor="#003366"><a href="javascript:;" onClick="layerOcultarUltimo(); return false" class="azul10NLink">[X]</a></td>
+    </tr>
+  </table>
+  <div id="Layer1" style="position:absolute; width:175px; height:75px; z-index:1; left: auto; top: auto; overflow: auto; visibility: inherit"> 
+    <table border="0" cellspacing="2" cellpadding="1" width="100%">
+      <assign cant = ""> <list p.fonos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+      <tr> 
+        <td class="negro12N" align="center"> ${f.fono}</td>
+      </tr>
+      </if> </list> <if (cant) == ""> 
+      <tr> 
+        <td class="negro12N" colspan="3">No registra Tel&#233;fonos</td>
+      </tr>
+      </if> 
+    </table>
+  </div>
+</div>
+<div id="LayerFaxes${p.rut}" style="position:absolute; width:180; height:100; z-index:1; left: 270px; top: 110px; visibility: hidden" class="ventana"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr bgcolor="#FFC448"> 
+      <td align="center" class="negro12B" height="20" bgcolor="#003366">Faxes</td>
+      <td width="15" align="right" valign="middle" bgcolor="#003366"><a href="javascript:;" onClick="layerOcultarUltimo(); return false" class="azul10NLink">[X]</a></td>
+    </tr>
+  </table>
+  <div id="Layer1" style="position:absolute; width:175px; height:75px; z-index:1; left: auto; top: auto; overflow: auto; visibility: inherit"> 
+    <table border="0" cellspacing="2" cellpadding="1" width="100%">
+      <if p.faxes> <list p.faxes as f> 
+      <tr> 
+        <td class="negro12N" width="75" align="center"> ${f.fax}</td>
+      </tr>
+      </list> <else> 
+      <tr> 
+        <td class="negro12N" colspan="3">No registra Fax</td>
+      </tr>
+      </if> 
+    </table>
+  </div>
+</div>
+</list> t 
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+<script language="JavaScript">
+//parent.CerrarVentProcesando();
+</script>
+</HTML>

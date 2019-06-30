@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Informe de Resultados Competencia</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer20 {
+	position:absolute;
+	left:150px;
+	top:4px;
+	width:269px;
+	height:17px;
+	z-index:23;
+}
+#Layer21 {
+	position:absolute;
+	left:440px;
+	top:4px;
+	width:169px;
+	height:17px;
+	z-index:23;
+}
+-->
+</style>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+
+function ImprimirLocal() {
+		
+		document.getElementById("tablaOpciones").style.visibility = 'hidden';
+		document.getElementById("tablaOpciones").style.display = 'none';
+		
+		window.print();
+		
+		document.getElementById('tablaOpciones').style.display = '';
+		document.getElementById("tablaOpciones").style.visibility = 'visible';
+		
+}
+
+function Hoy() {
+  var hoy = new Date();
+  var fecha = hoy.getDate() + " / " + (hoy.getMonth()+1) + " / " + hoy.getFullYear();
+  document.write(fecha); 
+}
+
+function fnBuscar(){
+	  var periodo = document.getElementById("periodos").value;
+	  
+	  if(periodo == -1) {
+	  	alert("Favor seleccione todos los par&#225;metros de b&#250;squeda para poder continuar");
+	  }
+	  else {
+		if ('${usuarioEncargado}' == 0){	  
+  			var rut = document.getElementById("rut").value;
+  			if (rut != ""){
+				document.form.action = '../servlet/cargaInformeResultadoEvalDes?txt_Rut=' + rut + '&txt_Proceso=' + periodo + '&usuarioEncargado=0';
+				document.form.submit();
+			}else alert("Favor seleccione todos los par&#225;metros de b&#250;squeda para poder continuar"); 	
+		}else
+			MM_openBrWindow('../servlet/Evaluadores?txt_Rut=${txt_RutEvaluador}&txt_Perfil=${txt_Perfil}&txt_Proceso=' + periodo + '&usuarioEncargado=1','evaluadores','status=yes,width=780,height=250');
+	  }	
+}
+function fnCambioRut(strRut,strPerfil,strProceso){
+	  document.location.href='../servlet/cargaInformeResultadoEvalDes?txt_Rut='+strRut+'&txt_Perfil='+strPerfil+'&txt_Proceso='+strProceso+'&usuarioEncargado=1';
+}
+function GuardarComentario(){
+  	  document.form.action = '../servlet/cargaInformeResultadoEvalDes?txt_Rut=${txt_Rut}&txt_Perfil=${txt_Perfil}&txt_Proceso=${txt_Proceso}&usuarioEncargado=1&mificha=1&graba=si';
+  	  document.form.submit();
+}
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js" type="text/JavaScript"></script>
+<body background="../servlet/Tool?images/ggd/competencias/informe.jpg" style="background-color:#666666;background-repeat:no-repeat">
+<form name="form"  method="post">
+
+<div id="Layer20">
+   <if mi_Ficha == "0">
+	<span class="txt_gris_bold"><strong>Seleccione un Periodo</strong></span>&nbsp;&nbsp;&nbsp;<select name="periodos" id="periodos" class="inputTextColor">
+	  <option value="-1">Seleccione Proceso</option>
+      <if procesos><list procesos as p> 
+      <if txt_Proceso == p.id_proceso> <assign proceso_elegido="selected">
+      <else> <assign proceso_elegido=""> </if>
+      <option value="${p.id_proceso}" ${proceso_elegido}>${p.proceso}</option>
+      </list></if>
+    </select>
+   </if> 
+</div>
+<div id="Layer21">
+   <if mi_Ficha == "0">
+		<if usuarioEncargado == 0><span class="txt_gris_bold">Ingrese Rut &nbsp;&nbsp;&nbsp;
+		    	<input type="text" name="rut" size="8" class="inputTextColor" maxlength="8">
+			</span>&nbsp;
+		<else>
+			<span class="txt_gris_bold">Seleccione Colaborador</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		</if>
+		
+		<a href="#" onClick="fnBuscar();return false;">
+			<img src="../servlet/Tool?images/images_ggd/ggd/botones/colaboradores.gif" width="18" height="18" align="absmiddle" title="Buscar Colaborador" alt="Buscar Colaborador" border="0" >
+		</a>
+	</if>
+</div>
+
+<table width="100%" align="center">
+  <tr>
+    <td height="103" colspan="2" valign="top"><table width="640" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+        <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Datos Personales</strong></td>
+        <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" class="fondo_tabla"><table width="99%" border="0" cellpadding="0">
+            <tr>
+              <td width="12%"><img src="../servlet/Tool?images/trabajadores/fotos/${txt_Rut}.jpg" width="62" height="81" border="1" onerror="existeFoto(this);" /></td>
+              <td width="88%">
+               <table width="100%" border="0" cellpadding="0" cellspacing="1" class="fondo_tabla">
+                <tr>
+                  <td width="11%" valign="top" class="txt_gris_bold"><strong>RUT:</strong></td>
+                  <td width="89%" valign="top">${colaborador.rut_full}</td>
+                </tr>
+                <tr>
+                  <td valign="top" class="txt_gris_bold"><strong>Nombre:</strong></td>
+                  <td valign="top">${colaborador.nombre}</td>
+                </tr>
+                <tr>
+                  <td valign="top" class="txt_gris_bold"><strong>Cargo:</strong></td>
+                  <td valign="top">${colaborador.cargo}</td>
+                </tr>
+                <tr>
+                  <td valign="top" class="txt_gris_bold"><strong>Unidad:</strong></td>
+                  <td valign="top">${colaborador.unidad}</td>
+                </tr>
+                <tr>
+                  <td valign="top" class="txt_gris_bold"><strong>Perfil: </strong></td>
+                  <td valign="top">${colaborador.perfil}</td>
+                </tr>
+              </table>
+             </td>
+            </tr>
+        </table></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="95" colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/esq01.gif" width="6" height="21"></td>
+        <td width="100%" background="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/fondo_tit.gif"><span class="boton_rojo"><strong>Resultados Obtenidos </strong></span></td>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/esq02.gif" width="6" height="21"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" valign="top" bgcolor="#BB0409"><table width="98%" border="0" cellpadding="0" class="boton_rojo">
+            <tr>
+              <td><p>La tabla de resultados contiene la siguiente informaci&oacute;n:</p>
+                <p> 1. Competencias evaluadas<br> 
+                2. Resultados Obtenidos<br>
+                3. Brechas.</p></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+        <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Tabla de Resultados Obtenidos</strong></td>
+        <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" class="fondo_tabla"><table width="99%" border="0" cellpadding="0">
+            <tr>
+              <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" class="campo_texto">
+                <tr>
+                  <td width="70%" class="fondo_tablaGris"><strong>Competencias </strong></td>
+                  <td width="10%" align="center" class="fondo_tablaGris">Promedio</td>
+                  <td width="11%" align="center" class="fondo_tablaGris">Nivel Requerido </td>
+                  <td width="9%" align="center" class="fondo_tablaGris">GAP</td>
+                </tr>
+                <list competencias as c>
+                  <tr>
+                    <td valign="top">&nbsp;<strong class="txt_gris_bold">${c.competencia}</strong></td>
+                    <td align="center" valign="top" class="txt_gris">&nbsp;${c.ponderacion_obt}</td>
+                    <td align="center" valign="top" class="txt_gris">&nbsp;${c.factor_porinicial}</td>
+                    <script language="JavaScript">
+			if ('${c.gap}'>=0)
+      			document.write('<td valign="top" align="center">&nbsp;${c.gap}</td>');
+      		else
+      			document.write('<td valign="top" align="center" style="COLOR: #ff0000;">&nbsp;${c.gap}</td>');
+		      </script>
+                  </tr>
+                </list>
+                <tr>
+                  <td width="70%" class="fondo_tablaGris"><strong>Promedio General </strong></td>
+                  <td width="10%" align="center" class="fondo_tablaGris">${totalPromedio}</td>
+                  <td width="11%" align="center" class="fondo_tablaGris">${totalNivel}</td>
+                  <td width="9%" align="center" class="fondo_tablaGris">${totalGap}</td>
+                </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+        <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Tabla de Competencias a Mejorar</strong></td>
+        <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" class="fondo_tabla"><table width="99%" border="0" cellpadding="0">
+            <tr>
+              <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" class="campo_texto">
+                
+                <tr>
+                  <td width="70%" class="fondo_tablaGris"><strong>Competencias</strong></td>
+                  <td width="10%" align="center" class="fondo_tablaGris">Promedio</td>
+                  <td width="11%" align="center" class="fondo_tablaGris">Nivel Requerido </td>
+                  <td width="9%" align="center" class="fondo_tablaGris">GAP</td>
+                </tr>
+                <list mejoras as m>
+      				<tr><td valign="top" class="txt_gris">&nbsp;${m.competencia}</td>
+      				<td align="center" valign="top" class="txt_gris">&nbsp;${m.ponderacion_obt}</td>
+      				<td align="center" valign="top" class="txt_gris">&nbsp;${m.factor_porinicial}</td>
+      				<td align="center" valign="top" class="txt_gris" style="COLOR: #ff0000;">${m.gap}</td>
+      				</tr>
+                </list>
+                
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/esq01.gif" width="6" height="21"></td>
+        <td width="100%" background="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/fondo_tit.gif"><span class="boton_rojo"><strong>PDI o Plan de Desarrollo Individual</strong></span></td>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajaroja/esq02.gif" width="6" height="21"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" valign="top" bgcolor="#BB0409"><table width="98%" border="0" cellpadding="0" class="boton_rojo">
+            <tr>
+              <td><p>Una vez que usted ha tenido conocimiento de los resultados obtenidos en su evaluaci&oacute;n del desempe&ntilde;o, y de forma de optimizar la mejora de las competencias a desarrollar sugeridas, le aconsejamos que realice un plan de desarrollo, con acciones concretas y plazos definidos.</p></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+        <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Observaciones</strong></td>
+        <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" class="fondo_tabla"><table width="99%" border="0" cellpadding="0">
+            <tr>
+              <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" class="campo_texto">
+                <tr>
+                  <!-- <td width="20%" align="center" class="fondo_tablaGris">Competencia a Desarrollar</td>
+                  <td width="20%" align="center" class="fondo_tablaGris">Acciones</td>
+                  <td width="20%" align="center" class="fondo_tablaGris">Plazos</td>
+                  <td width="20%" align="center" class="fondo_tablaGris">Avances</td>
+                  <td width="20%" align="center" class="fondo_tablaGris">Firma Trabajador y Empleador</td>
+                   --> 
+                </tr>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+                <if mi_Ficha == "1">
+	                <tr>
+	                  <td valign="top" colspan="4"><strong class="txt_gris_bold">Comentarios</strong><br><textarea name="comentario" cols="170" rows="4" class="txt_gris">${comentario_evaluado}</textarea></td>
+	                  <td valign="center"><a href="javascript:GuardarComentario();"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/grabar.gif" width="30" height="30" border="0" alt="Grabar Comentarios Colaborador" ></a></td>
+	                </tr>
+	            </if>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  
+    <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+        <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Firma</strong></td>
+        <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" valign="top" bgcolor="#BB0409"><table width="98%" border="0" cellpadding="0" class="boton_rojo">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+
+        </table></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" class="fondo_tabla"><table width="99%" border="0" cellpadding="0">
+            <tr>
+              <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" class="campo_texto">
+                <tr>
+                  <td align="center" valign="top">Nombre y Firma Evaluador : </td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="top">Nombre y Firma Evaluado:</td>
+                </tr>
+                <tr>
+                  <td height="50" align="center" valign="bottom">__________________________</td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="top">&nbsp;</td>
+                  <td align="center" valign="bottom">__________________________</td>
+                </tr>
+                <tr>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="bottom">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top" align="right">Fecha: &nbsp;<script>Hoy();</script></td>
+                </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+
+    </table></td>
+  </tr>
+    
+  <tr>
+    <td width="528" valign="top">&nbsp;</td>
+    <td width="440" height="37" align="right" valign="top" background="../servlet/Tool?images/images_ggd/ggd/informes/toolbar.jpg">
+    
+    <table width="100" border="0" cellpadding="0" id="tablaOpciones" name="tablaOpciones" >
+      <tr>
+        <td width="8">&nbsp;</td>
+        <td width="8">&nbsp;</td>
+        <td width="12">&nbsp;</td>
+        <td width="30">
+        	<a href="javascript:ImprimirLocal();" ><img src="../servlet/Tool?images/images_ggd/ggd/botones/iconoprint.gif" title="Imprimir" alt="Imprimir" name="evaluaciones_r13_c11" width="31" height="31" border="0" >
+        	</a></td>
+        <if mi_Ficha == "0">
+        	<td width="30"><a href="javascript:window.parent.bottomFrame.location='../servlet/WithSession?pHtm=ggd/menu/desp_evalu.htm'"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+        <else>
+        	<td width="30"><a href="javascript:window.close();"><img name="evaluaciones_r13_c13" src="../servlet/Tool?images/images_ggd/ggd/botones/cerrar.gif" width="30" height="30" border="0" alt="Cerrar" ></a></td>
+        </if>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

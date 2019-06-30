@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>INFORME NIVEL DE COMPETENCIA POR PERFIL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/ventanas.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+	function ImprimirLocal() {
+		document.getElementById("imprimir").src = "../servlet/Tool?images/bottom/spacer.gif";
+		document.getElementById("excel").src = "../servlet/Tool?images/bottom/spacer.gif";
+		Imprimir();
+		document.getElementById("imprimir").src = "../servlet/Tool?images/images_ggd/ggd/botones/imprimir.png";
+		document.getElementById("excel").src = "../servlet/Tool?images/images_ggd/ggd/botones/xcel.gif";
+	}
+	
+	function Exportar() {
+		document.frm.action='../servlet/cargaInformeResultadoUnidadClasificacion?opcion=${opcion}&unidades=${unidades}&nombre_unidad=${nombre_unidad}&exportar=si&periodo=${periodo}';
+		document.frm.submit();
+	}
+	
+	function fnAbrirExcel(archivo){
+		if (archivo!="")
+			GoInforme(archivo);
+	}
+	
+	function GoInforme(archivo){
+		document.location.href='../servlet/GeneraArchivoExcel?archivo='+archivo;
+	}
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="fnAbrirExcel('${archivo}');" >
+<table width="100%">
+<tbody>
+<tr>
+	<td align="left">
+		<form name="frm" method="post" action="../servlet/cargaInformeResultadoUnidadClasificacion">
+			<input type="hidden" name="archivo" value="${archivo}">
+			<input type="hidden" name="unidades" value="${unidades}">
+			<input type="hidden" name="nombre_unidad" value="${nombre_unidad}">
+			<input type="hidden" name="opcion" value="${opcion}">
+			<input type="hidden" name="periodo" value="${periodo}">
+			<table width="100%">
+			<tr>
+				<td class="texto_titulo_rojo">&nbsp;</td>
+				<td class="texto_titulo_rojo">&nbsp;</td>
+				<td align="right">
+					<a href="#" onClick="ImprimirLocal();return false;"><img name="imprimir" title="Imprimir" src="../servlet/Tool?images/images_ggd/ggd/botones/imprimir.png" alt="Imprimir" border="0"></a>
+					<a href="#" onClick="Exportar();return false;"><img name="excel" src="../servlet/Tool?images/images_ggd/ggd/botones/xcel.gif" alt="Exportar Excel" border="0"></a>
+				</td>
+			</tr>
+			<tr>
+				<td class="texto_titulo">Informe Nº4 :</td>
+				<td class="texto_texto">INFORME NIVEL DE COMPETENCIA POR PERFIL</td>
+				<td class="texto_titulo_rojo">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="texto_titulo">Unidad :</td>
+				<td class="texto_texto">${nombre_unidad}</td>
+				<td class="texto_titulo_rojo">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="texto_titulo"><u>Unidades que la componen :</u></td>
+				<td class="texto_texto">&nbsp;</td>
+				<td class="texto_titulo_rojo">&nbsp;</td>
+			</tr>
+			<list UnidadesList as u>
+			<tr>
+				<td class="texto_texto">${u.nu}</td>
+				<td colspan="2">
+					<table width="100%">
+					<list u.ColaboradoresList as c>
+					<tr>
+						<td width="2%" class="texto_texto">&nbsp;</td>
+						<td width="50%" class="texto_texto">${c.nombre}</td>
+						<td width="20%" class="texto_texto">RUT ${c.rut_full}</td>
+						<td width="28%" class="texto_texto">Perfil ${c.nombre_perfil}</td>
+					</tr>
+					</list>
+					</table>
+				</td>
+			</tr>
+			</list>
+			</table>
+		</form>
+	</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding="1" cellspacing="2" border="0" style="padding-left:20px" width="100%">
+<list PerfilesList as p>
+<tr>
+	<td valign="top" class="texto_titulo">PERFIL : ${p.np}</td>
+	<td class="texto_titulo" width="15%">&nbsp;</td>
+	<td class="texto_titulo" width="15%">&nbsp;</td>
+	<td class="texto_titulo" width="15%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="3">
+		<if p.tiene>
+			<div align="left" class="texto_titulo">Esta Unidad actualmente no presenta Competencias</div>
+		<else>
+			<table cellpadding="2" cellspacing="1" border="1">
+			<thead style="display:table-header-group">
+			<tr>
+				<td class="texto_titulo" align="center">Nivel de Competencia</td>
+				<td class="texto_titulo" align="center">Mucho m&aacute;s que competentes</td>
+				<td class="texto_titulo" align="center">M&aacute;s que competentes</td>
+				<td class="texto_titulo" align="center">Competentes</td>
+				<td class="texto_titulo" align="center">Poco Competentes</td>
+				<td class="texto_titulo" align="center">No Competentes</td>
+			</tr>
+			</thead>
+			<tbody>
+			<list p.ColaboradoresList as c>
+			<tr>
+				<td class="texto_texto" valign="top" align="center">Trabajador</td>
+				<script language="JavaScript">
+				if (${c.promedio} >= 0 && ${c.promedio} <= 30.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.nc}</td>');
+				if (${c.promedio} > 30.00 && ${c.promedio} <= 45.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.nc}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 45.00 && ${c.promedio} <= 65.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.nc}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 65.00 && ${c.promedio} <= 85.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.nc}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 85.00 && ${c.promedio} <= 100.00)
+					document.write('<td class="texto_texto" valign="top" align="center">${c.nc}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				</script>
+			</tr>
+			<tr>
+				<td class="texto_texto" valign="top" align="center">Puntaje Promedio</td>
+				<script language="JavaScript">
+				if (${c.promedio} >= 0 && ${c.promedio} <= 30.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.promedio}</td>');
+				if (${c.promedio} > 30.00 && ${c.promedio} <= 45.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.promedio}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 45.00 && ${c.promedio} <= 65.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.promedio}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 65.00 && ${c.promedio} <= 85.00)
+					document.write('<td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">${c.promedio}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				if (${c.promedio} > 85.00 && ${c.promedio} <= 100.00)
+					document.write('<td class="texto_texto" valign="top" align="center">${c.promedio}</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td><td class="texto_texto" valign="top" align="center">&nbsp;</td>');
+				</script>
+			</tr>
+			</list>
+			</tbody>
+			</table>
+		</if>
+	</td>
+	<td class="texto_titulo">&nbsp;</td>
+</tr>
+<tr>
+	<td class="texto_texto" align="left" valign="top">&nbsp;</td>
+	<td class="texto_texto" align="left" valign="top">&nbsp;</td>
+	<td class="texto_texto" align="left" valign="top">&nbsp;</td>
+	<td class="texto_texto" align="left" valign="top">&nbsp;</td>
+</tr>
+</list>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+<table width="100%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+<if getPerfilConductas>
+  <list getPerfilConductas as a> 
+    <tr valign="top">
+	<td width="12%" class="fondo_tablaAmarillo"> ${a.nivel} &nbsp;</td>	
+	<td width="3%" align="center">
+	<!--<if a.existe!="">
+	 <img src="../servlet/Tool?images/images_ggd/evalua/si.jpg" width="13" height="13">
+	<else>
+	</if>
+	 -->
+	</td>
+	<td width="85%" class="fondo_tablaGris"> ${a.conducta}&nbsp;</td>
+	<td width="2%" class="fondo_tablaGris2" valign="center">
+			<select name="nivelEvaluado" class="txt_gris">
+					<option value="-1">Nivel...</option>
+					<if (a.nivelConducta==1)><option value="1" selected>1</option><else><option value="1">1</option></if>
+					<if (a.nivelConducta==2)><option value="2" selected>2</option><else><option value="2">2</option></if>
+					<if (a.nivelConducta==3)><option value="3" selected>3</option><else><option value="3">3</option></if>
+					<if (a.nivelConducta==4)><option value="4" selected>4</option><else><option value="4">4</option></if>
+			</select>
+	</td>
+	<input type="hidden" name="condNivel" value="${a.id_conducta}">	
+	</tr>
+  </list>
+<else>
+   <tr><td colspan="3" ></td></tr>
+</if>
+</table>

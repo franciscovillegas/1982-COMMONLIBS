@@ -1,0 +1,442 @@
+ 
+
+ <HTML>
+<HEAD>
+<title>Arbol Jerarquico</title>
+<script LANGUAGE="JavaScript">
+<!--  Para ocultar el contenido del gui&#243;n a los exploradores antiguos
+
+function generateTree()
+{
+   
+   ${sentencia}
+   
+}
+
+function folderNode(name,nivel,id,imagen,hijos)
+{
+
+
+var arrayAux
+var h
+arrayAux = new Array
+arrayAux[0] = 0
+arrayAux[1] = 0
+arrayAux[2] = 0
+arrayAux[3] = name
+arrayAux[4] = nivel
+arrayAux[5] = id
+arrayAux[6] = imagen
+arrayAux[7] = hijos
+
+return arrayAux
+}
+
+function appendChild(parent, child)
+{ var h
+//alert("parent: " + parent)
+
+parent[parent.length] = child
+
+
+return child
+}
+
+
+function redrawTree()
+{
+//var doc = top.treeFrame.window.document
+var doc = self.treeFrame.window.document
+doc.clear()
+doc.write("<script language='JavaScript'>\n")
+//funciones para el boton genera indicadores
+
+doc.write("function newImage(arg) {\n")
+doc.write("	if (document.images) {\n")
+doc.write("		rslt = new Image();\n")
+doc.write("		rslt.src = arg;\n")
+doc.write("		return rslt;\n")
+doc.write("	}\n")
+doc.write("}\n")
+
+doc.write("function changeImages() {\n")
+doc.write("	if (document.images && (preloadFlag == true)) {\n")
+doc.write("		for (var i=0; i<changeImages.arguments.length; i+=2) {\n")
+doc.write("			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];\n")
+doc.write("		}\n")
+doc.write("	}\n")
+doc.write("}\n")
+
+doc.write("var preloadFlag = false;\n")
+doc.write("function preloadImages() {\n")
+doc.write("	if (document.images) {\n")
+doc.write("		main_indicadores_18_main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18-main_in.jpg\");\n")
+doc.write("		main_indicadores_24_main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24-main_in.jpg\");\n")
+doc.write("		main_indicadores_25_main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_25-main_in.jpg\");\n")
+doc.write("		main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26-over.jpg\");\n")
+doc.write("		main_indicadores_26_down = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26-down.jpg\");\n")
+doc.write("		main_indicadores_27_main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27-main_in.jpg\");\n")
+doc.write("		main_indicadores_28_main_indicadores_26_over = newImage(\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_28-main_in.jpg\");\n")
+doc.write("		preloadFlag = true;\n")
+doc.write("	}\n")
+doc.write("}\n")
+
+
+
+doc.write("function CapturaValor(unidad,descrip) {")
+doc.write("document.form1.unidad.value=unidad;")
+doc.write("document.form1.descrip.value=descrip;\n")
+//doc.write("alert('Generando indicadores para la unidad '+document.form1.unidad.value);")
+doc.write("}")
+
+doc.write("function Valida() { ")
+doc.write("  var unid = document.form1.unidad.value;")
+doc.write("  var desc = document.form1.descrip.value;")
+
+doc.write("  if (unid!=''){" )
+//doc.write("        alert('Buscando Informaci&#243;n para '+desc);\n")
+doc.write("        document.form1.submit();")
+doc.write("  }")
+doc.write("   else alert ('Seleccione una Unidad.');")
+doc.write("}")
+
+doc.write("</script>\n")
+
+doc.write("<body bgcolor='#000000' ONLOAD=\"preloadImages();\" leftmargin='0' topmargin='0' marginwidth='0' marginheight='0'>\n")
+doc.write("<script>parent.parent.AbrirVentProcesando()</script>")
+//generar el tag del formulario  
+
+//doc.write("<form name='form1' method='post' action='/servlet/GeneraIndicadores/' target='folderFrame'>\n")
+//tabla contenedora
+
+
+//doc.write("<tr><td valign='top'>\n")
+
+
+//Layer contenedor de lista de Indicadores
+//doc.write("<div id='Layer4' style='position:absolute; width:200px; height:61px; z-index:4; left: 20px; top: 320px; visibility: visible'>") 
+//doc.write("        <table width='175' border='0' height='29' bgcolor='#FF9900' cellpadding='0' cellspacing='0'>")
+//doc.write("          <tr> ")
+//doc.write("            <td> ")
+//doc.write("              <select name=\"indic\">")
+//doc.write("                <option value=\"0\" selected>Capacitaci&#243;n</option>")
+//doc.write("                <option value=\"1\">Evaluaci&#243;n del Desempe&#241;o</option>")
+//doc.write("              </select>")
+//doc.write("            </td>")
+//doc.write("          </tr>")
+//doc.write("</table>")
+//doc.write("      </div>")
+//Fin Layer contenedor de lista de Indicadores
+
+
+  
+doc.write("<table border=0 cellpadding=0 cellspacing=0 >\n")
+doc.write("    <tr> \n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=10 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=48 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=4 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=55 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=6 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=52 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=8 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=55 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=4 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=15 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=48 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=7 height=1></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=1></td>\n")
+doc.write("      <td></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr> \n")
+doc.write("      <td colspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_01.jpg' width=58 height=10></td>\n")
+doc.write("      <td colspan=3> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_02.jpg' width=65 height=10></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_03.jpg' width=52 height=10></td>\n")
+doc.write("      <td colspan=4> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_04.jpg' width=82 height=10></td>\n")
+doc.write("      <td colspan=3> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_05.jpg' width=56 height=10></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=10></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr> \n")
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_06.jpg' width=10 height=39></td>\n")
+doc.write(" <td colspan=10 rowspan=11 bgcolor='#FFFFFF'>\n") 
+
+
+//Layer con el arbol
+doc.write("<div id='Layer1' style='position:absolute; width:286px; height:274px; z-index:1;; left: 17px; top: 15px; overflow: scroll'>")
+redrawNode(foldersTree, doc, 0, 1, "")
+//doc.write("<center><input type='hidden' name='unidad'>\n")
+//doc.write("<input type='hidden' name='indicador' value=${rutaResult}>\n")
+//doc.write("<input type='hidden' name='descrip'>\n")
+//doc.write("<input type='hidden' name='indic'>\n")
+//doc.write("<input type='hidden' name='cual' value=${cual}>\n")
+//doc.write("</center></div>\n")
+doc.write("</div>\n")
+//se cierra el layer con el arbol
+
+
+//se continua con la tabla(cerrarla)
+
+doc.write("</td>\n")
+doc.write("      <td colspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_08.jpg' width=8 height=4></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=4></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_09.jpg' width=7 height=59></td>\n")
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_10.jpg' width=1 height=59></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=35></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_11.jpg' width=10 height=45></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=24></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+ doc.write("     <td colspan=2 rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_12.jpg' width=8 height=51></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=21></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_13.jpg' width=10 height=53></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=30></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td colspan=2 rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_14.jpg' width=8 height=52></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_15.jpg' width=10 height=55></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=29></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td colspan=2 rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_16.jpg' width=8 height=65></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=26></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+ doc.write("     <td rowspan=2> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_17.jpg' width=10 height=48></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=39></td>\n")
+doc.write("    </tr>\n")
+doc.write("    <tr>\n") 
+doc.write("      <td colspan=2 rowspan=3> <img name='main_indicadores_18' src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18.jpg' width=8 height=57></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=9></td>\n")
+doc.write("    </tr>\n") 
+doc.write("    <tr> \n") 
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_19.jpg' width=10 height=40></td>\n")
+doc.write("     <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=40></td>\n")
+doc.write("    </tr>\n") 
+doc.write("    <tr> \n") 
+doc.write("     <td colspan=3> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_20.jpg' width=62 height=8></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_21.jpg' width=55 height=8></td>\n")
+doc.write("      <td colspan=3> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_22.jpg' width=66 height=8></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_23.jpg' width=55 height=8></td>\n")
+ doc.write("     <td colspan=3> <img name='main_indicadores_24' src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24.jpg' width=67 height=8></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=8></td>\n")
+ doc.write("   </tr>\n") 
+doc.write("    <tr> \n") 
+ doc.write("     <td colspan=9 rowspan=2 bgcolor='#FFa400'>&nbsp; </td>\n")
+doc.write("      <td colspan=3> </td>\n")
+ doc.write("     <td rowspan=2> <img name='main_indicadores_27' src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27.jpg' width=1 height=60></td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=23></td>\n")
+doc.write("    </tr>\n") 
+doc.write("   <tr> \n") 
+ doc.write("     <td colspan=3 bgcolor='#FFa400'>&nbsp; </td>\n")
+doc.write("      <td> <img src='/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/espacio.gif' width=1 height=37></td>\n")
+doc.write("    </tr>\n") 
+doc.write("  </table>\n") 
+//se cierra tabla
+
+doc.write(" <form name=\"form1\" method=\"get\" action=\"/servlet/ListaUsuarios/\" target='folderFrame'>\n")
+doc.write("   <input type='hidden' name='unidad'>\n")
+doc.write("     <input type='hidden' name='descrip'>\n")
+
+doc.write("</form>\n")
+//Layer contiene botonn generar indicadores
+doc.write("<div id='Layer2' style='position:absolute; width:157px; height:49px; z-index:2; left: 166px; top: 296px; visibility: visible'>\n") 
+doc.write("<table width='149' border='0'>\n")
+doc.write("<tr>\n") 
+doc.write("<td>\n")
+doc.write("<div align='right'>")
+doc.write("<a href=\"#\" onClick='Valida();return false;'\n")
+doc.write("onMouseOver=\"changeImages('main_indicadores_18', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18-main_in.jpg', 'main_indicadores_24', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24-main_in.jpg', 'main_indicadores_26', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26-over.jpg','main_indicadores_27', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27-main_in.jpg'); return true;\"")
+doc.write("onMouseOut=\"changeImages('main_indicadores_18', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18.jpg', 'main_indicadores_24', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24.jpg','main_indicadores_26', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26.jpg','main_indicadores_27', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27.jpg'); return true;\"")
+doc.write("onMouseDown=\"changeImages('main_indicadores_18', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18.jpg', 'main_indicadores_24', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24.jpg','main_indicadores_26', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26-down.jpg','main_indicadores_27', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27.jpg'); return true;\"")
+doc.write("onMouseUp=\"changeImages('main_indicadores_18', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_18-main_in.jpg', 'main_indicadores_24', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_24-main_in.jpg', 'main_indicadores_26', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26-over.jpg','main_indicadores_27', '/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_27-main_in.jpg'); return true;\">")
+doc.write("<img name=\"main_indicadores_26\" src=\"/templates/Gestion/InfoUsuario/Jerarquia/imagenes_main_indicadores/main_indicadores_26.jpg\" width=70 height=31 border=0 alt=\"Ver usuarios de la unidad.\"></a></div>\n")
+doc.write("</td>\n")
+doc.write("</tr>\n")
+doc.write("</table>\n")
+doc.write("</div>\n")
+doc.write("<script>parent.parent.CerrarVentProcesando()</script>")
+doc.write("</body>\n")           
+doc.close()
+}
+
+function redrawNode(foldersNode, doc, level, lastNode, leftSide)
+{
+		var i=0
+		var x,y,z,levAnt,nodox,hijos
+		
+                //doc.write("<form name='form1' method='post' action='/servlet/GeneraIndicadores/'>\n")
+		doc.write("<table border=0 cellspacing=0 cellpadding=0 >")
+		doc.write("<tr><td valign = middle nowrap >")
+		doc.write(leftSide)
+		nodox=foldersNode
+        levAnt=nodox[4]
+        hijos=nodox[7]
+		/*alert("name: " + nodox[3]+"\n"+
+			  "nivel: " + levAnt)*/
+
+		if (level>0)
+			if (lastNode)
+			{	for (x=0;x<=levAnt;x++)
+					leftSide = leftSide + "<img src='/images/Gestion/images_arbol/blank.gif' width=16 height=22>" 
+                
+    			if (hijos==1)//tiene hijos,imagen con +
+                  doc.write("<img src='/images/Gestion/images_arbol/angulo+.jpg' width=16 height=22>")
+ 				else//no tiene hijos,imagen con -
+			      doc.write("<img src='/images/Gestion/images_arbol/angulo-.jpg' width=16 height=22>")		
+                
+                
+                for (x=1;x<=levAnt;x++) //cantidad de gifs de acuerdo a los nivel
+					doc.write("<img src='/images/Gestion/images_arbol/esta_si.jpg' width=16 height=22>")	
+			}
+			else
+			{   if (hijos==1)//tiene hijos,imagen con +
+   				  doc.write("<img src='/images/Gestion/images_arbol/perpen+.jpg' width=16 height=22>")
+				else//no tiene hijos,imagen con -
+			      doc.write("<img src='/images/Gestion/images_arbol/perpen-.jpg' width=16 height=22>")		
+				for (x=1;x<=levAnt;x++)
+					doc.write("<img src='/images/Gestion/images_arbol/esta_si.jpg' width=16 height=22>")
+				leftSide = leftSide + "<img src='/images/Gestion/images_arbol/vertical.jpg' width=16 height=22>"
+                for (x=0;x<=levAnt-1;x++)
+					leftSide = leftSide + "<img src='/images/Gestion/images_arbol/blank.gif' width=16 height=22>"
+			}
+		displayIconAndLabel(foldersNode, doc)
+		doc.write("</table>\n")
+		if (foldersNode.length > 5 && foldersNode[0])
+		{
+			if (!foldersNode[2])
+			{   
+				level=level+1
+				for (i=8; i<foldersNode.length;i++){
+			
+ 	                if (i==foldersNode.length-1){
+						redrawNode(foldersNode[i], doc, level, 1, leftSide)
+					}
+					else
+						redrawNode(foldersNode[i], doc, level, 0, leftSide)
+    			}
+			}
+			else
+			{
+				for (i=8; i<foldersNode.length;i++)
+				{
+					doc.write("<table border=0 cellspacing=0 cellpadding=0 valign=center>")
+					doc.write("<tr><td nowrap>")
+					doc.write(leftSide)
+					if (i==foldersNode.length - 1){
+					    	for (x=0;x<=levAnt-1;x++)
+			   				  leftSide = leftSide + "<img src='/images/Gestion/images_arbol/blank.gif' width=16 height=22>" 
+			
+							if (hijos==1)//tiene hijos,imagen con +
+							  doc.write("<img src='/images/Gestion/images_arbol/angulo+.jpg' width=16 height=22>")
+							else//no tiene hijos,imagen con -
+							  doc.write("<img src='/images/Gestion/images_arbol/angulo-.jpg' width=16 height=22>")		
+							for (x=1;x<=levAnt;x++)
+								doc.write("<img src='/images/Gestion/images_arbol/esta_si.jpg' width=16 height=22>")	
+					}
+					else{
+						if (hijos==1)//tiene hijos,imagen con +
+						  doc.write("<img src='/images/Gestion/images_arbol/perpen+.jpg' width=16 height=22>")
+						else//no tiene hijos,imagen con -
+						  doc.write("<img src='/images/Gestion/images_arbol/perpen-.jpg' width=16 height=22>")		
+						for (x=1;x<=levAnt;x++)
+							doc.write("<img src='/images/Gestion/images_arbol/esta_si.jpg' width=16 height=22>")
+					}
+					doc.write(foldersNode[i])
+					//doc.write("</table>")
+					doc.write("</table>")
+				}
+			}
+	    }
+}
+/***tag generado para llamada al servlet
+que rescate datos referentes al nodo
+*/
+function displayIconAndLabel (foldersNode, doc)
+{
+//mages\DataFolder\images_arbol1
+doc.write("<A href='javascript:parent.openBranch(\"" + foldersNode[3] + "\")'")
+if (foldersNode[1]){//nodo abierto
+	doc.write("onMouseOver='window.status=\"Contraer Rama\"; return true'><img src=")
+	//doc.write("/images/Gestion/images_arbol1/"+foldersNode[6]+"v.jpg width=24 height=22 border=noborder></a>")
+	doc.write("/images/Gestion/images_arbol/Opfolder.gif width=24 height=22 border=noborder></a>")
+}else{//nodo cerrado
+	doc.write("onMouseOver='window.status=\"Expandir Rama\"; return true'><img src=")
+	doc.write("/images/Gestion/images_arbol/Clfolder.gif width=24 height=22 border=noborder></a>")
+}
+doc.write("<td valign=middle align=left nowrap>")
+//doc.write("<font size=1 face='Arial, Helvetica'><a href='#' onClick='CapturaValor("+foldersNode[5]+",\""+foldersNode[3]+"\");return false;' target='folderFrame'>"+foldersNode[3]+
+//     "</a></font>"+
+doc.write("<input type='radio' name='radiobutton' value='radiobutton' onClick=\"CapturaValor('"+foldersNode[5]+"','"+foldersNode[3]+"')\">")
+doc.write("<font size=1 face='Arial, Helvetica'>"+foldersNode[3]+"</font>")     
+doc.write("<input type='hidden' name='"+foldersNode[5]+"' value='"+foldersNode[5]+"'>")
+}
+
+function closeFolders(foldersNode)
+{
+var i=0
+if (!foldersNode[2])
+{
+for (i=8; i< foldersNode.length; i++)
+closeFolders(foldersNode[i])
+}
+foldersNode[0] = 0
+foldersNode[1] = 0
+}
+
+function clickOnFolderRec(foldersNode, folderName)
+{
+var i=0
+
+if (foldersNode[3] == folderName)
+{
+if (foldersNode[0])
+closeFolders(foldersNode)
+else
+{
+foldersNode[0] = 1
+foldersNode[1] = 1
+}
+}
+else
+{
+if (!foldersNode[2])
+for (i=8; i< foldersNode.length; i++)
+clickOnFolderRec(foldersNode[i], folderName)
+}
+}
+
+function openBranch(branchName)
+{
+clickOnFolderRec(foldersTree, branchName)
+if (branchName=="Start folder" && foldersTree[0]==0)
+   parent.folderFrame.location="basefldr.htm"
+//self.treeFrame.window.document
+timeOutId = setTimeout("redrawTree()",100)
+}
+
+function initializeTree()
+{
+generateTree()
+redrawTree()
+}
+var foldersTree = 0
+var timeOutId = 0
+generateTree()
+// Deja de ocultar el contenido a los exploradores antiguos -->
+</script>
+</HEAD>
+<FRAMESET cols="300,*"  frameborder="no" border="0" onLoad='initializeTree()' > 
+  <FRAME src="/templates/Gestion/Usuarios/basetree.htm" name="treeFrame" scrolling="no">
+  <FRAME SRC="/templates/Gestion/Usuarios/blanco.htm" name="folderFrame">
+</FRAMESET>
+<noframes> 
+</noframes> 
+</HTML>

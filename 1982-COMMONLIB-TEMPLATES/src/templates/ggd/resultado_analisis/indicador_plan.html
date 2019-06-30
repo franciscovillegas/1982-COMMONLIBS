@@ -1,0 +1,29 @@
+<style type="text/css">
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color: #FFFFFF;
+	background-color: #00CC33;
+}
+-->
+</style>
+
+
+<form name="form1" method="post" action="">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <if getNivelesObtenidos>
+  <list getNivelesObtenidos as a>
+  <tr align="left" valign="top"><td width="45%">
+  <table width="100%" border="0">
+  <tr>
+  <td class="ra1lista"><strong>${a.competencia}</strong>&nbsp;<br>${a.glosa}&nbsp;</td>
+  <td valign="top"><input type="radio" name="radiobutton" value="radiobutton"></td>
+  </tr>
+  </table>
+  </td></tr>
+  </list>
+  </if>
+</table>
+</form>

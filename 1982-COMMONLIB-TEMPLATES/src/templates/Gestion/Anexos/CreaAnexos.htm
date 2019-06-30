@@ -1,0 +1,124 @@
+ <HTML>
+<HEAD>
+<TITLE>Crear Anexo</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function inicio(){
+	<if (unidad)>document.form1.empresa.value = '${empresa}';
+	SeleccionaEmpresa('${empresa}');</if>
+	<if (unidad)>document.form1.unidad.value = '${unidad}';</if>
+	<if (refrescar)>opener.location.reload(true);</if>
+	window.focus();
+	document.form1.nuevo_anexo.focus();
+}
+
+var anexExist = new Array();
+<list anexos_existentes as ae>anexExist[anexExist.length] = '${ae.anexo}';</list>
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/anexos.js"></script>
+<script language="JavaScript" src="/Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<assign empresa_ant ="">
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.descrip}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	lista.options[0] = new Option("Seleccione una Unidad", "");
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[lista.length] = array[i];
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.form1.unidad, eval("window.unidad_"+valor));
+}
+</script>
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad= "inicio();MM_preloadImages('/images/Gestion/botones/cancelar_over.jpg','/images/Gestion/botones/aceptar_over.jpg','/images/Gestion/botones/aplicar_over.jpg','/images/Gestion/botones/cerrar_down.jpg')" link="006600" vlink="006600" alink="006600">
+<form name="form1" method="post" action="">
+  <table width="332" border="0" bgcolor="#FFA400" align="center">
+    <tr> 
+      <td colspan="4" class="textB" align="center" bgcolor="#FFCF75"><b><font size="2">Crear 
+        Anexo</font></b></td>
+    </tr>
+    <tr> 
+      <td class="textB" width="17%" bgcolor="#FFDF9D"><font color="000000" face="Verdana, Arial, Helvetica, sans-serif"><b><font size="2">Anexo</font></b></font></td>
+      <td class="textB" width="49%"> 
+        <input type="text" name="nuevo_anexo" size="5" maxlength="5" class="listas" value="${anexo}">
+        <input type="hidden" name="anexo" value="${anexo}">
+        <input type="hidden" name="accion" value="${accion}">
+      </td>
+      <td class="textB" width="8%" bgcolor="#FFDF9D"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000"><b>Fax</b></font></td>
+      <td class="textB" width="26%"> 
+        <div align="right"> 
+          <input type="text" name="fax" size="10" maxlength="10" class="listas" value="${fax}">
+        </div>
+      </td>
+    </tr>
+    <tr align="left">
+      <td class="textB" bgcolor="#FFDF9D" width="17%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="000000">Empresa</font></b></font><br>
+      </td>
+      <td class="textB" colspan="3"> 
+        <select name="empresa" style="width:290" class="listas" onChange = "SeleccionaEmpresa(this.value)">
+          <option value="" selected>Seleccione una Empresa</option>
+          <list empresas as e> 
+          <option value="${e.id}" >${e.descrip}</option>
+          </list> 
+        </select>
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td class="textB" bgcolor="#FFDF9D" width="17%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="000000">Unidad</font></b></font><br>
+      </td>
+      <td class="textB" colspan="3"> 
+        <select name="unidad" style="width=290" class="listas">
+       
+        </select>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td class="texto" colspan="4"> <if (accion) == "C"><a href="javascript:;" onClick = "return crearAnexo(document.form1)"><img src="/images/Gestion/botones/aceptar_up.jpg" border="0" name="crear" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('crear','','/images/Gestion/botones/aceptar_over.jpg',1)" alt="Crear Anexo" width="108" height="27"></a> 
+        <else><a href="javascript:;" onClick = "return modifAnexo(document.form1)"><img src="/images/Gestion/botones/aplicar_up.jpg" border="0" name="aplicar" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('aplicar','','/images/Gestion/botones/aplicar_over.jpg',1)" alt="Aplicar Cambios"></a> 
+        </if><a href="javascript:;" onclick="window.close()"><img src="/images/Gestion/botones/cancelar_up.jpg" name="cancelar" width="108" height="27" border="0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('cancelar','','/images/Gestion/botones/cancelar_over.jpg',1)"></a><a href="javascript:window.close();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','/images/Gestion/botones/cerrar_down.jpg',1)"><img name="Image4" border="0" src="/images/Gestion/botones/cerrar_up.jpg" width="108" height="27"></a></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

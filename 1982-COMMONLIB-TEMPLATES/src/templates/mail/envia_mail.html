@@ -1,0 +1,78 @@
+<script>
+function emailvacio()
+{
+//alert ("para: "+para)
+if(document.inserta.para.value == ""){
+  alert("Para contactarse debe ingresar el E-Mail de Destino");
+  document.inserta.para.focus();
+}else
+ if (document.inserta.para.value.indexOf("@") == -1 || document.inserta.para.value.indexOf(".") == -1 || document.inserta.para.value.indexOf(";") > -1 || document.inserta.para.value.indexOf(",") > -1 || document.inserta.para.value.indexOf(":") > -1)
+	 { alert( "Por favor ingresa una direcci&#243;n de email v&#225;lida!")
+	   document.inserta.para.focus(); 
+	 }else{  alert("submit!!");
+	   	     document.forms.inserta.submit();
+	 }
+}
+
+</script><title>Enviar Email</title>
+          
+
+<script language="JavaScript">
+<!--
+
+
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="479" border="0" align="left" bgcolor="#FFFFFF" height="324">
+  <tr> 
+    <td width="64%" valign="top" > 
+      <form name="inserta" method="post" action="../servlet/EMail" onSubmit="return emailvacio(this)">
+        <table width="278" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr align="center" valign="top"> 
+            <td><font size="2" face="Verdana" color="#0E4E9C"><b><font face="Arial, Helvetica, sans-serif" color="#02145B" class="maticoB">Enviar 
+              E-Mail</font></b></font></td>
+          </tr>
+          <tr align="center" valign="top">
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        <table width="100%" border="1" cellspacing="0" cellpadding="0" align="center">
+          <tr> 
+            <td width="113" bgcolor="d4dbd5" class="maticoN" align="left" valign="middle" height="14"><font size="1" face="Verdana"><b><font color="#02145B" class="maticoN">&nbsp;Para</font></b></font> 
+            <td height="14" valign="top"><font size="1" face="Verdana"><b> 
+              <input name="para" type="text" id="para" size="20">
+              </b></font></td>
+          </tr>
+          <tr> 
+            <td width="113" bgcolor="d4dbd5" class="maticoN" align="left" valign="middle" height="22"><font color="#0E4E9C" size="1" face="Verdana"><b><font color="#02145B" class="maticoN">&nbsp;<span class="maticoB">Asunto</span></font></b></font></td>
+            <td height="22" valign="top"> 
+              <input name="asunto" type="text" id="asunto" value="" size="30" maxlength="60">
+            </td>
+          </tr>
+          <tr> 
+            <td width="113" valign="top" class="maticoN" height="83" align="left"><font color="#0E4E9C" size="1"><b><font face="Verdana" color="#02145B" class="maticoN">&nbsp;<span class="maticoB">Mensaje</span></font></b></font></td>
+            <td valign="top" height="83"> 
+              <textarea name="texto" cols=40 rows=4 id="texto" ></textarea>
+            </td>
+          </tr>
+          <tr> 
+            <td width="113" height="27">&nbsp;</td>
+            <td height="27"> 
+              <div align="center"><a href="javascript:;" onClick="emailvacio();return false;">Enviar</a> 
+              </div>
+            </td>
+          </tr>
+        </table>
+        </form>
+    </td>
+  </tr>
+</table>
+         </body>
+</html>

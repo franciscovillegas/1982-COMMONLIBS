@@ -1,0 +1,70 @@
+  <html>
+<head>
+<title>ANALISIS DOTACION</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../Gestion/script/ventanas.js"></script>
+<script language="JavaScript" src="../Gestion/script/opcion_link.js"></script>
+<script language="JavaScript">
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/estilos.css" type="text/css">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="window.focus()">
+<table width="500" height="315" border="0" cellpadding="0" cellspacing="0" class="tabla_layer_orga">
+  <tr>
+    <td height="313" valign="top">
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="texto_negro_bold">
+        
+        <tr> 
+          <td height="20" align="center">ANALISIS DOTACION &quot;${unid_desc}&quot;</td>
+        </tr>
+      </table>
+      <table width="98%" border="0" cellspacing="1" cellpadding="0" height="22">
+        <tr> 
+          <td width="35%" rowspan="2" class="tabla_beige">Unidad</td>
+          <td colspan="5" align="center" class="tabla_beige">Dotaci&oacute;n</td>
+          <td colspan="2" align="center" class="tabla_beige">Antig. Prom</td>
+          <td width="5%" rowspan="2" align="center" class="tabla_beige">Edad Prom.</td>
+        </tr>
+        <tr> 
+          <td width="6%" align="center" class="tabla_beige">Aut.</td>
+          <td width="6%" align="center" class="tabla_beige">Real</td>
+          <td width="6%" align="center" class="tabla_beige">Dif</td>
+          <td width="6%" align="center" class="tabla_beige">Fem.</td>
+          <td width="6%" align="center" class="tabla_beige">Masc.</td>
+          <td width="15%" align="center" class="tabla_beige">Unidad</td>
+          <td width="15%" align="center" class="tabla_beige">Sociedad</td>
+        </tr>
+      </table>
+      <span id="Layer1" style="position:absolute; width:500px; height:217px; z-index:1; left: 1px; overflow: auto; top: 55px"> 
+      <table border="0" cellpadding="0" cellspacing="1">
+          <list detalle as d> 
+          <tr> 
+            <td width="35%" height="20" class="tabla_negro"> ${d.desc}</td>
+            <td width="6%" height="20" class="tabla_negro" align="center"> ${d.dot_aut}</td>
+            <td height="20" width="6%" class="tabla_negro" align="center"> ${d.dot_real}</td>
+            <td height="20" width="6%" class="tabla_negro" align="center"> ${d.dot_dif}</td>
+            <td height="20" width="6%" class="tabla_negro" align="center"> ${d.dot_fem}%</td>
+            <td height="20" width="6%" class="tabla_negro" align="center"> ${d.dot_masc}%</td>
+            <td height="20" width="15%" class="tabla_negro" align="center"> ${d.ant_u_year} 
+              a&ntilde;os ${d.ant_u_meses} meses</td>
+            <td height="20" width="15%" class="tabla_negro" align="center"> ${d.ant_year} 
+              a&ntilde;os ${d.ant_meses} meses</td>
+            <td height="20" width="5%" class="tabla_negro" align="center">${d.edad}</td>
+          </tr>
+          </list> 
+      </table>
+      </span>
+    </td>
+  </tr>
+</table>
+<div id="Layer2" style="position:absolute; left:374px; top:276px; width:96px; height:15px; z-index:2"> 
+  <a href="#" onClick="window.close()"><img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" name="cerrar_up" width="120" height="24" border="0" onLoad=""></a></div>
+</body>
+</html>

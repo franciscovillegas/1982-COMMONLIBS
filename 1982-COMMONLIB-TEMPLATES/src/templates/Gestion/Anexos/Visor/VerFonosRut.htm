@@ -1,0 +1,156 @@
+<switch (ver)>
+	<case "VAN"><assign que_crear="Anexo"><assign ver_publico="S"><break>
+	<case "VFO"><assign que_crear="Tel&#233;fono"><assign ver_publico="S"><break>
+	<case "VFA"><assign que_crear="Fax"><assign ver_publico="N"><break>
+</switch>
+<html>
+<head>
+<title>Anexo, Tel&eacute;fono y Fax</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos_nuevo.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+<script language="JavaScript">
+<!--
+
+
+
+function inicio() {
+	window.focus();
+}
+
+function eliminar(form) {
+	var elim = false;
+	elim=confirm("&#191;Desea quitar este Anexo?");
+	if (elim) {
+		form.action="../servlet/AsignarAnexo?accion=Q";	
+		form.submit();
+	}
+	return false;
+}
+
+function asignar(form) {
+	var elim = false;
+	form.action="../servlet/AsignarAnexo?accion=A";	
+	form.submit();
+	return false;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/anexos.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+-->
+</Style>
+</head>
+
+<body background="../servlet/Tool?images/Gestion/news/fondo_ficha_an.jpg" bgcolor="#000000" text="#000000" onLoad="inicio();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="Layer1" style="position:absolute; left:8px; top:30px; width:50px; height:68px; z-index:2"><img onerror="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="74" height="89"></div>
+<table border="0" cellspacing="0" cellpadding="0" width="420" height="323">
+  <tr> 
+    <td class="negro12B" align="center" height="20" colspan="3">&nbsp;</td>
+  </tr>
+  <tr valign="top"> 
+    <td colspan="3" class="negro12B"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="12%">&nbsp;</td>
+          <td width="83%" align="right"> 
+            <table width="78%" border="0" cellpadding="1" cellspacing="2">
+              <tr>
+                <td colspan="2" height="8"></td>
+              </tr>
+              <tr> 
+                <td colspan="2" height="25"> 
+                  <div align="center" class="negro10B Estilo1"><b>${nombre}</b></div>
+                </td>
+              </tr>
+              <tr> 
+                <td width="42" class="negro10B" height="20"><span class="Estilo1"><b>Cargo </b></span></td>
+                <td width="263" height="20" class="negro10N Estilo1">: ${cargo}</td>
+              </tr>
+              <tr> 
+                <td width="42" class="negro10B" height="20"><span class="Estilo1"><b> Unidad</b></span></td>
+                <td width="263" height="20" class="negro10N Estilo1">: ${unidad_desc}</td>
+              </tr>
+              <tr> 
+                <td width="42" class="negro10B" height="20"><span class="Estilo1"><b>e-mail</b></span></td>
+                <td width="263" height="20" class="negro10N Estilo1">: ${email}</td>
+              </tr>
+            </table>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr> 
+    <td height="120" valign="top" width="140"> 
+      <div id="LayerAnexo" style="position:absolute; width:121px; height:135px; z-index:1; left: 14px; top: 178px; overflow: auto; visibility: visible" class="carpetaUn"> 
+        <table border="0" cellspacing="2" cellpadding="1" width="100%">
+          <assign cant = ""> <list anexos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+          <tr> 
+            <td align="center" class="negro12N Estilo1"> ${f.anexo}</td>
+            <td class="negro12N" width="30" align="center"><a href="javascript:;" title="Informaci&oacute;n del Anexo" class="azul10NLink Estilo1"  onClick="return ventInfoAnexo('${empresa}', '${f.unidad}', '${f.anexo}', 'Visor/BuscaAnexos.htm')">[Info]</a></td>
+          </tr>
+          </if> </list> <if (cant)  == ""> 
+          <tr align="center"> 
+            <td height="18" colspan="3" class="negro12N Estilo1">No registra</td>
+          </tr>
+          </if> 
+        </table>
+      </div>
+    </td>
+    <td height="120" valign="top" width="140"> 
+      <div id="LayerFono" style="position:absolute; width:135; height:135px; z-index:1; left: 138px; top: 178px; overflow: auto; visibility: visible" class="carpetaUn"> 
+        <table border="0" cellspacing="2" cellpadding="1" width="100%">
+          <assign cant = ""> <list fonos as f> <if (f.publico=="S")> <assign cant = cant+"*"> 
+          <tr> 
+            <td align="center" class="negro12N Estilo1"> ${f.fono}</td>
+          </tr>
+          </if> </list> <if (cant) == ""> 
+          <tr> 
+            <td colspan="3" align="center" class="negro12N Estilo1">No registra </td>
+          </tr>
+          </if> 
+        </table>
+      </div>
+    </td>
+    <td height="120" valign="top" width="140"> 
+      <div id="LayerFax" style="position:absolute; width:135; height:135px; z-index:1; left: 276px; top: 178px; overflow: auto; visibility: visible" class="carpetaUn"> 
+        <table border="0" cellspacing="2" cellpadding="1" width="100%">
+          <if faxes> <list faxes as f> 
+          <tr> 
+            <td align="center" class="negro12N Estilo1"> ${f.fax}</td>
+          </tr>
+          </list> <else> 
+          <tr> 
+            <td colspan="3" align="center" class="negro12N Estilo1">No registra </td>
+          </tr>
+          </if> 
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr valign="bottom" align="right"> 
+    <td height="40" colspan="3">&nbsp;</td>
+  </tr>
+</table>
+
+</body>
+</html>

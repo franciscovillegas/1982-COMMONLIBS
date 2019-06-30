@@ -1,0 +1,16 @@
+<script language="JavaScript" type="text/JavaScript">
+function fnSetRut(valor){
+	if (document.form1)
+		if (document.form1.txt_Rut){
+			document.form1.txt_Rut.value=valor;
+			document.form1.submit();
+			}
+}
+</script>
+<table width="90" border="0" align="center" cellpadding="0">
+  <if getEvaluados><list getEvaluados as a>
+  <tr>
+    <td align="center"><a href="#" onClick="fnSetRut('${a.rut}');return false;"><img src="../servlet/Tool?images/trabajadores/fotos/${a.foto}" alt="${a.nombre_completo}" width="38" height="49" border="1" onError="existeFoto(this);"></a></td>
+  </tr>
+  </list></if>
+</table>

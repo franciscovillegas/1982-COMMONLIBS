@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function fnAplicar(){
+	document.form1.submit();
+}
+
+function fnInicio(){
+<if MSG !=""> 	alert('${MSG}'); </if>
+<if REG == true && MSG !=""> 	top.close(); </if>
+}
+</script>
+
+<body onLoad="fnInicio()">
+<form action="../servlet/EvaluacionG" method="post" name="form1">
+<table width="100%" border="0">
+  <tr align="center">
+    <td colspan="2" class="TituloTabla">Evaluaci&oacute;n</td>
+  </tr>
+  <tr>
+    <td width="32%">Evaluador </td>
+    <td width="68%">Rut Eval
+        <input name="txt_RutEvaluador" type="text" id="txt_RutEvaluador2" value="${txt_RutEvaluador}">
+    </td>
+  </tr>
+  <tr>
+    <td>Evaluado</td>
+    <td>Rut
+        <input name="txt_Rut" type="text" id="txt_Rut" value="${txt_Rut}">
+    </td>
+  </tr>
+  <tr>
+    <td>Fecha</td>
+    <td>proceso
+        <input name="txt_Proceso" type="text" id="txt_Proceso2" size="5" maxlength="3" value="${txt_Proceso}">
+      y/o cargo
+      <input name="txt_Cargo" type="text" id="txt_Cargo" size="5" maxlength="2" value="${txt_Cargo}"> 
+      perfil 
+      <input name="txt_Perfil" type="text" id="txt_Perfil" size="5" maxlength="5" value="${txt_Perfil}"> 
+    </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0">
+  <tr align="center">
+    <td colspan="3" class="TituloTabla">Conductas</td>
+  </tr>
+  
+  
+<assign perfil="">
+<assign compet="">
+<if getPerfilesConductas>
+	<list getPerfilesConductas as a>  
+		<if perfil != a.id_perfil>
+		  <tr>
+			<td colspan="3" >Perfil : ${a.perfil}
+		    <input name="txtAccion" type="hidden" id="txtAccion" value="CR"></td>
+		  </tr>
+		<assign perfil = a.id_perfil>		  
+		</if>
+		<if compet != a.id_competencia>
+		  <tr>
+			<td colspan="3" >&nbsp;&nbsp;&nbsp;Competencia : ${a.competencia}</td>
+		  </tr>
+		<assign compet = a.id_competencia>		  
+		</if>
+	  <tr valign="top">
+		<td width="19%">&nbsp;</td>
+		<td width="3%"><input name="ch_resp" type="checkbox" value="${a.id_perfil}#${a.id_competencia}#${a.id_conducta}">&nbsp;</td>
+		<td width="78%"> ${a.conducta}&nbsp;</td>
+	  </tr>
+	</list>
+<else>
+	  <tr>
+		<td colspan="3" >No registra informaci&#243;n.</td>
+	  </tr>
+</if> 
+</table>
+<input type="button" name="Button" value="Grabar" onClick="fnAplicar()">
+</form>
+</body>
+</html>

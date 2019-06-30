@@ -1,0 +1,289 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* ==================================================================== */
+/*							tableStyle			
+/* ==================================================================== */
+
+.tableStyle {
+    width: 95%;
+    margin-top: 10px;
+    margin: 10px auto auto auto;
+    padding:auto;
+	text-transform: uppercase;
+
+}
+
+.tableStyle th {
+	color:#FFF;
+	-moz-box-shadow: inset 0px 2px 2px #fff;
+	-webkit-box-shadow: inset 0px 2px 2px #fff;
+	box-shadow: inset 0px 2px 2px #fff;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	border: solid 1px #f7cb5c;
+	background:#F89206;
+
+	height: 25px;
+    width: 100%;
+
+    font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 2px;
+    text-shadow: 0 1px 0 #630;
+    
+}
+
+.tableStyle #divDatosPersonales {
+	width:600px;
+	height: 240px;
+	margin-top: 30px;
+	padding: 10px 0px 10px 0px;	
+	border: solid 1px #ddd;
+	
+	-moz-box-shadow: 0 10px 2px 3px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 10px 2px 3px rgba(0,0,0,.2);
+    box-shadow:  0 10px 2px 3px rgba(0,0,0,.2);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+
+}
+
+
+.tableStyle #tblDatos {
+	width: 100%;
+  	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+
+}
+
+.tableStyle #tblContenidos {
+	width:100%;
+	background-color: #FFC;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+
+}
+
+.tableStyle #tblContenidos .divImagen{
+ 	width:67px; 
+ 	height:89px;
+	background: url(../servlet/Tool?omap=images/carpelect/marco.png) no-repeat;
+		
+}
+
+.tableStyle #tblContenidos .divImagen img{
+	width:61px; 
+ 	height:82px;
+	margin: 3px 2px 2px 2px;
+}
+
+.tableStyle #tblContenidos .textoImportante{
+	text-align: center;
+    text-shadow: 0 1px 0 white;
+    font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.tableStyle #tblContenidos .tabla_negro{
+	
+	min-width:300px;
+	font-size: 10px;
+	font-weight: bold;
+	background: #FC6;
+	color: #53221E;
+	text-shadow: 0 1px 0 #fff;
+	
+	
+}
+
+.tableStyle #tblContenidos .tablas{
+	font-size: 10px;
+}
+
+.tableStyle #tblContenidos .tablas div{
+	text-decoration: none;
+	color: #333;
+	cursor: pointer;
+}
+
+.tableStyle #tblContenidos .tablas div:hover{
+	border: solid 1px #f7cb5c;
+	background: #f7ed7e;
+	}
+
+/*====================================================================*/
+	#Reportes {
+			display:block;
+		
+		}
+	
+		#Graficos{
+			display:none;
+		}
+		
+		#Semaforos{ 
+			display:none;
+		}
+
+.divMenu{
+			position: relative;
+			float: left;
+			width:100%;
+			background-color: #eeb;
+			min-height: 200px;		
+			
+			-moz-box-shadow: 0 10px 2px 3px rgba(0,0,0,.2); 
+			-webkit-box-shadow: 0 10px 2px 3px rgba(0,0,0,.2); 
+			box-shadow:  0 10px 2px 3px rgba(0,0,0,.2);
+		
+		  	-webkit-border-bottom-left-radius: 10px;
+			-webkit-border-bottom-right-radius: 10px;
+			-moz-border-radius-bottomleft: 10px;
+			-moz-border-radius-bottomright: 10px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+
+}
+
+
+.btnMis{
+	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	box-shadow:inset 0px 1px 0px 0px #fceaca;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffce79), color-stop(1, #eeaf41) );
+	background:-moz-linear-gradient( center top, #ffce79 5%, #eeaf41 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffce79', endColorstr='#eeaf41');
+	background-color:#ffce79;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ce8e28;
+}
+
+.btnMis:hover{
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eeaf41), color-stop(1, #ffce79) );
+	background:-moz-linear-gradient( center top, #eeaf41 5%, #ffce79 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeaf41', endColorstr='#ffce79');
+	background-color:#eeaf41;
+	
+}
+
+	.btnReportes{
+		margin:0px 0px 0px 0px;
+		height: 30px;
+	
+	}
+	
+	.btnRpt{
+	
+	-moz-box-shadow: inset 0px 2px 2px #fff;
+	-webkit-box-shadow: inset 0px 2px 2px #fff;
+	box-shadow: inset 0px 2px 2px #fff;
+	
+	height: 30px;
+    min-width: 100px;
+	background: #C60;
+
+	border:1px solid #600;
+	display:inline-block;
+	color: #FFF;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 4px 0px 4px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #600;
+	
+	float: left;
+ 	display: block; 
+	
+	margin:5px 1px -3px 0px;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+
+ 	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	}
+	.btnGraficos{
+
+	
+	-moz-box-shadow: inset 0px 2px 2px #fff;
+	-webkit-box-shadow: inset 0px 2px 2px #fff;
+	box-shadow: inset 0px 2px 2px #fff;
+	
+	height: 30px;
+    min-width: 100px;
+	background: #C90;
+
+	border:1px solid #600;
+	display:inline-block;
+	color: #FFF;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 4px 0px 4px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #600;
+	
+	float: left;
+ 	display: block; 
+	
+	margin:5px 1px -3px 0px;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+
+ 	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	
+	}
+	
+	
+	
+	.btnReportes span:hover{
+	background:#AEAEAE;
+	color:#EEE;
+	text-shadow:1px 1px 0px #C1C1C1;
+	}
+
+.inputText{
+	
+	font-size: 10px;
+	background: #ffc;
+}
+

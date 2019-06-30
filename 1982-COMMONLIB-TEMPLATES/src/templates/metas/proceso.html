@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script language=JavaScript src="../servlet/Tool?scripts/AnchorPosition.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/PopupWindow.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/CalendarPopup.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/date.js"></script>
+<script language=JavaScript src="../servlet/Tool?scripts/calendar.js"></script>
+<title>Documento sin t&iacute;tulo</title>
+<script type="text/JavaScript">
+  <!-- 
+	function openCal(field, field2){
+	    setDateField(field, field2);
+	    top.newWin = window.open('Tool?htm=html/calendar.html', 'cal', 'dependent=yes, width=210, height=230, left=235, top=253, titlebar=no');
+	}
+
+    function Accion(evento){
+
+		if (evento == "nuevo"){
+			if(document.form1.proceso_nuevo.value != "" && document.form1.fecha_desde.value != "" || document.form1.fecha_desde.value != ""){
+				if (document.form1.fecha_desde_1.value != "" && document.form1.fecha_hasta_1.value != "" && document.form1.fecha_desde_2.value != "" && document.form1.fecha_hasta_2.value != "" && document.form1.fecha_desde_3.value != "" && document.form1.fecha_hasta_3.value != ""){
+					document.form1.accion.value = evento;
+			    	document.form1.submit();
+				}else{
+					alert("Para generar un nuevo proceso debe ingresar los datos solicitados para los sub procesos relacionados.");  
+				}
+			}else{
+                alert("Para generar un nuevo proceso debe ingresar los datos solicitados.");  
+			} 
+		}
+	}
+  //-->
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:86px;
+	top:335px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:207px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:17px;
+	top:168px;
+	width:236px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:14px;
+	top:186px;
+	width:244px;
+	height:351px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:243px;
+	top:35px;
+	width:739px;
+	height:508px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:245px;
+	top:10px;
+	width:739px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:566px;
+	top:10px;
+	width:415px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:565px;
+	top:34px;
+	width:417px;
+	height:111px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:456px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:14px;
+	top:32px;
+	width:790px;
+	height:280px;
+	z-index:11;
+}
+#Layer111 {
+	position:absolute;
+	left:14px;
+	top:240px;
+	width:400px;
+	height:280px;
+	z-index:11;
+	overflow: auto;
+}
+#Layer12 {
+	position:absolute;
+	left:450px;
+	top:456px;
+	width:537px;
+	height:33px;
+	z-index:12;
+}
+#Layer100 {
+	position:absolute;
+	left:355px;
+	top:460px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+-->
+</style>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/metas2.jpg">
+<form name="form1" method="post" action="../servlet/ServletMetasProceso">
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<div id="Layer2">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="16%" class="txt_gris_bold">Definici&#243;n proceso de metas: </td>
+    </tr>
+  </table>
+</div>
+<div id="Layer11">
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    <tr> 
+      <td colspan="6" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="6" class="txt_gris_bold">Nombre Proceso </td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">
+        <span class="texto_titulo">
+         <input name="proceso_nuevo" type="text" class="txt_gris" size="80" />
+        </span>
+      </td>
+      <td width="195"><input name="fecha_desde" type="text" class="txt_gris_bold" id="fecha_desde" size="12" readonly="readonly" value="${fecha_desde}"/>
+      <input type="hidden" name="fecha_d" size="11" maxlength="10">
+      <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_d, document.forms[0].fecha_desde)"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">Inicio</span> </td>
+      <td colspan="2"><input name="fecha_hasta" type="text" class="txt_gris_bold" id="fecha_hasta" size="12" readonly="readonly" value="${fecha_hasta}"/>
+       <input type="hidden" name="fecha_h" size="11" maxlength="10">
+       <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_h, document.forms[0].fecha_hasta)"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">T&#233;rmino</span> </td>
+    </tr>
+    <tr>
+      <td colspan="5" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="texto_titulo">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="fondo_tablaAmarillo">Determinar fechas para sub procesos:</td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">&nbsp;</td>
+      <td colspan="4" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <list getSubProcesos as sp> 
+     <tr>
+      <td class="campo_texto">${sp.descripcion}</td>
+      <td width="195" class="campo_texto"><input name="fecha_desde_${sp.id_subproceso}" type="text" class="txt_gris_bold" id="fecha_desde_${sp.id_subproceso}" size="12" readonly="readonly" value="${fecha_desde}"/>
+      <input type="hidden" name="fecha_d_${sp.id_subproceso}" size="11" maxlength="10">
+      <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_d_${sp.id_subproceso}, document.forms[0].fecha_desde_${sp.id_subproceso})"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">Inicio</span> </td>
+      <td colspan="2" class="campo_texto"><input name="fecha_hasta_${sp.id_subproceso}" type="text" class="txt_gris_bold" id="fecha_hasta_${sp.id_subproceso}" size="12" readonly="readonly" value="${fecha_hasta}"/>
+      <input type="hidden" name="fecha_h_${sp.id_subproceso}" size="11" maxlength="10">
+      <a href="javascript:doNothing()" onClick="openCal(document.forms[0].fecha_h_${sp.id_subproceso}, document.forms[0].fecha_hasta_${sp.id_subproceso})"> <img src="../servlet/Tool?images/ggd/metas/calendar.gif" title="calendario" width="15" height="15" border="0" align="absmiddle"/></a> <span class="boton_gris">T&#233;rmino</span> </td>
+     </tr>
+    </list>
+  </table>
+</div>
+<div id="Layer111">  
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    <tr> 
+      <td colspan="5" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="fondo_tablaAmarillo">Lista de procesos generados: </td>
+    </tr> 
+    <tr> 
+      <td colspan="5" class="txt_gris_bold">&nbsp;</td>
+    </tr>      
+  </table>
+  <table width="100%" border="0" cellpadding="0" class="txt_gris">
+    <tr> 
+      <td class="txt_gris_bold" align="left">PROCESO</td>
+      <td class="txt_gris_bold" align="center">FECHA INICIO</td>
+      <td class="txt_gris_bold" align="center">FECHA T&#201;RMINO</td>
+      <td class="txt_gris_bold" align="center">VIGENCIA</td>
+    </tr>
+   <list getProcesos as p>
+    <tr> 
+      <td align="left">${p.proceso}</td>
+      <td align="center">${p.fecha_inicio}</td>
+      <td align="center">${p.fecha_termino}</td>
+      <td align="center">${p.vigente}</td>
+    </tr>
+   </list>       
+  </table>
+</div>
+<div id="Layer12">
+   <table border="0" align="right" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td nowrap="nowrap"></td>
+      <td nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+      <td width="30"><a href="#" onClick="Accion('nuevo')"><img src="../servlet/Tool?images/ggd/botones/grabar.gif" width="30" height="30" border="0"/></a></td>
+      <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+    </tr>
+  </table>  
+</div>
+<DIV ID="CalendarDiv" STYLE="position:absolute; visibility:hidden; background-color:white; layer-background-color:white; z-index: 4;"></DIV>
+	<div id="Layer100">
+	  <table border="0" align="right" cellpadding="0">
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td nowrap="nowrap"><span class="texto_titulo_rojo">${salida}</span></td>
+	      <td width="30">&nbsp;</td>
+	      <td width="30">&nbsp;</td>
+	    </tr>
+	  </table>
+	</div>
+</form>
+</body>
+</html>

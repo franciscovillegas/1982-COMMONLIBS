@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Informes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<script language="JavaScript" src="../servlet/Tool?scripts/ventanas.js" type="text/JavaScript"></script>
+	<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+
+	<script language="JavaScript" type="text/JavaScript">
+		function imprimir(){
+			iimp.style.visibility = "hidden";
+			window.print();
+			iimp.style.visibility = "visible";
+		}
+	</script>
+</head>
+
+<body background="../servlet/Tool?images/ggd/competencias/informe.jpg" style="background-color:#666666;background-repeat:no-repeat">
+<table width="980" height="580" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="5" colspan="3"></td>
+  </tr>
+  <tr>
+    <td width="6"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq01.gif" width="6" height="22"></td>
+    <td width="100%" valign="middle" background="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/fondo.gif" class="texto_texto"><strong class="txt_gris_bold">Informe N&ordm; 7 </strong></td>
+    <td width="6" align="right"><img src="../servlet/Tool?images/images_ggd/ggd/informes/cajagris/esq02.gif" width="6" height="22"></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center" valign="top" class="fondo_tabla"><table width="98%" align="center">
+      <thead style="display:table-header-group">
+        <tr>
+          <th> <table width="100%">
+              <tr>
+                <td align="left"><table width="80%">
+                    <tr>
+                      <td class="texto_titulo_rojo">${empresa}</td>
+                    </tr>
+                    <tr>
+                      <td class="texto_titulo_rojo">PERSONAS EVALUADAS AL ${fechaActual}</td>
+                    </tr>
+                </table></td>
+                <td align="right"><input name="image" type="image" id="iimp" title="Imprimir" onClick="imprimir()" src="../servlet/Tool?images/images_ggd/ggd/botones/inf_imprimir.jpg" alt="Imprimir">
+                </td>
+              </tr>
+          </table></th>
+        </tr>
+      </thead>
+      <tr>
+        <td><table width="100%">
+            <list pEval as p>
+              <if p.rutEvaluador >
+                <tr>
+                  <td colspan="5" class="fondo_tablaGris" align="left"><table align="left">
+                      <tr>
+                        <td class="texto_titulo">Rut Evaluador:</td>
+                        <td align="left" class="texto_texto">${p.rutEvaluador}</td>
+                        <td class="texto_titulo">Nombre Evaluador:</td>
+                        <td align="left" class="texto_texto">${p.nombEvaluador}</td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td class="texto_titulo">Proceso</td>
+                  <td class="texto_titulo">Rut</td>
+                  <td class="texto_titulo">Nombre</td>
+                  <td class="texto_titulo">Cargo</td>
+                  <td class="texto_titulo">Unidad</td>
+                </tr>
+              </if>
+              <list p.agrupDet as ldp>
+                <tr>
+                  <td class="texto_texto">${ldp.proceso}</td>
+                  <td class="texto_texto">${ldp.rutEvaluado}</td>
+                  <td class="texto_texto">${ldp.nombEvaluado}</td>
+                  <td class="texto_texto">${ldp.cargo}</td>
+                  <td class="texto_texto">${ldp.unidad}</td>
+                </tr>
+              </list>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </list>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

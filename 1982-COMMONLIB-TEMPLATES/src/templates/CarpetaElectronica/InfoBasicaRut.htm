@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>Datos personales</TITLE>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<!-- tool FUNCTION -->
+	
+	<!-- JQUERY  -->
+	<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+	
+	<!-- PAGINA -->
+	<link href="../servlet/Tool?omap=style/estilosPersonalizado.css" rel="stylesheet" type="text/css">
+
+
+</HEAD>
+
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div id="divCarpetaElectronica">
+		<table  width="800" align="center" style="margin-top:20px;" >
+		<th width="360" colspan="4" class=" macTableStyle1"><div class="titulo">Datos Personales</div></th>
+		<tr>
+			<td colspan="3" align="center">
+				<div id="divDatosPersonales" style="height: 600px">
+                	<table id="tblContenidos"  width="100%" style="margin-top:20px;height: 350px" class="cuadro_contenido" >
+					 	
+			          <tr>
+			          	<td rowspan="15">
+
+			          		<table >
+						    	<tr>
+						        	<td align="center"><img src="../temporal/imgtrabajadores/${rut}.jpg" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+						      	</tr>
+						      	<tr>
+						        	<td align="center">${rut2}</td>
+						      	</tr>
+						    </table>
+
+			          	</td>
+			            <td colspan="3" style="padding:10px;"> <strong>${nombre}</strong></td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"> Cargo</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;" >${cargo}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"> Unidad org&#225;nica</td>
+						<td>:</td>			            
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">(${id_unidad}) ${unidad}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"> Fecha Nacimiento</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${fec_nac}</td>
+			          </tr>
+			          <tr>
+			          	<td  bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Edad</td>
+						<td>:</td>
+			          	<td style="padding:3px; border:#D7D7D7 1px solid;">${edad} a&ntilde;os</td>
+			          </tr>
+			          <tr>
+			          	<td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">E-mail</td>
+						<td>:</td>
+			          	<td style="padding:3px; border:#D7D7D7 1px solid;">${email}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"> Estado Civil</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;"><if xrut == "5196456">Casado
+			                  <else>
+			              ${est_civil}</if></td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"> Nacionalidad</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${nacionalidad}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;"5>N&deg; de cargas</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${numcargas}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Direcci&oacute;n</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${domicilio}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Comuna</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${comuna}</td>
+			          </tr>
+			          <tr >
+			            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Tel&eacute;fono</td>
+						<td>:</td>
+			            <td style="padding:3px; border:#D7D7D7 1px solid;">${fono}</td>
+			          </tr>
+			          
+			          <list formacion.profesional as p>
+			          	<tr >
+			              <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Tipo de estudio</td>
+							<td>:</td>
+				            <td style="padding:3px; border:#D7D7D7 1px solid;">${p.organismo}</td>
+				          </tr>
+				          <tr >
+				            <td bgcolor="#F0F0F0" style="padding:3px; border:#D7D7D7 1px solid;">Carrera</td>
+							<td>:</td>
+				            <td style="padding:3px; border:#D7D7D7 1px solid;">${p.titulo}</td>
+			             </tr>
+			          
+			          </list>
+			          
+			        </table>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+</BODY>
+</HTML>

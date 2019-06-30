@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>Maestro Org&#225;nica</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+    
+}
+//-->
+</script>
+</HEAD>
+<BODY>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:38px; height:38px; z-index:1">
+<a href="#" onClick="Imprimir()">
+<img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" name="Image1" width="80" height="20" border="0">
+</a></div>
+
+<table width="100%">
+<thead style="display:table-header-group">
+<tr><td colspan="6"><br><br></td></tr>
+<tr><td colspan="6" align="center" class="tabla_beige">MAESTRO ORGANICA</td></tr>
+<tr>
+<td align="center" class="tabla_beige">Cod.Unidad</td>
+<td align="center" class="tabla_beige">Desc.Unidad</td>
+<td align="center" class="tabla_beige">Cod.Unidad Padre</td>
+<td align="center" class="tabla_beige">Desc.Unidad Padre</td>
+<td align="center" class="tabla_beige">Rut Jefe</td>
+<td align="center" class="tabla_beige">Nombre Jefe</td>
+</tr>
+</thead>
+<tbody>
+<if lunidades>
+<list lunidades as u>
+<tr>
+<td align="center" valign="top" class="texto_negro">${u.cunid}</td>
+<td valign="top" class="texto_negro">${u.dunid}</td>
+<td align="center" valign="top" class="texto_negro">${u.cunidp}</td>
+<td valign="top" class="texto_negro">${u.dunidp}</td>
+<td valign="top" class="texto_negro">${u.rjunid}</td>
+<td valign="top" class="texto_negro">${u.njunid}</td>
+</tr>
+</list>
+</if>
+</tbody>
+</table>
+</BODY>
+</HTML>

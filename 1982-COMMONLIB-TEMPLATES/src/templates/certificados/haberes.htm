@@ -1,0 +1,19 @@
+<style type="text/css">
+<!--
+.Estilo1 {font-size: 12px}
+-->
+</style>
+<table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#999999" bgcolor="#E4E4E4" class="Estilo1">
+  <tr bgcolor="#E4E4E4">
+    <td width="75%" align="center">HABERES</td>
+    <td width="25%" align="center">VALOR</td>
+  </tr>
+</table>
+<table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#999999" class="Estilo1">
+  <list datos as d>
+  <tr>
+    <td width="75%" align="left">${d.glosa_haber}</td>
+    <td width="25%" align="right">${FNum(d.val_haber)}</td>
+  </tr>
+  </list>
+</table>

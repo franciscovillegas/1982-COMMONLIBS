@@ -1,0 +1,151 @@
+ <HTML>
+<HEAD>
+<TITLE>ListaIndicadores</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+var layerVistaAct ="";
+function OcultarLayer(){
+	if (layerVistaAct != "")
+		MM_showHideLayers('Layer'+layerVistaAct,'','hide');
+}
+
+function VerLayer(cual){
+	//alert(cual);
+	if ((cual != "-1") && (cual != "")) {
+		OcultarLayer();
+		MM_showHideLayers('Layer'+cual,'','show');
+		layerVistaAct = cual;
+	}
+}
+
+function editarIndicador(gral_id,item, grupo, desde, hasta) {
+	var url = "../servlet/ManIndicadores?gral_id="+gral_id+"&item="+item+"&grupo="+grupo+"&desde="+desde+"&hasta="+hasta;
+	//alert(url);
+	document.location.href = url;
+}
+
+function Inicio(){
+	<if (gral_id)>VerLayer('${gral_id}');
+	document.all.select.value = '${gral_id}';</if>
+}
+// -->
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:187px;
+	top:82px;
+	width:229px;
+	height:16px;
+	z-index:2;
+}
+-->
+</Style>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="Inicio()" background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+
+
+ <select name="select" class="texto_negro" style="width=190" onChange="VerLayer(this.value)" onClick="VerLayer(this.value)">
+              <if !(indicadores)> 
+              <option value="-1">No existen Indicadores</option>
+              <else> <list indicadores as i> 
+              <option value="${i.gral_id}">${i.gral_nombre}</option>
+              </list> </if> 
+   </select>
+ <list indicadores as i> <span id="Layer${i.gral_id}" style="position:absolute; width:500px; height:300px; z-index:1; left: 3px; top: 27px; overflow: auto; visibility: hidden;" class="carpeta"> 
+              <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr> 
+                  <td width="29" height="22">&nbsp;</td>
+                  <td width="461" height="22" valign="baseline" class="texto_negro_bold">${i.gral_nombre}</td>
+                </tr>
+                <tr> 
+                  <td align="center" colspan="2"> 
+				  <list i.indic as g>
+                    <form name="form${g.item}" method="post" action="../servlet/ManIndicadores">
+                      <table width="80%" border="0" cellpadding="0" cellspacing="1">
+                        <tr> 
+                          <td height="24" colspan="3" align="center" valign="middle" class="texto_negro_bold">${g.grupo_desc}</td>
+                        </tr>
+                        <tr> 
+                          <td width="71" rowspan="2" align="center" valign="middle" class="tabla_amarelo">Alertas</td>
+                          <td colspan="2" align="center" class="tabla_amarelo"> Rangos</td>
+                        </tr>
+                        <tr> 
+                          <td width="156" align="center" class="tabla_amarelo"> Desde</td>
+                          <td width="161" align="center" class="tabla_amarelo"> Hasta</td>
+                        </tr>
+                        <tr> 
+                          <td align="center" ><img src="../servlet/Tool?images/Gestion/Herramientas/sema_verd.gif" width="24" height="32" alt="Cr&iacute;tico"> </td>
+                          <td width="156" align="center" class="tabla_negro"> 
+                          <input type="text" name="inf1" value="${g.tramo_inf1}" size="10">                          </td>
+                          <td width="161" align="center" class="tabla_negro"> 
+                          <input type="text" name="inf2" value="${g.tramo_inf2}" size="10">                          </td>
+                        </tr>
+                        <tr> 
+                          <td align="center"> 
+                            <img src="../servlet/Tool?images/Gestion/Herramientas/sema_ama.gif" width="24" height="32" alt="Sensible">                          </td>
+                          <td width="156" align="center" class="tabla_negro"> 
+                          <input type="text" name="med1" value="${g.tramo_medio1}" size="10">                          </td>
+                          <td width="161" align="center" class="tabla_negro"> 
+                          <input type="text" name="med2" value="${g.tramo_medio2}" size="10">                          </td>
+                        </tr>
+                        <tr> 
+                          <td align="center"><img src="../servlet/Tool?images/Gestion/Herramientas/sema_rojo.gif" alt="Normal" name="Image1" width="24" height="32" id="Image1"></td>
+                          <td width="156" align="center" class="tabla_negro"> 
+                          <input type="text" name="sup1" value="${g.tramo_sup1}" size="10">                          </td>
+                          <td width="161" align="center" class="tabla_negro"> 
+                          <input type="text" name="sup2" value="${g.tramo_sup2}" size="10">                          </td>
+                        </tr>
+                      </table>
+                      <input type="hidden" name="queAct" value="R">
+                      <input type="hidden" name="item" value="${g.item}">
+                      <input type="hidden" name="desde" value="${g.periodo_desde}">
+                      <input type="hidden" name="hasta" value="${g.periodo_hasta}">
+                      <input type="hidden" name="politica" value="${g.desc_ind}">
+                      <input type="hidden" name="formula" value="${g.formula}">
+                      <input type="hidden" name="glosa" value="${g.glosa}">
+                      <input type="hidden" name="descf" value="${g.desc_tramo_inf}">
+					  <input type="hidden" name="descm" value="${g.desc_tramo_med}">
+					  <input type="hidden" name="descs" value="${g.desc_tramo_sup}">
+					  <input type="hidden" name="gral_id" value="${i.gral_id}">
+                      <a href="javascript:;" onClick="editarIndicador('${i.gral_id}','${g.item}', '${g.grupo}', '${g.periodo_desde}', '${g.periodo_hasta}'); return false;"><img src="../servlet/Tool?images/Gestion/botones/modificar.gif" width="120" height="24" border="0" alt="Modificar Descripciones" name="modif${g.item}"></a> 
+                       <input type="image" border="0" name="aplicar${g.item}" src="../servlet/Tool?images/Gestion/botones/aplicar.gif" width="120" height="24" alt="Aplicar Cambios">
+                    </form>
+	  			  </list>                  </td>
+                </tr>
+              </table>
+            </span>
+</list> 
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+</HTML>

@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<title>Menu Organica</title>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#gestion {
+	position:absolute;
+	left:18px;
+	top:54px;
+	width:379px;
+	height:14px;
+	z-index:5;
+}
+#dotacion {
+	position:absolute;
+	left:18px;
+	top:54px;
+	height:19px;
+	z-index:4;
+}
+#mis {
+	position:absolute;
+	left:18px;
+	top:54px;
+	width:144px;
+	height:19px;
+	z-index:2;	
+}
+#gestion2 {
+	position:absolute;
+	left:18px;
+	top:54px;
+	width:100px;
+	height:14px;
+	z-index:5;
+	visibility: hidden;
+}
+#dotacion2 {
+	position:absolute;
+	left:18px;
+	top:54px;
+	height:19px;
+	z-index:4;
+	visibility: hidden;	
+}
+#mis2 {
+	position:absolute;
+	left:18px;
+	top:54px;
+	width:144px;
+	height:19px;
+	z-index:6;
+	visibility: hidden;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function Area(area) {
+  parent.treeFrame.document.form1.area.value=area;
+  parent.treeFrame.document.form2.area.value=area;
+}
+//-->
+</script>
+</HEAD>
+<body bgcolor="#666666">
+
+<if Gestion>
+<div id="gestion">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria.jpg" width="110" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('gestion','','hide','gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('gestion','','hide','gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion_b.jpg" width="79" height="23" border="0"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('gestion','','hide','dotacion','','hide','capacitacion','','hide','gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar_b.jpg" width="80" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div>  
+</if>
+<if Dotacion>
+<div id="dotacion">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria_b.jpg" width="99" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('dotacion','','hide','gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('dotacion','','hide','gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion.jpg" width="95" height="23" border="0"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('dotacion','','hide','gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar_b.jpg" width="80" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div>  
+</if>
+<if Reportes>
+<div id="mis">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria_b.jpg" width="99" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion_b.jpg" width="79" height="23" border="0"></a><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar.jpg" width="95" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div> 
+</if>
+<div id="gestion2">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria.jpg" width="110" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion_b.jpg" width="79" height="23" border="0"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar_b.jpg" width="80" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div>  
+<div id="dotacion2">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria_b.jpg" width="99" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion.jpg" width="95" height="23" border="0"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar_b.jpg" width="80" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div>  
+<div id="mis2">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><a href="../servlet/GestionDiaria?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"><img src="../servlet/Tool?images/Gestion/menu/ges_diaria_b.jpg" width="99" height="23" border="0" onClick="Area('Gestion');MM_showHideLayers('gestion2','','show','dotacion2','','hide','capacitacion2','','hide','mis2','','hide')"></a></td>
+      <td><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Dotacion');MM_showHideLayers('gestion2','','hide','dotacion2','','show','capacitacion2','','hide','mis2','','hide')"><img src="../servlet/Tool?images/Gestion/menu/dotacion_b.jpg" width="79" height="23" border="0"></a><a href="../servlet/Organizacion?empresa=${empActual}&unidad=${uniActual}" target="folderFrame"></a></td>
+      <td><a href="../servlet/GestionReportes?empresa=${empActual}&unidad=${uniActual}" target="folderFrame" onClick="Area('Reportes');MM_showHideLayers('gestion2','','hide','dotacion2','','hide','capacitacion2','','hide','mis2','','show')"><img src="../servlet/Tool?images/Gestion/menu/buscar.jpg" width="95" height="23" border="0"></a></td>
+    </tr>
+  </table>
+</div> 
+<table width="100%" height="77" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="right" valign="bottom" bgcolor="#666666"><table width="310" border="0" cellpadding="0">
+      <tr>
+        <td width="58%"><img src="../servlet/Tool?images/Gestion/menu/logo_organica.jpg" width="141" height="45"></td>
+        <td width="42%" align="right">
+        <!--<img src="../servlet/Tool?images/Gestion/menu/logo_rrhh.jpg" width="136" height="44">-->
+        </td>
+      </tr>
+    </table>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="5">&nbsp;</td>
+        <td width="12"><img src="../servlet/Tool?images/Gestion/menu/borde_izq.jpg" width="12" height="27"></td>
+        <td align="center" valign="bottom" background="../servlet/Tool?images/Gestion/menu/fondo_menu.jpg">&nbsp;</td>
+        <td width="27"><img src="../servlet/Tool?images/Gestion/menu/borde_der.jpg" width="27" height="27"></td>
+        <td width="370" bgcolor="#666666">&nbsp;</td>
+      </tr>
+      
+    </table>
+	</td>
+  </tr>
+</table>
+</body>
+</HTML>

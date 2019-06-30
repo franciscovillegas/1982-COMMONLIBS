@@ -1,0 +1,54 @@
+<style type="text/css">
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color: #FFFFFF;
+	background-color: #00CC33;
+}
+-->
+</style>
+<script>
+function fnActualizar(opcion){
+	form1.rb_competencia.value = opcion;
+	form1.txt_Rut.value = form.txt_Rut.value;
+	form1.id_perfil.value = form.id_perfil.value;
+	form1.id_proceso.value = form.id_proceso.value;
+	form1.modo.value = form.modo.value;
+	form1.txt_RutEval.value = form.txt_RutEval.value;
+	form1.action="../servlet/PlanAccion?";
+	form1.submit();
+}
+function fnEnviar(){
+	form1.txt_Rut.value = form.txt_Rut.value;
+	form1.id_perfil.value = form.id_perfil.value;
+	form1.id_proceso.value = form.id_proceso.value;
+	form1.modo.value = form.modo.value;
+	form1.txt_RutEval.value = form.txt_RutEval.value;	
+	form1.action="../servlet/PlanAccion?";
+	form1.submit();
+}
+</script>
+<form name="form1" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <if getNivelesObtenidos>
+  <list getNivelesObtenidos as a>
+	<assign x="">
+  	<tr align="left" valign="top"><td width="45%">
+	<table width="100%" border="0">
+	<tr>
+	<td class="ra1lista"><strong>${a.competencia}</strong>&nbsp;<br>${a.glosa}&nbsp;</td>
+	<td valign="top"><input type="radio" name="rb_competencia" value="${a.id_competencia}" onClick="fnEnviar()" ${x}></td>
+	</tr>
+	</table>
+	</td></tr>
+  </list>
+  </if>
+</table>
+<input name="txt_Rut" type="hidden" value="">
+<input name="id_perfil" type="hidden" value="">
+<input name="id_proceso" type="hidden" value="">
+<input name="txt_RutEval" type="hidden" value="">
+<input name="modo" type="hidden" value="">
+</form>

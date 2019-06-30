@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<SCRIPT language=JavaScript src="../servlet/Tool?scripts/validadores.js"></SCRIPT>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:14px;
+	top:34px;
+	width:62px;
+	height:81px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:525px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	left:11px;
+	top:168px;
+	width:221px;
+	z-index:3;
+}
+#Layer4 {
+	position:absolute;
+	left:8px;
+	top:186px;
+	width:226px;
+	height:260px;
+	z-index:4;
+	overflow: auto;
+}
+#Layer5 {
+	position:absolute;
+	left:250px;
+	top:30px;
+	width:738px;
+	height:410px;
+	z-index:5;
+	overflow: auto;
+}
+#Layer6 {
+	position:absolute;
+	left:250px;
+	top:10px;
+	width:738px;
+	z-index:6;
+}
+#Layer7 {
+	position:absolute;
+	left:85px;
+	top:35px;
+	width:456px;
+	height:111px;
+	z-index:7;
+}
+#Layer8 {
+	position:absolute;
+	left:11px;
+	top:10px;
+	width:221px;
+	z-index:8;
+}
+#Layer9 {
+	position:absolute;
+	left:11px;
+	top:31px;
+	width:221px;
+	height:119px;
+	z-index:9;
+}
+#Layer10 {
+	position:absolute;
+	left:685px;
+	top:456px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer100 {
+	position:absolute;
+	left:355px;
+	top:460px;
+	width:303px;
+	height:25px;
+	z-index:10;
+}
+#Layer11 {
+	position:absolute;
+	left:250px;
+	top:499px;
+	width:738px;
+	z-index:11;
+}
+.Estilo1 {color: #009900}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function verEvalColaborador(colaborador){
+	document.form1.rut_colaborador.value = colaborador;
+	document.form1.submit();
+}
+
+function Accion(evento){
+
+	if (evento == "GRABAR" || evento == "GRABAR_PUBLICAR"){
+		  if(validarIngreso()){
+			 //alert("OK");
+			 document.form1.accion.value = evento;
+		     document.form1.submit();	
+		  }else{
+             alert("Existen errores en el ingreso de datos.");
+		  }
+ 	}
+}
+
+function imprSelec() {
+	   var ventimp = window.open(' ', 'popimpr');	  
+	   ventimp.document.write("<br>"); 	   
+ 	  
+	   var capa5 = document.getElementById("Layer5");
+	
+	   ventimp.document.write("<br>"); 
+	   ventimp.document.write( capa5.innerHTML );
+	   ventimp.document.write("<LINK REL='stylesheet' HREF='../servlet/Tool?style/ggd.css' TYPE='text/css'>"); 
+	   ventimp.document.close();
+	   ventimp.print();
+	   ventimp.close();
+} 
+
+function validarIngreso() { 
+	
+    var contadorError = 0; 
+    //alert(document.forms[0].puntajes.length);
+	if (!isNull(document.forms[0].puntajes)) {	
+		//alert("entra1");
+		if (isArray(document.forms[0].puntajes)) {
+			//alert("entra2");
+            for(var j=0;j<document.forms[0].puntajes.length;j++){
+                //alert(document.forms[0].puntajes[j].value);
+                if(validarErrorValor(document.forms[0].puntajes[j].value)){
+                	contadorError++;
+                	//alert("ERROR");
+                }
+            }
+	    }else{
+	    	 if(validarErrorValor(document.forms[0].puntajes.value)){
+             	contadorError++;
+             	//alert("ERROR de registro solitario");
+             }
+		}
+	}
+	//alert("contadorError: " + contadorError);
+	if(contadorError == 0){
+		//alert("OK");
+		return true;
+	}else{ 
+		//alert("Existen errores de ingreso de datos.");
+		return false;
+	}
+}
+
+function validarErrorValor(valor) { 
+	//alert(valor);
+	var digits="0123456789."; 
+    var temp; 
+	if (valor != ""){ 
+	   for (var i=0;i<valor.length;i++){
+		   temp=valor.substring(i,i+1); 
+	       if (digits.indexOf(temp)==-1){  
+	    	   //alert("DATOS INCORRECTOS.- Solo pueden introducirse caracteres num&#233;ricos o decimales con el caracter punto (EJ: 89.6)"); 
+	           return true; 
+	       } 
+	   } 
+	}
+} 
+
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css">
+<body background="../servlet/Tool?images/ggd/metas/metas.jpg">
+<form name="form1" method="post" action="../servlet/ServletMetasEvaluacion">
+<input name="rut_colaborador" type="hidden" class="campo_texto" style="width:97%" value="${rut_colaborador}"/>
+<input name="accion" type="hidden" class="campo_texto" style="width:97%"/>
+<if (rut_colaborador != "0")> 
+    <div class="boton_rojo" id="Layer3">Colaboradores</div>
+	<span id="Layer4">
+	<table width="90%" border="0" cellpadding="0">
+	   <list getColaboradores as colab>
+	    <tr>
+	      <td width="21%"><span class="txt_gris_bold"><a href="#" onClick="verEvalColaborador('${colab.rut}');"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${colab.foto}" alt="" name="foto" width="37" height="48" border="1" id="foto" style="background-color: #FFCC00" /></a></span></td>
+	      <td width="79%" class="boton_rojo"><p>${colab.nombre_completo}</p></td>
+	    </tr>
+	   </list>   
+	</table>
+	</span>
+	<div id="Layer8">
+	  <div id="layer">
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	      <tr>
+	        <td class="txt_gris_bold">%  Realizaci&oacute;n</td>
+	        <td class="txt_gris_bold">Escala cualitativa </td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+	<div id="Layer9">
+	  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+	   <list getEscala as ec>
+	    <tr>
+	      <td width="39%" valign="top">${ec.desc_porcentaje}</td>
+	      <td width="5%" align="center" valign="top">=</td>
+	      <td width="56%" valign="top">${ec.desc_escala}</td>
+	    </tr>  
+	   </list> 
+	  </table>
+	</div>
+	<span id="Layer5">
+	<table width="96%" border="0" cellpadding="0">
+    <tr>
+      <td valign="top" class="titulo_ficha"><strong>Ficha personal:</strong></td>
+      <td colspan="2" valign="top" class="titulo_ficha">${datos_colaborador.nombre}</td>
+      <td align="right" valign="top" class="titulo_ficha"><strong>Rut:&nbsp;</strong></td>
+      <td valign="top" class="titulo_ficha">${datos_colaborador.rut}-${datos_colaborador.digito_ver}</td>
+    </tr>
+    <tr>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="17%" rowspan="5" align="center" valign="top" class="txt_gris_bold"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${datos_colaborador.foto_colab}" alt="" name="foto" width="62" height="81" border="1" id="foto" style="background-color: #FFCC00" /></td>
+      <td width="10%" valign="top" class="txt_gris_bold">Cargo:</td>
+      <td width="27%" valign="top" class="txt_gris_bold">${datos_colaborador.cargo}</td>
+      <td width="22%" valign="top" class="txt_gris_bold">Unidad: </td>
+      <td width="24%" valign="top" class="txt_gris_bold">${datos_colaborador.unidad}</td>
+    </tr>
+    <tr>
+      <td valign="top" class="txt_gris_bold">Ingreso:</td>
+      <td valign="top" class="txt_gris_bold">${datos_colaborador.fecha_ingreso}</td>
+      <td valign="top" class="txt_gris_bold">Empresa</td>
+      <td valign="top" class="txt_gris_bold">${datos_colaborador.empresa}</td>
+    </tr>
+    <tr>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="txt_gris_bold">Evaluador:</td>
+      <td valign="top" class="txt_gris_bold">${nombre_eval}</td>
+      <td valign="top" class="txt_gris_bold">Per&iacute;odo evaluaci&oacute;n: </td>
+      <td valign="top" class="txt_gris_bold">${periodo}</td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top" class="txt_gris_bold">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+   </table>
+  <table width="96%" border="0" cellpadding="1" cellspacing="1" class="txt_gris">
+       <tr>
+	      <td width="100%" class="fondo_tablaAmarillo" colspan="6" align="center">EVALUACI&#211;N METAS</td>	      
+	  </tr>
+      <tr>
+	      <td width="50%" class="fondo_tablaAmarillo">METAS</td>
+	      <td width="10%" class="fondo_tablaAmarillo" align="center">Objetivos</td>
+	      <td width="10%" class="fondo_tablaAmarillo" align="center">% esperado</td>
+	      <td width="10%" class="fondo_tablaAmarillo" align="center">% realizaci&oacute;n </td>
+	      <td width="10%" class="fondo_tablaAmarillo" align="center">Factor Pond.</td>
+	      <td width="20%" class="fondo_tablaAmarillo" align="center">Escala</td>
+	  </tr>
+     <list getMetasColaborador as m>
+      <tr>     
+       <input name="metas" value="${m.id_meta}" type="hidden"/>
+       <input name="ponderaciones" value="${m.ponderacion}" type="hidden"/>
+       <td width="40%" class="campo_texto">${m.meta}</td>
+       <td width="10%" class="campo_texto" align="center">
+         <if (m.obj == "SI")>
+          <a href="#" onclick="MM_openBrWindow('../servlet/ServletMetaObjetivosColaboradorView?id_meta=${m.id_meta}&rut_colaborador=${m.rut}','objm','width=700,height=370')"><img src="../servlet/Tool?images/ggd/iconos/bricks.png" width="16" height="16" border="0" title="Ver objetivos"  /></a>
+         <else>
+           --
+         </if>
+       </td>
+       <td width="10%" class="campo_texto" align="center">&nbsp;${m.ponderacion}</td>
+       <td width="10%" class="campo_texto" align="center"><input name="puntajes" type="text" class="campo_texto" size="5" value="${m.puntaje}"/></td>
+       <td width="10%" class="campo_texto" align="center">&nbsp;${m.factor_ponderado}</td>
+       <td width="20%" class="campo_texto" align="center">&nbsp;${m.escala}</td>
+      </tr>
+    </list>
+       <tr>
+	      <td width="40%" height="25" class="fondo_tablaAmarillo">TOTALES:</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo"> 
+            <if (eval_obj == "SI")>
+	            <a href="#" onclick="MM_openBrWindow('../servlet/ServletObjetivosEvaluacion?rut_colaborador=${rut_colaborador}','objmeval','width=764,height=600')"><img src="../servlet/Tool?images/ggd/iconos/bricks.png" width="16" height="16" border="0" title="Evaluaci&#243;n por objetivos"  /></a>
+	        <else>
+	            --
+	        </if>
+          </td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${sum_ponderacion}%</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${prom_puntaje}%</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${sum_factor_ponderado}</td>
+	      <td width="20%" align="center" class="fondo_tablaAmarillo">${escala_total}</td>
+	    </tr>
+	      <tr>
+       <td colspan="10"><hr size="2" noshade="noshade" /></td>
+      </tr>
+  </table>
+
+  <table width="96%" border="0" cellpadding="0">
+    <tr>
+      <td width="50%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">Observaciones del evaluador: <span class="texto_titulo_rojo"></span> </td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="96%" class="texto_texto"><textarea name="observacion_evaluador" class="txt_gris" rows="10" cols="170"/>${observacion_evaluador}</textarea></td>
+        <td width="4%" class="texto_texto">&nbsp;</td>
+      </tr>
+      <tr>
+       <td colspan="4"><hr size="2" noshade="noshade" /></td>
+      </tr>
+  </table>
+  <table width="96%" border="0" cellpadding="0">
+    <tr>
+      <td width="50%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">Observaciones del evaluado: <span class="texto_titulo_rojo"></span> </td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="96%" class="texto_texto"><textarea name="observacion_evaluado" class="txt_gris" rows="10" cols="170"/>${observacion_evaluado}</textarea></td>
+        <td width="4%" class="texto_texto">&nbsp;</td>
+      </tr>
+      <tr>
+       <td colspan="4"><hr size="2" noshade="noshade" /></td>
+      </tr>
+  </table>  
+  <div id="LayerNotas">   
+   <table width="96%" border="0" cellpadding="0">
+    <tr>
+      <td width="50%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="txt_gris_bold">Notas al margen del evaluador: <span class="texto_titulo_rojo"></span> </td>
+      <td align="center" class="texto_texto">&nbsp;</td>
+    </tr>
+      <tr>
+        <td width="96%" class="texto_texto"><textarea name="notas_evaluador" class="txt_gris" rows="10" cols="170"/>${notas_evaluador}</textarea></td>
+        <td width="4%" class="texto_texto">&nbsp;</td>
+      </tr>
+      <tr>
+       <td colspan="4"><hr size="2" noshade="noshade" /></td>
+      </tr>
+  </table>
+  <table width="96%" border="0" cellpadding="1" cellspacing="1" class="txt_gris">
+      <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">__________________________</td>	
+	   <td width="50%" align="center">__________________________</td>	  
+	  </tr>
+	  <tr>
+	   <td width="50%" align="center">Firma Evaluador</td>	
+	   <td width="50%" align="center">Firma Evaluado</td>	     
+	  </tr>
+	   <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>
+	   <tr>
+	   <td width="50%" align="center">&nbsp;</td>	
+	   <td width="50%" align="center">&nbsp;</td>	  
+	  </tr>	  
+   </table>
+ </div>
+    
+	</span>
+	<div id="Layer6">
+	  <table width="96%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+	    <tr>
+	      <td width="40%"><span class="texto_titulo_rojo">METAS</span> <span class="texto_titulo_rojo">${colaborador}</span></td>
+	      <!-- <td width="10%" align="center">Objetivos </td>
+	      <td width="10%" align="center">% esperado</td>
+	      <td width="10%" align="center">% realizaci&oacute;n </td>
+	      <td width="10%" align="center">Factor Pond.</td>
+	      <td width="20%" align="center">Escala</td>-->
+	    </tr>
+	  </table>
+	</div>
+	<div id="Layer100">
+	  <table border="0" align="right" cellpadding="0">
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td nowrap="nowrap"><span class="texto_titulo_rojo">${salida}</span></td>
+	      <td width="30">&nbsp;</td>
+	      <td width="30">&nbsp;</td>
+	    </tr>
+	  </table>
+	</div>
+	<div id="Layer10">
+	  <table border="0" align="right" cellpadding="0">
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td nowrap="nowrap">Seleccione una opci&oacute;n: </td>
+	      <td width="30">	         
+	         <a href="#" onClick="imprSelec();"><img src="../servlet/Tool?images/ggd/botones/iconoprint.gif" alt="Reporte" name="evaluaciones_r13_c11" width="30" height="30" border="0" id="evaluaciones_r13_c11" title="REPORTE Evaluaci&oacute;n" /></a>
+	      </td>
+	      <td width="30">         
+	         <a href="#" onClick="Accion('GRABAR')"><img src="../servlet/Tool?images/ggd/botones/grabar.gif" alt="Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0" id="evaluaciones_r13_c11" title="Grabar Evaluaci&oacute;n" /></a>
+	      </td>
+	      <td width="30">	         
+	         <a href="#" onClick="Accion('GRABAR_PUBLICAR')"><img src="../servlet/Tool?images/ggd/botones/grabar_publi.gif" alt="Publicar Evaluaci&oacute;n" name="evaluaciones_r13_c11" width="30" height="30" border="0" id="evaluaciones_r13_c11" title="Publicar Evaluaci&oacute;n" /></a>
+	      </td> 
+	      <td width="30"><a href="javascript:window.close();" target="_parent"><img src="../servlet/Tool?images/ggd/botones/cerrar.gif" alt="Cerrar" name="evaluaciones_r13_c13" width="30" height="30" border="0" id="evaluaciones_r13_c13"></a></td>
+	    </tr>
+	  </table>
+	</div> 
+	<!-- <div id="Layer11">
+	  <table width="96%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+	    <tr>
+	      <td width="40%" height="25" class="fondo_tablaAmarillo">TOTALES:</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo"> 
+            <if (eval_obj == "SI")>
+	            <a href="#" onclick="MM_openBrWindow('../servlet/ServletObjetivosEvaluacion?rut_colaborador=${rut_colaborador}','objmeval','width=764,height=600')"><img src="../servlet/Tool?images/ggd/iconos/bricks.png" width="16" height="16" border="0" title="Evaluaci&#243;n por objetivos"  /></a>
+	        <else>
+	            --
+	        </if>
+          </td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${sum_ponderacion}%</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${prom_puntaje}%</td>
+	      <td width="10%" align="center" class="fondo_tablaAmarillo">${sum_factor_ponderado}</td>
+	      <td width="20%" align="center" class="fondo_tablaAmarillo">${escala_total}</td>
+	    </tr>
+	  </table>
+	</div>-->
+<else>
+   <div class="boton_rojo" id="Layer3">Colaboradores</div>
+	<span id="Layer4">
+	<table width="90%" border="0" cellpadding="0">
+	   <list getColaboradores as colab>
+	    <tr>
+	      <td width="21%"><span class="txt_gris_bold"><a href="#" onClick="verEvalColaborador('${colab.rut}');"><img onError="existeFoto(this)" src="../servlet/Tool?images/trabajadores/fotos/${colab.foto}" alt="" name="foto" width="37" height="48" border="1" id="foto" style="background-color: #FFCC00" /></a></span></td>
+	      <td width="79%" class="boton_rojo"><p>${colab.nombre_completo}</p></td>
+	    </tr>
+	   </list>   
+	</table>
+	</span>
+	<div id="Layer8">
+	  <div id="layer">
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	      <tr>
+	        <td class="txt_gris_bold">%  Realizaci&oacute;n</td>
+	        <td class="txt_gris_bold">Escala cualitativa </td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+	<div id="Layer9">
+	  <table width="100%" border="0" cellpadding="0" cellspacing="1">
+	   <list getEscala as ec>
+	    <tr>
+	      <td width="39%" valign="top">${ec.desc_porcentaje}</td>
+	      <td width="5%" align="center" valign="top">=</td>
+	      <td width="56%" valign="top">${ec.desc_escala}</td>
+	    </tr>  
+	   </list> 
+	  </table>
+	</div>
+	<div id="Layer6">
+	  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="txt_gris_bold">
+	    <tr>
+	      <td width="100%"><span class="texto_titulo_rojo">${salida}</span></td>
+	    </tr>
+	  </table>
+	</div>
+</if>
+
+
+
+
+
+</body>
+</html>

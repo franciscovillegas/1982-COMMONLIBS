@@ -1,0 +1,32 @@
+
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td colspan="6" class="negro12B" height="25"><u>PARTICIPACION EN CURSOS</u></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td class="negro12B" width="30%" align="center">CURSO</td>
+    <td class="negro12B" width="10%" align="center">DESDE</td>
+    <td class="negro12B" width="10%" align="center">HASTA</td>
+    <td class="negro12B" width="10%" align="center">CONDICION</td>
+    <td class="negro12B" width="10%" align="center">NOTA</td>
+    <td class="negro12B" width="30%" align="center"> ORGANISMO</td>
+  </tr>
+  <if datos> <list datos as d> 
+  <tr> 
+    <td width="30%" class="negro10N" height="20">${d.curso}</td>
+    <td width="10%" class="negro10N" align="center" height="20">${FFecha("dd/MM/yyyy", 
+      d.fecha_inicio)}</td>
+    <td width="10%" class="negro10N" align="center" height="20">${FFecha("dd/MM/yyyy", 
+      d.fecha_termino)}</td>
+    <td width="10%" class="negro10N" align="center" height="20">${d.condicion}</td>
+    <td width="10%" class="negro10N" align="center" height="20"><if d.nota_aprob=="0">&nbsp;<else>${d.nota_aprob}</if></td>
+    <td width="30%" class="negro10N" height="20">${d.organismo}</td>
+  </tr>
+  </list> <else> 
+  <tr> 
+    <td colspan="6" class="negro12N" align="center">No registra Informaci&oacute;n</td>
+  </tr>
+  </if> 
+</table>
+

@@ -1,0 +1,52 @@
+<script type="text/javascript">
+ $(function() {
+	 $('a').tooltip({
+		    'delay': { show: 500, hide: 500 }
+		});
+ });
+
+ 
+</script>
+
+<list grupos as b>
+      		<assign size = b.size >
+      		
+      		<if size=="1">
+      				 <list b.subgrupos as a>
+	      				 	 ${GetHtml("eje/bootstrap/3x/generic/buttons/buttonLink.html")}
+					</list>
+      		<else>
+	      		
+	      		 	 <li class="dropdown">
+			          <a href="javascript:;" 
+			          		class="dropdown-toggle" 
+			          		data-toggle="dropdown"
+			          		data-toggle="tooltip" 
+							data-placement="${b.tooltipPlacement}"
+							data-html="false" 
+							title="${b.tooltip}"
+			          		>${b.nombre}<b class="caret"></b>
+			          		
+							<if b.badgeDanger && b.badgeDanger != "0">
+								<span class='badge badge-danger'>${b.badgeDanger}</span>
+							</if>
+							
+							<if b.badgeWarning  && b.badgeWarning != "0">
+								<span class='badge badge-warning'>${b.badgeWarning}</span>
+							</if>
+							
+							<if b.badgePrimary  && b.badgePrimary != "0">
+								<span class='badge badge-primary'>${b.badgePrimary}</span>
+							</if>
+			          		
+			          		</a>
+			          <ul class="dropdown-menu">
+			          
+			           <list b.subgrupos as a>
+			           		${GetHtml("eje/bootstrap/3x/generic/buttons/buttonLink.html")}
+			           </list>
+			          </ul>
+			        </li>
+	      		
+      		</if>
+      	</list>

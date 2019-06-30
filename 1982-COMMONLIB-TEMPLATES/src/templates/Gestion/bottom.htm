@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function AbrirGGD() {
+	var url2 = "../servlet/WithSessionMetas?pHtm=metas/frameset_metas.html";
+	MM_openBrWindow(url2,'app','width=1000,height=600');
+}
+function AbrirBGaleria() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "../Gestion/BusquedaPorFiltros/Busqueda.htm";
+	ventmsg2 = open(url2, "Galeria", "width=720,height=428,left=50,top=110");
+	//ventmsg2.focus();
+}
+function AbrirVisorAnexos() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "../Gestion/Anexos/Visor/FrameVisor.htm";
+	ventmsg2 = open(url2, "VisorAnexos", "width=720,height=430,left=50,top=110");
+	//ventmsg2.focus();
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:520px;
+	top:144px;
+	width:69px;
+	height:61px;
+	z-index:1;
+	visibility: visible;
+}
+#Layer2 {
+	position:absolute;
+	left:564px;
+	top:162px;
+	width:46px;
+	height:47px;
+	z-index:1;
+	visibility: hidden;
+	overflow: hidden;
+}
+-->
+</style>
+</head>
+<body leftmargin="0" topmargin="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/PanelControl/organizacion_f2.jpg','../servlet/Tool?images/Gestion/PanelControl/herramientas_f2.jpg')">
+<table width="665" height="321">
+  <tr>
+    <td align="center" class="titulos">Panel de Control - Supervisor</td>
+  </tr>
+  <tr>
+    <td height="268" align="center" valign="middle">
+	<table width="316" cellpadding="5" cellspacing="5">
+  <tr>
+    <td height="1" align="center">
+
+    	<if usuario.app_btn_show_organica>
+    		    		<a href="javascript:;" onClick="MM_openBrWindow('Tool?htm=Gestion/InfoUsuario/Jerarquia/JerarquiaOrg.htm','organica','width=1024,height=750,resizable=yes')"><img src="../servlet/Tool?images/Gestion/PanelControl/organizacion_f2.jpg" alt="ORGANIZACIÓN" name="left_pr_r1_c2" width="92" height="91" border="0" onMouseOver="MM_swapImage('left_pr_r1_c2','','../servlet/Tool?images/Gestion/PanelControl/organizacion_f2.jpg',1)" onMouseOut="MM_swapImgRestore()"></a>
+    	</if>
+
+    </td>
+    <td align="center">
+    	<if usuario.app_btn_show_herramientas_organica>
+    		<a href="../servlet/TopUtilitarios?portprop=organica[organica_herramienta_]" target="mainF" onMouseOver="MM_swapImage('999','','../servlet/Tool?images/Gestion/PanelControl/herramientas_f2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img name="left_pr_r1_c6" src="../servlet/Tool?images/Gestion/PanelControl/herramientas_f2.jpg" width="92" height="91" border="0" alt="UTILITARIOS"></a>
+    	</if>
+    </td>
+    </tr> 
+  <tr>
+    <td align="center" class="texto_azul_bold">
+
+    	<if usuario.app_btn_show_organica>
+    		Organizaci&oacute;n
+    	</if>
+
+    </td>
+    <td align="center" class="texto_azul_bold">
+    	<if usuario.app_btn_show_herramientas_organica>
+    		Herramientas
+    	</if>
+    </td>
+  </tr>
+</table>	
+	</td>
+  </tr>
+</table>
+</body>
+</html>

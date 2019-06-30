@@ -1,0 +1,88 @@
+ <HTML>
+<HEAD>
+<title>Arbol Mantener Mision</title>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script language='JavaScript'>
+function Ejecuta(idEmp,idUni,nombre, tipo){
+//	alert(idEmp + " " + idUni + " " + nombre + " " + tipo);
+	if (tipo == "U") {
+		document.form1.empresa.value=idEmp;
+		document.form1.unidad.value=idUni;
+		document.form1.descrip.value=nombre;
+	}
+	else {
+		document.form1.empresa.value="";
+		document.form1.unidad.value="";
+		document.form1.descrip.value="";
+		NoSeleccionarNodo();
+		alert("Esta es una Empresa, debe seleccionar una Unidad");
+	}
+}
+
+function Envia() {   
+	var unid = document.form1.unidad.value;  
+	var desc = document.form1.descrip.value;  
+	if (unid!=''){
+		//VerContFormm(document.form1)
+		document.form1.submit();
+	}   
+	else 
+		alert ('Seleccione una Unidad.');
+}
+</script>
+<script>
+<!--
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<script type="text/javascript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+//-->
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:474px;
+	top:2px;
+	width:24px;
+	height:12px;
+	z-index:1;
+}
+-->
+</Style>
+</HEAD>
+
+<body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' background="../servlet/Tool?images/Gestion/LayersAmar/fondo.jpg" style="background-repeat:no-repeat">
+<table width="500" height="300" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top"><if (Control("df_jer_comp"))> ${TraeArbol()}
+        <else>
+        ${TraeArbol(unidad, empresa)} </if>      </td>
+    </tr>
+</table>
+<div id="Layer1"><a href="javascript:;" onClick="Envia();return false"><img src="../servlet/Tool?images/Gestion/topLayers/vermas.gif" width="20" height="22" name="img_ver" border="0"></a></div>
+<form name="form1" method="get" action="../servlet/AsignaMision" target="_self">
+  <input type='hidden' name='unidad'>
+  <input type='hidden' name='empresa'>
+  <input type='hidden' name='descrip'>
+</form>
+</body>
+</HTML>

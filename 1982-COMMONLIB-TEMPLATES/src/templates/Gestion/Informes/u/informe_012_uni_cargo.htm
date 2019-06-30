@@ -1,0 +1,238 @@
+  <html>
+<head>
+<title>Informe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/imprimir.js">
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function botones_estado(estado) {
+	<list paginas as pag>
+	LayerBotonera${pag.p_act}.style.visibility = estado;
+	</list>
+}
+
+function Imprimir(){
+	botones_estado("hidden");
+	//window.print();
+	printPage();
+	botones_estado("visible");
+}
+
+function yearMes(meses) {
+	/*var year = parseInt(meses / 12);
+	var mes = meses - (year * 12);
+	return (year + "-" + mes);*/
+	return meses;
+}
+// -->
+</script>
+</head>
+<script language="JavaScript">
+window.scroll(0,0);
+</script>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<script language="JavaScript">
+opener.parent.AbrirVentProcesando();
+</script>
+<div align="center"> <list paginas as pag> 
+  <table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr valign="top"> 
+      <td width="250" valign="top" rowspan="2">&nbsp; </td>
+      <td valign="top" rowspan="2" > 
+        <div align="center"><a name="pag_${pag.p_act}"><img src="../servlet/Tool?images/Gestion/logos/logo_banco.jpg" width="177" height="73" border="0"></a></div>
+      </td>
+      <td width="250" valign="top" height="66" align="right"> <include "templates/Datafolder/Informes/botonera_imprimir.htm"> 
+        <!--<div id="LayerBotonera${pag.p_act}" style=" visibility:hidden; z-index:1; border: 1px none #000000; top: auto" > 
+        <table border="0" cellspacing="0" cellpadding="0" width="248" bgcolor="#CCCCCC" height="36">
+          <tr valign="middle">
+		  <compress> 
+            <td width="50"> <a href="javascript:;" onClick="Imprimir()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_imp${pag.p_act}','','/Gestion/botones/botones_informe/imprimir_up.jpg',1)"><img src="/Gestion/botones/botones_informe/imprimir_down.jpg" width="49" height="36" border="0" name="img_imp${pag.p_act}"></a></td>
+            <td width="49"> <if (pag.p_act) != "1"><a href="#pag_1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ini${pag.p_act}','','/Gestion/botones/botones_informe/inicio_up.jpg',1)"><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/inicio_down.jpg" width="49" height="36" border="0" name="img_ini${pag.p_act}"></if></td>
+            <td width="50"> <if (pag.p_act) != "1"><a href="#pag_${pag.p_ant}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ant${pag.p_act}','','/Gestion/botones/botones_informe/anterior_up.jpg',1)"><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/anterior_down.jpg" border="0" name="img_ant${pag.p_act}" width="49" height="36"></if></td>
+            <td width="50"> <if (pag.p_act) != (p_tot)><a href="#pag_${pag.p_sig}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_sig${pag.p_act}','','/Gestion/botones/botones_informe/siguiente_up.jpg',1)"><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></a> 
+              <else><img src="/Gestion/botones/botones_informe/siguiente_down.jpg" border="0" name="img_sig${pag.p_act}" width="49" height="36"></if></td>
+            <td width="49"> <if (pag.p_act) != (p_tot)><a href="#pag_${p_tot}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_ult${pag.p_act}','','/Gestion/botones/botones_informe/ultimo_up.jpg',1)"><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></a>
+			  <else><img src="/Gestion/botones/botones_informe/ultimo_down.jpg" width="49" height="36" border="0" name="img_ult${pag.p_act}"></if></td>
+		  </compress>  
+          </tr>
+        </table>
+      </div>-->
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td width="250" valign="top"> 
+        <div align="right" class="negro12N">P&aacute;g. ${pag.p_act} de ${p_tot}</div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" height="20"> 
+        <div align="center"><u><span class="negro12B">Informe de Colaboradores 
+          por Unidad v/s Cargo</span><br>
+          </u><span class="negro12N">(${FFecha("dd/MM/yyyy")})</span></div>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="negro12B">
+        <!--Unidad: ${GetParam("descrip")}-->
+      </td>
+      <td align="right"> </td>
+    </tr>
+    <tr> 
+      <td height="1" width="181"></td>
+      <td width="174"></td>
+      <td width="133"></td>
+    </tr>
+  </table>
+  <table border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td colspan="1" bgcolor="#CCCCCC" class="textoInforme" align="center">IDENTIFICACION</td>
+      <td colspan="2" bgcolor="#CCCCCC" class="textoInforme" align="center">FECHA 
+        DE INGRESO</td>
+      <td colspan="4" bgcolor="#CCCCCC" class="textoInforme" align="center">ANTIG&Uuml;EDAD<br>
+        (A&ntilde;os, Meses) </td>
+      <td colspan="2" bgcolor="#CCCCCC" class="textoInforme" align="center">POSICION</td>
+      <td colspan="6" bgcolor="#CCCCCC" class="textoInforme" align="center">DETALLE 
+        DE RENTAS</td>
+    </tr>
+    <tr> 
+      <td bgcolor="#CCCCCC" class="textoInforme" align="center"> Nombre</td>
+      <td width="50" bgcolor="#CCCCCC" class="textoInforme" align="center">Corp.</td>
+      <td width="50" bgcolor="#CCCCCC" class="textoInforme" align="center">Soc.</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">Corp.</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">Soc.</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">Cargo</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">Unidad</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">PRE</td>
+      <td width="25" bgcolor="#CCCCCC" class="textoInforme" align="center">Nivel</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Bruto<br>
+        Regular</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Neto<br>
+        Regular</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Bruto<br>
+        Zona</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Neto<br>
+        Zona</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Bruto<br>
+        Total</td>
+      <td width="55" bgcolor="#CCCCCC" class="textoInforme" align="center">Neto<br>
+        Total</td>
+    </tr>
+    <if !(pag.datos)> 
+    <tr> 
+      <td colspan="59"> 
+        <div align="center"><i class="negro12N"> No se Registra Informaci&oacute;n...</i></div>
+      </td>
+    </tr>
+    </if> <list pag.datos as d> <if (d.FILATIPO) == "ENC"> <if d.ENCunid_id> 
+    <tr> 
+      <td colspan="15"><i class="negro12B">${d.unid_desc} (${d.unid_id})</i></td>
+    </tr>
+    </if> 
+    <tr> 
+      <td colspan="15"><i class="negro12B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${d.cargo_desc}</i></td>
+    </tr>
+    </if> 
+    <!-- fin de encabezado-->
+    <tr> 
+      <td class="textoInforme" width="150">${d.nombre}</td>
+      <td width="50" class="textoInforme" nowrap align="center"> ${FFecha( "dd/MM/yyyy", 
+        d.fec_corp)}</td>
+      <td width="50" class="textoInforme" nowrap align="center"> ${FFecha( "dd/MM/yyyy", 
+        d.fec_soc)}</td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${MTYM( d.a_corp)} 
+      </td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${MTYM( d.a_soc)} 
+      </td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${MTYM( d.a_cargo)} 
+      </td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${MTYM( d.a_unidad)} 
+      </td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${d.pre}</td>
+      <td width="25" class="textoInforme" nowrap align="center"> ${d.nivel}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.b_reg)}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.n_reg)}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.b_zona)}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.n_zona)}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.b_total)}</td>
+      <td width="55" class="textoInforme" nowrap align="right"> $${FNum( d.n_total)}</td>
+    </tr>
+    </list> <if (pag.p_act) == (p_tot)> 
+    <tr> 
+      <td class="negro10B" colspan="9" align="right">TOTALES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <!--<td width="30" class="negro12B" nowrap> 
+              <div align="center"> 
+                ${MTYM( T_a_corp)}
+              </div>
+            </td>
+            <td width="30" class="negro12B" nowrap> 
+              <div align="center"> 
+                ${MTYM( T_a_soc)}
+              </div>
+            </td>
+            <td width="30" class="negro12B" nowrap> 
+              <div align="center"> 
+                ${MTYM( T_a_cargo)}
+              </div>
+            </td>
+            <td width="30" class="negro12B" nowrap> 
+              <div align="center"> 
+                ${MTYM( T_a_unidad)}
+              </div>
+            </td>
+            <td colspan="2" class="negro12B" nowrap>&nbsp;</td>-->
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_b_reg)}</td>
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_n_reg)}</td>
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_b_zona)}</td>
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_n_zona)}</td>
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_b_total)}</td>
+      <td width="55" class="negro10B" nowrap align="right"> $${FNum( T_n_total)}</td>
+    </tr>
+    <tr> 
+      <td class="negro12B" colspan="15">Este informe contiene ${cant_reg} trabajadores.</td>
+    </tr>
+    </if> 
+  </table>
+  <if (pag.p_act) != (p_tot)> 
+  <p class="pageEnd" align="center">&nbsp;</p>
+  </if> </list> </div>
+<script language="JavaScript">
+opener.parent.CerrarVentProcesando();
+botones_estado("visible");
+</script>
+
+</body>
+</html>

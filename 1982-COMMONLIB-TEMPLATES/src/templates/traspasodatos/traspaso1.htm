@@ -1,0 +1,440 @@
+<html>
+<head>
+<title>Traspaso de Datos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!--
+<link rel="stylesheet" href="/style/estilos.css" type="text/css">
+-->
+<style type="text/css">
+<!--
+.Estilo1 {color: #000000}
+.Estilo2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.Estilo3 {font-family: Verdana, Arial, Helvetica, sans-serif}
+.Estilo6 {font-size: 12px}
+.Estilo8 {color: #CC0000}
+.Estilo9 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12px; color: #CC0000; }
+.Estilo10 {	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	border: none;
+}
+.texto {	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+}
+-->
+</style>
+<script language="JavaScript">
+<!--
+function Valida(form) {
+
+	var valido = false;
+	
+	if (form.peri_ano.value == "") {
+		alert ("Debe indicar el a&#241;o del periodo");
+		form.peri_ano.focus();
+	}
+	else {
+		var mes = parseInt(form.peri_mes.value);
+		form.peri_orig.value = "" + mes + form.peri_ano.value;
+		if (mes < 10)
+			form.peri_dest.value = "" + form.peri_ano.value + "0" + mes;
+		else
+			form.peri_dest.value = "" + form.peri_ano.value + mes;
+		/*validacion*/
+		/*if ((form.historico.checked) && (!fechaValida(form.d_dia.value, form.d_mes.value, form.d_agno.value) )) {
+			alert("Debe indicar una fecha v&#225;lida.");
+			form.d_dia.focus();
+		}
+		else {*/
+			var sel_proc = false;
+			for (x=0; x<form.opciones.length; x++) {
+				if (form.opciones[x].checked) {
+					sel_proc = true;
+					break;
+				}
+			}
+			if (!sel_proc) {
+				for (x=0; x<form.opcion_trab.length; x++) {
+					if (form.opcion_trab[x].checked) {
+						sel_proc = true;
+						break;
+					}
+				}
+				if (!sel_proc) {
+					for (x=0; x<form.opcion_orga.length; x++) {
+						if (form.opcion_orga[x].checked) {
+							sel_proc = true;
+							break;
+						}
+					}
+				}
+			}
+			if (sel_proc)		
+				valido = true;
+			else 
+				alert("Debe seleccionar al menos un proceso");
+		//}
+	}
+	//alert (valido);
+	if (valido) {
+		//VerContFormm(form);
+		form.submit();
+	}
+	return false;
+}
+
+
+function Valida_provisional(form) {
+	form.submit();
+
+	return false;
+}
+
+function histoOnOff(form) {
+	if (form.historico.checked) {
+		form.d_mes.disabled = "";
+		form.d_agno.disabled = "";
+		form.d_dia.disabled = "";
+		form.d_dia.focus();
+	}
+	else {
+		form.d_mes.disabled = "true";
+		form.d_agno.disabled = "true";
+		form.d_dia.disabled = "true";
+	}
+}
+
+function checkMarcarTodos(check, estado) {
+	var i;
+	var largo = eval("check.length");
+	if (largo) 	{
+		for(i=0; i<largo; i++)
+			check[i].checked = estado;
+	}
+	else {
+		check.checked = estado;
+	}
+}
+
+function inicio() {
+/*
+	var msg = "";
+	document.form1.peri_mes.value = '${peri_mes}';
+	document.form1.peri_ano.value= '${peri_agno}';
+	<if msg><list msg as m>msg += "${m}\n";</list>
+	alert(msg);
+	</if>
+	*/
+}
+
+function traspaso_experimental(form) {
+
+	form.action="../servlet/TraspasoDatos";
+	form.method="post";
+	form.submit();
+
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib/manejar_fechas.js">
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/Formularios.js">
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+
+<body bgcolor="#9999CC" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  background="../servlet/Tool?images/main/bck_main.jpg"  onLoad="inicio()">
+
+
+			          <form name="form1" method="post" action="../servlet/S_Traspaso">
+<div id="Layer1" style="position:absolute; left:81px; top:39px; width:452px; height:89px; z-index:1; overflow: auto;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="texto">
+              <!--DWLayoutTable-->
+              <tr>
+                <td height="19" colspan="4">Empresas a Traspasar</td>
+
+                <td width="246">&nbsp;</td>
+    </tr>
+               <tr> 
+                  <td width="28" height="19" align="center" valign="top" class="negro10N"> 
+                  <input type="checkbox" name="opcion_empresa_t" value="empt" onClick="checkMarcarTodos(this.form.opcion_empresa, this.checked)">                  </td>
+                  <td colspan="2" valign="top" class="negro10N">Todas las Empresas </td>
+                <td width="50">&nbsp;</td>
+                  <td></td>
+               </tr>
+			   <list empresas as emp>    
+               <tr>
+                 <td height="19"></td>
+                 <td width="34" align="center" valign="top" class="negro10N"> 
+                    <input type="checkbox" name="opcion_empresa" value="${emp.id_empresa}" onClick="this.form.opcion_empresa_t.checked=false;"></td>
+                  <td width="238" valign="top" class="negro10N">${emp.nom_empresa}</td>
+
+              <td>&nbsp;</td>
+                  <td></td>
+               </tr>				
+			   </list>
+			
+			
+  </table>
+</div>					  
+  <table border=0 cellpadding=0 cellspacing=0 width="618">
+    <!--DWLayoutTable-->
+    <tr> 
+      <td width="36" height="4"> </td>
+      <td width="582"></td>
+    </tr>
+    <tr>
+      <td height="462"></td>
+      <td align="right" valign="top" >
+        <table border="0" cellspacing="2" cellpadding="1" width="98%">
+          <!--DWLayoutTable-->
+          <tr align="center"> 
+            <td class="negro12B" height="21" align="center" colspan="3">Traspaso 
+              de Datos</td>
+            <td width="8">&nbsp;</td>
+          </tr>
+		            <tr align="center"> 
+            <td height="107" colspan="3" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0"  class="texto">
+              <!--DWLayoutTable-->
+			   <list empresas as emp>			   </list>
+			          <tr>
+                <td width="592" height="105"></td>
+                </tr>
+			
+			  </table></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="278" rowspan="6" valign="top"> 
+              <table width="100%" border="0" cellspacing="1" cellpadding="1" height="150"  class="texto">
+                <!--DWLayoutTable-->
+                <tr> 
+                  <td class="negro10N" width="24" align="center"> 
+                    <input type="checkbox" name="opciones" value="fotos">
+                  </td>
+                  <td class="negro10N" width="257">Traspaso de Fotos</td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" height="21" align="center"> 
+                    <input type="checkbox" name="opcion_trab_t" value="trab" onClick="checkMarcarTodos(this.form.opcion_trab, this.checked)">
+                  </td>
+                  <td class="negro10N" height="21">Traspaso de Trabajadores 
+                    (completa) </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" align="center">&nbsp;</td>
+                  <td class="negro10N"> 
+                    <table width="100%" border="0" cellspacing="1" cellpadding="1"  class="texto">
+                      <!--DWLayoutTable-->
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="basica" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Informaci&oacute;n B&aacute;sica.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="licen" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Licencias M&eacute;dicas.</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="vaca" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Vacaciones</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="extras" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Horas Extras </td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="fami" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Grupo Familiar </td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="thisto" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Trabajador Historia </td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="remu" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Certificados de Remuneraciones</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_trab" value="hhisto" onClick="this.form.opcion_trab_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Haberes Hist&oacute;ricos</td>
+                      </tr>					  
+                    </table>
+                  </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" height="21" align="center">
+                    <input type="checkbox" name="opciones" value="user">
+                  </td>
+                  <td class="negro10N" height="21">Usuario del Portal </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" height="21" align="center">
+                    <input type="checkbox" name="opciones" value="userqs">
+                  </td>
+                  <td class="negro10N" height="21">Usuario de QSs </td>
+                </tr>
+                <tr> 
+                  <td height="16" align="center" valign="top" class="negro10N"> 
+                    <input type="checkbox" name="opciones" value="otros">                  </td>
+                  <td valign="top" class="negro10N">Datos Varios(Periodos, Afps, Regiones,etc) </td>
+                </tr>
+                <tr>
+                  <td height="43"></td>
+                  <td>&nbsp;</td>
+                </tr>
+                                          </table></td>
+            <td height="131" colspan="2" valign="top"> 
+              <table width="100%" border="0" cellspacing="1" cellpadding="1"  class="texto">
+                <!--DWLayoutTable-->
+                <tr> 
+                  <td class="negro10N" height="21" align="center"> 
+                    <input type="checkbox" name="opcion_orga_t" value="orga" onClick="checkMarcarTodos(this.form.opcion_orga, this.checked)">
+                  </td>
+                  <td class="negro10N" height="21">Informaci&oacute;n 
+                    de Org&aacute;nica </td>
+                </tr>
+                <tr> 
+                  <td class="negro10N" align="center">&nbsp;</td>
+                  <td class="negro10N"> 
+                    <table width="100%" border="0" cellspacing="1" cellpadding="1"  class="texto" >
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="unidad" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Unidades Administrativas </td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="centro" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Centro de Costo</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="suc" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Sucursales</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="cargo" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Cargos</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="soc" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Plantas/Sociedades</td>
+                      </tr>
+                      <tr> 
+                        <td class="negro10N" width="25" align="center"> 
+                          <input type="checkbox" name="opcion_orga" value="emp" onClick="this.form.opcion_orga_t.checked=false;">
+                        </td>
+                        <td class="negro10N">Empresas</td>
+                      </tr>						  					  
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="negro10N">
+            <td width="24" height="21" align="center" class="negro10N">
+                    <input type="checkbox" name="opciones" value="genpass">
+                  </td>
+            <td class="texto" width="242">Generar Claves Aleatorias</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td height="21" align="center" class="negro10N">
+                    <input type="checkbox" name="opciones" value="pass2md5">
+                  </td>
+            <td class="texto">Encriptar Claves</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td height="35">&nbsp;</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td height="35" colspan="2" align="right" valign="top" ><a href="javascript:;" onClick="return Valida_provisional(document.form1)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Img_aceptar','','../servlet/Tool?images/botones/aceptar_over.jpg',1)"><img name="Img_aceptar" border="0" src="../servlet/Tool?images/botones/aceptar.jpg" width="108" height="27"></a></td>
+      <td></td>
+          </tr>
+          <tr>
+            <td height="34">&nbsp;</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td height="39">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+          </tr>
+                    </table></td>
+    </tr>
+    <tr>
+      <td height="21"></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

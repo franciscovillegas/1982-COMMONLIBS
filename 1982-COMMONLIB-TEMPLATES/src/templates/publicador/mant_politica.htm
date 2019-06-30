@@ -1,0 +1,377 @@
+<html>
+<head>
+<title>Mantener Publicaci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri May 31 18:18:56 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+function Muestra(valor){
+ if (valor)
+   LayerArchivo.style.visibility="visible";
+ else
+   LayerArchivo.style.visibility="hidden";
+
+}
+
+function inicio(){
+<if (getError)>
+  alert("${getError}");
+<else><if (mensaje)>alert("${mensaje}");</if></if>
+}
+
+
+function validaForm(){
+ var archivo=document.form1.imagen.value;
+ var titulo=document.form1.titulo.value;
+ var val1=0,val2=0;
+ var valor=false;
+//alert("contenido: "+document.form1.contenido.value);
+ if (titulo!="")
+    document.form1.submit();
+ else
+     alert("Ingrese un t&#237;tulo para esta publicaci&#243;n.");
+ /*if (document.form1.insertar.checked)
+    if (!validaCheck(archivo)){ 
+      valor=false;
+      alert("Ingrese un nombre de imagen v&#225;lido.");
+    }else
+      valor=true;*/
+ 
+  /*if (valor){ 
+    alert("submit!!");
+    document.form1.submit();
+  }*/
+     
+}
+
+function validaCheck(nom_archivo){
+  var valor=false;
+  if (ValidaArchivo(nom_archivo))
+      valor=true;
+   return valor; 
+}
+
+function ValidaArchivo(nom_archivo){
+  var archivo=new String(nom_archivo);
+  var extension="";
+  var valor=true;
+  var pos=archivo.indexOf(".");
+  extension=archivo.substring(pos+1,archivo.length);
+ // alert("archivo: "+archivo);
+  if (archivo!=""){  
+	  if ((extension!="jpeg")&&(extension!="jpg")&&(extension!="gif")){ 
+	     //alert("tipo NO valido"); 	  
+		 valor=false;
+	  }
+  }else
+    valor=false;
+ //alert(valor); 	  
+  return valor;	  
+}
+
+
+
+
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body bgcolor="#9999CC" onload="inicio();MM_preloadImages('../servlet/Tool?images/botones/aceptar_over.jpg','../servlet/Tool?images/botones/volver_over.jpg')" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/main/bck_main.jpg">
+<table width="467" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><include "menutop/menutop.html"></td>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="467" align="center">
+  <!-- fwtable fwsrc="Untitled" fwbase="desp_main.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr> 
+    <td><img src="spacer.gif" width="16" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="195" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="240" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="16" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td rowspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r1_c1" src="../servlet/Tool?images/desp_main/desp_main_r1_c1.jpg" width="16" height="30" border="0"></td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r1_c2" src="../servlet/Tool?images/desp_main/desp_main_r1_c2.jpg" width="195" height="23" border="0"></td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r1_c3" src="../servlet/Tool?images/desp_main/desp_main_r1_c3.jpg" width="240" height="23" border="0"></td>
+    <td rowspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r1_c4" src="../servlet/Tool?images/desp_main/desp_main_r1_c4.jpg" width="16" height="30" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="23" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r2_c2" src="../servlet/Tool?images/desp_main/desp_main_r2_c2.jpg" width="435" height="7" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="7" border="0"></td>
+  </tr>
+  <tr> 
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r3_c1" src="../servlet/Tool?images/desp_main/desp_main_r3_c1.jpg" width="16" height="271" border="0"></td>
+    <td colspan="2" valign="top" bgcolor="#BCBCDE" > 
+      <div id="LayerFechas" style="position:absolute; width:448px; height:54px; z-index:2; left: 132px; top: 455px; visibility: hidden"> 
+        <table width="96%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="39%">Fecha de Publicaci&oacute;n</td>
+            <td width="61%"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"> 
+              <select name="diad">
+                <option value="01" selected>1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+              <select name="mesd">
+                <option value="01" selected><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Enero</font></option>
+                <option value="02"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Febrero</font></option>
+                <option value="03"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Marzo</font></option>
+                <option value="04"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Abril</font></option>
+                <option value="05"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Mayo</font></option>
+                <option value="06"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Junio</font></option>
+                <option value="07"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Julio</font></option>
+                <option value="08"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Agosto</font></option>
+                <option value="09"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Septiembre</font></option>
+                <option value="10"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Octubre</font></option>
+                <option value="11"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Noviembre</font></option>
+                <option value="12"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Diciembre</font></option>
+              </select>
+              <select name="yeard">
+                <option value="2001" selected><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2001</font></option>
+                <option value="2002"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2002</font></option>
+                <option value="2003"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2003</font></option>
+                <option value="2004"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2004</font></option>
+                <option value="2005"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2005</font></option>
+                <option value="2006"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2006</font></option>
+                <option value="2007"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2007</font></option>
+                <option value="2008"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2008</font></option>
+                <option value="2009"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2009</font></option>
+                <option value="2010"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2010</font></option>
+              </select>
+              <input type="hidden" name="modo2">
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="39%">Fecha de Caducidad</td>
+            <td width="61%"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"> 
+              <select name="diah">
+                <option value="01" selected>1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+              <select name="mesh">
+                <option value="01" selected><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Enero</font></option>
+                <option value="02"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Febrero</font></option>
+                <option value="03"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Marzo</font></option>
+                <option value="04"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Abril</font></option>
+                <option value="05"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Mayo</font></option>
+                <option value="06"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Junio</font></option>
+                <option value="07"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Julio</font></option>
+                <option value="08"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Agosto</font></option>
+                <option value="09"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Septiembre</font></option>
+                <option value="10"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Octubre</font></option>
+                <option value="11"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Noviembre</font></option>
+                <option value="12"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">Diciembre</font></option>
+              </select>
+              <select name="yearh">
+                <option value="2001" selected><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2001</font></option>
+                <option value="2002"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2002</font></option>
+                <option value="2003"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2003</font></option>
+                <option value="2004"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2004</font></option>
+                <option value="2005"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2005</font></option>
+                <option value="2006"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2006</font></option>
+                <option value="2007"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2007</font></option>
+                <option value="2008"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2008</font></option>
+                <option value="2009"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2009</font></option>
+                <option value="2010"><font face="Arial, Helvetica, sans-serif" size="2" color="#FFFFFF">2010</font></option>
+              </select>
+              </font> 
+              <div id="Layeraa" style="position:absolute; width:200px; height:35px; z-index:2; left: 277px; top: 196px; visibility: hidden"> 
+                <table width="100%" border="0" height="31" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td width="100%" valign="top"> 
+                      <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><b><font color="#003333">Para 
+                        Actualizar una Noticia, seleccione un rango de fechas 
+                        y haga click en el bot&oacute;n Mantener.</font></b></font></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="Layer1" style="position:absolute; width:200px; height:287px; z-index:1; visibility: visible; left: 63px"> 
+        <table width="477" border="0" height="300" cellpadding="0" cellspacing="0">
+          <form name="form1" action="../servlet/mantePubli" method="post" >
+            <tr> 
+              <td height="22" width="77%" align="left" valign="top"> 
+                <table width="461" border="0" cellspacing="1" cellpadding="3" height="285" align="center">
+                  <tr> 
+                    <td height="22" colspan="3"> 
+                      <div align="center" class="titulo"> 
+                        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Publicador</font></p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td valign="middle" height="18" class="tituloTabla" colspan="2" ><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;&nbsp; 
+                      </font> 
+                      <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">T&iacute;tulo 
+                        </font></div>
+                    </td>
+                    <td valign="middle" height="18" width="361"> 
+                      <input type="text" name="titulo" size="40" value="${titulo}" class="inputText">
+                      <div id="LayerArchivo" style="position:absolute; width:484px; height:25px; z-index:3; left: 164px; top: 167px; visibility: hidden"> 
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr> 
+                            <td width="40%"> 
+                              <input type="checkbox" name="insertar" value="checkbox" onClick="Muestra(this.value)">
+                            </td>
+                            <td width="56%">Insertar Imagen</td>
+                            <td width="4%"> 
+                              <input type="file" name="imagen" size="25">
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <input type="hidden" name="id" value="${id}">
+                      <input type="hidden" name="modo" value="0">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td valign="middle" height="65" class="tituloTabla" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;&nbsp; 
+                      </font> 
+                      <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Cuerpo</font></div>
+                    </td>
+                    <td valign="middle" height="65" width="361"> 
+                      <textarea name="contenido" rows="3" cols="45" class="inputText">${contenido}</textarea>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td valign="middle"  height="20" class="tituloTabla" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp;&nbsp; 
+                      </font> 
+                      <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Agregar 
+                        URL</font></div>
+                    </td>
+                    <td valign="middle" height="20" width="361"> 
+                      <input type="text" name="url" size="50" value="${url}" class="inputText">
+                    </td>
+                  </tr>
+                  <tr valign="middle"> 
+                    <td colspan="3" height="53"> 
+                      <div align="center"> 
+                        <table width="100%" border="0" cellspacing="1" cellpadding="4">
+                          <tr> 
+                            <td width="47%"> 
+                              <div align="right"><a href="javascript:;" onClick="validaForm();return false;" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue" onMouseOver="MM_swapImage('Image13','','../servlet/Tool?images/botones/aceptar_over.jpg',1)"><img name="Image13" border="0" src="../servlet/Tool?images/botones/aceptar.jpg" width="91" height="21" onMouseOver="MM_displayStatusMsg('Aceptar');return document.MM_returnValue"></a></div>
+                            </td>
+                            <td width="53%"><a href="../servlet/Tool?htm=publicador/menu_publicador.htm" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue" onMouseOver="MM_swapImage('Image12','','../servlet/Tool?images/botones/volver_over.jpg',1)"><img name="Image12" border="0" src="../servlet/Tool?images/botones/volver.jpg" width="91" height="21" onMouseOver="MM_displayStatusMsg('Volver');return document.MM_returnValue"></a></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </form>
+        </table>
+      </div>
+      <div id="LayTituloTodo" style="position:absolute; width:165px; height:16px; z-index:5; left: 85px; top: 84px; visibility: visible"><font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Publicaciones</font></b></font></div>
+    </td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r3_c4" src="../servlet/Tool?images/desp_main/desp_main_r3_c4.jpg" width="16" height="271" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="271" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="4"><img name="../servlet/Tool?images/desp_main/desp_main_r4_c1" src="../servlet/Tool?images/desp_main/desp_main_r4_c1.jpg" width="467" height="14" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="14" border="0"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<style type="text/css">
+<!--
+.seleccion {
+	border: 2px solid #FFCC00;
+}
+-->
+</style>
+
+
+<style type="text/css">
+<!--
+.textosel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #FFFFFF;
+}
+-->
+</style>
+<script>
+function enviar(rut){
+document.location.href="../servlet/adminOrganica?modo=Par&txt_Rut="+rut;
+}
+</script>
+<table width="100%" border="0" align="left">
+  
+  <if getEvaluados><list getEvaluados as a>
+   <tr> <td  align="left" class="textosel"><div align="center">
+      <table   border="0" align="left">
+        <tr>
+          <td width="44"  align="center" valign="top" class="textosel"><img src="../servlet/Tool?images/trabajadores/fotos/${a.foto}" alt="${a.nombre_completo}" width="37" height="42" border="1"  ></td>
+		   <td height="12" align="left" valign="middle" class="textosel">&nbsp;<input type="checkbox" name="seleccion" value="${a.rut}" >&nbsp;<a href="#" onClick="enviar(${a.rut});return false;">ASIGNAR PARES</a><br>&nbsp;${a.nombre_completo}</td>
+        </tr>
+
+      </table>
+        </div></td></tr>
+  </list></if>
+  
+</table>
+
+
+	

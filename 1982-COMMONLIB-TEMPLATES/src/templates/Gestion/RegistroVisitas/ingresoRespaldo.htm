@@ -1,0 +1,330 @@
+  <html>
+<head>
+<title>Buscar Unidades</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript" src="Tool?htm=Gestion/script/checkboxs.js"></script>
+<script language="JavaScript">
+<!--
+
+function AbrirBGaleria() {
+	//var url2 = "/servlet/JerarquiaOrg?cual=2";
+	var url2 = "Tool?htm=Gestion/BusquedaPorFiltros/Busqueda.htm";
+	ventmsg2 = open(url2, "Galeria", "width=720,height=428,left=50,top=110,status=1");
+	//ventmsg2.focus();
+}
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v3.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1];
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    if ((nbArr = document[grpName]) != null)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = args[i+1];
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+//var id_u="";
+//var desc_u="";
+function Envia(id,desc) { //v2.0
+   //id_u=id;
+   //desc_u=desc;
+   alert("id: "+id+"\ndesc: "+desc);
+   document.form2.unidad.value=id;
+   document.form2.descrip.value=desc;
+}
+function Revisa() { //v2.0
+  
+   
+   
+}
+
+function Valida() { //v2.0
+   var id=document.form2.unidad.value;
+   if (id=="")
+      alert("Seleccione una Unidad.");
+   else{
+      alert("id: "+id+"\n desc: "+document.form2.descrip.value);
+      document.form2.submit();
+    }
+}
+
+function Valida2(){ 
+  var crit=document.form1.nom_contacto.value;
+  var rut_v=document.form1.rut_visita.value;
+  var nom_v=document.form1.nom_visita.value;
+  if ((rut_v=="")||(nom_v=="")) 
+     alert("Ingrese Datos Visita");
+  else{
+	  if (crit!="")
+		document.form1.submit();
+	  else
+		alert("Ingrese Nombre contacto a buscar.");
+  }
+}
+
+
+
+function Salida() { //v2.0
+   /*var rut_v=document.form1.rut_visita.value;
+   if (rut_v!="")
+      document.location.href="/servlet/RegistroSalida?rut_v="+rut_v;
+   else
+      alert("Ingrese rut de la visita.");*/
+  parent.frames.main.location.href="../servlet/RegistroSalida";
+//   document.location.href="/servlet/RegistroSalida";
+
+}
+
+function EnviaData() { //v2.0
+   var cadena="";
+//datos visita*****   
+  var rut_v=document.form1.rut_visita.value;
+   var nom_v=document.form1.nom_visita.value;
+ //datos contacto*******
+   var rut_c=document.form1.rut_contacto.value;
+   var nom_c=document.form1.nom_contacto.value;
+   var anex_c=document.form1.anexo.value;
+   var unid_c=document.form1.unidad.value;
+   var empre_c=document.form1.empresa.value;
+   cadena="../servlet/RegistroVisita?rut="+rut_c;
+                  cadena=cadena+"&nom="+nom_c;
+                  cadena=cadena+"&anexo="+anex_c;
+                  cadena=cadena+"&unidad="+unid_c;
+                  cadena=cadena+"&empresa="+empre_c;
+                  cadena=cadena+"&rutv="+rut_v;
+                  cadena=cadena+"&nomv="+nom_v;
+  //alert(cadena);
+  if ((rut_v!="")&&(nom_v!=""))
+    if (rut_c!="")
+       parent.frames.main.location.href=cadena;
+    else
+      alert("No existe un contacto seleccionado.");
+  else
+      alert("Ingrese rut y nombre de la visita");
+}
+
+function Generar() { //v2.0
+  var tipo=document.form1.tipo.value;
+  
+  if(tipo!="0")
+     InformeVisitas(tipo);
+  else
+    alert("Seleccione tipo de Informe.");
+}
+
+function InformeVisitas(tipo) {
+	var cual="";
+	if (tipo=="1")
+	   cual="INFU011";//del dia
+	else
+	   cual="INFU010";//del mes   
+	var url2 = "../servlet/GeneraInforme?cual="+cual;
+	ventDep = open(url2, "Visitas", "width=770,height=317,left=50,top=110");
+	//ventmsg2.focus();
+}
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function Asigna(tipo) { //v2.0
+   document.form1.tipo.value=tipo;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+
+</script>
+<style type="text/css">
+<!--
+.unnamed1 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: bold; color: #006600}
+.unnamed2 {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF}
+-->
+</Style>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos.css" type="text/css">
+</head>
+
+<body bgcolor="#000000" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/limpiar_over.jpg','../servlet/Tool?images/Gestion/botones/informes_down.jpg','../servlet/Tool?images/Gestion/botones/regsal_over.jpg','../servlet/Tool?images/Gestion/botones/img/buscar_over.gif','../servlet/Tool?images/Gestion/botones/img/regisvisita_over.gif','../servlet/Tool?images/Gestion/botones/img/regisalida_over.gif','../servlet/Tool?images/Gestion/botones/img/informe_over.gif','../servlet/Tool?images/Gestion/botones/img/limpiar_over.gif','../servlet/Tool?images/Gestion/botones/img/aceptar_over.gif','../servlet/Tool?images/Gestion/botones/img/cerrar_infor_over.gif')">
+<table width="704" border="0" cellspacing="0" cellpadding="0" background="/images/Gestion/botones/img/fondo.gif" height="178">
+  <form name="form1" method="post" action="../servlet/BuscaContacto" target="main">
+    <tr> 
+      <td> 
+        <div id="Layercontacto" style="position:absolute; width:254px; height:61px; z-index:2; left: 336px; top: 81px; visibility: hidden"> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="20%" class="unnamed1" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">NOMBRE</font></td>
+              <td width="80%" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="text" name="nom_contacto" size="25" maxlength="60" readonly="yes" class="negro12B">
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="20%" class="unnamed1" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">ANEXO</font></td>
+              <td width="80%" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="text" name="anexo" readonly="yes" class="negro12B">
+                </font></td>
+            </tr>
+          </table>
+        </div>
+        <div id="Layervisita" style="position:absolute; width:254px; height:61px; z-index:2; left: 29px; top: 81px; visibility: hidden"> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="22%" class="unnamed1" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">RUT</font></td>
+              <td width="78%" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="text" name="rut_visita" size="12" maxlength="10" class="negro12B">
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="22%" class="unnamed1" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">NOMBRE 
+                </font></td>
+              <td width="78%" valign="middle"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="text" name="nom_visita" size="30" maxlength="60" class="negro12B">
+                </font></td>
+            </tr>
+          </table>
+        </div>
+        <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+        <input type="hidden" name="rut_contacto">
+        <input type="hidden" name="unidad">
+        <input type="hidden" name="empresa">
+        <input type="hidden" name="modo" value="1">
+        </font> 
+        <div id="Informes" style="position:absolute; width:704px; height:132px; z-index:6; left: 0; top: 49px; background-image: url(/images/Gestion/botones/img/fondo2.gif); layer-background-image: url(/images/Gestion/botones/img/fondo2.gif); border: 1px none #000000; visibility: visible"> 
+          <table width="307" border="0" cellspacing="0" cellpadding="0" height="130">
+            <tr> 
+              <td colspan="2" class="titulo" height="25"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif">Informe 
+                de visitas</font></td>
+            </tr>
+            <tr> 
+              <td colspan="2" class="textB" height="22"> <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif">
+                <select name="cual">
+                  <option value="-1" selected>Seleccione un Informe</option>
+                  <option value="INFU011">Del D&iacute;a</option>
+                  <option value="INFU010">Del Mes</option>
+                  <option value="INFU012">Por Motivo</option>
+                  <option value="INFU013">Por Rut</option>
+                  <option value="INFU014">Por Fecha</option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="119" class="textB" height="22"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif">Del 
+                d&iacute;a</font></td>
+              <td width="131" height="22"> <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="radio" name="radiobutton" value="radiobutton" onClick="Asigna('1')">
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="119" class="textB" height="24"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif" style="">Del 
+                mes</font></td>
+              <td width="131" height="24"> <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="radio" name="radiobutton" value="radiobutton" onClick="Asigna('2')">
+                <input type="hidden" name="tipo" value="0">
+                </font> 
+                <div id="Layer1" style="position:absolute; width:110px; height:66px; z-index:7; left: 581px; top: 25px; visibility: hidden"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="#"  onClick="Generar();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image12','','../servlet/Tool?images/Gestion/botones/img/aceptar_over.gif',1)"><img name="Image12" border="0" src="/templates/Gestion/RegistroVisitas/img/aceptar_up.gif"></a><a href="#"  onClick="MM_showHideLayers('Informes','','hide')" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image13','','../servlet/Tool?images/Gestion/botones/img/cerrar_infor_over.gif',1)"><img name="Image13" border="0" src="/images/Gestion/botones/img/cerrar_infor_up.gif" width="103" height="30"></a></font></div>
+                <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                </font></td>
+            </tr>
+            <tr> 
+              <td colspan="2" class="textB"> 
+                <div align="center"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"></font></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+        </font> 
+        <div id="Layerbotones" style="position:absolute; width:449px; height:29px; z-index:3; left: 198px; top: 142px; visibility: hidden"> 
+          <table width="478" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="101"><a href="javascript:;" onClick="EnviaData();return false;" target="main" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../servlet/Tool?images/Gestion/botones/img/regisvisita_over.gif',1)"><img src="/images/Gestion/botones/img/regisvisita_up.gif" border="0" name="Image2"></a></td>
+              <td width="97"><a href="javascript:;"  onClick="Salida();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../servlet/Tool?images/Gestion/botones/img/regisalida_over.gif',1)" target="main"><img src="/images/Gestion/botones/img/regisalida_up.gif" border="0" name="Image3"></a></td>
+              <td width="100"><a href="javascript:;"  onClick="MM_showHideLayers('Informes','','show');return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../servlet/Tool?images/Gestion/botones/img/informe_over.gif',1)"><img src="/images/Gestion/botones/img/informe_up.gif" border="0" name="Image4"></a></td>
+              <td width="152"><a href="javascript:document.form1.reset();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../servlet/Tool?images/Gestion/botones/img/limpiar_over.gif',1)"><img src="/images/Gestion/botones/img/limpiar_up.gif" border="0" name="Image11"></a></td>
+            </tr>
+          </table>
+        </div>
+        <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+        </font> 
+        <div id="Layerbuscar" style="position:absolute; width:107px; height:30px; z-index:4; left: 566px; top: 89px; visibility: hidden"><a href="javascript:;" onClick="AbrirBGaleria();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image1','','../servlet/Tool?images/Gestion/botones/img/buscar_over.gif',1)" target="main"><img src="../servlet/Tool?images/Gestion/botones/img/buscar_up.gif" border="0" name="Image1"></a></div>
+        <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+        </font> 
+        <div id="LayerFlash" style="position:absolute; width:696px; height:49px; z-index:5; left: 0px; top: 0px; visibility: hidden"> 
+          <table width="689" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="538"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="/flash/swflash.cab#version=4,0,2,0" width="478" height="49">
+                  <param name=movie value="../servlet/Tool?images/Gestion/botones/img/tit.swf">
+                  <param name=quality value=high>
+                  <embed src="../servlet/Tool?images/Gestion/botones/img/tit.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="478" height="49">
+                  </embed> 
+                </object></td>
+              <td width="116">&nbsp;</td>
+              <td width="58">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+        </font></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

@@ -1,0 +1,344 @@
+  <html>
+<head>
+<title>Galeria Participantes Seleccionados</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/Gestion/script/ExisteFoto.js"></script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+
+function Invitar(){
+   var x=0;
+   var valor=false;
+   //alert("Largo: "+document.form1.rut.length);
+    /*if (document.form1.rut.length>1){
+		   for (x=0;x<document.form1.rut.length;x++){
+				 if (document.form1.rut[x].checked==true)
+					valor=true;
+		   }
+    }else if (document.form1.rut.checked==true)
+					valor=true;
+   if (valor){
+	//  alert("Submit...");
+	 document.form1.submit();
+   }else
+	 alert("Seleccione un Participante.");   */
+   	 document.form1.submit();
+}
+
+MM_reloadPage(true);
+// -->
+
+function MuestraLayer(rut) { //v2.0
+   //alert("Mostrar Layer: "+rut);
+   var x=0;
+   var valor=false;
+   <list detalle as d>
+     eval("Layer"+${d.rut}+".style.visibility='hidden'");
+   </list>
+   eval("Layer"+rut+".style.visibility='visible'");
+   /*if (document.form1.rut.length>1)  
+	   for (x=0;x<document.form1.rut.length;x++){
+			 if (document.form1.rut[x].checked==true){
+			   //alert("Rut: "+document.form1.rut[x].value+"Chekeado!!");
+			   <list detalle as d>
+				 eval("Layer"+${d.rut}+".style.visibility='hidden'");
+			   </list>
+			   eval("Layer"+document.form1.rut[x].value+".style.visibility='visible'");
+			  }else{
+				 //alert("Rut: "+document.form1.rut[x].value+"No Chekeado!!");
+				 eval("Layer"+document.form1.rut[x].value+".style.visibility='hidden'");
+			   }
+	   }
+    else{
+        if (document.form1.rut.checked==true){
+			   //alert("Rut: "+document.form1.rut[x].value+"Chekeado!!");
+			   <list detalle as d>
+				 eval("Layer"+${d.rut}+".style.visibility='hidden'");
+			   </list>
+			   eval("Layer"+document.form1.rut.value+".style.visibility='visible'");
+			  }else{
+				 //alert("Rut: "+document.form1.rut[x].value+"No Chekeado!!");
+				 eval("Layer"+document.form1.rut.value+".style.visibility='hidden'");
+			   }
+
+    }*/
+    
+}
+
+function OcultarTodos() { //v2.0
+ 
+ <list detalle as d>
+    eval("Layer"+${d.rut}+".style.visibility='hidden'");
+  </list>
+ 
+}
+
+
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="293" border="0" cellpadding="0" cellspacing="0">
+  
+  <form name="form1" action="/servlet/datafolder.videoconf.Conferencia" method="post"> 
+ <tr>
+      <td width="1003"><font face="Arial, Helvetica, sans-serif" size="2"><b>Participantes 
+        &nbsp;&nbsp;Seleccionados. </b></font>
+        <list detalle as d>
+				
+        <div id="Layer${d.rut}" style="position:absolute; width:276px; height:154px; z-index:3; left: 397px; top: 75px; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000; visibility: hidden"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td colspan="3" height="71"> 
+                <div align="center"><font face="Arial, Helvetica, sans-serif" size="1"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${d.foto}" width="67" height="74" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a> 
+                  </font></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1">Acci&oacute;n</font></td>
+              <td width="7%"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="cond${d.rut}" value="PU" checked>
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">P&uacute;blico</font></td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+              <td width="7%"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="cond${d.rut}" value="PR">
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Privado</font></td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+              <td width="7%"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="cond${d.rut}" value="O">
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Oyente</font></td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1">Participaci&oacute;n</font></td>
+              <td width="7%"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="tipo${d.rut}" value="OB" checked>
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Obligatoria</font></td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+              <td width="7%"> <font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="tipo${d.rut}" value="OC">
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Obligatoria 
+                Por Confirmar</font></td>
+            </tr>
+            <tr> 
+              <td width="22%"><font face="Arial, Helvetica, sans-serif" size="1"></font></td>
+              <td width="7%"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="tipo${d.rut}" value="C">
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Por 
+                Confirmar </font></td>
+            </tr>
+            <tr> 
+              <td width="22%"> 
+                <div align="center"></div>
+              </td>
+              <td width="7%"><font face="Arial, Helvetica, sans-serif" size="1"> 
+                <input type="radio" name="tipo${d.rut}" value="I">
+                </font></td>
+              <td width="71%"><font face="Arial, Helvetica, sans-serif" size="1">Invitado</font></td>
+            </tr>
+            <tr> 
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td colspan="3">
+                <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="javascript:;" onClick="OcultarTodos()">Aceptar</a></font></div>
+              </td>
+            </tr>
+          </table>
+				</div>
+			
+        </list> 
+        <div id="LayerFotos2" style="position:absolute; width:238px; height:99px; z-index:1; left: 397px; top: 75px; overflow: auto; visibility: visible"> 
+          <table width="13%" border="0" cellpadding="0" cellspacing="0" height="56">
+            <tr>
+             <list detalle as v> 
+              <td> <a href="javascript:;" onClick="MuestraLayer('${v.rut}');return false;"> 
+                <img src="/images/Gestion/Trabajadores/${v.foto}" width="67" height="74" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"> 
+                </a> </td>
+              </list>
+            </tr>
+          </table>
+          </div>
+        <input type="hidden" name="cadena" value="${cadena}">
+      </td>
+  </tr>
+  <tr>
+      <td width="1003"> 
+        <div id="LayerFotos" style="position:absolute; width:391px; height:118px; z-index:1; left: 6px; top: 30px; visibility: hidden"> 
+          <compress> 
+          <table width="55%" border="0">
+            <tr align="center"> 
+             <assign x="*"> 
+             <list detalle as v>
+              <if x=="*">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr>
+                    <td> 
+                      <div align="center">
+                        <input type="checkbox" name="rut" value="${v.rut}" onClick="MuestraLayer('${v.rut}')">                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="**"> 
+           <else> 
+            <if x=="**">
+              <td height="75" width="10%" class="maticoN">
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}" onClick="MuestraLayer('${v.rut}')">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="***"> <else> <if x=="***">
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"><img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}" onClick="MuestraLayer('${v.rut}')">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <assign x="****"> <else> 
+              <td height="75" width="10%" class="maticoN"> 
+                <table width="75%" border="0" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="75"><a href="javascript:;" onClick="return false"> 
+                      <img src="/images/Gestion/Trabajadores/${v.foto}" width="48" height="55" alt="${v.nombre}/${v.cargo}" border="0"  onError="existeFoto(this,'/images/Gestion/sinfoto.jpg')"></a></td>
+                  </tr>
+                  <tr> 
+                    <td> 
+                      <div align="center"> 
+                        <input type="checkbox" name="rut" value="${v.rut}" onClick="MuestraLayer('${v.rut}')">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr align="center"> <assign x="*"> </if></if></if></list>
+            <tr align="center"> 
+              <td>&nbsp; 
+              <td> 
+          </table></compress>
+        </div>
+        <div id="LayerInvita" style="position:absolute; width:364px; height:172px; z-index:2; top: 73px; left: 6px; overflow: auto; visibility: visible"> 
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td colspan="4"> 
+                <input type="hidden" name="id" value="${conf_id}">
+              </td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2">Asunto</font></td>
+              <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="2">:${asunto} 
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2">Tipo</font></td>
+              <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="2">:${tipo} 
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                Inicio</font></td>
+              <td width="23%"><font face="Arial, Helvetica, sans-serif" size="2">:${f_ini} 
+                </font></td>
+              <td width="13%"><font face="Arial, Helvetica, sans-serif" size="2">Hora</font></td>
+              <td width="47%"><font face="Arial, Helvetica, sans-serif" size="2">:${h_ini} 
+                </font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                T&eacute;rmino</font></td>
+              <td width="23%"><font face="Arial, Helvetica, sans-serif" size="2">:${f_ter} 
+                </font></td>
+              <td width="13%"><font face="Arial, Helvetica, sans-serif" size="2">Hora</font></td>
+              <td width="47%"><font face="Arial, Helvetica, sans-serif" size="2">:${h_ter}</font></td>
+            </tr>
+            <tr> 
+              <td width="17%">&nbsp;</td>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="17%">&nbsp;</td>
+              <td width="23%"></td>
+              <td width="13%">&nbsp;</td>
+              <td width="47%"></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2">Moderador</font></td>
+              <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="2">:${nom_m}</font><font face="Arial, Helvetica, sans-serif" size="2"></font><font face="Arial, Helvetica, sans-serif" size="2"></font><font face="Arial, Helvetica, sans-serif" size="2"></font><font face="Arial, Helvetica, sans-serif" size="2"></font></td>
+            </tr>
+            <tr> 
+              <td width="17%"><font face="Arial, Helvetica, sans-serif" size="2">Audio</font></td>
+              <td width="23%"><if (audio)><font face="Arial, Helvetica, sans-serif" size="2">:Si<else>No</font></if></td>
+              <td width="13%"><font face="Arial, Helvetica, sans-serif" size="2">Video</font></td>
+              <td width="47%"><font face="Arial, Helvetica, sans-serif" size="2"><if (video)><font face="Arial, Helvetica, sans-serif" size="2">:Si<else>No</font></if></font></td>
+            </tr>
+          </table>
+        </div>
+        <div id="Layer1" style="position:absolute; width:57px; height:21px; z-index:4; left: 681px; top: 330px; visibility: visible"><a href="javascript:;" onClick="Invitar();return false;"><font face="Arial, Helvetica, sans-serif" size="2">Invitar</font></a></div>
+      </td>
+  </tr></form>
+</table>
+<script>
+  <list detalle as d>
+    eval("Layer"+${d.rut}+".style.visibility='hidden'");
+  </list>
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Repositorio de Archivos</title>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<link href="../servlet/Tool?style/repository/styles.css" rel="stylesheet" type="text/css">
+<script src="../servlet/Tool?scripts/repository/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+	    var menu_ul = $('.menu > li > ul'),menu_a  = $('.menu > li > a');
+	    menu_ul.hide();
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+	});
+	
+	function grabar(f) {
+		f.submit();
+	}
+</script>
+<style>
+  .borde { border:#CCC 1px solid; width:500px; height:300px; -webkit-box-shadow:  2px 2px 10px 2px #999999; box-shadow:  2px 2px 10px 2px #999999;}
+  .titulo_repositorio { text-align:center; width:850px; height:35px; padding-left:20px; padding-top:10px;
+    font-family:Verdana, Geneva, sans-serif; font-size: 14px; color: #999999; text-shadow: -1px -1px 0px #666, 1px 1px 0px #ffffff;
+  }
+</style>
+</head>
+<body topmargin="0" leftmargin="0">
+
+<table width="95%" align="center" cellpadding="5" cellspacing="1" border="0">
+<tr><td colspan="2" align="center" class="TITULO_MODULOS">Repositorio de Documentos</td></tr>
+<tr><td valign="top" width="190px">
+	<div id="wrapper">
+		<ul class="menu">
+		<li class="item1"><a href="#">Clasificaci&oacute;n</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/ConceptRepositoryServlet?accion=new">Nueva clasificaci&oacute;n</a></li>
+				<li class="subitem2"><a href="../servlet/ConceptRepositoryServlet?accion=mod">Modificar clasificaci&oacute;n</a></li>
+			</ul>
+		</li>
+		<li class="item2"><a href="#">Grupo de Visibilidad</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/VisibilityRepositoryServlet?accion=new">Crear Grupo</a></li>
+				<li class="subitem2"><a href="../servlet/VisibilityRepositoryServlet?accion=mod">Modificar Grupo</a></li>
+				<li class="subitem3"><a href="../servlet/VisibilityRepositoryServlet?accion=del">Eliminar Grupo</a></li>
+			</ul>
+		</li>
+		<li class="item3"><a href="#">Uploaders</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/UploaderRepositoryServlet?accion=new">Crear Grupo</a></li>
+				<li class="subitem2"><a href="../servlet/UploaderRepositoryServlet?accion=mod">Modificar Grupo</a></li>
+				<li class="subitem3"><a href="../servlet/UploaderRepositoryServlet?accion=del">Eliminar Grupo</a></li>
+			</ul>
+		</li>
+		<li class="item4"><a href="#">Repositorio de Archivos</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/FileRepositoryServlet?accion=new">Subir Archivos</a></li>
+				<li class="subitem2"><a href="../servlet/FileRepositoryServlet?accion=del">Eliminar Archivos</a></li>
+				<li class="subitem3"><a href="../servlet/FileRepositoryServlet?accion=dis">Listar Archivos</a></li>
+			</ul>
+		</li>
+		<li class="item5"><a href="#">Configuraci&oacute;n</a>
+			<ul>
+				<li class="subitem1"><a href="../servlet/ConfigRepositoryServlet">Par&aacute;metros</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</td>
+<td class="borde">
+	<form name="form1" action="../servlet/VisibilityRepositoryServlet" method="post">
+		<input type="hidden" name="accion" value="${accion}"/>
+		<table border="0" cellpadding="1" cellspacing="1" align="center" width="90%">
+			<tr>
+				<td colspan="3" align="center" class="titulo_repositorio"><b>ELIMINACI&Oacute;N GRUPO DE VISUALIZACI&Oacute;N</b></td>
+			</tr>
+			<tr><td class="detalleTabla" valign="top" colspan="3">
+				<table width="99%" align="center" cellpadding="1" cellspacing="1" border="0">
+					<tr>
+						<td width="35px"></td>
+						<td class="detalleTabla" valign="middle" align="center"><b>Nombre Grupo</b></td>
+						<td class="detalleTabla" valign="middle" align="center"><b>Definici&oacute;n Grupo</b></td>
+						<td class="detalleTabla" valign="middle" align="center"><b>&#191; Eliminar ?</b></td>
+					</tr>
+					<list grupos as g>
+					<tr>
+						<td width="35px"><img src="../servlet/Tool?images/repository/trash.png" border="0"></td>
+						<td class="detalleTabla" valign="middle">${g.nombre}</td>
+						<td class="detalleTabla" valign="middle">${g.universo}</td>
+						<td class="detalleTabla" valign="middle" align="center"><input type="checkbox" name="grupos" value="${g.id}"></td>
+					</tr>
+					</list>
+					<tr><td colspan="4" align="right"><input type="button" name="delete" value="Eliminar Grupos" onclick="grabar(this.form);"></td></tr>
+				</table>
+			</td></tr>
+		</table>
+	</form>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+

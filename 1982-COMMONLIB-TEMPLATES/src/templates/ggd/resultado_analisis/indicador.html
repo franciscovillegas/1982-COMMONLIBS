@@ -1,0 +1,47 @@
+<style type="text/css">
+<!--
+.ra1lista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+.ra1lista2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color: #000000;
+}
+.ra1listaCh {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 6px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+-->
+</style>
+<assign colorfondo="#009999"> 
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<if getNivelesObtenidos>
+<list getNivelesObtenidos as a>
+
+  <tr align="left" valign="middle">
+    <td width="45%" class="ra1lista2" >${a.competencia}&nbsp;</td>
+    <td width="55%" class="ra1listaCh">
+	  <assign nivel_esperado = a.nivel_esperado>
+   	  <assign nivel = a.nivel>
+      <table width="100%" border="0" >
+      <tr>
+      
+      <script language="JavaScript" type="text/JavaScript">document.writeln( uno('${nivel_esperado}','${nivel}') );</script>
+	    
+      </tr>
+      </table>
+	
+	</td>
+  </tr>
+  
+</list>
+</if>
+</table>

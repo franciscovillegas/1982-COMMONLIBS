@@ -1,0 +1,133 @@
+<assign p = txt_Perfil>
+<assign pr = txt_Proceso>
+
+<assign r = txt_Rut>
+<assign rut=User.Rut>
+<if modo=="Par">
+	<assign rut=txt_Rut>
+</if>
+<assign re = User.Rut>
+<assign te = txt_TipoEval>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Configuracion de Perfiles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #1F57A1;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 10px;
+}
+.Estilo1 {color: #000000}
+.Estilo2 {color: #FFFFFF}
+-->
+</style></head>
+<script language="JavaScript" type="text/JavaScript">
+function fnTraerCombo(opcion){
+	if(opcion.name == "procesos"){
+		form1.action="/servlet/configuracionPerfil?id_proceso="+opcion.value;
+		form1.submit();
+	}
+}
+function fnBuscar(opcion){
+		form3.target="_new";
+		window.open('','vent','width=790,height=570,status=yes')	;
+		form3.target="vent";
+		//form3.action="../servlet/Evaluadores?txt_Rut=${User.Rut}&txt_TipoEval=T?pHtm=ggd/evaluacion/personalOrganica.html&txt_modo=${txt_TipoEval}";
+		
+		form3.action="../servlet/LoadTree?pag=ggd/arbol/muestraArbol.html&txt_Rut=${rut}&modo=${modo}&txt_TipoEval=T&pag=ggd/arbol/muestraArbol.html&txt_modo=${txt_TipoEval}";
+		form3.submit();
+}
+function fnEliminar(opcion){
+		form3.target="_self";
+				
+		form3.action="../servlet/adminOrganica?txt_Rut=${rut}&txt_TipoEval=${txt_TipoEval}&modo=${modo}&txtAccion=EL";
+		form3.submit();
+}
+function fnInicio(){
+
+}
+function fnReload(){
+	window.reload();
+}
+</script>
+<body onLoad="fnInicio();MM_preloadImages('../servlet/Tool?images/images_ggd/cfg_perfiles/cfg_perfiles_r6_c8_f2.jpg','/ggd/images/organica/bt_sup_f2.jpg','/ggd/images/organica/bt_par_f2.jpg','/ggd/images/organica/bt_col_f2.jpg')" background="/ggd/images/organica/fondo_admin_org.jpg">
+<div id="Layer1" style="position:absolute; width:357px; height:142px; z-index:1; left: 22px; top: 28px; visibility: visible;"> 
+  <div id="Layer2" style="position:absolute; width:252px; height:90px; z-index:1; left: 22px; top: 18px;" ><assign h = "rut/ver_rut.html">${TM_Rut(h,r)}</div>  
+ 
+  
+</div>
+ 
+<div id="Layer2" style="position:absolute; width:291px; height:27px; z-index:1; left:186px; top: 185px;" > 
+  <!--a href="#" onClick="parent.frames.bottomFrame.location.href='../servlet/adminOrganica?txt_Rut=${User.Rut}&txt_TipoEval=S'"  onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('supimg','','../servlet/Tool?images/images_ggd/organica/bt_sup_f2.jpg',1)"><img name="supimg" border="0" src="../servlet/Tool?images/images_ggd/organica/bt_sup.jpg" alt="Supervisor"></a-->
+  <if modo=="Par"> <a href="#" onClick="parent.frames.bottomFrame.location.href='../servlet/adminOrganica?txt_Rut=${rut}&txt_TipoEval=P&modo=${modo}'" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('parimg','','../servlet/Tool?images/images_ggd/organica/bt_par_f2.jpg',1)"><img name="parimg" border="0" src="../servlet/Tool?images/images_ggd/organica/bt_par.jpg" alt="Pares"></a> 
+  </if> <if modo=="Col"> <a href="#" onClick="parent.frames.bottomFrame.location.href='../servlet/adminOrganica?txt_Rut=${rut}&txt_TipoEval=C&modo=${modo}'" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('colab','','../servlet/Tool?images/images_ggd/organica/bt_col_f2.jpg',1)"><img name="colab" border="0" src="../servlet/Tool?images/images_ggd/organica/bt_col.jpg" alt="Colaboradores"></a> 
+  </if> </div>  
+<div id="Layer3" style="position:absolute; width:341px; height:345px; z-index:3; left: 411px; top: 31px;"> 
+
+<form name="form3"  method="post">
+
+    <div id="Layer8" style="position:absolute; width:339px; height:333px; z-index:5; overflow: auto; left: 3px; top: 11px;"> 
+      <assign h = "ggd/evaluacion/lista_colab_org.html">${TM_Colab(h,rut,te)}
+	  </div>
+
+  </form>
+</div>
+<div id="Layer17" style="position:absolute; width:259px; height:42px; z-index:5;  left: 407px; top:13px;"> 
+  <if txt_TipoEval=="C"> <img src="/ggd/images/organica/colaboradores.jpg" border="0"> 
+  </if> <if txt_TipoEval=="P"> <img src="/ggd/images/organica/pares.jpg"> 
+  </if> <if txt_TipoEval=="S"> <img src="/ggd/images/organica/supervisor.jpg"> 
+  </if> </div>
+<div id="Layer18" style="position:absolute; width:209px; height:34px; z-index:5; overflow: auto; left: 595px; top: 393px;"> 
+  <a href="#" onClick="fnBuscar();return false" onMouseOver="MM_swapImage('cfg_perfiles_r6_c8','','../servlet/Tool?images/images_ggd/cfg_perfiles/bt_agregar_f2.jpg',1);" onMouseOut="MM_swapImgRestore()"><img name="cfg_perfiles_r6_c8" src="../servlet/Tool?images/images_ggd/organica/bt_agregar.jpg" width="80" height="16" border="0" alt=""></a> 
+  <a href="#" onClick="fnEliminar();return false" onMouseOver="MM_swapImage('cfg_perfiles_r6_c8','','../servlet/Tool?images/images_ggd/cfg_perfiles/bt_eliminar_f2.jpg',1);" onMouseOut="MM_swapImgRestore()"><img name="cfg_perfiles_r6_c8" src="../servlet/Tool?images/images_ggd/organica/bt_eliminar.jpg" width="80" height="16" border="0" alt=""></a> 
+</div>
+
+
+
+</body>
+</html>

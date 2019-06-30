@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<TITLE>Datos Personales</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<script language="JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_scanstyles(obj, prop) { //v8.0
+  var inlinestyle = null; var ccProp = prop; var dash = ccProp.indexOf("-");
+  while (dash != -1){ccProp = ccProp.substring(0, dash) + ccProp.substring(dash+1,dash+2).toUpperCase() + ccProp.substring(dash+2); dash = ccProp.indexOf("-");}
+  inlinestyle = eval("obj.style." + ccProp);
+  if(inlinestyle) return inlinestyle;
+  var ss = document.styleSheets;
+  for (var x = 0; x < ss.length; x++) { var rules = ss[x].cssRules;
+	for (var y = 0; y < rules.length; y++) { var z = rules[y].style;
+	  if(z[prop] && (rules[y].selectorText == '*[ID"' + obj.id + '"]')) {
+        return z[prop];
+  }  }  }  return "";
+}
+//-->
+</script>
+<style type="text/css">
+#HijoDatosper {	position:absolute;
+	left:0px;
+	top:22px;
+	width:496px;
+	height:146px;
+}
+#PadreDatosper {	position:absolute;
+	left:85px;
+	top:10px;
+	width:499px;
+	height:20px;
+	z-index:2;
+}
+#Hijofoto {	position:absolute;
+	left:0px;
+	top:23px;
+	width:54px;
+	height:69px;
+	z-index:7;
+}
+#PadFoto {	position:absolute;
+	left:5px;
+	top:3px;
+	width:62px;
+	height:22px;
+	z-index:8;
+}
+#HijoTool {position:absolute;
+	left:-1px;
+	top:21px;
+	width:70px;
+	height:141px;
+	z-index:10;
+}
+#PadTool {position:absolute;
+	left:6px;
+	top:124px;
+	width:70px;
+	height:22px;
+	z-index:9;
+}
+</style>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="PadreDatosper">
+  <table width="500" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="400"><img src="../servlet/Tool?images/Gestion/titulos/datosperso.gif" width="400" height="22"></td>
+      <td width="40" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif">&nbsp;</td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/min.gif" alt="Minimizar" width="20" height="22" onClick="MM_showHideLayers('HijoDatosper','','hide')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/max.gif" alt="Maximizar" width="20" height="22" onClick="MM_showHideLayers('HijoDatosper','','show')"></td>
+      <td width="20"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="HijoDatosper">
+    <table width="500" height="300" border="0" cellpadding="0" cellspacing="0" class="tabla_layer">
+      <tr>
+        <td valign="top"><table width="100%" class="texto_negro">
+          <tr>
+            <td height="34" colspan="2" valign="top" class="texto_negro_bold"> ${nombre}</td>
+          </tr>
+          <tr valign="top">
+            <td width="24%" height="17" class="texto_azul_bold"> Cargo:</td>
+            <td width="71%" height="17">${cargo}</td>
+          </tr>
+          <tr valign="top">
+            <td width="24%" height="17" class="texto_azul_bold"> Centro Costo:</td>
+            <td width="71%" height="17">(${id_unidad}) ${unidad}</td>
+          </tr>
+          <tr valign="top">
+            <td width="24%" height="13" class="texto_azul_bold"> Fecha Nacimiento:</td>
+            <td width="71%" height="13">${fec_nac} Edad:${edad} a&ntilde;os</td>
+          </tr>
+          <tr valign="top">
+            <td width="24%" height="6" class="texto_azul_bold"> Estado Civil:</td>
+            <td height="6" width="71%"><if xrut == "5196456">Casado
+                  <else>
+              ${est_civil}</if></td>
+          </tr>
+          <tr valign="top">
+            <td width="24%" height="17" class="texto_azul_bold"> Nacionalidad:</td>
+            <td height="17" width="71%">${nacionalidad}</td>
+          </tr>
+          <tr valign="top">
+            <td height="17" class="texto_azul_bold">N&deg; de cargas:</td>
+            <td height="17">${numcargas}</td>
+          </tr>
+          <tr valign="top">
+            <td height="17" class="texto_azul_bold">Direcci&oacute;n:</td>
+            <td height="17">${domicilio}</td>
+          </tr>
+          <tr valign="top">
+            <td height="17" class="texto_azul_bold">Comuna:</td>
+            <td height="17">${comuna}</td>
+          </tr>
+          <tr valign="top">
+            <td height="17" class="texto_azul_bold">Tel&eacute;fono:</td>
+            <td height="17">${fono}</td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="PadFoto">
+  <table width="72" height="22" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="42"><img src="../servlet/Tool?images/Gestion/titulos/foto.gif" width="42" height="22"></td>
+      <td width="10" background="../servlet/Tool?images/Gestion/topLayers/fondo.gif">&nbsp;</td>
+      <td width="21"><img src="../servlet/Tool?images/Gestion/topLayers/bordeder.gif" width="20" height="22"></td>
+    </tr>
+  </table>
+  <div id="Hijofoto">
+    <table width="72" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center"><img src="../servlet/Tool?images/trabajadores/fotos/${foto}" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+      </tr>
+      <tr>
+        <td align="center" class="texto_negro_bold_chico">${rut2}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Unidades Ver</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+
+
+
+
+<!--
+<assign empresa_ant ="">
+
+
+<list unidades as a>
+	<if (a.empresa) != (empresa_ant)>
+		<assign empresa_ant = (a.empresa)>
+		var unidad_${a.empresa} = new Array();
+		unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('Seleccione la Unidad','-1');
+	</if>
+	unidad_${a.empresa}[unidad_${a.empresa}.length] = new Option('${a.desc}','${a.id}');
+</list>
+
+function llena_lista(lista, array) {
+	lista.length = 0;
+	if (array) {
+		for (i = 0; i<array.length;i++)
+			lista.options[i] = array[i]
+	}
+}
+
+function SeleccionaEmpresa(valor) {
+	//alert(valor);
+	llena_lista(document.Unidades.unidad, eval("window.unidad_"+valor));
+	//llena_lista(document.form1.divi, eval("window.divi_"+valor));
+}
+
+function AgregarUnidad(form) {
+//alert("Cargo: "+form.cargo.value);
+if ((form.unidad.value!="-1")&&(form.unidad.value!="")){
+	form.submit();
+}else
+  alert("Seleccione la Unidad a asociar.");
+return false;
+}
+
+function EliminarUnidades(form) {
+	form.submit();
+	return false;
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function Procesando(){
+	// Devuelve la cadena convertida en min&#250;sculas
+	//parent.AbrirVentProcesando();	
+	return true;
+
+}
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function asigna(form) {
+	var url = "../servlet/MantenerUsuarioOrga"
+	url += "?rut=${rutuser}&accion=${accion}&rel_uni=${cod_uni}&unirel=1&rel_emp=${cod_empresa}"
+	url += "&rel_tipo="+form.tipo.value;
+	opener.document.location.href = url;
+	opener.focus();
+	window.close();
+}
+//-->
+</script>
+<script language="JavaScript" src="Tool?htm=Gestion/script/opcion_link.js">
+</script>
+<link rel="stylesheet" href="Tool?htm=Gestion/Style/estilos2.css" type="text/css">
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js">
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFA400" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="window.focus();MM_preloadImages('../servlet/Tool?images/Gestion/botones/agregar_over.jpg')">
+<table width="500" height="290" border=0 cellpadding=0 cellspacing=0 class="layer_util">
+  <tr> 
+    <td valign="top" rowspan=8> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+        <tr> 
+          <td height="20" class="texto_negro_bold">Seleccione la Empresa v/s Unidad          </td>
+        </tr>
+        <tr> 
+          <td align="center"> 
+            
+              
+            <table width="100%" border="0" cellspacing="0" cellpadding="2" class="texto_negro_bold_chico">
+              <form name="Unidades" method="post" action="../servlet/AsignaUnidadesVer?rut=${rut}&accion=A">
+                <tr> 
+                  <td width="45%"> Empresa<br>
+                    <select name="empresa" class="texto_negro_bold_chico" onChange = "SeleccionaEmpresa(this.value)">
+                      <option value="-1">Seleccione una Empresa</option>
+                      <list empresas as v> 
+                      <option value="${v.id}">${v.desc}</option>
+                      </list> 
+                    </select>
+                    <input type="hidden" name="empresas" value="${cod_empresa}">
+                  </td>
+                  <td colspan="2"> Unidad<br>
+                    <select name="unidad" class="texto_negro_bold_chico">
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2"> 
+                    <input type="radio" name="tipo" value="R" checked>
+                    Ver la Rama bajo esta Unidad 
+                    <input type="radio" name="tipo" value="U">
+                    Ver s&oacute;lo la unidad</td>
+                  <td width="38%"><a href="javascript:;" onClick="return AgregarUnidad(document.Unidades)"><img src="../servlet/Tool?images/Gestion/botones/agregar.gif" width="120" height="24" name="agregar" border="0"></a></td>
+                </tr>
+              </form>
+            </table>
+            
+          </td>
+        </tr>
+      </table>
+      <form name="form_graba" action="../servlet/AsignaUnidadesVer?rut=${rut}&accion=E" method="post">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="texto_negro">
+          <tr> 
+            <td height="20" align="center"> 
+              Unidades que puede ver</td>
+          </tr>
+        </table>
+        <span class="layer_util" id="Layer1" style="position:absolute; width:494px; height:131px; z-index:4; left: 2px; top: auto; overflow: auto"> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="2">
+          <list unidades_rel as u> 
+            <tr> 
+              <td class="tabla_amarelo"><input type="checkbox" name="elim" value="${u.emp_id},${u.uni_id}"></td>
+			  <td width="45%" class="tabla_amarelo">${u.empresa}</td>
+              <td width="45%" class="tabla_amarelo">${u.unidad}</td>
+              <td width="7%" align="center" class="tabla_amarelo"><if (u.tipo)=="U">Unidad<else>Rama</if></td>
+            </tr>
+            </list> 
+          </table>
+        </span>
+      </form>
+    </td>
+  </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+</table>
+
+<div id="Layer2" style="position:absolute; left:249px; top:262px; width:260px; height:30px; z-index:3; overflow: visible"> 
+  <a href="javascript:;" onClick="return EliminarUnidades(document.form_graba)"><img src="../servlet/Tool?images/Gestion/botones/eliminar.gif" width="120" height="24" name="elim" border="0"></a><a href="#" onClick="window.close()"> <img src="../servlet/Tool?images/Gestion/botones/cerrar.gif" name="Image2" width="120" height="24" border="0"></a></div>
+</body>
+</html>
+

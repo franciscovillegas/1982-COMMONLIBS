@@ -1,0 +1,79 @@
+<assign nc = CompetenciaN>
+<assign gc = CompetenciaG>
+
+<assign cr = CompetenciaRut>
+<assign ce = CompetenciaRutEval>
+<assign cf = CompetenciaPerfil>
+<assign cp = CompetenciaProceso>
+<assign ct = CompetenciaTipoEval>
+
+<script language="JavaScript" type="text/JavaScript">
+
+var CompActual="";
+var CompAnterior="";
+
+function fnAccion(valor){
+	fnChageValue(valor);
+	setCompetecia(valor);
+}
+function fnChageValue(valor){
+	eval('document.all.txt_Comp.value=document.all.hd_Comp_'+valor+'.value');
+	eval('document.all.txt_Glosa.value=document.all.hd_Glosa_'+valor+'.value');
+}
+
+function setCompetecia(valor){
+	if (valor!=CompAnterior){
+		CompActual=valor;
+		if (eval('document.all.tb_'+CompActual))
+			eval('document.all.tb_'+CompActual+'.className="verTabla"');
+		if (CompAnterior!="")
+			if (eval('document.all.tb_'+CompAnterior))
+				eval('document.all.tb_'+CompAnterior+'.className="ocultaTabla"');
+		CompAnterior = CompActual;
+	}
+}
+
+</script>
+<link href="../servlet/Tool?style/ggd.css" rel="stylesheet" type="text/css" />
+
+<table width="620" height="86" border="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+      <table width="100%" height="17" border="0" align="left" cellpadding="0" cellspacing="1">
+  
+  <tr align="left" valign="top">
+    <td width="70%" height="15" align="center" class="fondo_tablaAmarillo">Competencias</td>
+    <td width="30%" align="center" class="fondo_tablaAmarillo">Nivel Obs.</td>
+  </tr>
+</table>
+</td>
+    <td width="50%" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1">
+					<tr>
+					  <td width="191" class="fondo_tablaAmarillo">COMPETENCIA : <strong>${nc}<strong/></td>
+					</tr>
+					<tr>
+					  <td align="center"><textarea name="txt_Glosa" rows="7" class="txt_gris" id="txt_Glosa" readonly="true" style="width:300px">${gc}</textarea></td>
+					</tr>
+</table></td>
+  </tr>
+</table>
+<span id="Layer1xxx" style="position:absolute; z-index:1; width: 304px; height: 93px; overflow: auto; left: 3px; top: 20px;">
+      <table width="96%" border="0" cellpadding="0" cellspacing="1" class="txt_gris">
+         <if getPerfilCompetenciasNivel><list getPerfilCompetenciasNivel as b>
+         <tr align="center" valign="top" >
+         <if getPerfilCompetencias><list getPerfilCompetencias as a>
+         <if a.id_competencia==b.id_competencia>
+         <td width="66%" align="left" class="fondo_tablaGris"><a href="../servlet/EvaluacionesG?txt_Rut=${cr}&txt_RutEvaluador=${ce}&txt_TipoEval=${ct}&txt_Perfil=${cf}&txt_Proceso=${cp}&txt_Competencia=${a.id_competencia}&txt_nivel=${b.nivel_esperado}">${a.competencia}</a>&nbsp;</td>
+         <td width="20%" align="right" class="fondo_tablaGris">${b.nivel_esperado}&nbsp;</td>
+         </if>
+         </list>
+         <else>
+         <td width="66%" align="left" class="fondo_tablaGris"><a href="../servlet/EvaluacionesG?txt_Rut=${cr}&txt_RutEvaluador=${ce}&txt_TipoEval=${ct}&txt_Perfil=${cf}&txt_Proceso=${cp}&txt_Competencia=${b.id_competencia}&txt_nivel=${b.nivel_esperado}">${b.competencia}</a>&nbsp;</td>
+         <td width="20%" align="right" class="fondo_tablaGris">${b.nivel_esperado}&nbsp;</td>
+         </if>
+         </tr>
+			<input name="hd_Comp_${a.id_competencia}" type="hidden"  value="${a.competencia}">
+			<input name="hd_Glosa_${a.id_competencia}" type="hidden"  value="${a.glosa}">
+        </list></if>
+      </table>
+</span>

@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+	body{
+		font-family:Verdana, Geneva, sans-serif;
+		font-size:10px;
+		}
+		
+	.macTableStyle1 {
+	    background: none repeat scroll 0 0 #F7ED7E;
+	    border: 1px solid #F7CB5C;
+	    font-size: 12px;
+	    font-weight: bold;
+	    height: 38px;
+	    width: 100%;
+	}
+	
+	.titulo{
+		font-size:14px;
+		padding-top:5px;
+		}
+		
+	.cuadro_contenido {
+	    border: 1px solid #DDDDDD;
+	    margin-top: 30px;
+	    min-height: 240px;
+	    min-width: 600px;
+	    padding: 10px 0;
+	}

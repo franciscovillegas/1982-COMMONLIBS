@@ -1,0 +1,15 @@
+<link href="../../../view/bs/3.3.2/assets/vendors/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+<div class="alert ${GetHtmlLikeVariable("templates/eje/bootstrap/3x/modo1/alert/alertproperty/class.html")}" role="alert">
+  <if header>
+  	<h4 class="alert-heading">${title}</h4>
+  </if>
+  <p>${body}</p>
+  
+  <if footer && footer != "">
+	  <hr>
+	  <p class="mb-0">${footer}</p>
+  </if>
+</div>
+
+ ->

@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Reporte</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<if !xls>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+</if>
+<SCRIPT LANGUAGE="JavaScript" src="../servlet/Tool?scripts/lib/imprimir.js"></script>
+<script language="JavaScript">
+<!--
+function Imprimir() {
+	Layer1.style.visibility="hidden";
+    printPage();
+    Layer1.style.visibility="visible";
+}
+function Excel() {
+	document.frm1.submit();   
+}
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onkeydown="return false">
+
+<if !xls>
+<div id="Layer1" style="position:absolute; left:680px; top:5px; width:78px; height:38px; z-index:1">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><a href="#" onClick="Imprimir()"><img src="../servlet/Tool?images/new/botones/print.jpg" alt="IMPRIMIR" title="IMPRIMIR" name="Image1" width="80" height="20" border="0"></a></td>
+<td><a href="#" onClick="Excel()"><img src="../servlet/Tool?images/new/botones/excel.jpg" alt="EXPORTAR" title="EXPORTAR" name="Image2" width="40" height="36" border="0"></a></td>
+</tr></table>
+</div>
+</if>
+
+<form name="frm1" method="post" action"../servlet/ReportesOrganica">
+<input type="hidden" name="unidad" value="${unidad}">
+<input type="hidden" name="recursivo" value="${recursivo}">
+<input type="hidden" name="empresa" value="${empresa}">
+<input type="hidden" name="excel" value="1">
+<input type="hidden" name="tipo" value="HEX">
+
+<table width="100%">
+<tr><td colspan="11"><br><br></td></tr>
+<tr><td colspan="11" align="center" class="tabla_beige"><h3>INFORME DE HORAS EXTRAS CANCELADAS :: ${nomUnidad}</h3>Mes ${mes} de ${anho}</td></tr>
+<tr><td colspan="11"><br></td></tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center" colspan="2" rowspan="2">Global</td>
+<td class="tabla_beige" valign="top" align="center" colspan="5">Nro. Horas con Turno</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Monto Total($)</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Sueldos Base($)</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Nro.Trabajadores</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Hrs. Prom. x Per.</td>
+</tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center">50%</td>
+<td class="tabla_beige" valign="top" align="center">100%</td>
+<td class="tabla_beige" valign="top" align="center">150%</td>
+<td class="tabla_beige" valign="top" align="center">200%</td>
+<td class="tabla_beige" valign="top" align="center">Total</td>
+</tr>
+<tr>
+<td class="textoInforme" colspan="2"><strong>TOTALES</strong></td>
+<td class="textoInforme" align="center"><strong>${he50total}</strong></td>
+<td class="textoInforme" align="center"><strong>${he100total}</strong></td>
+<td class="textoInforme" align="center"><strong>${he150total}</strong></td>
+<td class="textoInforme" align="center"><strong>${he200total}</strong></td>
+<td class="textoInforme" align="center"><strong>${hetotal}</strong></td>
+<td class="textoInforme" align="center"><strong>${mnttotal_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${sdobase_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${nrotrab_total}</strong></td>
+<td class="textoInforme" align="center"><strong>${promhe_total}</strong></td>
+</tr>
+<tr><td colspan="11"><br></td></tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center" colspan="2" rowspan="2">Unidad</td>
+<td class="tabla_beige" valign="top" align="center" colspan="5">Nro. Horas con Turno</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Monto Total</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Sueldos Base($)</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Nro.Trabajadores</td>
+<td class="tabla_beige" valign="top" align="center" rowspan="2">Hrs. Prom. x Per.</td>
+</tr>
+<tr>
+<td class="tabla_beige" valign="top" align="center">50%</td>
+<td class="tabla_beige" valign="top" align="center">100%</td>
+<td class="tabla_beige" valign="top" align="center">150%</td>
+<td class="tabla_beige" valign="top" align="center">200%</td>
+<td class="tabla_beige" valign="top" align="center">Total</td>
+</tr>
+<list lunidades as u>
+<tr>
+<td class="textoInforme" valign="top">${u.uid}</td>
+<td class="textoInforme" valign="top">${u.udesc}</td>
+<td class="textoInforme" align="right" valign="top">${u.uhe_50}</td>
+<td class="textoInforme" align="right" valign="top">${u.uhe_100}</td>
+<td class="textoInforme" align="right" valign="top">${u.uhe_150}</td>
+<td class="textoInforme" align="right" valign="top">${u.uhe_200}</td>
+<td class="textoInforme" align="right" valign="top">${u.uhe_total}</td>
+<td class="textoInforme" align="right" valign="top">${u.umnt_total}</td>
+<td class="textoInforme" align="right" valign="top">${u.sdo_base}</td>
+<td class="textoInforme" align="right" valign="top">${u.nrotrab_total}</td>
+<td class="textoInforme" align="right" valign="top">${u.upromhe_total}</td>
+</tr>
+</list>
+<tr>
+<td class="tabla_beige" align="right" colspan="2"><strong>TOTALES</strong></td>
+<td class="tabla_beige" align="right"><strong>${he50total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${he100total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${he150total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${he200total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${hetotal}</strong></td>
+<td class="tabla_beige" align="right"><strong>${mnttotal_total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${sdobase_total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${nrotrab_total}</strong></td>
+<td class="tabla_beige" align="right"><strong>${promhe_total}</strong></td>
+</tr>
+</table>
+</form>
+</BODY>
+</HTML>

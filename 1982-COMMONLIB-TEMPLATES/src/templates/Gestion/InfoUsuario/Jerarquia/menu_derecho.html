@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<title>Menu Organica</title>
+<style type="text/css">
+<!--
+#gestion {
+	position:absolute;
+	left:0px;
+	top:8px;
+	width:20px;
+	height:283px;
+	z-index:5;
+	visibility: hidden;
+}
+#ggd {
+	position:absolute;
+	left:0px;
+	top:8px;
+	width:22px;
+	height:266px;
+	z-index:6;
+	visibility: hidden;
+}
+#herr {
+	position:absolute;
+	left:0px;
+	top:8px;
+	width:23px;
+	height:273px;
+	z-index:7;
+	visibility: hidden;
+}
+#neutro {
+	position:absolute;
+	left:0px;
+	top:8px;
+	width:20px;
+	height:143px;
+	z-index:8;
+	visibility: visible;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+</HEAD>
+<body bgcolor="#666666" leftmargin="0" topmargin="0">
+<div id="ggd">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/global_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','hide','neutro','','hide','gestion','','show')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/ggd.jpg" width="25" height="85"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/herr_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','show','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+  </table>
+</div>
+<div id="herr">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/global_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','hide','neutro','','hide','gestion','','show')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/ggd_b.jpg" width="25" height="69" onClick="MM_showHideLayers('ggd','','show','herr','','hide','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/herr.jpg" width="25" height="115"></td>
+    </tr>
+  </table>
+</div>
+<div id="neutro">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/global_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','hide','neutro','','hide','gestion','','show')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/ggd_b.jpg" width="25" height="69" onClick="MM_showHideLayers('ggd','','show','herr','','hide','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/herr_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','show','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+  </table>
+</div>
+<table width="39" height="423" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"><table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><img src="../servlet/Tool?images/Gestion/menu/borde_top.jpg" width="30" height="9"></td>
+      </tr>
+      <tr>
+        <td height="270" background="../servlet/Tool?images/Gestion/menu/fondo_menu_right.jpg">&nbsp;</td>
+      </tr>
+      <tr>
+        <td><img src="../servlet/Tool?images/Gestion/menu/borde_bottom.jpg" width="30" height="35"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="bottom">&nbsp;</td>
+  </tr>
+</table>
+
+<div id="gestion">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/global.jpg" width="25" height="115"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/ggd_b.jpg" width="25" height="69" onClick="MM_showHideLayers('ggd','','show','herr','','hide','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+    <tr>
+      <td><img src="../servlet/Tool?images/Gestion/menu/herr_b.jpg" width="25" height="98" onClick="MM_showHideLayers('ggd','','hide','herr','','show','neutro','','hide','gestion','','hide')"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</HTML>

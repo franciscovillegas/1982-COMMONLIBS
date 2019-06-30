@@ -1,0 +1,187 @@
+  <html>
+<head>
+<title>Definicion de Colegas</title>
+<meta http-equiv="Content-Type" content="text/html;">
+<script language="JavaScript" src="Tool?htm=Gestion/script/lib/manejar_listas.js"></script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function ValidaEnvio(){
+var x=0;
+var largo=document.form1.colegas.length;
+
+//if (largo>=1){
+	 for (x=0;x<largo;x++){
+		 document.form1.colegas.options[x].selected=true;
+	 }
+	 document.form1.submit();
+//}else
+  // alert("No hay Cargos Relacionados.");	  
+}
+
+function ValidaForm() { //v2.0
+  var nombre=document.form1.nombre.value;
+  var paterno=document.form1.paterno.value;
+  var materno=document.form1.materno.value;
+  if ((nombre=="")&&(paterno=="")&&(materno==""))
+    alert("Ingrese alg&#250;n criterio de b&#250;squeda.");
+  else
+   document.form1.submit();
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/Gestion/botones/busc_over.jpg','../servlet/Tool?images/Gestion/botones/volv_over.jpg','../servlet/Tool?images/Gestion/botones/der_over.jpg','../servlet/Tool?images/Gestion/botones/izq_over.jpg','../servlet/Tool?images/Gestion/botones/mantener_over.jpg','../servlet/Tool?images/Gestion/botones/volver_over.jpg')">
+<form name="form1">
+<table border=0 cellpadding=0 cellspacing=0 width="644" height="358">
+  <tr> 
+    <td width="614" height="4"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_01.jpg" width=614 height=4></td>
+    <td colspan=2 rowspan=2> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_02.jpg" width=29 height=22></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=4></td>
+  </tr>
+  <tr> 
+    <td valign="top" bgcolor="#FFA400" rowspan=8 width="614">
+        <div id="Layer5" style="position:absolute; width:605px; height:346px; z-index:5; overflow: auto; visibility: visible"> 
+          <table width="100%" border="0" cellspacing="2" cellpadding="1" height="342">
+            <tr> 
+              <td height="12" class="textB" width="22%">&nbsp;</td>
+              <td height="12" class="texto" width="78%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td height="13" class="textB" width="22%">&nbsp;&nbsp;Nombre Agrupador</td>
+              <td height="13" class="texto" width="78%"><b>:</b>${name_agrupador} 
+                <input type="hidden" name="grupo" value="${id_agrupador}">
+                <input type="hidden" name="operacion" value="1">
+                <input type="hidden" name="name_grupo" value="${name_agrupador}">
+              </td>
+            </tr>
+            <tr> 
+              <td height="36" class="tituloTabChico" colspan="2"> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr> 
+                    <td width="8%" class="tituloTabChico">&nbsp; </td>
+                    <td width="42%" class="textB">Cargos Disponibles</td>
+                    <td width="50%" class="textB"> 
+                      <div align="center">Cargos definidos como colegas</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr valign="top"> 
+              <td colspan="2"> 
+                 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="248">
+                    <tr> 
+                      <td width="50%" valign="top" rowspan="2"> 
+                        <div align="center"> 
+                          
+                        <select name="disponibles" size="7" style="width=250" class="listas" multiple>
+                          <option value="-1" selected>Seleccione un Jefe</option>
+                            <list disponibles as d> 
+                            <option value="${d.id_cargo}">${d.nom_cargo}</option>
+                            </list> 
+                          </select>
+                        </div>
+                      </td>
+                      <td width="7%" height="79" valign="bottom"><a href="javascript:;" onClick="Agrega(document.form1.disponibles,document.form1.colegas,document.form1.disponibles.value);" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image9','','../servlet/Tool?images/Gestion/botones/der_over.jpg',1)"><img name="Image9" border="0" src="../servlet/Tool?images/Gestion/botones/der_up.jpg" width="18" height="16"></a> 
+                      </td>
+                      <td width="43%" valign="top" rowspan="2"> 
+                        <div align="center"> 
+                          
+                        <select name="colegas" size="7" style="width=250" class="listas" multiple>
+                          <list colegas as c> 
+                          <option value="${c.id_cargo}">${c.nom_cargo}</option>
+                            </list> 
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td width="7%" valign="top" height="155"> <a href="javascript:;" onClick="Elimina(document.form1.colegas);" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../servlet/Tool?images/Gestion/botones/izq_over.jpg',1)"><img name="Image10" border="0" src="../servlet/Tool?images/Gestion/botones/izq_up.jpg" width="18" height="16"></a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      
+                    <td width="50%" valign="top">
+                      <div align="right"><a href="javascript:;" onClick="ValidaEnvio();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','../servlet/Tool?images/Gestion/botones/mantener_over.jpg',1)"><img name="Image22" border="0" src="../servlet/Tool?images/Gestion/botones/mantener_up.jpg"></a></div>
+                    </td>
+                      <td width="7%" valign="top">&nbsp;</td>
+                      
+                    <td width="43%" valign="top"><a href="../servlet/ListGruposCargos?operacion=0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image23','','../servlet/Tool?images/Gestion/botones/volver_over.jpg',1)"><img name="Image23" border="0" src="../servlet/Tool?images/Gestion/botones/volver_up.jpg"></a></td>
+                    </tr>
+                  </table>
+                
+              </td>
+            </tr>
+          </table>
+      </div>
+    </td>
+    <td height="18" width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=18></td>
+  </tr>
+  <tr> 
+    <td rowspan=7 width="13"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_06.jpg" width=13 height=336></td>
+    <td width="16" height="39"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_07.jpg" width=16 height=39></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=39></td>
+  </tr>
+  <tr> 
+    <td height="50" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_08.jpg" width=16 height=50></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=50></td>
+  </tr>
+  <tr> 
+    <td height="52" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_10.jpg" width=16 height=52></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=52></td>
+  </tr>
+  <tr> 
+    <td height="45" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_11.jpg" width=16 height=45></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=45></td>
+  </tr>
+  <tr> 
+    <td height="55" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_12.jpg" width=16 height=55></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=55></td>
+  </tr>
+  <tr> 
+    <td height="51" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_13.jpg" width=16 height=51></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=51></td>
+  </tr>
+  <tr> 
+    <td height="44" width="16"> <img src="../servlet/Tool?images/Gestion/imagenes_main/main_bienvenida_14.jpg" width=16 height=44></td>
+    <td width="1"> <img src="../servlet/Tool?images/Gestion/imagenes_main/espacio.gif" width=1 height=44></td>
+  </tr>
+</table>
+  </form>
+<script type="text/javascript">
+	parent.CerrarVentProcesando()
+</script>
+</body>
+</html>

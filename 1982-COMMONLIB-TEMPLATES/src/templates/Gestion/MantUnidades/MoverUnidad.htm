@@ -1,0 +1,176 @@
+ <HTML>
+<HEAD>
+<title>Arbol Mantener Unidades</title>
+<script language="JavaScript" src="Tool?htm=Gestion/script/Formularios.js">
+</script>
+<script>
+<!--
+function AsignarUnPadre(grabar){
+//alert(parent.treeFrame.document.all.empresa.value);
+	//document.all.id_padre_emp.value=parent.treeFrame.document.all.empresa.value;
+	//document.all.desc_padre_uni.value=parent.treeFrame.document.all.descrip.value;
+	//document.all.id_padre_uni.value=parent.treeFrame.document.all.unidad.value;
+	var unidad_hijo = document.all.id_hijo_uni.value;  
+	var desc_uni_hijo = document.all.desc_hijo_uni.value;
+	var empresa_hijo = document.all.id_hijo_emp.value; 
+	
+	var unidad_padre = document.all.id_padre_uni.value;  
+	var desc_uni_padre = document.all.desc_padre_uni.value;
+	var empresa_padre = document.all.id_padre_emp.value; 
+	
+	
+	
+	 if (empresa_hijo!="" && empresa_padre!=""){
+	//alert(unidad +desc_uni +empresa); 
+	var response;
+		  if (empresa_hijo != empresa_padre){	
+		  		response = window.confirm("Esta seguro que desea mover la unidad seleccionada?");
+		  		if (response) {
+					parent.folderFrame.location.href="../servlet/MoverUnidades?grabar="+grabar+"&unidad="+unidad_hijo+"&desc_unidad="+desc_uni_hijo+"&empresa="+empresa_hijo+"&unidad_padre="+unidad_padre+"&desc_uni_padre="+desc_uni_padre+"&empresa_padre="+empresa_padre;
+				}
+		  }
+		  else {
+				if (unidad_hijo!="" && unidad_padre!=""){
+						  	if (unidad_hijo != unidad_padre)
+						  		response = window.confirm("Esta seguro que desea mover la unidad seleccionada?");
+		  						if (response) {
+									parent.folderFrame.location.href="../servlet/MoverUnidades?grabar="+grabar+"&unidad="+unidad_hijo+"&desc_unidad="+desc_uni_hijo+"&empresa="+empresa_hijo+"&unidad_padre="+unidad_padre+"&desc_uni_padre="+desc_uni_padre+"&empresa_padre="+empresa_padre;
+								}
+							else
+								alert("hijos iguales");
+				}
+				else 
+					alert("hijos vacios");
+				 
+		  }
+	}
+	else   
+	  alert("empresas vacias");
+}
+
+<if alerta>
+	alert("Ya existe un cambio de unidad, Debe ser Procesada");
+</if>
+//-->
+</script>
+<link rel="stylesheet" href="../servlet/Tool?style/gestion.css" type="text/css">
+<script language="JavaScript">
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+</script>
+<style type="text/css">
+<!--
+#HijoEdita {position:absolute;
+	left:-1px;
+	top:22px;
+	width:300px;
+	height:300px;
+	z-index:11;
+}
+#PadEdita {position:absolute;
+	left:5px;
+	top:5px;
+	width:300px;
+	height:20px;
+	z-index:10;
+	visibility: visible;
+}
+-->
+</Style>
+</HEAD>
+
+<body>
+
+
+<table width="300" height="350" border="0" cellpadding="0" cellspacing="0" class="layer_util">
+      <tr>
+        <td valign="top"><!--inicia tabla-->
+            
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+    <tr> 
+      <td valign="top" align="center"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td align="center" class="tabla_amarelo">Unidad Seleccionada</td>
+          </tr>
+          <tr> 
+            <td  align="center">Empresa </td>
+          </tr>
+          <tr> 
+            <td> 
+              <input type="text" name="desc_hijo_emp" value="${desc_hijo_emp}" size="50" class="texto_negro_bold_chico">
+            <input type="hidden" name="id_hijo_emp" value="${id_hijo_emp}">            </td>
+          </tr>
+          <tr> 
+            <td  align="center">Unidad </td>
+          </tr>
+          <tr> 
+            <td> 
+              <input type="text" name="desc_hijo_uni" value="${desc_hijo_uni}" size="50" class="texto_negro_bold_chico">
+            <input type="hidden" name="id_hijo_uni" value="${id_hijo_uni}">            </td>
+          </tr>
+        </table>
+        <br>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" class="texto_negro">
+          <tr> 
+            <td align="center" class="tabla_amarelo">Asignar unidad 
+              Padre</td>
+          </tr>
+          <tr> 
+            <td  align="center">Empresa</td>
+          </tr>
+          <tr> 
+            <td> 
+              <input type="text" name="desc_padre_emp" value="${desc_padre_emp}" size="50" class="texto_negro_bold_chico">
+            <input type="hidden" name="id_padre_emp" value="${id_padre_emp}">            </td>
+          </tr>
+          <tr> 
+            <td  align="center">Unidad</td>
+          </tr>
+          <tr> 
+            <td> 
+              <input type="text" name="desc_padre_uni" value="${desc_padre_uni}" size="50" class="texto_negro_bold_chico">
+            <input type="hidden" name="id_padre_uni" value="${id_padre_uni}">            </td>
+          </tr>
+          <if linka=="1"> 
+          <tr> 
+            <td align="center"><a href="#" onClick="MM_openBrWindow('../servlet/LoadTreeOrg?pag=Gestion/MantUnidades/basetree.htm','ManUnidad','width=340,height=380')" class="azul10NLink">Asignar 
+              Padre</a></td>
+          </tr>
+          </if> 
+        </table>
+        <if mensaje><span class="textB">${mensaje}</span><script language="JavaScript">
+parent.treeFrame.location.reload();
+</script>
+</if><br>
+        <if linkp =="1"> 
+        <table width="100%" border="0" cellpadding="0">
+          <tr> 
+            <td align="center"><a href="#" onClick="AsignarUnPadre(1);return false;" class="azul10NLink">ACTUALIZAR 
+              DATOS</a></td>
+          </tr>
+        </table>
+        </if> </td>
+    </tr>
+  </table>
+
+		</td>
+      </tr>
+</table>
+
+</body>
+</HTML>

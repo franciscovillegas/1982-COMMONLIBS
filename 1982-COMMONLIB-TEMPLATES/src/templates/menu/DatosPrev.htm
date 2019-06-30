@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>Datos Previsionales</TITLE>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<!-- tool FUNCTION -->
+	
+	<!-- JQUERY  -->
+	<script type="text/javascript" src="../servlet/Tool?omap=scripts/jquery-1.8.3.min.js"></script>
+	
+	<!-- PAGINA -->
+	<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../servlet/Tool?omap=style/CarpetaElectronica/styleCarpetaElectronica.css"/>
+
+	<style type="text/css">
+
+	</style>
+</HEAD>
+<BODY>
+
+<div id="divCarpetaElectronica">
+		<table class="macTableStyle1" >
+			<th colspan="4"><header>Datos Previsionales</header></th>
+			<tr>
+				<td>
+					<div id="divDatosPersonales">
+						<table id="tblContenidos" style="margin-top:20px;">
+							<tr>
+				        		<td rowspan="9">
+				        			<!-- 
+				            		<table >
+				                    	<tr>
+				                        	<td align="center"><img src="../temporal/imgtrabajadores/${rut}.jpg" width="62" height="81" onerror="existeFoto(this)" border="1"></td>
+				                        </tr>
+				                        <tr>
+				                        	<td align="center" class="texto_negro_bold_chico">${rut2}</td>
+				                        </tr>
+				                    </table>
+				                     -->
+								</td>
+				             	<td colspan="4" class="textoImportante"> ${nombre}</td>
+							</tr>
+				            <tr>
+								<td colspan="4" class="textoImportante3">Cargo: ${ir.cargo}</td>
+							</tr>
+							<tr>
+                            	<td colspan="2" class="textoImportante2" style="width:50%;">AFP: ${afp}</td>
+                                <td colspan="2" class="textoImportante2" style="width:50%;">ISAPRE: ${isapre}</td>
+                            </tr>
+                            <tr>
+                            	<td style="width:25%;" class="texto_azul_bold">Ingreso AFP:</td>
+                            	<td style="width:25%;" class="texto_negro">${ingre_afp}</td>
+                            	<td style="width:25%;" class="texto_azul_bold">Ingreso Isapre:</td>
+								<td style="width:25%;" class="texto_negro">${ing_isap}</td>
+                            </tr>
+							<tr>
+                            	<td class="texto_azul_bold">Cotizaci&oacute;n (%):</td>
+                            	<td class="texto_negro">${cotizacion}</td>
+                                <td class="texto_azul_bold">Cotizaci&oacute;n :</td>
+								<td class="texto_negro">${cotisap} ${mon_plan}</td>
+                    		</tr>                                        
+							<tr>
+                            	<td class="texto_azul_bold">Cotizaci&oacute;n adicional:</td>
+                            	<td class="texto_negro">${monto_adicional} ${moneda_adicional}</td>
+                                <td colspan="2"></td>
+                            </tr> 
+							<tr>
+                            	<td class="texto_azul_bold">Ahorro voluntario:</td>
+                            	<td class="texto_negro">${monto_volunt}</td>
+                                <td colspan="2"></td>                           
+                              </tr> 
+							<tr>
+                                <td class="texto_azul_bold">Jubilado:</td>
+                                <td class="texto_negro">${jubilado}</td>
+                                <td colspan="2"></td>
+                        	</tr> 
+						</table>
+					</div> <!-- datosPrevisionales -->
+				</td>
+			</tr>
+		</table> <!-- macTableStyle1 -->
+    </div>
+</BODY>
+</HTML>

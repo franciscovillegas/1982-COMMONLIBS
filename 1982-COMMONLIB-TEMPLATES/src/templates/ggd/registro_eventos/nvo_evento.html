@@ -1,0 +1,133 @@
+<assign p = User.id_perfil>
+<assign pr = User.id_proceso>
+<assign r = txt_Rut>
+<assign re = User.Rut>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Registro de Eventos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script language="JavaScript" src="../servlet/Tool?scripts/lib_common.js" type="text/JavaScript"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+function fnAplicar(){
+	if (document.form1){
+		if (document.form1.cb_id_competencia){
+			if (document.form1.cb_id_competencia.value=="-1"){
+				alert('Seleccione una Competencia.');
+				return false;
+				}
+			
+		}
+	}
+   document.form1.submit();
+}
+
+function fnInicio(){
+	<if MSG !=""> 	alert('${MSG}'); </if>
+	<if REG == true && MSG !=""> 	
+	opener.parent.bottomFrame.fnRefresh();
+	top.close(); </if>
+}
+
+</script>
+
+<body  bgcolor="#1f56a1" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/ggd/images/evalua/evalua_r12_c11_f2.jpg','/ggd/images/evalua/evalua_r12_c13_f2.jpg');fnInicio();">
+<form name="form1" method="post" action="../servlet/NuevoEvento">
+
+  <table border="0" cellpadding="0" cellspacing="0" width="350">
+    <!-- fwtable fwsrc="agregar_anota.png" fwbase="agregar_anota.jpg" fwstyle="Dreamweaver" fwdocid = "320904221" fwnested="0" -->
+    <tr>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="15" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="68" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="87" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="80" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="5" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="74" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="6" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="15" height="1" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="1" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r1_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r1_c1.jpg" width="350" height="27" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="27" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><img name="agregar_anota_r2_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r2_c1.jpg" width="15" height="95" border="0" alt=""></td>
+      <td>&nbsp;</td>
+      <td rowspan="2" colspan="6"><img name="agregar_anota_r2_c3" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r2_c3.jpg" width="267" height="95" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="82" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td><img name="agregar_anota_r3_c2" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r3_c2.jpg" width="68" height="13" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="13" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r4_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r4_c1.jpg" width="350" height="47" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="47" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r5_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r5_c1.jpg" width="350" height="47" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="47" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r6_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r6_c1.jpg" width="350" height="4" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="4" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r7_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r7_c1.jpg" width="350" height="19" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="19" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td><img name="agregar_anota_r8_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r8_c1.jpg" width="15" height="133" border="0" alt=""></td>
+      <td colspan="5" bgcolor="#042B62">&nbsp;</td>
+      <td colspan="2"><img name="agregar_anota_r8_c7" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r8_c7.jpg" width="21" height="133" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="133" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td colspan="8"><img name="agregar_anota_r9_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r9_c1.jpg" width="350" height="23" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="23" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td rowspan="2" colspan="3"><img name="agregar_anota_r10_c1" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r10_c1.jpg" width="170" height="20" border="0" alt=""></td>
+      <td><a href="#" onClick="fnAplicar();return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('evalua_r12_c11','','/ggd/images/evalua/evalua_r12_c11_f2.jpg',1);"><img name="evalua_r12_c11" src="../servlet/Tool?images/images_ggd/evalua/evalua_r12_c11.jpg" width="80" height="16" border="0" alt=""></a></td>
+      <td rowspan="2"><img name="agregar_anota_r10_c5" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r10_c5.jpg" width="5" height="20" border="0" alt=""></td>
+      <td colspan="2"><a href="javascript:top.close();"  onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('evalua_r12_c13','','/ggd/images/evalua/evalua_r12_c13_f2.jpg',1);"><img name="evalua_r12_c13" src="../servlet/Tool?images/images_ggd/evalua/evalua_r12_c13.jpg" width="80" height="16" border="0" alt=""></a></td>
+      <td rowspan="2"><img name="agregar_anota_r10_c8" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r10_c8.jpg" width="15" height="20" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="16" border="0" alt=""></td>
+    </tr>
+    <tr>
+      <td><img name="agregar_anota_r11_c4" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r11_c4.jpg" width="80" height="4" border="0" alt=""></td>
+      <td colspan="2"><img name="agregar_anota_r11_c6" src="../servlet/Tool?images/images_ggd/inc_criticos/agregar_anota_r11_c6.jpg" width="80" height="4" border="0" alt=""></td>
+      <td><img src="../servlet/Tool?images/images_ggd/inc_criticos/spacer.gif" width="1" height="4" border="0" alt=""></td>
+    </tr>
+  </table>
+  <div id="Layer1" style="position:absolute; width:144px; height:25px; z-index:1; left: 57px; top: 186px;">
+    <table width="100%" border="0">
+      <tr>
+        <td width="56%"><input type="radio" name="rd_Tipo" value="S"></td>
+        <td width="30%"><input name="rd_Tipo" type="radio" value="N" checked></td>
+        <td width="14%">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <div id="Layer2" style="position:absolute; width:312px; height:130px; z-index:2; left: 17px; top: 245px;">
+    <textarea name="txt_Anotacion" cols="36" rows="7" id="txt_Anotacion"></textarea>
+  </div>
+  <div id="Layer2" style="position:absolute; width:233px; height:91px; z-index:1; left: 15px; top: 26px;" ><assign h = "ggd/rut/ver_rut_eval.html">${TM_Rut(h,r)}</div>
+  <div id="Layer3" style="position:absolute; width:310px; height:32px; z-index:3; left: 19px; top: 147px;"><assign h = "ggd/evaluacion/competencias_cb.html">
+    <div align="left">${TM_CmtRut(h,r,re,p,pr)}</div>
+  </div>
+
+    <input name="txt_Rut" type="hidden" id="txt_Rut" value="${r}">
+    <input name="txtAccion" type="hidden" id="txtAccion" value="CR">
+    <input name="txt_rut_supervisor" type="hidden" id="txt_rut_supervisor" value="${re}">
+<input name="txt_IdCompetencia" type="hidden" id="txt_IdCompetencia" >
+<input name="txt_id_proceso" type="hidden" id="txt_id_proceso" value="${pr}">
+<input name="txt_id_perfil" type="hidden" id="txt_id_perfil" value="${p}">
+<input name="txt_Competencia" type="text" id="txt_Competencia">
+</form>
+</body>
+</html>

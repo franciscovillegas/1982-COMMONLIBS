@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Menu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+	var servidorDF = '${GetProp("server.datafolder")}'; //"http://srv-desa-010:8010";
+	var servidorWF = '${GetProp("server.workflow")}'; //"http://srv-desa-010:8092";
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+
+function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}
+
+function appdatafolder(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamadatafolder.htm";
+}
+function appcertificados(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamacertificados.htm";
+}
+
+function appanexos(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamaanexos.htm";
+}
+function appvigilantes(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamavigilantes.htm";
+}
+function appmis(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamamis.htm";
+}
+
+function appvacaciones(){
+//alert("ccc");
+	document.location.href="Tool?htm=html/app/llamavacaciones.htm";
+}
+
+</script>
+</head>
+
+<body bgcolor="#9999CC" background="../servlet/Tool?images/top/menubck.JPG" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../servlet/Tool?images/main/inicio_r3_c11_over.jpg');">
+
+<table width="79" border="0" cellpadding="0" cellspacing="0" bgcolor="#000099" height="421">
+  <tr> 
+    <td height="96" valign="top" width="142"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="52">
+        <param name=movie value="../flash/logserhum.swf">
+        <param name=menu value=false>
+        <embed src="../flash/logserhum.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="52" border="0">
+        </embed> 
+      </object><a href="javascript:;" onClick="return cerrarSesion();" onMouseOver="MM_swapImage('Image8','','../servlet/Tool?images/main/inicio_r3_c11_over.jpg',1)" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue"><img src="../servlet/Tool?images/main/inicio_r3_c11.jpg" name="Image8" width="104" height="22" border="0" id="Image8" onMouseOver="MM_displayStatusMsg('Salir');return document.MM_returnValue"></a><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100%" height="32">
+        <param name=movie value="../flash/titderecho.swf">
+        <param name=quality value=high>
+        <embed src="../flash/titderecho.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100%" height="32">
+        </embed> 
+      </object></td>
+  </tr>
+ <tr> 
+   
+  </tr>	
+	<tr>
+    <td height="320" valign="top" width="142"> <if usuario.app_df> <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamadata.swf">
+          <param name=menu value=false>
+          <param name="wmode" value="transparent">
+          <embed src="../flash/botones/llamadata.swf" width="104" height="50" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" menu="false" wmode="transparent">
+          </embed> 
+        </object>
+	</if><if usuario.app_wfv>
+	
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamavacaciones.swf">
+          <param name=menu value=false>
+          <embed src="../flash/botones/llamavacaciones.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="50">
+          </embed> 
+        </object> 
+		</if><if usuario.app_cert>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamacertificados.swf">
+          <param name=menu value=false>
+          <embed src="../flash/botones/llamacertificados.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="50">
+          </embed> 
+        </object>
+		</if><if usuario.app_anex>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamaanexos.swf">
+          <param name=menu value=false>
+          <embed src="../flash/botones/llamaanexos.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="50">
+          </embed> 
+        </object> 
+		</if><if usuario.app_vig>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamavigilantes.swf">
+          <param name=menu value=false>
+          <embed src="../flash/botones/llamavigilantes.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="50">
+          </embed> 
+        </object> 
+		</if><if usuario.app_mis>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="104" height="50">
+          <param name=movie value="../flash/botones/llamamis.swf">
+          <param name=menu value=false>
+          <embed src="../flash/botones/llamamis.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="104" height="50">
+          </embed> 
+        
+      </object></if> 
+  </tr>
+</table>
+</body>
+</html>

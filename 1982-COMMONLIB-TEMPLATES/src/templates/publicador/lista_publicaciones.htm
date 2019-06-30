@@ -1,0 +1,198 @@
+<html>
+<head>
+<title>Publicaciones</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri May 31 18:18:56 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript">
+<!--
+<!--
+function inicio(){
+<if (getError)>
+  alert("${getError}");
+<else><if (mensaje)>alert("${mensaje}");</if></if>
+}
+
+function deletePubli(id_publi){
+  if (confirm("&#191;Esta seguro que desea eliminar esta publicaci&#243;n?")){
+    document.location.href="../servlet/deletePubli?id="+id_publi;
+  }
+    
+
+}
+
+function MostrarLayer(nomlayer){
+//alert(nomlayer);
+<list detalle as d>
+  detalle${d.id}.style.visibility="hidden";
+</list>
+//alert(nomlayer+".style.visibility='visible'");
+ eval("detalle"+nomlayer+".style.visibility='visible'");
+}
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<body bgcolor="#9999CC" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/main/bck_main.jpg" onLoad="MM_preloadImages('../servlet/Tool?images/botones/volver_over.jpg','../servlet/Tool?images/botones/cerrar_over.jpg','../servlet/Tool?images/botones/eliminar_over.jpg')">
+<table width="467" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><include "menutop/menutop.html"></td>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="467" align="center">
+  <!-- fwtable fwsrc="Untitled" fwbase="desp_main.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <form name="form1"><tr> 
+    <td><img src="spacer.gif" width="16" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="195" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="240" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="16" height="1" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td rowspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r1_c1" src="../servlet/Tool?images/desp_main/desp_main_r1_c1.jpg" width="16" height="30" border="0"></td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r1_c2" src="../servlet/Tool?images/desp_main/desp_main_r1_c2.jpg" width="195" height="23" border="0"></td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r1_c3" src="../servlet/Tool?images/desp_main/desp_main_r1_c3.jpg" width="240" height="23" border="0"></td>
+    <td rowspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r1_c4" src="../servlet/Tool?images/desp_main/desp_main_r1_c4.jpg" width="16" height="30" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="23" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="2"><img name="../servlet/Tool?images/desp_main/desp_main_r2_c2" src="../servlet/Tool?images/desp_main/desp_main_r2_c2.jpg" width="435" height="7" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="7" border="0"></td>
+  </tr>
+  <tr> 
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r3_c1" src="../servlet/Tool?images/desp_main/desp_main_r3_c1.jpg" width="16" height="271" border="0"></td>
+      <td colspan="2" valign="top" bgcolor="D2D1E1" background="../servlet/Tool?images/main/bck_main.jpg"> 
+        <list detalle as d> 
+        <div id="detalle${d.id}" style="position:absolute; width:325px; height:41px; z-index:2; top: 263px; left: 118px; visibility: hidden"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="2">
+            <tr> 
+              <td width="19%" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">T&iacute;tulo</font></td>
+              <td class="detalleTabla" colspan="2" bgcolor="EFEEF4">${d.titulo}</td>
+            </tr>
+            <tr> 
+              <td width="19%" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Contenido</font></td>
+              <td class="detalleTabla" colspan="2" bgcolor="EFEEF4">${d.contenido}</td>
+            </tr>
+            <tr> 
+              <td width="19%" bgcolor="#D8D6E4"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Url</font></td>
+              <td class="detalleTabla" colspan="2" bgcolor="EFEEF4">${d.url}</td>
+            </tr>
+            <tr background="../servlet/Tool?images/main/bck_main.jpg"> 
+              <td class="tituloTabla" width="19%">&nbsp;</td>
+              <td width="22%"><a href="javascript:;" onClick="deletePubli('${d.id}');return false;" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue" onMouseOver="MM_swapImage('Image20${d.id}','','../servlet/Tool?images/botones/eliminar_over.jpg',1)"><img name="Image20${d.id}" border="0" src="../servlet/Tool?images/botones/eliminar.jpg" width="91" height="21" onMouseOver="MM_displayStatusMsg('Eliminar');return document.MM_returnValue"></a></td>
+              <td width="59%"><a href="javascript:;" onClick="MM_showHideLayers('detalle${d.id}','','hide')" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue" onMouseOver="MM_swapImage('Image${d.id}','','../servlet/Tool?images/botones/cerrar_over.jpg',1)"><img name="Image${d.id}" border="0" src="../servlet/Tool?images/botones/cerrar.jpg" width="82" height="21" onMouseOver="MM_displayStatusMsg('Cerrar');return document.MM_returnValue"></a></td>
+            </tr>
+          </table>
+        </div></list>
+        <div id="LayTituloTodo" style="position:absolute; width:165px; height:16px; z-index:5; left: 85px; top: 84px; visibility: visible"><font size="2" color="#000066"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Publicaciones</font></b></font></div>
+        <div id="Layer1" style="position:absolute; width:442px; height:307px; z-index:1; visibility: visible"> 
+          <table width="100%" border="0" cellspacing="2" cellpadding="2" height="304">
+            <tr> 
+              <td height="30" class="titulo" width="83%"> 
+                <div align="center">Publicaciones disponibles</div>
+              </td>
+              <td height="30" width="17%"><b><a href="../servlet/Tool?htm=publicador/menu_publicador.htm" onMouseOut="MM_swapImgRestore();MM_displayStatusMsg('');return document.MM_returnValue" onMouseOver="MM_swapImage('Image12','','../servlet/Tool?images/botones/volver_over.jpg',1)"><img name="Image12" border="0" src="../servlet/Tool?images/botones/volver.jpg" width="91" height="21" onMouseOver="MM_displayStatusMsg('Volver');return document.MM_returnValue"></a></b></td>
+            </tr>
+            <tr valign="top" align="left"> 
+              <td height="209" colspan="2"> 
+                <div align="center"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="12">
+                    <tr valign="top"> 
+                      <td width="60%" class="tituloTabla" height="10"> 
+                        <div align="center">T&iacute;tulo </div>
+                      </td>
+                      <td width="17%" class="tituloTabla" height="10"> 
+                        <div align="center">Fecha </div>
+                      </td>
+                      <td width="23%" class="tituloTabla" height="10">&nbsp;</td>
+                    </tr>
+                  </table>
+                  <div align="left"></div>
+                  <div id="Layer2" style="position:absolute; width:434px; height:100px; z-index:2; left: 1px; top: 54px; visibility: visible; overflow: auto"> 
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" height="12">
+                      <if (detalle)> <list detalle as d> 
+                      <tr valign="top"> 
+                        <td width="60%" class="detalleTabla" height="10"> ${d.titulo} 
+                        </td>
+                        <td width="17%" class="detalleTabla" height="10"> 
+                          <div align="center">${d.fecha}</div>
+                        </td>
+                        <td width="13%" class="detalleTabla" height="10"><a href="../servlet/mantePubli?id=${d.id}&modo=1" onMouseOver="MM_displayStatusMsg('Mantener');return document.MM_returnValue" onMouseOut="MM_displayStatusMsg('');return document.MM_returnValue">[Mantener]</a> 
+                        </td>
+                        <td width="10%" class="detalleTabla" height="10"><a href="javascript:;" onClick="MostrarLayer('${d.id}')" onMouseOver="MM_displayStatusMsg('Eliminar');return document.MM_returnValue" onMouseOut="MM_displayStatusMsg('');return document.MM_returnValue">[Eliminar]</a></td>
+                      </tr>
+                      </list><else> 
+                      <tr valign="top" colspan="1"> 
+                        <td colspan="4" class="detalleTabla" height="10"> No hay 
+                          publicaciones registradas...</td>
+                      </tr>
+                      </if> 
+                    </table>
+                  </div>
+                </div>
+                <div align="left"></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="83%"> 
+                <div align="center"></div>
+              </td>
+              <td valign="top" width="17%"> 
+                <div align="center"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        </td>
+    <td><img name="../servlet/Tool?images/desp_main/desp_main_r3_c4" src="../servlet/Tool?images/desp_main/desp_main_r3_c4.jpg" width="16" height="271" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="271" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="4"><img name="../servlet/Tool?images/desp_main/desp_main_r4_c1" src="../servlet/Tool?images/desp_main/desp_main_r4_c1.jpg" width="467" height="14" border="0"></td>
+    <td><img src="spacer.gif" width="1" height="14" border="0"></td>
+  </tr></form>
+</table>
+</body>
+</html>

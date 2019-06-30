@@ -1,0 +1,51 @@
+ <HTML>
+<HEAD>
+<TITLE></TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+function ver(value) {
+//	if (document.form1.malla.value == "-1")
+	if (value == "-1")
+		alert("Seleccione una malla");
+	else {
+/*		document.form1.target = "frameMalla";
+		document.form1.action = "/servlet/Malla";
+		document.form1.submit();*/
+		//parent.frames.frameMalla.document.location.href = "../servlet/Malla?malla="+value;
+		parent.frames.frameMalla.document.location.href = "../servlet/Malla2?malla="+value;
+	}
+}
+
+</script>
+<link href="../servlet/Tool?style/gestion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+#Hijofoto {position:absolute;
+	left:0px;
+	top:23px;
+	width:54px;
+	height:69px;
+	z-index:7;
+}
+#PadFoto {position:absolute;
+	left:5px;
+	top:3px;
+	width:62px;
+	height:22px;
+	z-index:8;
+}
+-->
+</Style>
+</HEAD>
+<BODY leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="../servlet/Tool?images/Gestion/LayersAzul/fondo.jpg">
+<select name="malla" onChange="ver(this.value);" class="texto_negro">
+          <if (mallas)>
+          <option value="-1" selected>Seleccione una Malla</option>
+          <list mallas as m>
+          <option value="${m.id}">${m.malla}</option>
+          </list> <else>
+          <option value="-1" selected>No tiene mallas Asignadas</option>
+          </if>
+</select>
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="../servlet/Tool?scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	function callData(type, paramname) {
+		var param     = $("#"+type+"_text").val();
+		var connector = $("#"+type+"_select").val();
+		var pass 	  = $("#password").val();
+		
+		window.open("../servlet/EjeCoreI?claseweb=portal.com.eje.org.view.OrganicaViewer&accion=show&pass="+pass+"&connector="+connector+"&thing="+type+"&"+paramname+"="+param);
+	}
+	
+</script>
+
+<title>Helper Orgánica</title>
+
+</head>
+<body>
+	
+	<table>
+		<tr>
+			<td colspan="1">Password:</td>
+			<td colspan="4"><input type="password" id="password"/></td>
+		</tr>
+		
+		<tr height="50px">
+			<td colspan="1"></td>
+			<td colspan="4"></td>
+		</tr>
+		
+		<tr>
+			<td>getUnit</td>
+			<td>
+			<input type="text" id="getUnit_text"/></td><td>RUT:</td><td>				<input type="button" value="Obtener" onclick="callData('getUnit','rut');"/></td>
+			<td>
+				<select id="getUnit_select">
+					<option value="json">Json</option>
+					<option value="xml" >Xml</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>getRutInUnit</td><td>
+			<input type="text" id="getRutInUnit_text"/></td><td>UNIT_ID:</td><td>	<input type="button" value="Obtener"    onclick="callData('getRutInUnit','unit');"/></td>
+			<td>
+				<select id="getRutInUnit_select">
+					<option value="json">Json</option>
+					<option value="xml" >Xml</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>getParent</td><td>
+			<input type="text" id="getParent_text"/></td><td>UNIT_ID:</td><td>		<input type="button" value="Obtener"    onclick="callData('getParent','unit');"/></td>
+			<td>
+				<select id="getParent_select">
+					<option value="json">Json</option>
+					<option value="xml" >Xml</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>getChildrens</td><td>
+			<input type="text" id="getChildrens_text" /></td><td>UNIT_ID:</td><td>	<input type="button" value="Obtener"    onclick="callData('getChildrens','unit');"/></td>
+			<td>
+				<select id="getChildrens_select">
+					<option value="json">Json</option>
+					<option value="xml" >Xml</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>getBossInUnit</td><td>
+			<input type="text" id="getBossInUnit_text"/></td><td>UNIT_ID:</td><td>	<input type="button" value="Obtener"   onclick="callData('getBossInUnit','unit');"/></td>
+			<td>
+				<select id="getBossInUnit_select">
+					<option value="json">Json</option>
+					<option value="xml" >Xml</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

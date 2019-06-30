@@ -1,0 +1,146 @@
+ <HTML>
+<HEAD>
+<TITLE>Seleccionar Anexos a Relacionar</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="/Gestion/Style/estilos.css" type="text/css">
+<script language="JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<script language="JavaScript">
+function inicio(){
+	document.formSeleccionar.unidad_sel.value="${unidad_sel}";
+	document.formSeleccionar.unidad_sel.focus();
+	window.focus();
+}
+function selecionaUnidad(unidad) {
+	if (unidad == "") {
+		alert("Seleccione una Unidad");
+		document.formSeleccionar.unidad_sel.focus();
+	}
+	else {
+//		document.location.href = "/servlet/datafolder.anexos.MantAnexoRel?ver=AU&unidad_sel="+unidad;
+		document.formSeleccionar.action ="/servlet/datafolder.anexos.MantAnexoRel";
+		document.formSeleccionar.submit();
+		
+	}
+}
+
+function aceptar(form) {
+	form.target = "MantAnexoRel";
+	form.action = "/servlet/datafolder.anexos.MantAnexoRel?accion=AAR";
+	form.submit();
+	window.close();
+}
+</script>
+<script language="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript" src="/Gestion/script/anexos.js">
+</script>
+<link rel="stylesheet" href="/Anexos/stile/1.css" type="text/css">
+<link rel="stylesheet" href="/Anexos/stile/FondoCombo.css" type="text/css">
+</HEAD>
+<BODY BGCOLOR=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#006600" vlink="#006600" alink="#006600" onLoad="inicio();MM_preloadImages('/images/Gestion/anexos/botones/aceptar_over.jpg','/images/Gestion/anexos/botones/cerrar_over.jpg')">
+<!-- Sectores de ImageReady (main_bienvenida.psd) -->
+<table width="310" border="0" cellspacing="2" cellpadding="0" background="/images/Gestion/anexos/fondvent.jpg">
+  <tr bgcolor="#FFCF75"> 
+    <td height="20" align="center" class="unnamed1" bgcolor="#000033"><b>Seleccionar 
+      Anexos a Relacionar</b></td>
+  </tr>
+  <tr align="center"> 
+    <td valign="top" height="217" class="texto"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <form name="formSeleccionar" method = "get">
+          <input type="hidden" name="unidad" value="${unidad}">
+		  <input type="hidden" name="unidad_desc" value="${unidad_desc}">
+		  <input type="hidden" name="anexo" value="${anexo}">
+		  <!--<input type="hidden" name="empresa" value="${empresa}">-->
+		  <input type="hidden" name="ver" value="AU">
+          <tr> 
+            <td class="unnamed1" bgcolor="#000033"> 
+              <select name="unidad_sel" class="ComboAzul" style="width=300" onChange="selecionaUnidad(this.value)">
+                <option selected value = "">Seleccione una Unidad</option>
+                <list unidades as u> 
+                <option value = "${u.id}">(${u.id}) ${u.descrip}</option>
+                </list> 
+              </select>
+            </td>
+          </tr>
+        </form>
+        <tr> 
+          <td height="10"></td>
+        </tr>
+        <tr valign="top"> 
+          <td height="160" width="63"> 
+            <div id="LayerAnexos" style="position:absolute; width:300; height:160; z-index:1; left: auto; top: auto; overflow: auto"> 
+              <table width="250" border="1" cellspacing="0" cellpadding="0" bgcolor="#000033">
+                <form name="formAnexo" method="post" action="">
+                  <input type="hidden" name="unidad" value="${unidad}">
+                  <input type="hidden" name="unidad_desc" value="${unidad_desc}">
+                  <input type="hidden" name="anexo" value="${anexo}">
+                  <!--<input type="hidden" name="empresa" value="${empresa}">-->
+                  <input type="hidden" name="unidad_sel" value = "${unidad_sel}">
+                  <if anexos> <list anexos as f> 
+                  <tr bgcolor="#000033"> 
+                    <td class="unnamed1"> 
+                      <input type="checkbox" name="anexo_rel" value="${f.anexo}">
+                      ${f.anexo}</td>
+                    <td class="unnamed1" width="30" align="center"><a href="javascript:;" class="unnamed1"  onClick="return ventInfoAnexo('${empresa}', '${unidad_sel}', '${f.anexo}')" title="Informaci&oacute;n del Anexo">[Info]</a></td>
+                  </tr>
+                  </list> <else> 
+                  <tr bgcolor="#000033"> 
+                    <td class="unnamed1" colspan="2">No se encuentra</td>
+                  </tr>
+                  </if> 
+                </form>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <a href="javascript:;" onClick="aceptar(document.formAnexo); return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_sel','','/images/Gestion/anexos/botones/aceptar_over.jpg',1)"><img name="img_sel" border="0" src="/images/Gestion/anexos/botones/aceptar_up.jpg" width="99" height="23"></a><a href="javascript:;" onClick="window.close(); return false;" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_cerrar','','/images/Gestion/anexos/botones/cerrar_over.jpg',1)"><img name="img_cerrar" border="0" src="/images/Gestion/anexos/botones/cerrar_up.jpg" width="99" height="23"></a></td>
+  </tr>
+</table>
+<!-- Fin de sectores de ImageReady -->
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Informaci&oacute;n </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Fireworks 4.0  Dreamweaver 4.0 target.  Created Fri May 31 20:35:17 GMT-0400 (Hr. est&#225;ndar del Pac&#237;fico SA) 2002-->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script language="JavaScript" src="../servlet/Tool?scripts/ExisteFoto.js"></script>
+<script language="JavaScript" src="../servlet/Tool?scripts/links.js" type="text/JavaScript"></script>
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#DCDDFA" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" width="387">
+  <!-- fwtable fwsrc="Untitled" fwbase="fichapersonal.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr> 
+    <td width="17"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="17" height="1" border="0"></td>
+    <td width="144"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="58" height="1" border="0"></td>
+    <td width="61"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="60" height="1" border="0"></td>
+    <td width="167"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="1" height="1" border="0"></td>
+    <td width="17"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="10" height="1" border="0"></td>
+    <td width="1"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td colspan="5"><img name="fichapersonal_r1_c1" src="../servlet/Tool?images/fichapersonal/fichapersonal_r1_c1.jpg" width="390" height="30" border="0"></td>
+    <td width="1"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td rowspan="2" valign="top" width="17"><img name="fichapersonal_r2_c1" src="../servlet/Tool?images/fichapersonal/fichapersonal_r2_c1.jpg" width="17" height="130" border="0"></td>
+    <td height="127" colspan="2" valign="top" background="../servlet/Tool?images/login/bck3.jpg"> 
+      <div id="LayerFoto" style="position:absolute; width:115px; height:127px; z-index:1; left: 20px; top: 35px; visibility: visible;"> 
+        <div align="center"><img onError="existeFoto(this)" src='${GetProp("server.datafolder")}/images/DataFolder/Trabajadores/${foto}' width="90" height="97"></div>
+      </div>
+      <div id="Layer1" style="position:absolute; width:244px; height:122px; z-index:4; left: 132px; visibility: visible; top: 28px;"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>&nbsp;</td>
+            <td valign="top"> 
+              <table width="100%" height="113" border="0" cellpadding="0" cellspacing="1">
+                <tr> 
+                  <td height="14" class="detalleTabla">Nombre</td>
+                </tr>
+                <tr> 
+                  <td height="13" background="../servlet/Tool?images/login/bck1.jpg" class="detalleTabla">${nombre}</td>
+                </tr>
+                <tr> 
+                  <td height="12" class="detalleTabla">Fecha Nacimiento</td>
+                </tr>
+                <tr> 
+                  <td height="14" background="../servlet/Tool?images/login/bck1.jpg" class="detalleTabla">${fec}</td>
+                </tr>
+                <tr> 
+                  <td height="16" class="detalleTabla">Nombre del Colaborador</td>
+                </tr>
+                <tr> 
+                  <td height="2" background="../servlet/Tool?images/login/bck1.jpg" class="detalleTabla"><a href="javascript:openInfoRut(${rut})">${emple}</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+    <td background="../servlet/Tool?images/login/bck3.jpg" width="167" height="127">&nbsp;</td>
+    <td rowspan="2" valign="top" width="17">&nbsp; </td>
+    <td width="1" height="127"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr> 
+    <td height="14" colspan="5">&nbsp;</td>
+    <td width="1"><img src="../servlet/Tool?images/fichapersonal/spacer.gif" width="1" height="14" border="0"></td>
+  </tr>
+</table>
+</body>
+</html>

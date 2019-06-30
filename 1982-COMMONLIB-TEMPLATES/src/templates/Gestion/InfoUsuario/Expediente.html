@@ -1,0 +1,70 @@
+  <html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function AsigIndice() { //v3.0
+	//alert(document.x.opciones.value);	
+	document.x.indice.value=document.x.opciones.value;
+	document.x.submit();
+
+}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="300" border="1">
+  <tr>
+    <td>Expediente</td>
+  </tr>
+</table>
+
+  <p> 
+    
+  <select name="opciones" onChange="MM_jumpMenu('parent',this,0)" >
+    <option value="/servlet/datafolder.gestion.Expediente?indice=0&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html" selected><font color="#FFFFFF"></font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=1&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Datos 
+    Personales</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=2&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Datos 
+    Contractuales</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=3&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Adm. 
+    del Tiempo</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=4&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Datos 
+    Previsionales</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=5&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">E.G. 
+    y Desarrollo</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=6&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Formaci&oacute;n</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=7&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Grupo 
+    Familiar</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=8&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Historial</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=9&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Licencias 
+    M&eacute;dicas</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=10&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Malla 
+    de Capacitaci&oacute;n</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=11&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Prestamos</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=12&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Remuneraciones</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=13&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Vacaciones</font></option>
+    <option value="/servlet/datafolder.gestion.Expediente?indice=14&rut=${brut}&pagina=../InfoUsuario/ExInfoRut.html"><font color="#FFFFFF">Capacitaci&oacute;n</font></option>
+  </select>
+
+  </p>
+
+<p>&nbsp;</p>
+<table width="514" border="0">
+  <tr>
+    <td><if brut=="5351046"><include "/../../../DataFolder/left_principal_sin.html"><else><include "/../../../DataFolder/left_principal.html"></if></td>
+    <td>${DPers(brut)}</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

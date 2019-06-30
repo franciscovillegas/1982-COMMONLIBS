@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../servlet/Tool?style/portalrrhh.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+	
+}
+function Ejec() {
+	if (document.form1.codigo.value!="" && document.form1.nemotecnico.value!="")
+	document.form1.submit();
+	else
+		alert("Debe completar el formulario");
+}
+
+function verLayer(name){
+	OcultarTodos();
+	MM_showHideLayers(name,'','show')
+	MM_showHideLayers('Layer1','','show')
+}
+function OcultarTodos(){
+<list detallerol as dr>
+	MM_showHideLayers('Layer_${dr.rol}','','hide')
+</list>
+	MM_showHideLayers('Layer1','','hide')
+}
+
+function grabar(){
+document.form1.grabar.value="si";
+document.form1.submit();
+
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<form name="form1" method="post" action="../servlet/S_AssignAccesToRol"><input name="grabar" type="hidden" value="no">
+  <div id="Layer2" style="position:absolute; left:20px; top:15px; width:207px; height:426px; z-index:2; overflow: auto;" class="layer1"> 
+    <br>
+    <table width="90%" border="0" align="center" class="detalleTabla">
+<tr> 
+        <td class="tituloTabla"> Roles de Usuarios</td>
+      </tr>
+      <list roles as r> 
+      <tr> 
+        <td class="detalleTabla"> <input name="rol" type="radio" onClick="javascript:verLayer('Layer_${r.rol}')" value="rol_${r.rol}" >
+          ${r.rol_desc} </td>
+      </tr>
+      </list> 
+    </table>
+  </div>
+  <div id="Layer1" style="position:absolute; left:565px; top:13px; width:160px; height:29px; z-index:4" class="layer1"> 
+    <table width="100%" border="0" class="detalleTabla">
+<tr align="center"> 
+        <td><a href="javascript:grabar();" class="a">[ Grabar ]</a></td>
+        <td><a href="#" class="a">[ Cerrar ]</a></td>
+      </tr>
+    </table>
+  </div>
+<list detallerol as dr>
+  <div id="Layer_${dr.rol}" style="position:absolute; left:251px; top:15px; width:287px; height:424px; z-index:3; overflow: auto;" class="layer1"> 
+    <br>
+    <table width="90%" border="0" align="center" class="detalleTabla">
+<tr> 
+        <td class="tituloTabla"> Accesos </td>
+      </tr>
+      <list dr.datos as r> 
+      <tr> 
+        <td class="detalleTabla"> <input name="check_${r.rol}_${r.access}" type="checkbox" value="checkbox" ${r.checked}>
+          ${r.acc_desc} </td>
+      </tr>
+      </list> 
+    </table>
+  </div>
+</list>
+<if alert> </if> 
+</form>
+</body>
+<script language="JavaScript" type="text/JavaScript">
+<if alert>
+	onMouseOver="MM_showHideLayers('Layer1','','show')";
+</if>
+	OcultarTodos();
+//-->
+</script>
+</html>
